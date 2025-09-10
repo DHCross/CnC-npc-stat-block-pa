@@ -14,7 +14,42 @@ export function findName(text: string): string {
   // First try to find bold names
   const boldMatch = text.match(/\*\*([^*]+)\*\*/);
   if (boldMatch) {
-    return boldMatch[1].trim();
+    const fullTitle = boldMatch[1].trim();
+    
+    // For complex titles like "The Right Honorable President Counselor of Yggsburgh His Supernal Devotion, Victor Oldham, High Priest of the Grand Temple"
+    // Look for a pattern where the actual name is between commas
+    // Pattern: some text, FIRSTNAME LASTNAME, more text
+    const nameInMiddle = fullTitle.match(/,\s*([A-Z][a-z]+\s+[A-Z][a-z]+),/);
+    if (nameInMiddle) {
+      return nameInMiddle[1].trim();
+    }
+    
+    // Try to find patterns like "Title NAME" at the end after a comma
+    const nameAtEnd = fullTitle.match(/,\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)$/);
+    if (nameAtEnd) {
+      return nameAtEnd[1].trim();
+    }
+    
+    // For simpler cases, try to extract just the name part
+    // Look for capitalized words that aren't common titles
+    const titleWords = /^(?:The|Right|Honorable|President|Counselor|His|Her|Supernal|Devotion|High|Priest|of|the|Grand|Temple|Lord|Lady|Sir|Dame|Captain|General|Admiral|Chief|Master|Sergeant|Lieutenant|Colonel|Major|Doctor|Professor)$/i;
+    const words = fullTitle.split(/[,\s]+/);
+    const nameWords = [];
+    
+    for (const word of words) {
+      if (word && !titleWords.test(word) && /^[A-Z][a-z]+$/.test(word)) {
+        nameWords.push(word);
+        // If we found 2 words that look like names, that's probably enough
+        if (nameWords.length >= 2) break;
+      }
+    }
+    
+    if (nameWords.length > 0) {
+      return nameWords.join(' ');
+    }
+    
+    // Fallback: return the full title
+    return fullTitle;
   }
   
   // Try to find structured NPC name from template format
@@ -267,21 +302,9 @@ export function processDump(dump: string): string[] {
     return [];
   }
   
-  // If the input doesn't contain double newlines, treat as single NPC
-  if (!cleanedDump.includes('\n\n')) {
-    return [collapseNPCEntry(cleanedDump)];
-  }
-  
-  // Split on double newlines only if they exist
-  const blocks = cleanedDump.split(/\n\s*\n/);
-  
-  // Process each block that looks like an NPC
-  return blocks
-    .filter(block => {
-      const trimmed = block.trim();
-      return trimmed && !isCodeContent(trimmed) && hasNPCIndicators(trimmed);
-    })
-    .map(block => collapseNPCEntry(block));
+  // Always treat input as a single NPC block - don't split automatically
+  // The user specifically wants one NPC at a time processing
+  return [collapseNPCEntry(cleanedDump)];
 }
 
 function isCodeContent(text: string): boolean {
