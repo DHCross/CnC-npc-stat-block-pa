@@ -1,13 +1,22 @@
 // --- NPC Stat Block Parser for Original Castles & Crusades Format ---
 // Produces narrative format matching the Victor Oldham reference style
 
-// 1) Pre-clean: split title and body to prevent title contamination
+// Split title and body to prevent title contamination
 function splitTitleAndBody(src: string): { title: string; body: string } {
   const lines = src.trim().split(/\r?\n/).map(l => l.trim()).filter(Boolean);
-  // Title can be one or two lines before the first parenthesis block
-  const idx = lines.findIndex(l => l.startsWith('('));
-  const title = (idx > 0 ? lines.slice(0, idx) : lines.slice(0, 1)).join(' ');
-  const body = lines.slice(Math.max(idx, 1)).join(' ');
+  
+  // First line with **bold** is typically the title
+  let titleEndIdx = 0;
+  for (let i = 0; i < lines.length; i++) {
+    if (/\*\*.*\*\*/.test(lines[i])) {
+      titleEndIdx = i;
+    } else if (lines[i].match(/^(Disposition|Race|Hit Points|Armor Class|Prime|Equipment|Spells|Mount):/i)) {
+      break;
+    }
+  }
+  
+  const title = lines.slice(0, titleEndIdx + 1).join(' ');
+  const body = lines.slice(titleEndIdx + 1).join('\n');
   return { title, body };
 }
 
@@ -17,9 +26,9 @@ export function findName(textOrTitle: string): string {
   return textOrTitle.trim();
 }
 
-// More tolerant: "Race & Class:", "human, 16th level cleric", "16th level human cleric", "cleric, 16th level"
+// Parse race, class, and level from various formats
 export function parseRaceClassLevel(text: string): { race: string; level: string; charClass: string } {
-  // 1) Explicit section
+  // 1) "Race & Class: human, 16th level cleric"
   let m = text.match(/Race\s*&\s*Class:\s*([A-Za-z]+)\s*,\s*(\d{1,2})(?:st|nd|rd|th)?\s*level\s*([A-Za-z]+)/i);
   if (m) return { race: m[1].toLowerCase(), level: m[2], charClass: m[3].toLowerCase() };
 
@@ -38,98 +47,103 @@ export function parseRaceClassLevel(text: string): { race: string; level: string
   return { race: 'human', level: '1', charClass: 'unknown' };
 }
 
-// Normalize to noun forms (law/good, chaos/evil)
+// Normalize disposition to noun forms (law/good, chaos/evil)
 export function findDisposition(text: string): string {
-  const m = text.match(/(?:Disposition|Alignment)[^:]*[:\-]\s*([A-Za-z /-]+)/i) ||
-            text.match(/\b(lawful|chaotic|neutral)\b.*\b(good|evil|neutral)\b/i);
+  const m = text.match(/(?:Disposition|Alignment)[^:]*[:\-]\s*([A-Za-z /-]+)/i);
   if (!m) return 'unknown';
-  const raw = (m[1] || m[0]).toLowerCase().replace(/-/g,'/').replace(/\s+/g,'');
-  const map: Record<string,string> = { lawful:'law', chaotic:'chaos', law:'law', chaos:'chaos', good:'good', evil:'evil', neutral:'neutral' };
+  
+  const raw = m[1].toLowerCase().replace(/-/g,'/').replace(/\s+/g,'');
+  const map: Record<string,string> = { 
+    lawful:'law', chaotic:'chaos', law:'law', chaos:'chaos', 
+    good:'good', evil:'evil', neutral:'neutral' 
+  };
+  
   return raw.split('/').slice(0,2).map(p => map[p] ?? p).join('/');
 }
 
-// Accept "HP 59" OR "Hit Points (HP): 59", same for AC
+// Find HP and AC from various formats
 export function findHpAc(text: string): [string, string] {
-  const hpMatch = text.match(/HP\s*[:=]?\s*(\d+)/i) || text.match(/Hit\s*Points[^0-9]*?(\d+)/i);
-  const acMatch = text.match(/AC\s*[:=]?\s*([0-9/]+)/i) || text.match(/Armor\s*Class[^0-9]*?([0-9/]+)/i);
+  const hpMatch = text.match(/Hit\s+Points\s*\(HP\):\s*(\d+)/i) || 
+                  text.match(/HP\s*[:=]?\s*(\d+)/i);
+  const acMatch = text.match(/Armor\s+Class\s*\(AC\):\s*([0-9/]+)/i) || 
+                  text.match(/AC\s*[:=]?\s*([0-9/]+)/i);
   return [hpMatch ? hpMatch[1] : '?', acMatch ? acMatch[1] : '?'];
 }
 
-// Expand Str/Wis/Cha → full names; render lower-case per Jeremy
+// Find and expand prime attributes to full names, lowercase
 export function findPrimes(text: string): string {
-  const m = text.match(/Prime\s*Attributes?[^:]*[:\-]\s*([^.]+)\.?/i) ||
-            text.match(/primary attributes?\s*(?:are|is)\s*([^.]+)\.?/i);
+  const m = text.match(/Prime\s+Attributes\s*\(PA\):\s*([^\n]+)/i) ||
+            text.match(/Prime\s*Attributes?[^:]*[:\-]\s*([^\n]+)/i);
   if (!m) return '?';
-  const map: Record<string,string> = { str:'strength', dex:'dexterity', con:'constitution', int:'intelligence', wis:'wisdom', cha:'charisma' };
+  
+  const map: Record<string,string> = { 
+    str:'strength', dex:'dexterity', con:'constitution', 
+    int:'intelligence', wis:'wisdom', cha:'charisma',
+    strength:'strength', dexterity:'dexterity', constitution:'constitution',
+    intelligence:'intelligence', wisdom:'wisdom', charisma:'charisma'
+  };
+  
   return m[1]
     .split(/,| and /i)
-    .map(s => s.trim().replace(/\.+$/,''))
+    .map(s => s.trim().toLowerCase())
     .filter(Boolean)
-    .map(x => map[x.toLowerCase()] ?? x.toLowerCase())
+    .map(x => map[x] ?? x)
     .join(', ');
 }
 
-// Scope equipment to "He carries ..." sentence or "Equipment:" line to prevent title contamination
-export function findEquipment(text: string, npcName?: string): string {
-  // Prefer explicit sentence: "He carries ... ."
-  const mCarries = text.match(/(?:He|She)\s+carries\s+([^.!?]+?)(?:\.\s|$)/is);
-  let span = mCarries ? mCarries[1] : '';
-
-  // Fallback: "Equipment: ..."
-  if (!span) {
-    const mEq = text.match(/(?:Equipment|EQ)[^:]*[:\-]\s*([^.!\n]+)(?:[.!]|\n|$)/i);
-    if (mEq) span = mEq[1];
-  }
-  if (!span) return 'none';
-
-  // Normalize whitespace and split on ",", ";", or " and "
-  const items = span
-    .replace(/\s+/g, ' ')
-    .split(/,|;\s*|(?:\s+and\s+)/i)
+// Find equipment from Equipment: line only, avoiding title contamination
+export function findEquipment(text: string): string {
+  const m = text.match(/Equipment:\s*([^\n]+)/i);
+  if (!m) return 'none';
+  
+  const items = m[1]
+    .split(',')
     .map(s => s.trim())
     .filter(Boolean);
 
-  // Drop accidental title/name tokens
-  const drop = new Set<string>(
-    (npcName ? [npcName, ...npcName.split(',')] : []).map(s => s.trim().toLowerCase())
-  );
-
-  // Keep steel shield if present anywhere in the text
-  if (/steel shield/i.test(text)) items.push('steel shield');
-
-  // Auto-italicize obvious magic; dedupe
+  // Auto-italicize obvious magic items
   const isMagic = (s: string) =>
-    /\+\d/.test(s) || /\b(staff|wand|ring|cloak|boots|amulet|pectoral|bracers|girdle|rod|scroll|robe|shield)\b/i.test(s);
+    /\+\d/.test(s) || /\b(staff|wand|ring|cloak|boots|amulet|pectoral|bracers|girdle|rod|scroll)\b/i.test(s);
 
-  const seen = new Set<string>();
-  const cleaned = items
-    .map(x => x.replace(/\.+$/, '').trim())
-    .filter(x => x && !drop.has(x.toLowerCase()))
-    .filter(x => (seen.has(x.toLowerCase()) ? false : (seen.add(x.toLowerCase()), true)))
-    .map(x => (isMagic(x) ? `*${x}*` : x));
-
+  const cleaned = items.map(x => (isMagic(x) ? `*${x}*` : x));
   return cleaned.length ? cleaned.join(', ') : 'none';
 }
 
-// Grab both compact "0–6" and long "1st-level: 6"; output with ordinals + en dashes
+// Find spells and format with ordinals and en dashes
 export function findSpells(text: string): string {
+  const m = text.match(/Spells:\s*([^\n]+)/i);
+  if (!m) return '?';
+  
+  // Parse the spell format like "0–6, 1st–6, 2nd–5..."
+  const spellText = m[1];
   const slots = new Map<number,string>();
-  for (const m of text.matchAll(/(\d)(?:st|nd|rd|th)?-level\s*[:=]\s*(\d+)/gi)) slots.set(+m[1], m[2]);
-  for (const m of text.matchAll(/(\d+)\s*[–-]\s*(\d+)/gi)) slots.set(+m[1], m[2]); // 0–6 / 0-6
+  
+  // Match patterns like "0–6" or "1st–6"
+  for (const match of spellText.matchAll(/(\d+)(?:st|nd|rd|th)?[–-](\d+)/g)) {
+    slots.set(parseInt(match[1]), match[2]);
+  }
+  
   if (!slots.size) return '?';
   
-  const ord = (n:number)=> n===1?'1st':n===2?'2nd':n===3?'3rd':`${n}th`;
+  const ord = (n:number) => n===1?'1st':n===2?'2nd':n===3?'3rd':`${n}th`;
   const keys = [...slots.keys()].sort((a,b)=>a-b);
   return keys.map(k => k===0 ? `0–${slots.get(0)!}` : `${ord(k)}–${slots.get(k)!}`).join(', ');
 }
 
+// Check for mount and generate mount description
 export function findMountOneLiner(text: string): string {
-  if (!/heavy\s+war\s*horse|warhorse/i.test(text)) return '';
-  // Jeremy's stock stats format
-  return `\n\nHe rides a warhorse with the following statistics:\n\n` +
-         `**Warhorse** (This creature's vital stats are Level 4(1d10), HP 35, AC 19, disposition neutral. ` +
-         `It makes two hoof attacks for 1d4 damage each, or one overbearing attack. ` +
-         `The horse is outfitted with chainmail barding.)`;
+  const m = text.match(/Mount:\s*([^\n]+)/i);
+  if (!m) return '';
+  
+  const mountText = m[1].toLowerCase();
+  if (mountText.includes('heavy war horse') || mountText.includes('warhorse')) {
+    return `\n\nHe rides a warhorse with the following statistics:\n\n` +
+           `**Warhorse** (This creature's vital stats are Level 4(1d10), HP 35, AC 19, disposition neutral. ` +
+           `It makes two hoof attacks for 1d4 damage each, or one overbearing attack. ` +
+           `The horse is outfitted with chainmail barding.)`;
+  }
+  
+  return '';
 }
 
 function getOrdinalSuffix(level: string): string {
@@ -161,8 +175,7 @@ function formatPrimaryAttributes(primes: string): string {
   }
 }
 
-// --- Main builder: work on body, pass name into EQ ---
-
+// Main function to collapse NPC entry into narrative format
 export function collapseNPCEntry(longText: string): string {
   const { title, body } = splitTitleAndBody(longText);
   const name = findName(title);
@@ -171,30 +184,45 @@ export function collapseNPCEntry(longText: string): string {
   const disposition = findDisposition(body);
   const [hp, ac] = findHpAc(body);
   const primes = findPrimes(body);
-  const equipment = findEquipment(body, name);
+  const equipment = findEquipment(body);
   const spells = findSpells(body);
 
-  let s = `${name} (This ${level}${getOrdinalSuffix(level)} level ${race} ${charClass}'s vital stats are HP ${hp}, AC ${ac}, disposition ${disposition}.`;
+  // Build the main narrative sentence
+  let result = `**${name}** (This ${level}${getOrdinalSuffix(level)} level ${race} ${charClass}'s vital stats are HP ${hp}, AC ${ac}, disposition ${disposition}.`;
 
+  // Add primary attributes if found
   if (primes !== '?') {
-    const p = formatPrimaryAttributes(primes);
-    if (p) s += ` His primary attributes are ${p}.`;
+    const formatted = formatPrimaryAttributes(primes);
+    if (formatted) result += ` His primary attributes are ${formatted}.`;
   }
+  
+  // Add equipment if found
   if (equipment !== 'none') {
     const items = equipment.split(',').map(x => x.trim()).filter(Boolean);
-    if (items.length === 1) s += ` He carries ${items[0]}.`;
-    else if (items.length === 2) s += ` He carries ${items[0]} and ${items[1]}.`;
-    else s += ` He carries ${items.slice(0,-1).join(', ')}, and ${items.slice(-1)}.`;
+    if (items.length === 1) {
+      result += ` He carries ${items[0]}.`;
+    } else if (items.length === 2) {
+      result += ` He carries ${items[0]} and ${items[1]}.`;
+    } else {
+      const lastItem = items.pop();
+      result += ` He carries ${items.join(', ')}, and ${lastItem}.`;
+    }
   }
-  if (spells !== '?') s += ` He can cast the following number of spells per day: ${spells}.`;
+  
+  // Add spells if found
+  if (spells !== '?') {
+    result += ` He can cast the following number of spells per day: ${spells}.`;
+  }
 
-  s += ')';
+  result += ')';
   
-  // Append mount if present
+  // Add mount information if present
   const mountInfo = findMountOneLiner(body);
-  if (mountInfo) s += mountInfo;
+  if (mountInfo) {
+    result += mountInfo;
+  }
   
-  return s;
+  return result;
 }
 
 // --- Batch processor ---
