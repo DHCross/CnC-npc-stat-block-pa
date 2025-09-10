@@ -401,53 +401,76 @@ export function validateStatBlock(text: string): ValidationResult {
   const warnings: ValidationWarning[] = [];
   const { title, body } = splitTitleAndBody(text);
   
-  // 1. Heading Formatting Check
+  // Core C&C Compliance Checks based on comprehensive checklist
+  
+  // 1. Heading Formatting Discrepancy
   validateHeadingFormat(title, warnings);
   
-  // 2. Deprecated Alignment Terminology
-  validateDispositionTerminology(body, warnings);
+  // 2. Missing Formal Address (if applicable)
+  validateFormalAddress(text, warnings);
   
-  // 3. Disposition Format (should be nouns)
-  validateDispositionFormat(body, warnings);
+  // 3. Deprecated "Alignment" Terminology
+  validateAlignmentTerminology(body, warnings);
   
-  // 4. Level Formatting (superscript and bold)
+  // 4. Incorrect Disposition Noun Formatting
+  validateDispositionNounFormat(body, warnings);
+  
+  // 5. Improper Level Formatting
   validateLevelFormatting(body, warnings);
   
-  // 5. Hit Point Presentation for Classed NPCs
+  // 6. Incorrect Hit Point Presentation for Classed NPCs
   validateHitPointFormat(body, warnings);
   
-  // 6. Coinage Abbreviations
+  // 7. Deprecated Coinage Abbreviations
   validateCoinageTerminology(body, warnings);
   
-  // 7. Magic Item Italicization
-  validateMagicItemFormatting(body, warnings);
+  // 8. Non-Italicized Magic Item Names
+  validateMagicItemItalicization(body, warnings);
   
-  // 8. Magic Item Mechanical Explanations
+  // 9. Missing Mechanical Explanation for Magic Items
   validateMagicItemExplanations(body, warnings);
   
-  // 9. Magic Item Bonus Placement
+  // 10. Incorrect Magic Item Bonus Placement
   validateMagicItemBonusPlacement(body, warnings);
   
-  // 10. Individual Spells vs Numeric Spread
-  validateSpellListing(body, warnings);
+  // 11. Individual Spells Listed for General NPCs
+  validateSpellListingFormat(body, warnings);
   
-  // 11. Deprecated Vision Terminology
+  // 12. Incorrect Race-Before-Class Order for Multiclass
+  validateRaceClassOrder(body, warnings);
+  
+  // 13. Unjustified Gendered Pronouns
+  validateGenderedPronouns(body, warnings);
+  
+  // 14. Deprecated Vision Type Terminology
   validateVisionTerminology(body, warnings);
   
-  // 12. Deprecated "Improved Grab" -> "Crushing Grasp"
-  validateAbilityTerminology(body, warnings);
+  // 15. Deprecated "Improved Grab" Terminology
+  validateDeprecatedAbilities(body, warnings);
   
-  // 13. Missing Required Fields
+  // 16. Missing Mechanical Explanation for Unique Abilities
+  validateUniqueAbilities(body, warnings);
+  
+  // Additional C&C specific checks
+  
+  // 17. Missing Required Core Fields
   validateRequiredFields(body, warnings);
   
-  // 14. Gendered Pronouns Without Context
-  validateGenderedPronouns(body, warnings);
+  // 18. Prime Attributes Format and Terminology
+  validatePrimeAttributes(body, warnings);
+  
+  // 19. Mount Format and Statistics
+  validateMountFormat(body, warnings);
+  
+  // 20. Superscript Usage in Levels
+  validateSuperscriptLevels(body, warnings);
 
   const errorCount = warnings.filter(w => w.type === 'error').length;
   const warningCount = warnings.filter(w => w.type === 'warning').length;
+  const infoCount = warnings.filter(w => w.type === 'info').length;
   
-  const totalChecks = 14;
-  const issueCount = errorCount + (warningCount * 0.5);
+  const totalChecks = 20;
+  const issueCount = errorCount + (warningCount * 0.5) + (infoCount * 0.1);
   const complianceScore = Math.max(0, Math.round(((totalChecks - issueCount) / totalChecks) * 100));
   
   return {
@@ -457,245 +480,601 @@ export function validateStatBlock(text: string): ValidationResult {
   };
 }
 
+// 1. Heading Formatting Discrepancy
 function validateHeadingFormat(title: string, warnings: ValidationWarning[]) {
+  // Check for proper bold formatting
   if (!title.includes('**') || !title.match(/^\*\*.*\*\*$/)) {
     warnings.push({
       type: 'error',
       category: 'Heading Format',
-      message: 'NPC name must be enclosed in bold formatting (**Name**)',
-      suggestion: 'Format: **The Right Honorable Title, Name, Office**'
+      message: 'Main heading does not follow "Full honorific + office + name" convention with proper bold formatting',
+      suggestion: 'Format: **The Right Honorable President Counselor of Yggsburgh His Supernal Devotion, Victor Oldham, High Priest of the Grand Temple**'
     });
   }
   
-  // Check for colon in title (deprecated)
+  // Check for deprecated colon usage in title
   if (title.includes(':')) {
+    warnings.push({
+      type: 'error',
+      category: 'Heading Format',
+      message: 'Title contains colon - C&C convention requires comma separation instead',
+      suggestion: 'Remove colons from the main heading and use commas'
+    });
+  }
+  
+  // Check for proper honorific structure
+  const cleanTitle = title.replace(/\*\*/g, '').trim();
+  if (!cleanTitle.includes(',') && cleanTitle.split(' ').length < 3) {
     warnings.push({
       type: 'warning',
       category: 'Heading Format',
-      message: 'Title should not contain colons - use comma separation instead',
-      suggestion: 'Remove colons from the main heading'
+      message: 'Heading may be too simple - C&C convention prefers full honorifics and titles',
+      suggestion: 'Include full titles, honorifics, and offices where applicable'
     });
   }
 }
 
-function validateDispositionTerminology(body: string, warnings: ValidationWarning[]) {
+// 2. Missing Formal Address
+function validateFormalAddress(text: string, warnings: ValidationWarning[]) {
+  // For high-ranking NPCs, check if formal address is present
+  const title = text.match(/\*\*([^*]+)\*\*/)?.[1] || '';
+  if (title.toLowerCase().includes('counselor') || title.toLowerCase().includes('president') || 
+      title.toLowerCase().includes('high priest') || title.toLowerCase().includes('supernal')) {
+    if (!text.match(/Formal Address:/i)) {
+      warnings.push({
+        type: 'info',
+        category: 'Formal Address',
+        message: 'High-ranking NPC may be missing formal address line',
+        suggestion: 'Consider adding "Formal Address: His Supernal Devotion" or similar'
+      });
+    }
+  }
+}
+
+// 3. Deprecated "Alignment" Terminology Used
+function validateAlignmentTerminology(body: string, warnings: ValidationWarning[]) {
   if (body.match(/\balignment\b/i)) {
     warnings.push({
       type: 'error',
       category: 'Deprecated Terminology',
-      message: 'Term "alignment" is deprecated - use "disposition" instead',
-      suggestion: 'Replace "Alignment:" with "Disposition:"'
+      message: 'Term "alignment" has been entirely replaced by "disposition" in C&C',
+      suggestion: 'Replace "Alignment:" with "Disposition:" - comprehensive search and replacement required'
     });
   }
   
+  // Check for adjective forms that should be nouns
   if (body.match(/\b(?:lawful|chaotic)\s+(?:good|evil|neutral)\b/i)) {
     warnings.push({
-      type: 'warning',
-      category: 'Disposition Format',
-      message: 'Disposition should use adjective forms (lawful good) rather than noun forms',
-      suggestion: 'Use "law/good" instead of "lawful good"'
+      type: 'error',
+      category: 'Deprecated Terminology',
+      message: 'Adjective alignment terms detected - use noun forms instead',
+      suggestion: 'Replace "lawful good" with "law/good", "chaotic evil" with "chaos/evil"'
     });
   }
 }
 
-function validateDispositionFormat(body: string, warnings: ValidationWarning[]) {
+// 4. Incorrect Disposition Noun Formatting
+function validateDispositionNounFormat(body: string, warnings: ValidationWarning[]) {
   const dispMatch = body.match(/(?:Disposition|Alignment)[^:]*:\s*([^\n]+)/i);
   if (dispMatch) {
-    const disp = dispMatch[1].toLowerCase();
-    if (!disp.includes('/') && disp.match(/\b(?:lawful|chaotic)\b/)) {
+    const disp = dispMatch[1].toLowerCase().trim();
+    
+    // Check for adjective forms (should be nouns)
+    if (disp.match(/\b(?:lawful|chaotic)\s+(?:good|evil|neutral)\b/)) {
       warnings.push({
         type: 'error',
         category: 'Disposition Format',
-        message: 'Disposition must be expressed as nouns with slash separation',
-        suggestion: 'Use "law/good" not "lawful good"'
+        message: 'Disposition expressed as adjectives (e.g., "chaotic good") rather than nouns',
+        suggestion: 'Use noun forms: "chaos/good" or "law/good" instead'
       });
     }
-  }
-}
-
-function validateLevelFormatting(body: string, warnings: ValidationWarning[]) {
-  const levelMatches = [...body.matchAll(/(\d+)(?:st|nd|rd|th)?\s*level/gi)];
-  for (const match of levelMatches) {
-    const fullMatch = match[0];
-    // Check if it's properly superscripted (would be in formatted output)
-    if (!fullMatch.includes('ᵗʰ') && !fullMatch.includes('ˢᵗ') && !fullMatch.includes('ⁿᵈ') && !fullMatch.includes('ʳᵈ')) {
-      warnings.push({
-        type: 'info',
-        category: 'Level Formatting',
-        message: 'Character levels should be superscripted and bolded in final output',
-        suggestion: 'Parser will automatically format as 16ᵗʰ level'
-      });
-      break; // Only warn once
-    }
-  }
-}
-
-function validateHitPointFormat(body: string, warnings: ValidationWarning[]) {
-  // Check for dice notation in HP field
-  const hpMatch = body.match(/Hit\s+Points[^:]*:\s*([^\n]+)/i);
-  if (hpMatch) {
-    const hpValue = hpMatch[1];
-    if (hpValue.match(/\d+d\d+/)) {
-      warnings.push({
-        type: 'error',
-        category: 'Hit Points Format',
-        message: 'Hit Points for classed NPCs should be a sum, not dice notation',
-        suggestion: 'Use "59" instead of "4d10" for classed characters'
-      });
-    }
-  }
-}
-
-function validateCoinageTerminology(body: string, warnings: ValidationWarning[]) {
-  const coinageAbbrevs = ['pp', 'gp', 'sp', 'cp'];
-  for (const abbrev of coinageAbbrevs) {
-    if (body.match(new RegExp(`\\b${abbrev}\\b`, 'i'))) {
-      warnings.push({
-        type: 'warning',
-        category: 'Coinage Format',
-        message: `Coinage abbreviation "${abbrev}" should be spelled out`,
-        suggestion: 'Use "gold", "silver", "copper", "platinum" instead of abbreviations'
-      });
-    }
-  }
-}
-
-function validateMagicItemFormatting(body: string, warnings: ValidationWarning[]) {
-  // Look for obvious magic items that aren't italicized
-  const magicPatterns = [
-    /\b(?:staff|wand|ring|cloak|boots|amulet|pectoral|bracers|girdle|rod|scroll)\s+of\s+\w+/gi,
-    /\b\w+\s*\+\d+\b/g
-  ];
-  
-  for (const pattern of magicPatterns) {
-    const matches = [...body.matchAll(pattern)];
-    for (const match of matches) {
-      const item = match[0];
-      if (!item.startsWith('*') || !item.endsWith('*')) {
+    
+    // Check for missing slash separation in compound dispositions
+    if (disp.includes('good') || disp.includes('evil')) {
+      if (!disp.includes('/') && disp.split(' ').length > 1) {
         warnings.push({
-          type: 'warning',
-          category: 'Magic Item Format',
-          message: `Magic item "${item}" should be italicized`,
-          suggestion: 'Format as *magic item name*'
+          type: 'error',
+          category: 'Disposition Format',
+          message: 'Disposition must use slash separation for compound values',
+          suggestion: 'Format as "law/good", "chaos/evil", etc.'
         });
       }
     }
   }
 }
 
-function validateMagicItemExplanations(body: string, warnings: ValidationWarning[]) {
-  // This is a basic check - in a full implementation, you'd maintain a list of standard items
-  const magicItems = [...body.matchAll(/\*([^*]+\+\d+[^*]*)\*/g)];
-  
-  for (const match of magicItems) {
-    const item = match[1];
-    // Basic check for items that might need explanation
-    if (item.includes('staff of') || item.includes('pectoral of')) {
+// 5. Improper Level Formatting
+function validateLevelFormatting(body: string, warnings: ValidationWarning[]) {
+  const levelMatches = [...body.matchAll(/(\d+)(?:st|nd|rd|th)?\s*level/gi)];
+  for (const match of levelMatches) {
+    const levelNum = match[1];
+    const fullMatch = match[0];
+    
+    // Check if it's properly superscripted in source (would indicate awareness)
+    if (!fullMatch.includes('ᵗʰ') && !fullMatch.includes('ˢᵗ') && !fullMatch.includes('ⁿᵈ') && !fullMatch.includes('ʳᵈ')) {
       warnings.push({
         type: 'info',
-        category: 'Magic Item Explanation',
-        message: `Consider adding mechanical explanation for "${item}"`,
-        suggestion: 'Include brief description of magic item effects'
+        category: 'Level Formatting',
+        message: 'Character levels should be superscripted and bolded when outside italicized stat blocks',
+        suggestion: `Level will be formatted as ${levelNum}${getOrdinalSuffix(levelNum)} in output`
+      });
+      break; // Only warn once
+    }
+  }
+  
+  // Check for fully spelled out levels (e.g., "sixteenth level")
+  if (body.match(/\b(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth|thirteenth|fourteenth|fifteenth|sixteenth|seventeenth|eighteenth|nineteenth|twentieth)\s+level\b/i)) {
+    warnings.push({
+      type: 'warning',
+      category: 'Level Formatting',
+      message: 'Character level is fully typed out rather than using numeric abbreviation',
+      suggestion: 'Use "16th level" instead of "sixteenth level"'
+    });
+  }
+}
+
+// 6. Incorrect Hit Point Presentation for Classed NPCs
+function validateHitPointFormat(body: string, warnings: ValidationWarning[]) {
+  const hpMatch = body.match(/Hit\s+Points[^:]*:\s*([^\n]+)/i) || body.match(/HP[^:]*:\s*([^\n]+)/i);
+  if (hpMatch) {
+    const hpValue = hpMatch[1].trim();
+    
+    // Check for dice notation (should be sum for classed NPCs)
+    if (hpValue.match(/\d+d\d+/)) {
+      warnings.push({
+        type: 'error',
+        category: 'Hit Points Format',
+        message: 'Hit points for classed NPCs must be presented as numerical sum, not dice equation',
+        suggestion: 'Use "59" instead of "4d10" for classed characters'
+      });
+    }
+    
+    // Additional check for multiple dice expressions
+    if ((hpValue.match(/d/g) || []).length > 1) {
+      warnings.push({
+        type: 'error',
+        category: 'Hit Points Format',
+        message: 'Complex dice notation detected - classed NPCs should use simple numerical values',
+        suggestion: 'Calculate total HP and use single number'
       });
     }
   }
 }
 
+// 7. Deprecated Coinage Abbreviations
+function validateCoinageTerminology(body: string, warnings: ValidationWarning[]) {
+  const coinagePatterns = [
+    { abbrev: 'pp', full: 'platinum' },
+    { abbrev: 'gp', full: 'gold' },
+    { abbrev: 'sp', full: 'silver' },
+    { abbrev: 'cp', full: 'copper' },
+    { abbrev: 'ep', full: 'electrum' }
+  ];
+  
+  for (const { abbrev, full } of coinagePatterns) {
+    // Look for abbreviations with numbers
+    const pattern = new RegExp(`\\b\\d+\\s*${abbrev}\\b`, 'i');
+    if (body.match(pattern)) {
+      warnings.push({
+        type: 'warning',
+        category: 'Coinage Format',
+        message: `Coinage abbreviation "${abbrev}" must be replaced with full material name`,
+        suggestion: `Use "${full}" instead of "${abbrev}" - abbreviations are deprecated in C&C`
+      });
+    }
+  }
+  
+  // Check for isolated abbreviations
+  const isolatedPattern = /\b(?:pp|gp|sp|cp|ep)\b/gi;
+  const matches = [...body.matchAll(isolatedPattern)];
+  if (matches.length > 0) {
+    warnings.push({
+      type: 'warning',
+      category: 'Coinage Format',
+      message: 'Coinage abbreviations detected - must use full material names',
+      suggestion: 'Replace all coinage abbreviations with "platinum", "gold", "silver", "copper"'
+    });
+  }
+}
+
+// 8. Non-Italicized Magic Item Names
+function validateMagicItemItalicization(body: string, warnings: ValidationWarning[]) {
+  // Enhanced patterns for magic items
+  const magicPatterns = [
+    /\b(?:staff|wand|ring|cloak|boots|amulet|pectoral|bracers|girdle|rod|scroll|robe|helm|crown)\s+of\s+[\w\s]+/gi,
+    /\b[\w\s]*\+\d+[\w\s]*/g,
+    /\b(?:staff|wand|ring|cloak|boots|amulet|pectoral|bracers|girdle|rod|scroll)\s+[\w\s]*\+\d+/gi
+  ];
+  
+  const foundItems = new Set<string>();
+  
+  for (const pattern of magicPatterns) {
+    const matches = [...body.matchAll(pattern)];
+    for (const match of matches) {
+      const item = match[0].trim();
+      // Skip if already italicized or if it's just a number
+      if (!item.startsWith('*') && !item.endsWith('*') && item.length > 3 && !item.match(/^\d/)) {
+        foundItems.add(item);
+      }
+    }
+  }
+  
+  for (const item of foundItems) {
+    warnings.push({
+      type: 'warning',
+      category: 'Magic Item Format',
+      message: `Magic item "${item}" should be italicized when mentioned by name`,
+      suggestion: 'Format as *magic item name* outside italicized stat blocks'
+    });
+  }
+}
+
+// 9. Missing Mechanical Explanation for Magic Items
+function validateMagicItemExplanations(body: string, warnings: ValidationWarning[]) {
+  // Find italicized magic items
+  const magicItems = [...body.matchAll(/\*([^*]+(?:\+\d+|staff of|wand of|ring of|cloak of|boots of|amulet of|pectoral of)[^*]*)\*/gi)];
+  
+  for (const match of magicItems) {
+    const item = match[1].toLowerCase();
+    
+    // Items that typically need explanation
+    const needsExplanation = [
+      'staff of striking',
+      'pectoral of protection',
+      'ring of',
+      'cloak of',
+      'boots of',
+      'wand of'
+    ];
+    
+    const needsExpl = needsExplanation.some(pattern => item.includes(pattern));
+    
+    if (needsExpl) {
+      // Check if explanation exists in vicinity
+      const context = body.substr(Math.max(0, match.index! - 100), 200);
+      if (!context.match(/\([^)]*(?:AC|damage|protection|effect|bonus)[^)]*\)/i)) {
+        warnings.push({
+          type: 'error',
+          category: 'Magic Item Explanation',
+          message: `Magic item "${match[1]}" lacks required mechanical explanation`,
+          suggestion: 'Include brief description of magic item effects - no magic item should be printed without mechanical explanation'
+        });
+      }
+    }
+  }
+}
+
+// 10. Incorrect Magic Item Bonus Placement
 function validateMagicItemBonusPlacement(body: string, warnings: ValidationWarning[]) {
-  // Look for bonuses at start of item names
+  // Look for bonuses at start of item names (incorrect)
   const incorrectPlacements = [...body.matchAll(/\*\+(\d+)\s+([^*]+)\*/g)];
   
   for (const match of incorrectPlacements) {
     warnings.push({
       type: 'error',
       category: 'Magic Item Format',
-      message: `Magic item bonus should be at the end: "${match[2]} +${match[1]}" not "+${match[1]} ${match[2]}"`,
-      suggestion: 'Move numerical bonus to end of item name'
+      message: `Magic item bonus incorrectly placed at beginning: "+${match[1]} ${match[2]}"`,
+      suggestion: `Move numerical bonus to end: "${match[2]} +${match[1]}"`
     });
   }
-}
-
-function validateSpellListing(body: string, warnings: ValidationWarning[]) {
-  // Check if individual spell names are listed instead of numeric spread
-  const spellNamePatterns = [
-    /\b(?:cure|heal|bless|protection|fireball|lightning|magic missile)\b/gi
-  ];
   
-  for (const pattern of spellNamePatterns) {
-    if (body.match(pattern)) {
+  // Also check non-italicized items with incorrect bonus placement
+  const nonItalicizedIncorrect = [...body.matchAll(/\+(\d+)\s+([\w\s]+)(?:,|\.|$)/g)];
+  for (const match of nonItalicizedIncorrect) {
+    const item = match[2].trim();
+    if (item.match(/\b(?:sword|mace|shield|armor|plate|mail)\b/i)) {
       warnings.push({
         type: 'warning',
-        category: 'Spell Format',
-        message: 'Individual spell names should be avoided unless essential to encounter',
-        suggestion: 'Use numeric spread format: "0–6, 1st–6, 2nd–5" instead of spell names'
+        category: 'Magic Item Format',
+        message: `Potential magic item with incorrect bonus placement: "+${match[1]} ${item}"`,
+        suggestion: `Should be "${item} +${match[1]}" and italicized`
       });
-      break;
     }
   }
 }
 
-function validateVisionTerminology(body: string, warnings: ValidationWarning[]) {
-  const singleWordVision = ['darkvision', 'infravision', 'ultravision'];
+// 11. Individual Spells Listed for General NPCs
+function validateSpellListingFormat(body: string, warnings: ValidationWarning[]) {
+  // Check if individual spell names are listed instead of numeric spread
+  const commonSpells = [
+    'cure light wounds', 'cure serious wounds', 'heal', 'bless', 'protection from evil',
+    'fireball', 'lightning bolt', 'magic missile', 'charm person', 'sleep',
+    'detect magic', 'dispel magic', 'hold person', 'silence', 'spiritual weapon'
+  ];
   
-  for (const term of singleWordVision) {
-    if (body.match(new RegExp(`\\b${term}\\b`, 'i'))) {
-      const corrected = term.replace(/vision/, ' Vision').replace(/^(.)/, (c) => c.toUpperCase());
+  let foundSpells = 0;
+  for (const spell of commonSpells) {
+    if (body.match(new RegExp(`\\b${spell}\\b`, 'i'))) {
+      foundSpells++;
+    }
+  }
+  
+  if (foundSpells > 0) {
+    warnings.push({
+      type: 'warning',
+      category: 'Spell Format',
+      message: 'Individual spell names listed - should use numeric spread unless essential to encounter',
+      suggestion: 'Use format like "0–6, 1st–6, 2nd–5" instead of listing specific spell names'
+    });
+  }
+  
+  // Check for spell lists in Equipment or other inappropriate sections
+  if (body.match(/Equipment:[^:\n]*(?:cure|heal|bless|fireball|magic)/i)) {
+    warnings.push({
+      type: 'error',
+      category: 'Spell Format',
+      message: 'Spells listed in Equipment section - should be in separate Spells section',
+      suggestion: 'Move spell information to proper "Spells:" section'
+    });
+  }
+}
+
+// 12. Incorrect Race-Before-Class Order for Multiclass/Dual-Class NPCs
+function validateRaceClassOrder(body: string, warnings: ValidationWarning[]) {
+  // Look for multiclass indicators
+  const multiclassPatterns = [
+    /(\w+)\s*\/\s*(\w+),\s*(\d+)(?:st|nd|rd|th)?\s*level/gi,  // class/class, level
+    /(\d+)(?:st|nd|rd|th)?\s*level\s*(\w+)\s*\/\s*(\w+)/gi    // level class/class
+  ];
+  
+  for (const pattern of multiclassPatterns) {
+    const matches = [...body.matchAll(pattern)];
+    for (const match of matches) {
+      // Check if race appears after classes
+      const context = match[0];
+      if (!context.match(/(?:human|elf|dwarf|halfling|gnome|half-orc|half-elf)\s*,/i)) {
+        warnings.push({
+          type: 'warning',
+          category: 'Race-Class Order',
+          message: 'For multiclass/dual-class NPCs, race should be placed before level and class',
+          suggestion: 'Format: "human, 1st level fighter/1st level magic-user" for better linguistic flow'
+        });
+        break;
+      }
+    }
+  }
+}
+
+// 13. Unjustified Gendered Pronouns
+function validateGenderedPronouns(body: string, warnings: ValidationWarning[]) {
+  const pronouns = ['\\bhe\\b', '\\bshe\\b', '\\bhis\\b', '\\bher\\b', '\\bhim\\b', '\\bhers\\b'];
+  const foundPronouns: string[] = [];
+  
+  for (const pronoun of pronouns) {
+    const matches = body.match(new RegExp(pronoun, 'gi'));
+    if (matches) {
+      foundPronouns.push(...matches);
+    }
+  }
+  
+  if (foundPronouns.length > 0) {
+    // Check for explicit gender indicators
+    const genderIndicators = [
+      '\\bmale\\b', '\\bfemale\\b', '\\bman\\b', '\\bwoman\\b',
+      '\\bpriest\\b', '\\bpriestess\\b', '\\bactor\\b', '\\bactress\\b',
+      '\\bking\\b', '\\bqueen\\b', '\\blord\\b', '\\blady\\b'
+    ];
+    
+    const hasGenderStatement = genderIndicators.some(indicator => 
+      body.match(new RegExp(indicator, 'i'))
+    );
+    
+    if (!hasGenderStatement) {
+      warnings.push({
+        type: 'warning',
+        category: 'Gendered Pronouns',
+        message: 'Gendered pronouns used without explicit gender statement in stat block',
+        suggestion: 'Only use gendered pronouns when gender is explicitly stated (e.g., "priestess", "male", etc.)'
+      });
+    }
+  }
+}
+
+// 14. Deprecated Vision Type Terminology
+function validateVisionTerminology(body: string, warnings: ValidationWarning[]) {
+  const deprecatedVision = [
+    { old: 'darkvision', new: 'Dark Vision' },
+    { old: 'infravision', new: 'Infra Vision' },
+    { old: 'ultravision', new: 'Ultra Vision' },
+    { old: 'lowlightvision', new: 'Low Light Vision' },
+    { old: 'truevision', new: 'True Vision' }
+  ];
+  
+  for (const { old, new: newTerm } of deprecatedVision) {
+    if (body.match(new RegExp(`\\b${old}\\b`, 'i'))) {
       warnings.push({
         type: 'warning',
         category: 'Vision Terminology',
-        message: `Vision type "${term}" should be two words: "${corrected}"`,
-        suggestion: 'Use "Dark Vision", "Deep Vision", etc.'
+        message: `Vision type "${old}" should be two words: "${newTerm}"`,
+        suggestion: `Replace "${old}" with "${newTerm}" - vision types are now two words in C&C`
       });
     }
   }
 }
 
-function validateAbilityTerminology(body: string, warnings: ValidationWarning[]) {
-  if (body.match(/\bimproved grab\b/i)) {
-    warnings.push({
-      type: 'warning',
-      category: 'Ability Terminology',
-      message: '"Improved grab" is deprecated - use "crushing grasp"',
-      suggestion: 'Replace with "crushing grasp"'
-    });
+// 15. Deprecated "Improved Grab" Terminology
+function validateDeprecatedAbilities(body: string, warnings: ValidationWarning[]) {
+  const deprecatedAbilities = [
+    { old: 'improved grab', new: 'crushing grasp' },
+    { old: 'improved initiative', new: 'enhanced initiative' },
+    { old: 'spell resistance', new: 'magic resistance' }
+  ];
+  
+  for (const { old, new: newTerm } of deprecatedAbilities) {
+    if (body.match(new RegExp(`\\b${old}\\b`, 'i'))) {
+      warnings.push({
+        type: 'warning',
+        category: 'Ability Terminology',
+        message: `"${old}" is deprecated terminology in C&C`,
+        suggestion: `Replace with "${newTerm}" - ability terminology has been updated`
+      });
+    }
   }
 }
 
-function validateRequiredFields(body: string, warnings: ValidationWarning[]) {
-  const requiredFields = [
-    { field: 'Disposition', pattern: /(?:Disposition|Alignment)/i },
-    { field: 'Race & Class', pattern: /(?:Race.*Class|level.*\w+)/i },
-    { field: 'Hit Points', pattern: /(?:Hit Points|HP)/i },
-    { field: 'Armor Class', pattern: /(?:Armor Class|AC)/i }
+// 16. Missing Mechanical Explanation for Unique Abilities
+function validateUniqueAbilities(body: string, warnings: ValidationWarning[]) {
+  // Look for special abilities that might need explanation
+  const specialAbilities = [
+    'special attack', 'special defense', 'spell-like', 'supernatural',
+    'extraordinary', 'breath weapon', 'energy drain', 'level drain'
   ];
   
-  for (const { field, pattern } of requiredFields) {
+  for (const ability of specialAbilities) {
+    if (body.match(new RegExp(`\\b${ability}\\b`, 'i'))) {
+      // Check if there's a mechanical explanation nearby
+      const abilityIndex = body.toLowerCase().indexOf(ability.toLowerCase());
+      const context = body.substr(Math.max(0, abilityIndex - 50), 150);
+      
+      if (!context.match(/\([^)]*(?:damage|save|DC|round|turn|effect)[^)]*\)/i)) {
+        warnings.push({
+          type: 'info',
+          category: 'Unique Abilities',
+          message: `Special ability "${ability}" may lack mechanical explanation`,
+          suggestion: 'Include truncated mechanical explanation for unique abilities not in core rulebooks'
+        });
+      }
+    }
+  }
+}
+
+// 17. Missing Required Core Fields
+function validateRequiredFields(body: string, warnings: ValidationWarning[]) {
+  const requiredFields = [
+    { 
+      field: 'Disposition/Alignment', 
+      pattern: /(?:Disposition|Alignment)\s*:/i,
+      message: 'Required field "Disposition" is missing from stat block'
+    },
+    { 
+      field: 'Race & Class/Level', 
+      pattern: /(?:Race.*Class|level.*\w+|human.*level|elf.*level)/i,
+      message: 'Race and class information is missing or unclear'
+    },
+    { 
+      field: 'Hit Points', 
+      pattern: /(?:Hit Points|HP)\s*[:=]/i,
+      message: 'Hit Points field is missing from stat block'
+    },
+    { 
+      field: 'Armor Class', 
+      pattern: /(?:Armor Class|AC)\s*[:=]/i,
+      message: 'Armor Class field is missing from stat block'
+    }
+  ];
+  
+  for (const { field, pattern, message } of requiredFields) {
     if (!body.match(pattern)) {
       warnings.push({
         type: 'error',
-        category: 'Missing Field',
-        message: `Required field "${field}" is missing`,
-        suggestion: `Add ${field} information to stat block`
+        category: 'Missing Required Field',
+        message,
+        suggestion: `Add ${field} information to complete C&C stat block`
       });
     }
   }
 }
 
-function validateGenderedPronouns(body: string, warnings: ValidationWarning[]) {
-  const pronouns = ['he', 'she', 'his', 'her', 'him'];
-  const hasPronouns = pronouns.some(pronoun => 
-    body.match(new RegExp(`\\b${pronoun}\\b`, 'i'))
-  );
+// 18. Prime Attributes Format and Terminology
+function validatePrimeAttributes(body: string, warnings: ValidationWarning[]) {
+  const paMatch = body.match(/Prime\s+Attributes[^:]*:\s*([^\n]+)/i);
+  if (paMatch) {
+    const attributes = paMatch[1].toLowerCase();
+    
+    // Check for abbreviated forms
+    const abbreviations = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
+    const foundAbbrevs = abbreviations.filter(abbrev => 
+      attributes.includes(abbrev.toLowerCase())
+    );
+    
+    if (foundAbbrevs.length > 0) {
+      warnings.push({
+        type: 'warning',
+        category: 'Prime Attributes Format',
+        message: 'Prime Attributes use abbreviations - should be spelled out in full',
+        suggestion: 'Use "Strength, Wisdom, Charisma" instead of "Str, Wis, Cha"'
+      });
+    }
+    
+    // Check for proper order (PHB order)
+    const properOrder = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
+    const mentionedAttrs = properOrder.filter(attr => attributes.includes(attr));
+    
+    if (mentionedAttrs.length > 1) {
+      const currentOrder = attributes.split(',').map(s => s.trim());
+      let orderCorrect = true;
+      let lastIndex = -1;
+      
+      for (const current of currentOrder) {
+        const index = properOrder.indexOf(current);
+        if (index !== -1 && index < lastIndex) {
+          orderCorrect = false;
+          break;
+        }
+        if (index !== -1) lastIndex = index;
+      }
+      
+      if (!orderCorrect) {
+        warnings.push({
+          type: 'info',
+          category: 'Prime Attributes Order',
+          message: 'Prime Attributes not in Player\'s Handbook order',
+          suggestion: 'Order: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma'
+        });
+      }
+    }
+  }
+}
+
+// 19. Mount Format and Statistics
+function validateMountFormat(body: string, warnings: ValidationWarning[]) {
+  const mountMatch = body.match(/Mount\s*:\s*([^\n]+)/i);
+  if (mountMatch) {
+    const mountText = mountMatch[1].toLowerCase();
+    
+    if (mountText.includes('horse') || mountText.includes('mount')) {
+      // Check if it's just a simple declaration without stats
+      if (!body.includes('HD ') && !body.includes('Hit Dice') && 
+          !mountText.includes('none') && !mountText.includes('no mount')) {
+        warnings.push({
+          type: 'info',
+          category: 'Mount Statistics',
+          message: 'Mount mentioned but detailed statistics may be missing',
+          suggestion: 'Include mount vital statistics: HD, HP, AC, disposition, attacks, and equipment'
+        });
+      }
+      
+      // Check for proper mount terminology
+      if (mountText.includes('warhorse') && !mountText.includes('heavy war horse')) {
+        warnings.push({
+          type: 'info',
+          category: 'Mount Terminology',
+          message: 'Consider specifying "heavy war horse" for clarity',
+          suggestion: 'Use full mount description for better stat block completeness'
+        });
+      }
+    }
+  }
+}
+
+// 20. Superscript Usage in Levels
+function validateSuperscriptLevels(body: string, warnings: ValidationWarning[]) {
+  // This checks the input format awareness
+  const levelMatches = [...body.matchAll(/(\d+)(st|nd|rd|th)\s+level/gi)];
   
-  if (hasPronouns) {
-    const hasGenderStatement = body.match(/\b(?:male|female|man|woman|priestess|actress)\b/i);
-    if (!hasGenderStatement) {
+  for (const match of levelMatches) {
+    const suffix = match[2].toLowerCase();
+    const expectedSuperscript = getOrdinalSuffix(match[1]);
+    
+    if (!match[0].includes('ᵗʰ') && !match[0].includes('ˢᵗ') && 
+        !match[0].includes('ⁿᵈ') && !match[0].includes('ʳᵈ')) {
       warnings.push({
         type: 'info',
-        category: 'Gendered Pronouns',
-        message: 'Gendered pronouns used without explicit gender statement',
-        suggestion: 'Only use gendered pronouns when gender is explicitly stated'
+        category: 'Superscript Formatting',
+        message: 'Level ordinals should use superscript formatting in final C&C output',
+        suggestion: `Level "${match[1]}${suffix}" will be formatted as "${match[1]}${expectedSuperscript}"`
       });
+      break; // Only warn once about superscripts
     }
   }
 }

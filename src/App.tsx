@@ -38,8 +38,9 @@ Hit Points (HP): 4d10
 Armor Class (AC): 18
 Prime Attributes (PA): Str, Con
 Equipment: +1 longsword, plate mail, heavy steel shield, 500 gp
-Spells: cure light wounds, bless
-Mount: none`;
+Spells: cure light wounds, bless, protection from evil
+Special Abilities: improved grab, darkvision
+Mount: warhorse`;
 
 function App() {
   const [inputText, setInputText] = useState('');
@@ -255,11 +256,13 @@ function App() {
             </h1>
             <p className="text-muted-foreground text-lg">
               Convert detailed tabletop RPG NPC stat blocks into Castles & Crusades narrative format 
-              with comprehensive validation warnings. This tool produces clean, properly formatted entries 
-              that match the Victor Oldham reference style, automatically checks C&C compliance, identifies 
-              deprecated terminology, and validates proper formatting conventions. Features automatic magic 
-              item italicization, disposition conversion, and batch processing with individual validation 
-              scoring for each NPC.
+              with comprehensive validation warnings. This enhanced parser produces clean, properly formatted entries 
+              that match the Victor Oldham reference style, automatically checks for full C&C compliance across 
+              20+ validation categories, identifies deprecated terminology (alignment→disposition, improved grab→crushing grasp), 
+              validates proper formatting conventions (superscript levels, italicized magic items, noun-form dispositions), 
+              checks coinage terminology, magic item explanations, and batch processing with individual validation 
+              scoring for each NPC. Now includes comprehensive checks for heading format, formal addresses, 
+              race-class ordering, gendered pronouns, vision terminology, and unique ability explanations.
             </p>
           </div>
 
@@ -272,10 +275,13 @@ function App() {
                   Input Stat Blocks
                 </CardTitle>
                 <CardDescription>
-                  Paste your C&C NPC stat block(s) below. The parser automatically converts to narrative format, 
-                  validates C&C compliance, handles magic item italicization, uses proper terminology (disposition vs alignment), 
-                  and includes mount statistics when applicable. For batch processing, separate multiple NPCs with blank lines. 
-                  Each NPC receives a validation score and detailed compliance warnings to ensure proper C&C formatting.
+                  Paste your C&C NPC stat block(s) below. The enhanced parser automatically converts to narrative format, 
+                  validates comprehensive C&C compliance across 20+ categories including heading format, disposition terminology, 
+                  level formatting, magic item italicization, coinage terminology, prime attribute ordering, and mount statistics. 
+                  Features enhanced validation for deprecated terminology (alignment→disposition, improved grab→crushing grasp, 
+                  vision types), proper noun-form dispositions, superscript levels, and magic item mechanical explanations. 
+                  For batch processing, separate multiple NPCs with blank lines. Each NPC receives detailed validation scoring 
+                  and specific compliance warnings to ensure perfect C&C formatting standards.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -353,10 +359,12 @@ function App() {
                   Parsed Results
                 </CardTitle>
                 <CardDescription>
-                  Castles & Crusades narrative format with validation warnings and compliance scoring. 
-                  {results.length > 1 && `Processing ${results.length} NPCs with individual validation reports.`}
+                  Castles & Crusades narrative format with comprehensive validation across 20+ compliance categories. 
+                  Enhanced validation includes heading format, deprecated terminology detection, magic item explanations, 
+                  disposition noun formatting, prime attribute ordering, superscript levels, and mount statistics validation.
+                  {results.length > 1 && ` Processing ${results.length} NPCs with individual detailed validation reports.`}
                   {results.length === 1 && results[0].validation.complianceScore && 
-                    ` Compliance score: ${results[0].validation.complianceScore}%`}
+                    ` Compliance score: ${results[0].validation.complianceScore}% across all C&C standards.`}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -380,7 +388,7 @@ function App() {
                         {showValidation ? 'Hide' : 'Show'} Validation
                       </Button>
                       <div className="text-sm text-muted-foreground">
-                        C&C compliance checking enabled
+                        Comprehensive C&C compliance validation across 20+ categories enabled
                       </div>
                     </div>
 
