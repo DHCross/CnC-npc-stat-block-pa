@@ -130,7 +130,9 @@ function App() {
               NPC Stat Block Parser
             </h1>
             <p className="text-muted-foreground text-lg">
-              Convert detailed tabletop RPG NPC stat blocks into narrative format following the original Castles & Crusades style. The parser produces properly formatted entries that match the Victor Oldham reference format.
+              Convert detailed tabletop RPG NPC stat blocks into Castles & Crusades narrative format. 
+              This tool produces clean, properly formatted entries that match the original reference style, 
+              with automatic magic item italicization and correct C&C conventions.
             </p>
           </div>
 
@@ -143,7 +145,9 @@ function App() {
                   Input Stat Blocks
                 </CardTitle>
                 <CardDescription>
-                  Paste your NPC stat block below. This parser produces narrative-style entries exactly matching the original Victor Oldham reference format from Castles & Crusades. Magic items are automatically italicized, and output includes proper mount descriptions when applicable.
+                  Paste your C&C NPC stat block below. The parser automatically converts to narrative format, 
+                  handles magic item italicization, uses proper C&C terminology (disposition vs alignment), 
+                  and includes mount statistics when applicable. Supports both detailed and simplified formats.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -201,7 +205,7 @@ function App() {
                   Parsed Results
                 </CardTitle>
                 <CardDescription>
-                  Narrative-format stat blocks exactly matching the original Victor Oldham reference style
+                  Castles & Crusades narrative format with proper C&C conventions and terminology
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">

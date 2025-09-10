@@ -3,20 +3,34 @@
 
 // Split title and body to prevent title contamination
 function splitTitleAndBody(src: string): { title: string; body: string } {
-  const lines = src.trim().split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  const text = src.trim();
+  const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
   
-  // First line with **bold** is typically the title
-  let titleEndIdx = 0;
+  // Find title - look for bold text at the beginning
+  let titleLines: string[] = [];
+  let bodyStartIdx = 0;
+  
   for (let i = 0; i < lines.length; i++) {
-    if (/\*\*.*\*\*/.test(lines[i])) {
-      titleEndIdx = i;
-    } else if (lines[i].match(/^(Disposition|Race|Hit Points|Armor Class|Prime|Equipment|Spells|Mount):/i)) {
+    const line = lines[i];
+    if (/\*\*.*\*\*/.test(line)) {
+      titleLines.push(line);
+    } else if (line.match(/^(Disposition|Race|Hit Points|Armor Class|Prime|Equipment|Spells|Mount):/i)) {
+      bodyStartIdx = i;
+      break;
+    } else if (titleLines.length > 0) {
+      // We've started collecting title but hit a non-stat line
+      bodyStartIdx = i;
       break;
     }
   }
   
-  const title = lines.slice(0, titleEndIdx + 1).join(' ');
-  const body = lines.slice(titleEndIdx + 1).join('\n');
+  if (titleLines.length === 0 && lines.length > 0) {
+    titleLines = [lines[0]];
+    bodyStartIdx = 1;
+  }
+  
+  const title = titleLines.join(' ');
+  const body = lines.slice(bodyStartIdx).join('\n');
   return { title, body };
 }
 
@@ -49,16 +63,17 @@ export function parseRaceClassLevel(text: string): { race: string; level: string
 
 // Normalize disposition to noun forms (law/good, chaos/evil)
 export function findDisposition(text: string): string {
-  const m = text.match(/(?:Disposition|Alignment)[^:]*[:\-]\s*([A-Za-z /-]+)/i);
+  const m = text.match(/(?:Disposition|Alignment)[^:]*:\s*([A-Za-z /-]+)/i);
   if (!m) return 'unknown';
   
-  const raw = m[1].toLowerCase().replace(/-/g,'/').replace(/\s+/g,'');
+  const raw = m[1].toLowerCase().replace(/-/g,'/').replace(/\s+/g,'').trim();
   const map: Record<string,string> = { 
     lawful:'law', chaotic:'chaos', law:'law', chaos:'chaos', 
     good:'good', evil:'evil', neutral:'neutral' 
   };
   
-  return raw.split('/').slice(0,2).map(p => map[p] ?? p).join('/');
+  const parts = raw.split('/').filter(Boolean).slice(0,2);
+  return parts.map(p => map[p] ?? p).filter(Boolean).join('/');
 }
 
 // Find HP and AC from various formats
@@ -73,7 +88,7 @@ export function findHpAc(text: string): [string, string] {
 // Find and expand prime attributes to full names, lowercase
 export function findPrimes(text: string): string {
   const m = text.match(/Prime\s+Attributes\s*\(PA\):\s*([^\n]+)/i) ||
-            text.match(/Prime\s*Attributes?[^:]*[:\-]\s*([^\n]+)/i);
+            text.match(/Prime\s*Attributes?[^:]*:\s*([^\n]+)/i);
   if (!m) return '?';
   
   const map: Record<string,string> = { 
@@ -85,27 +100,35 @@ export function findPrimes(text: string): string {
   
   return m[1]
     .split(/,| and /i)
-    .map(s => s.trim().toLowerCase())
+    .map(s => s.trim().toLowerCase().replace(/\.+$/, ''))
     .filter(Boolean)
     .map(x => map[x] ?? x)
     .join(', ');
 }
 
 // Find equipment from Equipment: line only, avoiding title contamination
-export function findEquipment(text: string): string {
+export function findEquipment(text: string, npcName?: string): string {
   const m = text.match(/Equipment:\s*([^\n]+)/i);
   if (!m) return 'none';
   
   const items = m[1]
     .split(',')
-    .map(s => s.trim())
+    .map(s => s.trim().replace(/\.+$/, ''))
     .filter(Boolean);
+
+  // Filter out any accidental name tokens if provided
+  const filteredItems = npcName ? 
+    items.filter(item => {
+      const itemLower = item.toLowerCase();
+      const nameLower = npcName.toLowerCase();
+      return !itemLower.includes(nameLower) && !nameLower.includes(itemLower);
+    }) : items;
 
   // Auto-italicize obvious magic items
   const isMagic = (s: string) =>
     /\+\d/.test(s) || /\b(staff|wand|ring|cloak|boots|amulet|pectoral|bracers|girdle|rod|scroll)\b/i.test(s);
 
-  const cleaned = items.map(x => (isMagic(x) ? `*${x}*` : x));
+  const cleaned = filteredItems.map(x => (isMagic(x) ? `*${x}*` : x));
   return cleaned.length ? cleaned.join(', ') : 'none';
 }
 
@@ -184,7 +207,7 @@ export function collapseNPCEntry(longText: string): string {
   const disposition = findDisposition(body);
   const [hp, ac] = findHpAc(body);
   const primes = findPrimes(body);
-  const equipment = findEquipment(body);
+  const equipment = findEquipment(body, name);
   const spells = findSpells(body);
 
   // Build the main narrative sentence
@@ -245,7 +268,7 @@ export function processDump(dump: string): string[] {
     return [];
   }
   
-  // Process as single NPC - no auto-splitting
+  // Process as single NPC - no auto-splitting to avoid contamination
   try {
     const result = collapseNPCEntry(cleanedDump);
     return [result];
@@ -284,26 +307,14 @@ function hasNPCIndicators(text: string): boolean {
 }
 
 export function generateNPCTemplate(): string {
-  return `**NPC Name, Full Honorific and Office (if applicable)**
-*   **Formal Address:** [This section provides the character's formal title for address, e.g., "His Supernal Devotion"].
-*   **Disposition:** [Describes the character's basic worldview and moral outlook, replacing "alignment." It should be formatted as nouns, such as "law/good," "chaos/evil," or a single word like "neutral."].
-*   **Race:** [The character's race (e.g., human, elf, dwarf).].
-*   **Level and Class:** [The character's level and class, with the race listed first (e.g., "human, **1^st^ level fighter**"). Character levels should use superscript outside of italicized stat blocks and be bolded.].
-*   **Vital Statistics:**
-    *   **Hit Points (HP):** [The total sum of the character's hit points. For classed NPCs, this is a sum rather than a dice equation.].
-    *   **Armor Class (AC):** [The character's Armor Class, typically presented as base/magical AC (e.g., 13/22).].
-*   **Prime Attributes (PA):** [Lists the character's prime attributes, spelled out in the *Player's Handbook* order: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma.].
-*   **Significant Attributes (Optional):** [Any attribute score over 12 or below 9, noted here if applicable.]
-*   **Equipment (EQ):** [Lists all equipment. Magic items, including their numerical bonuses, are **italicized** (e.g., a *longsword +1*). A brief mechanical explanation should be included for any magic item not obvious or found in a core rulebook.].
-*   **Spells:** [For spellcasters, this lists the number of spells available per spell level in a numeric spread (e.g., "0-level: X, 1st-level: X, 2nd-level: X..."). Individual spell names are generally *not* listed unless they are absolutely essential to a specific encounter's design, otherwise, the Castle Keeper determines them.].
+  return `**NPC Name, Title or Office**
 
-**Mount Name (if applicable)**
-*   **Vital Statistics:** [The mount's Hit Dice (HD), Hit Points (HP), and Armor Class (AC) (e.g., HD 4d10, HP 35, AC 19).].
-*   **Disposition:** [The mount's basic worldview and moral outlook (e.g., neutral).].
-*   **Primary Attributes (PA):** [The mount's primary attributes, spelled out (e.g., strength, constitution, dexterity).].
-*   **Attacks:** [Describes the mount's attacks, including damage (e.g., "two hoof attacks for 1–4 damage each, or one overbearing attack"). Standardized terminology like "overbearing attack" is used.].
-*   **Equipment:** [Any equipment the mount is outfitted with (e.g., chain mail barding).].
-
-**Role/Background (Optional, but recommended for detailed NPCs)**
-*   [Provides narrative context, such as the character's residence, their role in society, their influence over civic matters, and their income. Coinage should be spelled out (e.g., "gold," "silver") rather than abbreviated.].`;
+Disposition: law/good
+Race & Class: human, 16th level cleric
+Hit Points (HP): 59
+Armor Class (AC): 13/22
+Prime Attributes (PA): Strength, Wisdom, Charisma
+Equipment: pectoral of protection +3, full plate mail, steel shield, staff of striking, mace
+Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
+Mount: heavy war horse`;
 }

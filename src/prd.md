@@ -2,34 +2,36 @@
 
 ## Core Purpose & Success
 
-**Mission Statement**: Transform detailed tabletop RPG NPC stat blocks into concise, single-line summaries optimized for quick reference during gameplay sessions.
+**Mission Statement**: Transform detailed tabletop RPG NPC stat blocks into properly formatted Castles & Crusades narrative entries that match the original reference style, with automatic formatting and C&C convention compliance.
 
 **Success Indicators**: 
 - Accurate parsing of diverse NPC stat block formats
+- Perfect adherence to C&C narrative formatting standards
+- Automatic magic item italicization and proper terminology
 - Fast conversion with instant feedback
-- High usability for both new and experienced GMs
-- Support for Castles & Crusades structured templates
+- High usability for both new and experienced Castle Keepers
 
-**Experience Qualities**: Efficient, Professional, Intuitive
+**Experience Qualities**: Professional, Precise, Efficient
 
 ## Project Classification & Approach
 
-**Complexity Level**: Light Application (multiple features with basic state management)
+**Complexity Level**: Light Application (specialized parsing with persistent state management)
 
-**Primary User Activity**: Creating (transforming detailed stat blocks into condensed formats)
+**Primary User Activity**: Creating (transforming detailed stat blocks into standardized C&C narrative format)
 
 ## Thought Process for Feature Selection
 
-**Core Problem Analysis**: Game Masters need quick access to NPC information during sessions but are often overwhelmed by detailed stat blocks that contain more information than needed for real-time reference.
+**Core Problem Analysis**: Castle Keepers need properly formatted NPC entries that follow official Castles & Crusades conventions, but manually converting stat blocks is time-consuming and error-prone.
 
-**User Context**: GMs preparing for sessions or actively running games who need to quickly parse and reference NPC information without interrupting game flow.
+**User Context**: Castle Keepers preparing adventures or converting materials who need consistent, properly formatted NPC entries that match the published C&C style guide.
 
-**Critical Path**: Input stat block → Parse information → Generate condensed summary → Copy for use
+**Critical Path**: Input diverse stat block → Parse with C&C rules → Generate compliant narrative format → Copy for publication/use
 
 **Key Moments**: 
-1. Initial stat block input with format recognition
-2. Real-time parsing feedback and results display
-3. Easy copying and saving of processed NPCs
+1. Intelligent format recognition and title/body separation
+2. Proper disposition normalization (lawful good → law/good)
+3. Automatic magic item detection and italicization
+4. Mount statistics generation when applicable
 
 ## Essential Features
 
