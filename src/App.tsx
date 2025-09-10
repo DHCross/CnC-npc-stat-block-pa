@@ -21,12 +21,13 @@ Equipment: pectoral of protection +3, full plate mail, steel shield, staff of st
 Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
 Mount: heavy war horse`;
 
-const FLEXIBLE_EXAMPLE = `**Guard Captain Miller**
-5th level fighter
-Alignment: law/good
-HP: 35, AC: 18
-Primes: Strength, Constitution
-Equipment: longsword +1, plate mail, heavy steel shield`;
+const ALTERNATIVE_EXAMPLE = `**Hector Markle, Secretary Counselor**
+human, 1st level scholar
+Disposition: law/neutral
+Hit Points: 5
+Armor Class: 10
+Prime Attributes: Intelligence
+Equipment: nobleman's clothing`;
 
 function App() {
   const [inputText, setInputText] = useState('');
@@ -109,9 +110,9 @@ function App() {
     processInput(EXAMPLE_TEXT);
   };
 
-  const loadFlexibleExample = () => {
-    setInputText(FLEXIBLE_EXAMPLE);
-    processInput(FLEXIBLE_EXAMPLE);
+  const loadAlternativeExample = () => {
+    setInputText(ALTERNATIVE_EXAMPLE);
+    processInput(ALTERNATIVE_EXAMPLE);
   };
 
   const loadTemplate = () => {
@@ -142,7 +143,7 @@ function App() {
                   Input Stat Blocks
                 </CardTitle>
                 <CardDescription>
-                  Paste your NPC stat block below. This parser produces narrative-style entries following the original Castles & Crusades format. Magic items are automatically italicized, and output includes proper mount descriptions when applicable.
+                  Paste your NPC stat block below. This parser produces narrative-style entries exactly matching the original Victor Oldham reference format from Castles & Crusades. Magic items are automatically italicized, and output includes proper mount descriptions when applicable.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -165,10 +166,10 @@ function App() {
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={loadFlexibleExample}
+                    onClick={loadAlternativeExample}
                     className="flex-1"
                   >
-                    Flexible Format
+                    Alternative Format
                   </Button>
                   <Button
                     variant="outline"
@@ -200,7 +201,7 @@ function App() {
                   Parsed Results
                 </CardTitle>
                 <CardDescription>
-                  Narrative-format stat blocks matching the original Victor Oldham reference style
+                  Narrative-format stat blocks exactly matching the original Victor Oldham reference style
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">

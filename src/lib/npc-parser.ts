@@ -1,4 +1,5 @@
-// --- Flexible helpers for robust parsing ---
+// --- NPC Stat Block Parser for Original Castles & Crusades Format ---
+// Produces narrative format matching the Victor Oldham reference style
 
 export function findName(text: string): string {
   // bold heading or first line
@@ -87,18 +88,18 @@ export function findSpells(text: string): string {
   const slots = text.match(/(\d+)(?:st|nd|rd|th)?(?:–|[- ]level[:\-])\s*(\d+)/gi);
   return slots ? slots.map(slot => {
     const parts = slot.match(/(\d+)(?:st|nd|rd|th)?(?:–|[- ]level[:\-])\s*(\d+)/i);
-    return parts ? `${parts[1]}:${parts[2]}` : slot;
+    return parts ? `${parts[1]}–${parts[2]}` : slot;
   }).join(', ') : '?';
 }
 
-export function findMount(text: string): string {
+export function findMount(text: string): { hasMount: boolean; mountType: string } {
   if (text.match(/war horse/i)) {
-    return 'rides a heavy war horse';
+    return { hasMount: true, mountType: 'warhorse' };
   }
   if (text.match(/mount.*?:\s*none/i)) {
-    return 'no mount';
+    return { hasMount: false, mountType: '' };
   }
-  return 'mount unknown';
+  return { hasMount: false, mountType: '' };
 }
 
 function getOrdinalSuffix(level: string): string {
@@ -114,43 +115,28 @@ function getOrdinalSuffix(level: string): string {
   }
 }
 
-function getPrimaryAttributesText(primes: string): string {
+function formatPrimaryAttributes(primes: string): string {
   if (!primes || primes === '?') return '';
   
   // Clean up the attributes and make them lowercase
   const attributes = primes.split(',').map(attr => attr.trim().toLowerCase());
   
   if (attributes.length === 1) {
-    return `His primary attribute is ${attributes[0]}`;
+    return attributes[0];
   } else if (attributes.length === 2) {
-    return `His primary attributes are ${attributes.join(' and ')}`;
+    return attributes.join(' and ');
   } else {
     const lastAttr = attributes.pop();
-    return `His primary attributes are ${attributes.join(', ')}, and ${lastAttr}`;
+    return `${attributes.join(', ')}, and ${lastAttr}`;
   }
 }
 
-function getEquipmentText(equipment: string): string {
-  if (!equipment || equipment === 'none') return '';
-  
-  // Split the equipment and properly format it
-  const items = equipment.split(',').map(item => item.trim()).filter(item => item);
-  
-  if (items.length === 0) return '';
-  if (items.length === 1) return `He carries ${items[0]}`;
-  if (items.length === 2) return `He carries ${items[0]} and ${items[1]}`;
-  
-  // For multiple items, use proper comma formatting
-  const lastItem = items.pop();
-  return `He carries ${items.join(', ')}, and ${lastItem}`;
-}
-
-function getSpellsText(spells: string): string {
+function formatSpells(spells: string): string {
   if (!spells || spells === '?') return '';
   
-  // Convert "0:6, 1:6, 2:5" format to "0–6, 1st–6, 2nd–5" format
+  // Convert to proper ordinal format for display
   const spellLevels = spells.split(',').map(spell => {
-    const parts = spell.trim().split(':');
+    const parts = spell.trim().split('–');
     if (parts.length === 2) {
       const level = parts[0].trim();
       const count = parts[1].trim();
@@ -165,7 +151,7 @@ function getSpellsText(spells: string): string {
     return spell.trim();
   });
   
-  return `He can cast the following number of spells per day: ${spellLevels.join(', ')}`;
+  return spellLevels.join(', ');
 }
 
 function getSpellLevelOrdinal(level: string): string {
@@ -178,21 +164,7 @@ function getSpellLevelOrdinal(level: string): string {
   }
 }
 
-function findMountDetails(text: string): string | null {
-  // Check if there's mount information
-  if (!text.match(/(?:mount|horse|rides)/i)) {
-    return null;
-  }
-  
-  // For now, return a basic warhorse template if a mount is mentioned
-  if (text.match(/(?:war horse|heavy war horse)/i)) {
-    return `He rides a warhorse with the following statistics:\n\nWarhorse (This creature's vital stats are Level 4(1d10), HP 35, AC 19, disposition neutral. It makes two hoof attacks for 1d4 damage each, or one overbearing attack. The horse is outfitted with chainmail barding.)`;
-  }
-  
-  return null;
-}
-
-// --- Main function ---
+// --- Main function following original Victor Oldham format ---
 
 export function collapseNPCEntry(longText: string): string {
   const name = findName(longText);
@@ -202,28 +174,58 @@ export function collapseNPCEntry(longText: string): string {
   const primes = findPrimes(longText);
   const equipment = findEquipment(longText);
   const spells = findSpells(longText);
-  const mountInfo = findMountDetails(longText);
+  const { hasMount, mountType } = findMount(longText);
 
-  // Build the narrative sentence following the Victor Oldham format
+  // Build the narrative following the exact Victor Oldham format:
+  // "Victor Oldham (This 16ᵗʰ level human cleric's vital stats are HP 59, AC 13/22, disposition law/good. His primary attributes are strength, wisdom, and charisma. He carries a pectoral of protection +3, full plate mail, a large steel shield, a staff of striking, and a mace. He can cast the following number of spells per day: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2.)"
+  
   let result = `${name} (This ${level}${getOrdinalSuffix(level)} level ${race} ${charClass}'s vital stats are HP ${hp}, AC ${ac}, disposition ${disposition}.`;
   
   if (primes && primes !== '?') {
-    result += ` ${getPrimaryAttributesText(primes)}.`;
+    const formattedPrimes = formatPrimaryAttributes(primes);
+    if (formattedPrimes) {
+      const attributeText = formattedPrimes.includes(' and ') || formattedPrimes.includes(', ') 
+        ? `His primary attributes are ${formattedPrimes}.`
+        : `His primary attribute is ${formattedPrimes}.`;
+      result += ` ${attributeText}`;
+    }
   }
   
   if (equipment && equipment !== 'none') {
-    result += ` ${getEquipmentText(equipment)}.`;
+    // Format equipment list properly
+    const items = equipment.split(',').map(item => item.trim()).filter(item => item);
+    if (items.length > 0) {
+      let equipmentText;
+      if (items.length === 1) {
+        equipmentText = `He carries ${items[0]}.`;
+      } else if (items.length === 2) {
+        equipmentText = `He carries ${items[0]} and ${items[1]}.`;
+      } else {
+        const lastItem = items.pop();
+        equipmentText = `He carries ${items.join(', ')}, and ${lastItem}.`;
+      }
+      result += ` ${equipmentText}`;
+    }
   }
   
   if (spells && spells !== '?') {
-    result += ` ${getSpellsText(spells)}.`;
+    const formattedSpells = formatSpells(spells);
+    if (formattedSpells) {
+      result += ` He can cast the following number of spells per day: ${formattedSpells}.`;
+    }
   }
   
   result += ')';
   
-  // Add mount information if present
-  if (mountInfo) {
-    result += `\n\n${mountInfo}`;
+  // Add mount information if present, following the original format
+  if (hasMount) {
+    result += `\n\nHe rides a ${mountType} with the following statistics:\n\n`;
+    
+    if (mountType === 'warhorse') {
+      result += `Warhorse (This creature's vital stats are Level 4(1d10), HP 35, AC 19, disposition neutral. It makes two hoof attacks for 1d4 damage each, or one overbearing attack. The horse is outfitted with chainmail barding.)`;
+    } else {
+      result += `${mountType.charAt(0).toUpperCase() + mountType.slice(1)} (This creature's vital stats are Level 4(1d10), HP 35, AC 19, disposition neutral. It makes two hoof attacks for 1d4 damage each, or one overbearing attack. The horse is outfitted with chainmail barding.)`;
+    }
   }
   
   return result;
