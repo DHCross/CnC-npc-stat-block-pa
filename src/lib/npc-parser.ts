@@ -249,9 +249,36 @@ export function collapseNPCEntry(text: string): string {
 }
 
 export function processDump(dump: string): string[] {
+  // Split on double newlines, but be more careful about what constitutes an NPC block
   const blocks = dump.split(/\n\s*\n/);
+  
   return blocks
-    .filter(block => block.trim())
+    .filter(block => {
+      const trimmed = block.trim();
+      // Filter out empty blocks and code-like content
+      if (!trimmed) return false;
+      
+      // Skip blocks that look like code or comments (Python, for example)
+      if (trimmed.startsWith('#') || 
+          trimmed.startsWith('def ') || 
+          trimmed.startsWith('import ') ||
+          trimmed.startsWith('from ') ||
+          trimmed.includes('def ') ||
+          trimmed.includes('return ') ||
+          /^\s*[\w_]+\s*=/.test(trimmed) ||
+          trimmed.includes('"""') ||
+          trimmed.includes("'''")) {
+        return false;
+      }
+      
+      // Must have some indication it's an NPC (name in bold, or typical stat block content)
+      const hasNPCIndicators = 
+        /\*\*[^*]+\*\*/.test(trimmed) || // Bold name
+        /(?:Race & Class|Disposition|Hit Points|Armor Class|Prime Attributes|Equipment)/i.test(trimmed) ||
+        /\d+(?:st|nd|rd|th)?\s*level\s+\w+/i.test(trimmed); // Level/class pattern
+      
+      return hasNPCIndicators;
+    })
     .map(block => collapseNPCEntry(block));
 }
 
