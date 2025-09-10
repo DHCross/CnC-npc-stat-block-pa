@@ -248,9 +248,9 @@ export function collapseNPCEntry(longText: string): string {
   return result;
 }
 
-// --- Batch processor ---
+// --- Batch processor for multiple NPCs ---
 export function processDump(dump: string): string[] {
-  // Clean the input text - process exactly what the user provided
+  // Clean the input text
   const cleanedDump = dump.trim();
   
   // Return empty if no input
@@ -263,19 +263,47 @@ export function processDump(dump: string): string[] {
     return [];
   }
   
-  // Check if it has NPC indicators
-  if (!hasNPCIndicators(cleanedDump)) {
-    return [];
+  // Try to split by double newlines first (preferred method for multiple NPCs)
+  let blocks = cleanedDump.split(/\n\s*\n/).filter(block => block.trim());
+  
+  // If we only got one block but it has multiple bold names, try to split differently
+  if (blocks.length === 1) {
+    const boldNameMatches = [...cleanedDump.matchAll(/\*\*[^*]+\*\*/g)];
+    if (boldNameMatches.length > 1) {
+      // Split at bold names, keeping the delimiter
+      const parts = cleanedDump.split(/(?=\*\*[^*]+\*\*)/);
+      blocks = parts.filter(part => part.trim() && /\*\*[^*]+\*\*/.test(part));
+    }
   }
   
-  // Process as single NPC - no auto-splitting to avoid contamination
-  try {
-    const result = collapseNPCEntry(cleanedDump);
-    return [result];
-  } catch (error) {
-    console.error('Error processing NPC:', error);
-    return [];
+  const results: string[] = [];
+  
+  for (const block of blocks) {
+    const trimmedBlock = block.trim();
+    
+    // Skip empty blocks or obvious non-NPC content
+    if (!trimmedBlock || isCodeContent(trimmedBlock)) {
+      continue;
+    }
+    
+    // Check if this block has NPC indicators
+    if (!hasNPCIndicators(trimmedBlock)) {
+      continue;
+    }
+    
+    // Process this NPC block
+    try {
+      const result = collapseNPCEntry(trimmedBlock);
+      if (result && result.length > 20) { // Basic sanity check for valid output
+        results.push(result);
+      }
+    } catch (error) {
+      console.error('Error processing NPC block:', error);
+      // Continue processing other blocks even if one fails
+    }
   }
+  
+  return results;
 }
 
 function isCodeContent(text: string): boolean {
@@ -301,9 +329,13 @@ function hasNPCIndicators(text: string): boolean {
   const hasLevelClass = /\d+(?:st|nd|rd|th)?\s*level\s+\w+/i.test(text);
   const hasHPAC = /(?:HP|AC)\s*[:=]\s*\d+/i.test(text) || /Hit Points.*?\d+/i.test(text) || /Armor Class.*?\d+/i.test(text);
   
+  // Also check for simplified formats like "human, 16th level cleric"
+  const hasRaceClassFormat = /\w+,\s*\d+(?:st|nd|rd|th)?\s*level\s+\w+/i.test(text);
+  
   // Require either a bold name with some stats, OR a good combination of stat block indicators
   return (hasName && (hasStatBlock || hasLevelClass || hasHPAC)) || 
-         (hasStatBlock && hasLevelClass && hasHPAC);
+         (hasStatBlock && hasLevelClass && hasHPAC) ||
+         (hasName && hasRaceClassFormat);
 }
 
 export function generateNPCTemplate(): string {
@@ -317,4 +349,35 @@ Prime Attributes (PA): Strength, Wisdom, Charisma
 Equipment: pectoral of protection +3, full plate mail, steel shield, staff of striking, mace
 Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
 Mount: heavy war horse`;
+}
+
+export function generateBatchTemplate(): string {
+  return `**The Right Honorable President Counselor of Yggsburgh His Supernal Devotion, Victor Oldham, High Priest of the Grand Temple**
+
+Disposition: law/good
+Race & Class: human, 16th level cleric
+Hit Points (HP): 59
+Armor Class (AC): 13/22
+Prime Attributes (PA): Strength, Wisdom, Charisma
+Equipment: pectoral of protection +3, full plate mail, steel shield, staff of striking, mace
+Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
+Mount: heavy war horse
+
+**Hector Markle, Secretary Counselor**
+
+Disposition: law/neutral
+Race & Class: human, 1st level scholar
+Hit Points (HP): 5
+Armor Class (AC): 10
+Prime Attributes (PA): Intelligence
+Equipment: nobleman's clothing
+
+**Guard Captain Miller**
+
+Disposition: law/good
+Race & Class: human, 5th level fighter
+Hit Points (HP): 35
+Armor Class (AC): 18
+Prime Attributes (PA): Strength, Constitution
+Equipment: longsword +1, plate mail, heavy steel shield`;
 }

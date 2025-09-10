@@ -6,7 +6,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
 import { Toaster } from '@/components/ui/sonner';
 import { Copy, Download, Upload, AlertCircle, Trash2, FileText } from '@phosphor-icons/react';
-import { processDump, generateNPCTemplate } from '@/lib/npc-parser';
+import { processDump, generateNPCTemplate, generateBatchTemplate } from '@/lib/npc-parser';
 import { toast } from 'sonner';
 import { useKV } from '@github/spark/hooks';
 
@@ -121,6 +121,12 @@ function App() {
     processInput(template);
   };
 
+  const loadBatchTemplate = () => {
+    const template = generateBatchTemplate();
+    setInputText(template);
+    processInput(template);
+  };
+
   return (
     <>
       <div className="min-h-screen bg-background font-sans">
@@ -132,7 +138,8 @@ function App() {
             <p className="text-muted-foreground text-lg">
               Convert detailed tabletop RPG NPC stat blocks into Castles & Crusades narrative format. 
               This tool produces clean, properly formatted entries that match the original reference style, 
-              with automatic magic item italicization and correct C&C conventions.
+              with automatic magic item italicization and correct C&C conventions. Supports both single NPCs 
+              and batch processing of multiple NPCs separated by blank lines.
             </p>
           </div>
 
@@ -145,9 +152,10 @@ function App() {
                   Input Stat Blocks
                 </CardTitle>
                 <CardDescription>
-                  Paste your C&C NPC stat block below. The parser automatically converts to narrative format, 
-                  handles magic item italicization, uses proper C&C terminology (disposition vs alignment), 
-                  and includes mount statistics when applicable. Supports both detailed and simplified formats.
+                  Paste your C&C NPC stat block(s) below. For batch processing, separate multiple NPCs with blank lines. 
+                  The parser automatically converts to narrative format, handles magic item italicization, uses proper C&C 
+                  terminology (disposition vs alignment), and includes mount statistics when applicable. Supports both detailed 
+                  and simplified formats.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -182,7 +190,16 @@ function App() {
                     className="flex-1 flex items-center gap-2"
                   >
                     <FileText size={16} />
-                    C&C Template
+                    Single NPC
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={loadBatchTemplate}
+                    className="flex-1 flex items-center gap-2"
+                  >
+                    <FileText size={16} />
+                    Batch NPCs
                   </Button>
                   <Button
                     variant="outline"
@@ -205,7 +222,8 @@ function App() {
                   Parsed Results
                 </CardTitle>
                 <CardDescription>
-                  Castles & Crusades narrative format with proper C&C conventions and terminology
+                  Castles & Crusades narrative format with proper C&C conventions and terminology. 
+                  {results.length > 1 && `Processing ${results.length} NPCs.`}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">

@@ -2,13 +2,14 @@
 
 ## Core Purpose & Success
 
-**Mission Statement**: Transform detailed tabletop RPG NPC stat blocks into properly formatted Castles & Crusades narrative entries that match the original reference style, with automatic formatting and C&C convention compliance.
+**Mission Statement**: Transform detailed tabletop RPG NPC stat blocks into properly formatted Castles & Crusades narrative entries that match the original reference style, with automatic formatting, C&C convention compliance, and batch processing capabilities for multiple NPCs.
 
 **Success Indicators**: 
 - Accurate parsing of diverse NPC stat block formats
 - Perfect adherence to C&C narrative formatting standards
 - Automatic magic item italicization and proper terminology
 - Fast conversion with instant feedback
+- Efficient batch processing of multiple NPCs
 - High usability for both new and experienced Castle Keepers
 
 **Experience Qualities**: Professional, Precise, Efficient
@@ -25,7 +26,7 @@
 
 **User Context**: Castle Keepers preparing adventures or converting materials who need consistent, properly formatted NPC entries that match the published C&C style guide.
 
-**Critical Path**: Input diverse stat block → Parse with C&C rules → Generate compliant narrative format → Copy for publication/use
+**Critical Path**: Input diverse stat block(s) → Parse with C&C rules → Generate compliant narrative format(s) → Copy for publication/use
 
 **Key Moments**: 
 1. Intelligent format recognition and title/body separation
@@ -36,19 +37,19 @@
 ## Essential Features
 
 ### Core Parsing Engine
-- **Functionality**: Extracts key NPC data (name, class/level, HP, AC, equipment, etc.) from various stat block formats
-- **Purpose**: Handles diverse formatting styles from different RPG sources
-- **Success Criteria**: Successfully parses 95%+ of common stat block formats
+- **Functionality**: Extracts key NPC data (name, class/level, HP, AC, equipment, etc.) from various stat block formats, supporting both single NPCs and batch processing of multiple NPCs separated by blank lines
+- **Purpose**: Handles diverse formatting styles from different RPG sources and enables efficient conversion of multiple NPCs at once
+- **Success Criteria**: Successfully parses 95%+ of common stat block formats, correctly identifies and separates multiple NPCs in batch input
 
 ### Template System
-- **Functionality**: Provides structured Castles & Crusades template for proper NPC formatting
-- **Purpose**: Guides users toward standardized, parseable formats
-- **Success Criteria**: Template generates correctly formatted stat blocks that parse accurately
+- **Functionality**: Provides structured Castles & Crusades templates for both single NPCs and batch processing examples
+- **Purpose**: Guides users toward standardized, parseable formats and demonstrates proper batch formatting
+- **Success Criteria**: Templates generate correctly formatted stat blocks that parse accurately, batch template clearly shows proper NPC separation
 
 ### Real-time Processing
-- **Functionality**: Instant conversion as users type or paste content
-- **Purpose**: Immediate feedback prevents formatting errors and reduces workflow friction
-- **Success Criteria**: Sub-100ms processing time for typical stat blocks
+- **Functionality**: Instant conversion as users type or paste content, handling both single NPCs and multiple NPCs automatically
+- **Purpose**: Immediate feedback prevents formatting errors and reduces workflow friction, enables rapid conversion of multiple NPCs
+- **Success Criteria**: Sub-100ms processing time for typical stat blocks, successful identification and parsing of multiple NPCs
 
 ### Results Management
 - **Functionality**: Copy individual/all results, save NPCs for later reference, download as text files
@@ -118,6 +119,8 @@
 - Graceful degradation for unparseable content
 - Clear error messages with formatting guidance
 - Template system to guide proper input
+- Intelligent NPC separation for batch processing
+- Fallback parsing when standard separators aren't used
 
 **Technical Constraints**: Browser clipboard API limitations, file size limits for processing
 
