@@ -21,6 +21,13 @@ Equipment: pectoral of protection +3, full plate mail, steel shield, staff of st
 Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
 Mount: heavy war horse`;
 
+const FLEXIBLE_EXAMPLE = `**Guard Captain Miller**
+5th level fighter
+Alignment: law/good
+HP: 35, AC: 18
+Primes: Strength, Constitution
+Equipment: longsword +1, plate mail, heavy steel shield`;
+
 function App() {
   const [inputText, setInputText] = useState('');
   const [results, setResults] = useState<string[]>([]);
@@ -102,6 +109,11 @@ function App() {
     processInput(EXAMPLE_TEXT);
   };
 
+  const loadFlexibleExample = () => {
+    setInputText(FLEXIBLE_EXAMPLE);
+    processInput(FLEXIBLE_EXAMPLE);
+  };
+
   const loadTemplate = () => {
     const template = generateNPCTemplate();
     setInputText(template);
@@ -117,7 +129,7 @@ function App() {
               NPC Stat Block Parser
             </h1>
             <p className="text-muted-foreground text-lg">
-              Convert detailed tabletop RPG NPC stat blocks into concise, single-line summaries. One NPC at a time.
+              Convert detailed tabletop RPG NPC stat blocks into concise, single-line summaries. Now with robust parsing that handles flexible input formats and auto-italicizes magic items.
             </p>
           </div>
 
@@ -130,7 +142,7 @@ function App() {
                   Input Stat Blocks
                 </CardTitle>
                 <CardDescription>
-                  Paste your NPC stat block below. This tool processes one NPC at a time (with their mount if applicable). Use the C&C Template for proper Castles & Crusades formatting.
+                  Paste your NPC stat block below. This parser now handles flexible formatting - whether your stat block uses "Race & Class:" labels, shorthand "HP/AC", or mixed formats. Magic items are automatically italicized in the output.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -149,6 +161,14 @@ function App() {
                     className="flex-1"
                   >
                     Load Example
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={loadFlexibleExample}
+                    className="flex-1"
+                  >
+                    Flexible Format
                   </Button>
                   <Button
                     variant="outline"

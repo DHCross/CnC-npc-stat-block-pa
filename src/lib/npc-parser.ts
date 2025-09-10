@@ -1,332 +1,109 @@
-export interface NPCData {
-  name: string;
-  raceClassLevel: string;
-  disposition: string;
-  hp: string;
-  ac: string;
-  primes: string;
-  equipment: string;
-  spells: string;
-  mount: string;
-}
+// --- Flexible helpers for robust parsing ---
 
 export function findName(text: string): string {
-  // First try to find bold names
-  const boldMatch = text.match(/\*\*([^*]+)\*\*/);
-  if (boldMatch) {
-    const fullTitle = boldMatch[1].trim();
-    
-    // For complex titles like "The Right Honorable President Counselor of Yggsburgh His Supernal Devotion, Victor Oldham, High Priest of the Grand Temple"
-    // Look for a pattern where the actual name is between commas
-    // Pattern: some text, FIRSTNAME LASTNAME, more text
-    const nameInMiddle = fullTitle.match(/,\s*([A-Z][a-z]+\s+[A-Z][a-z]+),/);
-    if (nameInMiddle) {
-      return nameInMiddle[1].trim();
-    }
-    
-    // Try to find patterns like "Title NAME" at the end after a comma
-    const nameAtEnd = fullTitle.match(/,\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)$/);
-    if (nameAtEnd) {
-      return nameAtEnd[1].trim();
-    }
-    
-    // For simpler cases, try to extract just the name part
-    // Look for capitalized words that aren't common titles
-    const titleWords = /^(?:The|Right|Honorable|President|Counselor|His|Her|Supernal|Devotion|High|Priest|of|the|Grand|Temple|Lord|Lady|Sir|Dame|Captain|General|Admiral|Chief|Master|Sergeant|Lieutenant|Colonel|Major|Doctor|Professor)$/i;
-    const words = fullTitle.split(/[,\s]+/);
-    const nameWords = [];
-    
-    for (const word of words) {
-      if (word && !titleWords.test(word) && /^[A-Z][a-z]+$/.test(word)) {
-        nameWords.push(word);
-        // If we found 2 words that look like names, that's probably enough
-        if (nameWords.length >= 2) break;
-      }
-    }
-    
-    if (nameWords.length > 0) {
-      return nameWords.join(' ');
-    }
-    
-    // Fallback: return the full title
-    return fullTitle;
+  // bold heading or first line
+  const m = text.match(/\*\*([^*]+)\*\*/);
+  if (m) {
+    return m[1].trim();
   }
-  
-  // Try to find structured NPC name from template format
-  const structuredMatch = text.match(/^([A-Z][^*\n]+?)(?:\s*\*|$)/m);
-  if (structuredMatch) {
-    return structuredMatch[1].trim();
-  }
-  
   return text.trim().split('\n')[0];
 }
 
 export function findRaceClassLevel(text: string): string {
-  // Look for structured template format with race and level/class on separate lines
-  const raceMatch = text.match(/\*\s*\*\*Race:\*\*\s*\[?([^\]\n]+)\]?/i);
-  const levelClassMatch = text.match(/\*\s*\*\*Level and Class:\*\*\s*\[?([^\]\n]+)\]?/i);
-  
-  if (raceMatch && levelClassMatch) {
-    const race = raceMatch[1].trim();
-    const levelClass = levelClassMatch[1].trim();
-    
-    // Clean up any template markers or formatting
-    const cleanRace = race.replace(/\[.*?\]/g, '').trim();
-    const cleanLevelClass = levelClassMatch[1].replace(/\[.*?\]/g, '').trim();
-    
-    // Extract level and class from the level/class field
-    const levelClassParts = cleanLevelClass.match(/(\w+),\s*\*?\*?(\d+)(?:\^?[a-z]+)?\s*level\s*(\w+)\*?\*?/i);
-    if (levelClassParts) {
-      const [, raceFromLC, level, charClass] = levelClassParts;
-      return `${cleanRace.toLowerCase()} ${level}th level ${charClass.toLowerCase()}`;
-    }
-    
-    return `${cleanRace.toLowerCase()}, ${cleanLevelClass.toLowerCase()}`;
-  }
-
-  // Look for the specific "Race & Class" line for more accuracy
-  const lineMatch = text.match(/Race & Class:\s*([^\n]+)/i);
-  if (lineMatch) {
-    const lineText = lineMatch[1].trim();
-    // Extract race, level, and class from that line
-    const statsMatch = lineText.match(/(\w+),\s*(\d{1,2})(?:\^?ᵗʰ|st|nd|rd|th)?\s*level\s*(\w+)/i);
-    if (statsMatch) {
-      const [, race, level, charClass] = statsMatch;
-      return `${race.toLowerCase()} ${level}th level ${charClass.toLowerCase()}`;
-    }
-  }
-
-  // Fallback to the original method if the specific line isn't found
-  const levelMatch = text.match(/(\d{1,2})(?:\^?ᵗʰ|st|nd|rd|th)?\s*level\s+(\w+)/i);
-  if (levelMatch) {
-    return `human ${levelMatch[1]}th level ${levelMatch[2].toLowerCase()}`;
+  // catch "Race & Class", "human, 16th level cleric", "cleric 16"
+  const m = text.match(/(\b\w+\b).*?(\d{1,2})(?:st|nd|rd|th)? level (\w+)/i);
+  if (m) {
+    const [, race, lvl, cls] = m;
+    return `${race.toLowerCase()} ${lvl}th level ${cls.toLowerCase()}`;
   }
   return 'class unknown';
 }
 
 export function findDisposition(text: string): string {
-  // Look for structured template format
-  const structuredMatch = text.match(/\*\s*\*\*Disposition:\*\*\s*\[?([^\]\n]+)\]?/i);
-  if (structuredMatch) {
-    return structuredMatch[1].trim().toLowerCase();
-  }
-  
-  // Original pattern matching
-  const match = text.match(/(?:Disposition|Alignment)[^:]*[:\-]\s*([a-z/]+)/i);
-  return match ? match[1].toLowerCase() : 'disposition unknown';
+  const m = text.match(/(?:Disposition|Alignment)[^:]*[:\-]\s*([\w/]+)/i);
+  return m ? m[1].toLowerCase() : 'unknown';
 }
 
 export function findHpAc(text: string): [string, string] {
-  // Look for structured template format
-  const hpStructuredMatch = text.match(/\*\s*\*\*Hit Points \(HP\):\*\*\s*\[?([^\]\n]+)\]?/i);
-  const acStructuredMatch = text.match(/\*\s*\*\*Armor Class \(AC\):\*\*\s*\[?([^\]\n]+)\]?/i);
-  
-  let hp = '?';
-  let ac = '?';
-  
-  if (hpStructuredMatch) {
-    const hpText = hpStructuredMatch[1].trim();
-    const hpNum = hpText.match(/(\d+)/);
-    hp = hpNum ? hpNum[1] : hpText;
-  } else {
-    const hpMatch = text.match(/Hit Points.*?(\d+)/i);
-    hp = hpMatch ? hpMatch[1] : '?';
-  }
-  
-  if (acStructuredMatch) {
-    const acText = acStructuredMatch[1].trim();
-    const acNum = acText.match(/([0-9/]+)/);
-    ac = acNum ? acNum[1] : acText;
-  } else {
-    const acMatch = text.match(/Armor Class.*?([0-9/]+)/i);
-    ac = acMatch ? acMatch[1] : '?';
-  }
-  
-  return [hp, ac];
+  const hp = text.match(/HP.*?(\d+)/i) || text.match(/Hit Points.*?(\d+)/i);
+  const ac = text.match(/AC.*?([0-9/]+)/i) || text.match(/Armor Class.*?([0-9/]+)/i);
+  return [hp ? hp[1] : '?', ac ? ac[1] : '?'];
 }
 
 export function findPrimes(text: string): string {
-  // Look for structured template format
-  const structuredMatch = text.match(/\*\s*\*\*Prime Attributes \(PA\):\*\*\s*\[?([^\]\n]+)\]?/i);
-  if (structuredMatch) {
-    return structuredMatch[1].trim().replace(/\s*,\s*/g, ', ');
-  }
-  
-  // Look for various formats of Prime Attributes
-  const patterns = [
-    /Prime Attributes \(PA\):\s*([A-Za-z, ]+)/i,
-    /Prime Attributes.*?[:\-]\s*([A-Za-z, ]+)/i,
-    /Primes:\s*([A-Za-z, ]+)/i
-  ];
-  
-  for (const pattern of patterns) {
-    const match = text.match(pattern);
-    if (match) {
-      // Clean up the primes string - remove extra spaces and normalize
-      const primes = match[1].trim().replace(/\s*,\s*/g, ', ');
-      // Filter out empty or single character results
-      if (primes.length > 2) {
-        return primes;
-      }
-    }
-  }
-  
-  return '?';
+  const m = text.match(/Prime.*?([A-Za-z, ]+)/i);
+  return m ? m[1].trim() : '?';
 }
 
 export function findEquipment(text: string): string {
-  // Look for structured template format
-  const structuredMatch = text.match(/\*\s*\*\*Equipment \(EQ\):\*\*\s*\[?([^\]\n]+)\]?/i);
-  if (structuredMatch) {
-    const equipment = structuredMatch[1].trim();
-    // Clean up any template placeholders
-    if (equipment.toLowerCase().includes('lists all equipment') || equipment === '') {
-      return 'none';
+  // grab italicized or after EQ/Equipment
+  let eq = text.match(/\*([^*]+)\*/g);
+  if (!eq) {
+    const m = text.match(/(?:Equipment|EQ)[^:]*[:\-]\s*([^\n]+)/i);
+    if (m) {
+      eq = m[1].split(/,|;/).map(e => e.trim());
     }
-    return equipment;
-  }
-
-  // Look for asterisk-marked equipment first (magic items)
-  const asteriskMatches = text.match(/\*([^*\n]+)\*/g);
-  if (asteriskMatches) {
-    const equipment = asteriskMatches
-      .map(match => match.replace(/\*/g, '').trim())
-      .filter(item => item.length > 0)
-      .filter(item => !item.match(/^[A-Z][^:]*:?$/)); // Filter out headers
-    if (equipment.length > 0) {
-      return equipment.join(', ');
-    }
+  } else {
+    eq = eq.map(item => item.replace(/\*/g, '').trim());
   }
   
-  // Look for Equipment line
-  const equipMatch = text.match(/Equipment[^:]*[:\-]\s*([^\n]+)/i);
-  if (equipMatch) {
-    const equipment = equipMatch[1]
-      .split(',')
-      .map(e => e.trim())
-      .filter(item => item.length > 0);
-    return equipment.join(', ');
+  if (eq && eq.length > 0) {
+    // Auto-italicize magic items (items with +/- bonuses or obvious magic names)
+    const italicizedEq = eq.map(item => {
+      const trimmed = item.trim();
+      if (!trimmed) return '';
+      
+      // Check if item has magical indicators
+      const hasMagicalBonus = /[+-]\d+/.test(trimmed);
+      const hasMagicalName = /\b(?:staff of|wand of|ring of|cloak of|boots of|gauntlets of|helm of|amulet of|potion of|scroll of|sword of|armor of|shield of|pectoral of|circlet of|bracers of|rod of|orb of|crystal of|robe of|girdle of|belt of|bag of|deck of|carpet of|broom of|pearl of|gem of|stone of|crown of|diadem of|scepter of|medallion of|talisman of|charm of|phylactery of|periapt of|scarab of|ioun|vorpal|holy|unholy|blessed|cursed|enchanted|magical|mystic|arcane|divine|eldritch|+\d+)\b/i.test(trimmed);
+      
+      if (hasMagicalBonus || hasMagicalName) {
+        return `*${trimmed}*`;
+      }
+      return trimmed;
+    }).filter(item => item.length > 0);
+    
+    return italicizedEq.join(', ');
   }
-  
   return 'none';
 }
 
 export function findSpells(text: string): string {
-  // Look for structured template format
-  const structuredMatch = text.match(/\*\s*\*\*Spells:\*\*\s*\[?([^\]\n]+)\]?/i);
-  if (structuredMatch) {
-    const spellText = structuredMatch[1].trim();
-    // Clean up any template placeholders
-    if (spellText.toLowerCase().includes('for spellcasters') || spellText === '') {
-      return 'spells unknown';
-    }
-    return spellText;
-  }
-
-  // Regex updated to find formats like "1st–6" or "0–6" (handles different dash types)
-  const slotMatches = text.match(/(\d+)(?:st|nd|rd|th)?\s*[–-]\s*(\d+)/gi);
-  if (slotMatches && slotMatches.length > 0) {
-    const formattedSlots = slotMatches.map(match => {
-      const parts = match.match(/(\d+)(?:st|nd|rd|th)?\s*[–-]\s*(\d+)/i);
-      if (parts) {
-        return `${parts[1]}:${parts[2]}`;
-      }
-      return match;
-    });
-    return formattedSlots.join(', ');
-  }
-  return 'spells unknown';
+  // match both "0–6" and "0-level: 6"
+  const slots = text.match(/(\d+)(?:st|nd|rd|th)?(?:–|[- ]level[:\-])\s*(\d+)/gi);
+  return slots ? slots.map(slot => {
+    const parts = slot.match(/(\d+)(?:st|nd|rd|th)?(?:–|[- ]level[:\-])\s*(\d+)/i);
+    return parts ? `${parts[1]}:${parts[2]}` : slot;
+  }).join(', ') : '?';
 }
 
 export function findMount(text: string): string {
-  // Look for structured template format first
-  const structuredMatch = text.match(/\*\s*\*\*Mount:\*\*\s*([^\n]+)/i);
-  if (structuredMatch) {
-    const mountText = structuredMatch[1].trim();
-    if (mountText.toLowerCase().includes('heavy war horse')) {
-      return 'rides a heavy war horse';
-    }
-    if (mountText.toLowerCase() !== 'none' && mountText !== '') {
-      return `rides a ${mountText.toLowerCase()}`;
-    }
-  }
-  
-  // Check for mount section header
-  if (/\*\*Mount Name \(if applicable\)\*\*/i.test(text)) {
-    // Look for mount details in the following section
-    const mountSection = text.match(/\*\*Mount Name.*?\n([\s\S]*?)(?:\n\*\*|$)/i);
-    if (mountSection) {
-      if (/heavy war horse/i.test(mountSection[1])) {
-        return 'rides a heavy war horse';
-      }
-    }
-  }
-  
-  if (/heavy war horse/i.test(text)) {
+  if (text.match(/war horse/i)) {
     return 'rides a heavy war horse';
   }
-  return 'no mount';
+  if (text.match(/mount.*?:\s*none/i)) {
+    return 'no mount';
+  }
+  return 'mount unknown';
 }
 
-export function parseNPCData(text: string): NPCData {
-  return {
-    name: findName(text),
-    raceClassLevel: findRaceClassLevel(text),
-    disposition: findDisposition(text),
-    ...(() => {
-      const [hp, ac] = findHpAc(text);
-      return { hp, ac };
-    })(),
-    primes: findPrimes(text),
-    equipment: findEquipment(text),
-    spells: findSpells(text),
-    mount: findMount(text)
-  };
+// --- Main function ---
+
+export function collapseNPCEntry(longText: string): string {
+  const name = findName(longText);
+  const raceClass = findRaceClassLevel(longText);
+  const disposition = findDisposition(longText);
+  const [hp, ac] = findHpAc(longText);
+  const primes = findPrimes(longText);
+  const equipment = findEquipment(longText);
+  const spells = findSpells(longText);
+  const mount = findMount(longText);
+
+  return `${name} (${raceClass}; disposition ${disposition}; HP ${hp}, AC ${ac}; ` +
+         `Primes: ${primes}; EQ: ${equipment}; Spells: ${spells}; ${mount}).`;
 }
 
-export function collapseNPCEntry(text: string): string {
-  const data = parseNPCData(text);
-  
-  // Build components, filtering out empty or unknown values
-  const components = [];
-  
-  // Add race/class/level if available
-  if (data.raceClassLevel !== 'class unknown') {
-    components.push(data.raceClassLevel);
-  }
-  
-  // Add disposition if available  
-  if (data.disposition !== 'disposition unknown') {
-    components.push(`disposition ${data.disposition}`);
-  }
-  
-  // Always add HP and AC
-  components.push(`HP ${data.hp}`);
-  components.push(`AC ${data.ac}`);
-  
-  // Add primes if available
-  if (data.primes !== '?') {
-    components.push(`Primes: ${data.primes}`);
-  }
-  
-  // Add equipment if available
-  if (data.equipment !== 'none') {
-    components.push(`EQ: ${data.equipment}`);
-  }
-  
-  // Add spells if available
-  if (data.spells !== 'spells unknown') {
-    components.push(`Spells: ${data.spells}`);
-  }
-  
-  // Add mount if available
-  if (data.mount !== 'no mount') {
-    components.push(data.mount);
-  }
-  
-  return `${data.name} (${components.join('; ')}).`;
-}
-
+// --- Batch processor ---
 export function processDump(dump: string): string[] {
   // Clean the input text - process exactly what the user provided
   const cleanedDump = dump.trim();
@@ -346,8 +123,7 @@ export function processDump(dump: string): string[] {
     return [];
   }
   
-  // Always treat input as a single NPC block - don't split automatically
-  // The user specifically wants one NPC at a time processing
+  // Process as single NPC - no auto-splitting
   try {
     const result = collapseNPCEntry(cleanedDump);
     return [result];
