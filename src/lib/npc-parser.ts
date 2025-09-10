@@ -249,28 +249,33 @@ export function collapseNPCEntry(text: string): string {
 }
 
 export function processDump(dump: string): string[] {
-  // Clean the input text and handle single NPC processing
+  // Clean the input text - process exactly what the user provided
   const cleanedDump = dump.trim();
   
-  // If the input looks like a single stat block (not separated by blank lines),
-  // treat it as one NPC
-  if (!cleanedDump.includes('\n\n')) {
-    // Skip if it's clearly code or non-NPC content
-    if (isCodeContent(cleanedDump)) {
-      return [];
-    }
-    
-    // Check if it has NPC indicators
-    if (hasNPCIndicators(cleanedDump)) {
-      return [collapseNPCEntry(cleanedDump)];
-    }
-    
+  // Return empty if no input
+  if (!cleanedDump) {
     return [];
   }
   
-  // Split on double newlines for multiple potential NPCs
+  // Skip if it's clearly code or non-NPC content
+  if (isCodeContent(cleanedDump)) {
+    return [];
+  }
+  
+  // Check if it has NPC indicators
+  if (!hasNPCIndicators(cleanedDump)) {
+    return [];
+  }
+  
+  // If the input doesn't contain double newlines, treat as single NPC
+  if (!cleanedDump.includes('\n\n')) {
+    return [collapseNPCEntry(cleanedDump)];
+  }
+  
+  // Split on double newlines only if they exist
   const blocks = cleanedDump.split(/\n\s*\n/);
   
+  // Process each block that looks like an NPC
   return blocks
     .filter(block => {
       const trimmed = block.trim();
@@ -296,11 +301,14 @@ function isCodeContent(text: string): boolean {
 }
 
 function hasNPCIndicators(text: string): boolean {
-  // Must have some indication it's an NPC
-  return /\*\*[^*]+\*\*/.test(text) || // Bold name
-         /(?:Race & Class|Disposition|Hit Points|Armor Class|Prime Attributes|Equipment)/i.test(text) ||
-         /\d+(?:st|nd|rd|th)?\s*level\s+\w+/i.test(text) || // Level/class pattern
-         /(?:HP|AC)\s*[:=]\s*\d+/i.test(text); // HP/AC with numbers
+  // Must have some indication it's an NPC stat block
+  const hasName = /\*\*[^*]+\*\*/.test(text); // Bold name
+  const hasStatBlock = /(?:Race & Class|Disposition|Hit Points|Armor Class|Prime Attributes|Equipment)/i.test(text);
+  const hasLevelClass = /\d+(?:st|nd|rd|th)?\s*level\s+\w+/i.test(text);
+  const hasHPAC = /(?:HP|AC)\s*[:=]\s*\d+/i.test(text);
+  
+  // Require at least a name OR a combination of stat block indicators
+  return hasName || (hasStatBlock && (hasLevelClass || hasHPAC));
 }
 
 export function generateNPCTemplate(): string {

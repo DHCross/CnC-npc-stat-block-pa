@@ -35,7 +35,12 @@ function App() {
     }
 
     try {
+      // Debug: log what we're processing
+      console.log('Processing input:', text);
+      
       const processed = processDump(text);
+      console.log('Processed results:', processed);
+      
       if (processed.length === 0) {
         setError('No valid NPC stat blocks found. Please check your formatting.');
         setResults([]);
@@ -44,6 +49,7 @@ function App() {
         setError(null);
       }
     } catch (err) {
+      console.error('Parser error:', err);
       setError('Error parsing stat blocks. Please check your formatting and try again.');
       setResults([]);
     }
