@@ -169,7 +169,7 @@ function App() {
                     onClick={loadAlternativeExample}
                     className="flex-1"
                   >
-                    Alternative Format
+                    Simple Format
                   </Button>
                   <Button
                     variant="outline"
