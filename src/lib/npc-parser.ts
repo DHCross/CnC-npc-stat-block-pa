@@ -52,18 +52,28 @@ export function findHpAc(text: string): [string, string] {
 
 export function findPrimes(text: string): string {
   const match = text.match(/Prime Attributes.*?([A-Za-z, ]+)/i);
-  return match ? match[1].trim() : '?';
+  if (match) {
+    // Clean up the primes string - remove extra spaces and normalize
+    return match[1].trim().replace(/\s*,\s*/g, ', ');
+  }
+  return '?';
 }
 
 export function findEquipment(text: string): string {
   const asteriskMatches = text.match(/\*([^*]+)\*/g);
   if (asteriskMatches) {
-    return asteriskMatches.map(match => match.replace(/\*/g, '')).join(', ');
+    const equipment = asteriskMatches
+      .map(match => match.replace(/\*/g, '').trim())
+      .filter(item => item.length > 0);
+    return equipment.join(', ');
   }
   
   const equipMatch = text.match(/Equipment.*?[:\-]\s*([^\n]+)/i);
   if (equipMatch) {
-    const equipment = equipMatch[1].split(',').map(e => e.trim());
+    const equipment = equipMatch[1]
+      .split(',')
+      .map(e => e.trim())
+      .filter(item => item.length > 0);
     return equipment.join(', ');
   }
   
@@ -73,7 +83,7 @@ export function findEquipment(text: string): string {
 export function findSpells(text: string): string {
   // Regex updated to find formats like "1st–6" or "0–6" (handles different dash types)
   const slotMatches = text.match(/(\d+)(?:st|nd|rd|th)?\s*[–-]\s*(\d+)/gi);
-  if (slotMatches) {
+  if (slotMatches && slotMatches.length > 0) {
     const formattedSlots = slotMatches.map(match => {
       const parts = match.match(/(\d+)(?:st|nd|rd|th)?\s*[–-]\s*(\d+)/i);
       if (parts) {
@@ -112,7 +122,19 @@ export function parseNPCData(text: string): NPCData {
 export function collapseNPCEntry(text: string): string {
   const data = parseNPCData(text);
   
-  return `${data.name} (${data.raceClassLevel}; disposition ${data.disposition}; HP ${data.hp}, AC ${data.ac}; Primes: ${data.primes}; EQ: ${data.equipment}; Spells: ${data.spells}; ${data.mount}).`;
+  // Build components, filtering out empty or unknown values
+  const components = [
+    data.raceClassLevel !== 'class unknown' ? data.raceClassLevel : '',
+    data.disposition !== 'disposition unknown' ? `disposition ${data.disposition}` : '',
+    `HP ${data.hp}`,
+    `AC ${data.ac}`,
+    data.primes !== '?' ? `Primes: ${data.primes}` : '',
+    data.equipment !== 'none' ? `EQ: ${data.equipment}` : '',
+    data.spells !== 'spells unknown' ? `Spells: ${data.spells}` : '',
+    data.mount !== 'no mount' ? data.mount : ''
+  ].filter(component => component.length > 0);
+  
+  return `${data.name} (${components.join('; ')}).`;
 }
 
 export function processDump(dump: string): string[] {
