@@ -85,9 +85,9 @@ export function findRaceClassLevel(text: string): string {
   }
 
   // Look for the specific "Race & Class" line for more accuracy
-  const lineMatch = text.match(/Race & Class: ([^\n]+)/i);
+  const lineMatch = text.match(/Race & Class:\s*([^\n]+)/i);
   if (lineMatch) {
-    const lineText = lineMatch[1];
+    const lineText = lineMatch[1].trim();
     // Extract race, level, and class from that line
     const statsMatch = lineText.match(/(\w+),\s*(\d{1,2})(?:\^?ᵗʰ|st|nd|rd|th)?\s*level\s*(\w+)/i);
     if (statsMatch) {
@@ -97,7 +97,7 @@ export function findRaceClassLevel(text: string): string {
   }
 
   // Fallback to the original method if the specific line isn't found
-  const levelMatch = text.match(/(\d{1,2})(?:\^?ᵗʰ|st|nd|rd|th)? level (\w+)/i);
+  const levelMatch = text.match(/(\d{1,2})(?:\^?ᵗʰ|st|nd|rd|th)?\s*level\s+(\w+)/i);
   if (levelMatch) {
     return `human ${levelMatch[1]}th level ${levelMatch[2].toLowerCase()}`;
   }
@@ -152,11 +152,25 @@ export function findPrimes(text: string): string {
     return structuredMatch[1].trim().replace(/\s*,\s*/g, ', ');
   }
   
-  const match = text.match(/Prime Attributes.*?([A-Za-z, ]+)/i);
-  if (match) {
-    // Clean up the primes string - remove extra spaces and normalize
-    return match[1].trim().replace(/\s*,\s*/g, ', ');
+  // Look for various formats of Prime Attributes
+  const patterns = [
+    /Prime Attributes \(PA\):\s*([A-Za-z, ]+)/i,
+    /Prime Attributes.*?[:\-]\s*([A-Za-z, ]+)/i,
+    /Primes:\s*([A-Za-z, ]+)/i
+  ];
+  
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    if (match) {
+      // Clean up the primes string - remove extra spaces and normalize
+      const primes = match[1].trim().replace(/\s*,\s*/g, ', ');
+      // Filter out empty or single character results
+      if (primes.length > 2) {
+        return primes;
+      }
+    }
   }
+  
   return '?';
 }
 
@@ -172,15 +186,20 @@ export function findEquipment(text: string): string {
     return equipment;
   }
 
-  const asteriskMatches = text.match(/\*([^*]+)\*/g);
+  // Look for asterisk-marked equipment first (magic items)
+  const asteriskMatches = text.match(/\*([^*\n]+)\*/g);
   if (asteriskMatches) {
     const equipment = asteriskMatches
       .map(match => match.replace(/\*/g, '').trim())
-      .filter(item => item.length > 0);
-    return equipment.join(', ');
+      .filter(item => item.length > 0)
+      .filter(item => !item.match(/^[A-Z][^:]*:?$/)); // Filter out headers
+    if (equipment.length > 0) {
+      return equipment.join(', ');
+    }
   }
   
-  const equipMatch = text.match(/Equipment.*?[:\-]\s*([^\n]+)/i);
+  // Look for Equipment line
+  const equipMatch = text.match(/Equipment[^:]*[:\-]\s*([^\n]+)/i);
   if (equipMatch) {
     const equipment = equipMatch[1]
       .split(',')
@@ -269,16 +288,41 @@ export function collapseNPCEntry(text: string): string {
   const data = parseNPCData(text);
   
   // Build components, filtering out empty or unknown values
-  const components = [
-    data.raceClassLevel !== 'class unknown' ? data.raceClassLevel : '',
-    data.disposition !== 'disposition unknown' ? `disposition ${data.disposition}` : '',
-    `HP ${data.hp}`,
-    `AC ${data.ac}`,
-    data.primes !== '?' ? `Primes: ${data.primes}` : '',
-    data.equipment !== 'none' ? `EQ: ${data.equipment}` : '',
-    data.spells !== 'spells unknown' ? `Spells: ${data.spells}` : '',
-    data.mount !== 'no mount' ? data.mount : ''
-  ].filter(component => component.length > 0);
+  const components = [];
+  
+  // Add race/class/level if available
+  if (data.raceClassLevel !== 'class unknown') {
+    components.push(data.raceClassLevel);
+  }
+  
+  // Add disposition if available  
+  if (data.disposition !== 'disposition unknown') {
+    components.push(`disposition ${data.disposition}`);
+  }
+  
+  // Always add HP and AC
+  components.push(`HP ${data.hp}`);
+  components.push(`AC ${data.ac}`);
+  
+  // Add primes if available
+  if (data.primes !== '?') {
+    components.push(`Primes: ${data.primes}`);
+  }
+  
+  // Add equipment if available
+  if (data.equipment !== 'none') {
+    components.push(`EQ: ${data.equipment}`);
+  }
+  
+  // Add spells if available
+  if (data.spells !== 'spells unknown') {
+    components.push(`Spells: ${data.spells}`);
+  }
+  
+  // Add mount if available
+  if (data.mount !== 'no mount') {
+    components.push(data.mount);
+  }
   
   return `${data.name} (${components.join('; ')}).`;
 }
@@ -304,7 +348,13 @@ export function processDump(dump: string): string[] {
   
   // Always treat input as a single NPC block - don't split automatically
   // The user specifically wants one NPC at a time processing
-  return [collapseNPCEntry(cleanedDump)];
+  try {
+    const result = collapseNPCEntry(cleanedDump);
+    return [result];
+  } catch (error) {
+    console.error('Error processing NPC:', error);
+    return [];
+  }
 }
 
 function isCodeContent(text: string): boolean {
@@ -328,10 +378,11 @@ function hasNPCIndicators(text: string): boolean {
   const hasName = /\*\*[^*]+\*\*/.test(text); // Bold name
   const hasStatBlock = /(?:Race & Class|Disposition|Hit Points|Armor Class|Prime Attributes|Equipment)/i.test(text);
   const hasLevelClass = /\d+(?:st|nd|rd|th)?\s*level\s+\w+/i.test(text);
-  const hasHPAC = /(?:HP|AC)\s*[:=]\s*\d+/i.test(text);
+  const hasHPAC = /(?:HP|AC)\s*[:=]\s*\d+/i.test(text) || /Hit Points.*?\d+/i.test(text) || /Armor Class.*?\d+/i.test(text);
   
-  // Require at least a name OR a combination of stat block indicators
-  return hasName || (hasStatBlock && (hasLevelClass || hasHPAC));
+  // Require either a bold name with some stats, OR a good combination of stat block indicators
+  return (hasName && (hasStatBlock || hasLevelClass || hasHPAC)) || 
+         (hasStatBlock && hasLevelClass && hasHPAC);
 }
 
 export function generateNPCTemplate(): string {
