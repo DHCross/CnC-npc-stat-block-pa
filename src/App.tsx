@@ -7,8 +7,8 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Toaster } from '@/components/ui/sonner';
-import { Copy, Download, Upload, AlertCircle, Trash2, FileText, Warning, Info, CheckCircle, ChevronDown, ChevronRight } from '@phosphor-icons/react';
-import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning } from '@/lib/npc-parser';
+import { Copy, Download, Upload, AlertCircle, Trash2, FileText, Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand, Sparkle, ArrowRight } from '@phosphor-icons/react';
+import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes } from '@/lib/npc-parser';
 import { toast } from 'sonner';
 import { useKV } from '@github/spark/hooks';
 
@@ -52,16 +52,20 @@ function App() {
   const [error, setError] = useState<string | null>(null);
   const [savedResults, setSavedResults, deleteSavedResults] = useKV<string[]>('npc-parser-results', []);
   const [showValidation, setShowValidation] = useState(true);
+  const [availableFixes, setAvailableFixes] = useState<CorrectionFix[]>([]);
 
   const processInput = (text: string) => {
     if (!text.trim()) {
       setResults([]);
       setError(null);
+      setAvailableFixes([]);
       return;
     }
 
     try {
       const processed = processDumpWithValidation(text);
+      const fixes = generateAutoCorrectionFixes(text);
+      setAvailableFixes(fixes);
       
       if (processed.length === 0) {
         setError('No valid NPC stat blocks found. Please check your formatting.');
@@ -74,6 +78,7 @@ function App() {
       console.error('Parser error:', err);
       setError('Error parsing stat blocks. Please check your formatting and try again.');
       setResults([]);
+      setAvailableFixes([]);
     }
   };
 
@@ -139,6 +144,21 @@ function App() {
     processInput(VALIDATION_EXAMPLE);
   };
 
+  const applyFix = (fix: CorrectionFix) => {
+    const correctedText = applyCorrectionFix(inputText, fix);
+    setInputText(correctedText);
+    processInput(correctedText);
+    toast.success(`Applied fix: ${fix.description}`);
+  };
+
+  const applyAllFixes = () => {
+    const correctedText = applyAllHighConfidenceFixes(inputText);
+    setInputText(correctedText);
+    processInput(correctedText);
+    const highConfidenceCount = availableFixes.filter(f => f.confidence === 'high').length;
+    toast.success(`Applied ${highConfidenceCount} automatic fixes`);
+  };
+
   const loadTemplate = () => {
     const template = generateNPCTemplate();
     setInputText(template);
@@ -168,6 +188,15 @@ function App() {
     if (score >= 90) return 'bg-green-500';
     if (score >= 70) return 'bg-yellow-500';
     return 'bg-red-500';
+  };
+
+  const getFixConfidenceColor = (confidence: CorrectionFix['confidence']) => {
+    switch (confidence) {
+      case 'high': return 'bg-green-100 text-green-800 border-green-300';
+      case 'medium': return 'bg-yellow-100 text-yellow-800 border-yellow-300';
+      case 'low': return 'bg-gray-100 text-gray-800 border-gray-300';
+      default: return 'bg-gray-100 text-gray-800 border-gray-300';
+    }
   };
 
   const ValidationWarnings = ({ validation, npcIndex }: { validation: any; npcIndex: number }) => {
@@ -260,13 +289,15 @@ function App() {
             </h1>
             <p className="text-muted-foreground text-lg">
               Convert detailed tabletop RPG NPC stat blocks into Castles & Crusades narrative format 
-              with comprehensive validation warnings. This enhanced parser produces clean, properly formatted entries 
+              with comprehensive validation warnings and automated correction system. This enhanced parser produces clean, properly formatted entries 
               that match the Victor Oldham reference style, automatically checks for full C&C compliance across 
-              23+ validation categories, identifies deprecated terminology (alignment→disposition, improved grab→crushing grasp), 
-              validates proper formatting conventions (superscript levels, italicized magic items, noun-form dispositions), 
-              checks coinage terminology, magic item explanations, AC structures, title formatting, and batch processing with individual validation 
-              scoring for each NPC. Now includes comprehensive checks for heading format, formal addresses, 
-              race-class ordering, gendered pronouns, vision terminology, unique ability explanations, and equipment section standardization.
+              23+ validation categories, and provides intelligent one-click fixes for common formatting issues. 
+              Features automated corrections for deprecated terminology (alignment→disposition, improved grab→crushing grasp), 
+              magic item italicization, coinage terminology, disposition noun formatting, prime attribute expansion, 
+              and equipment section standardization. Enhanced with confidence-rated correction suggestions, 
+              bulk auto-fix capabilities, and detailed compliance scoring for each NPC. Now includes comprehensive checks for heading format, formal addresses, 
+              race-class ordering, gendered pronouns, vision terminology, unique ability explanations, and automated before/after previews 
+              with intelligent correction categorization and safe batch application of high-confidence fixes.
             </p>
           </div>
 
@@ -282,10 +313,12 @@ function App() {
                   Paste your C&C NPC stat block(s) below. The enhanced parser automatically converts to narrative format, 
                   validates comprehensive C&C compliance across 23+ categories including heading format, disposition terminology, 
                   level formatting, magic item italicization, coinage terminology, prime attribute ordering, AC structures, 
-                  and mount statistics. Features enhanced validation for deprecated terminology (alignment→disposition, improved grab→crushing grasp, 
+                  and mount statistics. Features advanced automated correction system with confidence-rated fixes for deprecated terminology (alignment→disposition, improved grab→crushing grasp, 
                   vision types), proper noun-form dispositions, superscript levels, magic item mechanical explanations, and equipment 
-                  section standardization. For batch processing, separate multiple NPCs with blank lines. Each NPC receives detailed validation scoring 
-                  and specific compliance warnings to ensure perfect C&C formatting standards.
+                  section standardization. Auto-correction engine provides intelligent one-click fixes with before/after previews, 
+                  bulk application of high-confidence corrections, and detailed categorization of formatting improvements. For batch processing, separate multiple NPCs with blank lines. Each NPC receives detailed validation scoring 
+                  and specific compliance warnings to ensure perfect C&C formatting standards, plus automated correction suggestions 
+                  for immediate application.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -352,6 +385,85 @@ function App() {
                     Clear
                   </Button>
                 </div>
+                
+                {/* Auto-Correction Section */}
+                {availableFixes.length > 0 && (
+                  <Card className="mt-4 border-blue-200 bg-blue-50">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="flex items-center gap-2 text-blue-800">
+                        <Wand className="w-5 h-5" />
+                        Auto-Correction Available
+                        <Badge variant="outline" className="bg-blue-100 text-blue-800">
+                          {availableFixes.length} fixes
+                        </Badge>
+                      </CardTitle>
+                      <CardDescription className="text-blue-700">
+                        Automated fixes for common C&C formatting issues. High-confidence fixes can be applied safely.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="flex gap-2 mb-4">
+                        <Button
+                          onClick={applyAllFixes}
+                          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700"
+                          size="sm"
+                          disabled={availableFixes.filter(f => f.confidence === 'high').length === 0}
+                        >
+                          <Sparkle className="w-4 h-4" />
+                          Apply All Safe Fixes ({availableFixes.filter(f => f.confidence === 'high').length})
+                        </Button>
+                        <div className="text-sm text-blue-600 flex items-center">
+                          Only high-confidence fixes are applied automatically
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2 max-h-[200px] overflow-y-auto">
+                        {availableFixes.map((fix, index) => (
+                          <div key={index} className="flex items-center justify-between p-3 bg-white rounded border">
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2 mb-1">
+                                <Badge 
+                                  variant="outline" 
+                                  className={`text-xs ${getFixConfidenceColor(fix.confidence)}`}
+                                >
+                                  {fix.confidence}
+                                </Badge>
+                                <span className="text-xs text-gray-500 uppercase tracking-wide">
+                                  {fix.category}
+                                </span>
+                              </div>
+                              <p className="text-sm font-medium text-gray-900 mb-1">
+                                {fix.description}
+                              </p>
+                              <div className="flex items-center gap-2 text-xs">
+                                <code className="bg-gray-100 px-1 rounded">
+                                  {fix.originalText.length > 30 
+                                    ? `${fix.originalText.substring(0, 30)}...` 
+                                    : fix.originalText}
+                                </code>
+                                <ArrowRight className="w-3 h-3 text-gray-400" />
+                                <code className="bg-green-100 px-1 rounded">
+                                  {fix.correctedText.length > 30 
+                                    ? `${fix.correctedText.substring(0, 30)}...` 
+                                    : fix.correctedText}
+                                </code>
+                              </div>
+                            </div>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => applyFix(fix)}
+                              className="flex items-center gap-1 ml-3"
+                            >
+                              <Wand className="w-3 h-3" />
+                              Apply
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
               </CardContent>
             </Card>
 
@@ -363,13 +475,14 @@ function App() {
                   Parsed Results
                 </CardTitle>
                 <CardDescription>
-                  Castles & Crusades narrative format with comprehensive validation across 23+ compliance categories. 
-                  Enhanced validation includes heading format, deprecated terminology detection, magic item explanations, 
+                  Castles & Crusades narrative format with comprehensive validation across 23+ compliance categories and 
+                  intelligent automated correction system. Enhanced validation includes heading format, deprecated terminology detection, magic item explanations, 
                   disposition noun formatting, prime attribute ordering, superscript levels, AC structure validation, 
-                  title formatting, and equipment section standardization.
-                  {results.length > 1 && ` Processing ${results.length} NPCs with individual detailed validation reports.`}
+                  title formatting, and equipment section standardization. Auto-correction engine provides confidence-rated fixes 
+                  with one-click application, bulk correction capabilities, and detailed before/after previews for all formatting improvements.
+                  {results.length > 1 && ` Processing ${results.length} NPCs with individual detailed validation reports and automated correction suggestions.`}
                   {results.length === 1 && results[0].validation.complianceScore && 
-                    ` Compliance score: ${results[0].validation.complianceScore}% across all C&C standards.`}
+                    ` Compliance score: ${results[0].validation.complianceScore}% across all C&C standards with ${results[0].validation.fixes?.length || 0} available corrections.`}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">

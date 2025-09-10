@@ -1,93 +1,95 @@
 # NPC Stat Block Parser
 
-Convert detailed tabletop RPG NPC stat blocks into concise, single-line summaries for quick reference during gameplay.
+Convert detailed tabletop RPG NPC stat blocks into Castles & Crusades narrative format with comprehensive validation and automated correction system for perfect compliance.
 
 **Experience Qualities**: 
-1. Efficient - Processes complex stat blocks instantly without manual parsing
-2. Accurate - Extracts key information reliably using smart pattern recognition  
-3. Clean - Presents data in a standardized, readable format for game masters
+1. Intelligent - Advanced parsing with C&C compliance validation and automated corrections
+2. Professional - Comprehensive validation across 23+ categories with detailed diagnostic reporting
+3. Efficient - One-click fixes for common formatting issues with confidence-based recommendations
 
-**Complexity Level**: Light Application (multiple features with basic state)
-- Handles text parsing, batch processing, and provides immediate visual feedback for tabletop gaming workflows
+**Complexity Level**: Complex Application (advanced functionality with comprehensive validation and correction systems)
+- Handles complex text parsing, batch processing, comprehensive C&C validation, automated corrections, and detailed compliance reporting
 
 ## Essential Features
 
-**Text Input Processor**
-- Functionality: Accepts pasted NPC stat blocks and extracts key information (name, class, level, HP, AC, equipment, etc.)
-- Purpose: Eliminates manual summarization work for game masters
+**Advanced Text Processor with C&C Validation**
+- Functionality: Converts NPC stat blocks to narrative format while validating compliance with Castles & Crusades conventions
+- Purpose: Ensures perfect C&C formatting standards across all stat block elements
 - Trigger: User pastes stat block text into input area
-- Progression: Paste text → automatic parsing → display condensed summary → copy/save result
-- Success criteria: Accurately extracts name, race/class/level, disposition, HP/AC, and equipment from various stat block formats
+- Progression: Paste text → comprehensive validation → automated correction suggestions → narrative conversion → compliance scoring
+- Success criteria: Generates Victor Oldham reference-style output with 90%+ compliance scores
 
-**Batch Processing**
-- Functionality: Processes multiple NPC stat blocks separated by blank lines simultaneously
-- Purpose: Handles campaign preparation efficiently when processing multiple NPCs
+**Automated Correction System**
+- Functionality: Detects and automatically fixes common C&C formatting issues with confidence-based recommendations
+- Purpose: Streamlines conversion process by eliminating manual formatting corrections
+- Trigger: Validation system detects fixable issues
+- Progression: Issue detection → correction generation → confidence assessment → one-click application → revalidation
+- Success criteria: Automatically resolves 80%+ of common formatting issues with high-confidence fixes
+
+**Comprehensive Validation Engine**
+- Functionality: Validates 23+ C&C compliance categories including heading format, terminology, magic items, and disposition formatting
+- Purpose: Ensures complete adherence to modern C&C design principles and conventions
+- Trigger: Text processing during conversion
+- Progression: Text analysis → category validation → compliance scoring → detailed warnings → correction suggestions
+- Success criteria: Identifies all major C&C compliance deviations with specific correction guidance
+
+**Smart Correction Recommendations**
+- Functionality: Provides confidence-rated fixes for alignment→disposition, magic item italicization, coinage terminology, and more
+- Purpose: Guides users to perfect C&C compliance with minimal manual intervention
+- Trigger: Validation system detects correctable issues
+- Progression: Issue analysis → correction generation → confidence rating → preview → application
+- Success criteria: Offers relevant fixes with 95%+ accuracy for high-confidence recommendations
+
+**Batch Processing with Individual Validation**
+- Functionality: Processes multiple NPC stat blocks with detailed validation reports for each
+- Purpose: Handles campaign preparation efficiently while maintaining quality standards
 - Trigger: User pastes multiple stat blocks in single input
-- Progression: Paste multiple blocks → system detects separations → processes each individually → displays all summaries
-- Success criteria: Correctly separates and processes each NPC block independently
-
-**Smart Pattern Recognition**
-- Functionality: Uses regex patterns to identify different stat block formats and extract relevant data
-- Purpose: Works with various RPG system formats and inconsistent formatting
-- Trigger: Text analysis during processing
-- Progression: Text input → pattern matching → data extraction → validation → output formatting
-- Success criteria: Handles bold names, different alignment formats, equipment lists, and spell slot notations
-
-**Real-time Preview**
-- Functionality: Shows condensed output immediately as user types or pastes
-- Purpose: Provides instant feedback and allows quick corrections
-- Trigger: Text input change
-- Progression: Text change → immediate reprocessing → updated preview display
-- Success criteria: Updates within 100ms of input change, maintains scroll position
+- Progression: Batch separation → individual processing → per-NPC validation → aggregate reporting → bulk corrections
+- Success criteria: Correctly processes each NPC with individual compliance scoring and correction suggestions
 
 ## Edge Case Handling
 
-- **Malformed Text**: Display helpful error messages for unparseable content
-- **Missing Data**: Gracefully handle incomplete stat blocks with "unknown" placeholders  
-- **Mixed Formats**: Attempt extraction from various RPG system formats
-- **Large Text**: Handle performance for very long stat block dumps
-- **Empty Input**: Show example format and clear instructions
+- **Complex Formatting**: Handles mixed terminology, deprecated conventions, and non-standard layouts
+- **Partial Stat Blocks**: Graceful handling of incomplete data with specific field warnings
+- **Magic Item Explanations**: Validates presence of mechanical descriptions for all magic items
+- **Multiclass Characters**: Proper race-before-class ordering and level formatting
+- **Mixed Validation Results**: Clear reporting when some NPCs have issues while others are compliant
+- **Confidence Thresholds**: Safe automatic fixes vs. manual review recommendations
 
 ## Design Direction
 
-The interface should feel like a professional game master's digital tool - clean, focused, and efficient. Minimal interface with emphasis on the text processing workflow, avoiding distractions during active gameplay preparation.
+Professional validation tool aesthetic with clear diagnostic reporting and intuitive correction workflow. Emphasis on detailed feedback and streamlined correction process for C&C compliance experts.
+
+## Enhanced Features
+
+**Auto-Correction Interface**
+- Visual preview of before/after corrections with confidence indicators
+- Bulk application of high-confidence fixes with detailed change logging
+- Category-based fix organization for systematic correction workflows
+- One-click application with automatic revalidation and progress tracking
+
+**Compliance Dashboard**
+- Real-time compliance scoring with detailed breakdown by category
+- Progressive enhancement workflow from basic parsing to full C&C compliance
+- Historical compliance tracking for batch processing sessions
+- Export functionality for compliance reports and corrected stat blocks
 
 ## Color Selection
 
-Analogous color scheme using deep blues and teals to evoke the mystical, strategic nature of tabletop RPGs while maintaining excellent readability for text-heavy content.
+Enhanced professional color scheme with diagnostic color coding for validation states and correction confidence levels.
 
-- **Primary Color**: Deep Blue (oklch(0.45 0.15 240)) - Communicates reliability and focus for the main processing functions
-- **Secondary Colors**: Slate Gray (oklch(0.65 0.02 240)) for supporting elements and Teal (oklch(0.55 0.12 180)) for accent highlights
-- **Accent Color**: Bright Cyan (oklch(0.75 0.15 195)) - Attention-grabbing highlight for processed results and action buttons
-- **Foreground/Background Pairings**: 
-  - Background (White oklch(1 0 0)): Dark Blue text (oklch(0.25 0.05 240)) - Ratio 8.2:1 ✓
-  - Card (Light Gray oklch(0.98 0.01 240)): Dark Blue text (oklch(0.25 0.05 240)) - Ratio 7.8:1 ✓  
-  - Primary (Deep Blue oklch(0.45 0.15 240)): White text (oklch(1 0 0)) - Ratio 5.2:1 ✓
-  - Accent (Bright Cyan oklch(0.75 0.15 195)): Dark Blue text (oklch(0.25 0.05 240)) - Ratio 6.1:1 ✓
-
-## Font Selection
-
-Technical clarity with a subtle fantasy feel - using a clean monospace font for stat blocks to ensure alignment and readability, paired with a modern sans-serif for interface elements.
-
-- **Typographic Hierarchy**:
-  - H1 (App Title): Inter Bold/32px/tight letter spacing
-  - H2 (Section Headers): Inter Semibold/20px/normal spacing  
-  - Body (Interface): Inter Regular/16px/relaxed line height
-  - Code (Stat Blocks): JetBrains Mono/14px/fixed width for perfect alignment
-  - Labels: Inter Medium/14px/uppercase for form labels
-
-## Animations
-
-Subtle functionality-focused animations that enhance the parsing workflow without disrupting concentration during game preparation.
-
-- **Purposeful Meaning**: Smooth transitions communicate processing status and guide attention to newly generated results
-- **Hierarchy of Movement**: Input focus states and result highlighting receive priority, with minimal decorative motion
+- **Primary Color**: Deep Blue (oklch(0.45 0.15 240)) - Authority and precision for validation systems
+- **Secondary Colors**: Slate Gray (oklch(0.65 0.02 240)) for supporting elements
+- **Accent Color**: Bright Cyan (oklch(0.75 0.15 195)) - Highlights for correction opportunities
+- **Validation Colors**: 
+  - Green (oklch(0.6 0.15 140)) for compliant elements and high-confidence fixes
+  - Yellow (oklch(0.7 0.15 60)) for warnings and medium-confidence corrections
+  - Red (oklch(0.6 0.2 25)) for errors and required fixes
+  - Blue (oklch(0.6 0.15 220)) for informational corrections and auto-fix indicators
 
 ## Component Selection
 
-- **Components**: Textarea for input, Card for results display, Button for actions, Alert for error states, Separator for multiple results
-- **Customizations**: Custom syntax highlighting for parsed stat blocks, monospace result display component
-- **States**: Clear input/output states, processing indicators, error highlighting, success confirmation
-- **Icon Selection**: Copy (for result copying), Upload (for file import), Download (for export), AlertCircle (for errors)
-- **Spacing**: Consistent 4-unit spacing (16px) between major sections, 2-unit (8px) for related elements
-- **Mobile**: Single column layout with collapsible input/output sections, larger touch targets for action buttons
+- **Enhanced Components**: Collapsible validation panels, confidence-rated correction cards, progressive disclosure for complex diagnostics
+- **Correction Interface**: Before/after preview components, bulk action controls, confidence indicators
+- **Validation Display**: Category-based warning organization, compliance scoring widgets, detailed diagnostic panels
+- **Auto-Fix Controls**: One-click application buttons, confidence badges, preview overlays, batch correction workflows

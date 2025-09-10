@@ -389,17 +389,256 @@ export interface ValidationWarning {
   category: string;
   message: string;
   suggestion?: string;
+  fix?: {
+    description: string;
+    action: () => string;
+  };
+}
+
+export interface CorrectionFix {
+  description: string;
+  originalText: string;
+  correctedText: string;
+  category: string;
+  confidence: 'high' | 'medium' | 'low';
 }
 
 export interface ValidationResult {
   warnings: ValidationWarning[];
   isValid: boolean;
   complianceScore: number; // 0-100 percentage
+  fixes: CorrectionFix[];
+}
+
+// Auto-correction system for common C&C formatting issues
+export function generateAutoCorrectionFixes(text: string): CorrectionFix[] {
+  const fixes: CorrectionFix[] = [];
+  
+  // Fix 1: Convert alignment to disposition terminology
+  const alignmentMatches = [...text.matchAll(/\b(Alignment)\s*:/gi)];
+  for (const match of alignmentMatches) {
+    fixes.push({
+      description: 'Replace "Alignment" with "Disposition"',
+      originalText: match[1],
+      correctedText: 'Disposition',
+      category: 'Terminology',
+      confidence: 'high'
+    });
+  }
+  
+  // Fix 2: Convert adjective alignments to noun form
+  const adjAlignmentMatches = [...text.matchAll(/\b(lawful|chaotic)\s+(good|evil|neutral)\b/gi)];
+  for (const match of adjAlignmentMatches) {
+    const adj1 = match[1].toLowerCase();
+    const adj2 = match[2].toLowerCase();
+    const noun1 = adj1 === 'lawful' ? 'law' : adj1 === 'chaotic' ? 'chaos' : adj1;
+    const corrected = `${noun1}/${adj2}`;
+    
+    fixes.push({
+      description: `Convert "${match[0]}" to noun form`,
+      originalText: match[0],
+      correctedText: corrected,
+      category: 'Disposition Format',
+      confidence: 'high'
+    });
+  }
+  
+  // Fix 3: Convert coinage abbreviations to full names
+  const coinageMap = { pp: 'platinum', gp: 'gold', sp: 'silver', cp: 'copper', ep: 'electrum' };
+  for (const [abbrev, full] of Object.entries(coinageMap)) {
+    const pattern = new RegExp(`\\b(\\d+)\\s*(${abbrev})\\b`, 'gi');
+    const matches = [...text.matchAll(pattern)];
+    for (const match of matches) {
+      fixes.push({
+        description: `Replace "${match[2]}" with "${full}"`,
+        originalText: match[0],
+        correctedText: `${match[1]} ${full}`,
+        category: 'Coinage Format',
+        confidence: 'high'
+      });
+    }
+  }
+  
+  // Fix 4: Italicize obvious magic items
+  const magicItemPatterns = [
+    /\b(staff of \w+(?:\s+\w+)*)/gi,
+    /\b(pectoral of \w+(?:\s+\w+)*)/gi,
+    /\b(ring of \w+(?:\s+\w+)*)/gi,
+    /\b(cloak of \w+(?:\s+\w+)*)/gi,
+    /\b(boots of \w+(?:\s+\w+)*)/gi,
+    /\b([\w\s]+\s+\+\d+)/gi
+  ];
+  
+  for (const pattern of magicItemPatterns) {
+    const matches = [...text.matchAll(pattern)];
+    for (const match of matches) {
+      const item = match[1].trim();
+      // Skip if already italicized
+      if (!item.startsWith('*') && !item.endsWith('*') && 
+          item.length > 5 && !item.match(/^\d/)) {
+        fixes.push({
+          description: `Italicize magic item "${item}"`,
+          originalText: item,
+          correctedText: `*${item}*`,
+          category: 'Magic Item Format',
+          confidence: 'high'
+        });
+      }
+    }
+  }
+  
+  // Fix 5: Fix magic item bonus placement
+  const incorrectBonusMatches = [...text.matchAll(/\+(\d+)\s+([\w\s]+?)(?=\s|,|\.|\*|$)/g)];
+  for (const match of incorrectBonusMatches) {
+    const bonus = match[1];
+    const item = match[2].trim();
+    
+    // Only fix obvious weapon/armor items
+    if (item.match(/\b(?:sword|mace|shield|armor|plate|mail|dagger|axe|bow)\b/i)) {
+      fixes.push({
+        description: `Move bonus to end: "${item} +${bonus}"`,
+        originalText: match[0],
+        correctedText: `${item} +${bonus}`,
+        category: 'Magic Item Format',
+        confidence: 'medium'
+      });
+    }
+  }
+  
+  // Fix 6: Convert deprecated vision terminology
+  const visionFixes = [
+    { old: /\bdarkvision\b/gi, new: 'Dark Vision' },
+    { old: /\binfravision\b/gi, new: 'Infra Vision' },
+    { old: /\bultravision\b/gi, new: 'Ultra Vision' },
+    { old: /\btruevision\b/gi, new: 'True Vision' },
+    { old: /\blow[\s-]?light\s*vision\b/gi, new: 'Low Light Vision' }
+  ];
+  
+  for (const { old, new: newTerm } of visionFixes) {
+    const matches = [...text.matchAll(old)];
+    for (const match of matches) {
+      fixes.push({
+        description: `Update vision terminology to "${newTerm}"`,
+        originalText: match[0],
+        correctedText: newTerm,
+        category: 'Vision Terminology',
+        confidence: 'high'
+      });
+    }
+  }
+  
+  // Fix 7: Convert deprecated ability terminology
+  const abilityFixes = [
+    { old: /\bimproved grab\b/gi, new: 'crushing grasp' },
+    { old: /\bimproved initiative\b/gi, new: 'enhanced initiative' },
+    { old: /\bspell resistance\b/gi, new: 'magic resistance' }
+  ];
+  
+  for (const { old, new: newTerm } of abilityFixes) {
+    const matches = [...text.matchAll(old)];
+    for (const match of matches) {
+      fixes.push({
+        description: `Update ability terminology to "${newTerm}"`,
+        originalText: match[0],
+        correctedText: newTerm,
+        category: 'Ability Terminology',
+        confidence: 'high'
+      });
+    }
+  }
+  
+  // Fix 8: Expand prime attribute abbreviations
+  const attributeFixes = [
+    { old: /\bStr\b/g, new: 'Strength' },
+    { old: /\bDex\b/g, new: 'Dexterity' },
+    { old: /\bCon\b/g, new: 'Constitution' },
+    { old: /\bInt\b/g, new: 'Intelligence' },
+    { old: /\bWis\b/g, new: 'Wisdom' },
+    { old: /\bCha\b/g, new: 'Charisma' }
+  ];
+  
+  // Only apply to Prime Attributes section
+  const paMatch = text.match(/Prime\s+Attributes[^:]*:\s*([^\n]+)/i);
+  if (paMatch) {
+    const paSection = paMatch[1];
+    for (const { old, new: newTerm } of attributeFixes) {
+      if (paSection.match(old)) {
+        const correctedSection = paSection.replace(old, newTerm);
+        fixes.push({
+          description: `Expand "${old.source.replace(/\\b/g, '')}" to "${newTerm}"`,
+          originalText: paSection,
+          correctedText: correctedSection,
+          category: 'Prime Attributes',
+          confidence: 'high'
+        });
+      }
+    }
+  }
+  
+  // Fix 9: Convert Hit Point dice notation to sum (for classed NPCs)
+  const hpDiceMatches = [...text.matchAll(/(?:Hit Points|HP)\s*[:=]\s*([^,\n]*\d+d\d+[^,\n]*)/gi)];
+  for (const match of hpDiceMatches) {
+    const diceNotation = match[1].trim();
+    // Simple estimation for common dice
+    const simpleConversion = diceNotation.replace(/(\d+)d(\d+)/g, (_, count, sides) => {
+      const avgRoll = Math.floor((parseInt(sides) + 1) / 2);
+      return String(parseInt(count) * avgRoll);
+    });
+    
+    fixes.push({
+      description: 'Convert dice notation to sum for classed NPC',
+      originalText: diceNotation,
+      correctedText: simpleConversion,
+      category: 'Hit Points Format',
+      confidence: 'medium'
+    });
+  }
+  
+  // Fix 10: Remove colons from title
+  const titleMatch = text.match(/\*\*([^*]+)\*\*/);
+  if (titleMatch && titleMatch[1].includes(':')) {
+    const correctedTitle = titleMatch[1].replace(/:/g, ',');
+    fixes.push({
+      description: 'Replace colons with commas in title',
+      originalText: titleMatch[1],
+      correctedText: correctedTitle,
+      category: 'Title Format',
+      confidence: 'high'
+    });
+  }
+  
+  return fixes;
+}
+
+// Apply a specific fix to text
+export function applyCorrectionFix(text: string, fix: CorrectionFix): string {
+  return text.replace(new RegExp(escapeRegExp(fix.originalText), 'g'), fix.correctedText);
+}
+
+// Apply all high-confidence fixes automatically
+export function applyAllHighConfidenceFixes(text: string): string {
+  const fixes = generateAutoCorrectionFixes(text);
+  const highConfidenceFixes = fixes.filter(fix => fix.confidence === 'high');
+  
+  let correctedText = text;
+  for (const fix of highConfidenceFixes) {
+    correctedText = applyCorrectionFix(correctedText, fix);
+  }
+  
+  return correctedText;
+}
+
+// Helper function to escape regex special characters
+function escapeRegExp(string: string): string {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 export function validateStatBlock(text: string): ValidationResult {
   const warnings: ValidationWarning[] = [];
   const { title, body } = splitTitleAndBody(text);
+  
+  // Generate auto-correction fixes
+  const fixes = generateAutoCorrectionFixes(text);
   
   // Core C&C Compliance Checks based on comprehensive checklist
   
@@ -485,7 +724,8 @@ export function validateStatBlock(text: string): ValidationResult {
   return {
     warnings,
     isValid: errorCount === 0,
-    complianceScore
+    complianceScore,
+    fixes
   };
 }
 
