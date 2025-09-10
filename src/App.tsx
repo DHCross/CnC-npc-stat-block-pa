@@ -129,7 +129,7 @@ function App() {
               NPC Stat Block Parser
             </h1>
             <p className="text-muted-foreground text-lg">
-              Convert detailed tabletop RPG NPC stat blocks into concise, single-line summaries. Now with robust parsing that handles flexible input formats and auto-italicizes magic items.
+              Convert detailed tabletop RPG NPC stat blocks into narrative format following the original Castles & Crusades style. The parser produces properly formatted entries that match the Victor Oldham reference format.
             </p>
           </div>
 
@@ -142,7 +142,7 @@ function App() {
                   Input Stat Blocks
                 </CardTitle>
                 <CardDescription>
-                  Paste your NPC stat block below. This parser now handles flexible formatting - whether your stat block uses "Race & Class:" labels, shorthand "HP/AC", or mixed formats. Magic items are automatically italicized in the output.
+                  Paste your NPC stat block below. This parser produces narrative-style entries following the original Castles & Crusades format. Magic items are automatically italicized, and output includes proper mount descriptions when applicable.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -200,7 +200,7 @@ function App() {
                   Parsed Results
                 </CardTitle>
                 <CardDescription>
-                  Condensed stat blocks ready for quick reference during gameplay
+                  Narrative-format stat blocks matching the original Victor Oldham reference style
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -217,9 +217,9 @@ function App() {
                       {results.map((result, index) => (
                         <div key={index} className="space-y-2">
                           <div className="bg-muted/50 p-3 rounded-md border">
-                            <p className="font-mono text-sm leading-relaxed break-words">
+                            <pre className="font-mono text-sm leading-relaxed break-words whitespace-pre-wrap">
                               {result}
-                            </p>
+                            </pre>
                           </div>
                           <Button
                             variant="outline"
@@ -291,10 +291,10 @@ function App() {
               <CardContent>
                 <div className="space-y-2 max-h-[300px] overflow-y-auto">
                   {savedResults.map((result, index) => (
-                    <div key={index} className="flex items-center gap-2 p-2 bg-muted/30 rounded">
-                      <p className="font-mono text-sm flex-1 break-words">
+                    <div key={index} className="flex items-start gap-2 p-2 bg-muted/30 rounded">
+                      <pre className="font-mono text-sm flex-1 break-words whitespace-pre-wrap">
                         {result}
-                      </p>
+                      </pre>
                       <Button
                         variant="ghost"
                         size="sm"
