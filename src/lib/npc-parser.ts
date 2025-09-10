@@ -34,7 +34,19 @@ export function findRaceClassLevel(text: string): string {
   if (raceMatch && levelClassMatch) {
     const race = raceMatch[1].trim();
     const levelClass = levelClassMatch[1].trim();
-    return `${race.toLowerCase()}, ${levelClass.toLowerCase()}`;
+    
+    // Clean up any template markers or formatting
+    const cleanRace = race.replace(/\[.*?\]/g, '').trim();
+    const cleanLevelClass = levelClassMatch[1].replace(/\[.*?\]/g, '').trim();
+    
+    // Extract level and class from the level/class field
+    const levelClassParts = cleanLevelClass.match(/(\w+),\s*\*?\*?(\d+)(?:\^?[a-z]+)?\s*level\s*(\w+)\*?\*?/i);
+    if (levelClassParts) {
+      const [, raceFromLC, level, charClass] = levelClassParts;
+      return `${cleanRace.toLowerCase()} ${level}th level ${charClass.toLowerCase()}`;
+    }
+    
+    return `${cleanRace.toLowerCase()}, ${cleanLevelClass.toLowerCase()}`;
   }
 
   // Look for the specific "Race & Class" line for more accuracy
@@ -173,6 +185,29 @@ export function findSpells(text: string): string {
 }
 
 export function findMount(text: string): string {
+  // Look for structured template format first
+  const structuredMatch = text.match(/\*\s*\*\*Mount:\*\*\s*([^\n]+)/i);
+  if (structuredMatch) {
+    const mountText = structuredMatch[1].trim();
+    if (mountText.toLowerCase().includes('heavy war horse')) {
+      return 'rides a heavy war horse';
+    }
+    if (mountText.toLowerCase() !== 'none' && mountText !== '') {
+      return `rides a ${mountText.toLowerCase()}`;
+    }
+  }
+  
+  // Check for mount section header
+  if (/\*\*Mount Name \(if applicable\)\*\*/i.test(text)) {
+    // Look for mount details in the following section
+    const mountSection = text.match(/\*\*Mount Name.*?\n([\s\S]*?)(?:\n\*\*|$)/i);
+    if (mountSection) {
+      if (/heavy war horse/i.test(mountSection[1])) {
+        return 'rides a heavy war horse';
+      }
+    }
+  }
+  
   if (/heavy war horse/i.test(text)) {
     return 'rides a heavy war horse';
   }
@@ -222,25 +257,25 @@ export function processDump(dump: string): string[] {
 
 export function generateNPCTemplate(): string {
   return `**NPC Name, Full Honorific and Office (if applicable)**
-*   **Formal Address:** [This section provides the character's formal title for address, e.g., "His Supernal Devotion"]
-*   **Disposition:** [Describes the character's basic worldview and moral outlook, replacing "alignment." It should be formatted as nouns, such as "law/good," "chaos/evil," or a single word like "neutral."]
-*   **Race:** [The character's race (e.g., human, elf, dwarf)]
-*   **Level and Class:** [The character's level and class, with the race listed first (e.g., "human, **1st level fighter**"). Character levels should use superscript outside of italicized stat blocks and be bolded.]
+*   **Formal Address:** [This section provides the character's formal title for address, e.g., "His Supernal Devotion"].
+*   **Disposition:** [Describes the character's basic worldview and moral outlook, replacing "alignment." It should be formatted as nouns, such as "law/good," "chaos/evil," or a single word like "neutral."].
+*   **Race:** [The character's race (e.g., human, elf, dwarf).].
+*   **Level and Class:** [The character's level and class, with the race listed first (e.g., "human, **1^st^ level fighter**"). Character levels should use superscript outside of italicized stat blocks and be bolded.].
 *   **Vital Statistics:**
-    *   **Hit Points (HP):** [The total sum of the character's hit points. For classed NPCs, this is a sum rather than a dice equation.]
-    *   **Armor Class (AC):** [The character's Armor Class, typically presented as base/magical AC (e.g., 13/22).]
-*   **Prime Attributes (PA):** [Lists the character's prime attributes, spelled out in the Player's Handbook order: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma.]
+    *   **Hit Points (HP):** [The total sum of the character's hit points. For classed NPCs, this is a sum rather than a dice equation.].
+    *   **Armor Class (AC):** [The character's Armor Class, typically presented as base/magical AC (e.g., 13/22).].
+*   **Prime Attributes (PA):** [Lists the character's prime attributes, spelled out in the *Player's Handbook* order: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma.].
 *   **Significant Attributes (Optional):** [Any attribute score over 12 or below 9, noted here if applicable.]
-*   **Equipment (EQ):** [Lists all equipment. Magic items, including their numerical bonuses, are **italicized** (e.g., a *longsword +1*). A brief mechanical explanation should be included for any magic item not obvious or found in a core rulebook.]
-*   **Spells:** [For spellcasters, this lists the number of spells available per spell level in a numeric spread (e.g., "0-level: X, 1st-level: X, 2nd-level: X..."). Individual spell names are generally *not* listed unless they are absolutely essential to a specific encounter's design, otherwise, the Castle Keeper determines them.]
+*   **Equipment (EQ):** [Lists all equipment. Magic items, including their numerical bonuses, are **italicized** (e.g., a *longsword +1*). A brief mechanical explanation should be included for any magic item not obvious or found in a core rulebook.].
+*   **Spells:** [For spellcasters, this lists the number of spells available per spell level in a numeric spread (e.g., "0-level: X, 1st-level: X, 2nd-level: X..."). Individual spell names are generally *not* listed unless they are absolutely essential to a specific encounter's design, otherwise, the Castle Keeper determines them.].
 
 **Mount Name (if applicable)**
-*   **Vital Statistics:** [The mount's Hit Dice (HD), Hit Points (HP), and Armor Class (AC) (e.g., HD 4d10, HP 35, AC 19).]
-*   **Disposition:** [The mount's basic worldview and moral outlook (e.g., neutral).]
-*   **Primary Attributes (PA):** [The mount's primary attributes, spelled out (e.g., strength, constitution, dexterity).]
-*   **Attacks:** [Describes the mount's attacks, including damage (e.g., "two hoof attacks for 1–4 damage each, or one overbearing attack"). Standardized terminology like "overbearing attack" is used.]
-*   **Equipment:** [Any equipment the mount is outfitted with (e.g., chain mail barding).]
+*   **Vital Statistics:** [The mount's Hit Dice (HD), Hit Points (HP), and Armor Class (AC) (e.g., HD 4d10, HP 35, AC 19).].
+*   **Disposition:** [The mount's basic worldview and moral outlook (e.g., neutral).].
+*   **Primary Attributes (PA):** [The mount's primary attributes, spelled out (e.g., strength, constitution, dexterity).].
+*   **Attacks:** [Describes the mount's attacks, including damage (e.g., "two hoof attacks for 1–4 damage each, or one overbearing attack"). Standardized terminology like "overbearing attack" is used.].
+*   **Equipment:** [Any equipment the mount is outfitted with (e.g., chain mail barding).].
 
 **Role/Background (Optional, but recommended for detailed NPCs)**
-*   [Provides narrative context, such as the character's residence, their role in society, their influence over civic matters, and their income. Coinage should be spelled out (e.g., "gold," "silver") rather than abbreviated.]`;
+*   [Provides narrative context, such as the character's residence, their role in society, their influence over civic matters, and their income. Coinage should be spelled out (e.g., "gold," "silver") rather than abbreviated.].`;
 }

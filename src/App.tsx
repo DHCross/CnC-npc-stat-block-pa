@@ -23,7 +23,19 @@ Equipment: *longsword +1*, *plate mail*, *heavy steel shield*
 Alignment: chaos/neutral
 HP: 8, AC: 12
 Primes: Dexterity
-Equipment: Dagger, leather armor, 3 vials of snake oil`;
+Equipment: Dagger, leather armor, 3 vials of snake oil
+
+**The Right Honorable President Counselor of Yggsburgh His Supernal Devotion, Victor Oldham, High Priest of the Grand Temple**
+*   **Disposition:** law/good
+*   **Race:** human
+*   **Level and Class:** human, **16^th^ level cleric**
+*   **Vital Statistics:**
+    *   **Hit Points (HP):** 59
+    *   **Armor Class (AC):** 13/22
+*   **Prime Attributes (PA):** Strength, Wisdom, Charisma
+*   **Equipment (EQ):** pectoral of protection +3, full plate mail, steel shield, staff of striking, mace
+*   **Spells:** 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
+*   **Mount:** heavy war horse`;
 
 function App() {
   const [inputText, setInputText] = useState('');
