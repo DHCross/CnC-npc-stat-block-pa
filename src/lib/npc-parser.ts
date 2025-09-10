@@ -465,11 +465,20 @@ export function validateStatBlock(text: string): ValidationResult {
   // 20. Superscript Usage in Levels
   validateSuperscriptLevels(body, warnings);
 
+  // 21. Missing Parenthetical AC Structure (AC should be base/magical if magical)
+  validateACStructure(body, warnings);
+
+  // 22. Title Formatting Issues (colons in title)
+  validateTitleColons(title, warnings);
+
+  // 23. Multiple Equipment Sections
+  validateEquipmentSectionCount(body, warnings);
+
   const errorCount = warnings.filter(w => w.type === 'error').length;
   const warningCount = warnings.filter(w => w.type === 'warning').length;
   const infoCount = warnings.filter(w => w.type === 'info').length;
   
-  const totalChecks = 20;
+  const totalChecks = 23;
   const issueCount = errorCount + (warningCount * 0.5) + (infoCount * 0.1);
   const complianceScore = Math.max(0, Math.round(((totalChecks - issueCount) / totalChecks) * 100));
   
@@ -603,13 +612,22 @@ function validateLevelFormatting(body: string, warnings: ValidationWarning[]) {
   }
   
   // Check for fully spelled out levels (e.g., "sixteenth level")
-  if (body.match(/\b(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth|thirteenth|fourteenth|fifteenth|sixteenth|seventeenth|eighteenth|nineteenth|twentieth)\s+level\b/i)) {
-    warnings.push({
-      type: 'warning',
-      category: 'Level Formatting',
-      message: 'Character level is fully typed out rather than using numeric abbreviation',
-      suggestion: 'Use "16th level" instead of "sixteenth level"'
-    });
+  const spelledOutLevels = [
+    'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth',
+    'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 
+    'eighteenth', 'nineteenth', 'twentieth'
+  ];
+  
+  for (const level of spelledOutLevels) {
+    if (body.match(new RegExp(`\\b${level}\\s+level\\b`, 'i'))) {
+      warnings.push({
+        type: 'warning',
+        category: 'Level Formatting',
+        message: `Character level is fully typed out ("${level} level") rather than using numeric abbreviation`,
+        suggestion: 'Use "16th level" instead of "sixteenth level"'
+      });
+      break;
+    }
   }
 }
 
@@ -693,9 +711,18 @@ function validateMagicItemItalicization(body: string, warnings: ValidationWarnin
     for (const match of matches) {
       const item = match[0].trim();
       // Skip if already italicized or if it's just a number
-      if (!item.startsWith('*') && !item.endsWith('*') && item.length > 3 && !item.match(/^\d/)) {
+      if (!item.startsWith('*') && !item.endsWith('*') && item.length > 3 && !item.match(/^\d/) && !item.match(/^\+\d+$/)) {
         foundItems.add(item);
       }
+    }
+  }
+  
+  // Check for common magic weapons that should be italicized
+  const weaponBonuses = [...body.matchAll(/\+(\d+)\s+([\w\s]+?)(?:,|\.|\s|$)/g)];
+  for (const match of weaponBonuses) {
+    const weapon = match[2].trim();
+    if (weapon.match(/\b(?:sword|mace|dagger|axe|hammer|bow|crossbow)\b/i) && weapon.length < 20) {
+      foundItems.add(`${weapon} +${match[1]}`);
     }
   }
   
@@ -877,11 +904,12 @@ function validateVisionTerminology(body: string, warnings: ValidationWarning[]) 
     { old: 'infravision', new: 'Infra Vision' },
     { old: 'ultravision', new: 'Ultra Vision' },
     { old: 'lowlightvision', new: 'Low Light Vision' },
+    { old: 'low-lightvision', new: 'Low Light Vision' },
     { old: 'truevision', new: 'True Vision' }
   ];
   
   for (const { old, new: newTerm } of deprecatedVision) {
-    if (body.match(new RegExp(`\\b${old}\\b`, 'i'))) {
+    if (body.match(new RegExp(`\\b${old.replace('-', '[-\\s]?')}\\b`, 'i'))) {
       warnings.push({
         type: 'warning',
         category: 'Vision Terminology',
@@ -1076,6 +1104,69 @@ function validateSuperscriptLevels(body: string, warnings: ValidationWarning[]) 
       });
       break; // Only warn once about superscripts
     }
+  }
+}
+
+// 21. Missing Parenthetical AC Structure
+function validateACStructure(body: string, warnings: ValidationWarning[]) {
+  const acMatch = body.match(/(?:Armor Class|AC)\s*[:=]\s*([^\n]+)/i);
+  if (acMatch) {
+    const acValue = acMatch[1].trim();
+    
+    // Check for complex AC breakdown that should be simplified
+    if (acValue.includes('(') && acValue.includes('+')) {
+      warnings.push({
+        type: 'warning',
+        category: 'AC Format',
+        message: 'AC contains complex breakdown - C&C prefers simple numerical values',
+        suggestion: 'Calculate total AC and present as single number or base/magical format'
+      });
+    }
+    
+    // Check if it's a single number when it should be base/magical
+    if (/^\d+$/.test(acValue)) {
+      warnings.push({
+        type: 'info',
+        category: 'AC Format',
+        message: 'AC appears to be single value - consider if base/magical format is appropriate',
+        suggestion: 'If character has magical AC bonuses, format as "13/22" (base/magical)'
+      });
+    }
+  }
+}
+
+// 22. Title Formatting Issues (colons in title)
+function validateTitleColons(title: string, warnings: ValidationWarning[]) {
+  if (title.includes(':')) {
+    warnings.push({
+      type: 'error',
+      category: 'Title Format',
+      message: 'Title contains colon - C&C convention requires comma separation instead',
+      suggestion: 'Replace colons in title with commas for proper C&C formatting'
+    });
+  }
+}
+
+// 23. Multiple Equipment Sections
+function validateEquipmentSectionCount(body: string, warnings: ValidationWarning[]) {
+  const equipmentMatches = [...body.matchAll(/Equipment\s*:/gi)];
+  if (equipmentMatches.length > 1) {
+    warnings.push({
+      type: 'warning',
+      category: 'Equipment Format',
+      message: 'Multiple Equipment sections detected - should consolidate into single section',
+      suggestion: 'Combine all equipment into one "Equipment:" section'
+    });
+  }
+  
+  // Check for equipment in other sections
+  if (body.match(/(?:Gear|Items|Possessions)\s*:/i)) {
+    warnings.push({
+      type: 'warning',
+      category: 'Equipment Format',
+      message: 'Non-standard equipment section labels detected',
+      suggestion: 'Use standard "Equipment:" label for all gear and items'
+    });
   }
 }
 

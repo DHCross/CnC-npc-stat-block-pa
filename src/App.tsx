@@ -31,16 +31,20 @@ Armor Class: 10
 Prime Attributes: Intelligence
 Equipment: nobleman's clothing`;
 
-const VALIDATION_EXAMPLE = `**Ser Marcus the Bold**
+const VALIDATION_EXAMPLE = `**Sir Marcus: the Bold Knight**
 Alignment: lawful good
-Race & Class: human, 5th level fighter  
-Hit Points (HP): 4d10
-Armor Class (AC): 18
-Prime Attributes (PA): Str, Con
-Equipment: +1 longsword, plate mail, heavy steel shield, 500 gp
+Race & Class: 5th level human fighter/2nd level cleric  
+Hit Points (HP): 4d10+8
+Armor Class (AC): 18 (+1 from dex, +7 from plate, +2 from shield)
+Prime Attributes (PA): Str, Con, Wis
+Equipment: +1 longsword, plate mail, heavy steel shield, 500 gp, pectoral of protection +2, staff of striking
+Gear: backpack, rope
 Spells: cure light wounds, bless, protection from evil
-Special Abilities: improved grab, darkvision
-Mount: warhorse`;
+Special Abilities: improved grab, darkvision, spell resistance
+Vision: infravision 60 feet
+Mount: warhorse
+Gender: he leads his troops
+Background: This sixteenth level fighter serves as captain`;
 
 function App() {
   const [inputText, setInputText] = useState('');
@@ -258,11 +262,11 @@ function App() {
               Convert detailed tabletop RPG NPC stat blocks into Castles & Crusades narrative format 
               with comprehensive validation warnings. This enhanced parser produces clean, properly formatted entries 
               that match the Victor Oldham reference style, automatically checks for full C&C compliance across 
-              20+ validation categories, identifies deprecated terminology (alignment→disposition, improved grab→crushing grasp), 
+              23+ validation categories, identifies deprecated terminology (alignment→disposition, improved grab→crushing grasp), 
               validates proper formatting conventions (superscript levels, italicized magic items, noun-form dispositions), 
-              checks coinage terminology, magic item explanations, and batch processing with individual validation 
+              checks coinage terminology, magic item explanations, AC structures, title formatting, and batch processing with individual validation 
               scoring for each NPC. Now includes comprehensive checks for heading format, formal addresses, 
-              race-class ordering, gendered pronouns, vision terminology, and unique ability explanations.
+              race-class ordering, gendered pronouns, vision terminology, unique ability explanations, and equipment section standardization.
             </p>
           </div>
 
@@ -276,11 +280,11 @@ function App() {
                 </CardTitle>
                 <CardDescription>
                   Paste your C&C NPC stat block(s) below. The enhanced parser automatically converts to narrative format, 
-                  validates comprehensive C&C compliance across 20+ categories including heading format, disposition terminology, 
-                  level formatting, magic item italicization, coinage terminology, prime attribute ordering, and mount statistics. 
-                  Features enhanced validation for deprecated terminology (alignment→disposition, improved grab→crushing grasp, 
-                  vision types), proper noun-form dispositions, superscript levels, and magic item mechanical explanations. 
-                  For batch processing, separate multiple NPCs with blank lines. Each NPC receives detailed validation scoring 
+                  validates comprehensive C&C compliance across 23+ categories including heading format, disposition terminology, 
+                  level formatting, magic item italicization, coinage terminology, prime attribute ordering, AC structures, 
+                  and mount statistics. Features enhanced validation for deprecated terminology (alignment→disposition, improved grab→crushing grasp, 
+                  vision types), proper noun-form dispositions, superscript levels, magic item mechanical explanations, and equipment 
+                  section standardization. For batch processing, separate multiple NPCs with blank lines. Each NPC receives detailed validation scoring 
                   and specific compliance warnings to ensure perfect C&C formatting standards.
                 </CardDescription>
               </CardHeader>
@@ -359,9 +363,10 @@ function App() {
                   Parsed Results
                 </CardTitle>
                 <CardDescription>
-                  Castles & Crusades narrative format with comprehensive validation across 20+ compliance categories. 
+                  Castles & Crusades narrative format with comprehensive validation across 23+ compliance categories. 
                   Enhanced validation includes heading format, deprecated terminology detection, magic item explanations, 
-                  disposition noun formatting, prime attribute ordering, superscript levels, and mount statistics validation.
+                  disposition noun formatting, prime attribute ordering, superscript levels, AC structure validation, 
+                  title formatting, and equipment section standardization.
                   {results.length > 1 && ` Processing ${results.length} NPCs with individual detailed validation reports.`}
                   {results.length === 1 && results[0].validation.complianceScore && 
                     ` Compliance score: ${results[0].validation.complianceScore}% across all C&C standards.`}
@@ -388,7 +393,7 @@ function App() {
                         {showValidation ? 'Hide' : 'Show'} Validation
                       </Button>
                       <div className="text-sm text-muted-foreground">
-                        Comprehensive C&C compliance validation across 20+ categories enabled
+                        Comprehensive C&C compliance validation across 23+ categories enabled
                       </div>
                     </div>
 
