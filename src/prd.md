@@ -1,137 +1,145 @@
-# NPC Stat Block Parser - Product Requirements Document
+# NPC Stat Block Parser with Validation System - Product Requirements Document
 
 ## Core Purpose & Success
 
-**Mission Statement**: Transform detailed tabletop RPG NPC stat blocks into properly formatted Castles & Crusades narrative entries that match the original reference style, with automatic formatting, C&C convention compliance, and batch processing capabilities for multiple NPCs.
+**Mission Statement**: Provide a comprehensive tool for converting tabletop RPG NPC stat blocks into proper Castles & Crusades narrative format while ensuring full compliance with modern C&C design conventions through intelligent validation and scoring.
 
 **Success Indicators**: 
-- Accurate parsing of diverse NPC stat block formats
-- Perfect adherence to C&C narrative formatting standards
-- Automatic magic item italicization and proper terminology
-- Fast conversion with instant feedback
-- Efficient batch processing of multiple NPCs
-- High usability for both new and experienced Castle Keepers
+- Users can confidently convert stat blocks knowing they meet C&C standards
+- Validation system catches 95% of common formatting and terminology issues
+- Batch processing handles multiple NPCs efficiently with individual compliance scoring
+- Clear guidance helps users understand and fix C&C convention violations
 
-**Experience Qualities**: Professional, Precise, Efficient
+**Experience Qualities**: Professional, Educational, Reliable
 
 ## Project Classification & Approach
 
-**Complexity Level**: Light Application (specialized parsing with persistent state management)
+**Complexity Level**: Light Application (multiple features with validation state management)
 
-**Primary User Activity**: Creating (transforming detailed stat blocks into standardized C&C narrative format)
+**Primary User Activity**: Acting (converting and validating content with immediate feedback)
 
 ## Thought Process for Feature Selection
 
-**Core Problem Analysis**: Castle Keepers need properly formatted NPC entries that follow official Castles & Crusades conventions, but manually converting stat blocks is time-consuming and error-prone.
+**Core Problem Analysis**: Converting legacy or inconsistent RPG stat blocks to modern C&C standards requires both format conversion and compliance validation, as users often don't know about updated terminology and conventions.
 
-**User Context**: Castle Keepers preparing adventures or converting materials who need consistent, properly formatted NPC entries that match the published C&C style guide.
+**User Context**: Game masters and publishers need to ensure their NPCs follow current C&C design principles, especially when converting older materials or working with mixed-format sources.
 
-**Critical Path**: Input diverse stat block(s) → Parse with C&C rules → Generate compliant narrative format(s) → Copy for publication/use
+**Critical Path**: Input → Parse → Convert → Validate → Display Results with Warnings → Export/Save
 
 **Key Moments**: 
-1. Intelligent format recognition and title/body separation
-2. Proper disposition normalization (lawful good → law/good)
-3. Automatic magic item detection and italicization
-4. Mount statistics generation when applicable
+1. Real-time validation feedback during input
+2. Clear compliance scoring that motivates improvement
+3. Actionable suggestions for fixing issues
 
 ## Essential Features
 
-### Core Parsing Engine
-- **Functionality**: Extracts key NPC data (name, class/level, HP, AC, equipment, etc.) from various stat block formats, supporting both single NPCs and batch processing of multiple NPCs separated by blank lines
-- **Purpose**: Handles diverse formatting styles from different RPG sources and enables efficient conversion of multiple NPCs at once
-- **Success Criteria**: Successfully parses 95%+ of common stat block formats, correctly identifies and separates multiple NPCs in batch input
+### Core Conversion Engine
+- **Functionality**: Converts various stat block formats to C&C narrative style
+- **Purpose**: Ensures consistent output matching Victor Oldham reference format
+- **Success Criteria**: Produces properly formatted narrative text with correct terminology
+
+### Comprehensive Validation System  
+- **Functionality**: 14-point validation checklist covering all C&C conventions
+- **Purpose**: Educates users about current standards while ensuring compliance
+- **Success Criteria**: Identifies issues with 95% accuracy and provides actionable guidance
+
+### Batch Processing with Individual Scoring
+- **Functionality**: Processes multiple NPCs simultaneously with per-NPC validation
+- **Purpose**: Enables efficient conversion of large stat block collections
+- **Success Criteria**: Handles 10+ NPCs with individual compliance reports
+
+### Interactive Validation Display
+- **Functionality**: Collapsible validation panels with color-coded warnings
+- **Purpose**: Makes compliance issues discoverable without overwhelming the interface
+- **Success Criteria**: Users can quickly identify and understand issues
 
 ### Template System
-- **Functionality**: Provides structured Castles & Crusades templates for both single NPCs and batch processing examples
-- **Purpose**: Guides users toward standardized, parseable formats and demonstrates proper batch formatting
-- **Success Criteria**: Templates generate correctly formatted stat blocks that parse accurately, batch template clearly shows proper NPC separation
-
-### Real-time Processing
-- **Functionality**: Instant conversion as users type or paste content, handling both single NPCs and multiple NPCs automatically
-- **Purpose**: Immediate feedback prevents formatting errors and reduces workflow friction, enables rapid conversion of multiple NPCs
-- **Success Criteria**: Sub-100ms processing time for typical stat blocks, successful identification and parsing of multiple NPCs
-
-### Results Management
-- **Functionality**: Copy individual/all results, save NPCs for later reference, download as text files
-- **Purpose**: Supports various workflow preferences and session preparation needs
-- **Success Criteria**: Zero-friction export to common formats
-
-### Persistent Storage
-- **Functionality**: Saves previously processed NPCs across sessions
-- **Purpose**: Builds personal NPC library for recurring campaign use
-- **Success Criteria**: Reliable data persistence with easy access and management
+- **Functionality**: Provides correct examples and common problematic examples
+- **Purpose**: Teaches proper formatting while demonstrating validation capabilities
+- **Success Criteria**: Users learn C&C conventions through example interaction
 
 ## Design Direction
 
 ### Visual Tone & Identity
-**Emotional Response**: Professional confidence with subtle gaming references
-**Design Personality**: Clean, systematic, slightly technical but approachable
-**Visual Metaphors**: Parchment textures, dice iconography, table organization
-**Simplicity Spectrum**: Minimal interface that doesn't distract from content processing
+**Emotional Response**: Professional confidence with educational clarity
+**Design Personality**: Scholarly and systematic, like a reference manual come to life
+**Visual Metaphors**: Academic validation, publishing standards, editorial review process
+**Simplicity Spectrum**: Rich interface that progressively reveals complexity
 
 ### Color Strategy
-**Color Scheme Type**: Analogous with accent
-**Primary Color**: Deep blue (oklch(0.45 0.15 240)) - suggests reliability and focus
-**Secondary Colors**: Slate grays for supporting elements
-**Accent Color**: Bright cyan (oklch(0.75 0.15 195)) - highlights interactive elements
-**Color Psychology**: Blue conveys professionalism and trust; cyan provides energy for actions
-**Color Accessibility**: All combinations exceed WCAG AA contrast requirements
+**Color Scheme Type**: Professional palette with semantic validation colors
+**Primary Color**: Deep blue (#3b4f8a) - conveys expertise and reliability
+**Secondary Colors**: Slate grays for content areas
+**Accent Color**: Bright cyan (#22d3ee) for highlights and interactive elements
+**Validation Colors**: 
+- Red (#ef4444) for errors requiring immediate attention
+- Yellow (#eab308) for warnings that should be addressed
+- Blue (#3b82f6) for informational suggestions
+- Green (#22c55e) for compliance success
 
 ### Typography System
-**Font Pairing Strategy**: Inter (clean sans-serif) for UI, JetBrains Mono for code/stat blocks
-**Typographic Hierarchy**: Clear distinction between headers, body text, and monospace content
-**Font Personality**: Inter conveys modern professionalism; JetBrains Mono ensures readable stat blocks
-**Readability Focus**: Generous line spacing, appropriate sizes for quick scanning
-**Typography Consistency**: Systematic use of weights and sizes throughout interface
-
-### Visual Hierarchy & Layout
-**Attention Direction**: Left-to-right flow from input to results
-**White Space Philosophy**: Generous spacing to reduce cognitive load during stat block processing
-**Grid System**: Two-column layout on desktop, stacked on mobile
-**Responsive Approach**: Mobile-first design with expanded desktop capabilities
-**Content Density**: Balanced information display without overwhelming users
-
-### Animations
-**Purposeful Meaning**: Subtle feedback for successful operations and state changes
-**Hierarchy of Movement**: Minimal, functional animations that don't delay workflow
-**Contextual Appropriateness**: Professional feel appropriate for productivity tool
+**Font Pairing Strategy**: Inter for interface clarity, JetBrains Mono for stat block content
+**Typographic Hierarchy**: Clear distinction between input, output, and validation content
+**Which fonts**: Inter (sans-serif) and JetBrains Mono (monospace)
+**Legibility Check**: Both fonts optimize for extended reading and code/stat block display
 
 ### UI Elements & Component Selection
-**Component Usage**: Cards for content sections, buttons for actions, textarea for input
-**Component Customization**: Subtle border radius, professional color application
-**Component States**: Clear hover, focus, and active states for all interactive elements
-**Icon Selection**: Phosphor icons for consistent, professional appearance
-**Component Hierarchy**: Primary actions (parse, copy) emphasized; secondary actions available but subdued
+**Component Usage**: 
+- Cards for major content sections (input, output, validation)
+- Collapsible panels for validation details
+- Badges for compliance scoring and issue counts
+- Alerts for different validation warning types
+- Buttons with clear action hierarchy
+
+**Component Customization**: 
+- Validation badges use semantic colors
+- Collapsible triggers show compliance scores prominently
+- Input areas use monospace fonts for accurate stat block display
+
+### Animations
+**Purposeful Meaning**: Smooth collapsible transitions guide attention to validation details
+**Hierarchy of Movement**: Validation panels expand to reveal issues without jarring transitions
 
 ### Accessibility & Readability
-**Contrast Goal**: WCAG AA compliance achieved across all text and interface elements
-**Keyboard Navigation**: Full keyboard accessibility with logical tab order
-**Screen Reader Support**: Proper semantic markup and ARIA labels
+**Contrast Goal**: WCAG AA compliance maintained across all validation color combinations
+- Error red on light backgrounds: 4.5:1 ratio
+- Warning yellow with dark text: 4.5:1 ratio  
+- Success green with sufficient contrast: 4.5:1 ratio
+
+## Implementation Considerations
+
+### Validation System Architecture
+- Modular validation functions for each C&C convention
+- Weighted scoring system (errors count more than warnings)
+- Extensible design for adding new validation rules
+
+### Batch Processing Performance
+- Efficient parsing to handle large inputs
+- Individual validation tracking per NPC
+- Progressive display of results
+
+### Educational Value
+- Clear categorization of validation warnings
+- Specific suggestions for fixing each issue type
+- Examples demonstrating both correct and problematic formats
 
 ## Edge Cases & Problem Scenarios
 
 **Potential Obstacles**: 
-- Inconsistent stat block formatting across different RPG systems
-- Very long or complex stat blocks that don't fit condensed format
-- User confusion about supported formats
+- Malformed input that breaks parsing
+- Legacy stat blocks with obsolete terminology
+- Edge cases in validation logic
 
-**Edge Case Handling**: 
-- Graceful degradation for unparseable content
-- Clear error messages with formatting guidance
-- Template system to guide proper input
-- Intelligent NPC separation for batch processing
-- Fallback parsing when standard separators aren't used
+**Edge Case Handling**:
+- Graceful degradation when parsing fails
+- Fuzzy matching for variant terminology
+- Fallback suggestions when exact rules don't apply
 
-**Technical Constraints**: Browser clipboard API limitations, file size limits for processing
-
-## Implementation Considerations
-
-**Scalability Needs**: Modular parser system to support additional RPG systems
-**Testing Focus**: Parser accuracy across diverse stat block formats
-**Critical Questions**: What parsing failures are acceptable? How to handle edge cases gracefully?
+**Testing Focus**:
+- Validation accuracy across diverse stat block formats
+- Performance with large batch inputs
+- User comprehension of validation feedback
 
 ## Reflection
 
-This approach uniquely combines real-time processing with template guidance, addressing both immediate workflow needs and long-term standardization goals. The focus on professional presentation distinguishes it from hobby-level tools while remaining accessible to casual users.
-
-The template system addresses a key gap in existing tools by not just parsing existing content but helping users create properly formatted content from the start.
+This approach uniquely combines format conversion with educational validation, turning a simple parsing tool into a comprehensive C&C compliance system. The validation scoring gamifies adherence to standards while the detailed warnings provide learning opportunities. This creates lasting value beyond just format conversion - users internalize proper C&C conventions through repeated use.

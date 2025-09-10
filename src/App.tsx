@@ -4,9 +4,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
+import { Badge } from '@/components/ui/badge';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Toaster } from '@/components/ui/sonner';
-import { Copy, Download, Upload, AlertCircle, Trash2, FileText } from '@phosphor-icons/react';
-import { processDump, generateNPCTemplate, generateBatchTemplate } from '@/lib/npc-parser';
+import { Copy, Download, Upload, AlertCircle, Trash2, FileText, Warning, Info, CheckCircle, ChevronDown, ChevronRight } from '@phosphor-icons/react';
+import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning } from '@/lib/npc-parser';
 import { toast } from 'sonner';
 import { useKV } from '@github/spark/hooks';
 
@@ -29,11 +31,22 @@ Armor Class: 10
 Prime Attributes: Intelligence
 Equipment: nobleman's clothing`;
 
+const VALIDATION_EXAMPLE = `**Ser Marcus the Bold**
+Alignment: lawful good
+Race & Class: human, 5th level fighter  
+Hit Points (HP): 4d10
+Armor Class (AC): 18
+Prime Attributes (PA): Str, Con
+Equipment: +1 longsword, plate mail, heavy steel shield, 500 gp
+Spells: cure light wounds, bless
+Mount: none`;
+
 function App() {
   const [inputText, setInputText] = useState('');
-  const [results, setResults] = useState<string[]>([]);
+  const [results, setResults] = useState<ProcessedNPC[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [savedResults, setSavedResults, deleteSavedResults] = useKV<string[]>('npc-parser-results', []);
+  const [showValidation, setShowValidation] = useState(true);
 
   const processInput = (text: string) => {
     if (!text.trim()) {
@@ -43,7 +56,7 @@ function App() {
     }
 
     try {
-      const processed = processDump(text);
+      const processed = processDumpWithValidation(text);
       
       if (processed.length === 0) {
         setError('No valid NPC stat blocks found. Please check your formatting.');
@@ -75,13 +88,14 @@ function App() {
 
   const copyAllResults = async () => {
     if (results.length === 0) return;
-    const allText = results.join('\n\n');
+    const allText = results.map(r => r.converted).join('\n\n');
     await copyToClipboard(allText);
   };
 
   const saveResults = () => {
     if (results.length === 0) return;
-    setSavedResults((current) => [...current, ...results]);
+    const converted = results.map(r => r.converted);
+    setSavedResults((current) => [...current, ...converted]);
     toast.success(`Saved ${results.length} NPC${results.length > 1 ? 's' : ''}`);
   };
 
@@ -92,7 +106,7 @@ function App() {
 
   const downloadResults = () => {
     if (results.length === 0) return;
-    const content = results.join('\n\n');
+    const content = results.map(r => r.converted).join('\n\n');
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -115,6 +129,11 @@ function App() {
     processInput(ALTERNATIVE_EXAMPLE);
   };
 
+  const loadValidationExample = () => {
+    setInputText(VALIDATION_EXAMPLE);
+    processInput(VALIDATION_EXAMPLE);
+  };
+
   const loadTemplate = () => {
     const template = generateNPCTemplate();
     setInputText(template);
@@ -127,6 +146,105 @@ function App() {
     processInput(template);
   };
 
+  const getWarningIcon = (type: ValidationWarning['type']) => {
+    switch (type) {
+      case 'error':
+        return <AlertCircle className="w-4 h-4 text-destructive" />;
+      case 'warning':
+        return <Warning className="w-4 h-4 text-yellow-600" />;
+      case 'info':
+        return <Info className="w-4 h-4 text-blue-600" />;
+      default:
+        return <Info className="w-4 h-4" />;
+    }
+  };
+
+  const getComplianceColor = (score: number) => {
+    if (score >= 90) return 'bg-green-500';
+    if (score >= 70) return 'bg-yellow-500';
+    return 'bg-red-500';
+  };
+
+  const ValidationWarnings = ({ validation, npcIndex }: { validation: any; npcIndex: number }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    if (validation.warnings.length === 0) {
+      return (
+        <div className="flex items-center gap-2 p-2 bg-green-50 border border-green-200 rounded text-sm">
+          <CheckCircle className="w-4 h-4 text-green-600" />
+          <span className="text-green-800">Fully compliant with C&C conventions</span>
+          <Badge variant="outline" className="ml-auto bg-green-100 text-green-800">
+            {validation.complianceScore}%
+          </Badge>
+        </div>
+      );
+    }
+
+    return (
+      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+        <CollapsibleTrigger asChild>
+          <Button variant="ghost" className="w-full justify-between p-2 h-auto">
+            <div className="flex items-center gap-2">
+              {isOpen ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+              <span className="text-sm">Validation Results</span>
+              <Badge 
+                variant="outline" 
+                className={`${getComplianceColor(validation.complianceScore)} text-white`}
+              >
+                {validation.complianceScore}%
+              </Badge>
+            </div>
+            <div className="flex gap-1">
+              {validation.warnings.filter((w: ValidationWarning) => w.type === 'error').length > 0 && (
+                <Badge variant="destructive" className="text-xs">
+                  {validation.warnings.filter((w: ValidationWarning) => w.type === 'error').length} errors
+                </Badge>
+              )}
+              {validation.warnings.filter((w: ValidationWarning) => w.type === 'warning').length > 0 && (
+                <Badge variant="outline" className="text-xs bg-yellow-100 text-yellow-800">
+                  {validation.warnings.filter((w: ValidationWarning) => w.type === 'warning').length} warnings
+                </Badge>
+              )}
+            </div>
+          </Button>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <div className="space-y-2 p-2 border-t">
+            {validation.warnings.map((warning: ValidationWarning, idx: number) => (
+              <div
+                key={idx}
+                className={`p-2 rounded text-sm border-l-4 ${
+                  warning.type === 'error'
+                    ? 'bg-red-50 border-red-500'
+                    : warning.type === 'warning'
+                    ? 'bg-yellow-50 border-yellow-500'
+                    : 'bg-blue-50 border-blue-500'
+                }`}
+              >
+                <div className="flex items-start gap-2">
+                  {getWarningIcon(warning.type)}
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-medium text-xs uppercase tracking-wide">
+                        {warning.category}
+                      </span>
+                    </div>
+                    <p className="text-sm">{warning.message}</p>
+                    {warning.suggestion && (
+                      <p className="text-xs mt-1 opacity-75">
+                        💡 {warning.suggestion}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
+    );
+  };
+
   return (
     <>
       <div className="min-h-screen bg-background font-sans">
@@ -136,10 +254,12 @@ function App() {
               NPC Stat Block Parser
             </h1>
             <p className="text-muted-foreground text-lg">
-              Convert detailed tabletop RPG NPC stat blocks into Castles & Crusades narrative format. 
-              This tool produces clean, properly formatted entries that match the original reference style, 
-              with automatic magic item italicization and correct C&C conventions. Supports both single NPCs 
-              and batch processing of multiple NPCs separated by blank lines.
+              Convert detailed tabletop RPG NPC stat blocks into Castles & Crusades narrative format 
+              with comprehensive validation warnings. This tool produces clean, properly formatted entries 
+              that match the Victor Oldham reference style, automatically checks C&C compliance, identifies 
+              deprecated terminology, and validates proper formatting conventions. Features automatic magic 
+              item italicization, disposition conversion, and batch processing with individual validation 
+              scoring for each NPC.
             </p>
           </div>
 
@@ -152,10 +272,10 @@ function App() {
                   Input Stat Blocks
                 </CardTitle>
                 <CardDescription>
-                  Paste your C&C NPC stat block(s) below. For batch processing, separate multiple NPCs with blank lines. 
-                  The parser automatically converts to narrative format, handles magic item italicization, uses proper C&C 
-                  terminology (disposition vs alignment), and includes mount statistics when applicable. Supports both detailed 
-                  and simplified formats.
+                  Paste your C&C NPC stat block(s) below. The parser automatically converts to narrative format, 
+                  validates C&C compliance, handles magic item italicization, uses proper terminology (disposition vs alignment), 
+                  and includes mount statistics when applicable. For batch processing, separate multiple NPCs with blank lines. 
+                  Each NPC receives a validation score and detailed compliance warnings to ensure proper C&C formatting.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -183,6 +303,17 @@ function App() {
                   >
                     Simple Format
                   </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={loadValidationExample}
+                    className="flex-1 flex items-center gap-2"
+                  >
+                    <Warning size={16} />
+                    Issues Demo
+                  </Button>
+                </div>
+                <div className="flex gap-2">
                   <Button
                     variant="outline"
                     size="sm"
@@ -222,8 +353,10 @@ function App() {
                   Parsed Results
                 </CardTitle>
                 <CardDescription>
-                  Castles & Crusades narrative format with proper C&C conventions and terminology. 
-                  {results.length > 1 && `Processing ${results.length} NPCs.`}
+                  Castles & Crusades narrative format with validation warnings and compliance scoring. 
+                  {results.length > 1 && `Processing ${results.length} NPCs with individual validation reports.`}
+                  {results.length === 1 && results[0].validation.complianceScore && 
+                    ` Compliance score: ${results[0].validation.complianceScore}%`}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -236,24 +369,56 @@ function App() {
 
                 {results.length > 0 ? (
                   <>
-                    <div className="space-y-3 max-h-[400px] overflow-y-auto">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setShowValidation(!showValidation)}
+                        className="flex items-center gap-2"
+                      >
+                        {showValidation ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                        {showValidation ? 'Hide' : 'Show'} Validation
+                      </Button>
+                      <div className="text-sm text-muted-foreground">
+                        C&C compliance checking enabled
+                      </div>
+                    </div>
+
+                    <div className="space-y-4 max-h-[400px] overflow-y-auto">
                       {results.map((result, index) => (
-                        <div key={index} className="space-y-2">
+                        <div key={index} className="space-y-3 border rounded-lg p-4">
+                          {showValidation && (
+                            <ValidationWarnings validation={result.validation} npcIndex={index} />
+                          )}
+                          
                           <div className="bg-muted/50 p-3 rounded-md border">
                             <pre className="font-mono text-sm leading-relaxed break-words whitespace-pre-wrap">
-                              {result}
+                              {result.converted}
                             </pre>
                           </div>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => copyToClipboard(result)}
-                            className="w-full flex items-center gap-2"
-                          >
-                            <Copy size={16} />
-                            Copy this NPC
-                          </Button>
-                          {index < results.length - 1 && <Separator className="my-3" />}
+                          
+                          <div className="flex gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => copyToClipboard(result.converted)}
+                              className="flex-1 flex items-center gap-2"
+                            >
+                              <Copy size={16} />
+                              Copy this NPC
+                            </Button>
+                            {showValidation && (
+                              <Badge 
+                                variant="outline" 
+                                className={`flex items-center gap-1 px-2 py-1 ${getComplianceColor(result.validation.complianceScore)} text-white`}
+                              >
+                                {result.validation.isValid ? <CheckCircle size={12} /> : <AlertCircle size={12} />}
+                                {result.validation.complianceScore}%
+                              </Badge>
+                            )}
+                          </div>
+                          
+                          {index < results.length - 1 && <Separator className="my-4" />}
                         </div>
                       ))}
                     </div>
