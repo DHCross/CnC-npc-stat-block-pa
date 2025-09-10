@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
 import { Toaster } from '@/components/ui/sonner';
-import { Copy, Download, Upload, AlertCircle, Trash2 } from '@phosphor-icons/react';
-import { processDump } from '@/lib/npc-parser';
+import { Copy, Download, Upload, AlertCircle, Trash2, FileText } from '@phosphor-icons/react';
+import { processDump, generateNPCTemplate } from '@/lib/npc-parser';
 import { toast } from 'sonner';
 import { useKV } from '@github/spark/hooks';
 
@@ -104,6 +104,12 @@ function App() {
     processInput(EXAMPLE_TEXT);
   };
 
+  const loadTemplate = () => {
+    const template = generateNPCTemplate();
+    setInputText(template);
+    processInput(template);
+  };
+
   return (
     <>
       <div className="min-h-screen bg-background font-sans">
@@ -126,7 +132,7 @@ function App() {
                   Input Stat Blocks
                 </CardTitle>
                 <CardDescription>
-                  Paste your NPC stat blocks below. Separate multiple NPCs with blank lines.
+                  Paste your NPC stat blocks below. Separate multiple NPCs with blank lines. Use the C&C Template for proper Castles & Crusades formatting.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -145,6 +151,15 @@ function App() {
                     className="flex-1"
                   >
                     Load Example
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={loadTemplate}
+                    className="flex-1 flex items-center gap-2"
+                  >
+                    <FileText size={16} />
+                    C&C Template
                   </Button>
                   <Button
                     variant="outline"
