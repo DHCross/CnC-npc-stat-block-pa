@@ -10,32 +10,16 @@ import { processDump, generateNPCTemplate } from '@/lib/npc-parser';
 import { toast } from 'sonner';
 import { useKV } from '@github/spark/hooks';
 
-const EXAMPLE_TEXT = `**Guard Captain Miller**
-Race & Class: Human, 5th level fighter
+const EXAMPLE_TEXT = `**The Right Honorable President Counselor of Yggsburgh His Supernal Devotion, Victor Oldham, High Priest of the Grand Temple**
+
 Disposition: law/good
-Hit Points: 35
-Armor Class: 18
-Prime Attributes: Strength, Constitution
-Equipment: *longsword +1*, *plate mail*, *heavy steel shield*
-
-**Shady Merchant, Silas**
-1st level rogue
-Alignment: chaos/neutral
-HP: 8, AC: 12
-Primes: Dexterity
-Equipment: Dagger, leather armor, 3 vials of snake oil
-
-**The Right Honorable President Counselor of Yggsburgh His Supernal Devotion, Victor Oldham, High Priest of the Grand Temple**
-*   **Disposition:** law/good
-*   **Race:** human
-*   **Level and Class:** human, **16^th^ level cleric**
-*   **Vital Statistics:**
-    *   **Hit Points (HP):** 59
-    *   **Armor Class (AC):** 13/22
-*   **Prime Attributes (PA):** Strength, Wisdom, Charisma
-*   **Equipment (EQ):** pectoral of protection +3, full plate mail, steel shield, staff of striking, mace
-*   **Spells:** 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
-*   **Mount:** heavy war horse`;
+Race & Class: human, 16th level cleric
+Hit Points (HP): 59
+Armor Class (AC): 13/22
+Prime Attributes (PA): Strength, Wisdom, Charisma
+Equipment: pectoral of protection +3, full plate mail, steel shield, staff of striking, mace
+Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
+Mount: heavy war horse`;
 
 function App() {
   const [inputText, setInputText] = useState('');
@@ -131,7 +115,7 @@ function App() {
               NPC Stat Block Parser
             </h1>
             <p className="text-muted-foreground text-lg">
-              Convert detailed tabletop RPG NPC stat blocks into concise, single-line summaries
+              Convert detailed tabletop RPG NPC stat blocks into concise, single-line summaries. One NPC at a time.
             </p>
           </div>
 
@@ -144,12 +128,12 @@ function App() {
                   Input Stat Blocks
                 </CardTitle>
                 <CardDescription>
-                  Paste your NPC stat blocks below. Separate multiple NPCs with blank lines. Use the C&C Template for proper Castles & Crusades formatting.
+                  Paste your NPC stat block below. This tool processes one NPC at a time (with their mount if applicable). Use the C&C Template for proper Castles & Crusades formatting.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <Textarea
-                  placeholder="Paste your NPC stat blocks here..."
+                  placeholder="Paste your NPC stat block here..."
                   value={inputText}
                   onChange={(e) => handleInputChange(e.target.value)}
                   className="font-mono text-sm min-h-[300px] resize-y"
@@ -255,7 +239,7 @@ function App() {
                   </>
                 ) : (
                   <div className="text-center py-12 text-muted-foreground">
-                    <p>Paste NPC stat blocks in the input area to see parsed results here</p>
+                    <p>Paste an NPC stat block in the input area to see the parsed result here</p>
                   </div>
                 )}
               </CardContent>

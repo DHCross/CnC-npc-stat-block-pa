@@ -249,37 +249,58 @@ export function collapseNPCEntry(text: string): string {
 }
 
 export function processDump(dump: string): string[] {
-  // Split on double newlines, but be more careful about what constitutes an NPC block
-  const blocks = dump.split(/\n\s*\n/);
+  // Clean the input text and handle single NPC processing
+  const cleanedDump = dump.trim();
+  
+  // If the input looks like a single stat block (not separated by blank lines),
+  // treat it as one NPC
+  if (!cleanedDump.includes('\n\n')) {
+    // Skip if it's clearly code or non-NPC content
+    if (isCodeContent(cleanedDump)) {
+      return [];
+    }
+    
+    // Check if it has NPC indicators
+    if (hasNPCIndicators(cleanedDump)) {
+      return [collapseNPCEntry(cleanedDump)];
+    }
+    
+    return [];
+  }
+  
+  // Split on double newlines for multiple potential NPCs
+  const blocks = cleanedDump.split(/\n\s*\n/);
   
   return blocks
     .filter(block => {
       const trimmed = block.trim();
-      // Filter out empty blocks and code-like content
-      if (!trimmed) return false;
-      
-      // Skip blocks that look like code or comments (Python, for example)
-      if (trimmed.startsWith('#') || 
-          trimmed.startsWith('def ') || 
-          trimmed.startsWith('import ') ||
-          trimmed.startsWith('from ') ||
-          trimmed.includes('def ') ||
-          trimmed.includes('return ') ||
-          /^\s*[\w_]+\s*=/.test(trimmed) ||
-          trimmed.includes('"""') ||
-          trimmed.includes("'''")) {
-        return false;
-      }
-      
-      // Must have some indication it's an NPC (name in bold, or typical stat block content)
-      const hasNPCIndicators = 
-        /\*\*[^*]+\*\*/.test(trimmed) || // Bold name
-        /(?:Race & Class|Disposition|Hit Points|Armor Class|Prime Attributes|Equipment)/i.test(trimmed) ||
-        /\d+(?:st|nd|rd|th)?\s*level\s+\w+/i.test(trimmed); // Level/class pattern
-      
-      return hasNPCIndicators;
+      return trimmed && !isCodeContent(trimmed) && hasNPCIndicators(trimmed);
     })
     .map(block => collapseNPCEntry(block));
+}
+
+function isCodeContent(text: string): boolean {
+  // Skip blocks that look like code or comments
+  return text.startsWith('#') || 
+         text.startsWith('def ') || 
+         text.startsWith('import ') ||
+         text.startsWith('from ') ||
+         text.includes('def ') ||
+         text.includes('return ') ||
+         /^\s*[\w_]+\s*=/.test(text) ||
+         text.includes('"""') ||
+         text.includes("'''") ||
+         text.includes('```') ||
+         /^\s*\/\//.test(text) || // JavaScript comments
+         /^\s*\/\*/.test(text);   // CSS/JS block comments
+}
+
+function hasNPCIndicators(text: string): boolean {
+  // Must have some indication it's an NPC
+  return /\*\*[^*]+\*\*/.test(text) || // Bold name
+         /(?:Race & Class|Disposition|Hit Points|Armor Class|Prime Attributes|Equipment)/i.test(text) ||
+         /\d+(?:st|nd|rd|th)?\s*level\s+\w+/i.test(text) || // Level/class pattern
+         /(?:HP|AC)\s*[:=]\s*\d+/i.test(text); // HP/AC with numbers
 }
 
 export function generateNPCTemplate(): string {
