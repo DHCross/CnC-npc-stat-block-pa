@@ -7,7 +7,7 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Toaster } from '@/components/ui/sonner';
-import { Copy, Download, Upload, AlertCircle, Trash2, FileText, Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand, Sparkle, ArrowRight } from '@phosphor-icons/react';
+import { Copy, Download, Upload, AlertCircle, Trash2, FileText, Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand, Sparkle, ArrowRight, ClipboardText } from '@phosphor-icons/react';
 import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes } from '@/lib/npc-parser';
 import { toast } from 'sonner';
 import { useKV } from '@github/spark/hooks';
@@ -96,11 +96,163 @@ function App() {
     }
   };
 
-  const copyAllResults = async () => {
+  const copyNPCWithReport = async (result: ProcessedNPC, index: number) => {
+    const npcWithReport = result.converted + generateSingleNPCReport(result, index);
+    try {
+      await navigator.clipboard.writeText(npcWithReport);
+      const hasIssues = result.validation.warnings.length > 0;
+      toast.success(`Copied NPC${hasIssues ? ' with validation report' : ' (fully compliant)'}`);
+    } catch (err) {
+      toast.error('Failed to copy to clipboard');
+    }
+  };
+
+  const copyAllWithReport = async () => {
     if (results.length === 0) return;
     const allText = results.map(r => r.converted).join('\n\n');
-    await copyToClipboard(allText);
+    const validationReport = generateValidationReport(results);
+    const fullText = allText + validationReport;
+    try {
+      await navigator.clipboard.writeText(fullText);
+      const totalIssues = results.reduce((sum, r) => sum + r.validation.warnings.length, 0);
+      toast.success(`Copied ${results.length} NPCs${totalIssues > 0 ? ' with validation report' : ' (all compliant)'}`);
+    } catch (err) {
+      toast.error('Failed to copy to clipboard');
+    }
   };
+
+  const generateSingleNPCReport = (result: ProcessedNPC, index: number): string => {
+    const npcName = result.converted.split('(')[0].trim().replace(/^\*\*|\*\*$/g, '');
+    const warnings = result.validation.warnings;
+    
+    if (warnings.length === 0) {
+      return `\n\n--- VALIDATION REPORT ---\n✅ ${npcName} is fully compliant with C&C conventions (${result.validation.complianceScore}% compliance)\nNo issues detected.`;
+    }
+    
+    let report = `\n\n--- VALIDATION REPORT ---`;
+    report += `\n🎭 NPC: ${npcName}`;
+    report += `\n📈 Compliance Score: ${result.validation.complianceScore}%`;
+    report += `\n⚠️  Total Issues: ${warnings.length}`;
+    
+    const errors = warnings.filter(w => w.type === 'error');
+    const warns = warnings.filter(w => w.type === 'warning');
+    const infos = warnings.filter(w => w.type === 'info');
+    
+    if (errors.length > 0) {
+      report += `\n\n❌ ERRORS (${errors.length}):`;
+      errors.forEach(error => {
+        report += `\n• ${error.category}: ${error.message}`;
+        if (error.suggestion) {
+          report += `\n  💡 ${error.suggestion}`;
+        }
+      });
+    }
+    
+    if (warns.length > 0) {
+      report += `\n\n⚠️  WARNINGS (${warns.length}):`;
+      warns.forEach(warning => {
+        report += `\n• ${warning.category}: ${warning.message}`;
+        if (warning.suggestion) {
+          report += `\n  💡 ${warning.suggestion}`;
+        }
+      });
+    }
+    
+    if (infos.length > 0) {
+      report += `\n\nℹ️  INFORMATION (${infos.length}):`;
+      infos.forEach(info => {
+        report += `\n• ${info.category}: ${info.message}`;
+      });
+    }
+    
+    return report;
+  };
+
+  const generateValidationReport = (results: ProcessedNPC[]): string => {
+    if (results.length === 0) return '';
+    
+    const totalWarnings = results.reduce((sum, r) => sum + r.validation.warnings.length, 0);
+    const totalErrors = results.reduce((sum, r) => sum + r.validation.warnings.filter(w => w.type === 'error').length, 0);
+    const avgCompliance = Math.round(results.reduce((sum, r) => sum + r.validation.complianceScore, 0) / results.length);
+    
+    if (totalWarnings === 0) {
+      return `\n\n--- VALIDATION REPORT ---\n✅ All ${results.length} NPC${results.length > 1 ? 's' : ''} fully compliant with C&C conventions (${avgCompliance}% average compliance)\nNo issues detected.`;
+    }
+    
+    let report = `\n\n--- VALIDATION REPORT ---`;
+    report += `\n📊 Summary: ${results.length} NPC${results.length > 1 ? 's' : ''} processed`;
+    report += `\n📈 Average Compliance: ${avgCompliance}%`;
+    report += `\n⚠️  Total Issues: ${totalWarnings} (${totalErrors} errors, ${totalWarnings - totalErrors} warnings)`;
+    report += `\n\n--- DETAILED ISSUES ---`;
+    
+    results.forEach((result, index) => {
+      const npcName = result.converted.split('(')[0].trim().replace(/^\*\*|\*\*$/g, '');
+      const warnings = result.validation.warnings;
+      
+      if (warnings.length > 0) {
+        report += `\n\n🎭 NPC ${index + 1}: ${npcName}`;
+        report += `\n   Compliance: ${result.validation.complianceScore}%`;
+        
+        const errors = warnings.filter(w => w.type === 'error');
+        const warns = warnings.filter(w => w.type === 'warning');
+        const infos = warnings.filter(w => w.type === 'info');
+        
+        if (errors.length > 0) {
+          report += `\n   ❌ ERRORS (${errors.length}):`;
+          errors.forEach(error => {
+            report += `\n      • ${error.category}: ${error.message}`;
+            if (error.suggestion) {
+              report += `\n        💡 ${error.suggestion}`;
+            }
+          });
+        }
+        
+        if (warns.length > 0) {
+          report += `\n   ⚠️  WARNINGS (${warns.length}):`;
+          warns.forEach(warning => {
+            report += `\n      • ${warning.category}: ${warning.message}`;
+            if (warning.suggestion) {
+              report += `\n        💡 ${warning.suggestion}`;
+            }
+          });
+        }
+        
+        if (infos.length > 0) {
+          report += `\n   ℹ️  INFO (${infos.length}):`;
+          infos.forEach(info => {
+            report += `\n      • ${info.category}: ${info.message}`;
+          });
+        }
+      }
+    });
+    
+    // Add common issue summary
+    const allWarnings = results.flatMap(r => r.validation.warnings);
+    const issueCategories = new Map<string, number>();
+    allWarnings.forEach(w => {
+      issueCategories.set(w.category, (issueCategories.get(w.category) || 0) + 1);
+    });
+    
+    if (issueCategories.size > 0) {
+      report += `\n\n--- COMMON ISSUES ---`;
+      Array.from(issueCategories.entries())
+        .sort((a, b) => b[1] - a[1])
+        .forEach(([category, count]) => {
+          report += `\n• ${category}: ${count} occurrence${count > 1 ? 's' : ''}`;
+        });
+    }
+    
+    report += `\n\n--- RECOMMENDATIONS ---`;
+    report += `\n• Use the "Auto-Correction" feature to automatically fix common formatting issues`;
+    report += `\n• Review each NPC's validation details for specific guidance`;
+    report += `\n• Ensure all magic items have mechanical explanations`;
+    report += `\n• Use disposition nouns (law/good) instead of adjectives (lawful good)`;
+    report += `\n• Format character levels with superscript (16ᵗʰ level) when outside stat blocks`;
+    
+    return report;
+  };
+
+
 
   const saveResults = () => {
     if (results.length === 0) return;
@@ -117,16 +269,19 @@ function App() {
   const downloadResults = () => {
     if (results.length === 0) return;
     const content = results.map(r => r.converted).join('\n\n');
-    const blob = new Blob([content], { type: 'text/plain' });
+    const validationReport = generateValidationReport(results);
+    const fullContent = content + validationReport;
+    const blob = new Blob([fullContent], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'npc-stat-blocks.txt';
+    a.download = 'npc-stat-blocks-with-validation.txt';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    toast.success('Downloaded stat blocks');
+    const totalIssues = results.reduce((sum, r) => sum + r.validation.warnings.length, 0);
+    toast.success(`Downloaded NPCs${totalIssues > 0 ? ' with validation report' : ' (all compliant)'}`);
   };
 
   const loadExample = () => {
@@ -527,11 +682,11 @@ function App() {
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => copyToClipboard(result.converted)}
+                              onClick={() => copyNPCWithReport(result, index)}
                               className="flex-1 flex items-center gap-2"
                             >
-                              <Copy size={16} />
-                              Copy this NPC
+                              <ClipboardText size={16} />
+                              Copy NPC + Report
                             </Button>
                             {showValidation && (
                               <Badge 
@@ -551,11 +706,11 @@ function App() {
 
                     <div className="flex gap-2 pt-4 border-t">
                       <Button
-                        onClick={copyAllResults}
+                        onClick={copyAllWithReport}
                         className="flex-1 flex items-center gap-2"
                       >
-                        <Copy size={16} />
-                        Copy All
+                        <ClipboardText size={16} />
+                        Copy All + Report
                       </Button>
                       <Button
                         variant="outline"

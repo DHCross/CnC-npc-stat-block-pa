@@ -1,0 +1,43 @@
+Example of Enhanced NPC Copy with Validation Report:
+===========================================================
+
+**Victor Oldham** (This 16ᵗʰ level human cleric's vital stats are HP 59, AC 13/22, disposition law/good. His primary attributes are strength, wisdom, and charisma. He carries a *pectoral of protection +3*, full plate mail, a steel shield, a *staff of striking*, and a mace. He can cast the following number of spells per day: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2.)
+
+He rides a warhorse with the following statistics:
+
+**Warhorse** (This creature's vital stats are Level 4(1d10), HP 35, AC 19, disposition neutral. It makes two hoof attacks for 1d4 damage each, or one overbearing attack. The horse is outfitted with chainmail barding.)
+
+--- VALIDATION REPORT ---
+✅ Victor Oldham is fully compliant with C&C conventions (100% compliance)
+No issues detected.
+
+===========================================================
+
+Example with Issues:
+===========================================================
+
+**Sir Marcus** (This 5ᵗʰ level human fighter's vital stats are HP 4d10+8, AC 18, disposition lawful good.)
+
+--- VALIDATION REPORT ---
+🎭 NPC: Sir Marcus
+📈 Compliance Score: 45%
+⚠️  Total Issues: 8
+
+❌ ERRORS (3):
+• DISPOSITION: Uses deprecated alignment terminology instead of disposition nouns
+  💡 Change "lawful good" to "law/good"
+• HIT_POINTS: Uses dice equation for classed NPC instead of numerical sum
+  💡 Replace "4d10+8" with actual hit point total (e.g., "32")
+• LEVEL_FORMAT: Character level not properly formatted with superscript
+  💡 Use "5ᵗʰ level" instead of "5th level"
+
+⚠️  WARNINGS (4):
+• EQUIPMENT: Magic items mentioned without italicization
+• PRIMES: Prime attributes abbreviated instead of spelled out
+• SPELLS: Individual spells listed instead of per-level counts
+• MOUNT: Mount mentioned without proper stat block
+
+ℹ️  INFORMATION (1):
+• GENDER: Gendered pronouns used without explicit gender statement
+
+The auto-correction system has identified several fixes available for immediate application.
