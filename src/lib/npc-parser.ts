@@ -61,19 +61,46 @@ export function parseRaceClassLevel(text: string): { race: string; level: string
   return { race: 'human', level: '1', charClass: 'unknown' };
 }
 
-// Normalize disposition to noun forms (law/good, chaos/evil)
-export function findDisposition(text: string): string {
-  const m = text.match(/(?:Disposition|Alignment)[^:]*:\s*([A-Za-z /-]+)/i);
-  if (!m) return 'unknown';
-  
-  const raw = m[1].toLowerCase().replace(/-/g,'/').replace(/\s+/g,'').trim();
-  const map: Record<string,string> = { 
-    lawful:'law', chaotic:'chaos', law:'law', chaos:'chaos', 
-    good:'good', evil:'evil', neutral:'neutral' 
+// Normalize adjectives → nouns (lawful good → law/good)
+function normalizeDisposition(raw: string): string {
+  const map: Record<string,string> = {
+    lawful:'law', chaotic:'chaos', law:'law', chaos:'chaos',
+    good:'good', evil:'evil', neutral:'neutral', neuter:'neutral'
   };
-  
-  const parts = raw.split('/').filter(Boolean).slice(0,2);
-  return parts.map(p => map[p] ?? p).filter(Boolean).join('/');
+  const cleaned = raw.toLowerCase().replace(/-/g,'/').replace(/\s+/g,'').replace(/,/g,'/');
+  const parts = cleaned.split('/').filter(Boolean);
+  return parts.slice(0,2).map(p => map[p] ?? p).join('/');
+}
+
+/**
+ * Pull disposition from either:
+ *  - Labeled blocks: "Disposition: law/good" or "Alignment: Lawful Good"
+ *  - Prose: "He is a lawful good ..." or "They are neutral ..."
+ */
+export function extractDisposition(source: string): string | null {
+  // 1) Labeled block
+  const mLabel =
+    source.match(/(?:Disposition|Alignment)[^:]*[:\-]\s*([A-Za-z /-]+)/i);
+  if (mLabel) return normalizeDisposition(mLabel[1]);
+
+  // 2) Prose sentence (singular)
+  const mHeIs = source.match(/\b(?:He|She)\s+is\s+(lawful|chaotic|neutral)[ -]?(good|evil|neutral)?\b/i);
+  if (mHeIs) return normalizeDisposition([mHeIs[1], mHeIs[2] ?? ''].join('/'));
+
+  // 3) Prose sentence (plural)
+  const mTheyAre = source.match(/\bThey\s+are\s+(lawful|chaotic|neutral)[ -]?(good|evil|neutral)?\b/i);
+  if (mTheyAre) return normalizeDisposition([mTheyAre[1], mTheyAre[2] ?? ''].join('/'));
+
+  // 4) Lone noun (just "neutral")
+  const mNeutral = source.match(/\bneutral\b/i);
+  if (mNeutral) return 'neutral';
+
+  return null;
+}
+
+// Backward compatibility shim for existing code
+export function findDisposition(text: string): string {
+  return extractDisposition(text) ?? 'unknown';
 }
 
 // Find HP and AC from various formats
@@ -204,7 +231,7 @@ export function collapseNPCEntry(longText: string): string {
   const name = findName(title);
   
   const { race, level, charClass } = parseRaceClassLevel(body);
-  const disposition = findDisposition(body);
+  const disposition = extractDisposition(body) ?? 'unknown';  // <- single source of truth
   const [hp, ac] = findHpAc(body);
   const primes = findPrimes(body);
   const equipment = findEquipment(body, name);
@@ -441,6 +468,26 @@ export function generateAutoCorrectionFixes(text: string): CorrectionFix[] {
       category: 'Disposition Format',
       confidence: 'high'
     });
+  }
+  
+  // Fix 2b: Convert single word alignments to slash form where appropriate
+  const alignmentContext = [...text.matchAll(/(?:Disposition|Alignment)[^:]*:\s*([^\n]+)/gi)];
+  for (const contextMatch of alignmentContext) {
+    const contextText = contextMatch[1];
+    const neutralGoodMatch = contextText.match(/\b(neutral)\s+(good|evil)\b/gi);
+    if (neutralGoodMatch) {
+      for (const match of neutralGoodMatch) {
+        const parts = match.toLowerCase().split(' ');
+        const corrected = parts.join('/');
+        fixes.push({
+          description: `Convert "${match}" to noun form with slash`,
+          originalText: match,
+          correctedText: corrected,
+          category: 'Disposition Format',
+          confidence: 'high'
+        });
+      }
+    }
   }
   
   // Fix 3: Convert coinage abbreviations to full names
@@ -736,8 +783,8 @@ function validateHeadingFormat(title: string, warnings: ValidationWarning[]) {
     warnings.push({
       type: 'error',
       category: 'Heading Format',
-      message: 'Main heading does not follow "Full honorific + office + name" convention with proper bold formatting',
-      suggestion: 'Format: **The Right Honorable President Counselor of Yggsburgh His Supernal Devotion, Victor Oldham, High Priest of the Grand Temple**'
+      message: 'Main heading does not follow proper bold formatting',
+      suggestion: 'Format: **NPC Name** or **Full Title, Name, Office** for higher ranks'
     });
   }
   
@@ -751,14 +798,28 @@ function validateHeadingFormat(title: string, warnings: ValidationWarning[]) {
     });
   }
   
-  // Check for proper honorific structure
+  // Relax honorific requirements for lower-rank NPCs
   const cleanTitle = title.replace(/\*\*/g, '').trim();
-  if (!cleanTitle.includes(',') && cleanTitle.split(' ').length < 3) {
+  const isHighRank = cleanTitle.toLowerCase().includes('counselor') || 
+                     cleanTitle.toLowerCase().includes('president') ||
+                     cleanTitle.toLowerCase().includes('high priest') ||
+                     cleanTitle.toLowerCase().includes('supernal') ||
+                     cleanTitle.toLowerCase().includes('honorable');
+  
+  // Only require full honorifics for high-ranking NPCs
+  if (isHighRank && (!cleanTitle.includes(',') || cleanTitle.split(' ').length < 5)) {
     warnings.push({
       type: 'warning',
       category: 'Heading Format',
-      message: 'Heading may be too simple - C&C convention prefers full honorifics and titles',
-      suggestion: 'Include full titles, honorifics, and offices where applicable'
+      message: 'High-ranking NPC should include full honorifics and titles',
+      suggestion: 'Include full titles, honorifics, and offices for Council members and high officials'
+    });
+  } else if (!isHighRank && !cleanTitle.includes(',') && cleanTitle.split(' ').length < 2) {
+    warnings.push({
+      type: 'info',
+      category: 'Heading Format',
+      message: 'Consider adding title or description for clarity',
+      suggestion: 'Format: **Name, Title** or **Name** for simple NPCs'
     });
   }
 }
@@ -804,23 +865,27 @@ function validateAlignmentTerminology(body: string, warnings: ValidationWarning[
 
 // 4. Incorrect Disposition Noun Formatting
 function validateDispositionNounFormat(body: string, warnings: ValidationWarning[]) {
-  const dispMatch = body.match(/(?:Disposition|Alignment)[^:]*:\s*([^\n]+)/i);
-  if (dispMatch) {
-    const disp = dispMatch[1].toLowerCase().trim();
-    
-    // Check for adjective forms (should be nouns)
-    if (disp.match(/\b(?:lawful|chaotic)\s+(?:good|evil|neutral)\b/)) {
-      warnings.push({
-        type: 'error',
-        category: 'Disposition Format',
-        message: 'Disposition expressed as adjectives (e.g., "chaotic good") rather than nouns',
-        suggestion: 'Use noun forms: "chaos/good" or "law/good" instead'
-      });
-    }
-    
-    // Check for missing slash separation in compound dispositions
-    if (disp.includes('good') || disp.includes('evil')) {
-      if (!disp.includes('/') && disp.split(' ').length > 1) {
+  const extractedDisp = extractDisposition(body);
+  
+  // If we found disposition, check if the original format was adjectives
+  if (extractedDisp) {
+    const dispMatch = body.match(/(?:Disposition|Alignment)[^:]*:\s*([^\n]+)/i);
+    if (dispMatch) {
+      const originalDisp = dispMatch[1].toLowerCase().trim();
+      
+      // Check for adjective forms (should be nouns)
+      if (originalDisp.match(/\b(?:lawful|chaotic)\s+(?:good|evil|neutral)\b/)) {
+        warnings.push({
+          type: 'error',
+          category: 'Disposition Format',
+          message: 'Disposition expressed as adjectives (e.g., "chaotic good") rather than nouns',
+          suggestion: 'Use noun forms: "chaos/good" or "law/good" instead'
+        });
+      }
+      
+      // Check for missing slash separation in compound dispositions
+      if ((originalDisp.includes('good') || originalDisp.includes('evil')) && 
+          !originalDisp.includes('/') && originalDisp.split(' ').length > 1) {
         warnings.push({
           type: 'error',
           category: 'Disposition Format',
@@ -1210,29 +1275,29 @@ function validateUniqueAbilities(body: string, warnings: ValidationWarning[]) {
 function validateRequiredFields(body: string, warnings: ValidationWarning[]) {
   const requiredFields = [
     { 
-      field: 'Disposition/Alignment', 
-      pattern: /(?:Disposition|Alignment)\s*:/i,
+      field: 'Disposition', 
+      check: () => extractDisposition(body) !== null,
       message: 'Required field "Disposition" is missing from stat block'
     },
     { 
       field: 'Race & Class/Level', 
-      pattern: /(?:Race.*Class|level.*\w+|human.*level|elf.*level)/i,
+      check: () => body.match(/(?:Race.*Class|level.*\w+|human.*level|elf.*level)/i) !== null,
       message: 'Race and class information is missing or unclear'
     },
     { 
       field: 'Hit Points', 
-      pattern: /(?:Hit Points|HP)\s*[:=]/i,
+      check: () => body.match(/(?:Hit Points|HP)\s*[:=]/i) !== null,
       message: 'Hit Points field is missing from stat block'
     },
     { 
       field: 'Armor Class', 
-      pattern: /(?:Armor Class|AC)\s*[:=]/i,
+      check: () => body.match(/(?:Armor Class|AC)\s*[:=]/i) !== null,
       message: 'Armor Class field is missing from stat block'
     }
   ];
   
-  for (const { field, pattern, message } of requiredFields) {
-    if (!body.match(pattern)) {
+  for (const { field, check, message } of requiredFields) {
+    if (!check()) {
       warnings.push({
         type: 'error',
         category: 'Missing Required Field',
