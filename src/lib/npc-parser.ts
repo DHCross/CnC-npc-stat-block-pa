@@ -98,6 +98,28 @@ export function extractDisposition(source: string): string | null {
   return null;
 }
 
+// Extract gender from stat block to determine pronouns
+export function extractGender(source: string): 'male' | 'female' | 'neutral' {
+  const text = source.toLowerCase();
+
+  // Strong female indicators first, as "priest" is a substring of "priestess"
+  if (/\b(she|female|priestess|queen|lady|actress|woman)\b/.test(text)) {
+    return 'female';
+  }
+
+  // Then male indicators
+  if (/\b(he|him|his|male|priest|king|lord|actor|man)\b/.test(text)) {
+    return 'male';
+  }
+
+  // "her" is a weaker indicator, check it last to avoid conflicts like "other"
+  if (/\bher\b/.test(text)) {
+    return 'female';
+  }
+
+  return 'neutral';
+}
+
 // Backward compatibility shim for existing code
 export function findDisposition(text: string): string {
   return extractDisposition(text) ?? 'unknown';
@@ -181,19 +203,29 @@ export function findSpells(text: string): string {
 }
 
 // Check for mount and generate mount description
-export function findMountOneLiner(text: string): string {
+export function findMountOneLiner(text: string, gender: 'male' | 'female' | 'neutral'): string {
   const m = text.match(/Mount:\s*([^\n]+)/i);
   if (!m) return '';
-  
-  const mountText = m[1].toLowerCase();
-  if (mountText.includes('heavy war horse') || mountText.includes('warhorse')) {
-    return `\n\nHe rides a warhorse with the following statistics:\n\n` +
+
+  const mountText = m[1].trim();
+  const mountTextLower = mountText.toLowerCase();
+
+  if (mountTextLower === 'none' || mountTextLower === 'no mount') {
+    return '';
+  }
+
+  const subjectPronoun = gender === 'female' ? 'She' : gender === 'male' ? 'He' : 'They';
+
+  if (mountTextLower.includes('heavy war horse') || mountTextLower.includes('warhorse')) {
+    return `\n\n${subjectPronoun} rides a warhorse with the following statistics:\n\n` +
            `**Warhorse** (This creature's vital stats are Level 4(1d10), HP 35, AC 19, disposition neutral. ` +
            `It makes two hoof attacks for 1d4 damage each, or one overbearing attack. ` +
            `The horse is outfitted with chainmail barding.)`;
   }
-  
-  return '';
+
+  // For any other mount, just state what it is.
+  const article = 'aeiou'.includes(mountTextLower[0]) ? 'an' : 'a';
+  return `\n\n${subjectPronoun} rides ${article} ${mountText}.`;
 }
 
 function getOrdinalSuffix(level: string): string {
@@ -229,13 +261,21 @@ function formatPrimaryAttributes(primes: string): string {
 export function collapseNPCEntry(longText: string): string {
   const { title, body } = splitTitleAndBody(longText);
   const name = findName(title);
-  
+
   const { race, level, charClass } = parseRaceClassLevel(body);
   const disposition = extractDisposition(body) ?? 'unknown';  // <- single source of truth
   const [hp, ac] = findHpAc(body);
   const primes = findPrimes(body);
   const equipment = findEquipment(body, name);
   const spells = findSpells(body);
+  const gender = extractGender(body);
+
+  // Define pronouns based on gender
+  const pronouns = {
+    subject: gender === 'female' ? 'She' : gender === 'male' ? 'He' : 'They',
+    possessive: gender === 'female' ? 'Her' : gender === 'male' ? 'His' : 'Their',
+    object: gender === 'female' ? 'her' : gender === 'male' ? 'him' : 'them',
+  };
 
   // Build the main narrative sentence
   let result = `**${name}** (This ${level}${getOrdinalSuffix(level)} level ${race} ${charClass}'s vital stats are HP ${hp}, AC ${ac}, disposition ${disposition}.`;
@@ -243,35 +283,35 @@ export function collapseNPCEntry(longText: string): string {
   // Add primary attributes if found
   if (primes !== '?') {
     const formatted = formatPrimaryAttributes(primes);
-    if (formatted) result += ` His primary attributes are ${formatted}.`;
+    if (formatted) result += ` ${pronouns.possessive} primary attributes are ${formatted}.`;
   }
-  
+
   // Add equipment if found
   if (equipment !== 'none') {
     const items = equipment.split(',').map(x => x.trim()).filter(Boolean);
     if (items.length === 1) {
-      result += ` He carries ${items[0]}.`;
+      result += ` ${pronouns.subject} carries ${items[0]}.`;
     } else if (items.length === 2) {
-      result += ` He carries ${items[0]} and ${items[1]}.`;
+      result += ` ${pronouns.subject} carries ${items[0]} and ${items[1]}.`;
     } else {
       const lastItem = items.pop();
-      result += ` He carries ${items.join(', ')}, and ${lastItem}.`;
+      result += ` ${pronouns.subject} carries ${items.join(', ')}, and ${lastItem}.`;
     }
   }
-  
+
   // Add spells if found
   if (spells !== '?') {
-    result += ` He can cast the following number of spells per day: ${spells}.`;
+    result += ` ${pronouns.subject} can cast the following number of spells per day: ${spells}.`;
   }
 
   result += ')';
-  
+
   // Add mount information if present
-  const mountInfo = findMountOneLiner(body);
+  const mountInfo = findMountOneLiner(body, gender);
   if (mountInfo) {
     result += mountInfo;
   }
-  
+
   return result;
 }
 
