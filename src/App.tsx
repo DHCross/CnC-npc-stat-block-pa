@@ -10,7 +10,8 @@ import { Toaster } from '@/components/ui/sonner';
 import { Copy, Download, Upload, AlertCircle, Trash2, FileText, Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand, Sparkle, ArrowRight, ClipboardText } from '@phosphor-icons/react';
 import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes } from '@/lib/npc-parser';
 import { toast } from 'sonner';
-import { useKV } from '@github/spark/hooks';
+// Use localStorage-backed KV to avoid requiring Spark runtime in repo context
+import { useKV } from '@/hooks/use-kv';
 
 const EXAMPLE_TEXT = `**The Right Honorable President Counselor of Yggsburgh His Supernal Devotion, Victor Oldham, High Priest of the Grand Temple**
 
