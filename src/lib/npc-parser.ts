@@ -366,17 +366,15 @@ export function findMountOneLiner(text: string, gender: 'male' | 'female' | 'neu
 
   const subjectPronoun = gender === 'female' ? 'She' : gender === 'male' ? 'He' : 'They';
 
+  // Default per Jeremy: do not bloat with stat blocks for common mounts; keep a single line
   if (mountTextLower.includes('heavy war horse') || mountTextLower.includes('warhorse')) {
-    // Italicize full stat block and use sentence form with 'and' per Jeremy
-    const stats = `This creature's vital stats are level 4 (1d10), HP 35, AC 19, and disposition neutral. ` +
-                  `It makes two hoof attacks for 1d4 damage each, or one overbearing attack. ` +
-                  `The horse is outfitted with chainmail barding.`;
-    return `\n\n${subjectPronoun} rides a warhorse with the following statistics:\n\n` +
-           `**Warhorse** (_${stats}_)`;
+    return `\n\n${subjectPronoun} rides a heavy war horse.`;
   }
 
   // For any other mount, just state what it is.
   const article = 'aeiou'.includes(mountTextLower[0]) ? 'an' : 'a';
+  // For named/special mounts (heuristic: capitalized name or descriptors like 'ancient', 'celestial', etc.),
+  // you could include a stat block. For now, follow minimal default for all mounts unless expanded later.
   return `\n\n${subjectPronoun} rides ${article} ${mountText}.`;
 }
 
@@ -1634,24 +1632,13 @@ function validateMountFormat(body: string, warnings: ValidationWarning[]) {
     const mountText = mountMatch[1].toLowerCase();
     
     if (mountText.includes('horse') || mountText.includes('mount')) {
-      // Check if it's just a simple declaration without stats
-      if (!body.includes('HD ') && !body.includes('Hit Dice') && 
-          !mountText.includes('none') && !mountText.includes('no mount')) {
-        warnings.push({
-          type: 'info',
-          category: 'Mount Statistics',
-          message: 'Mount mentioned but detailed statistics may be missing',
-          suggestion: 'Include mount vital statistics: HD, HP, AC, disposition, attacks, and equipment'
-        });
-      }
-      
-      // Check for proper mount terminology
+      // New guidance: default to minimal mention; do not suggest stats for standard mounts
       if (mountText.includes('warhorse') && !mountText.includes('heavy war horse')) {
         warnings.push({
           type: 'info',
           category: 'Mount Terminology',
           message: 'Consider specifying "heavy war horse" for clarity',
-          suggestion: 'Use full mount description for better stat block completeness'
+          suggestion: 'Use "heavy war horse" for standard war mounts'
         });
       }
     }

@@ -149,15 +149,14 @@ Armor Class (AC): 18`
   })
 
   describe('Mount Stat Block Integration', () => {
-    it('should italicize mount stat blocks with complete sentences', () => {
+    it('should default to minimal mount mention without stat block', () => {
       const input = `**Knight**
 Mount: heavy war horse`
 
       const result = collapseNPCEntry(input)
-      
-      expect(result).toContain('**Warhorse** (_This creature')
-      expect(result).toContain('and disposition neutral.')
-      expect(result).toMatch(/\*\*Warhorse\*\* \(_.*_\)/)
+
+      expect(result).toContain('rides a heavy war horse.')
+      expect(result).not.toMatch(/\*\*Warhorse\*\*/)
     })
   })
 
@@ -230,7 +229,9 @@ Mount: heavy war horse`
   expect(result).toContain('medium steel shield') // Shield normalization (defaults)
       expect(result).toContain('*staff of striking*') // Magic item italics
       expect(result).not.toMatch(/_.*\*\*.*\*\*.*_/) // No bold inside italics
-      expect(result).toContain('**Warhorse** (_') // Mount stat block
+      // Default minimal mount mention; no per-NPC stat block
+      expect(result).toContain('rides a heavy war horse.')
+      expect(result).not.toMatch(/\*\*Warhorse\*\*/)
     })
   })
 
@@ -249,8 +250,9 @@ Mount: heavy war horse`
   expect(result).toContain('medium steel shield')
       expect(result).toContain('mace')
 
-      // Mount from prose
-      expect(result).toContain('**Warhorse** (_This creature')
+      // Mount from prose (minimal mention)
+      expect(result).toContain('rides a heavy war horse.')
+      expect(result).not.toMatch(/\*\*Warhorse\*\*/)
     })
   })
 })
