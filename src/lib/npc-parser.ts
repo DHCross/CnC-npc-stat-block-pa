@@ -25,8 +25,17 @@ function splitTitleAndBody(src: string): { title: string; body: string } {
   }
   
   if (titleLines.length === 0 && lines.length > 0) {
-    titleLines = [lines[0]];
-    bodyStartIdx = 1;
+    // Heuristic: if the first non-empty line looks like body (starts with parentheses or prose/stat indicators),
+    // treat entire input as body without a separate title/name line.
+    const first = lines[0];
+    const looksLikeBody = /^(\(|He\b|She\b|They\b|HP\b|AC\b|Disposition\b|Alignment\b|Race\b|Spells\b|Equipment\b|Mount\b)/i.test(first);
+    if (looksLikeBody) {
+      titleLines = [];
+      bodyStartIdx = 0;
+    } else {
+      titleLines = [lines[0]];
+      bodyStartIdx = 1;
+    }
   }
   
   const title = titleLines.join(' ');
@@ -451,8 +460,15 @@ export function collapseNPCEntry(longText: string): string {
     block += ` ${pronouns.subject} can cast the following number of spells per day: ${spells}.`;
   }
 
-  // Wrap the entire stat block in italics inside parentheses per Jeremy
-  let result = `**${name}** (_${block}_)`;
+  // Wrap the entire stat block in italics inside parentheses per Jeremy.
+  // Only include a bold heading when a plausible name/title exists.
+  let result: string;
+  const hasPlausibleName = !!name && !/^\(/.test(name) && !/^(he|she|they)\b/i.test(name);
+  if (hasPlausibleName) {
+    result = `**${name}** (_${block}_)`;
+  } else {
+    result = `(_${block}_)`;
+  }
 
   // Add mount information if present
   const mountInfo = findMountOneLiner(body, gender);
@@ -1752,6 +1768,17 @@ function validateShieldTypes(body: string, warnings: ValidationWarning[]) {
         suggestion: 'Use PHB forms only: buckler, pavis, or (small|medium|large) (steel|wooden) shield [+#]'
       });
     }
+  }
+
+  // Explicitly flag material qualifiers on buckler/pavis
+  const badBucklerPavis = [...body.matchAll(/\b(?:wooden|steel)\s+(buckler|pavis)\b/gi)].map(m => m[0]);
+  for (const bad of badBucklerPavis) {
+    warnings.push({
+      type: 'warning',
+      category: 'Shield Type',
+      message: `Material qualifiers are invalid for buckler/pavis: "${bad}"`,
+      suggestion: 'Use "buckler" or "pavis" without material qualifiers'
+    });
   }
 }
 
