@@ -233,4 +233,24 @@ Mount: heavy war horse`
       expect(result).toContain('**Warhorse** (_') // Mount stat block
     })
   })
+
+  describe('Flexible Prose Input Acceptance', () => {
+    it('should parse parenthetical HP/AC, prose disposition, equipment, and mount', () => {
+      const input = `**Sir Reynard** (HP 59, AC 13/22) He is a lawful good human knight. He carries a pectoral of protection +3, full plate mail, a shield, and a mace. He rides a heavy war horse.`
+
+      const result = collapseNPCEntry(input)
+
+      // Vital stats from parenthetical and prose disposition
+      expect(result).toContain('HP 59, AC 13/22, and disposition law/good.')
+
+      // Equipment from prose, with PHB rename and shield normalization
+      expect(result).toContain('*pectoral of armor +3*')
+      expect(result).toContain('full plate mail')
+      expect(result).toContain('large steel shield')
+      expect(result).toContain('mace')
+
+      // Mount from prose
+      expect(result).toContain('**Warhorse** (_This creature')
+    })
+  })
 })

@@ -30,7 +30,19 @@ function splitTitleAndBody(src: string): { title: string; body: string } {
   }
   
   const title = titleLines.join(' ');
-  const body = lines.slice(bodyStartIdx).join('\n');
+  let body = lines.slice(bodyStartIdx).join('\n');
+
+  // If the first body line begins with a bold title segment, strip it so any
+  // trailing prose on that same line becomes part of the body. This supports
+  // inputs like "**Sir Reynard** (HP 59, AC 13/22) He is a lawful good ..."
+  if (body.startsWith('**')) {
+    const endIdx = body.indexOf('**', 2);
+    if (endIdx !== -1) {
+      // Remove the bold segment and any immediate whitespace
+      body = body.slice(endIdx + 2).trimStart();
+    }
+  }
+
   return { title, body };
 }
 
@@ -99,11 +111,11 @@ export function extractDisposition(source: string): string | null {
   if (mLabel) return normalizeDisposition(mLabel[1]);
 
   // 2) Prose sentence (singular)
-  const mHeIs = source.match(/\b(?:He|She)\s+is\s+(lawful|chaotic|neutral)[ -]?(good|evil|neutral)?\b/i);
+  const mHeIs = source.match(/\b(?:He|She)\s+is\s+(?:an?\s+)?(lawful|chaotic|neutral)[ -]?(good|evil|neutral)?\b/i);
   if (mHeIs) return normalizeDisposition([mHeIs[1], mHeIs[2] ?? ''].join('/'));
 
   // 3) Prose sentence (plural)
-  const mTheyAre = source.match(/\bThey\s+are\s+(lawful|chaotic|neutral)[ -]?(good|evil|neutral)?\b/i);
+  const mTheyAre = source.match(/\bThey\s+are\s+(?:an?\s+)?(lawful|chaotic|neutral)[ -]?(good|evil|neutral)?\b/i);
   if (mTheyAre) return normalizeDisposition([mTheyAre[1], mTheyAre[2] ?? ''].join('/'));
 
   // 4) Lone noun (just "neutral")
@@ -157,7 +169,25 @@ export function findHpAc(text: string): [string, string] {
 export function findPrimes(text: string): string {
   const m = text.match(/Prime\s+Attributes\s*\(PA\):\s*([^\n]+)/i) ||
             text.match(/Prime\s*Attributes?[^:]*:\s*([^\n]+)/i);
-  if (!m) return '?';
+  if (!m) {
+    // Prose-style support: "Primary/Prime attributes are ..."
+    const prose = text.match(/\b(?:Primary|Prime)\s+Attributes?[^:)]*\s*(?:are|:)\s*([^\.\n)]+)/i);
+    if (!prose) return '?';
+    // Reuse the same mapping/normalization below using captured prose[1]
+    const captured = prose[1];
+    const map: Record<string,string> = { 
+      str:'strength', dex:'dexterity', con:'constitution', 
+      int:'intelligence', wis:'wisdom', cha:'charisma',
+      strength:'strength', dexterity:'dexterity', constitution:'constitution',
+      intelligence:'intelligence', wisdom:'wisdom', charisma:'charisma'
+    };
+    return captured
+      .split(/,| and /i)
+      .map(s => s.trim().toLowerCase().replace(/\.+$/, ''))
+      .filter(Boolean)
+      .map(x => map[x] ?? x)
+      .join(', ');
+  }
   
   const map: Record<string,string> = { 
     str:'strength', dex:'dexterity', con:'constitution', 
@@ -183,15 +213,25 @@ export function findEquipment(text: string, npcName?: string): string {
   if (m) {
     equipmentText = m[1];
   } else {
-    // If no Equipment: line found, treat the entire text as equipment list
-    // This supports direct testing of equipment processing
-    equipmentText = text;
+    // If no Equipment: line found, try to extract from prose such as
+    // "He/She/They carries ..." / "carry ..." / "bears ..." / "wears ..." / "wields ..."
+    const prose = text.match(/\b(?:He|She)\s+carries\s+([^\.\n)]+)/i) ||
+                  text.match(/\bThey\s+carry\s+([^\.\n)]+)/i) ||
+                  text.match(/\b(?:He|She|They)\s+bears?\s+([^\.\n)]+)/i) ||
+                  text.match(/\b(?:He|She|They)\s+wears?\s+([^\.\n)]+)/i) ||
+                  text.match(/\b(?:He|She|They)\s+wields?\s+([^\.\n)]+)/i);
+    if (prose) {
+      equipmentText = prose[1];
+    } else {
+      // As a very last resort, treat entire text as equipment list (legacy test support)
+      equipmentText = text;
+    }
   }
   
   if (!equipmentText || equipmentText.trim().toLowerCase() === 'none') return 'none';
 
   let items = equipmentText
-    .split(',')
+    .split(/,| and /i)
     .map(s => s.trim().replace(/\.+$/, ''))
     .filter(Boolean);
 
@@ -225,7 +265,11 @@ export function findEquipment(text: string, npcName?: string): string {
     return `large steel shield${bonus}`;
   };
 
-  items = filteredItems.map(x => normalizeShield(applyPHBRenames(x)));
+  items = filteredItems.map(x => {
+    // Drop leading articles from prose extraction
+    let y = x.replace(/^\b(?:a|an|the)\s+/i, '');
+    return normalizeShield(applyPHBRenames(y));
+  });
 
   // Auto-italicize obvious magic items
   const isMagic = (s: string) =>
@@ -259,9 +303,15 @@ export function findSpells(text: string): string {
 // Check for mount and generate mount description
 export function findMountOneLiner(text: string, gender: 'male' | 'female' | 'neutral'): string {
   const m = text.match(/Mount:\s*([^\n]+)/i);
-  if (!m) return '';
+  let mountText: string | null = null;
+  if (m) {
+    mountText = m[1].trim();
+  } else {
+    const prose = text.match(/\brides\s+(?:a|an)?\s*([^\.,\n)]+)/i);
+    if (prose) mountText = prose[1].trim();
+  }
+  if (!mountText) return '';
 
-  const mountText = m[1].trim();
   const mountTextLower = mountText.toLowerCase();
 
   if (mountTextLower === 'none' || mountTextLower === 'no mount') {
@@ -453,17 +503,21 @@ function isCodeContent(text: string): boolean {
 function hasNPCIndicators(text: string): boolean {
   // Must have some indication it's an NPC stat block
   const hasName = /\*\*[^*]+\*\*/.test(text); // Bold name
-  const hasStatBlock = /(?:Race & Class|Disposition|Hit Points|Armor Class|Prime Attributes|Equipment)/i.test(text);
+  const hasStatBlock = /(?:Race & Class|Disposition|Alignment|Hit Points|Armor Class|Prime Attributes|Equipment|Mount)/i.test(text);
   const hasLevelClass = /\d+(?:st|nd|rd|th)?\s*level\s+\w+/i.test(text);
-  const hasHPAC = /(?:HP|AC)\s*[:=]\s*\d+/i.test(text) || /Hit Points.*?\d+/i.test(text) || /Armor Class.*?\d+/i.test(text);
+  // Accept HP/AC with or without colons in more permissive parsing
+  const hasHPAC = /(?:HP|AC)\s*(?::|=)?\s*\d+/i.test(text) || /Hit Points.*?\d+/i.test(text) || /Armor Class.*?\d+/i.test(text);
   
   // Also check for simplified formats like "human, 16th level cleric"
   const hasRaceClassFormat = /\w+,\s*\d+(?:st|nd|rd|th)?\s*level\s+\w+/i.test(text);
   
   // Require either a bold name with some stats, OR a good combination of stat block indicators
-  return (hasName && (hasStatBlock || hasLevelClass || hasHPAC)) || 
-         (hasStatBlock && hasLevelClass && hasHPAC) ||
-         (hasName && hasRaceClassFormat);
+  // Also allow parenthetical prose bodies containing HP/AC or disposition sentences
+  const hasProseDisposition = /\b(?:He|She)\s+is\s+(?:lawful|chaotic|neutral)/i.test(text) || /\bThey\s+are\s+(?:lawful|chaotic|neutral)/i.test(text);
+
+  return (hasName && (hasStatBlock || hasLevelClass || hasHPAC || hasProseDisposition)) || 
+    (hasStatBlock && (hasLevelClass || hasHPAC)) ||
+    (hasName && hasRaceClassFormat);
 }
 
 export function generateNPCTemplate(): string {

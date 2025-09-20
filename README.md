@@ -1,23 +1,33 @@
-# ✨ Welcome to Your Spark Template!
-You've just launched your brand-new Spark Template Codespace — everything’s fired up and ready for you to explore, build, and create with Spark!
 
-This template is your blank canvas. It comes with a minimal setup to help you get started quickly with Spark development.
+# Castles & Crusades NPC Stat Block Parser
 
-🚀 What's Inside?
-- A clean, minimal Spark environment
-- Pre-configured for local development
-- Ready to scale with your ideas
-  
-🧠 What Can You Do?
+## Features
 
-Right now, this is just a starting point — the perfect place to begin building and testing your Spark applications.
+- Converts strict and prose-style NPC stat blocks to Jeremy Farkas editorial standards (Victor Oldham reference style)
+- Supports parenthetical HP/AC, prose disposition ("He is a ..."), equipment from natural language ("He carries ..."), and mount from prose ("rides a ...")
+- Editorial enforcement: italics, complete sentences, PHB attribute order, shield normalization, PHB item renames, magic item italicization
+- Comprehensive validation and auto-correction for C&C compliance
+- Batch processing and compliance scoring
 
-🧹 Just Exploring?
-No problem! If you were just checking things out and don’t need to keep this code:
+## Recent Enhancements (2025-09-19)
 
-- Simply delete your Spark.
-- Everything will be cleaned up — no traces left behind.
+- **Flexible Parsing**: Accepts parenthetical/prose NPC entries (e.g., `**Sir Reynard** (HP 59, AC 13/22) He is a lawful good human knight. He carries ... He rides ...`).
+- **Prose Equipment Extraction**: Parses items from sentences like "He carries ..." and normalizes/italicizes as needed.
+- **Prose Mount Extraction**: Detects mounts from "rides a/an ..." and generates canonical warhorse block.
+- **Disposition Parsing**: Accepts "He is a/an ..." and "They are a/an ..." phrasing.
+- **Block Detection**: Recognizes HP/AC with or without colons; accepts title + parenthetical + prose body.
+- **Test Coverage**: Added tests for flexible input; all 20 tests passing.
 
-📄 License For Spark Template Resources 
+## Usage
 
-The Spark Template files and resources from GitHub are licensed under the terms of the MIT license, Copyright GitHub, Inc.
+Paste NPC entries in either strict or prose format. Example:
+
+```
+**Sir Reynard** (HP 59, AC 13/22) He is a lawful good human knight. He carries a pectoral of protection +3, full plate mail, a shield, and a mace. He rides a heavy war horse.
+```
+
+Output will:
+- Render vital stats, disposition, equipment (with PHB renames and shield normalization), and mount block in correct narrative format.
+- Enforce Jeremy Farkas editorial standards.
+
+See CHANGELOG.md for details.
