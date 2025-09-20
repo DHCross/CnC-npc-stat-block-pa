@@ -64,7 +64,8 @@
 @import '@radix-ui/colors/slate-alpha.css' layer(base);
 @import '@radix-ui/colors/slate-dark-alpha.css' layer(base);
 
-@import 'tailwindcss/theme' layer(theme);
+/* Removed tailwindcss/theme import (not available in current Tailwind version) */
+/* Previously: @import 'tailwindcss/theme' layer(theme); */
 
 @import 'tailwindcss/preflight' layer(base);
 

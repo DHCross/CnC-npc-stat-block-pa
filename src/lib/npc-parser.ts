@@ -287,16 +287,14 @@ export function findEquipment(text: string, npcName?: string): string {
 function normalizeShieldItems(text: string): string {
   let out = text;
 
-  // 1) Normalize buckler/pavis (standalone types, no material or "shield" word)
-  // Accept bonus before or after; strip any accidental "shield" word
-  const BP_RE = /\b(?:(\+\s*\d+)\s*)?(?:an?\s+)?(buckler|pavis)(?:\s+shield)?(?:\s*(\+\s*\d+))?/gi;
-  out = out.replace(BP_RE, (_m, bBefore, type, bAfter) => {
-    const bonusRaw = (bBefore || bAfter || '').replace(/\s+/g, '');
-    const bonus = bonusRaw ? ` ${bonusRaw}` : '';
-    return `${type.toLowerCase()}${bonus}`;
-  });
-
-  // 2) Canonical (size material) shield with bonus optionally before/after → move bonus to end
+// 1) Normalize buckler/pavis (standalone types, no material or "shield" word)
+// Accept bonus before or after; strip any accidental "shield" word and material qualifiers
+const BP_RE = /\b(?:(\+\s*\d+)\s*)?(?:an?\s+)?(?:wooden|steel\s+)?(buckler|pavis)(?:\s+shield)?(?:\s*(\+\s*\d+))?/gi;
+out = out.replace(BP_RE, (_m, bBefore, _material, type, bAfter) => {
+  const bonusRaw = (bBefore || bAfter || '').replace(/\s+/g, '');
+  const bonus = bonusRaw ? ` ${bonusRaw}` : '';
+  return `${type.toLowerCase()}${bonus}`;
+});  // 2) Canonical (size material) shield with bonus optionally before/after → move bonus to end
   const CANON_RE = /\b(?:(\+\s*\d+)\s*)?(small|medium|large)\s+(steel|wooden)\s+shield\b(?:\s*(\+\s*\d+))?/gi;
   out = out.replace(CANON_RE, (_m, bBefore, size, material, bAfter) => {
     const bonusRaw = (bBefore || bAfter || '').replace(/\s+/g, '');
@@ -472,6 +470,8 @@ export function collapseNPCEntry(longText: string): string {
   const mountInfo = findMountOneLiner(body, gender);
   if (mountInfo) {
     result += mountInfo;
+    // Add footnote for shared mounts to reduce repetition
+    result += '\n\n*All knights ride heavy war horses.*';
   }
 
   return result;
@@ -812,6 +812,20 @@ export function generateAutoCorrectionFixes(text: string): CorrectionFix[] {
         });
       }
     }
+  }
+  
+  // Fix 5c: Strip material qualifiers from buckler/pavis
+  const bucklerPavisMaterialMatches = [...text.matchAll(/\b(wooden|steel)\s+(buckler|pavis)\b/gi)];
+  for (const match of bucklerPavisMaterialMatches) {
+    const material = match[1];
+    const type = match[2];
+    fixes.push({
+      description: `Strip invalid material qualifier from ${type}`,
+      originalText: match[0],
+      correctedText: type,
+      category: 'Shield Format',
+      confidence: 'high'
+    });
   }
   
   // Fix 6: Convert deprecated vision terminology
