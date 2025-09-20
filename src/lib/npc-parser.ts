@@ -255,14 +255,33 @@ export function findEquipment(text: string, npcName?: string): string {
   const normalizeShield = (s: string): string => {
     const lower = s.toLowerCase();
     if (!/\bshield\b/.test(lower)) return s;
-    // Keep explicit shields (size/material) as-is
-    if (/(large|medium|small)\s+(steel|wooden)\s+shield/.test(lower) || /(wooden|steel)\s+shield/.test(lower)) {
-      return s;
+    // If already explicit PHB type/material, preserve and move bonus to end
+    const phbShield = /(buckler|small|medium|large|pavis)\s+(steel|wooden)\s+shield(\s*\+\d+)?/i;
+    const match = s.match(phbShield);
+    if (match) {
+      // Ensure bonus is at end
+      const type = match[1];
+      const material = match[2];
+      const bonus = (s.match(/\+\d+/) || [''])[0];
+      return `${type} ${material} shield${bonus}`.trim();
     }
-    // Preserve bonus if present (e.g., "shield +2")
-    const bonusMatch = s.match(/\+\d+/);
-    const bonus = bonusMatch ? ` ${bonusMatch[0]}` : '';
-    return `large steel shield${bonus}`;
+    // If only material specified
+    const matMatch = s.match(/(steel|wooden)\s+shield(\s*\+\d+)?/i);
+    if (matMatch) {
+      const material = matMatch[1];
+      const bonus = (s.match(/\+\d+/) || [''])[0];
+      return `large ${material} shield${bonus}`.trim();
+    }
+    // If only type specified
+    const typeMatch = s.match(/(buckler|small|medium|large|pavis)\s+shield(\s*\+\d+)?/i);
+    if (typeMatch) {
+      const type = typeMatch[1];
+      const bonus = (s.match(/\+\d+/) || [''])[0];
+      return `${type} steel shield${bonus}`.trim();
+    }
+    // If generic 'shield' or 'shield +#', default to 'large steel shield +#'
+    const bonus = (s.match(/\+\d+/) || [''])[0];
+    return `large steel shield${bonus}`.trim();
   };
 
   items = filteredItems.map(x => {
@@ -694,9 +713,29 @@ export function generateAutoCorrectionFixes(text: string): CorrectionFix[] {
   for (const match of incorrectBonusMatches) {
     const bonus = match[1];
     const item = match[2].trim();
-    
-    // Only fix obvious weapon/armor items
-    if (item.match(/\b(?:sword|mace|shield|armor|plate|mail|dagger|axe|bow)\b/i)) {
+    // For shields, always normalize to PHB type/material/bonus
+    if (item.match(/\bshield\b/i)) {
+      // Try to extract type/material
+      let normalized = '';
+      const phbShield = /(buckler|small|medium|large|pavis)\s+(steel|wooden)\s+shield/i;
+      const phbMatch = item.match(phbShield);
+      if (phbMatch) {
+        normalized = `${phbMatch[1]} ${phbMatch[2]} shield +${bonus}`;
+      } else {
+        // Default to large steel shield
+        normalized = `large steel shield +${bonus}`;
+      }
+      fixes.push({
+        description: `Normalize shield to PHB type/material/bonus: "${normalized}"`,
+        originalText: match[0],
+        correctedText: normalized,
+        category: 'Shield Format',
+        confidence: 'high'
+      });
+      continue;
+    }
+    // Only fix obvious weapon/armor items (not shields)
+    if (item.match(/\b(?:sword|mace|armor|plate|mail|dagger|axe|bow)\b/i)) {
       fixes.push({
         description: `Move bonus to end: "${item} +${bonus}"`,
         originalText: match[0],
