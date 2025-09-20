@@ -12,25 +12,34 @@ import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWit
 import { toast } from 'sonner';
 // Use localStorage-backed KV to avoid requiring Spark runtime in repo context
 import { useKV } from '@/hooks/use-kv';
+import { Switch } from '@/components/ui/switch';
 
-const EXAMPLE_TEXT = `**The Right Honorable President Counselor of Yggsburgh His Supernal Devotion, Victor Oldham, High Priest of the Grand Temple**
+const EXAMPLE_TEXT = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple**
 
 Disposition: law/good
 Race & Class: human, 16th level cleric
 Hit Points (HP): 59
 Armor Class (AC): 13/22
-Prime Attributes (PA): Strength, Wisdom, Charisma
-Equipment: pectoral of protection +3, full plate mail, steel shield, staff of striking, mace
+Primary attributes: strength, wisdom, charisma
+Equipment: pectoral of armor +3, full plate mail, large steel shield, staff of striking, mace
 Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
 Mount: heavy war horse`;
 
 const ALTERNATIVE_EXAMPLE = `**Hector Markle, Secretary Counselor**
 human, 1st level scholar
 Disposition: law/neutral
-Hit Points: 5
-Armor Class: 10
-Prime Attributes: Intelligence
-Equipment: nobleman's clothing`;
+Hit Points (HP): 5
+Armor Class (AC): 10
+Primary attributes: intelligence
+Equipment: nobleman’s clothing
+
+**Guard Captain Miller**
+Disposition: law/good
+Race & Class: human, 5th level fighter
+Hit Points (HP): 35
+Armor Class (AC): 18
+Primary attributes: strength, constitution
+Equipment: longsword +1, plate mail, medium steel shield`;
 
 const VALIDATION_EXAMPLE = `**Sir Marcus: the Bold Knight**
 Alignment: lawful good
@@ -54,6 +63,7 @@ function App() {
   const [savedResults, setSavedResults, deleteSavedResults] = useKV<string[]>('npc-parser-results', []);
   const [showValidation, setShowValidation] = useState(true);
   const [availableFixes, setAvailableFixes] = useState<CorrectionFix[]>([]);
+  const [normalizeInput, setNormalizeInput] = useState(false);
 
   const processInput = (text: string) => {
     if (!text.trim()) {
@@ -64,12 +74,13 @@ function App() {
     }
 
     try {
-      const processed = processDumpWithValidation(text);
+      const toParse = normalizeInput ? applyAllHighConfidenceFixes(text) : text;
+      const processed = processDumpWithValidation(toParse);
       const fixes = generateAutoCorrectionFixes(text);
       setAvailableFixes(fixes);
       
       if (processed.length === 0) {
-        setError('No valid NPC stat blocks found. Please check your formatting.');
+        setError('No valid NPC stat blocks found. Paste a name line followed by either labeled lines (Disposition, Race & Class, HP, AC, Primary attributes, Equipment, Spells, Mount) or a parenthetical abbreviated block. Partial data is OK.');
         setResults([]);
       } else {
         setResults(processed);
@@ -98,15 +109,27 @@ function App() {
   };
 
   const copyHtmlToClipboard = async (text: string) => {
+    const html = convertToHtml(text);
     try {
-      const html = convertToHtml(text);
-      const blob = new Blob([html], { type: 'text/html' });
-      const clipboardItem = new ClipboardItem({ 'text/html': blob });
-      await navigator.clipboard.write([clipboardItem]);
-      toast.success('Copied as rich text (HTML)');
+      // Preferred rich HTML path if available
+      const anyWindow = window as any;
+      if (anyWindow.ClipboardItem && navigator.clipboard && (navigator.clipboard as any).write) {
+        const blob = new Blob([html], { type: 'text/html' });
+        const clipboardItem = new anyWindow.ClipboardItem({ 'text/html': blob });
+        await (navigator.clipboard as any).write([clipboardItem]);
+        toast.success('Copied as rich text (HTML)');
+        return;
+      }
+      throw new Error('ClipboardItem not available');
     } catch (err) {
-      console.error('Failed to copy HTML to clipboard:', err);
-      toast.error('Failed to copy as rich text. Your browser may not support this feature.');
+      // Fallback to plain writeText of the HTML string
+      try {
+        await navigator.clipboard.writeText(html);
+        toast.success('Copied as rich text (fallback)');
+      } catch (err2) {
+        console.error('Failed to copy HTML to clipboard:', err, err2);
+        toast.error('Failed to copy as rich text.');
+      }
     }
   };
 
@@ -259,9 +282,9 @@ function App() {
     report += `\n\n--- RECOMMENDATIONS ---`;
     report += `\n• Use the "Auto-Correction" feature to automatically fix common formatting issues`;
     report += `\n• Review each NPC's validation details for specific guidance`;
-    report += `\n• Ensure all magic items have mechanical explanations`;
+    report += `\n• For non-core or encounter-critical items, include a brief mechanical note; otherwise rely on PHB/Monsters & Treasure`;
     report += `\n• Use disposition nouns (law/good) instead of adjectives (lawful good)`;
-    report += `\n• Format character levels with superscript (16ᵗʰ level) when outside stat blocks`;
+    report += `\n• Use superscripts for level numbers (e.g., 16ᵗʰ level). Do not bold levels inside abbreviated stat blocks.`;
     
     return report;
   };
@@ -457,16 +480,7 @@ function App() {
               NPC Stat Block Parser
             </h1>
             <p className="text-muted-foreground text-lg">
-              Convert detailed tabletop RPG NPC stat blocks into Castles & Crusades narrative format 
-              with comprehensive validation warnings and automated correction system. This enhanced parser produces clean, properly formatted entries 
-              that match the Victor Oldham reference style, automatically checks for full C&C compliance across 
-              23+ validation categories, and provides intelligent one-click fixes for common formatting issues. 
-              Features automated corrections for deprecated terminology (alignment→disposition, improved grab→crushing grasp), 
-              magic item italicization, coinage terminology, disposition noun formatting, prime attribute expansion, 
-              and equipment section standardization. Enhanced with confidence-rated correction suggestions, 
-              bulk auto-fix capabilities, and detailed compliance scoring for each NPC. Now includes comprehensive checks for heading format, formal addresses, 
-              race-class ordering, gendered pronouns, vision terminology, unique ability explanations, and automated before/after previews 
-              with intelligent correction categorization and safe batch application of high-confidence fixes.
+              A tool to convert tabletop RPG NPC stat blocks into Castles & Crusades narrative format.
             </p>
           </div>
 
@@ -481,6 +495,14 @@ function App() {
                 <CardDescription>
                   Paste your C&C NPC stat block(s) below. The parser automatically detects whether you've entered a single NPC or a batch.
                 </CardDescription>
+                <div className="mt-2 text-xs text-muted-foreground flex flex-wrap gap-2">
+                  <Badge variant="outline" className="text-xs">lowercase attributes</Badge>
+                  <Badge variant="outline" className="text-xs">superscripts for levels</Badge>
+                  <Badge variant="outline" className="text-xs">no bold in abbreviated blocks</Badge>
+                  <Badge variant="outline" className="text-xs">explicit shield type</Badge>
+                  <Badge variant="outline" className="text-xs">bonus at end (e.g., +2)</Badge>
+                  <Badge variant="outline" className="text-xs">noun-form disposition</Badge>
+                </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <Textarea
@@ -527,6 +549,21 @@ function App() {
                     <Trash size={16} />
                     Clear
                   </Button>
+                </div>
+                <div className="flex items-center justify-between rounded border p-2 bg-muted/40">
+                  <div className="text-sm">
+                    <div className="font-medium">Normalize before parsing (safe fixes)</div>
+                    <div className="text-xs text-muted-foreground">Applies high-confidence auto-fixes (e.g., shield type, attribute names) prior to parsing.</div>
+                  </div>
+                  <Switch
+                    checked={normalizeInput}
+                    onCheckedChange={(checked) => {
+                      setNormalizeInput(checked);
+                      // Reprocess current input with new setting
+                      processInput(inputText);
+                    }}
+                    aria-label="Normalize input before parsing"
+                  />
                 </div>
                 
                 {/* Auto-Correction Section */}
@@ -666,7 +703,7 @@ function App() {
                               onClick={() => copyNPCWithReport(result, index)}
                               className="flex-1 flex items-center gap-2"
                             >
-                              <ClipboardText size={16} />
+                              <Clipboard size={16} />
                               Copy NPC + Report
                             </Button>
                             <Button
@@ -699,7 +736,7 @@ function App() {
                         onClick={copyAllWithReport}
                         className="flex-1 flex items-center gap-2"
                       >
-                        <ClipboardText size={16} />
+                        <Clipboard size={16} />
                         Copy All + Report
                       </Button>
                       <Button
@@ -739,12 +776,12 @@ function App() {
                     onClick={clearSaved}
                     className="flex items-center gap-2"
                   >
-                    <Trash2 size={16} />
+                    <Trash size={16} />
                     Clear All
                   </Button>
                 </CardTitle>
                 <CardDescription>
-                  Previously processed NPCs saved for quick reference
+                  Previously processed NPCs saved for quick reference. Note: validation details are not saved.
                 </CardDescription>
               </CardHeader>
               <CardContent>
