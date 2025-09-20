@@ -276,24 +276,44 @@ export function findEquipment(text: string, npcName?: string): string {
 // Defaults when omitted: size = "medium", material = "steel".
 // Preserves mundane shields (no +#) and existing explicit types.
 function normalizeShieldItems(text: string): string {
-  // Main matcher: handles "+2 shield", "shield +2", and explicit/partial size/material
-  const SHIELD_RE = /\b(?:(?:\(\s*)?(\+\s*\d+)(?:\s*\))?\s*)?(?:an?\s+)?(?:(buckler|small|medium|large|pavis)\s+)?(?:(wooden|steel)\s+)?shield\b(?:\s*(\+\s*\d+))?|\b(?:(buckler|small|medium|large|pavis)\s+)?(?:(wooden|steel)\s+)?shield\b(?:\s*(\+\s*\d+))?/gi;
+  let out = text;
 
-  const replaced = text.replace(SHIELD_RE, (m, bBefore, sz1, mat1, bAfter, sz2, mat2, bAfter2) => {
-    const size = (sz1 || sz2 || '').toLowerCase() || 'medium';
-    const mat = (mat1 || mat2 || '').toLowerCase() || 'steel';
-    const bonusRaw = (bBefore || bAfter || bAfter2 || '').replace(/\s+/g, '');
+  // 1) Normalize buckler/pavis (standalone types, no material or "shield" word)
+  // Accept bonus before or after; strip any accidental "shield" word
+  const BP_RE = /\b(?:(\+\s*\d+)\s*)?(?:an?\s+)?(buckler|pavis)(?:\s+shield)?(?:\s*(\+\s*\d+))?/gi;
+  out = out.replace(BP_RE, (_m, bBefore, type, bAfter) => {
+    const bonusRaw = (bBefore || bAfter || '').replace(/\s+/g, '');
+    const bonus = bonusRaw ? ` ${bonusRaw}` : '';
+    return `${type.toLowerCase()}${bonus}`;
+  });
+
+  // 2) Canonical (size material) shield with bonus optionally before/after → move bonus to end
+  const CANON_RE = /\b(?:(\+\s*\d+)\s*)?(small|medium|large)\s+(steel|wooden)\s+shield\b(?:\s*(\+\s*\d+))?/gi;
+  out = out.replace(CANON_RE, (_m, bBefore, size, material, bAfter) => {
+    const bonusRaw = (bBefore || bAfter || '').replace(/\s+/g, '');
+    const bonus = bonusRaw ? ` ${bonusRaw}` : '';
+    return `${size.toLowerCase()} ${material.toLowerCase()} shield${bonus}`;
+  });
+
+  // 3) Any remaining 'shield' mentions → promote to PHB form with defaults, preserving any size/material seen
+  const GENERIC_RE = /\b(?:(\+\s*\d+)\s*)?(?:an?\s+)?(?:(buckler|small|medium|large|pavis)\s+)?(?:(wooden|steel)\s+)?shield\b(?:\s*(\+\s*\d+))?/gi;
+  out = out.replace(GENERIC_RE, (_m, bBefore, sizeMaybe, matMaybe, bAfter) => {
+    // Already handled buckler/pavis earlier; if they appear here, coerce to standalone
+    const sizeLower = (sizeMaybe || '').toLowerCase();
+    if (sizeLower === 'buckler' || sizeLower === 'pavis') {
+      const bonusRaw = (bBefore || bAfter || '').replace(/\s+/g, '');
+      const bonus = bonusRaw ? ` ${bonusRaw}` : '';
+      return `${sizeLower}${bonus}`;
+    }
+    const size = (sizeLower as 'small'|'medium'|'large') || 'medium';
+    const mat = (matMaybe || '').toLowerCase() || 'steel';
+    const bonusRaw = (bBefore || bAfter || '').replace(/\s+/g, '');
     const bonus = bonusRaw ? ` ${bonusRaw}` : '';
     return `${size} ${mat} shield${bonus}`;
   });
 
-  // Special-case: bare "buckler" optionally with +# but without the word "shield"
-  // Example: "buckler +1" -> "buckler steel shield +1"
-  const BUCKLER_ONLY = /\bbuckler\b(?!\s+shield)(?:\s*(\+\s*\d+))?/gi;
-  return replaced.replace(BUCKLER_ONLY, (_m, b) => {
-    const bonus = b ? ` ${b.replace(/\s+/g, '')}` : '';
-    return `buckler steel shield${bonus}`;
-  });
+  // 4) Lone buckler/pavis without preceding normalization (e.g., miss cases like "+2 buckler") handled above
+  return out;
 }
 
 // Find spells and format with ordinals and en dashes
@@ -988,11 +1008,14 @@ export function validateStatBlock(text: string): ValidationResult {
   // 23. Multiple Equipment Sections
   validateEquipmentSectionCount(body, warnings);
 
+  // 24. Shield Type Material Enforcement
+  validateShieldTypes(body, warnings);
+
   const errorCount = warnings.filter(w => w.type === 'error').length;
   const warningCount = warnings.filter(w => w.type === 'warning').length;
   const infoCount = warnings.filter(w => w.type === 'info').length;
   
-  const totalChecks = 23;
+  const totalChecks = 24;
   const issueCount = errorCount + (warningCount * 0.5) + (infoCount * 0.1);
   const complianceScore = Math.max(0, Math.round(((totalChecks - issueCount) / totalChecks) * 100));
   
@@ -1701,6 +1724,34 @@ function validateEquipmentSectionCount(body: string, warnings: ValidationWarning
       message: 'Non-standard equipment section labels detected',
       suggestion: 'Use standard "Equipment:" label for all gear and items'
     });
+  }
+}
+
+// 24. Shield Type Material Enforcement (PHB forms only)
+function validateShieldTypes(body: string, warnings: ValidationWarning[]) {
+  // Acceptable forms:
+  // - buckler (optional +#)
+  // - pavis (optional +#)
+  // - (small|medium|large) (steel|wooden) shield (optional +#)
+  // Everything else should be flagged and ideally normalized.
+  const acceptable = new RegExp(
+    String.raw`\b(?:buckler|pavis)(?:\s*\+\s*\d+)?\b|\b(?:small|medium|large)\s+(?:steel|wooden)\s+shield(?:\s*\+\s*\d+)?\b`,
+    'gi'
+  );
+
+  // Find all shield-ish mentions
+  const shieldish = /\b(?:\+\s*\d+\s+)?(?:(?:an?\s+)?(?:buckler|small|medium|large|pavis)\s+)?(?:(?:wooden|steel)\s+)?shield\b(?:\s*\+\s*\d+)?|\bbuckler\b(?:\s*\+\s*\d+)?|\bpavis\b(?:\s*\+\s*\d+)?/gi;
+  const matches = [...body.matchAll(shieldish)].map(m => m[0]);
+  for (const m of matches) {
+    const isOk = !!m.match(acceptable);
+    if (!isOk) {
+      warnings.push({
+        type: 'warning',
+        category: 'Shield Type',
+        message: `Non-PHB shield reference detected: "${m}"`,
+        suggestion: 'Use PHB forms only: buckler, pavis, or (small|medium|large) (steel|wooden) shield [+#]'
+      });
+    }
   }
 }
 
