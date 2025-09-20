@@ -445,6 +445,28 @@ export function collapseNPCEntry(longText: string): string {
   return result;
 }
 
+// --- HTML Output Generation ---
+export function convertToHtml(markdownText: string): string {
+  let html = markdownText;
+
+  // Convert **bold** to <strong>
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+  // Convert *italic* to <em>
+  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+  // Convert superscripts
+  html = html.replace(/(\d+)ˢᵗ/g, '$1<sup>st</sup>');
+  html = html.replace(/(\d+)ⁿᵈ/g, '$1<sup>nd</sup>');
+  html = html.replace(/(\d+)ʳᵈ/g, '$1<sup>rd</sup>');
+  html = html.replace(/(\d+)ᵗʰ/g, '$1<sup>th</sup>');
+
+  // Convert newlines to <br>
+  html = html.replace(/\n/g, '<br>');
+
+  return html;
+}
+
 // --- Batch processor for multiple NPCs ---
 export function processDump(dump: string): string[] {
   // Clean the input text
@@ -1623,7 +1645,7 @@ function validateACStructure(body: string, warnings: ValidationWarning[]) {
       });
     }
     
-    // Check if it's a single number when it should be base/magical
+    // // Check if it's a single number when it should be base/magical
     if (/^\d+$/.test(acValue)) {
       warnings.push({
         type: 'info',

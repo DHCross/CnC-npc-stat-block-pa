@@ -7,8 +7,8 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Toaster } from '@/components/ui/sonner';
-import { Copy, Download, Upload, AlertCircle, Trash2, FileText, Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand, Sparkle, ArrowRight, ClipboardText } from '@phosphor-icons/react';
-import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes } from '@/lib/npc-parser';
+import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode as FileHtml } from 'lucide-react';
+import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml } from '@/lib/npc-parser';
 import { toast } from 'sonner';
 // Use localStorage-backed KV to avoid requiring Spark runtime in repo context
 import { useKV } from '@/hooks/use-kv';
@@ -94,6 +94,19 @@ function App() {
       toast.success('Copied to clipboard');
     } catch (err) {
       toast.error('Failed to copy to clipboard');
+    }
+  };
+
+  const copyHtmlToClipboard = async (text: string) => {
+    try {
+      const html = convertToHtml(text);
+      const blob = new Blob([html], { type: 'text/html' });
+      const clipboardItem = new ClipboardItem({ 'text/html': blob });
+      await navigator.clipboard.write([clipboardItem]);
+      toast.success('Copied as rich text (HTML)');
+    } catch (err) {
+      console.error('Failed to copy HTML to clipboard:', err);
+      toast.error('Failed to copy as rich text. Your browser may not support this feature.');
     }
   };
 
@@ -462,19 +475,11 @@ function App() {
             <Card className="h-fit">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Upload weight="bold" className="text-primary" />
+                  <Upload className="text-primary" />
                   Input Stat Blocks
                 </CardTitle>
                 <CardDescription>
-                  Paste your C&C NPC stat block(s) below. The enhanced parser automatically converts to narrative format, 
-                  validates comprehensive C&C compliance across 23+ categories including heading format, disposition terminology, 
-                  level formatting, magic item italicization, coinage terminology, prime attribute ordering, AC structures, 
-                  and mount statistics. Features advanced automated correction system with confidence-rated fixes for deprecated terminology (alignment→disposition, improved grab→crushing grasp, 
-                  vision types), proper noun-form dispositions, superscript levels, magic item mechanical explanations, and equipment 
-                  section standardization. Auto-correction engine provides intelligent one-click fixes with before/after previews, 
-                  bulk application of high-confidence corrections, and detailed categorization of formatting improvements. For batch processing, separate multiple NPCs with blank lines. Each NPC receives detailed validation scoring 
-                  and specific compliance warnings to ensure perfect C&C formatting standards, plus automated correction suggestions 
-                  for immediate application.
+                  Paste your C&C NPC stat block(s) below. The parser automatically detects whether you've entered a single NPC or a batch.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -492,7 +497,7 @@ function App() {
                     onClick={loadExample}
                     className="flex-1"
                   >
-                    Load Example
+                    Load Single NPC Example
                   </Button>
                   <Button
                     variant="outline"
@@ -500,7 +505,7 @@ function App() {
                     onClick={loadAlternativeExample}
                     className="flex-1"
                   >
-                    Simple Format
+                    Load Batch NPC Example
                   </Button>
                   <Button
                     variant="outline"
@@ -509,35 +514,17 @@ function App() {
                     className="flex-1 flex items-center gap-2"
                   >
                     <Warning size={16} />
-                    Issues Demo
+                    Load Issues Demo
                   </Button>
                 </div>
                 <div className="flex gap-2">
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={loadTemplate}
-                    className="flex-1 flex items-center gap-2"
-                  >
-                    <FileText size={16} />
-                    Single NPC
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={loadBatchTemplate}
-                    className="flex-1 flex items-center gap-2"
-                  >
-                    <FileText size={16} />
-                    Batch NPCs
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
                     onClick={() => handleInputChange('')}
                     className="flex items-center gap-2"
                   >
-                    <Trash2 size={16} />
+                    <Trash size={16} />
                     Clear
                   </Button>
                 </div>
@@ -627,18 +614,11 @@ function App() {
             <Card className="h-fit">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Download weight="bold" className="text-accent" />
+                  <Download className="text-accent" />
                   Parsed Results
                 </CardTitle>
                 <CardDescription>
-                  Castles & Crusades narrative format with comprehensive validation across 23+ compliance categories and 
-                  intelligent automated correction system. Enhanced validation includes heading format, deprecated terminology detection, magic item explanations, 
-                  disposition noun formatting, prime attribute ordering, superscript levels, AC structure validation, 
-                  title formatting, and equipment section standardization. Auto-correction engine provides confidence-rated fixes 
-                  with one-click application, bulk correction capabilities, and detailed before/after previews for all formatting improvements.
-                  {results.length > 1 && ` Processing ${results.length} NPCs with individual detailed validation reports and automated correction suggestions.`}
-                  {results.length === 1 && results[0].validation.complianceScore && 
-                    ` Compliance score: ${results[0].validation.complianceScore}% across all C&C standards with ${results[0].validation.fixes?.length || 0} available corrections.`}
+                  The parsed NPC stat block appears below in the required narrative format, along with a compliance report.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -688,6 +668,15 @@ function App() {
                             >
                               <ClipboardText size={16} />
                               Copy NPC + Report
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => copyHtmlToClipboard(result.converted)}
+                              className="flex-1 flex items-center gap-2"
+                            >
+                              <FileHtml size={16} />
+                              Copy HTML
                             </Button>
                             {showValidation && (
                               <Badge 
