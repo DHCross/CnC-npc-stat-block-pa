@@ -67,11 +67,11 @@ Armor Class (AC): 18`
   })
 
   describe('Shield Type Specification', () => {
-    it('should normalize generic shield to large steel shield', () => {
+    it('should normalize generic shield to medium steel shield', () => {
       const input = 'sword, shield, armor'
       const result = findEquipment(input)
       
-      expect(result).toContain('large steel shield')
+      expect(result).toContain('medium steel shield')
       expect(result).not.toContain(', shield,')
     })
 
@@ -87,7 +87,7 @@ Armor Class (AC): 18`
       const input = 'sword, shield +2, armor'
       const result = findEquipment(input)
       
-      expect(result).toContain('large steel shield +2')
+      expect(result).toContain('medium steel shield +2')
     })
   })
 
@@ -227,7 +227,7 @@ Mount: heavy war horse`
       expect(result).toContain('and disposition law/good.') // Complete sentence
       expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order
       expect(result).toContain('*pectoral of armor +3*') // PHB rename + italics
-      expect(result).toContain('large steel shield') // Shield normalization
+  expect(result).toContain('medium steel shield') // Shield normalization (defaults)
       expect(result).toContain('*staff of striking*') // Magic item italics
       expect(result).not.toMatch(/_.*\*\*.*\*\*.*_/) // No bold inside italics
       expect(result).toContain('**Warhorse** (_') // Mount stat block
@@ -246,7 +246,7 @@ Mount: heavy war horse`
       // Equipment from prose, with PHB rename and shield normalization
       expect(result).toContain('*pectoral of armor +3*')
       expect(result).toContain('full plate mail')
-      expect(result).toContain('large steel shield')
+  expect(result).toContain('medium steel shield')
       expect(result).toContain('mace')
 
       // Mount from prose

@@ -230,6 +230,10 @@ export function findEquipment(text: string, npcName?: string): string {
   
   if (!equipmentText || equipmentText.trim().toLowerCase() === 'none') return 'none';
 
+  // Normalize any shield references up-front so later steps (splitting, italicization)
+  // see a consistent PHB shape: "(size material) shield +#" with sane defaults
+  equipmentText = normalizeShieldItems(equipmentText);
+
   let items = equipmentText
     .split(/,| and /i)
     .map(s => s.trim().replace(/\.+$/, ''))
@@ -252,42 +256,11 @@ export function findEquipment(text: string, npcName?: string): string {
     out = out.replace(/\bdagger of venom\b/gi, 'dagger of envenomation');
     return out;
   };
-  const normalizeShield = (s: string): string => {
-    const lower = s.toLowerCase();
-    if (!/\bshield\b/.test(lower)) return s;
-    // If already explicit PHB type/material, preserve and move bonus to end
-    const phbShield = /(buckler|small|medium|large|pavis)\s+(steel|wooden)\s+shield(\s*\+\d+)?/i;
-    const match = s.match(phbShield);
-    if (match) {
-      // Ensure bonus is at end
-      const type = match[1];
-      const material = match[2];
-      const bonus = (s.match(/\+\d+/) || [''])[0];
-      return `${type} ${material} shield${bonus}`.trim();
-    }
-    // If only material specified
-    const matMatch = s.match(/(steel|wooden)\s+shield(\s*\+\d+)?/i);
-    if (matMatch) {
-      const material = matMatch[1];
-      const bonus = (s.match(/\+\d+/) || [''])[0];
-      return `large ${material} shield${bonus}`.trim();
-    }
-    // If only type specified
-    const typeMatch = s.match(/(buckler|small|medium|large|pavis)\s+shield(\s*\+\d+)?/i);
-    if (typeMatch) {
-      const type = typeMatch[1];
-      const bonus = (s.match(/\+\d+/) || [''])[0];
-      return `${type} steel shield${bonus}`.trim();
-    }
-    // If generic 'shield' or 'shield +#', default to 'large steel shield +#'
-    const bonus = (s.match(/\+\d+/) || [''])[0];
-    return `large steel shield${bonus}`.trim();
-  };
 
   items = filteredItems.map(x => {
     // Drop leading articles from prose extraction
     let y = x.replace(/^\b(?:a|an|the)\s+/i, '');
-    return normalizeShield(applyPHBRenames(y));
+    return applyPHBRenames(y);
   });
 
   // Auto-italicize obvious magic items
@@ -296,6 +269,31 @@ export function findEquipment(text: string, npcName?: string): string {
 
   const cleaned = items.map(x => (isMagic(x) ? `*${x}*` : x));
   return cleaned.length ? cleaned.join(', ') : 'none';
+}
+
+// Normalize any shield reference to "(size material) shield +#"
+// Size ∈ {buckler, small, medium, large, pavis}, Material ∈ {steel, wooden}
+// Defaults when omitted: size = "medium", material = "steel".
+// Preserves mundane shields (no +#) and existing explicit types.
+function normalizeShieldItems(text: string): string {
+  // Main matcher: handles "+2 shield", "shield +2", and explicit/partial size/material
+  const SHIELD_RE = /\b(?:(?:\(\s*)?(\+\s*\d+)(?:\s*\))?\s*)?(?:an?\s+)?(?:(buckler|small|medium|large|pavis)\s+)?(?:(wooden|steel)\s+)?shield\b(?:\s*(\+\s*\d+))?|\b(?:(buckler|small|medium|large|pavis)\s+)?(?:(wooden|steel)\s+)?shield\b(?:\s*(\+\s*\d+))?/gi;
+
+  const replaced = text.replace(SHIELD_RE, (m, bBefore, sz1, mat1, bAfter, sz2, mat2, bAfter2) => {
+    const size = (sz1 || sz2 || '').toLowerCase() || 'medium';
+    const mat = (mat1 || mat2 || '').toLowerCase() || 'steel';
+    const bonusRaw = (bBefore || bAfter || bAfter2 || '').replace(/\s+/g, '');
+    const bonus = bonusRaw ? ` ${bonusRaw}` : '';
+    return `${size} ${mat} shield${bonus}`;
+  });
+
+  // Special-case: bare "buckler" optionally with +# but without the word "shield"
+  // Example: "buckler +1" -> "buckler steel shield +1"
+  const BUCKLER_ONLY = /\bbuckler\b(?!\s+shield)(?:\s*(\+\s*\d+))?/gi;
+  return replaced.replace(BUCKLER_ONLY, (_m, b) => {
+    const bonus = b ? ` ${b.replace(/\s+/g, '')}` : '';
+    return `buckler steel shield${bonus}`;
+  });
 }
 
 // Find spells and format with ordinals and en dashes
@@ -451,6 +449,9 @@ export function convertToHtml(markdownText: string): string {
 
   // Convert **bold** to <strong>
   html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+  // Convert _italic_ (underscore) to <em>
+  html = html.replace(/_(.*?)_/g, '<em>$1</em>');
 
   // Convert *italic* to <em>
   html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
@@ -736,21 +737,13 @@ export function generateAutoCorrectionFixes(text: string): CorrectionFix[] {
     const bonus = match[1];
     const item = match[2].trim();
     // For shields, always normalize to PHB type/material/bonus
-    if (item.match(/\bshield\b/i)) {
-      // Try to extract type/material
-      let normalized = '';
-      const phbShield = /(buckler|small|medium|large|pavis)\s+(steel|wooden)\s+shield/i;
-      const phbMatch = item.match(phbShield);
-      if (phbMatch) {
-        normalized = `${phbMatch[1]} ${phbMatch[2]} shield +${bonus}`;
-      } else {
-        // Default to large steel shield
-        normalized = `large steel shield +${bonus}`;
-      }
+    if (item.match(/\bshield\b/i) || item.match(/\bbuckler\b/i)) {
+      const original = match[0];
+      const normalized = normalizeShieldItems(original);
       fixes.push({
-        description: `Normalize shield to PHB type/material/bonus: "${normalized}"`,
-        originalText: match[0],
-        correctedText: normalized,
+        description: `Normalize shield to PHB pattern (size material) shield +#: "${normalized.trim()}"`,
+        originalText: original,
+        correctedText: normalized.trim(),
         category: 'Shield Format',
         confidence: 'high'
       });
@@ -765,6 +758,25 @@ export function generateAutoCorrectionFixes(text: string): CorrectionFix[] {
         category: 'Magic Item Format',
         confidence: 'medium'
       });
+    }
+  }
+
+  // Fix 5b: Normalize any remaining shield mentions anywhere in text, regardless of bonus order
+  {
+    const shieldGlobal = /\b(?:\+\s*\d+\s+)?(?:(?:an?\s+)?(?:buckler|small|medium|large|pavis)\s+)?(?:(?:wooden|steel)\s+)?shield\b(?:\s*\+\s*\d+)?|\bbuckler\b(?:\s*\+\s*\d+)?/gi;
+    let m;
+    while ((m = shieldGlobal.exec(text)) !== null) {
+      const found = m[0];
+      const normalized = normalizeShieldItems(found).trim();
+      if (normalized !== found) {
+        fixes.push({
+          description: 'Normalize shield reference to PHB pattern',
+          originalText: found,
+          correctedText: normalized,
+          category: 'Shield Format',
+          confidence: 'high'
+        });
+      }
     }
   }
   
