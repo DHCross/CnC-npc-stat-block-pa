@@ -159,25 +159,48 @@ export function findPrimes(text: string): string {
 export function findEquipment(text: string, npcName?: string): string {
   const m = text.match(/Equipment:\s*([^\n]+)/i);
   if (!m) return 'none';
-  
-  const items = m[1]
+
+  let items = m[1]
     .split(',')
     .map(s => s.trim().replace(/\.+$/, ''))
     .filter(Boolean);
 
   // Filter out any accidental name tokens if provided
-  const filteredItems = npcName ? 
+  const filteredItems = npcName ?
     items.filter(item => {
       const itemLower = item.toLowerCase();
       const nameLower = npcName.toLowerCase();
       return !itemLower.includes(nameLower) && !nameLower.includes(itemLower);
     }) : items;
 
+  // PHB renames and explicit shield normalization (pre-italicization per Jeremy)
+  const applyPHBRenames = (s: string): string => {
+    let out = s;
+    out = out.replace(/\brobe of protection\b/gi, 'robe of armor');
+    out = out.replace(/\bring of protection\b/gi, 'ring of armor');
+    out = out.replace(/\bdagger of venom\b/gi, 'dagger of envenomation');
+    return out;
+  };
+  const normalizeShield = (s: string): string => {
+    const lower = s.toLowerCase();
+    if (!/\bshield\b/.test(lower)) return s;
+    // Keep explicit shields (size/material) as-is
+    if (/(large|medium|small)\s+(steel|wooden)\s+shield/.test(lower) || /(wooden|steel)\s+shield/.test(lower)) {
+      return s;
+    }
+    // Preserve bonus if present (e.g., "shield +2")
+    const bonusMatch = s.match(/\+\d+/);
+    const bonus = bonusMatch ? ` ${bonusMatch[0]}` : '';
+    return `large steel shield${bonus}`;
+  };
+
+  items = filteredItems.map(x => normalizeShield(applyPHBRenames(x)));
+
   // Auto-italicize obvious magic items
   const isMagic = (s: string) =>
     /\+\d/.test(s) || /\b(staff|wand|ring|cloak|boots|amulet|pectoral|bracers|girdle|rod|scroll)\b/i.test(s);
 
-  const cleaned = filteredItems.map(x => (isMagic(x) ? `*${x}*` : x));
+  const cleaned = items.map(x => (isMagic(x) ? `*${x}*` : x));
   return cleaned.length ? cleaned.join(', ') : 'none';
 }
 
@@ -217,10 +240,12 @@ export function findMountOneLiner(text: string, gender: 'male' | 'female' | 'neu
   const subjectPronoun = gender === 'female' ? 'She' : gender === 'male' ? 'He' : 'They';
 
   if (mountTextLower.includes('heavy war horse') || mountTextLower.includes('warhorse')) {
+    // Italicize full stat block and use sentence form with 'and' per Jeremy
+    const stats = `This creature's vital stats are level 4 (1d10), HP 35, AC 19, and disposition neutral. ` +
+                  `It makes two hoof attacks for 1d4 damage each, or one overbearing attack. ` +
+                  `The horse is outfitted with chainmail barding.`;
     return `\n\n${subjectPronoun} rides a warhorse with the following statistics:\n\n` +
-           `**Warhorse** (This creature's vital stats are Level 4(1d10), HP 35, AC 19, disposition neutral. ` +
-           `It makes two hoof attacks for 1d4 damage each, or one overbearing attack. ` +
-           `The horse is outfitted with chainmail barding.)`;
+           `**Warhorse** (_${stats}_)`;
   }
 
   // For any other mount, just state what it is.
@@ -243,17 +268,21 @@ function getOrdinalSuffix(level: string): string {
 
 function formatPrimaryAttributes(primes: string): string {
   if (!primes || primes === '?') return '';
-  
+
   // Clean up the attributes and make them lowercase
   const attributes = primes.split(',').map(attr => attr.trim().toLowerCase());
-  
-  if (attributes.length === 1) {
-    return attributes[0];
-  } else if (attributes.length === 2) {
-    return attributes.join(' and ');
+
+  // Enforce PHB canonical order (lowercase per Jeremy)
+  const canonical = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
+  const sorted = attributes.slice().sort((a, b) => canonical.indexOf(a) - canonical.indexOf(b));
+
+  if (sorted.length === 1) {
+    return sorted[0];
+  } else if (sorted.length === 2) {
+    return sorted.join(' and ');
   } else {
-    const lastAttr = attributes.pop();
-    return `${attributes.join(', ')}, and ${lastAttr}`;
+    const lastAttr = sorted[sorted.length - 1];
+    return `${sorted.slice(0, -1).join(', ')}, and ${lastAttr}`;
   }
 }
 
@@ -277,34 +306,35 @@ export function collapseNPCEntry(longText: string): string {
     object: gender === 'female' ? 'her' : gender === 'male' ? 'him' : 'them',
   };
 
-  // Build the main narrative sentence
-  let result = `**${name}** (This ${level}${getOrdinalSuffix(level)} level ${race} ${charClass}'s vital stats are HP ${hp}, AC ${ac}, disposition ${disposition}.`;
+  // Build the main narrative block with complete sentences and 'and' before disposition
+  let block = `This ${level}${getOrdinalSuffix(level)} level ${race} ${charClass}'s vital stats are HP ${hp}, AC ${ac}, and disposition ${disposition}.`;
 
-  // Add primary attributes if found
+  // Add primary attributes if found (lowercase + PHB order already handled) using phrasing 'primary attributes'
   if (primes !== '?') {
     const formatted = formatPrimaryAttributes(primes);
-    if (formatted) result += ` ${pronouns.possessive} primary attributes are ${formatted}.`;
+    if (formatted) block += ` ${pronouns.possessive} primary attributes are ${formatted}.`;
   }
 
   // Add equipment if found
   if (equipment !== 'none') {
     const items = equipment.split(',').map(x => x.trim()).filter(Boolean);
     if (items.length === 1) {
-      result += ` ${pronouns.subject} carries ${items[0]}.`;
+      block += ` ${pronouns.subject} carries ${items[0]}.`;
     } else if (items.length === 2) {
-      result += ` ${pronouns.subject} carries ${items[0]} and ${items[1]}.`;
+      block += ` ${pronouns.subject} carries ${items[0]} and ${items[1]}.`;
     } else {
       const lastItem = items.pop();
-      result += ` ${pronouns.subject} carries ${items.join(', ')}, and ${lastItem}.`;
+      block += ` ${pronouns.subject} carries ${items.join(', ')}, and ${lastItem}.`;
     }
   }
 
   // Add spells if found
   if (spells !== '?') {
-    result += ` ${pronouns.subject} can cast the following number of spells per day: ${spells}.`;
+    block += ` ${pronouns.subject} can cast the following number of spells per day: ${spells}.`;
   }
 
-  result += ')';
+  // Wrap the entire stat block in italics inside parentheses per Jeremy
+  let result = `**${name}** (_${block}_)`;
 
   // Add mount information if present
   const mountInfo = findMountOneLiner(body, gender);
@@ -1030,7 +1060,8 @@ function validateCoinageTerminology(body: string, warnings: ValidationWarning[])
   // Check for isolated abbreviations
   const isolatedPattern = /\b(?:pp|gp|sp|cp|ep)\b/gi;
   const matches = [...body.matchAll(isolatedPattern)];
-  if (matches.length > 0) {
+  const uniqueMatches = new Set(matches.map(m => m[0]));
+  if (uniqueMatches.size > 0) {
     warnings.push({
       type: 'warning',
       category: 'Coinage Format',
