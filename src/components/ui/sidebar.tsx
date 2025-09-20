@@ -1,11 +1,6 @@
 "use client"
 
-import { CSSPconst SIDEBAR_COOKIE_NAME = "sidebar:state"
-const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7 // 1 week
-const SIDEBAR_WIDTH = "16rem"
-const SIDEBAR_WIDTH_MOBILE = "18rem"
-const SIDEBAR_WIDTH_ICON = "3rem"
-const SIDEBAR_KEYBOARD_SHORTCUT = "B" // Shift+B to avoid conflict with universal bold hotkey
+import { type CSSProperties, ComponentProps, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react"
 
 // Helper to read sidebar state from cookie
 function getSidebarStateFromCookie(): boolean | null {
@@ -20,7 +15,7 @@ function getSidebarStateFromCookie(): boolean | null {
   }
   
   return null;
-}ies, ComponentProps, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react"
+}
 import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
 import PanelLeftIcon from "lucide-react/dist/esm/icons/panel-left"
@@ -45,8 +40,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-const SIDEBAR_COOKIE_NAME = "sidebar_state"
-const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
+const SIDEBAR_COOKIE_NAME = "sidebar:state"
+const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7 // 1 week  
 const SIDEBAR_WIDTH = "16rem"
 const SIDEBAR_WIDTH_MOBILE = "18rem"
 const SIDEBAR_WIDTH_ICON = "3rem"
@@ -91,7 +86,11 @@ function SidebarProvider({
 
   // This is the internal state of the sidebar.
   // We use openProp and setOpenProp for control from outside the component.
-  const [_open, _setOpen] = useState(defaultOpen)
+  // Initialize from cookie if available, otherwise use defaultOpen
+  const [_open, _setOpen] = useState(() => {
+    const cookieState = getSidebarStateFromCookie();
+    return cookieState !== null ? cookieState : defaultOpen;
+  })
   const open = openProp ?? _open
   const setOpen = useCallback(
     (value: boolean | ((value: boolean) => boolean)) => {
@@ -103,7 +102,9 @@ function SidebarProvider({
       }
 
       // This sets the cookie to keep the sidebar state.
-      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+      const isSecure = location.protocol === 'https:';
+      const secureFlag = isSecure ? '; secure' : '';
+      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}; samesite=lax${secureFlag}`
     },
     [setOpenProp, open]
   )

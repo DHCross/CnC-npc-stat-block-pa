@@ -1394,8 +1394,8 @@ function validatePrimeAttributes(body: string, warnings: ValidationWarning[]) {
     if (foundAbbrevs.length > 0) {
       warnings.push({
         type: 'warning',
-        category: 'Prime Attributes Format',
-        message: 'Prime Attributes use abbreviations - should be spelled out in full',
+        category: 'Primary Attributes Format',
+        message: 'Primary attributes use abbreviations - should be spelled out in full',
         suggestion: 'Use "Strength, Wisdom, Charisma" instead of "Str, Wis, Cha"'
       });
     }
@@ -1421,8 +1421,8 @@ function validatePrimeAttributes(body: string, warnings: ValidationWarning[]) {
       if (!orderCorrect) {
         warnings.push({
           type: 'info',
-          category: 'Prime Attributes Order',
-          message: 'Prime Attributes not in Player\'s Handbook order',
+          category: 'Primary Attributes Order',
+          message: 'Primary attributes not in Player\'s Handbook order',
           suggestion: 'Order: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma'
         });
       }
