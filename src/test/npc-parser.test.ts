@@ -26,8 +26,8 @@ Spells: 0–6, 1st–6`
       
       // Should have the pattern **Name[, Title]** (_italic content_)
       expect(result).toMatch(/\*\*[^*]+\*\* \(_.*_\)/)
-      expect(result).toContain('(_This 16ᵗʰ level human cleric')
-      expect(result).toContain('and disposition law/good.')
+      expect(result).toContain('(_this 16ᵗʰ level human cleric')
+      expect(result).toContain('disposition law/good.')
     })
   })
 
@@ -41,8 +41,8 @@ Armor Class (AC): 18`
 
       const result = collapseNPCEntry(input)
       
-      expect(result).toContain('HP 35, AC 18, and disposition law/good.')
-      expect(result).toMatch(/vital stats are HP \d+, AC \d+, and disposition .+\./);
+      expect(result).toContain('hp 35, ac 18, disposition law/good.')
+      expect(result).toMatch(/vital stats are hp \d+, ac \d+, disposition .+\./);
     })
   })
 
@@ -223,7 +223,7 @@ Mount: heavy war horse`
       
       // Check all major formatting requirements
       expect(result).toMatch(/\*\*.*\*\* \(_.*_\)/) // Italicized stat block
-      expect(result).toContain('and disposition law/good.') // Complete sentence
+      expect(result).toContain('disposition law/good.') // Complete sentence
       expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order
       expect(result).toContain('*pectoral of armor +3*') // PHB rename + italics
   expect(result).toContain('medium steel shield') // Shield normalization (defaults)
@@ -242,7 +242,7 @@ Mount: heavy war horse`
       const result = collapseNPCEntry(input)
 
       // Vital stats from parenthetical and prose disposition
-      expect(result).toContain('HP 59, AC 13/22, and disposition law/good.')
+      expect(result).toContain('hp 59, ac 13/22, disposition law/good.')
 
       // Equipment from prose, with PHB rename and shield normalization
       expect(result).toContain('*pectoral of armor +3*')

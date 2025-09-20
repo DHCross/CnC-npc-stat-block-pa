@@ -410,60 +410,165 @@ export function formatPrimaryAttributes(primes: string): string {
 }
 
 // Main function to collapse NPC entry into narrative format
+// --- Castle Zagyg Unified Formatting Helper Functions ---
+
+function determineStatBlockType(charClass: string, race: string, name: string): 'basic-monster' | 'classless-npc' | 'classed-npc' {
+  // Basic monster: no class, often no name, typically creature types
+  if (!charClass || charClass === 'unknown' || charClass === '?') {
+    if (!name || /^(orc|goblin|skeleton|zombie|troll|dragon|giant|elemental)/i.test(race)) {
+      return 'basic-monster';
+    }
+    return 'classless-npc';
+  }
+  return 'classed-npc';
+}
+
+function getPronouns(gender: string, race: string, name: string): { subject: string; possessive: string; object: string } {
+  // Only use gendered pronouns if explicit indicators present
+  const explicitFemale = /\b(priestess|female|woman|lady|queen|duchess|countess|she|her)\b/i.test(`${race} ${name}`);
+  const explicitMale = /\b(male|man|lord|king|duke|count|sir|he|his|him)\b/i.test(`${race} ${name}`);
+  
+  if (explicitFemale || gender === 'female') {
+    return { subject: 'she', possessive: 'her', object: 'her' };
+  } else if (explicitMale || gender === 'male') {
+    return { subject: 'he', possessive: 'his', object: 'him' };
+  } else {
+    return { subject: 'this creature', possessive: 'this creature\'s', object: 'this creature' };
+  }
+}
+
+function formatBasicMonster(race: string, level: string, hp: string, ac: string, disposition: string, primes: string, equipment: string): string {
+  const levelSuffix = getOrdinalSuffix(level);
+  let block = `this creature's vital stats are level ${level}${levelSuffix}(d${getHitDie(race)}), hp ${hp}, ac ${ac}, disposition ${disposition}.`;
+  
+  if (primes !== '?' && primes !== 'unknown') {
+    const formatted = formatPrimaryAttributes(primes);
+    if (formatted) block += ` their primary attributes are ${formatted}.`;
+  }
+  
+  if (equipment !== 'none' && equipment !== '?') {
+    block += ` they attack with ${equipment} for appropriate damage.`;
+  }
+  
+  block += ` refer to monsters & treasure for more information.`;
+  
+  return `(_${block}_)`;
+}
+
+function formatClasslessNPC(name: string, race: string, level: string, hp: string, ac: string, disposition: string, equipment: string, pronouns: any): string {
+  const levelSuffix = getOrdinalSuffix(level);
+  let block = `this ${race}'s vital stats are level ${level}${levelSuffix}(d${getHitDie(race)}), hp ${hp}, ac ${ac}, disposition ${disposition}.`;
+  
+  if (equipment !== 'none' && equipment !== '?') {
+    block += ` ${pronouns.subject} ${pronouns.subject === 'this creature' ? 'wears' : pronouns.subject.toLowerCase() === 'he' || pronouns.subject.toLowerCase() === 'she' ? 'wears' : 'wear'} ${equipment}.`;
+  }
+  
+  const hasPlausibleName = !!name && !/^\(/.test(name) && !/^(he|she|they|this)\b/i.test(name);
+  if (hasPlausibleName) {
+    return `**${name}** (_${block}_)`;
+  } else {
+    return `(_${block}_)`;
+  }
+}
+
+function formatClassedNPC(name: string, race: string, level: string, charClass: string, hp: string, ac: string, disposition: string, primes: string, equipment: string, spells: string, pronouns: any): string {
+  const levelSuffix = getOrdinalSuffix(level);
+  let block = `this ${level}${levelSuffix} level ${race} ${charClass}'s vital stats are hp ${hp}, ac ${ac}, disposition ${disposition}.`;
+  
+  // Add primary attributes - always lowercase, use singular/plural appropriately
+  if (primes !== '?' && primes !== 'unknown') {
+    const formatted = formatPrimaryAttributes(primes);
+    if (formatted) {
+      const attrList = formatted.split(/,|\s+and\s+/).map(s => s.trim()).filter(Boolean);
+      if (attrList.length === 1) {
+        block += ` ${pronouns.subject === 'this creature' ? 'its' : pronouns.possessive.toLowerCase()} primary attribute is ${formatted}.`;
+      } else {
+        block += ` ${pronouns.subject === 'this creature' ? 'its' : pronouns.possessive.toLowerCase()} primary attributes are ${formatted}.`;
+      }
+    }
+  }
+  
+  // Add equipment with proper italics for magic items
+  if (equipment !== 'none' && equipment !== '?') {
+    const verb = pronouns.subject === 'this creature' ? 'wears' : pronouns.subject.toLowerCase() === 'he' || pronouns.subject.toLowerCase() === 'she' ? 'wears' : 'wear';
+    block += ` ${pronouns.subject === 'this creature' ? 'it' : pronouns.subject.toLowerCase()} ${verb} ${equipment}.`;
+  }
+  
+  // Add spells with proper format
+  if (spells !== '?' && spells !== 'unknown') {
+    const verb = pronouns.subject === 'this creature' ? 'can cast' : pronouns.subject.toLowerCase() === 'he' || pronouns.subject.toLowerCase() === 'she' ? 'can cast' : 'can cast';
+    block += ` ${pronouns.subject === 'this creature' ? 'it' : pronouns.subject.toLowerCase()} ${verb} the following number of ${getSpellType(charClass)} spells each day: ${spells}.`;
+  }
+  
+  const hasPlausibleName = !!name && !/^\(/.test(name) && !/^(he|she|they|this)\b/i.test(name);
+  if (hasPlausibleName) {
+    return `**${name}** (_${block}_)`;
+  } else {
+    return `(_${block}_)`;
+  }
+}
+
+function getHitDie(race: string): string {
+  // Default hit die based on creature type - can be expanded
+  const hitDiceMap: { [key: string]: string } = {
+    'human': '8',
+    'elf': '6', 
+    'dwarf': '10',
+    'halfling': '6',
+    'orc': '8',
+    'goblin': '6',
+    'kobold': '4'
+  };
+  return hitDiceMap[race.toLowerCase()] || '8';
+}
+
+function getSpellType(charClass: string): string {
+  if (/cleric|priest/i.test(charClass)) return 'cleric';
+  if (/wizard|magic.user/i.test(charClass)) return 'wizard';
+  if (/druid/i.test(charClass)) return 'druid';
+  if (/ranger/i.test(charClass)) return 'ranger';
+  if (/paladin/i.test(charClass)) return 'paladin';
+  return 'arcane';
+}
+
 export function collapseNPCEntry(longText: string): string {
   const { title, body } = splitTitleAndBody(longText);
-  const name = findName(title);
+  let name = findName(title);
 
   const { race, level, charClass } = parseRaceClassLevel(body);
-  const disposition = extractDisposition(body) ?? 'unknown';  // <- single source of truth
+  const disposition = extractDisposition(body) ?? 'unknown';
   const [hp, ac] = findHpAc(body);
   const primes = findPrimes(body);
   const equipment = findEquipment(body, name);
   const spells = findSpells(body);
   const gender = extractGender(body);
 
-  // Define pronouns based on gender
-  const pronouns = {
-    subject: gender === 'female' ? 'She' : gender === 'male' ? 'He' : 'They',
-    possessive: gender === 'female' ? 'Her' : gender === 'male' ? 'His' : 'Their',
-    object: gender === 'female' ? 'her' : gender === 'male' ? 'him' : 'them',
-  };
+  // Determine stat block type based on Castle Zagyg unified rules
+  const statBlockType = determineStatBlockType(charClass, race, name);
 
-  // Build the main narrative block with complete sentences and 'and' before disposition
-  let block = `This ${level}${getOrdinalSuffix(level)} level ${race} ${charClass}'s vital stats are HP ${hp}, AC ${ac}, and disposition ${disposition}.`;
+  // Define pronouns based on gender - only use gendered if explicit
+  const pronouns = getPronouns(gender, race, name);
 
-  // Add primary attributes if found (lowercase + PHB order already handled) using phrasing 'primary attributes'
-  if (primes !== '?') {
-    const formatted = formatPrimaryAttributes(primes);
-    if (formatted) block += ` ${pronouns.possessive} primary attributes are ${formatted}.`;
+  // If there is no heading name/title, synthesize a sensible fallback
+  if (!name || name.trim() === '') {
+    name = buildFallbackHeading(race, level, charClass);
   }
 
-  // Add equipment if found
-  if (equipment !== 'none') {
-    const items = equipment.split(',').map(x => x.trim()).filter(Boolean);
-    if (items.length === 1) {
-      block += ` ${pronouns.subject} carries ${items[0]}.`;
-    } else if (items.length === 2) {
-      block += ` ${pronouns.subject} carries ${items[0]} and ${items[1]}.`;
-    } else {
-      const lastItem = items.pop();
-      block += ` ${pronouns.subject} carries ${items.join(', ')}, and ${lastItem}.`;
-    }
-  }
-
-  // Add spells if found
-  if (spells !== '?') {
-    block += ` ${pronouns.subject} can cast the following number of spells per day: ${spells}.`;
-  }
-
-  // Wrap the entire stat block in italics inside parentheses per Jeremy.
-  // Only include a bold heading when a plausible name/title exists.
   let result: string;
-  const hasPlausibleName = !!name && !/^\(/.test(name) && !/^(he|she|they)\b/i.test(name);
-  if (hasPlausibleName) {
-    result = `**${name}** (_${block}_)`;
-  } else {
-    result = `(_${block}_)`;
+
+  switch (statBlockType) {
+    case 'basic-monster':
+      result = formatBasicMonster(race, level, hp, ac, disposition, primes, equipment);
+      break;
+    case 'classless-npc':
+      result = formatClasslessNPC(name, race, level, hp, ac, disposition, equipment, pronouns);
+      break;
+    case 'classed-npc':
+      result = formatClassedNPC(name, race, level, charClass, hp, ac, disposition, primes, equipment, spells, pronouns);
+      break;
+    default:
+      // Fallback to classed NPC format
+      result = formatClassedNPC(name, race, level, charClass, hp, ac, disposition, primes, equipment, spells, pronouns);
   }
 
   // Add mount information if present
@@ -475,6 +580,15 @@ export function collapseNPCEntry(longText: string): string {
   }
 
   return result;
+}
+
+// Construct a fallback bold heading when none is provided by the user.
+// Example: "**human, 9ᵗʰ level fighter**" or "**human, 1ˢᵗ level unknown**".
+function buildFallbackHeading(race: string, level: string, charClass: string): string {
+  const r = (race && race !== '?' ? race.toLowerCase() : 'human');
+  const c = (charClass && charClass !== 'unknown' && charClass !== '?' ? charClass.toLowerCase() : 'unknown');
+  const lvl = level && level !== '?' ? `${level}${getOrdinalSuffix(level)} level` : '1ˢᵗ level';
+  return `${r}, ${lvl} ${c}`;
 }
 
 // --- HTML Output Generation ---
@@ -532,14 +646,22 @@ export function processDump(dump: string): string[] {
   
   const results: string[] = [];
   
-  for (const block of blocks) {
-    const trimmedBlock = block.trim();
+  for (let i = 0; i < blocks.length; i++) {
+    let block = blocks[i];
+    let trimmedBlock = block.trim();
     
     // Skip empty blocks or obvious non-NPC content
     if (!trimmedBlock || isCodeContent(trimmedBlock)) {
       continue;
     }
     
+    // If this block is just a plain title/name and the next block looks like a stat body,
+    // merge them so we don't lose the unbolded name.
+    if (looksLikeTitleOnlyBlock(trimmedBlock) && i + 1 < blocks.length && looksLikeStatBodyBlock(blocks[i + 1])) {
+      trimmedBlock = `${trimmedBlock}\n${blocks[i + 1].trim()}`;
+      i++; // consume the next block
+    }
+
     // Check if this block has NPC indicators
     if (!hasNPCIndicators(trimmedBlock)) {
       continue;
@@ -576,6 +698,37 @@ function isCodeContent(text: string): boolean {
          /^\s*\/\*/.test(text);   // CSS/JS block comments
 }
 
+// Heuristic: does this single-line block look like a plain title/name without stats?
+function looksLikeTitleOnlyBlock(block: string): boolean {
+  const lines = block.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  if (lines.length !== 1) return false;
+  const line = lines[0];
+  if (!line) return false;
+  // Not bold, not starting with a stat label, not parenthetical
+  if (/^\*\*.*\*\*$/.test(line)) return false;
+  if (/^\(/.test(line)) return false;
+  if (/^(Disposition|Race|Hit Points|Armor Class|Prime|Equipment|Spells|Mount):/i.test(line)) return false;
+  if (/:/.test(line)) return false;
+  // Reasonable length and has at least two words (e.g., a name or title)
+  const words = line.split(/\s+/);
+  if (words.length < 2) return false;
+  if (line.length < 3 || line.length > 120) return false;
+  return true;
+}
+
+// Heuristic: does this block start like a stat body (parenthetical HP/AC or labeled stats)?
+function looksLikeStatBodyBlock(block: string): boolean {
+  const text = block.trim();
+  if (!text) return false;
+  // Starts with parenthetical containing HP/AC or spelled out terms
+  if (/^\([^)]*(?:\b(?:HP|Hit\s*Points|AC|Armor\s*Class)\b)[^)]*\)/i.test(text)) return true;
+  // Contains common labeled lines
+  if (/(?:Race\s*&\s*Class|Disposition|Alignment|Hit\s*Points|Armor\s*Class|Prime\s*Attributes|Equipment|Spells|Mount)\s*:/i.test(text)) return true;
+  // Has HP/AC shorthand anywhere
+  if (/(?:\bHP\b|\bAC\b)\s*(?::|=)?\s*\d+/i.test(text)) return true;
+  return false;
+}
+
 function hasNPCIndicators(text: string): boolean {
   // Must have some indication it's an NPC stat block
   const hasName = /\*\*[^*]+\*\*/.test(text); // Bold name
@@ -591,34 +744,40 @@ function hasNPCIndicators(text: string): boolean {
   // Also allow parenthetical prose bodies containing HP/AC or disposition sentences
   const hasProseDisposition = /\b(?:He|She)\s+is\s+(?:lawful|chaotic|neutral)/i.test(text) || /\bThey\s+are\s+(?:lawful|chaotic|neutral)/i.test(text);
 
+  // New: allow an unbolded title-only first line followed by HP/AC parenthetical or labeled stats
+  const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  const titleLike = lines.length > 1 && looksLikeTitleOnlyBlock(lines[0]);
+  const rest = lines.slice(1).join('\n');
+  const titlePlusStats = titleLike && looksLikeStatBodyBlock(rest);
+
   return (hasName && (hasStatBlock || hasLevelClass || hasHPAC || hasProseDisposition)) || 
     (hasStatBlock && (hasLevelClass || hasHPAC)) ||
-    (hasName && hasRaceClassFormat);
+    (hasName && hasRaceClassFormat) ||
+    titlePlusStats;
 }
 
 export function generateNPCTemplate(): string {
-  return `**NPC Name, Title or Office**
+  return `**sir reynard montjoy, koc**
 
 Disposition: law/good
-Race & Class: human, 16th level cleric
-Hit Points (HP): 59
-Armor Class (AC): 13/22
-Prime Attributes (PA): Strength, Wisdom, Charisma
-Equipment: pectoral of protection +3, full plate mail, steel shield, staff of striking, mace
-Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
+Race & Class: human, 9ᵗʰ level fighter
+Hit Points (HP): 56
+Armor Class (AC): 20
+Primary Attributes: strength, constitution
+Equipment: plate mail, *shield +2*, *longsword +1*, *ring of protection +1*
 Mount: heavy war horse`;
 }
 
 export function generateBatchTemplate(): string {
-  return `**The Right Honorable President Counselor of Yggsburgh His Supernal Devotion, Victor Oldham, High Priest of the Grand Temple**
+  return `**the right honorable president counselor of yggsburgh, his supernal devotion victor oldham, high priest of the grand temple**
 
 Disposition: law/good
-Race & Class: human, 16th level cleric
+Race & Class: human, 16ᵗʰ level cleric
 Hit Points (HP): 59
 Armor Class (AC): 13/22
-Prime Attributes (PA): Strength, Wisdom, Charisma
-Equipment: pectoral of protection +3, full plate mail, steel shield, staff of striking, mace
-Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
+Primary Attributes: strength, wisdom, charisma
+Equipment: *pectoral of protection +3*, full plate mail, large steel shield, *staff of striking*, mace
+Spells: he can cast the following number of cleric spells each day: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
 Mount: heavy war horse
 
 **Hector Markle, Secretary Counselor**
@@ -668,9 +827,82 @@ export interface ValidationResult {
   fixes: CorrectionFix[];
 }
 
+// --- Dictionary Support (Spells, Items, Monsters) ---
+// Minimal in-memory dictionaries that can be populated from CSV uploads via UI.
+type DictionarySet = {
+  spells: Set<string>;
+  items: Set<string>;
+  monsters: Set<string>;
+};
+
+const dicts: DictionarySet = {
+  spells: new Set<string>(),
+  items: new Set<string>(),
+  monsters: new Set<string>(),
+};
+
+export function setDictionaries(partial: {
+  spellsCsv?: string; // one name per line or CSV first column
+  itemsCsv?: string;
+  monstersCsv?: string;
+}) {
+  const load = (csv?: string) => {
+    if (!csv) return new Set<string>();
+    const lines = csv.split(/\r?\n/).map(l => l.split(',')[0].trim()).filter(Boolean);
+    return new Set(lines.map(s => s.toLowerCase()))
+  };
+  if (partial.spellsCsv !== undefined) dicts.spells = load(partial.spellsCsv);
+  if (partial.itemsCsv !== undefined) dicts.items = load(partial.itemsCsv);
+  if (partial.monstersCsv !== undefined) dicts.monsters = load(partial.monstersCsv);
+}
+
+function canonicalizeByDictionaries(text: string): string {
+  if ((!dicts.spells.size && !dicts.items.size && !dicts.monsters.size) || !text) return text;
+  let out = text;
+
+  // Canonicalize spells and italicize
+  if (dicts.spells.size) {
+    for (const name of dicts.spells) {
+      const re = new RegExp(`\\b${escapeRegExp(name)}\\b`, 'gi');
+      out = out.replace(re, (m) => `*${m.toLowerCase()}*`);
+    }
+  }
+
+  // Canonicalize items and italicize
+  if (dicts.items.size) {
+    for (const name of dicts.items) {
+      const re = new RegExp(`\\b${escapeRegExp(name)}\\b`, 'gi');
+      out = out.replace(re, (m) => `*${m.toLowerCase()}*`);
+    }
+  }
+
+  // Canonicalize monster names (no italics by default)
+  if (dicts.monsters.size) {
+    for (const name of dicts.monsters) {
+      const re = new RegExp(`\\b${escapeRegExp(name)}\\b`, 'gi');
+      out = out.replace(re, (m) => m.toLowerCase());
+    }
+  }
+
+  return out;
+}
+
 // Auto-correction system for common C&C formatting issues
 export function generateAutoCorrectionFixes(text: string): CorrectionFix[] {
   const fixes: CorrectionFix[] = [];
+  
+  // Dictionary-based canonicalization suggestions (if dictionaries are loaded)
+  const dictCorrected = canonicalizeByDictionaries(text);
+  if (dictCorrected !== text) {
+    // Create a composite fix suggestion to nudge user to apply dictionary normalization.
+    fixes.push({
+      description: 'Normalize names using loaded dictionaries (spells/items/monsters)',
+      originalText: text,
+      correctedText: dictCorrected,
+      category: 'Dictionary Normalization',
+      confidence: 'medium'
+    });
+  }
   
   // Fix 1: Convert alignment to disposition terminology
   const alignmentMatches = [...text.matchAll(/\b(Alignment)\s*:/gi)];
@@ -684,7 +916,7 @@ export function generateAutoCorrectionFixes(text: string): CorrectionFix[] {
     });
   }
   
-  // Fix 2: Convert adjective alignments to noun form
+  // Fix 2: Convert adjective alignments to noun form per Castle Zagyg rules
   const adjAlignmentMatches = [...text.matchAll(/\b(lawful|chaotic)\s+(good|evil|neutral)\b/gi)];
   for (const match of adjAlignmentMatches) {
     const adj1 = match[1].toLowerCase();
@@ -721,7 +953,7 @@ export function generateAutoCorrectionFixes(text: string): CorrectionFix[] {
     }
   }
   
-  // Fix 3: Convert coinage abbreviations to full names
+  // Fix 3: Convert coinage abbreviations to full names (Castle Zagyg rule 12)
   const coinageMap = { pp: 'platinum', gp: 'gold', sp: 'silver', cp: 'copper', ep: 'electrum' };
   for (const [abbrev, full] of Object.entries(coinageMap)) {
     const pattern = new RegExp(`\\b(\\d+)\\s*(${abbrev})\\b`, 'gi');
@@ -737,7 +969,73 @@ export function generateAutoCorrectionFixes(text: string): CorrectionFix[] {
     }
   }
   
-  // Fix 4: Italicize obvious magic items
+  // Fix 4: Convert two-word vision terms (Castle Zagyg rule 9)
+  const newVisionFixes = [
+    { old: 'darkvision', new: 'dark vision' },
+    { old: 'infravision', new: 'dark vision' },
+    { old: 'deepvision', new: 'deep vision' },
+    { old: 'duskvision', new: 'dusk vision' },
+    { old: 'twilightvision', new: 'twilight vision' }
+  ];
+  
+  for (const { old, new: newTerm } of newVisionFixes) {
+    const pattern = new RegExp(`\\b${old}\\b`, 'gi');
+    const matches = [...text.matchAll(pattern)];
+    for (const match of matches) {
+      fixes.push({
+        description: `Replace "${match[0]}" with two-word form "${newTerm}"`,
+        originalText: match[0],
+        correctedText: newTerm,
+        category: 'Vision Terms',
+        confidence: 'high'
+      });
+    }
+  }
+  
+  // Fix 5: Convert ability terms (Castle Zagyg rule 10)
+  const newAbilityFixes = [
+    { old: 'improved grab', new: 'crushing grasp' },
+    { old: 'bash', new: 'bash attack' }
+  ];
+  
+  for (const { old, new: newTerm } of newAbilityFixes) {
+    const pattern = new RegExp(`\\b${old}\\b`, 'gi');
+    const matches = [...text.matchAll(pattern)];
+    for (const match of matches) {
+      fixes.push({
+        description: `Replace "${match[0]}" with updated terminology "${newTerm}"`,
+        originalText: match[0],
+        correctedText: newTerm,
+        category: 'Ability Terms',
+        confidence: 'high'
+      });
+    }
+  }
+  
+  // Fix 6: Convert uppercase attributes to lowercase (Castle Zagyg rule 4)
+  const attributeMatches = [...text.matchAll(/\b(Str|Dex|Con|Int|Wis|Cha|Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\b/g)];
+  for (const match of attributeMatches) {
+    const attr = match[1];
+    let lowercase = attr.toLowerCase();
+    // Convert abbreviations to full names
+    const attrMap: { [key: string]: string } = {
+      'str': 'strength', 'dex': 'dexterity', 'con': 'constitution',
+      'int': 'intelligence', 'wis': 'wisdom', 'cha': 'charisma'
+    };
+    lowercase = attrMap[lowercase] || lowercase;
+    
+    if (attr !== lowercase) {
+      fixes.push({
+        description: `Convert "${attr}" to lowercase "${lowercase}"`,
+        originalText: attr,
+        correctedText: lowercase,
+        category: 'Attribute Format',
+        confidence: 'high'
+      });
+    }
+  }
+  
+  // Fix 7: Italicize obvious magic items and spells
   const magicItemPatterns = [
     /\b(staff of \w+(?:\s+\w+)*)/gi,
     /\b(pectoral of \w+(?:\s+\w+)*)/gi,
@@ -765,7 +1063,7 @@ export function generateAutoCorrectionFixes(text: string): CorrectionFix[] {
     }
   }
   
-  // Fix 5: Fix magic item bonus placement
+  // Fix 8: Fix magic item bonus placement (Castle Zagyg rule 5)
   const incorrectBonusMatches = [...text.matchAll(/\+(\d+)\s+([\w\s]+?)(?=\s|,|\.|\*|$)/g)];
   for (const match of incorrectBonusMatches) {
     const bonus = match[1];
@@ -1004,11 +1302,11 @@ export function validateStatBlock(text: string): ValidationResult {
   // 13. Unjustified Gendered Pronouns
   validateGenderedPronouns(body, warnings);
   
-  // 14. Deprecated Vision Type Terminology
-  validateVisionTerminology(body, warnings);
+  // 14. Castle Zagyg Vision Type Terminology (two-word forms)
+  validateCastleZagygVisionTerminology(body, warnings);
   
-  // 15. Deprecated "Improved Grab" Terminology
-  validateDeprecatedAbilities(body, warnings);
+  // 15. Castle Zagyg Ability Terminology (crushing grasp, bash attack)
+  validateCastleZagygAbilities(body, warnings);
   
   // 16. Missing Mechanical Explanation for Unique Abilities
   validateUniqueAbilities(body, warnings);
@@ -1809,10 +2107,20 @@ export function processDumpWithValidation(dump: string): ProcessedNPC[] {
   
   const results: ProcessedNPC[] = [];
   
-  for (const block of blocks) {
-    const trimmedBlock = block.trim();
+  for (let i = 0; i < blocks.length; i++) {
+    let block = blocks[i];
+    let trimmedBlock = block.trim();
     
-    if (!trimmedBlock || isCodeContent(trimmedBlock) || !hasNPCIndicators(trimmedBlock)) {
+    if (!trimmedBlock || isCodeContent(trimmedBlock)) {
+      continue;
+    }
+    // Merge preceding title-only lines with following stat body
+    if (looksLikeTitleOnlyBlock(trimmedBlock) && i + 1 < blocks.length && looksLikeStatBodyBlock(blocks[i + 1])) {
+      trimmedBlock = `${trimmedBlock}\n${blocks[i + 1].trim()}`;
+      i++;
+    }
+
+    if (!hasNPCIndicators(trimmedBlock)) {
       continue;
     }
     
@@ -1833,4 +2141,42 @@ export function processDumpWithValidation(dump: string): ProcessedNPC[] {
   }
   
   return results;
+}
+
+// New Castle Zagyg Unified Rules Validation Functions
+
+function validateCastleZagygVisionTerminology(body: string, warnings: ValidationWarning[]) {
+  const singleWordVision = ['darkvision', 'infravision', 'deepvision', 'duskvision', 'twilightvision'];
+  
+  for (const term of singleWordVision) {
+    if (body.toLowerCase().includes(term)) {
+      const correctForm = term.replace('vision', ' vision');
+      warnings.push({
+        type: 'error',
+        category: 'Vision Terminology',
+        message: `Use two-word form: "${correctForm}" instead of "${term}"`,
+        suggestion: 'Castle Zagyg standard requires two-word vision forms'
+      });
+    }
+  }
+}
+
+function validateCastleZagygAbilities(body: string, warnings: ValidationWarning[]) {
+  if (/\bimproved grab\b/i.test(body)) {
+    warnings.push({
+      type: 'error',
+      category: 'Ability Terminology',
+      message: 'Use "crushing grasp" instead of "improved grab"',
+      suggestion: 'Castle Zagyg standard terminology update'
+    });
+  }
+  
+  if (/\bbash\b/i.test(body) && !/\bbash attack\b/i.test(body)) {
+    warnings.push({
+      type: 'warning',
+      category: 'Ability Terminology',
+      message: 'Use "bash attack" instead of "bash"',
+      suggestion: 'Castle Zagyg standard requires full terminology'
+    });
+  }
 }

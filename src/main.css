@@ -6,9 +6,9 @@
 /*
   ---break---
 */
-@custom-variant dark (&:is(.dark *));
-
-@config '../tailwind.config.js';
+/* Removed Tailwind v4 directives that may cause parsing issues */
+/* @custom-variant dark (&:is(.dark *)); */
+/* @config '../tailwind.config.js'; */
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -107,7 +107,8 @@
 /*
   ---break---
 */
-@theme inline {
+/* Using :root instead of @theme inline to avoid CSS parser issues */
+:root {
   --spacing: 0.25rem;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -179,10 +180,14 @@
 */
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--color-border);
+    outline-color: var(--color-ring);
+    outline-width: 1px;
+    outline-offset: 2px;
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
   }
 }

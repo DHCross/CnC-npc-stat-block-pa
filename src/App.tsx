@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Toaster } from '@/components/ui/sonner';
 import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode as FileHtml } from 'lucide-react';
-import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml } from '@/lib/npc-parser';
+import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, setDictionaries } from '@/lib/npc-parser';
 import { toast } from 'sonner';
 // Use localStorage-backed KV to avoid requiring Spark runtime in repo context
 import { useKV } from '@/hooks/use-kv';
@@ -64,6 +64,8 @@ function App() {
   const [showValidation, setShowValidation] = useState(true);
   const [availableFixes, setAvailableFixes] = useState<CorrectionFix[]>([]);
   const [normalizeInput, setNormalizeInput] = useState(false);
+  const [dictEnabled, setDictEnabled] = useState(true);
+  const [dictCounts, setDictCounts] = useState({ spells: 0, items: 0, monsters: 0 });
 
   const processInput = (text: string) => {
     if (!text.trim()) {
@@ -76,7 +78,7 @@ function App() {
     try {
       const toParse = normalizeInput ? applyAllHighConfidenceFixes(text) : text;
       const processed = processDumpWithValidation(toParse);
-      const fixes = generateAutoCorrectionFixes(text);
+  const fixes = generateAutoCorrectionFixes(text);
       setAvailableFixes(fixes);
       
       if (processed.length === 0) {
@@ -550,6 +552,67 @@ function App() {
                     Clear
                   </Button>
                 </div>
+                {/* Dictionaries Panel */}
+                <Card className="mt-2">
+                  <CardHeader className="py-3">
+                    <CardTitle className="text-sm">Dictionaries (CSV)</CardTitle>
+                    <CardDescription className="text-xs">Upload lists of spells, magic items, and monsters to improve name normalization and italics.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-2">
+                    <div className="flex items-center justify-between rounded border p-2 bg-muted/20">
+                      <div className="text-sm">
+                        <div className="font-medium">Enable dictionary normalization</div>
+                        <div className="text-xs text-muted-foreground">When enabled, auto-correction will suggest canonicalized names and italics using your CSVs.</div>
+                      </div>
+                      <Switch checked={dictEnabled} onCheckedChange={setDictEnabled} />
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+                      <div className="space-y-1">
+                        <label className="block text-xs">Spells CSV</label>
+                        <input type="file" accept=".csv,.txt" onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          const text = await file.text();
+                          setDictionaries({ spellsCsv: text });
+                          const count = text.split(/\r?\n/).map(l=>l.split(',')[0].trim()).filter(Boolean).length;
+                          setDictCounts(prev => ({ ...prev, spells: count }));
+                          toast.success(`Loaded ${count} spells`);
+                          // Recompute fixes
+                          processInput(inputText);
+                        }} />
+                        <div className="text-xs text-muted-foreground">Loaded: {dictCounts.spells}</div>
+                      </div>
+                      <div className="space-y-1">
+                        <label className="block text-xs">Items CSV</label>
+                        <input type="file" accept=".csv,.txt" onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          const text = await file.text();
+                          setDictionaries({ itemsCsv: text });
+                          const count = text.split(/\r?\n/).map(l=>l.split(',')[0].trim()).filter(Boolean).length;
+                          setDictCounts(prev => ({ ...prev, items: count }));
+                          toast.success(`Loaded ${count} items`);
+                          processInput(inputText);
+                        }} />
+                        <div className="text-xs text-muted-foreground">Loaded: {dictCounts.items}</div>
+                      </div>
+                      <div className="space-y-1">
+                        <label className="block text-xs">Monsters CSV</label>
+                        <input type="file" accept=".csv,.txt" onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          const text = await file.text();
+                          setDictionaries({ monstersCsv: text });
+                          const count = text.split(/\r?\n/).map(l=>l.split(',')[0].trim()).filter(Boolean).length;
+                          setDictCounts(prev => ({ ...prev, monsters: count }));
+                          toast.success(`Loaded ${count} monsters`);
+                          processInput(inputText);
+                        }} />
+                        <div className="text-xs text-muted-foreground">Loaded: {dictCounts.monsters}</div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
                 <div className="flex items-center justify-between rounded border p-2 bg-muted/40">
                   <div className="text-sm">
                     <div className="font-medium">Normalize before parsing (safe fixes)</div>
