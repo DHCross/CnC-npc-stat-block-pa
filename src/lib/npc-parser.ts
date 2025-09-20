@@ -67,7 +67,22 @@ function normalizeDisposition(raw: string): string {
     lawful:'law', chaotic:'chaos', law:'law', chaos:'chaos',
     good:'good', evil:'evil', neutral:'neutral', neuter:'neutral'
   };
-  const cleaned = raw.toLowerCase().replace(/-/g,'/').replace(/\s+/g,'').replace(/,/g,'/');
+  
+  // Handle spaces between words: "lawful good" -> "law/good"
+  let cleaned = raw.toLowerCase().trim();
+  
+  // Replace common patterns first - these should return immediately
+  if (/lawful\s+good/.test(cleaned)) return 'law/good';
+  if (/lawful\s+evil/.test(cleaned)) return 'law/evil';
+  if (/chaotic\s+good/.test(cleaned)) return 'chaos/good';
+  if (/chaotic\s+evil/.test(cleaned)) return 'chaos/evil';
+  if (/chaotic\s+neutral/.test(cleaned)) return 'chaos/neutral';
+  if (/lawful\s+neutral/.test(cleaned)) return 'law/neutral';
+  if (/neutral\s+good/.test(cleaned)) return 'neutral/good';
+  if (/neutral\s+evil/.test(cleaned)) return 'neutral/evil';
+  
+  // Clean up separators for other formats
+  cleaned = cleaned.replace(/-/g,'/').replace(/\s+/g,'').replace(/,/g,'/');
   const parts = cleaned.split('/').filter(Boolean);
   return parts.slice(0,2).map(p => map[p] ?? p).join('/');
 }
@@ -107,7 +122,11 @@ export function extractGender(source: string): 'male' | 'female' | 'neutral' {
     return 'female';
   }
 
-  // Then male indicators
+  // Then male indicators - check for "high priest" specifically
+  if (/\bhigh priest\b/.test(text)) {
+    return 'male';
+  }
+
   if (/\b(he|him|his|male|priest|king|lord|actor|man)\b/.test(text)) {
     return 'male';
   }
@@ -155,12 +174,23 @@ export function findPrimes(text: string): string {
     .join(', ');
 }
 
-// Find equipment from Equipment: line only, avoiding title contamination
+// Find equipment from Equipment: line or process raw equipment list
 export function findEquipment(text: string, npcName?: string): string {
+  // First try to find Equipment: line
   const m = text.match(/Equipment:\s*([^\n]+)/i);
-  if (!m) return 'none';
+  let equipmentText: string;
+  
+  if (m) {
+    equipmentText = m[1];
+  } else {
+    // If no Equipment: line found, treat the entire text as equipment list
+    // This supports direct testing of equipment processing
+    equipmentText = text;
+  }
+  
+  if (!equipmentText || equipmentText.trim().toLowerCase() === 'none') return 'none';
 
-  let items = m[1]
+  let items = equipmentText
     .split(',')
     .map(s => s.trim().replace(/\.+$/, ''))
     .filter(Boolean);
@@ -178,6 +208,7 @@ export function findEquipment(text: string, npcName?: string): string {
     let out = s;
     out = out.replace(/\brobe of protection\b/gi, 'robe of armor');
     out = out.replace(/\bring of protection\b/gi, 'ring of armor');
+    out = out.replace(/\bpectoral of protection\b/gi, 'pectoral of armor');
     out = out.replace(/\bdagger of venom\b/gi, 'dagger of envenomation');
     return out;
   };
@@ -266,7 +297,7 @@ function getOrdinalSuffix(level: string): string {
   }
 }
 
-function formatPrimaryAttributes(primes: string): string {
+export function formatPrimaryAttributes(primes: string): string {
   if (!primes || primes === '?') return '';
 
   // Clean up the attributes and make them lowercase
