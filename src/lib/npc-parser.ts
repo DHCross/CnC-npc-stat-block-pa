@@ -1,400 +1,502 @@
-  // Normalize random capitalization in parenthetical/stat block lines
-  body = body.replace(/\(([^)]+)\)/g, (m: string, p1: string) => {
-    // Lowercase mechanical terms and attributes
-    let inner = p1.replace(/\b(HD|HP|AC|disposition|primary attribute|secondary skill|equipment|prime attribute|attributes|level|human|elf|dwarf|halfling|orc|gnome|cleric|fighter|wizard|magic-user|thief|paladin|ranger|monk|bard|illusionist|business)\b/gi, (mm: string) => mm.toLowerCase());
-    // Lowercase after punctuation (for sentence case)
-    inner = inner.replace(/([.!?]\s*)([A-Z])/g, (match: string, punc: string, char: string) => punc + char.toLowerCase());
-    // Lowercase first word if not a proper noun
-    inner = inner.replace(/^([A-Z][a-z]+)(\s)/, (match: string, word: string, space: string) => word.toLowerCase() + space);
-    return `(${inner})`;
-  });
-// --- NPC Stat Block Parser for Original Castles & Crusades Format ---
-// Produces narrative format matching the Victor Oldham reference style
+export type WarningType = 'error' | 'warning' | 'info';
 
-// Split title and body to prevent title contamination
-function splitTitleAndBody(src: string): { title: string; body: string } {
-  const text = src.trim();
-  const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
-  
-  // Find title - look for bold text at the beginning
-  let titleLines: string[] = [];
-  let bodyStartIdx = 0;
-  // Only allow bold in the title, never in body
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    if (/^\*\*[^*]+\*\*$/.test(line)) {
-      titleLines.push(line);
-    } else if (line.match(/^(Disposition|Race|Hit Points|Armor Class|Prime|Equipment|Spells|Mount):/i)) {
-      bodyStartIdx = i;
-      break;
-    } else if (titleLines.length > 0) {
-      bodyStartIdx = i;
-      break;
-    }
+export interface ValidationWarning {
+  type: WarningType;
+  category: string;
+  message: string;
+  suggestion?: string;
+}
+
+export interface ValidationResult {
+  warnings: ValidationWarning[];
+  complianceScore: number;
+}
+
+export interface ProcessedNPC {
+  name: string;
+  original: string;
+  converted: string;
+  validation: ValidationResult;
+}
+
+export type CorrectionConfidence = 'high' | 'medium' | 'low';
+
+export interface CorrectionFix {
+  category: string;
+  description: string;
+  originalText: string;
+  correctedText: string;
+  confidence: CorrectionConfidence;
+}
+
+interface ParsedNPC {
+  name: string;
+  fields: Record<string, string>;
+  notes: string[];
+  original: string;
+}
+
+interface Dictionaries {
+  spells: Set<string>;
+  items: Set<string>;
+  monsters: Set<string>;
+}
+
+const dictionaries: Dictionaries = {
+  spells: new Set<string>(),
+  items: new Set<string>(),
+  monsters: new Set<string>(),
+};
+
+const FIELD_ORDER = [
+  'Disposition',
+  'Race & Class',
+  'Hit Points (HP)',
+  'Armor Class (AC)',
+  'Primary attributes',
+  'Equipment',
+  'Spells',
+  'Mount',
+  'Gear',
+  'Special Abilities',
+  'Vision',
+  'Background',
+];
+
+const VALIDATION_RULES: Array<{
+  field: string;
+  weight: number;
+  type: WarningType;
+  message: string;
+  suggestion?: string;
+}> = [
+  {
+    field: 'Disposition',
+    weight: 25,
+    type: 'error',
+    message: 'Add a Disposition line using noun-form alignment (e.g., law/good).',
+    suggestion: 'Replace "Alignment" with "Disposition" and use noun forms (law/good, chaos/evil, etc.).',
+  },
+  {
+    field: 'Race & Class',
+    weight: 20,
+    type: 'error',
+    message: 'Include Race & Class details (e.g., human, 5th level fighter).',
+  },
+  {
+    field: 'Hit Points (HP)',
+    weight: 15,
+    type: 'warning',
+    message: 'Hit Points (HP) missing. Provide either a total or dice expression.',
+  },
+  {
+    field: 'Armor Class (AC)',
+    weight: 10,
+    type: 'warning',
+    message: 'Armor Class (AC) missing. Include base AC and modifiers when possible.',
+  },
+  {
+    field: 'Primary attributes',
+    weight: 10,
+    type: 'info',
+    message: 'Primary attributes (Prime) help with quick reference.',
+  },
+  {
+    field: 'Equipment',
+    weight: 10,
+    type: 'info',
+    message: 'Listing notable equipment helps with conversion fidelity.',
+  },
+];
+
+export function processDump(input: string): ProcessedNPC[] {
+  return processDumpWithValidation(input);
+}
+
+export function processDumpWithValidation(input: string): ProcessedNPC[] {
+  const trimmed = input.trim();
+  if (!trimmed) {
+    return [];
   }
-  // If no labeled fields, treat everything after bolded name as body
-  if (titleLines.length > 0 && bodyStartIdx === 0 && lines.length > 1) {
-    bodyStartIdx = 1;
+
+  const blocks = splitIntoBlocks(trimmed);
+  return blocks.map((block) => {
+    const parsed = parseBlock(block);
+    const converted = formatToNarrative(parsed);
+    const validation = buildValidation(parsed);
+
+    return {
+      name: parsed.name,
+      original: parsed.original,
+      converted,
+      validation,
+    } satisfies ProcessedNPC;
+  });
+}
+
+export function generateNPCTemplate(): string {
+  return [
+    '**Sir Elric the Resolute**',
+    '',
+    'Disposition: law/good',
+    'Race & Class: human, 7th level paladin',
+    'Hit Points (HP): 52',
+    'Armor Class (AC): 18 (+7 plate, +2 shield, -1 Dex)',
+    'Primary attributes: strength, charisma',
+    'Equipment: +1 greatsword, plate mail, large steel shield, holy symbol',
+    'Spells: protection from evil, detect evil',
+    'Mount: heavy war horse',
+    'Background: Veteran of the Redwall campaign and sworn guardian of the High Chapel.',
+  ].join('\n');
+}
+
+export function generateBatchTemplate(): string {
+  return [
+    generateNPCTemplate(),
+    '',
+    '**Captain Mirella of the Ember Watch**',
+    '',
+    'Disposition: neutral/good',
+    'Race & Class: dwarf, 6th level fighter',
+    'Hit Points (HP): 47',
+    'Armor Class (AC): 17 (+6 chain, +2 shield, -1 Dex)',
+    'Primary attributes: constitution, strength',
+    'Equipment: war hammer, shield engraved with the Ember sigil, potion of heroism',
+    'Special Abilities: dwarf resilience, ember watch tactics',
+    'Background: Commands the Ember Watch, protecting the emberforged vaults beneath the citadel.',
+  ].join('\n');
+}
+
+export function generateAutoCorrectionFixes(input: string): CorrectionFix[] {
+  const fixes: CorrectionFix[] = [];
+
+  const alignmentRegex = /(Alignment\s*:\s*)([^\n]+)/gi;
+  let match: RegExpExecArray | null;
+  while ((match = alignmentRegex.exec(input)) !== null) {
+    const originalText = match[0];
+    const normalizedDisposition = normalizeDisposition(match[2]);
+    fixes.push({
+      category: 'terminology',
+      description: 'Convert Alignment to Disposition with noun-form alignment.',
+      originalText,
+      correctedText: `Disposition: ${normalizedDisposition}`,
+      confidence: 'high',
+    });
   }
-  if (titleLines.length === 0 && lines.length > 0) {
-    const first = lines[0];
-    const looksLikeBody = /^(\(|He\b|She\b|They\b|HP\b|AC\b|Disposition\b|Alignment\b|Race\b|Spells\b|Equipment\b|Mount\b)/i.test(first);
-    if (looksLikeBody) {
-      titleLines = [];
-      bodyStartIdx = 0;
-    } else {
-      titleLines = [lines[0]];
-      bodyStartIdx = 1;
-    }
+
+  const primeRegex = /(Prime Attributes?\s*:\s*)([^\n]+)/gi;
+  while ((match = primeRegex.exec(input)) !== null) {
+    fixes.push({
+      category: 'terminology',
+      description: 'Use "Primary attributes" instead of "Prime Attributes".',
+      originalText: match[0],
+      correctedText: `Primary attributes: ${match[2]}`,
+      confidence: 'high',
+    });
   }
-  // Normalize heading capitalization: only name capitalized, roles/titles sentence case
-  let rawTitle = titleLines.join(' ');
-  if (rawTitle) {
-    // Split name and role/title by comma
-    const parts = rawTitle.split(',');
-    if (parts.length > 1) {
-      const name = parts[0].replace(/\*\*/g, '').trim();
-      const role = parts.slice(1).join(',').trim().toLowerCase();
-      rawTitle = `**${name}, ${role}**`;
-    }
+
+  const levelRegex = /(\d+)(st|nd|rd|th) level/gi;
+  while ((match = levelRegex.exec(input)) !== null) {
+    const originalText = match[0];
+    const superscriptLevel = toSuperscript(match[1]) + ' level';
+    fixes.push({
+      category: 'formatting',
+      description: 'Convert level ordinal suffix to superscript form.',
+      originalText,
+      correctedText: superscriptLevel,
+      confidence: 'medium',
+    });
   }
-  const title = rawTitle;
-  let bodyLines = lines.slice(bodyStartIdx).filter(Boolean);
-  // Auto-correct each stat block line
-  function toSuperscript(num: string): string {
-    const map: Record<string, string> = {'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};
-    return String(num).split('').map((c: string) => map[c] ?? c).join('');
-  }
-  function nounDisposition(str: string): string {
-    const map = {
-      'lawful good': 'law/good', 'lawful neutral': 'law/neutral', 'lawful evil': 'law/evil',
-      'neutral good': 'neutral/good', 'neutral': 'neutral', 'neutral evil': 'neutral/evil',
-      'chaotic good': 'chaos/good', 'chaotic neutral': 'chaos/neutral', 'chaotic evil': 'chaos/evil',
-      'good': 'good', 'evil': 'evil', 'chaotic': 'chaos', 'lawful': 'law',
-    };
-    str = str.toLowerCase().replace(/alignment:?/i, '').trim();
-  return map[str as keyof typeof map] || str;
-  }
-  function boldName(name: string): string {
-    if (!/^\*\*.*\*\*$/.test(name)) {
-      return `**${name.replace(/\*\*/g, '')}**`;
-    }
-    return name;
-  }
-  function ensureRaceClass(line: string): string {
-    if (!/human|elf|dwarf|halfling|orc|goblin|gnoll|hobgoblin|fighter|cleric|wizard|rogue|thief|paladin|ranger|barbarian|monk|druid|assassin/i.test(line)) {
-      return line + ' (human, fighter)';
-    }
-    return line;
-  }
-  function ensureHP(line: string): string {
-    if (!/HP/i.test(line)) {
-      return line + ', HP 7';
-    }
-    return line;
-  }
-  function ensureAC(line: string): string {
-    if (!/AC/i.test(line)) {
-      return line + ', AC 15';
-    }
-    return line;
-  }
-  function superscriptLevels(line: string): string {
-  return line.replace(/(\d+)(st|nd|rd|th) level/g, (m: string, num: string, ord: string) => `${toSuperscript(num)}${ord} level`);
-  }
-  interface StatParts {
-    name?: string;
-    raceClass?: string;
-    disposition?: string;
-    hp?: string;
-    ac?: string;
-    prime?: string;
-    equipment?: string;
-    [key: string]: string | undefined;
-  }
-  function canonicalOrder(parts: StatParts): string {
-    const order = ['name', 'raceClass', 'disposition', 'hp', 'ac', 'prime', 'equipment'];
-    let out = [];
-    for (let key of order) {
-      if (parts[key as keyof StatParts]) out.push(parts[key as keyof StatParts] as string);
-    }
-    return out.join(' ');
-  }
-  function parseLine(line: string): string {
-    const parts: StatParts = {};
-    let nameMatch = line.match(/^([A-Za-z\- ]+ x\d+)/);
-    if (nameMatch) {
-      parts.name = boldName(nameMatch[1]);
-      line = line.replace(nameMatch[1], '').trim();
-    }
-    let rcMatch = line.match(/\(([^)]*)\)/);
-    if (rcMatch) {
-      let rc = rcMatch[1];
-      rc = ensureRaceClass(rc);
-      rc = superscriptLevels(rc);
-      parts.raceClass = `(${rc})`;
-      line = line.replace(rcMatch[0], '').trim();
-    }
-    let dispMatch = line.match(/Disposition:? ([^,)]*)/i);
-    if (dispMatch) {
-      parts.disposition = `Disposition: ${nounDisposition(dispMatch[1])}`;
-      line = line.replace(dispMatch[0], '').trim();
-    } else if (/alignment/i.test(line)) {
-      let alignMatch = line.match(/alignment:? ([^,)]*)/i);
-      if (alignMatch) {
-        parts.disposition = `Disposition: ${nounDisposition(alignMatch[1])}`;
-        line = line.replace(alignMatch[0], '').trim();
+
+  const italicsRegex = /\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\b/g;
+  const spells = dictionaries.spells;
+  if (spells.size > 0) {
+    let italicMatch: RegExpExecArray | null;
+    while ((italicMatch = italicsRegex.exec(input)) !== null) {
+      const candidate = italicMatch[1];
+      if (spells.has(candidate) && !isAlreadyFormatted(input, candidate)) {
+        fixes.push({
+          category: 'spells',
+          description: `Italicize known spell “${candidate}”.`,
+          originalText: candidate,
+          correctedText: `*${candidate}*`,
+          confidence: 'medium',
+        });
       }
     }
-    let hpMatch = line.match(/HP ?(\d+[\-\d]*)/i);
-    if (hpMatch) {
-      parts.hp = `HP ${hpMatch[1]}`;
-      line = line.replace(hpMatch[0], '').trim();
-    } else {
-      parts.hp = 'HP 7';
-    }
-    let acMatch = line.match(/AC ?(\d+)/i);
-    if (acMatch) {
-      parts.ac = `AC ${acMatch[1]}`;
-      line = line.replace(acMatch[0], '').trim();
-    } else {
-      parts.ac = 'AC 15';
-    }
-    let paMatch = line.match(/PA ([^,)]*)/i);
-    if (paMatch) {
-      parts.prime = `Prime: ${paMatch[1]}`;
-      line = line.replace(paMatch[0], '').trim();
-    }
-    let eqMatch = line.match(/EQ ([^,)]*)/i);
-    if (eqMatch) {
-      parts.equipment = `Equipment: ${eqMatch[1]}`;
-      line = line.replace(eqMatch[0], '').trim();
-    }
-    return canonicalOrder(parts);
-  }
-  let body = bodyLines.map(parseLine).filter(Boolean).join('\n');
-  // Grammar consistency: fix double spaces, trailing spaces
-  body = body.replace(/ +/g, ' ').replace(/\s+$/gm, '');
-  return { title, body };
-}
-
-function superscriptOrdinals(input: string): string {
-  return input.replace(/(\b\d{1,3})(st|nd|rd|th)\b/gi, (_m, n: string, suf: string) => `${n}<sup>${suf.toLowerCase()}</sup>`);
-}
-
-function mdInlineToHTML(input: string): string {
-  // escape HTML first
-  let s = input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  // **bold** first (non-greedy)
-  s = s.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
-  // *italic* (ensure not **)
-  s = s.replace(/(^|[^*])\*(?!\*)([^*]+?)\*(?!\*)/g, '$1<i>$2</i>');
-  // normalize newlines to <br/>
-  s = s.replace(/\r?\n\r?\n/g, '<br/><br/>').replace(/\r?\n/g, '<br/>');
-  // superscript ordinals
-  s = superscriptOrdinals(s);
-  return s;
-}
-
-function splitTitleAndBodyForHTML(src: string): { title: string; body: string } {
-  const text = src.trim();
-  const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
-  let titleLines: string[] = [];
-  let bodyStartIdx = 0;
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    if (/^\*\*[^*]+\*\*$/.test(line)) {
-      titleLines.push(line);
-    } else if (line.match(/^(Disposition|Race|Hit Points|Armor Class|Prime|Equipment|Spells|Mount):/i)) {
-      bodyStartIdx = i;
-      break;
-    } else if (titleLines.length > 0) {
-      bodyStartIdx = i;
-      break;
-    }
-  }
-  if (titleLines.length > 0 && bodyStartIdx === 0 && lines.length > 1) bodyStartIdx = 1;
-  if (titleLines.length === 0 && lines.length > 0) {
-    const first = lines[0];
-    const looksLikeBody = /^(\(|He\b|She\b|They\b|HP\b|AC\b|Disposition\b|Alignment\b|Race\b|Spells\b|Equipment\b|Mount\b)/i.test(first);
-    if (looksLikeBody) { titleLines = []; bodyStartIdx = 0; }
-    else { titleLines = [lines[0]]; bodyStartIdx = 1; }
-  }
-  const title = titleLines.join(' ');
-  let body = lines.slice(bodyStartIdx).join('\n');
-  // Keep italics as-is for HTML preview; do minimal cleanup only
-  body = body.replace(/ +/g, ' ').replace(/\s+$/gm, '');
-  return { title, body };
-}
-
-export function findName(textOrTitle: string): string {
-  const m = textOrTitle.match(/\*\*([^*]+)\*\*/);
-  if (m) return m[1].trim();
-  return textOrTitle.trim();
-}
-
-// Parse race, class, and level from various formats
-export function parseRaceClassLevel(text: string): { race: string; level: string; charClass: string } {
-  // 1) "Race & Class: human, 16th level cleric"
-  let m = text.match(/Race\s*&\s*Class:\s*([A-Za-z]+)\s*,\s*(\d{1,2})(?:st|nd|rd|th)?\s*level\s*([A-Za-z]+)/i);
-  if (m) return { race: m[1].toLowerCase(), level: m[2], charClass: m[3].toLowerCase() };
-
-  // 2) "human, 16th level cleric"
-  m = text.match(/([A-Za-z]+)\s*,\s*(\d{1,2})(?:st|nd|rd|th)?\s*level\s*([A-Za-z]+)/i);
-  if (m) return { race: m[1].toLowerCase(), level: m[2], charClass: m[3].toLowerCase() };
-
-  // 3) "16th level human cleric"
-  m = text.match(/(\d{1,2})(?:st|nd|rd|th)?\s*level\s*([A-Za-z]+)\s*([A-Za-z]+)/i);
-  if (m) return { race: m[2].toLowerCase(), level: m[1], charClass: m[3].toLowerCase() };
-
-  // 4) "cleric, 16th level"
-  m = text.match(/([A-Za-z]+)\s*,\s*(\d{1,2})(?:st|nd|rd|th)?\s*level\b/i);
-  if (m) return { race: 'human', level: m[2], charClass: m[1].toLowerCase() };
-
-  return { race: 'human', level: '1', charClass: 'unknown' };
-}
-
-// Normalize adjectives  nouns (lawful good  law/good)
-function normalizeDisposition(raw: string): string {
-  const map: Record<string,string> = {
-    lawful:'law', chaotic:'chaos', law:'law', chaos:'chaos',
-    good:'good', evil:'evil', neutral:'neutral', neuter:'neutral'
-  };
-  
-  // Handle spaces between words: "lawful good" -> "law/good"
-  let cleaned = raw.toLowerCase().trim();
-  
-  // Replace common patterns first - these should return immediately
-  if (/lawful\s+good/.test(cleaned)) return 'law/good';
-  if (/lawful\s+evil/.test(cleaned)) return 'law/evil';
-  if (/chaotic\s+good/.test(cleaned)) return 'chaos/good';
-  if (/chaotic\s+evil/.test(cleaned)) return 'chaos/evil';
-  if (/chaotic\s+neutral/.test(cleaned)) return 'chaos/neutral';
-  if (/lawful\s+neutral/.test(cleaned)) return 'law/neutral';
-  if (/neutral\s+good/.test(cleaned)) return 'neutral/good';
-  if (/neutral\s+evil/.test(cleaned)) return 'neutral/evil';
-  
-  // Clean up separators for other formats
-  cleaned = cleaned.replace(/-/g,'/').replace(/\s+/g,'').replace(/,/g,'/');
-  const parts = cleaned.split('/').filter(Boolean);
-  return parts.slice(0,2).map(p => map[p] ?? p).join('/');
-}
-
-/**
- * Pull disposition from either:
- *  - Labeled blocks: "Disposition: law/good" or "Alignment: Lawful Good"
- *  - Prose: "He is a lawful good ..." or "They are neutral ..."
- */
-export function extractDisposition(source: string): string | null {
-  // 1) Labeled block
-  const mLabel =
-    source.match(/(?:Disposition|Alignment)[^:]*[:\-]\s*([A-Za-z /-]+)/i);
-  if (mLabel) return normalizeDisposition(mLabel[1]);
-
-  // 2) Prose sentence (singular)
-  const mHeIs = source.match(/\b(?:He|She)\s+is\s+(?:an?\s+)?(lawful|chaotic|neutral)[ -]?(good|evil|neutral)?\b/i);
-  if (mHeIs) return normalizeDisposition([mHeIs[1], mHeIs[2] ?? ''].join('/'));
-
-  // 3) Prose sentence (plural)
-  const mTheyAre = source.match(/\bThey\s+are\s+(?:an?\s+)?(lawful|chaotic|neutral)[ -]?(good|evil|neutral)?\b/i);
-  if (mTheyAre) return normalizeDisposition([mTheyAre[1], mTheyAre[2] ?? ''].join('/'));
-
-  // 4) Lone noun (just "neutral")
-  const mNeutral = source.match(/\bneutral\b/i);
-  if (mNeutral) return 'neutral';
-
-  return null;
-}
-
-// Extract gender from stat block to determine pronouns
-export function extractGender(source: string): 'male' | 'female' | 'neutral' {
-  const text = source.toLowerCase();
-
-  // Strong female indicators first, as "priest" is a substring of "priestess"
-  if (/\b(she|female|priestess|queen|lady|actress|woman)\b/.test(text)) {
-    return 'female';
   }
 
-  // Then male indicators - check for "high priest" specifically
-  if (/\bhigh priest\b/.test(text)) {
-    return 'male';
-  }
-
-  if (/\b(he|him|his|male|priest|king|lord|actor|man)\b/.test(text)) {
-    return 'male';
-  }
-
-  // "her" is a weaker indicator, check it last to avoid conflicts like "other"
-  if (/\bher\b/.test(text)) {
-    return 'female';
-  }
-
-  return 'neutral';
+  return dedupeFixes(fixes);
 }
 
-// Backward compatibility shim for existing code
-export function findDisposition(text: string): string {
-  return extractDisposition(text) ?? 'unknown';
-}
-
-// Find HP and AC from various formats
-export function findHpAc(text: string): [string, string] {
-  const hpMatch = text.match(/Hit\s+Points\s*\(HP\):\s*(\d+)/i) || 
-                  text.match(/HP\s*[:=]?\s*(\d+)/i);
-  const acMatch = text.match(/Armor\s+Class\s*\(AC\):\s*([0-9/]+)/i) || 
-                  text.match(/AC\s*[:=]?\s*([0-9/]+)/i);
-  return [hpMatch ? hpMatch[1] : '?', acMatch ? acMatch[1] : '?'];
-}
-
-// Find and expand prime attributes to full names, lowercase
-export function findPrimes(text: string): string {
-  const m = text.match(/Prime\s+Attributes\s*\(PA\):\s*([^\n]+)/i) ||
-            text.match(/Prime\s*Attributes?[^:]*:\s*([^\n]+)/i);
-  if (!m) {
-    // Prose-style support: "Primary/Prime attributes are ..."
-    const prose = text.match(/\b(?:Primary|Prime)\s+Attributes?[^:)]*\s*(?:are|:)\s*([^\.\n)]+)/i);
-    if (!prose) return '?';
-    // Reuse the same mapping/normalization below using captured prose[1]
-    const captured = prose[1];
-    const map: Record<string,string> = { 
-      str:'strength', dex:'dexterity', con:'constitution', 
-      int:'intelligence', wis:'wisdom', cha:'charisma',
-      strength:'strength', dexterity:'dexterity', constitution:'constitution',
-      intelligence:'intelligence', wisdom:'wisdom', charisma:'charisma'
-    };
-    return captured
-      .split(/,| and /i)
-      .map((s: string) => s.trim().toLowerCase().replace(/\.+$/, ''))
-      .filter(Boolean)
-      .map((x: string) => Object.prototype.hasOwnProperty.call(map, x) ? map[x] : x)
-      .join(', ');
+export function applyCorrectionFix(input: string, fix: CorrectionFix): string {
+  if (!fix.originalText) {
+    return input;
   }
-  const map: Record<string,string> = { 
-    str:'strength', dex:'dexterity', con:'constitution', 
-    int:'intelligence', wis:'wisdom', cha:'charisma',
-    strength:'strength', dexterity:'dexterity', constitution:'constitution',
-    intelligence:'intelligence', wisdom:'wisdom', charisma:'charisma'
-  };
-  return m[1]
-    .split(/,| and /i)
-    .map((s: string) => s.trim().toLowerCase().replace(/\.+$/, ''))
+  return input.replace(fix.originalText, fix.correctedText);
+}
+
+export function applyAllHighConfidenceFixes(input: string): string {
+  let working = input;
+  const fixes = generateAutoCorrectionFixes(input).filter((fix) => fix.confidence === 'high');
+  for (const fix of fixes) {
+    working = applyCorrectionFix(working, fix);
+  }
+  return working;
+}
+
+export function convertToHtml(text: string): string {
+  const escaped = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+  const paragraphs = escaped
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
     .filter(Boolean)
-    .map((x: string) => Object.prototype.hasOwnProperty.call(map, x) ? map[x] : x)
-    .join(', ');
+    .map((paragraph) => `<p>${paragraph.replace(/\n/g, '<br />')}</p>`);
+  return paragraphs.join('\n') || '<p></p>';
+}
 
-/**
- * formatNpcStatBlockToHTML
- * ------------------------
- * Returns a safely-rendered HTML string (bold/italics/superscripts preserved) for WYSIWYG preview
- * and rich clipboard copying into Word. Use this in the preview pane and the "Copy as HTML" action.
- */
-export function formatNpcStatBlockToHTML(src: string): string {
-  const { title, body } = splitTitleAndBodyForHTML(src);
-  const titleHTML = title ? mdInlineToHTML(title) : '';
-  const bodyHTML = mdInlineToHTML(body);
-  // Ensure title is bold-only (house rule: headings bold). If input lacks **, wrap the whole line.
-  const finalTitle = titleHTML || '';
-  const needsWrap = finalTitle && !/^<b>/.test(finalTitle);
-  const wrappedTitle = needsWrap ? `<b>${finalTitle}</b>` : finalTitle;
-  return [wrappedTitle, bodyHTML].filter(Boolean).join('<br/>');
+export function setDictionaries(dictUpdates: {
+  spellsCsv?: string;
+  itemsCsv?: string;
+  monstersCsv?: string;
+}): void {
+  if (typeof dictUpdates.spellsCsv === 'string') {
+    dictionaries.spells = parseCsvToSet(dictUpdates.spellsCsv);
+  }
+  if (typeof dictUpdates.itemsCsv === 'string') {
+    dictionaries.items = parseCsvToSet(dictUpdates.itemsCsv);
+  }
+  if (typeof dictUpdates.monstersCsv === 'string') {
+    dictionaries.monsters = parseCsvToSet(dictUpdates.monstersCsv);
+  }
+}
+
+function splitIntoBlocks(input: string): string[] {
+  const lines = input.split(/\r?\n/);
+  const blocks: string[] = [];
+  let current: string[] = [];
+
+  const pushCurrent = () => {
+    if (current.length > 0) {
+      blocks.push(current.join('\n').trim());
+      current = [];
+    }
+  };
+
+  for (const line of lines) {
+    const isNameLine = /^\s*\*\*[\w\s'\-:,]+\*\*\s*$/.test(line) || /^\s*\*\*/.test(line);
+    if (isNameLine && current.length > 0) {
+      pushCurrent();
+    }
+    current.push(line);
+  }
+
+  pushCurrent();
+
+  if (blocks.length === 0 && input.trim()) {
+    return [input.trim()];
+  }
+
+  return blocks;
+}
+
+function parseBlock(block: string): ParsedNPC {
+  const lines = block.split(/\r?\n/);
+  const trimmedLines = lines.map((line) => line.trim()).filter((line) => line.length > 0);
+  const nameLine = trimmedLines[0] ?? 'Unnamed NPC';
+
+  const fields: Record<string, string> = {};
+  const notes: string[] = [];
+
+  for (let i = 1; i < trimmedLines.length; i++) {
+    const line = trimmedLines[i];
+    const fieldMatch = /^([^:]+):\s*(.+)$/.exec(line);
+    if (fieldMatch) {
+      const label = normalizeFieldLabel(fieldMatch[1]);
+      const value = fieldMatch[2].trim();
+      fields[label] = value;
+    } else {
+      notes.push(line);
+    }
+  }
+
+  return {
+    name: stripMarkdown(nameLine),
+    fields,
+    notes,
+    original: block,
+  };
+}
+
+function formatToNarrative(parsed: ParsedNPC): string {
+  const buffer: string[] = [];
+  const formattedName = parsed.name.startsWith('**') ? parsed.name : `**${parsed.name.replace(/\*\*/g, '')}**`;
+  buffer.push(formattedName);
+
+  const orderedFields = FIELD_ORDER.filter((field) => parsed.fields[field]);
+  const unordered = Object.keys(parsed.fields)
+    .filter((field) => !FIELD_ORDER.includes(field))
+    .sort();
+
+  for (const field of orderedFields) {
+    buffer.push(`${field}: ${formatFieldValue(field, parsed.fields[field])}`);
+  }
+
+  for (const field of unordered) {
+    buffer.push(`${field}: ${parsed.fields[field]}`);
+  }
+
+  if (parsed.notes.length > 0) {
+    buffer.push(...parsed.notes);
+  }
+
+  return buffer.join('\n');
+}
+
+function buildValidation(parsed: ParsedNPC): ValidationResult {
+  const warnings: ValidationWarning[] = [];
+  let score = 100;
+
+  for (const rule of VALIDATION_RULES) {
+    if (!parsed.fields[rule.field]) {
+      warnings.push({
+        type: rule.type,
+        category: rule.field,
+        message: rule.message,
+        suggestion: rule.suggestion,
+      });
+      score -= rule.weight;
+    }
+  }
+
+  if (!/^\*\*.+\*\*$/.test(parsed.original.split(/\r?\n/)[0]?.trim() ?? '')) {
+    warnings.push({
+      type: 'warning',
+      category: 'Name Formatting',
+      message: 'NPC name should be bolded with **double asterisks**.',
+      suggestion: 'Wrap the NPC name in **double asterisks** to match the style guide.',
+    });
+    score -= 5;
+  }
+
+  score = Math.max(0, Math.min(100, score));
+
+  return {
+    warnings,
+    complianceScore: score,
+  };
+}
+
+function normalizeFieldLabel(label: string): string {
+  const normalized = label.trim().toLowerCase();
+  const mapping: Record<string, string> = {
+    'race & class': 'Race & Class',
+    'race and class': 'Race & Class',
+    'hit points (hp)': 'Hit Points (HP)',
+    'hit points': 'Hit Points (HP)',
+    'hp': 'Hit Points (HP)',
+    'armor class (ac)': 'Armor Class (AC)',
+    'armor class': 'Armor Class (AC)',
+    'ac': 'Armor Class (AC)',
+    'primary attributes': 'Primary attributes',
+    'prime attributes': 'Primary attributes',
+    'prime attribute': 'Primary attributes',
+    'equipment': 'Equipment',
+    'gear': 'Gear',
+    'spells': 'Spells',
+    'mount': 'Mount',
+    'special abilities': 'Special Abilities',
+    'vision': 'Vision',
+    'background': 'Background',
+    'disposition': 'Disposition',
+    'alignment': 'Disposition',
+  };
+  return mapping[normalized] ?? capitalize(label.trim());
+}
+
+function formatFieldValue(field: string, value: string): string {
+  if (field === 'Disposition') {
+    return normalizeDisposition(value);
+  }
+  return value;
+}
+
+function normalizeDisposition(value: string): string {
+  const trimmed = value.trim().toLowerCase();
+  const mapping: Record<string, string> = {
+    'lawful good': 'law/good',
+    'lawful neutral': 'law/neutral',
+    'lawful evil': 'law/evil',
+    'neutral good': 'neutral/good',
+    'true neutral': 'neutral/neutral',
+    'neutral': 'neutral/neutral',
+    'neutral evil': 'neutral/evil',
+    'chaotic good': 'chaos/good',
+    'chaotic neutral': 'chaos/neutral',
+    'chaotic evil': 'chaos/evil',
+  };
+  return mapping[trimmed] ?? value.trim();
+}
+
+function capitalize(value: string): string {
+  return value
+    .split(/\s+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+}
+
+function stripMarkdown(value: string): string {
+  return value.replace(/^\*\*/g, '').replace(/\*\*$/g, '').trim();
+}
+
+function parseCsvToSet(csv: string): Set<string> {
+  const set = new Set<string>();
+  csv
+    .split(/\r?\n/)
+    .map((line) => line.split(',')[0]?.trim())
+    .filter((line): line is string => Boolean(line))
+    .forEach((entry) => set.add(entry));
+  return set;
+}
+
+function toSuperscript(value: string): string {
+  const superscriptMap: Record<string, string> = {
+    '0': '⁰',
+    '1': '¹',
+    '2': '²',
+    '3': '³',
+    '4': '⁴',
+    '5': '⁵',
+    '6': '⁶',
+    '7': '⁷',
+    '8': '⁸',
+    '9': '⁹',
+  };
+  return value
+    .split('')
+    .map((char) => superscriptMap[char] ?? char)
+    .join('');
+}
+
+function isAlreadyFormatted(input: string, candidate: string): boolean {
+  const regex = new RegExp(`\\*${escapeRegex(candidate)}\\*`);
+  return regex.test(input);
+}
+
+function escapeRegex(value: string): string {
+  return value.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&');
+}
+
+function dedupeFixes(fixes: CorrectionFix[]): CorrectionFix[] {
+  const seen = new Map<string, CorrectionFix>();
+  for (const fix of fixes) {
+    const key = `${fix.originalText}__${fix.correctedText}`;
+    if (!seen.has(key)) {
+      seen.set(key, fix);
+    }
+  }
+  return Array.from(seen.values());
 }

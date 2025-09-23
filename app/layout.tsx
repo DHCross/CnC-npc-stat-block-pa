@@ -1,8 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import "../main.css";
-import "../index.css";
-import "../styles/theme.css";
+import "@/styles/globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +16,11 @@ export const metadata = {
   description: "Comprehensive stat block validator for Castles & Crusades NPCs",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
       <body
