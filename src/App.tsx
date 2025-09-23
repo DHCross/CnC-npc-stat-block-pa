@@ -898,7 +898,7 @@ function App() {
                                 variant="outline" 
                                 className={`flex items-center gap-1 px-2 py-1 ${getComplianceColor(result.validation.complianceScore)} text-white`}
                               >
-                                {result.validation.isValid ? <CheckCircle size={12} /> : <AlertCircle size={12} />}
+                                {result.validation.warnings.length === 0 ? <CheckCircle size={12} /> : <AlertCircle size={12} />}
                                 {result.validation.complianceScore}%
                               </Badge>
                             )}
