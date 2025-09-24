@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../../styles/globals.css";
+
+import "./globals.css";
 
 // Font loading with comprehensive fallbacks for offline environments
 const geistSans = Geist({
@@ -24,7 +26,7 @@ export const metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode;
 }) {
   return (
     <html lang="en">

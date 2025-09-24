@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Font fallbacks for offline environments */
+  :root {
+    --font-geist-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --background: 228 56% 8%;
+    --foreground: 210 40% 96%;
+    --card: 229 45% 14%;
+    --card-foreground: 210 40% 96%;
+    --popover: 229 45% 14%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 267 83% 70%;
+    --primary-foreground: 220 40% 98%;
+    --secondary: 222 42% 20%;
+    --secondary-foreground: 214 32% 88%;
+    --muted: 225 36% 16%;
+    --muted-foreground: 215 20% 72%;
+    --accent: 192 85% 65%;
+    --accent-foreground: 221 63% 18%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 226 38% 22%;
+    --input: 226 38% 22%;
+    --ring: 267 83% 70%;
+    --radius: 0.75rem;
+    --chart-1: 267 83% 70%;
+    --chart-2: 192 85% 60%;
+    --chart-3: 342 82% 65%;
+    --chart-4: 43 96% 66%;
+    --chart-5: 164 73% 45%;
+  }
+
+  .dark {
+    --background: 228 56% 8%;
+    --foreground: 210 40% 96%;
+    --card: 229 45% 14%;
+    --card-foreground: 210 40% 96%;
+    --popover: 229 45% 14%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 267 83% 70%;
+    --primary-foreground: 220 40% 98%;
+    --secondary: 222 42% 20%;
+    --secondary-foreground: 214 32% 88%;
+    --muted: 225 36% 16%;
+    --muted-foreground: 215 20% 72%;
+    --accent: 192 85% 65%;
+    --accent-foreground: 221 63% 18%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 226 38% 22%;
+    --input: 226 38% 22%;
+    --ring: 267 83% 70%;
+    --radius: 0.75rem;
+    --chart-1: 267 83% 70%;
+    --chart-2: 192 85% 60%;
+    --chart-3: 342 82% 65%;
+    --chart-4: 43 96% 66%;
+    --chart-5: 164 73% 45%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100vh;
+    background-color: #020617;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.35), transparent 55%),
+      radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.28), transparent 50%),
+      radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.22), transparent 55%),
+      linear-gradient(180deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background-color: hsla(var(--primary), 0.35);
+    color: hsl(var(--primary-foreground));
+  }
+}
