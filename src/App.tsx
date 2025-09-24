@@ -52,20 +52,20 @@ const sanitizeSchema = {
 const getWarningIcon = (type: ValidationWarning['type']) => {
   switch (type) {
     case 'error':
-      return <AlertCircle className="w-4 h-4 text-destructive" />;
+      return <AlertCircle className="h-4 w-4 text-red-300" />;
     case 'warning':
-      return <Warning className="w-4 h-4 text-yellow-600" />;
+      return <Warning className="h-4 w-4 text-amber-300" />;
     case 'info':
-      return <Info className="w-4 h-4 text-blue-600" />;
+      return <Info className="h-4 w-4 text-sky-300" />;
     default:
-      return <Info className="w-4 h-4" />;
+      return <Info className="h-4 w-4 text-foreground/70" />;
   }
 };
 
 const getComplianceColor = (score: number) => {
-  if (score >= 90) return 'bg-green-500';
-  if (score >= 70) return 'bg-yellow-500';
-  return 'bg-red-500';
+  if (score >= 90) return 'border-emerald-400/60 bg-emerald-500/20 text-emerald-100';
+  if (score >= 70) return 'border-amber-400/60 bg-amber-400/20 text-amber-100';
+  return 'border-rose-500/60 bg-rose-500/20 text-rose-100';
 };
 
 type ValidationWarningsProps = {
@@ -79,10 +79,10 @@ function ValidationWarnings({ validation, npcIndex }: ValidationWarningsProps) {
 
   if (validation.warnings.length === 0) {
     return (
-      <div className="flex items-center gap-2 p-2 bg-green-50 border border-green-200 rounded text-sm">
-        <CheckCircle className="w-4 h-4 text-green-600" />
-        <span className="text-green-800">Fully compliant with C&C conventions</span>
-        <Badge variant="outline" className="ml-auto bg-green-100 text-green-800">
+      <div className="flex items-center gap-3 rounded-xl border border-emerald-400/40 bg-emerald-500/10 px-3 py-2 text-sm text-emerald-100 shadow-inner shadow-emerald-500/20">
+        <CheckCircle className="h-4 w-4 text-emerald-300" />
+        <span className="text-emerald-100">Fully compliant with C&C conventions</span>
+        <Badge variant="outline" className="ml-auto normal-case border-emerald-400/50 bg-emerald-500/15 text-emerald-100">
           {validation.complianceScore}%
         </Badge>
       </div>
@@ -94,25 +94,25 @@ function ValidationWarnings({ validation, npcIndex }: ValidationWarningsProps) {
       <CollapsibleTrigger asChild>
         <Button
           variant="ghost"
-          className="w-full justify-between p-2 h-auto"
+          className="w-full justify-between rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-foreground/80 transition-colors hover:bg-white/10"
           aria-controls={panelId}
           aria-expanded={isOpen}
         >
           <div className="flex items-center gap-2">
-            {isOpen ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-            <span className="text-sm">Validation Results</span>
-            <Badge variant="outline" className={`${getComplianceColor(validation.complianceScore)} text-white`}>
+            {isOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+            <span className="text-sm font-medium">Validation Results</span>
+            <Badge variant="outline" className={`normal-case ${getComplianceColor(validation.complianceScore)}`}>
               {validation.complianceScore}%
             </Badge>
           </div>
           <div className="flex gap-1">
             {validation.warnings.filter((w: ValidationWarning) => w.type === 'error').length > 0 && (
-              <Badge variant="destructive" className="text-xs">
+              <Badge variant="destructive" className="text-xs normal-case border-red-500/50 bg-red-500/20 text-red-100">
                 {validation.warnings.filter((w: ValidationWarning) => w.type === 'error').length} errors
               </Badge>
             )}
             {validation.warnings.filter((w: ValidationWarning) => w.type === 'warning').length > 0 && (
-              <Badge variant="outline" className="text-xs bg-yellow-100 text-yellow-800">
+              <Badge variant="outline" className="text-xs normal-case border-amber-400/50 bg-amber-400/20 text-amber-100">
                 {validation.warnings.filter((w: ValidationWarning) => w.type === 'warning').length} warnings
               </Badge>
             )}
@@ -120,43 +120,37 @@ function ValidationWarnings({ validation, npcIndex }: ValidationWarningsProps) {
         </Button>
       </CollapsibleTrigger>
       <CollapsibleContent id={panelId}>
-        <div className="space-y-2 p-2 border-t">
+        <div className="space-y-3 border-t border-white/10 pt-3">
           {validation.warnings.map((warning: ValidationWarning, idx: number) => (
             <div
               key={idx}
-              className={`p-2 rounded text-sm border-l-4 ${
+              className={`rounded-xl border p-3 text-sm shadow-inner shadow-black/20 backdrop-blur ${
                 warning.type === 'error'
-                  ? 'bg-red-50 border-red-500'
+                  ? 'border-red-500/40 bg-red-500/15 text-red-100'
                   : warning.type === 'warning'
-                  ? 'bg-yellow-50 border-yellow-500'
-                  : 'bg-blue-50 border-blue-500'
+                  ? 'border-amber-400/40 bg-amber-400/15 text-amber-100'
+                  : 'border-sky-400/40 bg-sky-500/15 text-sky-100'
               }`}
             >
               <div className="flex items-start gap-2">
                 {getWarningIcon(warning.type)}
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-medium text-xs uppercase tracking-wide">
+                  <div className="mb-1 flex items-center gap-2">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-white/80">
                       {warning.category}
                     </span>
                     <Badge
                       variant="outline"
-                      className={`text-[10px] uppercase ${
-                        warning.type === 'error'
-                          ? 'border-red-300 text-red-700'
-                          : warning.type === 'warning'
-                          ? 'border-yellow-300 text-yellow-700'
-                          : 'border-blue-300 text-blue-700'
-                      }`}
+                      className="text-[10px] normal-case border-white/40 bg-white/10 text-white"
                     >
                       {warning.type}
                     </Badge>
                   </div>
-                  <p className="text-sm text-gray-900">
+                  <p className="text-sm text-white">
                     {warning.message}
                   </p>
                   {warning.suggestion && (
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="mt-1 text-xs text-white/70">
                       Suggestion: {warning.suggestion}
                     </p>
                   )}
@@ -533,11 +527,11 @@ function App() {
   };
 
   const applyFix = (fix: CorrectionFix) => {
-  const correctedText = applyCorrectionFix(inputText, fix);
-  setInputText(correctedText);
-  processInput(correctedText);
-  setAppliedFixes(prev => [...prev, fix.description]);
-  toast.success(`Applied fix: ${fix.description}`);
+    const correctedText = applyCorrectionFix(inputText, fix);
+    setInputText(correctedText);
+    processInput(correctedText);
+    setAppliedFixes(prev => [...prev, fix.description]);
+    toast.success(`Applied fix: ${fix.description}`);
   };
 
   const applyAllFixes = () => {
@@ -564,51 +558,69 @@ function App() {
 
   const getFixConfidenceColor = (confidence: CorrectionFix['confidence']) => {
     switch (confidence) {
-      case 'high': return 'bg-green-100 text-green-800 border-green-300';
-      case 'medium': return 'bg-yellow-100 text-yellow-800 border-yellow-300';
-      case 'low': return 'bg-gray-100 text-gray-800 border-gray-300';
-      default: return 'bg-gray-100 text-gray-800 border-gray-300';
+      case 'high': return 'border-emerald-400/60 bg-emerald-500/20 text-emerald-100';
+      case 'medium': return 'border-amber-400/60 bg-amber-400/20 text-amber-100';
+      case 'low': return 'border-slate-400/50 bg-slate-500/20 text-slate-200';
+      default: return 'border-slate-400/50 bg-slate-500/20 text-slate-200';
     }
   };
 
 
   return (
     <>
-      <div className="min-h-screen bg-background font-sans">
-        <div className="container mx-auto px-4 py-8 max-w-6xl">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-foreground mb-2">
-              NPC Stat Block Parser
+      <div className="relative min-h-screen overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-[-10%] h-[540px] w-[540px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(129,140,248,0.28),transparent_60%)]" />
+          <div className="absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-primary/25 blur-3xl" />
+          <div className="absolute -right-32 top-24 h-96 w-96 rounded-full bg-accent/25 blur-[140px]" />
+        </div>
+
+        <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-6 pb-20 pt-12 lg:px-10 lg:pb-28">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
+            <Badge variant="outline" className="border-primary/50 bg-primary/10 text-primary normal-case">
+              Castles & Crusades toolkit
+            </Badge>
+            <h1 className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+              Narrative-ready NPC stat blocks
             </h1>
-            <p className="text-muted-foreground text-lg">
-              A tool to convert tabletop RPG NPC stat blocks into Castles & Crusades narrative format.
+            <p className="text-lg text-foreground/80 md:text-xl">
+              Transform raw notes into polished Castles & Crusades NPC stat blocks with automatic formatting, validation, and export tools.
             </p>
+            <div className="flex flex-col items-center gap-3 text-sm text-foreground/70 sm:flex-row">
+              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 shadow-inner shadow-black/20">
+                <Sparkle className="h-4 w-4 text-primary" />
+                <span>Auto-fixes shield types, primes, and level ordinals</span>
+              </div>
+              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 shadow-inner shadow-black/20">
+                <Info className="h-4 w-4 text-accent" />
+                <span>23-point compliance validation with reporting</span>
+              </div>
+            </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-6">
-            {/* Input Section */}
-            <Card className="h-fit">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+            <Card className="h-fit border-white/15 bg-card/80">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Upload className="text-primary" />
+                <CardTitle className="flex items-center gap-2 text-card-foreground">
+                  <Upload className="h-5 w-5 text-primary" />
                   Input Stat Blocks
                 </CardTitle>
-                <CardDescription>
-                  Paste your C&amp;C NPC stat block(s) below. The parser automatically detects whether you&apos;ve entered a single NPC or a batch.
+                <CardDescription className="text-card-foreground/70">
+                  Paste your C&C NPC stat block(s) below. The parser automatically detects whether you've entered a single NPC or a batch.
                 </CardDescription>
-                <div className="mb-2 text-xs text-muted-foreground">
+                <div className="mb-3 text-xs text-card-foreground/60">
                   <strong>Formatting rules:</strong> Follow these conventions for best results. Each badge summarizes a key rule for stat block formatting.
                 </div>
-                <div className="flex flex-wrap gap-2 mb-2">
-                  <Badge variant="outline" className="text-xs" title="Attributes like strength, wisdom, etc. should be lowercase.">lowercase attributes</Badge>
-                  <Badge variant="outline" className="text-xs" title="Use superscript for levels (e.g., 5ᵗʰ level).">superscripts for levels</Badge>
-                  <Badge variant="outline" className="text-xs" title="No bold text in abbreviated stat blocks.">no bold in abbreviated blocks</Badge>
-                  <Badge variant="outline" className="text-xs" title="Specify shield type (e.g., medium steel shield).">explicit shield type</Badge>
-                  <Badge variant="outline" className="text-xs" title="Put equipment bonus at the end (e.g., +2).">bonus at end (e.g., +2)</Badge>
-                  <Badge variant="outline" className="text-xs" title="Use noun forms for disposition (e.g., law/good).">noun-form disposition</Badge>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline" className="normal-case border-white/15 bg-white/5 text-[11px] text-foreground/80" title="Attributes like strength, wisdom, etc. should be lowercase.">lowercase attributes</Badge>
+                  <Badge variant="outline" className="normal-case border-white/15 bg-white/5 text-[11px] text-foreground/80" title="Use superscript for levels (e.g., 5ᵗʰ level).">superscripts for levels</Badge>
+                  <Badge variant="outline" className="normal-case border-white/15 bg-white/5 text-[11px] text-foreground/80" title="No bold text in abbreviated stat blocks.">no bold in abbreviated blocks</Badge>
+                  <Badge variant="outline" className="normal-case border-white/15 bg-white/5 text-[11px] text-foreground/80" title="Specify shield type (e.g., medium steel shield).">explicit shield type</Badge>
+                  <Badge variant="outline" className="normal-case border-white/15 bg-white/5 text-[11px] text-foreground/80" title="Put equipment bonus at the end (e.g., +2).">bonus at end (e.g., +2)</Badge>
+                  <Badge variant="outline" className="normal-case border-white/15 bg-white/5 text-[11px] text-foreground/80" title="Use noun forms for disposition (e.g., law/good).">noun-form disposition</Badge>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-5">
                 <Textarea
                   placeholder="Paste your NPC stat block here..."
                   value={inputText}
@@ -616,55 +628,45 @@ function App() {
                   className="font-mono text-sm min-h-[300px] resize-y"
                   id="npc-input"
                 />
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={loadExample}
-                    className="flex-1"
-                  >
+                <div className="flex flex-wrap gap-2">
+                  <Button variant="outline" size="sm" onClick={loadExample} className="flex-1 min-w-[180px]">
                     Load Single NPC Example
                   </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={loadAlternativeExample}
-                    className="flex-1"
-                  >
+                  <Button variant="outline" size="sm" onClick={loadAlternativeExample} className="flex-1 min-w-[180px]">
                     Load Batch NPC Example
                   </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={loadValidationExample}
-                    className="flex-1 flex items-center gap-2"
-                  >
-                    <Warning size={16} />
-                    Load Issues Demo
+                  <Button variant="outline" size="sm" onClick={loadValidationExample} className="flex-1 min-w-[180px]">
+                    Load Validation Example
+                  </Button>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <Button variant="ghost" size="sm" onClick={loadTemplate} className="flex-1 min-w-[160px]">
+                    Insert Single NPC Template
+                  </Button>
+                  <Button variant="ghost" size="sm" onClick={loadBatchTemplate} className="flex-1 min-w-[160px]">
+                    Insert Batch Template
+                  </Button>
+                  <Button variant="ghost" size="sm" onClick={() => setInputText(EXAMPLE_TEXT)} className="flex-1 min-w-[160px]">
+                    Restore Original Example
                   </Button>
                 </div>
                 <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleInputChange('')}
-                    className="flex items-center gap-2"
-                  >
+                  <Button variant="destructive" size="sm" onClick={() => handleInputChange('')} className="flex items-center gap-2">
                     <Trash size={16} />
                     Clear
                   </Button>
                 </div>
-                {/* Dictionaries Panel */}
-                <Card className="mt-2">
+
+                <Card className="mt-2 border-white/15 bg-white/5">
                   <CardHeader className="py-3">
-                    <CardTitle className="text-sm">Dictionaries (CSV)</CardTitle>
-                    <CardDescription className="text-xs">Upload lists of spells, magic items, and monsters to improve name normalization and italics.</CardDescription>
+                    <CardTitle className="text-sm text-card-foreground">Dictionaries (CSV)</CardTitle>
+                    <CardDescription className="text-xs text-card-foreground/70">Upload lists of spells, magic items, and monsters to improve name normalization and italics.</CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-2">
-                    <div className="flex items-center justify-between rounded border p-2 bg-muted/20">
-                      <div className="text-sm">
-                        <div className="font-medium">Enable dictionary normalization</div>
-                        <div className="text-xs text-muted-foreground">When enabled, auto-correction will suggest canonicalized names and italics using your CSVs.</div>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-3 text-sm">
+                      <div>
+                        <div className="font-medium text-card-foreground">Enable dictionary normalization</div>
+                        <div className="text-xs text-card-foreground/70">When enabled, auto-correction will suggest canonicalized names and italics using your CSVs.</div>
                       </div>
                       <Switch
                         checked={dictEnabled}
@@ -674,11 +676,10 @@ function App() {
                         }}
                       />
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
-                      {/* Spells CSV */}
-                      <div className="flex flex-col items-center space-y-2 p-3 bg-background rounded border text-center">
-                        <label className="block text-xs font-medium mb-1">Spells CSV</label>
-                        <div className="flex flex-col items-center w-full">
+                    <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-3">
+                      <div className="flex w-full flex-col items-center space-y-2 rounded-xl border border-white/10 bg-white/5 p-3 text-center">
+                        <label className="block text-xs font-medium text-card-foreground/70">Spells CSV</label>
+                        <div className="flex w-full flex-col items-center">
                           <input id="spells-csv" type="file" accept=".csv,.txt,.xlsx" className="hidden" onChange={async (e) => {
                             const file = e.target.files?.[0];
                             if (!file) return;
@@ -692,13 +693,12 @@ function App() {
                           <Button variant="outline" size="sm" className="w-full" onClick={() => document.getElementById('spells-csv')?.click()}>
                             Upload Spells CSV
                           </Button>
-                          <span className="text-xs text-muted-foreground mt-1">Loaded: {dictCounts.spells}</span>
+                          <span className="mt-1 text-xs text-card-foreground/60">Loaded: {dictCounts.spells}</span>
                         </div>
                       </div>
-                      {/* Items CSV */}
-                      <div className="flex flex-col items-center space-y-2 p-3 bg-background rounded border text-center">
-                        <label className="block text-xs font-medium mb-1">Items CSV</label>
-                        <div className="flex flex-col items-center w-full">
+                      <div className="flex w-full flex-col items-center space-y-2 rounded-xl border border-white/10 bg-white/5 p-3 text-center">
+                        <label className="block text-xs font-medium text-card-foreground/70">Items CSV</label>
+                        <div className="flex w-full flex-col items-center">
                           <input id="items-csv" type="file" accept=".csv,.txt,.xlsx" className="hidden" onChange={async (e) => {
                             const file = e.target.files?.[0];
                             if (!file) return;
@@ -712,13 +712,12 @@ function App() {
                           <Button variant="outline" size="sm" className="w-full" onClick={() => document.getElementById('items-csv')?.click()}>
                             Upload Items CSV
                           </Button>
-                          <span className="text-xs text-muted-foreground mt-1">Loaded: {dictCounts.items}</span>
+                          <span className="mt-1 text-xs text-card-foreground/60">Loaded: {dictCounts.items}</span>
                         </div>
                       </div>
-                      {/* Monsters CSV */}
-                      <div className="flex flex-col items-center space-y-2 p-3 bg-background rounded border text-center">
-                        <label className="block text-xs font-medium mb-1">Monsters CSV</label>
-                        <div className="flex flex-col items-center w-full">
+                      <div className="flex w-full flex-col items-center space-y-2 rounded-xl border border-white/10 bg-white/5 p-3 text-center">
+                        <label className="block text-xs font-medium text-card-foreground/70">Monsters CSV</label>
+                        <div className="flex w-full flex-col items-center">
                           <input id="monsters-csv" type="file" accept=".csv,.txt,.xlsx" className="hidden" onChange={async (e) => {
                             const file = e.target.files?.[0];
                             if (!file) return;
@@ -732,103 +731,100 @@ function App() {
                           <Button variant="outline" size="sm" className="w-full" onClick={() => document.getElementById('monsters-csv')?.click()}>
                             Upload Monsters CSV
                           </Button>
-                          <span className="text-xs text-muted-foreground mt-1">Loaded: {dictCounts.monsters}</span>
+                          <span className="mt-1 text-xs text-card-foreground/60">Loaded: {dictCounts.monsters}</span>
                         </div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-                <div className="flex items-center justify-between rounded border p-2 bg-muted/40">
-                  <div className="text-sm">
-                    <div className="font-medium">Normalize before parsing (safe fixes)</div>
-                    <div className="text-xs text-muted-foreground">Applies high-confidence auto-fixes (e.g., shield type, attribute names) prior to parsing.</div>
+                <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-3 text-sm">
+                  <div>
+                    <div className="font-medium text-card-foreground">Normalize before parsing (safe fixes)</div>
+                    <div className="text-xs text-card-foreground/70">Applies high-confidence auto-fixes (e.g., shield type, attribute names) prior to parsing.</div>
                   </div>
                   <Switch
                     checked={normalizeInput}
                     onCheckedChange={(checked) => {
                       setNormalizeInput(checked);
-                      // Reprocess current input with new setting
                       processInput(inputText, { normalizeInput: checked });
                     }}
                     aria-label="Normalize input before parsing"
                   />
                 </div>
-                
-                {/* Auto-Correction Section */}
                 {availableFixes.length > 0 && (
-                  <Card className="mt-4 border-blue-200 bg-blue-50">
+                  <Card className="mt-4 border-primary/40 bg-primary/10 text-primary-foreground">
                     <CardHeader className="pb-3">
-                      <CardTitle className="flex items-center gap-2 text-blue-800">
-                        <Wand className="w-5 h-5" />
+                      <CardTitle className="flex items-center gap-2 text-primary-foreground">
+                        <Wand className="h-5 w-5" />
                         Auto-Correction Available
-                        <Badge variant="outline" className="bg-blue-100 text-blue-800">
+                        <Badge variant="outline" className="normal-case border-primary/50 bg-primary/15 text-primary-foreground">
                           {availableFixes.length} fixes
                         </Badge>
                       </CardTitle>
-                      <CardDescription className="text-blue-700">
+                      <CardDescription className="text-sm text-primary-foreground/80">
                         Automated fixes for common C&C formatting issues. High-confidence fixes can be applied safely.
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-3">
-                      <div className="flex gap-2 mb-4">
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <Button
                           onClick={applyAllFixes}
-                          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700"
+                          className="flex items-center gap-2"
                           size="sm"
                           disabled={availableFixes.filter(f => f.confidence === 'high').length === 0}
                         >
-                          <Sparkle className="w-4 h-4" />
+                          <Sparkle className="h-4 w-4" />
                           Apply All Safe Fixes ({availableFixes.filter(f => f.confidence === 'high').length})
                         </Button>
-                        <div className="text-sm text-blue-600 flex items-center">
+                        <div className="text-sm text-primary-foreground/80">
                           Only high-confidence fixes are applied automatically
                         </div>
                       </div>
-                      
-                      <div className="space-y-2 max-h-[200px] overflow-y-auto">
+
+                      <div className="max-h-[220px] space-y-2 overflow-y-auto pr-1">
                         {availableFixes.map((fix, index) => (
-                          <div key={index} className="flex items-center justify-between p-3 bg-white rounded border">
-                            <div className="flex-1">
-                              <div className="flex items-center gap-2 mb-1">
-                                <Badge 
-                                  variant="outline" 
-                                  className={`text-xs ${getFixConfidenceColor(fix.confidence)}`}
+                          <div key={index} className="flex items-start justify-between gap-3 rounded-xl border border-white/10 bg-white/10 p-3 text-sm shadow-inner shadow-black/20">
+                            <div className="flex-1 space-y-1">
+                              <div className="flex items-center gap-2">
+                                <Badge
+                                  variant="outline"
+                                  className={`text-[10px] normal-case ${getFixConfidenceColor(fix.confidence)}`}
                                 >
                                   {fix.confidence}
                                 </Badge>
-                                <span className="text-xs text-gray-500 uppercase tracking-wide">
+                                <span className="text-xs font-medium uppercase tracking-wide text-primary-foreground/70">
                                   {fix.category}
                                 </span>
                               </div>
-                              <p className="text-sm font-medium text-gray-900 mb-1">
+                              <p className="text-sm font-medium text-primary-foreground">
                                 {fix.description}
                               </p>
-                              <div className="flex items-center gap-2 text-xs">
-                                <code className="bg-gray-100 px-1 rounded">
-                                  {fix.originalText.length > 30 
-                                    ? `${fix.originalText.substring(0, 30)}...` 
+                              <div className="flex flex-wrap items-center gap-2 text-xs text-primary-foreground/80">
+                                <code className="rounded border border-white/10 bg-white/10 px-2 py-0.5">
+                                  {fix.originalText.length > 30
+                                    ? `${fix.originalText.substring(0, 30)}...`
                                     : fix.originalText}
                                 </code>
-                                <ArrowRight className="w-3 h-3 text-gray-400" />
-                                <code className="bg-green-100 px-1 rounded">
-                                  {fix.correctedText.length > 30 
-                                    ? `${fix.correctedText.substring(0, 30)}...` 
+                                <ArrowRight className="h-3 w-3 text-primary-foreground/70" />
+                                <code className="rounded border border-emerald-400/40 bg-emerald-500/15 px-2 py-0.5 text-emerald-100">
+                                  {fix.correctedText.length > 30
+                                    ? `${fix.correctedText.substring(0, 30)}...`
                                     : fix.correctedText}
                                 </code>
                               </div>
                             </div>
                             {appliedFixes.includes(fix.description) ? (
-                              <Badge variant="default" className="ml-3 flex items-center gap-1">
-                                <CheckCircle className="w-3 h-3" /> Applied
+                              <Badge variant="default" className="ml-3 flex items-center gap-1 normal-case">
+                                <CheckCircle className="h-3 w-3" /> Applied
                               </Badge>
                             ) : (
                               <Button
                                 variant="outline"
                                 size="sm"
                                 onClick={() => applyFix(fix)}
-                                className="flex items-center gap-1 ml-3"
+                                className="ml-3 flex items-center gap-1"
                               >
-                                <Wand className="w-3 h-3" />
+                                <Wand className="h-3 w-3" />
                                 Apply
                               </Button>
                             )}
@@ -841,14 +837,13 @@ function App() {
               </CardContent>
             </Card>
 
-            {/* Results Section */}
-            <Card className="h-fit">
+            <Card className="h-fit border-white/15 bg-card/80">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Download className="text-accent" />
+                <CardTitle className="flex items-center gap-2 text-card-foreground">
+                  <Download className="h-5 w-5 text-accent" />
                   Parsed Results
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-card-foreground/70">
                   The parsed NPC stat block appears below in the required narrative format, along with a compliance report.
                 </CardDescription>
               </CardHeader>
@@ -862,7 +857,7 @@ function App() {
 
                 {results.length > 0 ? (
                   <>
-                    <div className="flex items-center gap-2 mb-4">
+                    <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-card-foreground/80 sm:flex-row sm:items-center sm:justify-between">
                       <Button
                         variant="outline"
                         size="sm"
@@ -872,20 +867,17 @@ function App() {
                         {showValidation ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
                         {showValidation ? 'Hide' : 'Show'} Validation
                       </Button>
-                      <div className="text-sm text-muted-foreground">
-                        Comprehensive C&C compliance validation across 23+ categories enabled
-                      </div>
+                      <div>Comprehensive C&C compliance validation across 23+ categories enabled</div>
                     </div>
 
-                    <div className="space-y-4 max-h-[400px] overflow-y-auto">
+                    <div className="max-h-[420px] space-y-4 overflow-y-auto pr-1">
                       {results.map((result, index) => (
-                        <div key={index} className="space-y-3 border rounded-lg p-4">
+                        <div key={index} className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-inner shadow-black/30 backdrop-blur">
                           {showValidation && (
                             <ValidationWarnings validation={result.validation} npcIndex={index} />
                           )}
 
-                          {/* Instructional text for rich text preview and Word copy */}
-                          <div className="mb-2 text-sm text-muted-foreground">
+                          <div className="text-sm text-card-foreground/80">
                             <strong>Preview:</strong> The box below shows how your stat block will look when pasted into Word or other rich text editors.<br />
                             <span>
                               <b>Bold</b> is used for the NPC name only. <i>Italics</i> are used for magic items, spells, and books. Parentheses are always plain except for allowed italics.<br />
@@ -893,24 +885,29 @@ function App() {
                             </span>
                           </div>
 
-                          {/* Rich text preview of parsed HTML (WYSIWYG) */}
-                          <div className="bg-white p-3 rounded-md border">
+                          <div className="rounded-xl border border-white/10 bg-slate-950/60 p-3 shadow-inner shadow-black/30">
                             <Preview id={`preview-${index}`} markdown={result.converted} />
                           </div>
 
-                          {/* Raw output for reference */}
-                          <div className="bg-muted/50 p-3 rounded-md border">
-                            <pre className="font-mono text-sm leading-relaxed break-words whitespace-pre-wrap">
-                              {result.converted}
-                            </pre>
+                          <div className="flex flex-wrap items-center gap-2 text-xs text-card-foreground/70">
+                            <Badge variant="outline" className="normal-case border-white/15 bg-white/5">NPC {index + 1}</Badge>
+                            <span>Validation score: {result.validation.complianceScore}%</span>
+                            {result.validation.warnings.length === 0 ? (
+                              <span className="flex items-center gap-1 text-emerald-200">
+                                <CheckCircle className="h-3 w-3" /> Fully compliant
+                              </span>
+                            ) : (
+                              <span className="flex items-center gap-1 text-amber-200">
+                                <Warning className="h-3 w-3" /> Issues detected
+                              </span>
+                            )}
                           </div>
 
-                          <div className="flex gap-2">
+                          <div className="flex flex-wrap gap-2">
                             <Button
-                              variant="outline"
-                              size="sm"
                               onClick={() => copyNPCWithReport(result, index)}
-                              className="flex-1 flex items-center gap-2"
+                              className="flex flex-1 items-center gap-2"
+                              size="sm"
                             >
                               <Clipboard size={16} />
                               Copy NPC + Report
@@ -919,7 +916,7 @@ function App() {
                               variant="outline"
                               size="sm"
                               onClick={() => copyHtmlToClipboard(result.converted, index)}
-                              className="flex-1 flex items-center gap-2"
+                              className="flex flex-1 items-center gap-2"
                             >
                               <FileHtml size={16} />
                               Copy HTML
@@ -928,31 +925,31 @@ function App() {
                               variant="outline"
                               size="sm"
                               onClick={() => copyToClipboard(result.converted)}
-                              className="flex-1 flex items-center gap-2"
+                              className="flex flex-1 items-center gap-2"
                             >
                               <FileText size={16} />
                               Copy Markdown
                             </Button>
                             {showValidation && (
-                              <Badge 
-                                variant="outline" 
-                                className={`flex items-center gap-1 px-2 py-1 ${getComplianceColor(result.validation.complianceScore)} text-white`}
+                              <Badge
+                                variant="outline"
+                                className={`flex items-center gap-1 normal-case ${getComplianceColor(result.validation.complianceScore)}`}
                               >
                                 {result.validation.warnings.length === 0 ? <CheckCircle size={12} /> : <AlertCircle size={12} />}
                                 {result.validation.complianceScore}%
                               </Badge>
                             )}
                           </div>
-                          
+
                           {index < results.length - 1 && <Separator className="my-4" />}
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex gap-2 pt-4 border-t">
+                    <div className="flex flex-wrap gap-2 border-t border-white/10 pt-4">
                       <Button
                         onClick={copyAllWithReport}
-                        className="flex-1 flex items-center gap-2"
+                        className="flex flex-1 items-center gap-2"
                       >
                         <Clipboard size={16} />
                         Copy All + Report
@@ -974,19 +971,18 @@ function App() {
                     </div>
                   </>
                 ) : (
-                  <div className="text-center py-12 text-muted-foreground">
-                    <p>Paste an NPC stat block in the input area to see the parsed result here</p>
+                  <div className="rounded-2xl border border-dashed border-white/10 py-14 text-center text-card-foreground/60">
+                    <p>Paste an NPC stat block in the input area to see the parsed result here.</p>
                   </div>
                 )}
               </CardContent>
             </Card>
           </div>
 
-          {/* Saved Results Section */}
           {savedResults.length > 0 && (
-            <Card className="mt-6">
+            <Card className="border-white/15 bg-card/80">
               <CardHeader>
-                <CardTitle className="flex items-center justify-between">
+                <CardTitle className="flex items-center justify-between text-card-foreground">
                   <span>Saved NPCs ({savedResults.length})</span>
                   <Button
                     variant="outline"
@@ -998,15 +994,15 @@ function App() {
                     Clear All
                   </Button>
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-card-foreground/70">
                   Previously processed NPCs saved for quick reference. Note: validation details are not saved.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2 max-h-[300px] overflow-y-auto">
+                <div className="max-h-[300px] space-y-2 overflow-y-auto pr-1">
                   {savedResults.map((result, index) => (
-                    <div key={index} className="flex items-start gap-2 p-2 bg-muted/30 rounded">
-                      <pre className="font-mono text-sm flex-1 break-words whitespace-pre-wrap">
+                    <div key={index} className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/5 p-3">
+                      <pre className="flex-1 whitespace-pre-wrap break-words font-mono text-sm text-card-foreground/80">
                         {result}
                       </pre>
                       <Button
