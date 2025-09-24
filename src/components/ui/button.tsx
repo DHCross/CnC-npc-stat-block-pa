@@ -7,15 +7,19 @@ type ButtonVariant = 'default' | 'outline' | 'ghost' | 'destructive' | 'secondar
 type ButtonSize = 'default' | 'sm' | 'lg' | 'icon';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:pointer-events-none disabled:opacity-60',
   {
     variants: {
       variant: {
-        default: 'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500',
-        outline: 'border border-gray-300 bg-white text-gray-900 hover:bg-gray-100 focus-visible:ring-gray-400',
-        ghost: 'bg-transparent text-gray-900 hover:bg-gray-100 focus-visible:ring-gray-300',
-        destructive: 'bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500',
-        secondary: 'bg-gray-100 text-gray-800 hover:bg-gray-200 focus-visible:ring-gray-400',
+        default:
+          'bg-gradient-to-r from-primary via-fuchsia-500 to-accent text-primary-foreground shadow-lg shadow-primary/40 hover:shadow-primary/60 hover:brightness-110',
+        outline:
+          'border border-white/20 bg-transparent text-foreground hover:bg-white/10 hover:text-white shadow-md shadow-white/5',
+        ghost: 'bg-transparent text-foreground hover:bg-white/10 hover:text-white',
+        destructive:
+          'bg-red-500/90 text-white shadow-lg shadow-red-500/30 hover:bg-red-500 focus-visible:ring-red-400/60',
+        secondary:
+          'bg-secondary text-secondary-foreground shadow-lg shadow-black/30 hover:bg-secondary/80',
       } satisfies Record<ButtonVariant, string>,
       size: {
         default: 'h-10 px-4 py-2',
