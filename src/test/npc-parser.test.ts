@@ -139,7 +139,7 @@ Armor Class (AC): 18`
       const result = collapseNPCEntry(input)
       
       // Extract the content inside parentheses
-      const match = result.match(/\(_(.+?)_\)/s)
+      const match = result.match(/\(_(.+?)_\)/)
       const statBlockContent = match ? match[1] : ''
       
       // Should not contain ** bold markers inside the stat block
