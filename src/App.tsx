@@ -11,7 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Toaster } from '@/components/ui/sonner';
 import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode as FileHtml } from 'lucide-react';
-import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, setDictionaries } from '@/lib/npc-parser';
+import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, setDictionaries, ValidationResult } from '@/lib/npc-parser';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
@@ -48,6 +48,127 @@ const sanitizeSchema = {
     span: ['className'],
   },
 } as const;
+
+const getWarningIcon = (type: ValidationWarning['type']) => {
+  switch (type) {
+    case 'error':
+      return <AlertCircle className="w-4 h-4 text-destructive" />;
+    case 'warning':
+      return <Warning className="w-4 h-4 text-yellow-600" />;
+    case 'info':
+      return <Info className="w-4 h-4 text-blue-600" />;
+    default:
+      return <Info className="w-4 h-4" />;
+  }
+};
+
+const getComplianceColor = (score: number) => {
+  if (score >= 90) return 'bg-green-500';
+  if (score >= 70) return 'bg-yellow-500';
+  return 'bg-red-500';
+};
+
+type ValidationWarningsProps = {
+  validation: ValidationResult;
+  npcIndex: number;
+};
+
+function ValidationWarnings({ validation, npcIndex }: ValidationWarningsProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const panelId = `validation-panel-${npcIndex}`;
+
+  if (validation.warnings.length === 0) {
+    return (
+      <div className="flex items-center gap-2 p-2 bg-green-50 border border-green-200 rounded text-sm">
+        <CheckCircle className="w-4 h-4 text-green-600" />
+        <span className="text-green-800">Fully compliant with C&C conventions</span>
+        <Badge variant="outline" className="ml-auto bg-green-100 text-green-800">
+          {validation.complianceScore}%
+        </Badge>
+      </div>
+    );
+  }
+
+  return (
+    <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+      <CollapsibleTrigger asChild>
+        <Button
+          variant="ghost"
+          className="w-full justify-between p-2 h-auto"
+          aria-controls={panelId}
+          aria-expanded={isOpen}
+        >
+          <div className="flex items-center gap-2">
+            {isOpen ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+            <span className="text-sm">Validation Results</span>
+            <Badge variant="outline" className={`${getComplianceColor(validation.complianceScore)} text-white`}>
+              {validation.complianceScore}%
+            </Badge>
+          </div>
+          <div className="flex gap-1">
+            {validation.warnings.filter((w: ValidationWarning) => w.type === 'error').length > 0 && (
+              <Badge variant="destructive" className="text-xs">
+                {validation.warnings.filter((w: ValidationWarning) => w.type === 'error').length} errors
+              </Badge>
+            )}
+            {validation.warnings.filter((w: ValidationWarning) => w.type === 'warning').length > 0 && (
+              <Badge variant="outline" className="text-xs bg-yellow-100 text-yellow-800">
+                {validation.warnings.filter((w: ValidationWarning) => w.type === 'warning').length} warnings
+              </Badge>
+            )}
+          </div>
+        </Button>
+      </CollapsibleTrigger>
+      <CollapsibleContent id={panelId}>
+        <div className="space-y-2 p-2 border-t">
+          {validation.warnings.map((warning: ValidationWarning, idx: number) => (
+            <div
+              key={idx}
+              className={`p-2 rounded text-sm border-l-4 ${
+                warning.type === 'error'
+                  ? 'bg-red-50 border-red-500'
+                  : warning.type === 'warning'
+                  ? 'bg-yellow-50 border-yellow-500'
+                  : 'bg-blue-50 border-blue-500'
+              }`}
+            >
+              <div className="flex items-start gap-2">
+                {getWarningIcon(warning.type)}
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-medium text-xs uppercase tracking-wide">
+                      {warning.category}
+                    </span>
+                    <Badge
+                      variant="outline"
+                      className={`text-[10px] uppercase ${
+                        warning.type === 'error'
+                          ? 'border-red-300 text-red-700'
+                          : warning.type === 'warning'
+                          ? 'border-yellow-300 text-yellow-700'
+                          : 'border-blue-300 text-blue-700'
+                      }`}
+                    >
+                      {warning.type}
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-gray-900">
+                    {warning.message}
+                  </p>
+                  {warning.suggestion && (
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Suggestion: {warning.suggestion}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
 
 function Preview({ markdown, id }: { markdown: string; id: string }) {
   return (
@@ -430,25 +551,6 @@ function App() {
     processInput(template);
   };
 
-  const getWarningIcon = (type: ValidationWarning['type']) => {
-    switch (type) {
-      case 'error':
-        return <AlertCircle className="w-4 h-4 text-destructive" />;
-      case 'warning':
-        return <Warning className="w-4 h-4 text-yellow-600" />;
-      case 'info':
-        return <Info className="w-4 h-4 text-blue-600" />;
-      default:
-        return <Info className="w-4 h-4" />;
-    }
-  };
-
-  const getComplianceColor = (score: number) => {
-    if (score >= 90) return 'bg-green-500';
-    if (score >= 70) return 'bg-yellow-500';
-    return 'bg-red-500';
-  };
-
   const getFixConfidenceColor = (confidence: CorrectionFix['confidence']) => {
     switch (confidence) {
       case 'high': return 'bg-green-100 text-green-800 border-green-300';
@@ -458,85 +560,6 @@ function App() {
     }
   };
 
-  const ValidationWarnings = ({ validation, npcIndex }: { validation: any; npcIndex: number }) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    if (validation.warnings.length === 0) {
-      return (
-        <div className="flex items-center gap-2 p-2 bg-green-50 border border-green-200 rounded text-sm">
-          <CheckCircle className="w-4 h-4 text-green-600" />
-          <span className="text-green-800">Fully compliant with C&C conventions</span>
-          <Badge variant="outline" className="ml-auto bg-green-100 text-green-800">
-            {validation.complianceScore}%
-          </Badge>
-        </div>
-      );
-    }
-
-    return (
-      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-        <CollapsibleTrigger asChild>
-          <Button variant="ghost" className="w-full justify-between p-2 h-auto">
-            <div className="flex items-center gap-2">
-              {isOpen ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-              <span className="text-sm">Validation Results</span>
-              <Badge 
-                variant="outline" 
-                className={`${getComplianceColor(validation.complianceScore)} text-white`}
-              >
-                {validation.complianceScore}%
-              </Badge>
-            </div>
-            <div className="flex gap-1">
-              {validation.warnings.filter((w: ValidationWarning) => w.type === 'error').length > 0 && (
-                <Badge variant="destructive" className="text-xs">
-                  {validation.warnings.filter((w: ValidationWarning) => w.type === 'error').length} errors
-                </Badge>
-              )}
-              {validation.warnings.filter((w: ValidationWarning) => w.type === 'warning').length > 0 && (
-                <Badge variant="outline" className="text-xs bg-yellow-100 text-yellow-800">
-                  {validation.warnings.filter((w: ValidationWarning) => w.type === 'warning').length} warnings
-                </Badge>
-              )}
-            </div>
-          </Button>
-        </CollapsibleTrigger>
-        <CollapsibleContent>
-          <div className="space-y-2 p-2 border-t">
-            {validation.warnings.map((warning: ValidationWarning, idx: number) => (
-              <div
-                key={idx}
-                className={`p-2 rounded text-sm border-l-4 ${
-                  warning.type === 'error'
-                    ? 'bg-red-50 border-red-500'
-                    : warning.type === 'warning'
-                    ? 'bg-yellow-50 border-yellow-500'
-                    : 'bg-blue-50 border-blue-500'
-                }`}
-              >
-                <div className="flex items-start gap-2">
-                  {getWarningIcon(warning.type)}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-medium text-xs uppercase tracking-wide">
-                        {warning.category}
-                      </span>
-                    </div>
-                    <p className="text-sm">{warning.message}</p>
-                    {warning.suggestion && (
-                      <p className="text-xs mt-1 opacity-75">
-                        💡 {warning.suggestion}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </CollapsibleContent>
-      </Collapsible>
-    );
-  };
 
   return (
     <>
