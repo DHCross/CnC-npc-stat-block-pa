@@ -339,15 +339,38 @@ export function applyAllHighConfidenceFixes(
 }
 
 export function convertToHtml(text: string): string {
-  const escaped = text
+  // First escape HTML entities
+  let html = text
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
-  const paragraphs = escaped
+
+  // Convert markdown formatting to HTML
+  // Use temporary markers to avoid conflicts
+  html = html.replace(/\*\*(.*?)\*\*/g, '___BOLD_START___$1___BOLD_END___');
+  html = html.replace(/__(.*?)__/g, '___BOLD_START___$1___BOLD_END___');
+
+  // Handle italic text (*text* or _text_)
+  html = html.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
+  html = html.replace(/_([^_\n]+?)_/g, '<em>$1</em>');
+
+  // Replace temporary markers with actual bold tags
+  html = html.replace(/___BOLD_START___/g, '<strong>');
+  html = html.replace(/___BOLD_END___/g, '</strong>');
+
+  // Handle superscript ordinals (1st, 2nd, 3rd, 4th, etc.)
+  html = html.replace(/(\d+)(st|nd|rd|th)/g, '$1<sup>$2</sup>');
+
+  // Handle ^superscript^ format (e.g., 9^th^ becomes 9<sup>th</sup>)
+  html = html.replace(/\^([^^\n]+?)\^/g, '<sup>$1</sup>');
+
+  // Convert to paragraphs and handle line breaks
+  const paragraphs = html
     .split(/\n{2,}/)
     .map((paragraph) => paragraph.trim())
     .filter(Boolean)
     .map((paragraph) => `<p>${paragraph.replace(/\n/g, '<br />')}</p>`);
+
   return paragraphs.join('\n') || '<p></p>';
 }
 

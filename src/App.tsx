@@ -166,7 +166,7 @@ function ValidationWarnings({ validation, npcIndex }: ValidationWarningsProps) {
 
 function Preview({ markdown, id }: { markdown: string; id: string }) {
   return (
-    <div id={id} className="prose prose-sm max-w-none">
+    <div id={id} className="prose prose-sm prose-invert max-w-none text-foreground">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkOrdinals]}
         rehypePlugins={[[rehypeSanitize, sanitizeSchema]]}
