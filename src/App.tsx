@@ -125,7 +125,10 @@ function App() {
   const [dictEnabled, setDictEnabled] = useState(true);
   const [dictCounts, setDictCounts] = useState({ spells: 0, items: 0, monsters: 0 });
 
-  const processInput = (text: string) => {
+  const processInput = (
+    text: string,
+    overrides?: { normalizeInput?: boolean; dictionaryEnabled?: boolean },
+  ) => {
     if (!text.trim()) {
       setResults([]);
       setError(null);
@@ -134,11 +137,17 @@ function App() {
     }
 
     try {
-      const toParse = normalizeInput ? applyAllHighConfidenceFixes(text) : text;
+      const shouldNormalize = overrides?.normalizeInput ?? normalizeInput;
+      const dictionariesActive = overrides?.dictionaryEnabled ?? dictEnabled;
+      const correctionOptions = { enableDictionarySuggestions: dictionariesActive };
+
+      const toParse = shouldNormalize
+        ? applyAllHighConfidenceFixes(text, correctionOptions)
+        : text;
       const processed = processDumpWithValidation(toParse);
-  const fixes = generateAutoCorrectionFixes(text);
+      const fixes = generateAutoCorrectionFixes(text, correctionOptions);
       setAvailableFixes(fixes);
-      
+
       if (processed.length === 0) {
         setError('No valid NPC stat blocks found. Paste a name line followed by either labeled lines (Disposition, Race & Class, HP, AC, Primary attributes, Equipment, Spells, Mount) or a parenthetical abbreviated block. Partial data is OK.');
         setResults([]);
@@ -411,7 +420,9 @@ function App() {
   };
 
   const applyAllFixes = () => {
-    const correctedText = applyAllHighConfidenceFixes(inputText);
+    const correctedText = applyAllHighConfidenceFixes(inputText, {
+      enableDictionarySuggestions: dictEnabled,
+    });
     setInputText(correctedText);
     processInput(correctedText);
     const highConfidenceCount = availableFixes.filter(f => f.confidence === 'high').length;
@@ -632,7 +643,13 @@ function App() {
                         <div className="font-medium">Enable dictionary normalization</div>
                         <div className="text-xs text-muted-foreground">When enabled, auto-correction will suggest canonicalized names and italics using your CSVs.</div>
                       </div>
-                      <Switch checked={dictEnabled} onCheckedChange={setDictEnabled} />
+                      <Switch
+                        checked={dictEnabled}
+                        onCheckedChange={(checked) => {
+                          setDictEnabled(checked);
+                          processInput(inputText, { dictionaryEnabled: checked });
+                        }}
+                      />
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
                       {/* Spells CSV */}
@@ -708,7 +725,7 @@ function App() {
                     onCheckedChange={(checked) => {
                       setNormalizeInput(checked);
                       // Reprocess current input with new setting
-                      processInput(inputText);
+                      processInput(inputText, { normalizeInput: checked });
                     }}
                     aria-label="Normalize input before parsing"
                   />

@@ -29,6 +29,10 @@ export interface CorrectionFix {
   confidence: CorrectionConfidence;
 }
 
+export interface AutoCorrectionOptions {
+  enableDictionarySuggestions?: boolean;
+}
+
 interface ParsedNPC {
   name: string;
   fields: Record<string, string>;
@@ -167,8 +171,12 @@ export function generateBatchTemplate(): string {
   ].join('\n');
 }
 
-export function generateAutoCorrectionFixes(input: string): CorrectionFix[] {
+export function generateAutoCorrectionFixes(
+  input: string,
+  options: AutoCorrectionOptions = {},
+): CorrectionFix[] {
   const fixes: CorrectionFix[] = [];
+  const { enableDictionarySuggestions = true } = options;
 
   const alignmentRegex = /(Alignment\s*:\s*)([^\n]+)/gi;
   let match: RegExpExecArray | null;
@@ -210,7 +218,7 @@ export function generateAutoCorrectionFixes(input: string): CorrectionFix[] {
 
   const italicsRegex = /\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\b/g;
   const spells = dictionaries.spells;
-  if (spells.size > 0) {
+  if (enableDictionarySuggestions && spells.size > 0) {
     let italicMatch: RegExpExecArray | null;
     while ((italicMatch = italicsRegex.exec(input)) !== null) {
       const candidate = italicMatch[1];
@@ -236,9 +244,14 @@ export function applyCorrectionFix(input: string, fix: CorrectionFix): string {
   return input.replace(fix.originalText, fix.correctedText);
 }
 
-export function applyAllHighConfidenceFixes(input: string): string {
+export function applyAllHighConfidenceFixes(
+  input: string,
+  options?: AutoCorrectionOptions,
+): string {
   let working = input;
-  const fixes = generateAutoCorrectionFixes(input).filter((fix) => fix.confidence === 'high');
+  const fixes = generateAutoCorrectionFixes(input, options).filter(
+    (fix) => fix.confidence === 'high',
+  );
   for (const fix of fixes) {
     working = applyCorrectionFix(working, fix);
   }
