@@ -591,7 +591,7 @@ function parseBlock(block: string): ParsedNPC {
       const acMatch = mountData.match(/AC\s*(\d+)/i);
       const attackMatch = mountData.match(/(with\s+[^.]+attack[^.]*)/i);
 
-      const mountStats = [];
+      const mountStats: string[] = [];
       if (hdMatch) mountStats.push(`HD ${hdMatch[1]}`);
       if (hpMatch) mountStats.push(`HP ${hpMatch[1]}`);
       if (acMatch) mountStats.push(`AC ${acMatch[1]}`);
