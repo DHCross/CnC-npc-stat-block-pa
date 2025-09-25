@@ -298,7 +298,7 @@ export const SPELL_NAME_MAPPINGS: Record<string, string> = {
 
 // Monster name mappings (M&T Names → Change)
 export const MONSTER_NAME_MAPPINGS: Record<string, string> = {
-  'aboleth': 'Abyssal Tyrant',
+  'aboleth': 'Abyssal Tyrant or Deep Tyrant',
   'achaierai': 'Achar Strider',
   'aerial servant': 'Aerial Watcher',
   'aetolian boar': 'Giant Boar',

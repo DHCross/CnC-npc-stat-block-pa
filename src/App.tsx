@@ -2,6 +2,7 @@
 
 // App component
 import { useState } from 'react';
+import * as React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -200,6 +201,7 @@ import { toast } from 'sonner';
 // Use localStorage-backed KV to avoid requiring Spark runtime in repo context
 import { useKV } from '@/hooks/use-kv';
 import { Switch } from '@/components/ui/switch';
+import { initializePreloadedDictionaries, getDictionaryCounts } from '@/data';
 
 const EXAMPLE_TEXT = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple**
 
@@ -254,6 +256,12 @@ function App() {
   const [normalizeInput, setNormalizeInput] = useState(true);
   const [dictEnabled, setDictEnabled] = useState(true);
   const [dictCounts, setDictCounts] = useState({ spells: 0, items: 0, monsters: 0 });
+
+  // Initialize pre-loaded dictionaries on component mount
+  React.useEffect(() => {
+    initializePreloadedDictionaries();
+    setDictCounts(getDictionaryCounts());
+  }, []);
 
   const processInput = (
     text: string,
@@ -674,14 +682,14 @@ function App() {
 
                 <Card className="mt-2 border-white/15 bg-white/5">
                   <CardHeader className="py-3">
-                    <CardTitle className="text-sm text-card-foreground">Dictionaries (CSV)</CardTitle>
-                    <CardDescription className="text-xs text-card-foreground/70">Upload lists of spells, magic items, and monsters to improve name normalization and italics.</CardDescription>
+                    <CardTitle className="text-sm text-card-foreground">Updated C&C Dictionaries</CardTitle>
+                    <CardDescription className="text-xs text-card-foreground/70">Pre-loaded with the latest Castles & Crusades name updates for spells, magic items, and monsters.</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-3 text-sm">
                       <div>
                         <div className="font-medium text-card-foreground">Enable dictionary normalization</div>
-                        <div className="text-xs text-card-foreground/70">When enabled, auto-correction will suggest canonicalized names and italics using your CSVs.</div>
+                        <div className="text-xs text-card-foreground/70">When enabled, auto-correction will suggest canonicalized names and italics using updated C&C terminology.</div>
                       </div>
                       <Switch
                         checked={dictEnabled}
@@ -692,61 +700,25 @@ function App() {
                       />
                     </div>
                     <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-3">
-                      <div className="flex w-full flex-col items-center space-y-2 rounded-xl border border-white/10 bg-white/5 p-3 text-center">
-                        <label className="block text-xs font-medium text-card-foreground/70">Spells CSV</label>
+                      <div className="flex w-full flex-col items-center space-y-2 rounded-xl border border-emerald-400/40 bg-emerald-500/10 p-3 text-center">
+                        <label className="block text-xs font-medium text-emerald-200">Updated Spells</label>
                         <div className="flex w-full flex-col items-center">
-                          <input id="spells-csv" type="file" accept=".csv,.txt,.xlsx" className="hidden" onChange={async (e) => {
-                            const file = e.target.files?.[0];
-                            if (!file) return;
-                            const text = await file.text();
-                            setDictionaries({ spellsCsv: text });
-                            const count = text.split(/\r?\n/).map(l=>l.split(',')[0].trim()).filter(Boolean).length;
-                            setDictCounts(prev => ({ ...prev, spells: count }));
-                            toast.success(`Loaded ${count} spells`);
-                            processInput(inputText);
-                          }} />
-                          <Button variant="outline" size="sm" className="w-full" onClick={() => document.getElementById('spells-csv')?.click()}>
-                            Upload Spells CSV
-                          </Button>
-                          <span className="mt-1 text-xs text-card-foreground/60">Loaded: {dictCounts.spells}</span>
+                          <div className="text-lg font-semibold text-emerald-100">{dictCounts.spells}</div>
+                          <span className="text-xs text-emerald-200">Pre-loaded from latest C&C updates</span>
                         </div>
                       </div>
-                      <div className="flex w-full flex-col items-center space-y-2 rounded-xl border border-white/10 bg-white/5 p-3 text-center">
-                        <label className="block text-xs font-medium text-card-foreground/70">Items CSV</label>
+                      <div className="flex w-full flex-col items-center space-y-2 rounded-xl border border-amber-400/40 bg-amber-400/10 p-3 text-center">
+                        <label className="block text-xs font-medium text-amber-200">Magic Items</label>
                         <div className="flex w-full flex-col items-center">
-                          <input id="items-csv" type="file" accept=".csv,.txt,.xlsx" className="hidden" onChange={async (e) => {
-                            const file = e.target.files?.[0];
-                            if (!file) return;
-                            const text = await file.text();
-                            setDictionaries({ itemsCsv: text });
-                            const count = text.split(/\r?\n/).map(l=>l.split(',')[0].trim()).filter(Boolean).length;
-                            setDictCounts(prev => ({ ...prev, items: count }));
-                            toast.success(`Loaded ${count} items`);
-                            processInput(inputText);
-                          }} />
-                          <Button variant="outline" size="sm" className="w-full" onClick={() => document.getElementById('items-csv')?.click()}>
-                            Upload Items CSV
-                          </Button>
-                          <span className="mt-1 text-xs text-card-foreground/60">Loaded: {dictCounts.items}</span>
+                          <div className="text-lg font-semibold text-amber-100">{dictCounts.items}</div>
+                          <span className="text-xs text-amber-200">Ready for name normalization</span>
                         </div>
                       </div>
-                      <div className="flex w-full flex-col items-center space-y-2 rounded-xl border border-white/10 bg-white/5 p-3 text-center">
-                        <label className="block text-xs font-medium text-card-foreground/70">Monsters CSV</label>
+                      <div className="flex w-full flex-col items-center space-y-2 rounded-xl border border-sky-400/40 bg-sky-500/10 p-3 text-center">
+                        <label className="block text-xs font-medium text-sky-200">Updated Monsters</label>
                         <div className="flex w-full flex-col items-center">
-                          <input id="monsters-csv" type="file" accept=".csv,.txt,.xlsx" className="hidden" onChange={async (e) => {
-                            const file = e.target.files?.[0];
-                            if (!file) return;
-                            const text = await file.text();
-                            setDictionaries({ monstersCsv: text });
-                            const count = text.split(/\r?\n/).map(l=>l.split(',')[0].trim()).filter(Boolean).length;
-                            setDictCounts(prev => ({ ...prev, monsters: count }));
-                            toast.success(`Loaded ${count} monsters`);
-                            processInput(inputText);
-                          }} />
-                          <Button variant="outline" size="sm" className="w-full" onClick={() => document.getElementById('monsters-csv')?.click()}>
-                            Upload Monsters CSV
-                          </Button>
-                          <span className="mt-1 text-xs text-card-foreground/60">Loaded: {dictCounts.monsters}</span>
+                          <div className="text-lg font-semibold text-sky-100">{dictCounts.monsters}</div>
+                          <span className="text-xs text-sky-200">Latest creature name changes</span>
                         </div>
                       </div>
                     </div>

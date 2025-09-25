@@ -1039,65 +1039,56 @@ export function collapseNPCEntry(input: string): string {
   const npc = processed[0];
   const parsed = parseBlock(npc.original);
 
-  // Extract name and format with italicized stat block
+  // Canonicalize and validate all required fields
   let name = parsed.name;
-  if (!name.startsWith('**')) name = `**${name}**`;
+  if (!name.startsWith('**')) name = `**${name.replace(/\*/g, '')}**`;
 
-  // Build the condensed stat block content
-  const statParts: string[] = [];
+  // Mandatory fields: Race & Class, HP, AC, Disposition
+  const raceClass = parsed.fields['Race & Class'] || '[race/class missing]';
+  const { race, level, charClass } = parseRaceClassLevel(raceClass);
+  const superLevel = (level ? toSuperscript(level) + ' level' : '[level missing]');
+  const disposition = parsed.fields['Disposition'] ? normalizeDisposition(parsed.fields['Disposition']) : '[disposition missing]';
+  const hp = parsed.fields['Hit Points (HP)'] || '[hp missing]';
+  const ac = parsed.fields['Armor Class (AC)'] || '[ac missing]';
 
-  // Race, class, level with superscript
-  const raceClass = parsed.fields['Race & Class'];
-  if (raceClass) {
-    const { race, level, charClass } = parseRaceClassLevel(raceClass);
-    if (race && charClass && level) {
-      const superLevel = toSuperscript(level) + ' level';
-      statParts.push(`this ${superLevel} ${race} ${charClass}`);
-    }
-  }
+  // Linguistic flow: race before level/class
+  const pronoun = 'this';
+  const raceClassPhrase = (race && charClass && level)
+    ? `${pronoun} ${superLevel} ${race} ${charClass}`
+    : raceClass;
 
-  // Primary attributes in lowercase PHB order
-  const primaryAttrs = parsed.fields['Primary attributes'];
-  if (primaryAttrs) {
-    const formattedAttrs = formatPrimaryAttributes(primaryAttrs);
-    statParts.push(`primary attributes are ${formattedAttrs}`);
-  }
+  // Primary attributes
+  let primaryAttrs = parsed.fields['Primary attributes']
+    ? formatPrimaryAttributes(parsed.fields['Primary attributes'])
+    : '[primary attributes missing]';
 
   // Secondary skills
-  const secondarySkills = parsed.fields['Secondary Skills'];
-  if (secondarySkills) {
-    statParts.push(`secondary skill is ${secondarySkills}`);
+  let secondarySkills = parsed.fields['Secondary Skills']
+    ? `secondary skill is ${parsed.fields['Secondary Skills']}`
+    : '';
+
+  // Equipment (canonicalize, apply wording rules, bonus placement, italics)
+  let equipment = parsed.fields['Equipment']
+    ? findEquipment(parsed.fields['Equipment'])
+    : '[equipment missing]';
+
+  // Mount: output as separate canonical block if present
+  let mountBlock = '';
+  if (parsed.fields['Mount']) {
+    mountBlock = `\n\n${parsed.fields['Mount']}`;
   }
 
-  // Vital stats: HP, AC, disposition
-  const vitalParts: string[] = [];
-  const hp = parsed.fields['Hit Points (HP)'];
-  const ac = parsed.fields['Armor Class (AC)'];
-  const disposition = parsed.fields['Disposition'];
+  // Build stat block content, enforcing punctuation and semicolons for equipment clauses
+  let statParts: string[] = [];
+  statParts.push(`${raceClassPhrase}'s vital stats are HP ${hp}, AC ${ac}, disposition ${disposition}.`);
+  statParts.push(`primary attributes: ${primaryAttrs}`);
+  if (secondarySkills) statParts.push(secondarySkills);
+  statParts.push(`equipment: ${equipment}`);
 
-  if (hp) vitalParts.push(`hit points ${hp}`);
-  if (ac) vitalParts.push(`armor class ${ac}`);
-  if (disposition) vitalParts.push(`disposition ${normalizeDisposition(disposition)}`);
+  // Markdown: wrap parenthetical in single outer italics, no nested asterisks
+  const parenthetical = `*(${statParts.join('; ')}${mountBlock})*`;
 
-  if (vitalParts.length > 0) {
-    statParts.push(`vital stats are ${vitalParts.join(', ')}.`);
-  }
-
-  // Equipment
-  const equipment = parsed.fields['Equipment'];
-  if (equipment) {
-    const processedEquip = findEquipment(equipment);
-    statParts.push(`equipment: ${processedEquip}`);
-  }
-
-  // Mount
-  const mount = parsed.fields['Mount'];
-  if (mount) {
-    const mountText = findMountOneLiner(mount);
-    statParts.push(mountText);
-  }
-
-  return `${name} (${statParts.length > 0 ? `_${statParts.join(', ')}_` : ''})`;
+  return `${name} ${parenthetical}`;
 }
 
 export function findEquipment(equipment: string): string {
