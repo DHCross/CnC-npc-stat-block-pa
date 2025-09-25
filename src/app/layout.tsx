@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "C&C NPC Parser",
-  description: "Comprehensive stat block validator for Castles & Crusades NPCs",
+  title: "C&C NPC and Monster Parser",
+  description: "Comprehensive stat block validator for Castles & Crusades NPCs and monsters",
 };
 
 export default function RootLayout({

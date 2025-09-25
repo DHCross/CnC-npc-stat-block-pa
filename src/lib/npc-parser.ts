@@ -33,6 +33,8 @@ export interface AutoCorrectionOptions {
   enableDictionarySuggestions?: boolean;
 }
 
+import { MAGIC_ITEM_MAPPINGS, SPELL_NAME_MAPPINGS, applyNameMappings } from './name-mappings';
+
 interface ParsedNPC {
   name: string;
   fields: Record<string, string>;
@@ -58,6 +60,7 @@ const FIELD_ORDER = [
   'Hit Points (HP)',
   'Armor Class (AC)',
   'Primary attributes',
+  'Secondary Skills',
   'Equipment',
   'Spells',
   'Mount',
@@ -403,7 +406,12 @@ function splitIntoBlocks(input: string): string[] {
   };
 
   for (const line of lines) {
-    const isNameLine = /^\s*\*\*[\w\s'\-:,]+\*\*\s*$/.test(line) || /^\s*\*\*/.test(line);
+    // Check for already formatted names (**Name**) or potential NPC names starting with titles
+    const isNameLine =
+      /^\s*\*\*[\w\s'\-:,]+\*\*\s*$/.test(line) ||
+      /^\s*\*\*/.test(line) ||
+      /^\s*(Sir|Lady|Lord|Dame|Master|Mistress|Captain|Commander|General|Admiral|Duke|Duchess|Count|Countess|Baron|Baroness|Knight|Ser)\s+[\w\s'\-:,]+\.?\s*$/.test(line);
+
     if (isNameLine && current.length > 0) {
       pushCurrent();
     }
@@ -422,7 +430,13 @@ function splitIntoBlocks(input: string): string[] {
 function parseBlock(block: string): ParsedNPC {
   const lines = block.split(/\r?\n/);
   const trimmedLines = lines.map((line) => line.trim()).filter((line) => line.length > 0);
-  const nameLine = trimmedLines[0] ?? 'Unnamed NPC';
+  let nameLine = trimmedLines[0] ?? 'Unnamed NPC';
+
+  // Extract only the name part before parenthetical data for unit rosters
+  const nameMatch = nameLine.match(/^([^(]+?)(\s*\([^)]+\).*)?$/);
+  if (nameMatch) {
+    nameLine = nameMatch[1].trim();
+  }
 
   const fields: Record<string, string> = {};
   const notes: string[] = [];
@@ -461,10 +475,149 @@ function parseBlock(block: string): ParsedNPC {
     fields['Equipment'] = equipment;
   }
 
+  // Extract equipment from unit roster format like "EQ scale mail, shield, mace and dagger"
+  if (!fields['Equipment']) {
+    const unitEQMatch = block.match(/\bEQ\s+(.+?)(?:\)|$)/i);
+    if (unitEQMatch) {
+      const equipment = unitEQMatch[1].trim().replace(/\s+and\s+/g, ', ');
+      fields['Equipment'] = equipment;
+    }
+  }
+
   // Extract mount from prose like "He rides a heavy war horse"
   const mountMatch = originalText.match(/rides\s+a\s+([^.]+)/i);
   if (mountMatch && !fields['Mount']) {
     fields['Mount'] = mountMatch[1];
+  }
+
+  // Extract race & class from parenthetical like "(He is a chaotic good, human, 8th level cleric..."
+  if (!fields['Race & Class']) {
+    const raceClassMatch = block.match(/he\s+is\s+a\s+(?:(?:neutral|lawful|chaotic)\s+(?:good|evil|neutral)|neutral|lawful|chaotic|good|evil),?\s*([^,]+),\s*(\d+(?:st|nd|rd|th)?)\s*level\s+([^.]+)/i);
+    if (raceClassMatch) {
+      const race = raceClassMatch[1].trim();
+      const level = raceClassMatch[2];
+      const charClass = raceClassMatch[3].trim();
+      fields['Race & Class'] = `${race}, ${level} level ${charClass}`;
+    }
+  }
+
+  // Extract race & class from unit roster format like "(human, fighter, 2nd level, HP 14, AC 15...)"
+  if (!fields['Race & Class']) {
+    const unitRosterMatch = block.match(/\(([^,]+),\s*([^,]+),\s*(\d+(?:st|nd|rd|th|ᵗʰ|ˢᵗ|ⁿᵈ|ʳᵈ)?)\s*level/i);
+    if (unitRosterMatch) {
+      const race = unitRosterMatch[1].trim();
+      const charClass = unitRosterMatch[2].trim();
+      const level = unitRosterMatch[3];
+      fields['Race & Class'] = `${race}, ${level} level ${charClass}`;
+    }
+  }
+
+  // Extract race & class from unit roster format like "(2nd level fighters, ...)" - assume human
+  if (!fields['Race & Class']) {
+    const simpleUnitMatch = block.match(/\((\d+(?:st|nd|rd|th)?)\s*level\s+([^,]+)/i);
+    if (simpleUnitMatch) {
+      const level = simpleUnitMatch[1];
+      const charClass = simpleUnitMatch[2].trim();
+      fields['Race & Class'] = `human, ${level} level ${charClass}`;
+    }
+  }
+
+  // Extract primary attributes from parenthetical like "His prime attributes are: str, con, dex"
+  if (!fields['Primary attributes']) {
+    const primeAttrsMatch = block.match(/(?:his|her|their)\s+prime\s+attributes?\s+(?:are|is)[:;\s]*([^.]+)/i);
+    if (primeAttrsMatch) {
+      const attrs = primeAttrsMatch[1].trim().replace(/[,\s]+/g, ', ');
+      fields['Primary attributes'] = attrs;
+    }
+  }
+
+  // Extract primary attributes from unit roster format like "PA physical" or "PA str, con, dex"
+  if (!fields['Primary attributes']) {
+    const unitPAMatch = block.match(/\bPA\s+([^,]+?)(?:\s*,\s*(?:EQ|HD|HP|AC|\d|[A-Z]{2})|\.|\))/i);
+    if (unitPAMatch) {
+      const attrs = unitPAMatch[1].trim();
+      // Expand "physical" to the three physical attributes
+      if (attrs.toLowerCase() === 'physical') {
+        fields['Primary attributes'] = 'strength, dexterity, constitution';
+      } else {
+        fields['Primary attributes'] = attrs.replace(/[,\s]+/g, ', ');
+      }
+    }
+  }
+
+  // Extract HP from unit roster format like "HP 14"
+  if (!fields['Hit Points (HP)']) {
+    const unitHPMatch = block.match(/\bHP\s+(\d+)/i);
+    if (unitHPMatch) {
+      fields['Hit Points (HP)'] = unitHPMatch[1];
+    }
+  }
+
+  // Extract AC from unit roster format like "AC 16" or inline format "MOVE: ... AC: 13"
+  if (!fields['Armor Class (AC)']) {
+    const unitACMatch = block.match(/\bAC\s*:?\s*(\d+)/i);
+    if (unitACMatch) {
+      fields['Armor Class (AC)'] = unitACMatch[1];
+    }
+  }
+
+  // Extract equipment from unit roster format like "EQ banded mail, shield, longsword"
+  if (!fields['Equipment']) {
+    const unitEQMatch = block.match(/\bEQ\s+([^.]+?)(?:\.\s*[a-z]+\s+[a-z]+\s*:|\.|\))/i);
+    if (unitEQMatch) {
+      fields['Equipment'] = unitEQMatch[1].trim();
+    }
+  }
+
+  // Extract secondary skills from parenthetical like "His secondary skill is: leadership"
+  const secondarySkillMatch = block.match(/(?:his|her|their)\s+secondary\s+skills?\s+(?:are|is)[:;\s]*([^.]+)/i);
+  if (secondarySkillMatch && !fields['Secondary Skills']) {
+    fields['Secondary Skills'] = secondarySkillMatch[1].trim();
+  }
+
+  // Extract mount data from unit roster format like "light war horse: HD 3d10, HP 17, AC 12 with two hoof attacks..."
+  if (!fields['Mount']) {
+    const mountMatch = block.match(/(light war horse|heavy war horse|war horse|warhorse|giant goat|[a-z\s]*horse|[a-z\s]*mount):\s*([^.]+(?:\.[^.]*attack[^.]*)?)/i);
+    if (mountMatch) {
+      const mountName = mountMatch[1].trim();
+      const mountData = mountMatch[2].trim();
+
+      // Create a canonical mount entry following the rules
+      let mountBlock = `**${mountName.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} (mount)** `;
+
+      // Extract mount stats
+      const hdMatch = mountData.match(/HD\s*(\d+d\d+)/i);
+      const hpMatch = mountData.match(/HP\s*(\d+)/i);
+      const acMatch = mountData.match(/AC\s*(\d+)/i);
+      const attackMatch = mountData.match(/(with\s+[^.]+attack[^.]*)/i);
+
+      const mountStats = [];
+      if (hdMatch) mountStats.push(`HD ${hdMatch[1]}`);
+      if (hpMatch) mountStats.push(`HP ${hpMatch[1]}`);
+      if (acMatch) mountStats.push(`AC ${acMatch[1]}`);
+      mountStats.push('disposition neutral');
+
+      let attackText = '';
+      if (attackMatch) {
+        attackText = `. It attacks ${attackMatch[1].replace(/^with\s+/i, 'with ')}`;
+      }
+
+      mountBlock += `*(this creature's vital stats are ${mountStats.join(', ')}${attackText})*`;
+      fields['Mount'] = mountBlock;
+    }
+  }
+
+  // Extract spell slots from parenthetical like "He can cast the following number of spells: 0-5, 1st-5, 2nd-4, 3rd-2, 4th-1"
+  if (!fields['Spells']) {
+    const spellSlotsMatch = block.match(/he\s+can\s+cast\s+the\s+following\s+number\s+of\s+spells:\s*([^.]+)/i);
+    if (spellSlotsMatch) {
+      let slots = spellSlotsMatch[1].trim();
+      // Replace cantrips first
+      slots = slots.replace(/0-(\d+)/g, 'cantrips: $1');
+      // Replace ordinal spell levels with proper format
+      slots = slots.replace(/(\d+)(st|nd|rd|th)-(\d+)/gi, '$1$2 level: $3');
+      fields['Spells'] = slots;
+    }
   }
 
   for (let i = 1; i < trimmedLines.length; i++) {
@@ -480,6 +633,19 @@ function parseBlock(block: string): ParsedNPC {
     }
   }
 
+  // Post-process monster-specific fields
+  if (fields['ALIGNMENT'] && !fields['Disposition']) {
+    fields['Disposition'] = normalizeDisposition(fields['ALIGNMENT']);
+  }
+
+  // Convert HD to Level format for monsters
+  if (fields['HD'] && !fields['Hit Points (HP)']) {
+    const hdMatch = fields['HD'].match(/(\d+)\s*\(([^)]+)\)/);
+    if (hdMatch) {
+      fields['Level'] = `${hdMatch[1]}(${hdMatch[2]})`;
+    }
+  }
+
   return {
     name: stripMarkdown(nameLine),
     fields,
@@ -488,37 +654,231 @@ function parseBlock(block: string): ParsedNPC {
   };
 }
 
-function formatToNarrative(parsed: ParsedNPC): string {
-  const buffer: string[] = [];
-  const formattedName = parsed.name.startsWith('**') ? parsed.name : `**${parsed.name.replace(/\*\*/g, '')}**`;
-  buffer.push(formattedName);
-
-  const orderedFields = FIELD_ORDER.filter((field) => parsed.fields[field]);
-  const unordered = Object.keys(parsed.fields)
-    .filter((field) => !FIELD_ORDER.includes(field))
-    .sort();
-
-  for (const field of orderedFields) {
-    buffer.push(`${field}: ${formatFieldValue(field, parsed.fields[field])}`);
-  }
-
-  for (const field of unordered) {
-    buffer.push(`${field}: ${parsed.fields[field]}`);
-  }
-
-  if (parsed.notes.length > 0) {
-    buffer.push(...parsed.notes);
-  }
-
-  return buffer.join('\n');
+function isBasicMonster(parsed: ParsedNPC): boolean {
+  // Check for monster-specific fields that indicate this is a Basic Monster, not a Classed NPC
+  return !!(parsed.fields['HD'] ||
+           parsed.fields['Level'] ||
+           parsed.fields['TYPE'] ||
+           parsed.fields['Type'] ||
+           parsed.fields['TREASURE'] ||
+           parsed.fields['Treasure'] ||
+           parsed.fields['XP'] ||
+           parsed.fields['SAVES'] ||
+           parsed.fields['Saves'] ||
+           parsed.fields['ALIGNMENT']);
 }
+
+function formatToMonsterNarrative(parsed: ParsedNPC): string {
+  // Extract name and format with proper bolding
+  let name = parsed.name;
+  if (!name.startsWith('**')) name = `**${name.replace(/\*\*/g, '')}**`;
+
+  const statParts: string[] = [];
+
+  // Level/HD
+  const level = parsed.fields['Level'] || parsed.fields['HD'];
+  if (level) {
+    statParts.push(`Level ${level}`);
+  }
+
+  // AC
+  const ac = parsed.fields['Armor Class (AC)'] || parsed.fields['AC'];
+  if (ac) {
+    statParts.push(`AC ${ac}`);
+  }
+
+  // Disposition
+  const disposition = parsed.fields['Disposition'];
+  if (disposition) {
+    statParts.push(`disposition ${normalizeDisposition(disposition)}`);
+  }
+
+  // Movement
+  const move = parsed.fields['Move'] || parsed.fields['MOVE'];
+  if (move) {
+    statParts.push(`moves ${move.toLowerCase()}`);
+  }
+
+  // Attacks
+  const attacks = parsed.fields['Attacks'] || parsed.fields['ATTACKS'];
+  if (attacks) {
+    statParts.push(`attacks with ${attacks}`);
+  }
+
+  // Saves
+  const saves = parsed.fields['Saves'] || parsed.fields['SAVES'];
+  if (saves) {
+    const saveText = saves === 'P' ? 'Physical' : saves === 'M' ? 'Mental' : saves;
+    statParts.push(`save category is ${saveText}`);
+  }
+
+  // Special abilities
+  const special = parsed.fields['Special Abilities'] || parsed.fields['SPECIAL'];
+  if (special) {
+    statParts.push(`Special: ${special}`);
+  }
+
+  // Type
+  const type = parsed.fields['Type'] || parsed.fields['TYPE'];
+  if (type) {
+    statParts.push(`Type: ${type}`);
+  }
+
+  // Treasure
+  const treasure = parsed.fields['Treasure'] || parsed.fields['TREASURE'];
+  if (treasure) {
+    statParts.push(`Treasure: ${treasure}`);
+  }
+
+  // XP
+  const xp = parsed.fields['XP'];
+  if (xp) {
+    statParts.push(`XP: ${xp}`);
+  }
+
+  return `${name} *(this creature's vital stats are ${statParts.join(', ')})*`;
+}
+
+function formatToNarrative(parsed: ParsedNPC): string {
+  // Check if this is a Basic Monster
+  if (isBasicMonster(parsed)) {
+    return formatToMonsterNarrative(parsed);
+  }
+
+  // Extract name and format with proper bolding
+  let name = parsed.name;
+  if (!name.startsWith('**')) name = `**${name.replace(/\*\*/g, '')}**`;
+
+  // Check if this is a unit with quantity (e.g., "Sergeants x6")
+  const unitMatch = name.match(/\*\*([^*]+?)\s*x(\d+)\*\*/);
+  const isPlural = unitMatch !== null;
+
+  // Add default disposition for military units if missing
+  if (!parsed.fields['Disposition'] && isPlural) {
+    parsed.fields['Disposition'] = 'neutral/neutral';
+  }
+
+  // Build the condensed stat block content
+  const statParts: string[] = [];
+
+  // Race, class, level with superscript
+  const raceClass = parsed.fields['Race & Class'];
+  if (raceClass) {
+    const { race, level, charClass } = parseRaceClassLevel(raceClass);
+    if (race && charClass && level) {
+      const superLevel = toSuperscript(level) + ' level';
+      // Use plural form for units with quantities
+      const pronounPart = isPlural ? `these ${superLevel} ${race} ${charClass}s` : `this ${superLevel} ${race} ${charClass}`;
+      statParts.push(pronounPart);
+    }
+  }
+
+  // Primary attributes in lowercase PHB order
+  const primaryAttrs = parsed.fields['Primary attributes'];
+  if (primaryAttrs) {
+    const formattedAttrs = formatPrimaryAttributes(primaryAttrs);
+    const possessivePronoun = isPlural ? 'their' : 'his';
+    statParts.push(`${possessivePronoun} primary attributes are ${formattedAttrs}`);
+  }
+
+  // Secondary skills
+  const secondarySkills = parsed.fields['Secondary Skills'];
+  if (secondarySkills) {
+    const possessivePronoun = isPlural ? 'their' : 'his';
+    const skillPlural = isPlural ? 'skills are' : 'skill is';
+    statParts.push(`${possessivePronoun} secondary ${skillPlural} ${secondarySkills}`);
+  }
+
+  // Vital stats: HP, AC, disposition
+  const vitalParts: string[] = [];
+  const hp = parsed.fields['Hit Points (HP)'];
+  const ac = parsed.fields['Armor Class (AC)'];
+  const disposition = parsed.fields['Disposition'];
+
+  if (hp) vitalParts.push(`hit points ${hp}`);
+  if (ac) vitalParts.push(`armor class ${ac}`);
+  if (disposition) vitalParts.push(`disposition ${normalizeDisposition(disposition)}`);
+
+  if (vitalParts.length > 0) {
+    statParts.push(`vital stats are ${vitalParts.join(', ')}`);
+  }
+
+  // Equipment
+  const equipment = parsed.fields['Equipment'];
+  if (equipment) {
+    const processedEquip = findEquipment(equipment);
+    const carryVerb = isPlural ? 'carry' : 'carries';
+    statParts.push(`${carryVerb} ${processedEquip}`);
+  }
+
+  // Spells
+  const spells = parsed.fields['Spells'];
+  if (spells) {
+    const canCastVerb = isPlural ? 'can cast' : 'can cast';
+    statParts.push(`${canCastVerb} ${spells}`);
+  }
+
+  // Mount - render as separate block following canonical rules
+  const mount = parsed.fields['Mount'];
+  let mountBlock = '';
+  if (mount) {
+    // Mount is already formatted as a complete canonical block from extraction
+    mountBlock = `\n\n${mount}`;
+  }
+
+  return `${name}${statParts.length > 0 ? ` *(${statParts.join(', ')})*` : ''}${mountBlock}`;
+}
+
+const MONSTER_VALIDATION_RULES: Array<{
+  field: string;
+  weight: number;
+  type: WarningType;
+  message: string;
+  suggestion?: string;
+}> = [
+  {
+    field: 'HD',
+    weight: 20,
+    type: 'warning',
+    message: 'Hit Dice (HD) missing for monster. Provide as Level X(dX) format.',
+  },
+  {
+    field: 'Level',
+    weight: 20,
+    type: 'warning',
+    message: 'Level missing for monster. Provide as Level X(dX) format.',
+  },
+  {
+    field: 'Armor Class (AC)',
+    weight: 15,
+    type: 'warning',
+    message: 'Armor Class (AC) missing. Include AC value.',
+  },
+];
 
 function buildValidation(parsed: ParsedNPC): ValidationResult {
   const warnings: ValidationWarning[] = [];
   let score = 100;
 
-  for (const rule of VALIDATION_RULES) {
-    if (!parsed.fields[rule.field]) {
+  const isMonster = isBasicMonster(parsed);
+  const rulesToUse = isMonster ? MONSTER_VALIDATION_RULES : VALIDATION_RULES;
+
+  for (const rule of rulesToUse) {
+    // For monsters, check if they have either HD or Level
+    if (rule.field === 'HD' || rule.field === 'Level') {
+      if (isMonster && !parsed.fields['HD'] && !parsed.fields['Level']) {
+        // Only add one warning for missing HD/Level, not both
+        if (rule.field === 'HD') {
+          warnings.push({
+            type: rule.type,
+            category: 'Level/HD',
+            message: 'Level or Hit Dice missing for monster. Provide as Level X(dX) format.',
+            suggestion: rule.suggestion,
+          });
+          score -= rule.weight;
+        }
+      }
+    } else if (!parsed.fields[rule.field]) {
       warnings.push({
         type: rule.type,
         category: rule.field,
@@ -529,7 +889,8 @@ function buildValidation(parsed: ParsedNPC): ValidationResult {
     }
   }
 
-  if (!/^\*\*.+\*\*$/.test(parsed.original.split(/\r?\n/)[0]?.trim() ?? '')) {
+  // Only check name formatting for NPCs, not Basic Monsters (monsters get auto-bolded by formatter)
+  if (!isMonster && !/^\*\*.+\*\*$/.test(parsed.original.split(/\r?\n/)[0]?.trim() ?? '')) {
     warnings.push({
       type: 'warning',
       category: 'Name Formatting',
@@ -584,6 +945,17 @@ function normalizeFieldLabel(label: string): string {
     'background': 'Background',
     'disposition': 'Disposition',
     'alignment': 'Disposition',
+    'hd': 'HD',
+    'level': 'Level',
+    'move': 'Move',
+    'attacks': 'Attacks',
+    'special': 'Special Abilities',
+    'saves': 'Saves',
+    'int': 'Intelligence',
+    'intelligence': 'Intelligence',
+    'type': 'Type',
+    'treasure': 'Treasure',
+    'xp': 'XP',
   };
   return mapping[normalized] ?? capitalize(label.trim());
 }
@@ -688,7 +1060,13 @@ export function collapseNPCEntry(input: string): string {
   const primaryAttrs = parsed.fields['Primary attributes'];
   if (primaryAttrs) {
     const formattedAttrs = formatPrimaryAttributes(primaryAttrs);
-    statParts.push(`prime ${formattedAttrs}`);
+    statParts.push(`primary attributes are ${formattedAttrs}`);
+  }
+
+  // Secondary skills
+  const secondarySkills = parsed.fields['Secondary Skills'];
+  if (secondarySkills) {
+    statParts.push(`secondary skill is ${secondarySkills}`);
   }
 
   // Vital stats: HP, AC, disposition
@@ -697,8 +1075,8 @@ export function collapseNPCEntry(input: string): string {
   const ac = parsed.fields['Armor Class (AC)'];
   const disposition = parsed.fields['Disposition'];
 
-  if (hp) vitalParts.push(`hp ${hp}`);
-  if (ac) vitalParts.push(`ac ${ac}`);
+  if (hp) vitalParts.push(`hit points ${hp}`);
+  if (ac) vitalParts.push(`armor class ${ac}`);
   if (disposition) vitalParts.push(`disposition ${normalizeDisposition(disposition)}`);
 
   if (vitalParts.length > 0) {
@@ -725,15 +1103,14 @@ export function collapseNPCEntry(input: string): string {
 export function findEquipment(equipment: string): string {
   let processed = equipment;
 
-  // PHB magic item name updates
-  const renames: Record<string, string> = {
-    'robe of protection': 'robe of armor',
-    'ring of protection': 'ring of armor',
-    'dagger of venom': 'dagger of envenomation',
-    'pectoral of protection': 'pectoral of armor'
-  };
+  // Expand coinage abbreviations
+  processed = processed.replace(/(\d+)\s*pp\b/gi, '$1 platinum');
+  processed = processed.replace(/(\d+)\s*gp\b/gi, '$1 gold');
+  processed = processed.replace(/(\d+)\s*sp\b/gi, '$1 silver');
+  processed = processed.replace(/(\d+)\s*cp\b/gi, '$1 copper');
 
-  for (const [old, replacement] of Object.entries(renames)) {
+  // Apply comprehensive magic item name mappings
+  for (const [old, replacement] of Object.entries(MAGIC_ITEM_MAPPINGS)) {
     processed = processed.replace(new RegExp(old, 'gi'), replacement);
   }
 
@@ -756,10 +1133,17 @@ export function findEquipment(equipment: string): string {
 
     if (isMagic) {
       // Move bonus to end and italicize
-      const bonusMatch = workingPart.match(/^(.+?)(\s*\+\d+)(.*)$/);
-      if (bonusMatch) {
-        const [, item, bonus, rest] = bonusMatch;
+      // Handle bonus at end: "ring of armor +5"
+      const bonusAtEndMatch = workingPart.match(/^(.+?)(\s*\+\d+)(.*)$/);
+      if (bonusAtEndMatch) {
+        const [, item, bonus, rest] = bonusAtEndMatch;
         return `*${item.trim()}${rest}${bonus}*`;
+      }
+      // Handle bonus at beginning: "+2 dagger"
+      const bonusAtStartMatch = workingPart.match(/^(\+\d+)\s+(.+)$/);
+      if (bonusAtStartMatch) {
+        const [, bonus, item] = bonusAtStartMatch;
+        return `*${item} ${bonus}*`;
       }
       return `*${workingPart}*`;
     }
@@ -770,8 +1154,8 @@ export function findEquipment(equipment: string): string {
 }
 
 export function formatPrimaryAttributes(attributes: string): string {
-  // PHB canonical order
-  const phbOrder = ['strength', 'intelligence', 'wisdom', 'dexterity', 'constitution', 'charisma'];
+  // PHB canonical order: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
+  const phbOrder = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
 
   const attrs = attributes.toLowerCase()
     .split(',')

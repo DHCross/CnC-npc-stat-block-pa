@@ -21,16 +21,31 @@ import { visit } from 'unist-util-visit';
 function remarkOrdinals() {
   return (tree) => {
     visit(tree, 'text', (node, idx, parent) => {
-      const parts = String(node.value).split(/(\b\d{1,3}(?:st|nd|rd|th)\b)/);
+      let text = String(node.value);
+
+      // Handle both formats: 1st/2nd/3rd/4th and ^th^/^st^/^nd^/^rd^
+      const parts = text.split(/(\b\d{1,3}(?:st|nd|rd|th)\b|\d{1,3}\^(?:st|nd|rd|th)\^)/);
       if (parts.length === 1) return;
+
       const newChildren = parts.flatMap((seg) => {
-        const m = seg.match(/^(\d{1,3})(st|nd|rd|th)$/);
-        if (m) {
+        // Handle standard ordinals (1st, 2nd, 3rd, 4th)
+        const standardMatch = seg.match(/^(\d{1,3})(st|nd|rd|th)$/);
+        if (standardMatch) {
           return [
-            { type: 'text', value: m[1] },
-            { type: 'sup', children: [{ type: 'text', value: m[2] }], data: { hName: 'sup' } }
+            { type: 'text', value: standardMatch[1] },
+            { type: 'sup', children: [{ type: 'text', value: standardMatch[2] }], data: { hName: 'sup' } }
           ];
         }
+
+        // Handle caret ordinals (1^st^, 2^nd^, 3^rd^, 4^th^)
+        const caretMatch = seg.match(/^(\d{1,3})\^(st|nd|rd|th)\^$/);
+        if (caretMatch) {
+          return [
+            { type: 'text', value: caretMatch[1] },
+            { type: 'sup', children: [{ type: 'text', value: caretMatch[2] }], data: { hName: 'sup' } }
+          ];
+        }
+
         return [{ type: 'text', value: seg }];
       });
       parent.children.splice(idx, 1, ...newChildren);
@@ -236,7 +251,7 @@ function App() {
   const [savedResults, setSavedResults, deleteSavedResults] = useKV<string[]>('npc-parser-results', []);
   const [showValidation, setShowValidation] = useState(true);
   const [availableFixes, setAvailableFixes] = useState<CorrectionFix[]>([]);
-  const [normalizeInput, setNormalizeInput] = useState(false);
+  const [normalizeInput, setNormalizeInput] = useState(true);
   const [dictEnabled, setDictEnabled] = useState(true);
   const [dictCounts, setDictCounts] = useState({ spells: 0, items: 0, monsters: 0 });
 
@@ -906,7 +921,7 @@ function App() {
                           <div className="flex flex-wrap gap-2">
                             <Button
                               onClick={() => copyNPCWithReport(result, index)}
-                              className="flex flex-1 items-center gap-2"
+                              className="flex items-center gap-2 flex-1 min-w-[140px]"
                               size="sm"
                             >
                               <Clipboard size={16} />
@@ -916,7 +931,7 @@ function App() {
                               variant="outline"
                               size="sm"
                               onClick={() => copyHtmlToClipboard(result.converted, index)}
-                              className="flex flex-1 items-center gap-2"
+                              className="flex items-center gap-2 flex-1 min-w-[100px]"
                             >
                               <FileHtml size={16} />
                               Copy HTML
@@ -925,7 +940,7 @@ function App() {
                               variant="outline"
                               size="sm"
                               onClick={() => copyToClipboard(result.converted)}
-                              className="flex flex-1 items-center gap-2"
+                              className="flex items-center gap-2 flex-1 min-w-[120px]"
                             >
                               <FileText size={16} />
                               Copy Markdown
@@ -952,7 +967,7 @@ function App() {
                         className="flex flex-1 items-center gap-2"
                       >
                         <Clipboard size={16} />
-                        Copy All + Report
+                        {results.length > 1 ? 'Copy All + Report' : 'Copy NPC(s) + Report'}
                       </Button>
                       <Button
                         variant="outline"
