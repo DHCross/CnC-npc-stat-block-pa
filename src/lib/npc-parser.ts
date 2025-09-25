@@ -602,8 +602,13 @@ function parseBlock(block: string): ParsedNPC {
         attackText = `. It attacks ${attackMatch[1].replace(/^with\s+/i, 'with ')}`;
       }
 
-      mountBlock += `*(this creature's vital stats are ${mountStats.join(', ')}${attackText})*`;
-      fields['Mount'] = mountBlock;
+      const mountSubject = buildSubjectDescriptor({
+        isPlural: false,
+        fallback: 'creature',
+      });
+      const mountPossessive = toPossessiveSubject(mountSubject, false);
+      mountBlock += `*(${mountPossessive} vital stats are ${mountStats.join(', ')}${attackText})*`;
+      fields['Mount'] = formatMountBlock(mountBlock);
     }
   }
 
@@ -673,6 +678,9 @@ function formatToMonsterNarrative(parsed: ParsedNPC): string {
   let name = parsed.name;
   if (!name.startsWith('**')) name = `**${name.replace(/\*\*/g, '')}**`;
 
+  const unitMatch = name.match(/\*\*([^*]+?)\s*x(\d+)\*\*/);
+  const isPlural = unitMatch !== null;
+
   const statParts: string[] = [];
 
   // Level/HD
@@ -736,7 +744,17 @@ function formatToMonsterNarrative(parsed: ParsedNPC): string {
     statParts.push(`XP: ${xp}`);
   }
 
-  return `${name} *(this creature's vital stats are ${statParts.join(', ')})*`;
+  const subject = buildSubjectDescriptor({
+    isPlural,
+    fallback: isPlural ? 'creatures' : 'creature',
+  });
+  const possessiveSubject = toPossessiveSubject(subject, isPlural);
+  const statsText = statParts.join(', ');
+  const vitalSection = statsText
+    ? `${possessiveSubject} vital stats are ${statsText}`
+    : `${possessiveSubject} vital stats are unavailable`;
+
+  return `${name} *(${vitalSection})*`;
 }
 
 function formatToNarrative(parsed: ParsedNPC): string {
@@ -761,17 +779,10 @@ function formatToNarrative(parsed: ParsedNPC): string {
   // Build the condensed stat block content
   const statParts: string[] = [];
 
-  // Race, class, level with superscript
-  const raceClass = parsed.fields['Race & Class'];
-  if (raceClass) {
-    const { race, level, charClass } = parseRaceClassLevel(raceClass);
-    if (race && charClass && level) {
-      const superLevel = toSuperscript(level) + ' level';
-      // Use plural form for units with quantities
-      const pronounPart = isPlural ? `these ${superLevel} ${race} ${charClass}s` : `this ${superLevel} ${race} ${charClass}`;
-      statParts.push(pronounPart);
-    }
-  }
+  const raceClassRaw = parsed.fields['Race & Class'];
+  const { race, level, charClass } = raceClassRaw
+    ? parseRaceClassLevel(raceClassRaw)
+    : { race: '', level: '', charClass: '' };
 
   // Primary attributes in lowercase PHB order
   const primaryAttrs = parsed.fields['Primary attributes'];
@@ -790,17 +801,37 @@ function formatToNarrative(parsed: ParsedNPC): string {
   }
 
   // Vital stats: HP, AC, disposition
-  const vitalParts: string[] = [];
   const hp = parsed.fields['Hit Points (HP)'];
   const ac = parsed.fields['Armor Class (AC)'];
   const disposition = parsed.fields['Disposition'];
 
-  if (hp) vitalParts.push(`hit points ${hp}`);
-  if (ac) vitalParts.push(`armor class ${ac}`);
-  if (disposition) vitalParts.push(`disposition ${normalizeDisposition(disposition)}`);
+  const leadingFragments: string[] = [];
+  if (!charClass) {
+    const explicitLevel = parsed.fields['Level']?.trim();
+    const hdStat = parsed.fields['HD']?.trim();
+    const levelValue = explicitLevel || hdStat;
+    if (levelValue) {
+      const levelFragment = formatLevelFragment(levelValue);
+      if (levelFragment) {
+        leadingFragments.push(levelFragment);
+      }
+    }
+  }
 
-  if (vitalParts.length > 0) {
-    statParts.push(`vital stats are ${vitalParts.join(', ')}`);
+  const vitalStatement = buildVitalStatsSentence({
+    isPlural,
+    race,
+    level,
+    charClass,
+    fallbackDescriptor: raceClassRaw,
+    hp,
+    ac,
+    disposition: disposition ? normalizeDisposition(disposition) : undefined,
+    leadingFragments,
+  });
+
+  if (vitalStatement) {
+    statParts.unshift(vitalStatement);
   }
 
   // Equipment
@@ -823,7 +854,7 @@ function formatToNarrative(parsed: ParsedNPC): string {
   let mountBlock = '';
   if (mount) {
     // Mount is already formatted as a complete canonical block from extraction
-    mountBlock = `\n\n${mount}`;
+    mountBlock = `\n\n${formatMountBlock(mount)}`;
   }
 
   return `${name}${statParts.length > 0 ? ` *(${statParts.join(', ')})*` : ''}${mountBlock}`;
@@ -1010,6 +1041,201 @@ function toSuperscript(value: string): string {
   return value + 'ᵗʰ';
 }
 
+interface VitalStatsOptions {
+  isPlural: boolean;
+  race?: string;
+  level?: string;
+  charClass?: string;
+  fallbackDescriptor?: string | null;
+  hp?: string | null;
+  ac?: string | null;
+  disposition?: string | null;
+  leadingFragments?: string[];
+}
+
+function formatLevelFragment(value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return '';
+  }
+
+  if (/^level\b/i.test(trimmed)) {
+    return trimmed.replace(/^level\b/i, 'Level').replace(/\s+/g, ' ').trim();
+  }
+
+  return `Level ${trimmed}`;
+}
+
+function buildVitalStatsSentence(options: VitalStatsOptions): string | null {
+  const hp = options.hp?.trim();
+  const ac = options.ac?.trim();
+  const disposition = options.disposition?.trim();
+
+  const fragments = (options.leadingFragments ?? [])
+    .map(fragment => fragment.trim())
+    .filter(Boolean);
+  if (hp) fragments.push(`HP ${hp}`);
+  if (ac) fragments.push(`AC ${ac}`);
+  if (disposition) fragments.push(`disposition ${disposition}`);
+
+  if (fragments.length === 0) {
+    return null;
+  }
+
+  const subject = buildSubjectDescriptor({
+    isPlural: options.isPlural,
+    race: options.race,
+    level: options.level,
+    charClass: options.charClass,
+    fallback: options.fallbackDescriptor ?? undefined,
+  });
+  const possessiveSubject = toPossessiveSubject(subject, options.isPlural);
+
+  return `${possessiveSubject} vital stats are ${fragments.join(', ')}`;
+}
+
+interface SubjectOptions {
+  isPlural: boolean;
+  race?: string;
+  level?: string;
+  charClass?: string;
+  fallback?: string | null;
+}
+
+function buildSubjectDescriptor(options: SubjectOptions): string {
+  const pronoun = options.isPlural ? 'These' : 'This';
+  const descriptorParts: string[] = [];
+
+  if (options.race) {
+    descriptorParts.push(options.race.trim().toLowerCase());
+  }
+
+  if (options.level) {
+    descriptorParts.push(`${toSuperscript(options.level.trim())} level`);
+  }
+
+  if (options.charClass) {
+    const baseClass = options.charClass.trim().toLowerCase();
+    const classDescriptor = options.isPlural ? pluralizeClassName(baseClass) : baseClass;
+    descriptorParts.push(classDescriptor);
+  }
+
+  let descriptor = descriptorParts.filter(Boolean).join(' ').trim();
+
+  if (!descriptor) {
+    const fallback = options.fallback?.trim();
+    if (fallback) {
+      descriptor = fallback
+        .replace(/[,]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .toLowerCase();
+    }
+  }
+
+  if (!descriptor) {
+    descriptor = options.isPlural ? 'creatures' : options.charClass ? options.charClass : 'character';
+    descriptor = descriptor.toLowerCase();
+  }
+
+  return `${pronoun} ${descriptor}`.replace(/\s+/g, ' ').trim();
+}
+
+function toPossessiveSubject(subject: string, isPlural: boolean): string {
+  const trimmed = subject.trim();
+  if (!trimmed) {
+    return isPlural ? 'These creatures\'' : "This character's";
+  }
+
+  const lower = trimmed.toLowerCase();
+  if (isPlural) {
+    if (lower.endsWith("'")) {
+      return trimmed;
+    }
+    if (lower.endsWith('men') || lower.endsWith('children') || lower.endsWith('people')) {
+      return `${trimmed}'`;
+    }
+    if (lower.endsWith('s')) {
+      return `${trimmed}'`;
+    }
+    return `${trimmed}'s`;
+  }
+
+  if (lower.endsWith("'")) {
+    return trimmed;
+  }
+
+  if (lower.endsWith('s')) {
+    return `${trimmed}'`;
+  }
+
+  return `${trimmed}'s`;
+}
+
+function pluralizeClassName(name: string): string {
+  const lower = name.trim().toLowerCase();
+  const irregulars: Record<string, string> = {
+    'thief': 'thieves',
+    'archer': 'archers',
+    'fighter': 'fighters',
+    'cleric': 'clerics',
+    'paladin': 'paladins',
+    'ranger': 'rangers',
+    'wizard': 'wizards',
+    'warlock': 'warlocks',
+    'druid': 'druids',
+    'bard': 'bards',
+    'monk': 'monks',
+    'rogue': 'rogues',
+    'assassin': 'assassins',
+    'knight': 'knights',
+    'magic-user': 'magic-users',
+  };
+
+  if (irregulars[lower]) {
+    return irregulars[lower];
+  }
+
+  if (lower.endsWith('man')) {
+    return `${lower.slice(0, -3)}men`;
+  }
+  if (lower.endsWith('fe')) {
+    return `${lower.slice(0, -2)}ves`;
+  }
+  if (lower.endsWith('f')) {
+    return `${lower.slice(0, -1)}ves`;
+  }
+  if (lower.endsWith('y') && !/[aeiou]y$/.test(lower)) {
+    return `${lower.slice(0, -1)}ies`;
+  }
+  if (lower.endsWith('s')) {
+    return lower;
+  }
+
+  return `${lower}s`;
+}
+
+function formatMountBlock(raw: string): string {
+  const trimmed = raw.trim();
+  if (!trimmed) {
+    return '';
+  }
+
+  const pronounNormalized = trimmed.replace(/this creature's/gi, "This creature's");
+  if (/^\*\*.+\*\*/.test(pronounNormalized)) {
+    return pronounNormalized;
+  }
+  if (/This creature's vital stats are/i.test(pronounNormalized)) {
+    return pronounNormalized;
+  }
+
+  const nameWithoutTrailingPeriod = pronounNormalized.replace(/[.\s]+$/, '');
+  const mountName = capitalize(nameWithoutTrailingPeriod);
+  const subject = buildSubjectDescriptor({ isPlural: false, fallback: 'creature' });
+  const possessiveSubject = toPossessiveSubject(subject, false);
+
+  return `**${mountName} (mount)** *(${possessiveSubject} vital stats are unavailable.)*`;
+}
+
 function isAlreadyFormatted(input: string, candidate: string): boolean {
   const regex = new RegExp(`\\*${escapeRegex(candidate)}\\*`);
   return regex.test(input);
@@ -1046,16 +1272,19 @@ export function collapseNPCEntry(input: string): string {
   // Mandatory fields: Race & Class, HP, AC, Disposition
   const raceClass = parsed.fields['Race & Class'] || '[race/class missing]';
   const { race, level, charClass } = parseRaceClassLevel(raceClass);
-  const superLevel = (level ? toSuperscript(level) + ' level' : '[level missing]');
   const disposition = parsed.fields['Disposition'] ? normalizeDisposition(parsed.fields['Disposition']) : '[disposition missing]';
   const hp = parsed.fields['Hit Points (HP)'] || '[hp missing]';
   const ac = parsed.fields['Armor Class (AC)'] || '[ac missing]';
 
   // Linguistic flow: race before level/class
-  const pronoun = 'this';
-  const raceClassPhrase = (race && charClass && level)
-    ? `${pronoun} ${superLevel} ${race} ${charClass}`
-    : raceClass;
+  const raceClassPhrase = buildSubjectDescriptor({
+    isPlural: false,
+    race,
+    level,
+    charClass,
+    fallback: raceClass,
+  });
+  const possessivePhrase = toPossessiveSubject(raceClassPhrase, false);
 
   // Primary attributes
   let primaryAttrs = parsed.fields['Primary attributes']
@@ -1075,20 +1304,20 @@ export function collapseNPCEntry(input: string): string {
   // Mount: output as separate canonical block if present
   let mountBlock = '';
   if (parsed.fields['Mount']) {
-    mountBlock = `\n\n${parsed.fields['Mount']}`;
+    mountBlock = `\n\n${formatMountBlock(parsed.fields['Mount'])}`;
   }
 
   // Build stat block content, enforcing punctuation and semicolons for equipment clauses
   let statParts: string[] = [];
-  statParts.push(`${raceClassPhrase}'s vital stats are HP ${hp}, AC ${ac}, disposition ${disposition}.`);
+  statParts.push(`${possessivePhrase} vital stats are HP ${hp}, AC ${ac}, disposition ${disposition}.`);
   statParts.push(`primary attributes: ${primaryAttrs}`);
   if (secondarySkills) statParts.push(secondarySkills);
   statParts.push(`equipment: ${equipment}`);
 
   // Markdown: wrap parenthetical in single outer italics, no nested asterisks
-  const parenthetical = `*(${statParts.join('; ')}${mountBlock})*`;
+  const parenthetical = `*(${statParts.join('; ')})*`;
 
-  return `${name} ${parenthetical}`;
+  return `${name} ${parenthetical}${mountBlock}`;
 }
 
 export function findEquipment(equipment: string): string {

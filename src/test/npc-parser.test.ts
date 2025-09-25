@@ -24,9 +24,9 @@ Spells: 0–6, 1st–6`
 
       const result = collapseNPCEntry(input)
       
-      // Should have the pattern **Name[, Title]** (_italic content_)
-      expect(result).toMatch(/\*\*[^*]+\*\* \(_.*_\)/)
-      expect(result).toContain('(_this 16ᵗʰ level human cleric')
+      // Should have the pattern **Name[, Title]** *(italic content)*
+      expect(result).toMatch(/\*\*[^*]+\*\* \*\(.*\)\*/)
+      expect(result).toContain('*(This human 16ᵗʰ level cleric')
       expect(result).toContain('disposition law/good.')
     })
   })
@@ -41,8 +41,8 @@ Armor Class (AC): 18`
 
       const result = collapseNPCEntry(input)
       
-      expect(result).toContain('hp 35, ac 18, disposition law/good.')
-      expect(result).toMatch(/vital stats are hp \d+, ac \d+, disposition .+\./);
+      expect(result).toContain('HP 35, AC 18, disposition law/good.')
+      expect(result).toMatch(/vital stats are HP \d+, AC \d+, disposition .+\./)
     })
   })
 
@@ -139,9 +139,9 @@ Armor Class (AC): 18`
       const result = collapseNPCEntry(input)
       
       // Extract the content inside parentheses
-      const match = result.match(/\(_(.+?)_\)/)
+      const match = result.match(/\*\((.+?)\)\*/s)
       const statBlockContent = match ? match[1] : ''
-      
+
       // Should not contain ** bold markers inside the stat block
       expect(statBlockContent).not.toMatch(/\*\*/)
       expect(statBlockContent).toContain('5ᵗʰ level') // Superscript but not bold
@@ -155,8 +155,7 @@ Mount: heavy war horse`
 
       const result = collapseNPCEntry(input)
 
-      expect(result).toContain('rides a heavy war horse.')
-      expect(result).not.toMatch(/\*\*Warhorse\*\*/)
+      expect(result).toContain("**Heavy War Horse (mount)** *(This creature's vital stats are unavailable.)*")
     })
   })
 
@@ -222,16 +221,17 @@ Mount: heavy war horse`
       const result = collapseNPCEntry(input)
       
       // Check all major formatting requirements
-      expect(result).toMatch(/\*\*.*\*\* \(_.*_\)/) // Italicized stat block
+      expect(result).toMatch(/\*\*.*\*\* \*\(.*\)\*/) // Italicized stat block
       expect(result).toContain('disposition law/good.') // Complete sentence
       expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order
       expect(result).toContain('*pectoral of armor +3*') // PHB rename + italics
-  expect(result).toContain('medium steel shield') // Shield normalization (defaults)
+	expect(result).toContain('medium steel shield') // Shield normalization (defaults)
       expect(result).toContain('*staff of striking*') // Magic item italics
-      expect(result).not.toMatch(/_.*\*\*.*\*\*.*_/) // No bold inside italics
-      // Default minimal mount mention; no per-NPC stat block
-      expect(result).toContain('rides a heavy war horse.')
-      expect(result).not.toMatch(/\*\*Warhorse\*\*/)
+      const mainBlockMatch = result.match(/\*\((.+?)\)\*/s)
+      const mainBlock = mainBlockMatch ? mainBlockMatch[1] : ''
+      expect(mainBlock).not.toMatch(/\*\*/)
+      // Canonical mount block with neutral pronoun
+      expect(result).toContain("**Heavy War Horse (mount)** *(This creature's vital stats are unavailable.)*")
     })
   })
 
@@ -242,7 +242,7 @@ Mount: heavy war horse`
       const result = collapseNPCEntry(input)
 
       // Vital stats from parenthetical and prose disposition
-      expect(result).toContain('hp 59, ac 13/22, disposition law/good.')
+      expect(result).toContain('HP 59, AC 13/22, disposition law/good.')
 
       // Equipment from prose, with PHB rename and shield normalization
       expect(result).toContain('*pectoral of armor +3*')
@@ -250,9 +250,8 @@ Mount: heavy war horse`
   expect(result).toContain('medium steel shield')
       expect(result).toContain('mace')
 
-      // Mount from prose (minimal mention)
-      expect(result).toContain('rides a heavy war horse.')
-      expect(result).not.toMatch(/\*\*Warhorse\*\*/)
+      // Mount from prose creates canonical block
+      expect(result).toContain("**Heavy War Horse (mount)** *(This creature's vital stats are unavailable.)*")
     })
   })
 })
