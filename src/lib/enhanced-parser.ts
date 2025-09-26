@@ -32,11 +32,20 @@ export interface MountBlock {
   raw: string;
 }
 
+// Helper function to get superscript ordinal
+function getSuperscriptOrdinal(num: string): string {
+  const n = parseInt(num);
+  if (n % 10 === 1 && n % 100 !== 11) return 'ˢᵗ';
+  if (n % 10 === 2 && n % 100 !== 12) return 'ⁿᵈ';
+  if (n % 10 === 3 && n % 100 !== 13) return 'ʳᵈ';
+  return 'ᵗʰ';
+}
+
 // Core regex patterns based on Jeremy's specifications
 const PAREN_RE = /\(([^()]*)\)/g;
 const HP_RE = /\b(?:HP|Hit\s*Points)\s*[:\-]?\s*(\d+)\b/i;
 const AC_RE = /\bAC\s*[:\-]?\s*([\d\/]+)\b/i;
-const RCL_RE = /\b(human|elf|dwarf|halfling|goblin|orc|[a-z-]+),?\s*(\d+)(st|nd|rd|th)?\s*level\s+([a-z]+)\b/i;
+const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|([a-z-]+),?\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
 const DISPOSITION_RE = /\b(disposition|alignment)\s*[:\-]?\s*([a-z\s]+(?:\/[a-z\s]+)?)\b/i;
 const MOUNT_TYPE_RE = /\b(heavy|light)?\s*war\s*horse\b/i;
 const LEADING_BONUS_RE = /\+(\d+)\s+(longsword|full plate mail|shield|bastard sword|lance|dagger|sword|mace|axe|bow|crossbow)/gi;
@@ -54,6 +63,24 @@ export function splitTitleAndBody(text: string): ParsedTitleAndBody {
   const lines = text.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
   if (lines.length === 0) {
     return { title: '', body: '', parentheticals: [] };
+  }
+
+  // For single-line input, extract title before first parenthetical
+  if (lines.length === 1) {
+    const line = lines[0];
+    const firstParenMatch = line.match(/^([^(]+?)\s*\(/);
+    const title = firstParenMatch ? firstParenMatch[1].trim() : line;
+    const body = '';
+
+    // Extract all top-level parentheticals
+    const parentheticals: string[] = [];
+    let match;
+    PAREN_RE.lastIndex = 0;
+    while ((match = PAREN_RE.exec(text)) !== null) {
+      parentheticals.push(match[1]);
+    }
+
+    return { title, body, parentheticals };
   }
 
   const title = lines[0];
@@ -94,9 +121,34 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
   // Extract race/class/level
   const rclMatch = RCL_RE.exec(parenthetical);
   if (rclMatch) {
-    const ordinal = rclMatch[3] || '';
-    data.raceClass = `${rclMatch[1]}, ${rclMatch[2]}${ordinal} level ${rclMatch[4]}`;
-    data.level = rclMatch[2];
+    // Handle two formats: "2nd level human fighters" or "human, 2nd level fighter"
+    if (rclMatch[1]) {
+      // Format: "2nd level human fighters" - groups [1]=level, [2]=race, [3]=class
+      const level = rclMatch[1];
+      const race = rclMatch[2];
+      const charClass = rclMatch[3].replace(/s$/, ''); // Remove plural 's'
+      data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
+      data.level = level;
+    } else if (rclMatch[4]) {
+      // Format: "human, 2nd level fighter" - groups [4]=race, [5]=level, [6]=class
+      const race = rclMatch[4];
+      const level = rclMatch[5];
+      const charClass = rclMatch[6].replace(/s$/, ''); // Remove plural 's'
+      data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
+      data.level = level;
+    }
+  }
+
+  // Also try to extract from prose that includes leading pronouns like "these 2nd level human fighters"
+  if (!data.raceClass) {
+    const proseMatch = /(?:these|this|the)?\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?/i.exec(parenthetical);
+    if (proseMatch) {
+      const level = proseMatch[1];
+      const race = proseMatch[2];
+      const charClass = proseMatch[3].replace(/s$/, ''); // Remove plural 's'
+      data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
+      data.level = level;
+    }
   }
 
   // Extract attributes (simplified for now)
@@ -138,7 +190,7 @@ export function normalizeDisposition(disposition: string): string {
     'lawful evil': 'law/evil',
     'neutral good': 'neutral/good',
     'true neutral': 'neutral/neutral',
-    'neutral': 'neutral/neutral',
+    'neutral': 'neutral', // Keep single "neutral" as is, don't make it redundant
     'neutral evil': 'neutral/evil',
     'chaotic good': 'chaos/good',
     'chaotic neutral': 'chaos/neutral',
@@ -259,25 +311,49 @@ export function extractMountFromParenthetical(parenthetical: string): {
 
 export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean): string {
   const parts: string[] = [];
-  const pronoun = isUnit ? 'These' : 'This';
-  const possessive = isUnit ? 'their' : 'his';
 
   // Build vital stats
   const vitalParts: string[] = [];
   if (data.hp) vitalParts.push(`HP ${data.hp}`);
   if (data.ac) vitalParts.push(`AC ${data.ac}`);
   if (data.disposition) vitalParts.push(`disposition ${data.disposition}`);
-  if (isUnit && data.attributes) vitalParts.push(normalizeAttributes(data.attributes, true));
 
   if (vitalParts.length > 0) {
-    parts.push(`${pronoun} ${data.raceClass ? data.raceClass.split(',').slice(1).join(',').trim() : 'creature'}'s vital stats are ${vitalParts.join(', ')}`);
+    let descriptor = '';
+
+    if (data.raceClass) {
+      if (isUnit) {
+        // For units: "These 2ⁿᵈ level human fighters'"
+        descriptor = `These ${data.raceClass}`;
+      } else {
+        // For individuals: "This human, 4th level fighter"
+        descriptor = `This ${data.raceClass}`;
+      }
+    } else {
+      // Fallback for unknown creatures
+      descriptor = isUnit ? 'These creatures' : 'This creature';
+    }
+
+    parts.push(`${descriptor}'s vital stats are ${vitalParts.join(', ')}`);
   }
 
-  // Add primary attributes for individuals
-  if (!isUnit && data.attributes) {
-    const normalizedAttrs = normalizeAttributes(data.attributes, false);
-    parts.push(`${possessive} primary attributes are ${normalizedAttrs}`);
+  // Add PA physical for units, expanded attributes for individuals
+  if (data.attributes) {
+    const normalizedAttrs = normalizeAttributes(data.attributes, isUnit);
+    if (isUnit) {
+      // For units, PA physical should be on same line as vital stats
+      if (parts.length > 0) {
+        parts[0] += `, ${normalizedAttrs}`;
+      } else {
+        parts.push(normalizedAttrs);
+      }
+    } else {
+      // For individuals, add as separate clause
+      const possessive = 'his';
+      parts.push(`${possessive} primary attributes are ${normalizedAttrs}`);
+    }
   }
+
 
   // Add equipment
   if (data.equipment) {
