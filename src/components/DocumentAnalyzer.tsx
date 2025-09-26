@@ -98,17 +98,58 @@ export function DocumentAnalyzer({ onClose }: DocumentAnalyzerProps) {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(['summary']));
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
     setDocumentName(file.name);
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const text = e.target?.result as string;
-      setDocumentText(text);
-    };
-    reader.readAsText(file);
+
+    try {
+      const extension = file.name.split('.').pop()?.toLowerCase();
+      let textContent = '';
+
+      if (extension === 'docx' || file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+        const { default: mammoth } = await import('mammoth/mammoth.browser');
+        const arrayBuffer = await file.arrayBuffer();
+        const { value } = await mammoth.convertToMarkdown({ arrayBuffer });
+        textContent = value;
+      } else if (extension === 'pdf' || file.type === 'application/pdf') {
+        const pdfjsLib = await import('pdfjs-dist/legacy/build/pdf.mjs');
+        if (pdfjsLib.GlobalWorkerOptions) {
+          pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.min.mjs';
+        }
+
+        const arrayBuffer = await file.arrayBuffer();
+        const pdfDocument = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+        const pages: string[] = [];
+
+        for (let pageNumber = 1; pageNumber <= pdfDocument.numPages; pageNumber += 1) {
+          const page = await pdfDocument.getPage(pageNumber);
+          const textContentData = await page.getTextContent();
+          const pageText = textContentData.items
+            .map((item) => (typeof item === 'object' && item && 'str' in item ? (item as { str: string }).str : ''))
+            .join(' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+          pages.push(pageText);
+        }
+
+        textContent = pages.join('\n\n');
+      } else {
+        textContent = await file.text();
+      }
+
+      if (!textContent.trim()) {
+        toast.warning('No readable text found in the uploaded document');
+      }
+
+      setDocumentText(textContent);
+    } catch (error) {
+      console.error('Failed to read uploaded document', error);
+      toast.error('Failed to read the uploaded document');
+    } finally {
+      event.target.value = '';
+    }
   };
 
   const analyzeDocumentText = async () => {
@@ -210,7 +251,7 @@ export function DocumentAnalyzer({ onClose }: DocumentAnalyzerProps) {
               <input
                 id="file-upload"
                 type="file"
-                accept=".txt,.md,.rtf"
+                accept=".txt,.md,.rtf,.pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                 onChange={handleFileUpload}
                 className="block w-full text-sm text-card-foreground/70 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-primary file:text-primary-foreground hover:file:bg-primary/90"
               />
