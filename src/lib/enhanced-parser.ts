@@ -33,7 +33,7 @@ export interface MountBlock {
 }
 
 // Core regex patterns based on Jeremy's specifications
-const PAREN_RE = /\(([^()]*)\)/gs;
+const PAREN_RE = /\(([^()]*)\)/g;
 const HP_RE = /\b(?:HP|Hit\s*Points)\s*[:\-]?\s*(\d+)\b/i;
 const AC_RE = /\bAC\s*[:\-]?\s*([\d\/]+)\b/i;
 const RCL_RE = /\b(human|elf|dwarf|halfling|goblin|orc|[a-z-]+),?\s*(\d+)(st|nd|rd|th)?\s*level\s+([a-z]+)\b/i;

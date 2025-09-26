@@ -1004,7 +1004,7 @@ function App() {
             </Card>
           </div>
 
-          {savedResults.length > 0 && (
+        {savedResults.length > 0 && (
             <Card className="border-white/15 bg-card/80">
               <CardHeader>
                 <CardTitle className="flex items-center justify-between text-card-foreground">
@@ -1044,7 +1044,6 @@ function App() {
               </CardContent>
             </Card>
           )}
-              </div>
             </TabsContent>
 
             <TabsContent value="document">

@@ -44,7 +44,7 @@ import {
   normalizeEquipmentVerbs,
   extractMountFromParenthetical,
   buildCanonicalParenthetical,
-  formatMountBlock,
+  formatMountBlock as formatEnhancedMountBlock,
   normalizeAttributes
 } from './enhanced-parser';
 
@@ -460,7 +460,7 @@ function parseBlockEnhanced(block: string): ParsedNPC {
     const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
 
     if (extractedMount) {
-      mountBlock = formatMountBlock(extractedMount);
+      mountBlock = formatEnhancedMountBlock(extractedMount);
     }
 
     // Re-extract data from cleaned parenthetical
