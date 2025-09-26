@@ -833,8 +833,8 @@ function formatToMonsterNarrative(parsed: ParsedNPC): string {
   const possessiveSubject = toPossessiveSubject(subject, isPlural);
   const statsText = statParts.join(', ');
   const vitalSection = statsText
-    ? `${possessiveSubject} vital stats are ${statsText}`
-    : `${possessiveSubject} vital stats are unavailable`;
+    ? `${possessiveSubject} vital stats are ${statsText}.`
+    : `${possessiveSubject} vital stats are unavailable.`;
 
   return `${name} *(${vitalSection})*`;
 }
@@ -859,7 +859,7 @@ function formatToNarrative(parsed: ParsedNPC): string {
   }
 
   // Build the condensed stat block content
-  const statParts: string[] = [];
+  const sentences: string[] = [];
 
   const raceClassRaw = parsed.fields['Race & Class'];
   const { race, level, charClass } = raceClassRaw
@@ -868,18 +868,19 @@ function formatToNarrative(parsed: ParsedNPC): string {
 
   // Primary attributes in lowercase PHB order
   const primaryAttrs = parsed.fields['Primary attributes'];
+  const possessivePronoun = 'Their';
+  const subjectPronoun = 'They';
+
   if (primaryAttrs) {
     const formattedAttrs = formatPrimaryAttributes(primaryAttrs);
-    const possessivePronoun = isPlural ? 'their' : 'his';
-    statParts.push(`${possessivePronoun} primary attributes are ${formattedAttrs}`);
+    sentences.push(`${possessivePronoun} primary attributes are ${formattedAttrs}.`);
   }
 
   // Secondary skills
   const secondarySkills = parsed.fields['Secondary Skills'];
   if (secondarySkills) {
-    const possessivePronoun = isPlural ? 'their' : 'his';
     const skillPlural = isPlural ? 'skills are' : 'skill is';
-    statParts.push(`${possessivePronoun} secondary ${skillPlural} ${secondarySkills}`);
+    sentences.push(`${possessivePronoun} secondary ${skillPlural} ${secondarySkills}.`);
   }
 
   // Vital stats: HP, AC, disposition
@@ -913,22 +914,21 @@ function formatToNarrative(parsed: ParsedNPC): string {
   });
 
   if (vitalStatement) {
-    statParts.unshift(vitalStatement);
+    sentences.unshift(vitalStatement);
   }
 
   // Equipment
   const equipment = parsed.fields['Equipment'];
   if (equipment) {
     const processedEquip = findEquipment(equipment);
-    const carryVerb = isPlural ? 'carry' : 'carries';
-    statParts.push(`${carryVerb} ${processedEquip}`);
+    const carryVerb = 'carry';
+    sentences.push(`${subjectPronoun} ${carryVerb} ${processedEquip}.`);
   }
 
   // Spells
   const spells = parsed.fields['Spells'];
   if (spells) {
-    const canCastVerb = isPlural ? 'can cast' : 'can cast';
-    statParts.push(`${canCastVerb} ${spells}`);
+    sentences.push(`${subjectPronoun} can cast ${spells}.`);
   }
 
   // Mount - render as separate block following canonical rules
@@ -939,7 +939,8 @@ function formatToNarrative(parsed: ParsedNPC): string {
     mountBlock = `\n\n${formatMountBlock(mount)}`;
   }
 
-  return `${name}${statParts.length > 0 ? ` *(${statParts.join(', ')})*` : ''}${mountBlock}`;
+  const parenthetical = sentences.length > 0 ? ` *(${sentences.join(' ')})*` : '';
+  return `${name}${parenthetical}${mountBlock}`;
 }
 
 const MONSTER_VALIDATION_RULES: Array<{
@@ -1173,7 +1174,7 @@ function buildVitalStatsSentence(options: VitalStatsOptions): string | null {
   });
   const possessiveSubject = toPossessiveSubject(subject, options.isPlural);
 
-  return `${possessiveSubject} vital stats are ${fragments.join(', ')}`;
+  return `${possessiveSubject} vital stats are ${fragments.join(', ')}.`;
 }
 
 interface SubjectOptions {
@@ -1369,17 +1370,15 @@ export function collapseNPCEntry(input: string): string {
   const possessivePhrase = toPossessiveSubject(raceClassPhrase, false);
 
   // Primary attributes
-  let primaryAttrs = parsed.fields['Primary attributes']
+  const primaryAttrs = parsed.fields['Primary attributes']
     ? formatPrimaryAttributes(parsed.fields['Primary attributes'])
     : '[primary attributes missing]';
 
   // Secondary skills
-  let secondarySkills = parsed.fields['Secondary Skills']
-    ? `secondary skill is ${parsed.fields['Secondary Skills']}`
-    : '';
+  const secondarySkills = parsed.fields['Secondary Skills'];
 
   // Equipment (canonicalize, apply wording rules, bonus placement, italics)
-  let equipment = parsed.fields['Equipment']
+  const equipment = parsed.fields['Equipment']
     ? findEquipment(parsed.fields['Equipment'])
     : '[equipment missing]';
 
@@ -1390,14 +1389,16 @@ export function collapseNPCEntry(input: string): string {
   }
 
   // Build stat block content, enforcing punctuation and semicolons for equipment clauses
-  let statParts: string[] = [];
-  statParts.push(`${possessivePhrase} vital stats are HP ${hp}, AC ${ac}, disposition ${disposition}.`);
-  statParts.push(`primary attributes: ${primaryAttrs}`);
-  if (secondarySkills) statParts.push(secondarySkills);
-  statParts.push(`equipment: ${equipment}`);
+  const sentences: string[] = [];
+  sentences.push(`${possessivePhrase} vital stats are HP ${hp}, AC ${ac}, disposition ${disposition}.`);
+  sentences.push(`Their primary attributes are ${primaryAttrs}.`);
+  if (secondarySkills) {
+    sentences.push(`Their secondary skill is ${secondarySkills}.`);
+  }
+  sentences.push(`They carry ${equipment}.`);
 
   // Markdown: wrap parenthetical in single outer italics, no nested asterisks
-  const parenthetical = `*(${statParts.join('; ')})*`;
+  const parenthetical = `*(${sentences.join(' ')})*`;
 
   return `${name} ${parenthetical}${mountBlock}`;
 }
