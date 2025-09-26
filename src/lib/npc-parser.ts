@@ -34,6 +34,19 @@ export interface AutoCorrectionOptions {
 }
 
 import { MAGIC_ITEM_MAPPINGS, SPELL_NAME_MAPPINGS, applyNameMappings } from './name-mappings';
+import {
+  splitTitleAndBody,
+  extractParentheticalData,
+  isUnitHeading,
+  canonicalizeShields,
+  repositionMagicItemBonuses,
+  deduplicateEquipment,
+  normalizeEquipmentVerbs,
+  extractMountFromParenthetical,
+  buildCanonicalParenthetical,
+  formatMountBlock,
+  normalizeAttributes
+} from './enhanced-parser';
 
 interface ParsedNPC {
   name: string;
@@ -120,7 +133,7 @@ export function processDump(input: string): ProcessedNPC[] {
   return processDumpWithValidation(input);
 }
 
-export function processDumpWithValidation(input: string): ProcessedNPC[] {
+export function processDumpWithValidation(input: string, useEnhancedParser: boolean = false): ProcessedNPC[] {
   const trimmed = input.trim();
   if (!trimmed) {
     return [];
@@ -128,7 +141,7 @@ export function processDumpWithValidation(input: string): ProcessedNPC[] {
 
   const blocks = splitIntoBlocks(trimmed);
   return blocks.map((block) => {
-    const parsed = parseBlock(block);
+    const parsed = useEnhancedParser ? parseBlockEnhanced(block) : parseBlock(block);
     const converted = formatToNarrative(parsed);
     const validation = buildValidation(parsed);
 
@@ -139,6 +152,10 @@ export function processDumpWithValidation(input: string): ProcessedNPC[] {
       validation,
     } satisfies ProcessedNPC;
   });
+}
+
+export function processDumpEnhanced(input: string): ProcessedNPC[] {
+  return processDumpWithValidation(input, true);
 }
 
 export function generateNPCTemplate(): string {
@@ -425,6 +442,71 @@ function splitIntoBlocks(input: string): string[] {
   }
 
   return blocks;
+}
+
+function parseBlockEnhanced(block: string): ParsedNPC {
+  // Use enhanced parsing approach
+  const { title, parentheticals } = splitTitleAndBody(block);
+  const isUnit = isUnitHeading(title);
+
+  const fields: Record<string, string> = {};
+  let mountBlock: string | undefined;
+
+  // Process first parenthetical (main NPC data)
+  if (parentheticals.length > 0) {
+    const parentheticalData = extractParentheticalData(parentheticals[0]);
+
+    // Extract mount if present and clean parenthetical
+    const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
+
+    if (extractedMount) {
+      mountBlock = formatMountBlock(extractedMount);
+    }
+
+    // Re-extract data from cleaned parenthetical
+    const cleanedData = extractParentheticalData(cleanedParenthetical);
+
+    // Map extracted data to fields
+    if (cleanedData.hp) fields['Hit Points (HP)'] = cleanedData.hp;
+    if (cleanedData.ac) fields['Armor Class (AC)'] = cleanedData.ac;
+    if (cleanedData.disposition) fields['Disposition'] = cleanedData.disposition;
+    if (cleanedData.raceClass) fields['Race & Class'] = cleanedData.raceClass;
+
+    if (cleanedData.attributes) {
+      const normalized = normalizeAttributes(cleanedData.attributes, isUnit);
+      fields['Primary attributes'] = normalized;
+    }
+
+    if (cleanedData.equipment) {
+      let equipment = cleanedData.equipment;
+      equipment = canonicalizeShields(equipment);
+      equipment = repositionMagicItemBonuses(equipment);
+      equipment = normalizeEquipmentVerbs(equipment);
+      equipment = deduplicateEquipment(equipment);
+      fields['Equipment'] = equipment;
+    }
+
+    if (cleanedData.coins) {
+      // Add coins to equipment or create separate field
+      if (fields['Equipment']) {
+        fields['Equipment'] += `, ${cleanedData.coins}`;
+      } else {
+        fields['Equipment'] = cleanedData.coins;
+      }
+    }
+  }
+
+  // Add mount to fields if extracted
+  if (mountBlock) {
+    fields['Mount'] = mountBlock;
+  }
+
+  return {
+    name: stripMarkdown(title),
+    fields,
+    notes: [], // Enhanced parser focuses on parenthetical data
+    original: block
+  };
 }
 
 function parseBlock(block: string): ParsedNPC {

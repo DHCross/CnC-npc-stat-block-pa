@@ -1,0 +1,288 @@
+import { describe, it, expect } from 'vitest';
+import {
+  splitTitleAndBody,
+  extractParentheticalData,
+  isUnitHeading,
+  normalizeDisposition,
+  normalizeAttributes,
+  canonicalizeShields,
+  repositionMagicItemBonuses,
+  deduplicateEquipment,
+  normalizeEquipmentVerbs,
+  extractMountFromParenthetical,
+  buildCanonicalParenthetical,
+  formatMountBlock
+} from '../lib/enhanced-parser';
+
+describe('Enhanced Parser Functions', () => {
+  describe('splitTitleAndBody', () => {
+    it('should extract title and parentheticals from text', () => {
+      const input = `**Owen Carter, lieutenant of the town guard**
+(He is a neutral, human, 4th level fighter. His vital stats are HP 24, AC 16. He carries banded mail, shield, longsword and dagger.)`;
+
+      const result = splitTitleAndBody(input);
+
+      expect(result.title).toBe('**Owen Carter, lieutenant of the town guard**');
+      expect(result.parentheticals).toHaveLength(1);
+      expect(result.parentheticals[0]).toContain('He is a neutral, human, 4th level fighter');
+    });
+
+    it('should handle multiple parentheticals', () => {
+      const input = `**Sir Knight** (human fighter) (HP 30, AC 18)`;
+      const result = splitTitleAndBody(input);
+
+      expect(result.parentheticals).toHaveLength(2);
+      expect(result.parentheticals[0]).toBe('human fighter');
+      expect(result.parentheticals[1]).toBe('HP 30, AC 18');
+    });
+  });
+
+  describe('extractParentheticalData', () => {
+    it('should extract HP from various formats', () => {
+      expect(extractParentheticalData('HP 36').hp).toBe('36');
+      expect(extractParentheticalData('Hit Points: 59').hp).toBe('59');
+      expect(extractParentheticalData('vital stats are HP 24').hp).toBe('24');
+    });
+
+    it('should extract AC from various formats', () => {
+      expect(extractParentheticalData('AC 16').ac).toBe('16');
+      expect(extractParentheticalData('AC 13/22').ac).toBe('13/22');
+      expect(extractParentheticalData('AC: 18').ac).toBe('18');
+    });
+
+    it('should extract race/class/level', () => {
+      const data = extractParentheticalData('human, 4th level fighter');
+      expect(data.raceClass).toBe('human, 4th level fighter');
+      expect(data.level).toBe('4');
+    });
+
+    it('should extract disposition and normalize it', () => {
+      expect(extractParentheticalData('alignment: lawful good').disposition).toBe('law/good');
+      expect(extractParentheticalData('disposition neutral').disposition).toBe('neutral/neutral');
+    });
+
+    it('should extract equipment', () => {
+      const data = extractParentheticalData('carries banded mail, shield, longsword');
+      expect(data.equipment).toBe('banded mail, shield, longsword');
+    });
+  });
+
+  describe('isUnitHeading', () => {
+    it('should detect unit headings', () => {
+      expect(isUnitHeading('Men-at-Arms, Bowmen x6')).toBe(true);
+      expect(isUnitHeading('Guards x10')).toBe(true);
+      expect(isUnitHeading('Militia Warriors')).toBe(true);
+      expect(isUnitHeading('Sir Owen Carter')).toBe(false);
+    });
+  });
+
+  describe('normalizeDisposition', () => {
+    it('should convert adjective forms to noun forms', () => {
+      expect(normalizeDisposition('lawful good')).toBe('law/good');
+      expect(normalizeDisposition('Chaotic Evil')).toBe('chaos/evil');
+      expect(normalizeDisposition('neutral good')).toBe('neutral/good');
+      expect(normalizeDisposition('true neutral')).toBe('neutral/neutral');
+    });
+
+    it('should handle single-word alignments', () => {
+      expect(normalizeDisposition('lawful')).toBe('law/neutral');
+      expect(normalizeDisposition('chaotic')).toBe('chaos/neutral');
+      expect(normalizeDisposition('neutral')).toBe('neutral/neutral');
+    });
+  });
+
+  describe('normalizeAttributes', () => {
+    it('should convert unit attributes to PA physical', () => {
+      expect(normalizeAttributes('str, dex, con', true)).toBe('PA physical');
+      expect(normalizeAttributes('strength, dexterity, constitution', true)).toBe('PA physical');
+    });
+
+    it('should expand abbreviations for individuals', () => {
+      expect(normalizeAttributes('str, int, wis', false)).toBe('strength, intelligence, wisdom');
+      expect(normalizeAttributes('dex, con, cha', false)).toBe('dexterity, constitution, charisma');
+    });
+
+    it('should preserve full attribute names', () => {
+      expect(normalizeAttributes('strength, wisdom', false)).toBe('strength, wisdom');
+    });
+  });
+
+  describe('canonicalizeShields', () => {
+    it('should fix the buckler bug', () => {
+      expect(canonicalizeShields('buckler +1')).toBe('buckler +1');
+      expect(canonicalizeShields('+2 shield')).toBe('medium steel shield +2');
+      expect(canonicalizeShields('steel shield')).toBe('medium steel shield');
+    });
+
+    it('should handle various shield formats', () => {
+      expect(canonicalizeShields('a shield')).toBe('medium steel shield');
+      expect(canonicalizeShields('wooden buckler')).toBe('buckler');
+      expect(canonicalizeShields('iron pavis +3')).toBe('pavis +3');
+    });
+  });
+
+  describe('repositionMagicItemBonuses', () => {
+    it('should move bonuses from beginning to end', () => {
+      expect(repositionMagicItemBonuses('+1 longsword')).toBe('longsword +1');
+      expect(repositionMagicItemBonuses('+2 shield')).toBe('shield +2');
+      expect(repositionMagicItemBonuses('+3 full plate mail')).toBe('full plate mail +3');
+    });
+
+    it('should handle multiple magic items', () => {
+      const input = '+1 longsword, +2 shield, +3 lance';
+      const expected = 'longsword +1, shield +2, lance +3';
+      expect(repositionMagicItemBonuses(input)).toBe(expected);
+    });
+  });
+
+  describe('deduplicateEquipment', () => {
+    it('should remove duplicate equipment items', () => {
+      expect(deduplicateEquipment('lance, lance, sword')).toBe('lance, sword');
+      expect(deduplicateEquipment('shield, sword, shield, dagger')).toBe('shield, sword, dagger');
+    });
+  });
+
+  describe('normalizeEquipmentVerbs', () => {
+    it('should normalize armor verbs to "wears"', () => {
+      expect(normalizeEquipmentVerbs('wearing chain mail')).toBe('wears chain mail');
+      expect(normalizeEquipmentVerbs('worn plate armor')).toBe('wears plate armor');
+    });
+
+    it('should normalize weapon verbs to "carry"', () => {
+      expect(normalizeEquipmentVerbs('carries longsword')).toBe('carry longsword');
+      expect(normalizeEquipmentVerbs('carrying a bow')).toBe('carry a bow');
+    });
+  });
+
+  describe('extractMountFromParenthetical', () => {
+    it('should extract war horse data and clean parenthetical', () => {
+      const input = 'human fighter, HP 30, AC 16, heavy war horse HP 35, AC 19, 2 hooves for 1d4 each';
+      const result = extractMountFromParenthetical(input);
+
+      expect(result.mountBlock).toBeDefined();
+      expect(result.mountBlock?.name).toBe('warhorse');
+      expect(result.mountBlock?.hp).toBe('35');
+      expect(result.mountBlock?.ac).toBe('19');
+      expect(result.cleanedParenthetical).not.toContain('war horse');
+      expect(result.cleanedParenthetical).not.toContain('hooves');
+    });
+
+    it('should return unchanged if no mount data', () => {
+      const input = 'human fighter, HP 30, AC 16';
+      const result = extractMountFromParenthetical(input);
+
+      expect(result.mountBlock).toBeUndefined();
+      expect(result.cleanedParenthetical).toBe(input);
+    });
+  });
+
+  describe('buildCanonicalParenthetical', () => {
+    it('should build canonical format for individual NPC', () => {
+      const data = {
+        hp: '24',
+        ac: '16',
+        disposition: 'neutral',
+        raceClass: 'human, 4th level fighter',
+        level: '4',
+        attributes: 'strength, dexterity, constitution',
+        equipment: 'wears banded mail, carry shield, longsword, dagger',
+        raw: 'original'
+      };
+
+      const result = buildCanonicalParenthetical(data, false);
+
+      expect(result).toContain('This 4th level fighter\'s vital stats are HP 24, AC 16, disposition neutral');
+      expect(result).toContain('his primary attributes are strength, dexterity, constitution');
+      expect(result).toContain('wears banded mail');
+    });
+
+    it('should build canonical format for unit', () => {
+      const data = {
+        hp: '12',
+        ac: '15',
+        disposition: 'neutral',
+        raceClass: 'human, 2nd level fighters',
+        level: '2',
+        attributes: 'str, dex, con',
+        equipment: 'chain mail, longbow, longsword',
+        raw: 'original'
+      };
+
+      const result = buildCanonicalParenthetical(data, true);
+
+      expect(result).toContain('These 2nd level fighters\'s vital stats are HP 12, AC 15, disposition neutral, PA physical');
+      expect(result).toContain('wear chain mail, longbow, longsword');
+    });
+  });
+
+  describe('formatMountBlock', () => {
+    it('should format complete mount block', () => {
+      const mountBlock = {
+        name: 'warhorse',
+        level: '4(d10)',
+        hp: '35',
+        ac: '19',
+        disposition: 'neutral',
+        attacks: '2 hooves for 1d4 damage each',
+        equipment: 'chainmail barding',
+        raw: 'original'
+      };
+
+      const result = formatMountBlock(mountBlock);
+
+      expect(result).toBe('**Warhorse (mount)** *(This creature\'s vital stats are Level 4(d10), HP 35, AC 19, disposition neutral, It attacks with 2 hooves for 1d4 damage each, It wears chainmail barding.)*');
+    });
+
+    it('should handle minimal mount data', () => {
+      const mountBlock = {
+        name: 'horse',
+        raw: 'original'
+      };
+
+      const result = formatMountBlock(mountBlock);
+
+      expect(result).toBe('**Horse (mount)** *(This creature\'s vital stats are unavailable.)*');
+    });
+  });
+
+  describe('Integration tests', () => {
+    it('should handle Owen Carter example correctly', () => {
+      const input = `**Owen Carter, lieutenant of the town guard**
+(He is a neutral, human, 4th level fighter. His vital stats are HP 24, AC 16. He carries banded mail, shield, longsword and dagger.)`;
+
+      const { title, parentheticals } = splitTitleAndBody(input);
+      const data = extractParentheticalData(parentheticals[0]);
+      const isUnit = isUnitHeading(title);
+
+      expect(data.hp).toBe('24');
+      expect(data.ac).toBe('16');
+      // Note: disposition extraction from prose requires more sophisticated parsing
+      expect(isUnit).toBe(false);
+
+      // Test equipment canonicalization
+      if (data.equipment) {
+        let equipment = canonicalizeShields(data.equipment);
+        equipment = repositionMagicItemBonuses(equipment);
+        expect(equipment).toContain('medium steel shield');
+      }
+    });
+
+    it('should handle unit example correctly', () => {
+      const input = `**Men-at-Arms, Bowmen x6**
+(these human men-at-arms are 2nd level fighters; HP 12; AC 15; primary attributes strength, dexterity, constitution; EQ chain mail, longbow, longsword, belt axe; 2-12gp.)`;
+
+      const { title, parentheticals } = splitTitleAndBody(input);
+      const data = extractParentheticalData(parentheticals[0]);
+      const isUnit = isUnitHeading(title);
+
+      expect(data.hp).toBe('12');
+      expect(data.ac).toBe('15');
+      expect(isUnit).toBe(true);
+
+      if (data.attributes) {
+        const normalizedAttrs = normalizeAttributes(data.attributes, isUnit);
+        expect(normalizedAttrs).toBe('PA physical');
+      }
+    });
+  });
+});

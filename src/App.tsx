@@ -10,9 +10,10 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Toaster } from '@/components/ui/sonner';
-import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode as FileHtml } from 'lucide-react';
-import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, setDictionaries, ValidationResult } from '@/lib/npc-parser';
+import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode as FileHtml, FileCheck } from 'lucide-react';
+import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, processDumpEnhanced, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, setDictionaries, ValidationResult } from '@/lib/npc-parser';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
@@ -202,6 +203,7 @@ import { toast } from 'sonner';
 import { useKV } from '@/hooks/use-kv';
 import { Switch } from '@/components/ui/switch';
 import { initializePreloadedDictionaries, getDictionaryCounts } from '@/data';
+import { DocumentAnalyzer } from '@/components/DocumentAnalyzer';
 
 const EXAMPLE_TEXT = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple**
 
@@ -255,6 +257,7 @@ function App() {
   const [availableFixes, setAvailableFixes] = useState<CorrectionFix[]>([]);
   const [normalizeInput, setNormalizeInput] = useState(true);
   const [dictEnabled, setDictEnabled] = useState(true);
+  const [useEnhancedParser, setUseEnhancedParser] = useState(false);
   const [dictCounts, setDictCounts] = useState({ spells: 0, items: 0, monsters: 0 });
 
   // Initialize pre-loaded dictionaries on component mount
@@ -265,7 +268,7 @@ function App() {
 
   const processInput = (
     text: string,
-    overrides?: { normalizeInput?: boolean; dictionaryEnabled?: boolean },
+    overrides?: { normalizeInput?: boolean; dictionaryEnabled?: boolean; useEnhanced?: boolean },
   ) => {
     if (!text.trim()) {
       setResults([]);
@@ -277,12 +280,20 @@ function App() {
     try {
       const shouldNormalize = overrides?.normalizeInput ?? normalizeInput;
       const dictionariesActive = overrides?.dictionaryEnabled ?? dictEnabled;
+      const useEnhanced = overrides?.useEnhanced ?? useEnhancedParser;
       const correctionOptions = { enableDictionarySuggestions: dictionariesActive };
 
-      const toParse = shouldNormalize
-        ? applyAllHighConfidenceFixes(text, correctionOptions)
-        : text;
-      const processed = processDumpWithValidation(toParse);
+      let processed: ProcessedNPC[];
+      if (useEnhanced) {
+        // Enhanced parser doesn't need pre-normalization as it handles everything internally
+        processed = processDumpEnhanced(text);
+      } else {
+        const toParse = shouldNormalize
+          ? applyAllHighConfidenceFixes(text, correctionOptions)
+          : text;
+        processed = processDumpWithValidation(toParse);
+      }
+
       const fixes = generateAutoCorrectionFixes(text, correctionOptions);
       setAvailableFixes(fixes);
 
@@ -621,7 +632,20 @@ function App() {
             </div>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+          <Tabs defaultValue="single" className="w-full">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+              <TabsTrigger value="single" className="flex items-center gap-2">
+                <Upload className="h-4 w-4" />
+                Single/Batch Parser
+              </TabsTrigger>
+              <TabsTrigger value="document" className="flex items-center gap-2">
+                <FileCheck className="h-4 w-4" />
+                Document Analyzer
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="single">
+              <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
             <Card className="h-fit border-white/15 bg-card/80">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-card-foreground">
@@ -736,6 +760,20 @@ function App() {
                       processInput(inputText, { normalizeInput: checked });
                     }}
                     aria-label="Normalize input before parsing"
+                  />
+                </div>
+                <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-3 text-sm">
+                  <div>
+                    <div className="font-medium text-card-foreground">Enhanced parenthetical parser (beta)</div>
+                    <div className="text-xs text-card-foreground/70">Uses advanced extraction rules for parenthetical data, mount separation, and shield canonicalization.</div>
+                  </div>
+                  <Switch
+                    checked={useEnhancedParser}
+                    onCheckedChange={(checked) => {
+                      setUseEnhancedParser(checked);
+                      processInput(inputText, { useEnhanced: checked });
+                    }}
+                    aria-label="Use enhanced parenthetical parser"
                   />
                 </div>
                 {availableFixes.length > 0 && (
@@ -1006,6 +1044,13 @@ function App() {
               </CardContent>
             </Card>
           )}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="document">
+              <DocumentAnalyzer />
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
       <Toaster />
