@@ -185,10 +185,22 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     data.attributes = attrMatch[1].trim();
   }
 
-  // Extract equipment
-  const equipMatch = /(?:EQ|equipment|carries?|wields?|they\s+wear|wears?)\s*[:\-]?\s*([^.;]+)/i.exec(parenthetical);
+  // Extract equipment - preserve verb structure when possible
+  let equipMatch = /(?:EQ|equipment)[\s:\-]+([^.;]+)/i.exec(parenthetical);
   if (equipMatch) {
     data.equipment = equipMatch[1].trim();
+  } else {
+    // Try to capture equipment with verbs intact - handle complex equipment lists
+    equipMatch = /((?:they\s+wear|wears?|carries?|wields?)\s+[^.;]+)/i.exec(parenthetical);
+    if (equipMatch) {
+      data.equipment = equipMatch[1].trim();
+    } else {
+      // Fallback: simple equipment list
+      equipMatch = /(?:carries?|wields?|they\s+wear|wears?)\s*[:\-]?\s*([^.;]+)/i.exec(parenthetical);
+      if (equipMatch) {
+        data.equipment = equipMatch[1].trim();
+      }
+    }
   }
 
   // Extract mount data
@@ -202,16 +214,36 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
   if (coinMatch) {
     data.coins = `${coinMatch[1]}–${coinMatch[2]} gold in coin`;
   } else {
-    // Try simpler patterns like "carries 10gp" or "has 5gp, 3sp"
-    const simpleCoins = /(?:carries?|has?|with)\s+([^.;,]*(?:gp|sp|cp|pp|gold|silver|copper|platinum)[^.;,]*)/i.exec(parenthetical);
-    if (simpleCoins) {
-      let coins = simpleCoins[1];
-      // Convert abbreviations
-      coins = coins.replace(/(\d+)\s*gp\b/gi, '$1 gold in coin');
-      coins = coins.replace(/(\d+)\s*sp\b/gi, '$1 silver in coin');
-      coins = coins.replace(/(\d+)\s*cp\b/gi, '$1 copper in coin');
-      coins = coins.replace(/(\d+)\s*pp\b/gi, '$1 platinum in coin');
-      data.coins = coins.trim();
+    // Extract all currency mentions from parenthetical
+    const currencyPattern = /(\d+)\s*(gp|sp|cp|pp|gold|silver|copper|platinum)\b/gi;
+    const currencies: string[] = [];
+    let match;
+    while ((match = currencyPattern.exec(parenthetical)) !== null) {
+      const amount = match[1];
+      const type = match[2].toLowerCase();
+
+      switch (type) {
+        case 'gp':
+        case 'gold':
+          currencies.push(`${amount} gold in coin`);
+          break;
+        case 'sp':
+        case 'silver':
+          currencies.push(`${amount} silver in coin`);
+          break;
+        case 'cp':
+        case 'copper':
+          currencies.push(`${amount} copper in coin`);
+          break;
+        case 'pp':
+        case 'platinum':
+          currencies.push(`${amount} platinum in coin`);
+          break;
+      }
+    }
+
+    if (currencies.length > 0) {
+      data.coins = currencies.join(', ');
     }
   }
 
@@ -293,9 +325,18 @@ export function canonicalizeShields(equipment: string): string {
 }
 
 export function repositionMagicItemBonuses(equipment: string): string {
-  return equipment.replace(LEADING_BONUS_RE, (match, bonus, item) => {
+  // Handle bonuses that appear after verbs: "carries +1 sword" → "carries sword +1"
+  let result = equipment.replace(/\b(wears?|carries?|wields?)\s+\+(\d+)\s+([a-z\s]+(?:sword|mail|armor|shield|lance|dagger|mace|axe|bow|crossbow|staff|rod|wand|ring|robe|cloak|boots|gauntlets|helm|bracers|pectoral))/gi,
+    (match, verb, bonus, item) => {
+      return `${verb} ${item} +${bonus}`;
+    });
+
+  // Handle traditional pattern: "+1 sword" → "sword +1"
+  result = result.replace(LEADING_BONUS_RE, (match, bonus, item) => {
     return `${item} +${bonus}`;
   });
+
+  return result;
 }
 
 export function deduplicateEquipment(equipment: string): string {

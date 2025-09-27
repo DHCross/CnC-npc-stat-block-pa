@@ -45,7 +45,8 @@ import {
   extractMountFromParenthetical,
   buildCanonicalParenthetical,
   formatMountBlock as formatEnhancedMountBlock,
-  normalizeAttributes
+  normalizeAttributes,
+  MountBlock
 } from './enhanced-parser';
 
 interface ParsedNPC {
@@ -847,17 +848,30 @@ function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): st
   let name = parsed.name;
   if (!name.startsWith('**')) name = `**${name.replace(/\*\*/g, '')}**`;
 
+  let result = name;
+  let mountBlock: MountBlock | undefined;
+
   if (parentheticals.length > 0) {
-    const parentheticalData = extractParentheticalData(parentheticals[0]);
+    // Extract mount first (Jeremy's mandate: separate mounts into dedicated blocks)
+    const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
+    mountBlock = extractedMount;
+
+    // Process the cleaned parenthetical (mount data removed)
+    const parentheticalData = extractParentheticalData(cleanedParenthetical);
     const canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit);
 
     // Only add parenthetical if it contains meaningful content (not just a period or empty)
     if (canonicalParenthetical && canonicalParenthetical.trim().length > 1 && canonicalParenthetical.trim() !== '.') {
-      return `${name} *(${canonicalParenthetical})*`;
+      result = `${name} *(${canonicalParenthetical})*`;
     }
   }
 
-  return name;
+  // Add separated mount block per Jeremy's editorial mandate
+  if (mountBlock) {
+    result += `\n\n${formatEnhancedMountBlock(mountBlock)}`;
+  }
+
+  return result;
 }
 
 function formatToNarrative(parsed: ParsedNPC): string {
