@@ -852,24 +852,18 @@ function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): st
   let mountBlock: MountBlock | undefined;
 
   if (parentheticals.length > 0) {
-
-    const parentheticalData = extractParentheticalData(parentheticals[0]);
-    const canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit);
-    return `${name} *(${canonicalParenthetical})*`;
-
     // Extract mount first (Jeremy's mandate: separate mounts into dedicated blocks)
     const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
     mountBlock = extractedMount;
 
     // Process the cleaned parenthetical (mount data removed)
-    const cleanedParentheticalData = extractParentheticalData(cleanedParenthetical);
-    const cleanedCanonicalParenthetical = buildCanonicalParenthetical(cleanedParentheticalData, isUnit);
+    const parentheticalData = extractParentheticalData(cleanedParenthetical);
+    const canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit);
 
     // Only add parenthetical if it contains meaningful content (not just a period or empty)
-    if (cleanedCanonicalParenthetical && cleanedCanonicalParenthetical.trim().length > 1 && cleanedCanonicalParenthetical.trim() !== '.') {
-      result = `${name} *(${cleanedCanonicalParenthetical})*`;
+    if (canonicalParenthetical && canonicalParenthetical.trim().length > 1 && canonicalParenthetical.trim() !== '.') {
+      result = `${name} *(${canonicalParenthetical})*`;
     }
-
   }
 
   // Add separated mount block per Jeremy's editorial mandate
