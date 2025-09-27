@@ -14,6 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Toaster } from '@/components/ui/sonner';
 import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode as FileHtml, FileCheck } from 'lucide-react';
 import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, processDumpEnhanced, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, setDictionaries, ValidationResult } from '@/lib/npc-parser';
+import { formatVersionString } from '@/lib/version';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
@@ -617,6 +618,9 @@ function App() {
             <h1 className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
               Narrative-ready NPC stat blocks
             </h1>
+            <div className="text-xs text-foreground/50 font-mono">
+              {formatVersionString()}
+            </div>
             <p className="text-lg text-foreground/80 md:text-xl">
               Transform raw notes into polished Castles & Crusades NPC stat blocks with automatic formatting, validation, and export tools.
             </p>
@@ -1051,6 +1055,21 @@ function App() {
             </TabsContent>
           </Tabs>
         </div>
+
+        {/* Version Footer */}
+        <footer className="mt-16 border-t border-border/40 bg-card/30 backdrop-blur-sm">
+          <div className="mx-auto max-w-7xl px-6 py-6 lg:px-10">
+            <div className="flex flex-col items-center justify-between gap-4 text-sm text-foreground/60 sm:flex-row">
+              <div className="flex items-center gap-2">
+                <span>Castles & Crusades NPC Stat Block Generator</span>
+              </div>
+              <div className="flex items-center gap-1 font-mono text-xs">
+                <span className="text-foreground/40">Build:</span>
+                <span className="text-foreground/60">{formatVersionString()}</span>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
       <Toaster />
     </>
