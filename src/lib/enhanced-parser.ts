@@ -51,7 +51,7 @@ const AC_RE = /\bAC\s*[:\-]?\s*([\d\/]+)\b/i;
 const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|(human|elf|dwarf|halfling|gnome|orc|goblin),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
 const DISPOSITION_RE = /\b(disposition|alignment)\s*[:\-]?\s*([a-z\s]+(?:\/[a-z\s]+)?)\b/i;
 const MOUNT_TYPE_RE = /\b(heavy|light)?\s*war\s*horse\b/i;
-const LEADING_BONUS_RE = /\+(\d+)\s+([a-z\s]+(?:sword|mail|armor|shield|lance|dagger|mace|axe|bow|crossbow|staff|rod|wand|ring|robe|cloak|boots|gauntlets|helm|bracers|pectoral))/gi;
+const LEADING_BONUS_RE = /\+(\d+)\s+((?:\w+\s+)*(?:longsword|sword|mail|armor|shield|lance|dagger|mace|axe|bow|crossbow|staff|rod|wand|ring|robe|cloak|boots|gauntlets|helm|bracers|pectoral))/gi;
 
 // Corrected shield/buckler regex from earlier bug fix
 const BP_RE = /\b(?:(\+\s*\d+)\s*)?(?:an?\s+)?(?:(?:wooden|steel|iron)\s+)?(buckler|pavis|shield)(?:\s+shield)?(?:\s*(\+\s*\d+))?/gi;
@@ -136,14 +136,20 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       const level = rclMatch[1];
       const race = rclMatch[2];
       const charClass = rclMatch[3].replace(/s$/, ''); // Remove plural 's'
-      data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
+      // Preserve original ordinal format
+      const ordinalMatch = rclMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
+      const ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
+      data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
       data.level = level;
     } else if (rclMatch[4] && rclMatch[5]) {
       // Format: "human, 2nd level fighter" - groups [4]=race, [5]=level, [6]=class
       const race = rclMatch[4];
       const level = rclMatch[5];
       const charClass = rclMatch[6] ? rclMatch[6].replace(/s$/, '') : 'fighter'; // Remove plural 's', default to fighter
-      data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
+      // Preserve original ordinal format
+      const ordinalMatch = rclMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
+      const ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
+      data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
       data.level = level;
     }
   }
@@ -155,7 +161,14 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       const level = proseMatch[1];
       const race = proseMatch[2];
       const charClass = proseMatch[3].replace(/s$/, ''); // Remove plural 's'
-      data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
+      // Normalize ordinal to superscript format from prose match
+      const ordinalMatch = proseMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
+      let ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
+      // Convert regular ordinals to superscript for consistency
+      if (ordinal === 'st' || ordinal === 'nd' || ordinal === 'rd' || ordinal === 'th') {
+        ordinal = getSuperscriptOrdinal(level);
+      }
+      data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
       data.level = level;
     }
   }
@@ -189,8 +202,8 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
   if (equipMatch) {
     data.equipment = equipMatch[1].trim();
   } else {
-    // Try to capture equipment with verbs intact - handle complex equipment lists
-    equipMatch = /((?:they\s+wear|wears?|carries?|wields?)\s+[^.;]+)/i.exec(parenthetical);
+    // Try to capture equipment items only (without verbs)
+    equipMatch = /(?:they\s+wear|wears?|carries?|wields?)\s+([^.;]+)/i.exec(parenthetical);
     if (equipMatch) {
       data.equipment = equipMatch[1].trim();
     } else {
@@ -274,8 +287,8 @@ export function normalizeDisposition(disposition: string): string {
 
 export function normalizeAttributes(attributes: string, isUnit: boolean): string {
   if (isUnit && /\b(str|dex|con|strength|dexterity|constitution|physical)\b/i.test(attributes)) {
-    // For units with physical attributes, expand to narrative phrasing per Jeremy's mandate
-    return 'strength, dexterity, constitution';
+    // For units with physical attributes, use PA physical per Jeremy's mandate
+    return 'PA physical';
   }
 
   // Expand abbreviations for individual NPCs
@@ -315,7 +328,14 @@ export function canonicalizeShields(equipment: string): string {
   result = result.replace(/\b(wooden|steel|iron)\s+shield(?!\s*\+)/gi, 'medium $1 shield');
 
   // Third pass: Handle bare "shield" (add both size and material)
-  result = result.replace(/\b(?:a\s+|an\s+)?shield(?!\s*\+)(?!\s+\w)/gi, 'medium steel shield');
+  result = result.replace(/\b(?:a\s+|an\s+)?shield\b(?!\s*\+)/gi, (match, offset, string) => {
+    // Don't replace if already has size+material prefix
+    const before = string.substring(Math.max(0, offset - 25), offset);
+    if (/\b(medium|large|small)\s+(wooden|steel|iron)\s*$/i.test(before)) {
+      return match;
+    }
+    return 'medium steel shield';
+  });
 
   // Handle buckler and pavis separately (they don't need size qualifiers)
   result = result.replace(/\b(?:wooden|steel|iron)\s+(buckler|pavis)/gi, '$1');
@@ -325,7 +345,7 @@ export function canonicalizeShields(equipment: string): string {
 
 export function repositionMagicItemBonuses(equipment: string): string {
   // Handle bonuses that appear after verbs: "carries +1 sword" → "carries sword +1"
-  let result = equipment.replace(/\b(wears?|carries?|wields?)\s+\+(\d+)\s+([a-z\s]+(?:sword|mail|armor|shield|lance|dagger|mace|axe|bow|crossbow|staff|rod|wand|ring|robe|cloak|boots|gauntlets|helm|bracers|pectoral))/gi,
+  let result = equipment.replace(/(wears?|carries?|wields?)\s+\+(\d+)\s+((?:\w+\s+)*(?:longsword|sword|mail|armor|shield|lance|dagger|mace|axe|bow|crossbow|staff|rod|wand|ring|robe|cloak|boots|gauntlets|helm|bracers|pectoral))/gi,
     (match, verb, bonus, item) => {
       return `${verb} ${item} +${bonus}`;
     });
@@ -349,13 +369,13 @@ export function normalizeEquipmentVerbs(equipment: string): string {
   let normalized = equipment;
 
   // Normalize armor verbs to "wears" (for armor, barding, clothing)
-  normalized = normalized.replace(/\b(wear|wearing|worn|has on|dons?)\b\s+/gi, 'wears ');
+  normalized = normalized.replace(/\b(wears?|wearing|worn|has on|dons?)\b\s+/gi, 'wears ');
 
-  // Normalize weapon/gear verbs to "carries" (for weapons, tools, items)
-  normalized = normalized.replace(/\b(carry|carrying|bears?|bearing|holds?|holding|wields?|wielding)\b\s+/gi, 'carries ');
+  // Normalize weapon/gear verbs to "carry" (for weapons, tools, items)
+  normalized = normalized.replace(/\b(carries?|carrying|bears?|bearing|holds?|holding|wields?|wielding)\b\s+/gi, 'carry ');
 
   // Handle "and carry" constructions properly
-  normalized = normalized.replace(/\band\s+carries?/gi, 'and carries');
+  normalized = normalized.replace(/\band\s+carry/gi, 'and carry');
 
   return normalized;
 }
@@ -396,7 +416,7 @@ export function extractMountFromParenthetical(parenthetical: string): {
   return { cleanedParenthetical: parenthetical };
 }
 
-export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean): string {
+export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, omitRace: boolean = false, useSuperscriptOrdinals: boolean = true): string {
   const parts: string[] = [];
 
   // Build vital stats
@@ -409,12 +429,28 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     let descriptor = '';
 
     if (data.raceClass) {
+      let raceClassText = data.raceClass;
+
+      // Convert regular ordinals to superscript for output consistency if requested
+      if (useSuperscriptOrdinals) {
+        raceClassText = raceClassText.replace(/(\d+)(st|nd|rd|th)(\s+level)/g, (match, level, ordinal, levelText) => {
+          const superscriptOrdinal = getSuperscriptOrdinal(level);
+          return `${level}${superscriptOrdinal}${levelText}`;
+        });
+      }
+
+      if (omitRace) {
+        // Extract just the class and level for canonical format
+        const classLevelMatch = raceClassText.match(/(\d+(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s+level\s+[a-z-]+s?)/i);
+        raceClassText = classLevelMatch ? classLevelMatch[0] : raceClassText;
+      }
+
       if (isUnit) {
-        // For units: "These 2ⁿᵈ level human fighters'"
-        descriptor = `These ${data.raceClass}`;
+        // For units: "These human, 2nd level fighters" or "These 2nd level fighters"
+        descriptor = `These ${raceClassText}`;
       } else {
-        // For individuals: "This human, 4th level fighter"
-        descriptor = `This ${data.raceClass}`;
+        // For individuals: "This human, 4th level fighter" or "This 4th level fighter"
+        descriptor = `This ${raceClassText}`;
       }
     } else {
       // Fallback for unknown creatures
