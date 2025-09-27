@@ -15,7 +15,7 @@ describe('Race & Class Preservation Fix', () => {
 
     // The key test: race and class information should be preserved in the converted output
     // This should now work since we fixed the buildCanonicalParenthetical function
-    expect(result[0].converted).toContain('human, 2ⁿᵈ level fighter');
+    expect(result[0].converted).toContain('human 2ⁿᵈ level fighter');
   });
 
   it('should preserve race and class information for individual NPCs', () => {
