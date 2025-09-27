@@ -122,8 +122,8 @@ Armor Class (AC): 18`
       const input = 'sword +1, staff of striking, normal mace'
       const result = findEquipment(input)
       
-      expect(result).toContain('*sword +1*')
-      expect(result).toContain('*staff of striking*')
+      expect(result).toContain('*sword +1 (+1 bonus)*')
+      expect(result).toContain('*staff of striking (see Appendix: Magic Items)*')
       expect(result).toContain('normal mace') // Not italicized
       expect(result).not.toContain('*normal mace*')
     })
@@ -224,9 +224,9 @@ Mount: heavy war horse`
       expect(result).toMatch(/\*\*.*\*\* \*\(.*\)\*/) // Italicized stat block
       expect(result).toContain('disposition law/good.') // Complete sentence
       expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order
-      expect(result).toContain('*pectoral of armor +3*') // PHB rename + italics
+      expect(result).toContain('*pectoral of armor +3 (AC +1 to +3)*') // PHB rename + italics
 	expect(result).toContain('medium steel shield') // Shield normalization (defaults)
-      expect(result).toContain('*staff of striking*') // Magic item italics
+      expect(result).toContain('*staff of striking (see Appendix: Magic Items)*') // Magic item italics
       const mainBlockMatch = result.match(/\*\((.+?)\)\*/s)
       const mainBlock = mainBlockMatch ? mainBlockMatch[1] : ''
       expect(mainBlock).not.toMatch(/\*\*/)
@@ -245,7 +245,7 @@ Mount: heavy war horse`
       expect(result).toContain('HP 59, AC 13/22, disposition law/good.')
 
       // Equipment from prose, with PHB rename and shield normalization
-      expect(result).toContain('*pectoral of armor +3*')
+      expect(result).toContain('*pectoral of armor +3 (AC +1 to +3)*')
       expect(result).toContain('full plate mail')
   expect(result).toContain('medium steel shield')
       expect(result).toContain('mace')

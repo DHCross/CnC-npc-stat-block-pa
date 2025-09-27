@@ -852,6 +852,11 @@ function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): st
   let mountBlock: MountBlock | undefined;
 
   if (parentheticals.length > 0) {
+
+    const parentheticalData = extractParentheticalData(parentheticals[0]);
+    const canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit, title);
+    return `${name} *(${canonicalParenthetical})*`;
+
     // Extract mount first (Jeremy's mandate: separate mounts into dedicated blocks)
     const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
     mountBlock = extractedMount;
@@ -864,6 +869,7 @@ function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): st
     if (canonicalParenthetical && canonicalParenthetical.trim().length > 1 && canonicalParenthetical.trim() !== '.') {
       result = `${name} *(${canonicalParenthetical})*`;
     }
+
   }
 
   // Add separated mount block per Jeremy's editorial mandate
