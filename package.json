@@ -4,7 +4,7 @@
   "description": "CNC NPC Stat Block Parser and App (Next.js/React)",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "NEXT_PUBLIC_COMMIT_HASH=\"$(git rev-parse --short HEAD)\" NEXT_PUBLIC_BUILD_DATE=\"$(date -u)\" next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "vitest run"
