@@ -177,6 +177,24 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     }
   }
 
+  // Try to extract from format like "These are neutral, human, 1st level fighters"
+  if (!data.raceClass) {
+    const complexProseMatch = /(?:these|this|the)\s+are\s+[^,]*,\s*([a-z-]+),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s+level\s+([a-z-]+)s?/i.exec(parenthetical);
+    if (complexProseMatch) {
+      const race = complexProseMatch[1];
+      const level = complexProseMatch[2];
+      const charClass = complexProseMatch[3].replace(/s$/, ''); // Remove plural 's'
+      // Normalize ordinal to superscript format
+      const ordinalMatch = complexProseMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
+      let ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
+      if (ordinal === 'st' || ordinal === 'nd' || ordinal === 'rd' || ordinal === 'th') {
+        ordinal = getSuperscriptOrdinal(level);
+      }
+      data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
+      data.level = level;
+    }
+  }
+
   // Try to extract HD format like "these HD 1(d6) human militia"
   if (!data.raceClass) {
     const hdMatch = /(?:these|this|the)\s+HD\s+\d+\([^)]+\)\s+([a-z-]+)\s+([a-z-]+)s?/i.exec(parenthetical);
@@ -192,6 +210,10 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
   if (!attrMatch) {
     // Try without "primary/prime/PA" qualifier
     attrMatch = /(?:his|their|its)\s+(?:primary\s+)?attributes?\s+are\s+([^.;,]+)/i.exec(parenthetical);
+  }
+  if (!attrMatch) {
+    // Try "primes are" format
+    attrMatch = /(?:his|their|its)\s+primes?\s+are[:\s]*([^.;,]+)/i.exec(parenthetical);
   }
   if (!attrMatch) {
     // Try simple patterns like "STR, DEX, CON" or "strength, dexterity"
@@ -211,10 +233,16 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     if (equipMatch) {
       data.equipment = equipMatch[1].trim();
     } else {
-      // Fallback: simple equipment list
-      equipMatch = /(?:carries?|wields?|they\s+wear|wears?)\s*[:\-]?\s*([^.;]+)/i.exec(parenthetical);
+      // Try "have" verb pattern
+      equipMatch = /(?:they\s+(?:each\s+)?have|has?)\s+([^.;]+)/i.exec(parenthetical);
       if (equipMatch) {
         data.equipment = equipMatch[1].trim();
+      } else {
+        // Fallback: simple equipment list
+        equipMatch = /(?:carries?|wields?|they\s+wear|wears?)\s*[:\-]?\s*([^.;]+)/i.exec(parenthetical);
+        if (equipMatch) {
+          data.equipment = equipMatch[1].trim();
+        }
       }
     }
   }
@@ -278,7 +306,7 @@ export function normalizeDisposition(disposition: string): string {
     'lawful evil': 'law/evil',
     'neutral good': 'neutral/good',
     'true neutral': 'neutral/neutral',
-    'neutral': 'neutral/neutral',
+    'neutral': 'neutral',
     'neutral evil': 'neutral/evil',
     'chaotic good': 'chaos/good',
     'chaotic neutral': 'chaos/neutral',
