@@ -151,7 +151,6 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       const charClass = proseMatch[3].replace(/s$/, ''); // Remove plural 's'
       data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
       data.level = level;
-      console.log('DEBUG: Prose match found:', { level, race, charClass, raceClass: data.raceClass });
     }
   }
 
