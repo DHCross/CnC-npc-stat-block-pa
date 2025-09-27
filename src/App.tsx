@@ -261,7 +261,7 @@ function App() {
   const [availableFixes, setAvailableFixes] = useState<CorrectionFix[]>([]);
   const [normalizeInput, setNormalizeInput] = useState(true);
   const [dictEnabled, setDictEnabled] = useState(true);
-  const [useEnhancedParser, setUseEnhancedParser] = useState(false);
+  const [useEnhancedParser, setUseEnhancedParser] = useState(true);
   const [dictCounts, setDictCounts] = useState({ spells: 0, items: 0, monsters: 0 });
 
   // Initialize pre-loaded dictionaries on component mount
@@ -288,15 +288,10 @@ function App() {
       const correctionOptions = { enableDictionarySuggestions: dictionariesActive };
 
       let processed: ProcessedNPC[];
-      if (useEnhanced) {
-        // Enhanced parser doesn't need pre-normalization as it handles everything internally
-        processed = processDumpEnhanced(text);
-      } else {
-        const toParse = shouldNormalize
-          ? applyAllHighConfidenceFixes(text, correctionOptions)
-          : text;
-        processed = processDumpWithValidation(toParse);
-      }
+      const toParse = shouldNormalize
+        ? applyAllHighConfidenceFixes(text, correctionOptions)
+        : text;
+      processed = processDumpWithValidation(toParse, useEnhanced);
 
       const fixes = generateAutoCorrectionFixes(text, correctionOptions);
       setAvailableFixes(fixes);
