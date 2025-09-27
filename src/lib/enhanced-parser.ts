@@ -44,13 +44,18 @@ function getSuperscriptOrdinal(num: string): string {
 }
 
 // Core regex patterns based on Jeremy's specifications
-const PAREN_RE = /\(([^()]*)\)/g;
+// This regex handles nested parentheses by matching balanced parentheses
+const PAREN_RE = /\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g;
 const HP_RE = /\b(?:HP|Hit\s*Points)\s*[:\-]?\s*(\d+)\b/i;
 const AC_RE = /\bAC\s*[:\-]?\s*([\d\/]+)\b/i;
+
 const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|((?:human|elf|dwarf|halfling|gnome|orc|goblin)),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
+=======
+const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|(human|elf|dwarf|halfling|gnome|orc|goblin),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
+
 const DISPOSITION_RE = /\b(disposition|alignment)\s*[:\-]?\s*([a-z\s]+(?:\/[a-z\s]+)?)\b/i;
 const MOUNT_TYPE_RE = /\b(heavy|light)?\s*war\s*horse\b/i;
-const LEADING_BONUS_RE = /\+(\d+)\s+(longsword|full plate mail|shield|bastard sword|lance|dagger|sword|mace|axe|bow|crossbow)/gi;
+const LEADING_BONUS_RE = /\+(\d+)\s+((?:\w+\s+)*(?:longsword|sword|mail|armor|shield|lance|dagger|mace|axe|bow|crossbow|staff|rod|wand|ring|robe|cloak|boots|gauntlets|helm|bracers|pectoral))/gi;
 
 // Corrected shield/buckler regex from earlier bug fix
 const BP_RE = /\b(?:(\+\s*\d+)\s*)?(?:an?\s+)?(?:(?:wooden|steel|iron)\s+)?(buckler|pavis|shield)(?:\s+shield)?(?:\s*(\+\s*\d+))?/gi;
@@ -114,9 +119,15 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     data.ac = acMatch[1];
   }
 
-  // Extract disposition
-  const dispositionMatch = DISPOSITION_RE.exec(parenthetical);
-  if (dispositionMatch) {
+  // Extract disposition with multiple pattern variations
+  let dispositionMatch = DISPOSITION_RE.exec(parenthetical);
+  if (!dispositionMatch) {
+    // Try more liberal patterns
+    dispositionMatch = /\b(lawful\s+good|lawful\s+neutral|lawful\s+evil|neutral\s+good|true\s+neutral|neutral\s+evil|chaotic\s+good|chaotic\s+neutral|chaotic\s+evil|lawful|neutral|chaotic|good|evil)\b/i.exec(parenthetical);
+    if (dispositionMatch) {
+      data.disposition = normalizeDisposition(dispositionMatch[1]);
+    }
+  } else {
     data.disposition = normalizeDisposition(dispositionMatch[2]);
   }
 
@@ -129,17 +140,28 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       const level = rclMatch[1];
       const race = rclMatch[2];
       const charClass = rclMatch[3].replace(/s$/, ''); // Remove plural 's'
-      data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
+      // Preserve original ordinal format
+      const ordinalMatch = rclMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
+      const ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
+      data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
       data.level = level;
-    } else if (rclMatch[4]) {
+    } else if (rclMatch[4] && rclMatch[5]) {
       // Format: "human, 2nd level fighter" - groups [4]=race, [5]=level, [6]=class
       const race = rclMatch[4];
       const level = rclMatch[5];
+
       const charClassRaw = rclMatch[6];
       const charClass = charClassRaw ? charClassRaw.replace(/s$/, '') : '';
       data.raceClass = charClass
         ? `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`
         : `${race}, ${level}${getSuperscriptOrdinal(level)} level`;
+
+      const charClass = rclMatch[6] ? rclMatch[6].replace(/s$/, '') : 'fighter'; // Remove plural 's', default to fighter
+      // Preserve original ordinal format
+      const ordinalMatch = rclMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
+      const ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
+      data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
+
       data.level = level;
     }
   }
@@ -151,22 +173,58 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       const level = proseMatch[1];
       const race = proseMatch[2];
       const charClass = proseMatch[3].replace(/s$/, ''); // Remove plural 's'
-      data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
+      // Normalize ordinal to superscript format from prose match
+      const ordinalMatch = proseMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
+      let ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
+      // Convert regular ordinals to superscript for consistency
+      if (ordinal === 'st' || ordinal === 'nd' || ordinal === 'rd' || ordinal === 'th') {
+        ordinal = getSuperscriptOrdinal(level);
+      }
+      data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
       data.level = level;
-      console.log('DEBUG: Prose match found:', { level, race, charClass, raceClass: data.raceClass });
     }
   }
 
-  // Extract attributes (simplified for now)
-  const attrMatch = /(?:primary\s+attributes?|PA)\s*[:\-]?\s*([^.;,]+)/i.exec(parenthetical);
+  // Try to extract HD format like "these HD 1(d6) human militia"
+  if (!data.raceClass) {
+    const hdMatch = /(?:these|this|the)\s+HD\s+\d+\([^)]+\)\s+([a-z-]+)\s+([a-z-]+)s?/i.exec(parenthetical);
+    if (hdMatch) {
+      const race = hdMatch[1];
+      const charClass = hdMatch[2].replace(/s$/, ''); // Remove plural 's'
+      data.raceClass = `${race} ${charClass}`;
+    }
+  }
+
+  // Extract attributes with multiple pattern variations
+  let attrMatch = /(?:primary\s+attributes?|prime\s+attributes?|PA)\s*[:\-]?\s*([^.;,]+)/i.exec(parenthetical);
+  if (!attrMatch) {
+    // Try without "primary/prime/PA" qualifier
+    attrMatch = /(?:his|their|its)\s+(?:primary\s+)?attributes?\s+are\s+([^.;,]+)/i.exec(parenthetical);
+  }
+  if (!attrMatch) {
+    // Try simple patterns like "STR, DEX, CON" or "strength, dexterity"
+    attrMatch = /\b((?:str|dex|con|int|wis|cha|strength|dexterity|constitution|intelligence|wisdom|charisma)(?:[,\s]+(?:str|dex|con|int|wis|cha|strength|dexterity|constitution|intelligence|wisdom|charisma))*)\b/i.exec(parenthetical);
+  }
   if (attrMatch) {
     data.attributes = attrMatch[1].trim();
   }
 
-  // Extract equipment
-  const equipMatch = /(?:EQ|equipment|carries?|wields?)\s*[:\-]?\s*([^.;]+)/i.exec(parenthetical);
+  // Extract equipment - preserve verb structure when possible
+  let equipMatch = /(?:EQ|equipment)[\s:\-]+([^.;]+)/i.exec(parenthetical);
   if (equipMatch) {
     data.equipment = equipMatch[1].trim();
+  } else {
+    // Try to capture equipment items only (without verbs)
+    equipMatch = /(?:they\s+wear|wears?|carries?|wields?)\s+([^.;]+)/i.exec(parenthetical);
+    if (equipMatch) {
+      data.equipment = equipMatch[1].trim();
+    } else {
+      // Fallback: simple equipment list
+      equipMatch = /(?:carries?|wields?|they\s+wear|wears?)\s*[:\-]?\s*([^.;]+)/i.exec(parenthetical);
+      if (equipMatch) {
+        data.equipment = equipMatch[1].trim();
+      }
+    }
   }
 
   // Extract mount data
@@ -175,10 +233,42 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     data.mountData = parenthetical;
   }
 
-  // Extract coins
-  const coinMatch = /(\d+)[-–](\d+)\s*(?:gp|gold|GP)/i.exec(parenthetical);
+  // Extract coins with multiple pattern variations
+  let coinMatch = /(\d+)[-–](\d+)\s*(?:gp|gold|GP)/i.exec(parenthetical);
   if (coinMatch) {
     data.coins = `${coinMatch[1]}–${coinMatch[2]} gold in coin`;
+  } else {
+    // Extract all currency mentions from parenthetical
+    const currencyPattern = /(\d+)\s*(gp|sp|cp|pp|gold|silver|copper|platinum)\b/gi;
+    const currencies: string[] = [];
+    let match;
+    while ((match = currencyPattern.exec(parenthetical)) !== null) {
+      const amount = match[1];
+      const type = match[2].toLowerCase();
+
+      switch (type) {
+        case 'gp':
+        case 'gold':
+          currencies.push(`${amount} gold in coin`);
+          break;
+        case 'sp':
+        case 'silver':
+          currencies.push(`${amount} silver in coin`);
+          break;
+        case 'cp':
+        case 'copper':
+          currencies.push(`${amount} copper in coin`);
+          break;
+        case 'pp':
+        case 'platinum':
+          currencies.push(`${amount} platinum in coin`);
+          break;
+      }
+    }
+
+    if (currencies.length > 0) {
+      data.coins = currencies.join(', ');
+    }
   }
 
   return data;
@@ -196,7 +286,7 @@ export function normalizeDisposition(disposition: string): string {
     'lawful evil': 'law/evil',
     'neutral good': 'neutral/good',
     'true neutral': 'neutral/neutral',
-    'neutral': 'neutral', // Keep single "neutral" as is, don't make it redundant
+    'neutral': 'neutral/neutral',
     'neutral evil': 'neutral/evil',
     'chaotic good': 'chaos/good',
     'chaotic neutral': 'chaos/neutral',
@@ -208,9 +298,15 @@ export function normalizeDisposition(disposition: string): string {
 }
 
 export function normalizeAttributes(attributes: string, isUnit: boolean): string {
+
   if (isUnit && /\b(str|dex|con|strength|dexterity|constitution)\b/i.test(attributes)) {
     // For units with physical attributes, collapse to the long-form category.
     return 'physical';
+
+  if (isUnit && /\b(str|dex|con|strength|dexterity|constitution|physical)\b/i.test(attributes)) {
+    // For units with physical attributes, use PA physical per Jeremy's mandate
+    return 'PA physical';
+
   }
 
   // Expand abbreviations for individual NPCs
@@ -223,44 +319,61 @@ export function normalizeAttributes(attributes: string, isUnit: boolean): string
     'cha': 'charisma'
   };
 
-  return attributes.toLowerCase()
+  // Parse and normalize to PHB order per Jeremy's mandate
+  const phbOrder = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
+
+  const attrs = attributes.toLowerCase()
     .split(/[,\s]+/)
     .map(attr => abbrevMap[attr.trim()] || attr.trim())
     .filter(Boolean)
-    .join(', ');
+    .filter(attr => phbOrder.includes(attr))
+    .sort((a, b) => phbOrder.indexOf(a) - phbOrder.indexOf(b));
+
+  return attrs.join(', ');
 }
 
 export function canonicalizeShields(equipment: string): string {
-  // Step by step approach to avoid cascading replacements
+  // Jeremy's mandate: explicit shield type (size + material) per editorial standards
   let result = equipment;
 
-  // First pass: Handle specific bonus cases
-  if (result.includes('+') && result.includes('shield')) {
-    result = result.replace(/\+(\d+)\s+shield/gi, 'medium steel shield +$1');
-  }
+  // First pass: Handle bonus shields - preserve material if specified
+  result = result.replace(/\+(\d+)\s+(wooden|steel|iron)?\s*shield/gi, (match, bonus, material) => {
+    const mat = material || 'steel';
+    return `medium ${mat} shield +${bonus}`;
+  });
 
-  // Second pass: Handle material shields (only if we didn't already process)
-  if (!result.includes('medium steel shield')) {
-    result = result.replace(/\bsteel\s+shield/gi, 'medium steel shield');
-    result = result.replace(/\bwooden\s+shield/gi, 'medium steel shield');
-  }
+  // Second pass: Handle material-only shields (add size)
+  result = result.replace(/\b(wooden|steel|iron)\s+shield(?!\s*\+)/gi, 'medium $1 shield');
 
-  // Third pass: Handle bare "shield" (only if we haven't processed yet)
-  if (!result.includes('medium steel shield')) {
-    result = result.replace(/\b(?:a\s+|an\s+)?shield\b/gi, 'medium steel shield');
-  }
+  // Third pass: Handle bare "shield" (add both size and material)
+  result = result.replace(/\b(?:a\s+|an\s+)?shield\b(?!\s*\+)/gi, (match, offset, string) => {
+    // Don't replace if already has size+material prefix
+    const before = string.substring(Math.max(0, offset - 25), offset);
+    if (/\b(medium|large|small)\s+(wooden|steel|iron)\s*$/i.test(before)) {
+      return match;
+    }
+    return 'medium steel shield';
+  });
 
-  // Handle buckler and pavis separately (they don't become medium steel shield)
-  result = result.replace(/\b(?:wooden\s+|steel\s+|iron\s+)buckler\b/gi, 'buckler');
-  result = result.replace(/\b(?:wooden\s+|steel\s+|iron\s+)pavis\b/gi, 'pavis');
+  // Handle buckler and pavis separately (they don't need size qualifiers)
+  result = result.replace(/\b(?:wooden|steel|iron)\s+(buckler|pavis)/gi, '$1');
 
   return result;
 }
 
 export function repositionMagicItemBonuses(equipment: string): string {
-  return equipment.replace(LEADING_BONUS_RE, (match, bonus, item) => {
+  // Handle bonuses that appear after verbs: "carries +1 sword" → "carries sword +1"
+  let result = equipment.replace(/(wears?|carries?|wields?)\s+\+(\d+)\s+((?:\w+\s+)*(?:longsword|sword|mail|armor|shield|lance|dagger|mace|axe|bow|crossbow|staff|rod|wand|ring|robe|cloak|boots|gauntlets|helm|bracers|pectoral))/gi,
+    (match, verb, bonus, item) => {
+      return `${verb} ${item} +${bonus}`;
+    });
+
+  // Handle traditional pattern: "+1 sword" → "sword +1"
+  result = result.replace(LEADING_BONUS_RE, (match, bonus, item) => {
     return `${item} +${bonus}`;
   });
+
+  return result;
 }
 
 export function deduplicateEquipment(equipment: string): string {
@@ -270,11 +383,17 @@ export function deduplicateEquipment(equipment: string): string {
 }
 
 export function normalizeEquipmentVerbs(equipment: string): string {
-  // Convert wears/wearing/worn to "wears" for armor
-  let normalized = equipment.replace(/\b(wears?|wearing|worn)\b\s+/gi, 'wears ');
+  // Jeremy's mandate: "wears" for armor/barding, "carries" for weapons/gear
+  let normalized = equipment;
 
-  // Convert carries/carrying to "carry" for weapons/gear
-  normalized = normalized.replace(/\b(carries|carrying)\b\s+/gi, 'carry ');
+  // Normalize armor verbs to "wears" (for armor, barding, clothing)
+  normalized = normalized.replace(/\b(wears?|wearing|worn|has on|dons?)\b\s+/gi, 'wears ');
+
+  // Normalize weapon/gear verbs to "carry" (for weapons, tools, items)
+  normalized = normalized.replace(/\b(carries?|carrying|bears?|bearing|holds?|holding|wields?|wielding)\b\s+/gi, 'carry ');
+
+  // Handle "and carry" constructions properly
+  normalized = normalized.replace(/\band\s+carry/gi, 'and carry');
 
   return normalized;
 }
@@ -314,6 +433,7 @@ export function extractMountFromParenthetical(parenthetical: string): {
 
   return { cleanedParenthetical: parenthetical };
 }
+
 
 function pluralizeClassNameLocal(name: string): string {
   const lower = name.trim().toLowerCase();
@@ -429,6 +549,10 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
 export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, title?: string): string {
   console.log('DEBUG: buildCanonicalParenthetical called with:', { data, isUnit, title });
   const sentences: string[] = [];
+=======
+export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, omitRace: boolean = false, useSuperscriptOrdinals: boolean = true): string {
+  const parts: string[] = [];
+
 
   const vitalParts: string[] = [];
   if (data.hp) vitalParts.push(`HP ${data.hp}`);
@@ -436,8 +560,43 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   if (data.disposition) vitalParts.push(`disposition ${data.disposition}`);
 
   if (vitalParts.length > 0) {
+
     const descriptor = buildDescriptorFromData(data, isUnit, title);
     sentences.push(`${descriptor}'s vital stats are ${vitalParts.join(', ')}.`);
+
+    let descriptor = '';
+
+    if (data.raceClass) {
+      let raceClassText = data.raceClass;
+
+      // Convert regular ordinals to superscript for output consistency if requested
+      if (useSuperscriptOrdinals) {
+        raceClassText = raceClassText.replace(/(\d+)(st|nd|rd|th)(\s+level)/g, (match, level, ordinal, levelText) => {
+          const superscriptOrdinal = getSuperscriptOrdinal(level);
+          return `${level}${superscriptOrdinal}${levelText}`;
+        });
+      }
+
+      if (omitRace) {
+        // Extract just the class and level for canonical format
+        const classLevelMatch = raceClassText.match(/(\d+(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s+level\s+[a-z-]+s?)/i);
+        raceClassText = classLevelMatch ? classLevelMatch[0] : raceClassText;
+      }
+
+      if (isUnit) {
+        // For units: "These human, 2nd level fighters" or "These 2nd level fighters"
+        descriptor = `These ${raceClassText}`;
+      } else {
+        // For individuals: "This human, 4th level fighter" or "This 4th level fighter"
+        descriptor = `This ${raceClassText}`;
+      }
+    } else {
+      // Fallback for unknown creatures
+      descriptor = isUnit ? 'These creatures' : 'This creature';
+    }
+
+    parts.push(`${descriptor}'s vital stats are ${vitalParts.join(', ')}`);
+
   }
 
   if (data.attributes) {
@@ -475,6 +634,26 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       } else {
         carriedItems.push(processed.trim());
       }
+
+
+      return part;
+    }).join(', ');
+
+    // Jeremy's mandate: consistent equipment verbs per entity type
+    const wearVerb = isUnit ? 'wear' : 'wears';
+    const carryVerb = isUnit ? 'carry' : 'carries';
+
+    // Process equipment with proper verb forms
+    if (processedEquipment.includes('wears ') || processedEquipment.includes('carries ')) {
+      // Equipment already has embedded verbs, normalize them
+      let normalized = processedEquipment.replace(/\bwears\b/g, wearVerb);
+      normalized = normalized.replace(/\bcarries\b/g, carryVerb);
+      normalized = normalized.replace(/\bcarry\b/g, carryVerb);
+      parts.push(normalized);
+    } else {
+      // No embedded verbs, add appropriate verb
+      parts.push(`${wearVerb} ${processedEquipment}`);
+
     }
   }
 

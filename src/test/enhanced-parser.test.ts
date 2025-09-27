@@ -189,7 +189,7 @@ describe('Enhanced Parser Functions', () => {
         raw: 'original'
       };
 
-      const result = buildCanonicalParenthetical(data, false);
+      const result = buildCanonicalParenthetical(data, false, true, false);
 
       expect(result).toContain('This human, 4ᵗʰ level fighter\'s vital stats are HP 24, AC 16, disposition neutral.');
       expect(result).toContain('Their primary attributes are strength, dexterity, constitution.');
@@ -208,7 +208,11 @@ describe('Enhanced Parser Functions', () => {
         raw: 'original'
       };
 
+
       const result = buildCanonicalParenthetical(data, true, 'Militia x6');
+
+      const result = buildCanonicalParenthetical(data, true, true, false);
+
 
       expect(result).toContain('These human 2ⁿᵈ level fighters\'s vital stats are HP 12, AC 15, disposition neutral.');
       expect(result).toContain('Their primary attributes are physical.');
