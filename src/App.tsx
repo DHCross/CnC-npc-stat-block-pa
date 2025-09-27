@@ -249,6 +249,9 @@ Gender: he leads his troops
 Background: This sixteenth level fighter serves as captain`;
 
 function App() {
+  const COMMIT = process.env.NEXT_PUBLIC_COMMIT_HASH ?? 'dev';
+  const BUILT = process.env.NEXT_PUBLIC_BUILD_DATE ?? 'local';
+
   const [appliedFixes, setAppliedFixes] = useState<string[]>([]);
   const [inputText, setInputText] = useState('');
   const [results, setResults] = useState<ProcessedNPC[]>([]);
@@ -1063,9 +1066,25 @@ function App() {
               <div className="flex items-center gap-2">
                 <span>Castles & Crusades NPC Stat Block Generator</span>
               </div>
-              <div className="flex items-center gap-1 font-mono text-xs">
-                <span className="text-foreground/40">Build:</span>
-                <span className="text-foreground/60">{formatVersionString()}</span>
+              <div className="flex flex-wrap items-center justify-center gap-3 font-mono text-xs text-foreground/60 sm:justify-end">
+                <span className="flex items-center gap-2">
+                  <span className="uppercase tracking-wide text-foreground/40">Build:</span>
+                  <code className="rounded border border-white/10 bg-white/5 px-2 py-1 text-foreground/70">
+                    {formatVersionString()}
+                  </code>
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="uppercase tracking-wide text-foreground/40">Commit:</span>
+                  <code className="rounded border border-white/10 bg-white/5 px-2 py-1 text-foreground/70">
+                    {COMMIT}
+                  </code>
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="uppercase tracking-wide text-foreground/40">Built:</span>
+                  <code className="rounded border border-white/10 bg-white/5 px-2 py-1 text-foreground/70" title={BUILT}>
+                    {BUILT}
+                  </code>
+                </span>
               </div>
             </div>
           </div>
