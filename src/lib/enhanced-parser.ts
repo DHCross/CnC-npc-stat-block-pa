@@ -49,8 +49,6 @@ const PAREN_RE = /\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g;
 const HP_RE = /\b(?:HP|Hit\s*Points)\s*[:\-]?\s*(\d+)\b/i;
 const AC_RE = /\bAC\s*[:\-]?\s*([\d\/]+)\b/i;
 
-const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|((?:human|elf|dwarf|halfling|gnome|orc|goblin)),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
-=======
 const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|(human|elf|dwarf|halfling|gnome|orc|goblin),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
 
 const DISPOSITION_RE = /\b(disposition|alignment)\s*[:\-]?\s*([a-z\s]+(?:\/[a-z\s]+)?)\b/i;
@@ -149,12 +147,6 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       // Format: "human, 2nd level fighter" - groups [4]=race, [5]=level, [6]=class
       const race = rclMatch[4];
       const level = rclMatch[5];
-
-      const charClassRaw = rclMatch[6];
-      const charClass = charClassRaw ? charClassRaw.replace(/s$/, '') : '';
-      data.raceClass = charClass
-        ? `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`
-        : `${race}, ${level}${getSuperscriptOrdinal(level)} level`;
 
       const charClass = rclMatch[6] ? rclMatch[6].replace(/s$/, '') : 'fighter'; // Remove plural 's', default to fighter
       // Preserve original ordinal format
@@ -298,15 +290,9 @@ export function normalizeDisposition(disposition: string): string {
 }
 
 export function normalizeAttributes(attributes: string, isUnit: boolean): string {
-
-  if (isUnit && /\b(str|dex|con|strength|dexterity|constitution)\b/i.test(attributes)) {
-    // For units with physical attributes, collapse to the long-form category.
-    return 'physical';
-
   if (isUnit && /\b(str|dex|con|strength|dexterity|constitution|physical)\b/i.test(attributes)) {
     // For units with physical attributes, use PA physical per Jeremy's mandate
     return 'PA physical';
-
   }
 
   // Expand abbreviations for individual NPCs
@@ -546,24 +532,16 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
   return isUnit ? `${subject} creatures` : `${subject} creature`;
 }
 
-export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, title?: string): string {
-  console.log('DEBUG: buildCanonicalParenthetical called with:', { data, isUnit, title });
-  const sentences: string[] = [];
-=======
 export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, omitRace: boolean = false, useSuperscriptOrdinals: boolean = true): string {
   const parts: string[] = [];
 
-
+  // Build vital stats
   const vitalParts: string[] = [];
   if (data.hp) vitalParts.push(`HP ${data.hp}`);
   if (data.ac) vitalParts.push(`AC ${data.ac}`);
   if (data.disposition) vitalParts.push(`disposition ${data.disposition}`);
 
   if (vitalParts.length > 0) {
-
-    const descriptor = buildDescriptorFromData(data, isUnit, title);
-    sentences.push(`${descriptor}'s vital stats are ${vitalParts.join(', ')}.`);
-
     let descriptor = '';
 
     if (data.raceClass) {
@@ -596,18 +574,26 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     }
 
     parts.push(`${descriptor}'s vital stats are ${vitalParts.join(', ')}`);
-
   }
 
+  // Add PA physical for units, expanded attributes for individuals
   if (data.attributes) {
     const normalizedAttrs = normalizeAttributes(data.attributes, isUnit);
-    const possessive = isUnit ? 'Their' : 'Their';
-    sentences.push(`${possessive} primary attributes are ${normalizedAttrs}.`);
+    if (isUnit) {
+      // For units, PA physical should be on same line as vital stats
+      if (parts.length > 0) {
+        parts[0] += `, ${normalizedAttrs}`;
+      } else {
+        parts.push(normalizedAttrs);
+      }
+    } else {
+      // For individuals, add as separate clause
+      const possessive = 'his';
+      parts.push(`${possessive} primary attributes are ${normalizedAttrs}`);
+    }
   }
 
-  const wornItems: string[] = [];
-  const carriedItems: string[] = [];
-
+  // Add equipment
   if (data.equipment) {
     let equipment = data.equipment;
     equipment = canonicalizeShields(equipment);
@@ -615,27 +601,13 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     equipment = normalizeEquipmentVerbs(equipment);
     equipment = deduplicateEquipment(equipment);
 
-    const equipmentParts = equipment.split(',').map(part => part.trim()).filter(Boolean);
-
-    for (const part of equipmentParts) {
-      const processed = /\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(part)
-        ? addMagicItemMechanics(part)
-        : part;
-
-      const lower = processed.toLowerCase();
-      if (lower.startsWith('wears ')) {
-        wornItems.push(processed.slice(6).trim());
-      } else if (lower.startsWith('wear ')) {
-        wornItems.push(processed.slice(5).trim());
-      } else if (lower.startsWith('carry ')) {
-        carriedItems.push(processed.slice(6).trim());
-      } else if (/(mail|armor|plate|barding)/i.test(processed)) {
-        wornItems.push(processed.trim());
-      } else {
-        carriedItems.push(processed.trim());
+    // Add magic item mechanics to equipment
+    const equipmentParts = equipment.split(',').map(part => part.trim());
+    const processedEquipment = equipmentParts.map(part => {
+      // Check if it's a magic item and add mechanics
+      if (/\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(part)) {
+        return addMagicItemMechanics(part);
       }
-
-
       return part;
     }).join(', ');
 
@@ -653,27 +625,16 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     } else {
       // No embedded verbs, add appropriate verb
       parts.push(`${wearVerb} ${processedEquipment}`);
-
     }
   }
 
+  // Add coins
   if (data.coins) {
-    carriedItems.push(data.coins);
+    const carryVerb = isUnit ? 'carry' : 'carries';
+    parts.push(`and ${carryVerb} ${data.coins}`);
   }
 
-  if (wornItems.length || carriedItems.length) {
-    const clauses: string[] = [];
-    if (wornItems.length) {
-      clauses.push(`wear ${wornItems.join(', ')}`);
-    }
-    if (carriedItems.length) {
-      clauses.push(`${clauses.length > 0 ? 'carry' : 'carry'} ${carriedItems.join(', ')}`);
-    }
-
-    sentences.push(`They ${clauses.join(' and ')}.`);
-  }
-
-  return sentences.join(' ').replace(/\s+/g, ' ').trim();
+  return parts.join(', ') + '.';
 }
 
 export function formatMountBlock(mountBlock: MountBlock): string {

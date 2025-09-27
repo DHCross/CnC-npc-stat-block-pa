@@ -854,7 +854,7 @@ function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): st
   if (parentheticals.length > 0) {
 
     const parentheticalData = extractParentheticalData(parentheticals[0]);
-    const canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit, title);
+    const canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit);
     return `${name} *(${canonicalParenthetical})*`;
 
     // Extract mount first (Jeremy's mandate: separate mounts into dedicated blocks)
@@ -863,11 +863,11 @@ function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): st
 
     // Process the cleaned parenthetical (mount data removed)
     const cleanedParentheticalData = extractParentheticalData(cleanedParenthetical);
-    const canonicalParenthetical = buildCanonicalParenthetical(cleanedParentheticalData, isUnit);
+    const cleanedCanonicalParenthetical = buildCanonicalParenthetical(cleanedParentheticalData, isUnit);
 
     // Only add parenthetical if it contains meaningful content (not just a period or empty)
-    if (canonicalParenthetical && canonicalParenthetical.trim().length > 1 && canonicalParenthetical.trim() !== '.') {
-      result = `${name} *(${canonicalParenthetical})*`;
+    if (cleanedCanonicalParenthetical && cleanedCanonicalParenthetical.trim().length > 1 && cleanedCanonicalParenthetical.trim() !== '.') {
+      result = `${name} *(${cleanedCanonicalParenthetical})*`;
     }
 
   }
