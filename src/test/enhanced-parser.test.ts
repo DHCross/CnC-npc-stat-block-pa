@@ -209,8 +209,6 @@ describe('Enhanced Parser Functions', () => {
       };
 
 
-      const result = buildCanonicalParenthetical(data, true, 'Militia x6');
-
       const result = buildCanonicalParenthetical(data, true, true, false);
 
 

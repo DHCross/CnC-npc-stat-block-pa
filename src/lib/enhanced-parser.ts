@@ -180,12 +180,13 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
 
   // Try to extract from format like "These are chaotic good, human, 2nd level fighters"
   if (!data.raceClass) {
-    const complexProseMatch = /(these|this|the)\s+are\s+(?:chaotic\s+good|chaotic\s+evil|chaotic\s+neutral|lawful\s+good|lawful\s+evil|lawful\s+neutral|neutral\s+good|neutral\s+evil|neutral),\s*([a-z-]+),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s+level\s+([a-z-]+)s?/i.exec(parenthetical);
+    const complexProseMatch = /(these|this|the)\s+are\s+(chaotic\s+good|chaotic\s+evil|chaotic\s+neutral|lawful\s+good|lawful\s+evil|lawful\s+neutral|neutral\s+good|neutral\s+evil|neutral),\s*([a-z-]+),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s+level\s+([a-z-]+)s?/i.exec(parenthetical);
     if (complexProseMatch) {
       const originalPronoun = complexProseMatch[1];
-      const race = complexProseMatch[2];
-      const level = complexProseMatch[3];
-      const charClass = complexProseMatch[4].replace(/s$/, ''); // Remove plural 's'
+      const disposition = complexProseMatch[2];
+      const race = complexProseMatch[3];
+      const level = complexProseMatch[4];
+      const charClass = complexProseMatch[5].replace(/s$/, ''); // Remove plural 's'
       // Normalize ordinal to superscript format
       const ordinalMatch = complexProseMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
       let ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
@@ -195,6 +196,7 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
       data.level = level;
       data.originalPronoun = originalPronoun.toLowerCase(); // Store the original pronoun
+      data.disposition = normalizeDisposition(disposition); // Extract and normalize disposition
     }
   }
 
