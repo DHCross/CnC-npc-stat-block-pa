@@ -857,8 +857,8 @@ function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): st
     mountBlock = extractedMount;
 
     // Process the cleaned parenthetical (mount data removed)
-    const parentheticalData = extractParentheticalData(cleanedParenthetical);
-    const canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit);
+    const cleanedParentheticalData = extractParentheticalData(cleanedParenthetical);
+    const canonicalParenthetical = buildCanonicalParenthetical(cleanedParentheticalData, isUnit);
 
     // Only add parenthetical if it contains meaningful content (not just a period or empty)
     if (canonicalParenthetical && canonicalParenthetical.trim().length > 1 && canonicalParenthetical.trim() !== '.') {
