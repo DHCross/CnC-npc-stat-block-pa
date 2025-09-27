@@ -44,10 +44,11 @@ function getSuperscriptOrdinal(num: string): string {
 }
 
 // Core regex patterns based on Jeremy's specifications
-const PAREN_RE = /\(([^()]*)\)/g;
+// This regex handles nested parentheses by matching balanced parentheses
+const PAREN_RE = /\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g;
 const HP_RE = /\b(?:HP|Hit\s*Points)\s*[:\-]?\s*(\d+)\b/i;
 const AC_RE = /\bAC\s*[:\-]?\s*([\d\/]+)\b/i;
-const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|(?:human|elf|dwarf|halfling|gnome|orc|goblin),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
+const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|(human|elf|dwarf|halfling|gnome|orc|goblin),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
 const DISPOSITION_RE = /\b(disposition|alignment)\s*[:\-]?\s*([a-z\s]+(?:\/[a-z\s]+)?)\b/i;
 const MOUNT_TYPE_RE = /\b(heavy|light)?\s*war\s*horse\b/i;
 const LEADING_BONUS_RE = /\+(\d+)\s+(longsword|full plate mail|shield|bastard sword|lance|dagger|sword|mace|axe|bow|crossbow)/gi;
@@ -131,11 +132,11 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       const charClass = rclMatch[3].replace(/s$/, ''); // Remove plural 's'
       data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
       data.level = level;
-    } else if (rclMatch[4]) {
+    } else if (rclMatch[4] && rclMatch[5]) {
       // Format: "human, 2nd level fighter" - groups [4]=race, [5]=level, [6]=class
       const race = rclMatch[4];
       const level = rclMatch[5];
-      const charClass = rclMatch[6].replace(/s$/, ''); // Remove plural 's'
+      const charClass = rclMatch[6] ? rclMatch[6].replace(/s$/, '') : 'fighter'; // Remove plural 's', default to fighter
       data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
       data.level = level;
     }
@@ -154,6 +155,16 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     }
   }
 
+  // Try to extract HD format like "these HD 1(d6) human militia"
+  if (!data.raceClass) {
+    const hdMatch = /(?:these|this|the)\s+HD\s+\d+\([^)]+\)\s+([a-z-]+)\s+([a-z-]+)s?/i.exec(parenthetical);
+    if (hdMatch) {
+      const race = hdMatch[1];
+      const charClass = hdMatch[2].replace(/s$/, ''); // Remove plural 's'
+      data.raceClass = `${race} ${charClass}`;
+    }
+  }
+
   // Extract attributes (simplified for now)
   const attrMatch = /(?:primary\s+attributes?|PA)\s*[:\-]?\s*([^.;,]+)/i.exec(parenthetical);
   if (attrMatch) {
@@ -161,7 +172,7 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
   }
 
   // Extract equipment
-  const equipMatch = /(?:EQ|equipment|carries?|wields?)\s*[:\-]?\s*([^.;]+)/i.exec(parenthetical);
+  const equipMatch = /(?:EQ|equipment|carries?|wields?|they\s+wear|wears?)\s*[:\-]?\s*([^.;]+)/i.exec(parenthetical);
   if (equipMatch) {
     data.equipment = equipMatch[1].trim();
   }
@@ -193,7 +204,7 @@ export function normalizeDisposition(disposition: string): string {
     'lawful evil': 'law/evil',
     'neutral good': 'neutral/good',
     'true neutral': 'neutral/neutral',
-    'neutral': 'neutral', // Keep single "neutral" as is, don't make it redundant
+    'neutral': 'neutral/neutral',
     'neutral evil': 'neutral/evil',
     'chaotic good': 'chaos/good',
     'chaotic neutral': 'chaos/neutral',
@@ -313,7 +324,6 @@ export function extractMountFromParenthetical(parenthetical: string): {
 }
 
 export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean): string {
-  console.log('DEBUG: buildCanonicalParenthetical called with:', { data, isUnit });
   const parts: string[] = [];
 
   // Build vital stats
@@ -333,11 +343,9 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
         // For individuals: "This human, 4th level fighter"
         descriptor = `This ${data.raceClass}`;
       }
-      console.log('DEBUG: descriptor with raceClass:', descriptor);
     } else {
       // Fallback for unknown creatures
       descriptor = isUnit ? 'These creatures' : 'This creature';
-      console.log('DEBUG: descriptor fallback:', descriptor);
     }
 
     parts.push(`${descriptor}'s vital stats are ${vitalParts.join(', ')}`);

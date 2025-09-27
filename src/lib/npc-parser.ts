@@ -850,7 +850,11 @@ function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): st
   if (parentheticals.length > 0) {
     const parentheticalData = extractParentheticalData(parentheticals[0]);
     const canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit);
-    return `${name} *(${canonicalParenthetical})*`;
+
+    // Only add parenthetical if it contains meaningful content (not just a period or empty)
+    if (canonicalParenthetical && canonicalParenthetical.trim().length > 1 && canonicalParenthetical.trim() !== '.') {
+      return `${name} *(${canonicalParenthetical})*`;
+    }
   }
 
   return name;
