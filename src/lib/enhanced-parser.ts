@@ -21,6 +21,8 @@ export interface ParsedTitleAndBody {
   parentheticals: string[];
 }
 
+import { addMagicItemMechanics } from './name-mappings';
+
 export interface MountBlock {
   name: string;
   level?: string;
@@ -45,7 +47,7 @@ function getSuperscriptOrdinal(num: string): string {
 const PAREN_RE = /\(([^()]*)\)/g;
 const HP_RE = /\b(?:HP|Hit\s*Points)\s*[:\-]?\s*(\d+)\b/i;
 const AC_RE = /\bAC\s*[:\-]?\s*([\d\/]+)\b/i;
-const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|([a-z-]+),?\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
+const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|(?:human|elf|dwarf|halfling|gnome|orc|goblin),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
 const DISPOSITION_RE = /\b(disposition|alignment)\s*[:\-]?\s*([a-z\s]+(?:\/[a-z\s]+)?)\b/i;
 const MOUNT_TYPE_RE = /\b(heavy|light)?\s*war\s*horse\b/i;
 const LEADING_BONUS_RE = /\+(\d+)\s+(longsword|full plate mail|shield|bastard sword|lance|dagger|sword|mace|axe|bow|crossbow)/gi;
@@ -141,13 +143,14 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
 
   // Also try to extract from prose that includes leading pronouns like "these 2nd level human fighters"
   if (!data.raceClass) {
-    const proseMatch = /(?:these|this|the)?\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?/i.exec(parenthetical);
+    const proseMatch = /(?:these|this|the)\s+(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s+level\s+([a-z-]+)\s+([a-z-]+)s?/i.exec(parenthetical);
     if (proseMatch) {
       const level = proseMatch[1];
       const race = proseMatch[2];
       const charClass = proseMatch[3].replace(/s$/, ''); // Remove plural 's'
       data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
       data.level = level;
+      console.log('DEBUG: Prose match found:', { level, race, charClass, raceClass: data.raceClass });
     }
   }
 
@@ -310,6 +313,7 @@ export function extractMountFromParenthetical(parenthetical: string): {
 }
 
 export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean): string {
+  console.log('DEBUG: buildCanonicalParenthetical called with:', { data, isUnit });
   const parts: string[] = [];
 
   // Build vital stats
@@ -329,9 +333,11 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
         // For individuals: "This human, 4th level fighter"
         descriptor = `This ${data.raceClass}`;
       }
+      console.log('DEBUG: descriptor with raceClass:', descriptor);
     } else {
       // Fallback for unknown creatures
       descriptor = isUnit ? 'These creatures' : 'This creature';
+      console.log('DEBUG: descriptor fallback:', descriptor);
     }
 
     parts.push(`${descriptor}'s vital stats are ${vitalParts.join(', ')}`);
@@ -363,14 +369,24 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     equipment = normalizeEquipmentVerbs(equipment);
     equipment = deduplicateEquipment(equipment);
 
+    // Add magic item mechanics to equipment
+    const equipmentParts = equipment.split(',').map(part => part.trim());
+    const processedEquipment = equipmentParts.map(part => {
+      // Check if it's a magic item and add mechanics
+      if (/\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(part)) {
+        return addMagicItemMechanics(part);
+      }
+      return part;
+    }).join(', ');
+
     const verb = isUnit ? 'wear' : 'wears';
     const carryVerb = isUnit ? 'carry' : 'carries';
 
     // Split armor and weapons/gear
-    if (equipment.includes('wears')) {
-      parts.push(equipment.replace(/\bcarry\b/g, `and ${carryVerb}`));
+    if (processedEquipment.includes('wears')) {
+      parts.push(processedEquipment.replace(/\bcarry\b/g, `and ${carryVerb}`));
     } else {
-      parts.push(`${verb} ${equipment}`);
+      parts.push(`${verb} ${processedEquipment}`);
     }
   }
 

@@ -33,7 +33,7 @@ export interface AutoCorrectionOptions {
   enableDictionarySuggestions?: boolean;
 }
 
-import { MAGIC_ITEM_MAPPINGS, SPELL_NAME_MAPPINGS, applyNameMappings } from './name-mappings';
+import { MAGIC_ITEM_MAPPINGS, SPELL_NAME_MAPPINGS, applyNameMappings, addMagicItemMechanics } from './name-mappings';
 import {
   splitTitleAndBody,
   extractParentheticalData,
@@ -142,7 +142,7 @@ export function processDumpWithValidation(input: string, useEnhancedParser: bool
   const blocks = splitIntoBlocks(trimmed);
   return blocks.map((block) => {
     const parsed = useEnhancedParser ? parseBlockEnhanced(block) : parseBlock(block);
-    const converted = formatToNarrative(parsed);
+    const converted = useEnhancedParser ? formatToEnhancedNarrative(parsed, block) : formatToNarrative(parsed);
     const validation = buildValidation(parsed);
 
     return {
@@ -839,6 +839,23 @@ function formatToMonsterNarrative(parsed: ParsedNPC): string {
   return `${name} *(${vitalSection})*`;
 }
 
+function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): string {
+  // Use enhanced parser formatting
+  const { title, parentheticals } = splitTitleAndBody(originalBlock);
+  const isUnit = isUnitHeading(title);
+
+  let name = parsed.name;
+  if (!name.startsWith('**')) name = `**${name.replace(/\*\*/g, '')}**`;
+
+  if (parentheticals.length > 0) {
+    const parentheticalData = extractParentheticalData(parentheticals[0]);
+    const canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit);
+    return `${name} *(${canonicalParenthetical})*`;
+  }
+
+  return name;
+}
+
 function formatToNarrative(parsed: ParsedNPC): string {
   // Check if this is a Basic Monster
   if (isBasicMonster(parsed)) {
@@ -1435,20 +1452,25 @@ export function findEquipment(equipment: string): string {
     const isMagic = /\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(workingPart);
 
     if (isMagic) {
-      // Move bonus to end and italicize
+      // Move bonus to end and add mechanical explanations
+      let magicItem = workingPart;
+
       // Handle bonus at end: "ring of armor +5"
       const bonusAtEndMatch = workingPart.match(/^(.+?)(\s*\+\d+)(.*)$/);
       if (bonusAtEndMatch) {
         const [, item, bonus, rest] = bonusAtEndMatch;
-        return `*${item.trim()}${rest}${bonus}*`;
+        magicItem = `${item.trim()}${rest}${bonus}`;
       }
       // Handle bonus at beginning: "+2 dagger"
       const bonusAtStartMatch = workingPart.match(/^(\+\d+)\s+(.+)$/);
       if (bonusAtStartMatch) {
         const [, bonus, item] = bonusAtStartMatch;
-        return `*${item} ${bonus}*`;
+        magicItem = `${item} ${bonus}`;
       }
-      return `*${workingPart}*`;
+
+      // Add mechanical explanations and italicize
+      const withMechanics = addMagicItemMechanics(magicItem);
+      return `*${withMechanics}*`;
     }
     return workingPart;
   });

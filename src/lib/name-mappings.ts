@@ -457,14 +457,116 @@ export const MONSTER_NAME_MAPPINGS: Record<string, string> = {
   'yrthak': 'Yeerthak',
 };
 
-// Magic item mappings (expand this with Excel data conversion)
+// Magic item mappings with mechanical explanations
 export const MAGIC_ITEM_MAPPINGS: Record<string, string> = {
   'robe of protection': 'robe of armor',
   'ring of protection': 'ring of armor',
   'dagger of venom': 'dagger of envenomation',
   'pectoral of protection': 'pectoral of armor',
-  // TODO: Add comprehensive magic item mappings from Excel conversion
 };
+
+// Magic item mechanical explanations
+// NO MAGIC ITEM CAN BE PRINTED WITHOUT SOME DEGREE OF MECHANICAL EXPLANATION
+export const MAGIC_ITEM_MECHANICS: Record<string, string> = {
+  // Armor Items
+  'robe of armor': 'AC +1 to +5',
+  'ring of armor': 'AC +1 to +5',
+  'pectoral of armor': 'AC +1 to +3',
+  'bracers of defense': 'AC +1 to +8',
+  'cloak of protection': 'AC +1 to +5, saves +1 to +5',
+  'shield': 'AC +1 to +5',
+  'medium steel shield': 'AC +1',
+
+  // Weapons
+  'dagger of envenomation': 'save vs. poison or die',
+  'sword of sharpness': '+1 to +5, severs limbs on natural 20',
+  'frost brand': '+3 vs. fire creatures, immunity to fire',
+  'flame tongue': '+1 to +5, +2d6 fire damage',
+  'holy avenger': '+5 vs. evil, spell resistance',
+  'vorpal blade': 'severs head on natural 20',
+
+  // Potions
+  'potion of healing': 'heals 1d8+1 HP',
+  'potion of extra healing': 'heals 2d8+2 HP',
+  'potion of heroism': '+2 to attacks, saves, and damage for 1 hour',
+  'potion of giant strength': 'strength 18/00 for 1 hour',
+  'potion of invisibility': 'invisible for 1 hour or until attacking',
+
+  // Rings
+  'ring of regeneration': 'regains 1 HP per round',
+  'ring of spell storing': 'stores 1-5 spell levels',
+  'ring of wizardry': 'doubles 1st-3rd level spells',
+  'ring of telekinesis': 'telekinesis at will',
+  'ring of invisibility': 'invisible at will',
+
+  // Wands and Staves
+  'wand of fireballs': '6d6 damage, 20 charges',
+  'wand of lightning bolts': '6d6 damage, 20 charges',
+  'staff of power': 'various spells, 50 charges',
+  'staff of the magi': 'powerful spells, 50 charges',
+
+  // Miscellaneous
+  'bag of holding': 'holds 10,000 coins weight',
+  'boots of speed': 'double movement rate',
+  'gauntlets of ogre power': 'strength 18/00',
+  'helm of telepathy': 'ESP and suggestion',
+  'amulet of life protection': 'prevents level drain',
+  'crystal ball': 'scrying device',
+  'deck of many things': 'random magical effects',
+  'portable hole': 'extradimensional space',
+
+  // Standard bonuses (catch-all for +X items)
+  '+1': '+1 bonus',
+  '+2': '+2 bonus',
+  '+3': '+3 bonus',
+  '+4': '+4 bonus',
+  '+5': '+5 bonus',
+};
+
+// Function to detect if an item is magical
+export function isMagicalItem(item: string): boolean {
+  const magicIndicators = [
+    /\+\d+/,                                    // Has bonus like +1, +2, etc.
+    /\bof\s+\w+/i,                             // "of something" format
+    /\b(ring|wand|staff|rod|potion|scroll)\b/i, // Common magic item types
+    /\b(magic|magical|enchanted)\b/i,          // Explicit magic words
+    /\b(holy|unholy|blessed|cursed)\b/i,       // Religious items
+  ];
+
+  return magicIndicators.some(pattern => pattern.test(item));
+}
+
+// Function to add mechanical explanations to magic items
+export function addMagicItemMechanics(item: string): string {
+  if (!isMagicalItem(item)) {
+    return item;
+  }
+
+  // Check for exact matches first
+  const lowerItem = item.toLowerCase().trim();
+  if (MAGIC_ITEM_MECHANICS[lowerItem]) {
+    return `${item} (${MAGIC_ITEM_MECHANICS[lowerItem]})`;
+  }
+
+  // Check for partial matches
+  for (const [itemName, mechanics] of Object.entries(MAGIC_ITEM_MECHANICS)) {
+    if (lowerItem.includes(itemName.toLowerCase())) {
+      return `${item} (${mechanics})`;
+    }
+  }
+
+  // Handle +X bonuses
+  const bonusMatch = item.match(/\+(\d+)/);
+  if (bonusMatch) {
+    const bonus = bonusMatch[1];
+    if (MAGIC_ITEM_MECHANICS[`+${bonus}`]) {
+      return `${item} (${MAGIC_ITEM_MECHANICS[`+${bonus}`]})`;
+    }
+  }
+
+  // If no specific mechanics found, add generic explanation
+  return `${item} (see Appendix: Magic Items)`;
+}
 
 // Helper function to apply all name mappings
 export function applyNameMappings(text: string): string {
