@@ -12,6 +12,7 @@ export interface ParentheticalData {
   spells?: string;
   mountData?: string;
   coins?: string;
+  originalPronoun?: string; // Track original "these", "this", etc. to avoid duplication
   raw: string;
 }
 
@@ -177,13 +178,14 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     }
   }
 
-  // Try to extract from format like "These are neutral, human, 1st level fighters"
+  // Try to extract from format like "These are chaotic good, human, 2nd level fighters"
   if (!data.raceClass) {
-    const complexProseMatch = /(?:these|this|the)\s+are\s+[^,]*,\s*([a-z-]+),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s+level\s+([a-z-]+)s?/i.exec(parenthetical);
+    const complexProseMatch = /(these|this|the)\s+are\s+(?:chaotic\s+good|chaotic\s+evil|chaotic\s+neutral|lawful\s+good|lawful\s+evil|lawful\s+neutral|neutral\s+good|neutral\s+evil|neutral),\s*([a-z-]+),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s+level\s+([a-z-]+)s?/i.exec(parenthetical);
     if (complexProseMatch) {
-      const race = complexProseMatch[1];
-      const level = complexProseMatch[2];
-      const charClass = complexProseMatch[3].replace(/s$/, ''); // Remove plural 's'
+      const originalPronoun = complexProseMatch[1];
+      const race = complexProseMatch[2];
+      const level = complexProseMatch[3];
+      const charClass = complexProseMatch[4].replace(/s$/, ''); // Remove plural 's'
       // Normalize ordinal to superscript format
       const ordinalMatch = complexProseMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
       let ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
@@ -192,6 +194,7 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       }
       data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
       data.level = level;
+      data.originalPronoun = originalPronoun.toLowerCase(); // Store the original pronoun
     }
   }
 
@@ -229,17 +232,17 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     data.equipment = equipMatch[1].trim();
   } else {
     // Try to capture equipment items only (without verbs)
-    equipMatch = /(?:they\s+wear|wears?|carries?|wields?)\s+([^.;]+)/i.exec(parenthetical);
+    equipMatch = /(?:they\s+wear|wears?|carries?|wields?)\s+([^.]+?)(?:\.\s|$)/i.exec(parenthetical);
     if (equipMatch) {
       data.equipment = equipMatch[1].trim();
     } else {
       // Try "have" verb pattern
-      equipMatch = /(?:they\s+(?:each\s+)?have|has?)\s+([^.;]+)/i.exec(parenthetical);
+      equipMatch = /(?:they\s+(?:each\s+)?have|has?)\s+([^.]+?)(?:\.\s|$)/i.exec(parenthetical);
       if (equipMatch) {
         data.equipment = equipMatch[1].trim();
       } else {
         // Fallback: simple equipment list
-        equipMatch = /(?:carries?|wields?|they\s+wear|wears?)\s*[:\-]?\s*([^.;]+)/i.exec(parenthetical);
+        equipMatch = /(?:carries?|wields?|they\s+wear|wears?)\s*[:\-]?\s*([^.]+?)(?:\.\s|$)/i.exec(parenthetical);
         if (equipMatch) {
           data.equipment = equipMatch[1].trim();
         }
@@ -563,6 +566,9 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
 export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, omitRace: boolean = false, useSuperscriptOrdinals: boolean = true): string {
   const parts: string[] = [];
 
+  // If the original input already had a proper sentence with pronoun, avoid duplication
+  const hasOriginalPronoun = data.originalPronoun && ['these', 'this', 'the'].includes(data.originalPronoun);
+
   // Build vital stats
   const vitalParts: string[] = [];
   if (data.hp) vitalParts.push(`HP ${data.hp}`);
@@ -589,12 +595,18 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
         raceClassText = classLevelMatch ? classLevelMatch[0] : raceClassText;
       }
 
-      if (isUnit) {
-        // For units: "These human, 2nd level fighters" or "These 2nd level fighters"
-        descriptor = `These ${raceClassText}`;
+      if (hasOriginalPronoun) {
+        // Original had proper pronoun structure, use it directly to avoid duplication
+        const properPronoun = data.originalPronoun === 'these' ? 'These' :
+                             data.originalPronoun === 'this' ? 'This' : 'The';
+        descriptor = `${properPronoun} ${raceClassText}`;
       } else {
-        // For individuals: "This human, 4th level fighter" or "This 4th level fighter"
-        descriptor = `This ${raceClassText}`;
+        // No original pronoun, use standard format
+        if (isUnit) {
+          descriptor = `These ${raceClassText}`;
+        } else {
+          descriptor = `This ${raceClassText}`;
+        }
       }
     } else {
       // Fallback for unknown creatures
