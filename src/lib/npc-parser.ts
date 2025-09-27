@@ -849,7 +849,7 @@ function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): st
 
   if (parentheticals.length > 0) {
     const parentheticalData = extractParentheticalData(parentheticals[0]);
-    const canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit);
+    const canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit, title);
     return `${name} *(${canonicalParenthetical})*`;
   }
 

@@ -764,7 +764,7 @@ function App() {
                 </div>
                 <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-3 text-sm">
                   <div>
-                    <div className="font-medium text-card-foreground">Enhanced parenthetical parser (beta)</div>
+                    <div className="font-medium text-card-foreground">Enhanced parenthetical parser</div>
                     <div className="text-xs text-card-foreground/70">Uses advanced extraction rules for parenthetical data, mount separation, and shield canonicalization.</div>
                   </div>
                   <Switch

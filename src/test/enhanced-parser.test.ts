@@ -52,13 +52,13 @@ describe('Enhanced Parser Functions', () => {
 
     it('should extract race/class/level', () => {
       const data = extractParentheticalData('human, 4th level fighter');
-      expect(data.raceClass).toBe('human, 4th level fighter');
+      expect(data.raceClass).toBe('human, 4ᵗʰ level fighter');
       expect(data.level).toBe('4');
     });
 
     it('should extract disposition and normalize it', () => {
       expect(extractParentheticalData('alignment: lawful good').disposition).toBe('law/good');
-      expect(extractParentheticalData('disposition neutral').disposition).toBe('neutral/neutral');
+      expect(extractParentheticalData('disposition neutral').disposition).toBe('neutral');
     });
 
     it('should extract equipment', () => {
@@ -87,14 +87,14 @@ describe('Enhanced Parser Functions', () => {
     it('should handle single-word alignments', () => {
       expect(normalizeDisposition('lawful')).toBe('law/neutral');
       expect(normalizeDisposition('chaotic')).toBe('chaos/neutral');
-      expect(normalizeDisposition('neutral')).toBe('neutral/neutral');
+      expect(normalizeDisposition('neutral')).toBe('neutral');
     });
   });
 
   describe('normalizeAttributes', () => {
-    it('should convert unit attributes to PA physical', () => {
-      expect(normalizeAttributes('str, dex, con', true)).toBe('PA physical');
-      expect(normalizeAttributes('strength, dexterity, constitution', true)).toBe('PA physical');
+    it('should convert unit attributes to physical long form', () => {
+      expect(normalizeAttributes('str, dex, con', true)).toBe('physical');
+      expect(normalizeAttributes('strength, dexterity, constitution', true)).toBe('physical');
     });
 
     it('should expand abbreviations for individuals', () => {
@@ -191,9 +191,9 @@ describe('Enhanced Parser Functions', () => {
 
       const result = buildCanonicalParenthetical(data, false);
 
-      expect(result).toContain('This 4th level fighter\'s vital stats are HP 24, AC 16, disposition neutral');
-      expect(result).toContain('his primary attributes are strength, dexterity, constitution');
-      expect(result).toContain('wears banded mail');
+      expect(result).toContain('This human, 4ᵗʰ level fighter\'s vital stats are HP 24, AC 16, disposition neutral.');
+      expect(result).toContain('Their primary attributes are strength, dexterity, constitution.');
+      expect(result).toContain('They wear banded mail and carry medium steel shield, longsword, dagger.');
     });
 
     it('should build canonical format for unit', () => {
@@ -208,10 +208,11 @@ describe('Enhanced Parser Functions', () => {
         raw: 'original'
       };
 
-      const result = buildCanonicalParenthetical(data, true);
+      const result = buildCanonicalParenthetical(data, true, 'Militia x6');
 
-      expect(result).toContain('These 2nd level fighters\'s vital stats are HP 12, AC 15, disposition neutral, PA physical');
-      expect(result).toContain('wear chain mail, longbow, longsword');
+      expect(result).toContain('These human 2ⁿᵈ level fighters\'s vital stats are HP 12, AC 15, disposition neutral.');
+      expect(result).toContain('Their primary attributes are physical.');
+      expect(result).toContain('They wear chain mail and carry longbow, longsword.');
     });
   });
 
@@ -281,7 +282,7 @@ describe('Enhanced Parser Functions', () => {
 
       if (data.attributes) {
         const normalizedAttrs = normalizeAttributes(data.attributes, isUnit);
-        expect(normalizedAttrs).toBe('PA physical');
+        expect(normalizedAttrs).toBe('physical');
       }
     });
   });

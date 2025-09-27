@@ -47,7 +47,7 @@ function getSuperscriptOrdinal(num: string): string {
 const PAREN_RE = /\(([^()]*)\)/g;
 const HP_RE = /\b(?:HP|Hit\s*Points)\s*[:\-]?\s*(\d+)\b/i;
 const AC_RE = /\bAC\s*[:\-]?\s*([\d\/]+)\b/i;
-const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|(?:human|elf|dwarf|halfling|gnome|orc|goblin),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
+const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|((?:human|elf|dwarf|halfling|gnome|orc|goblin)),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
 const DISPOSITION_RE = /\b(disposition|alignment)\s*[:\-]?\s*([a-z\s]+(?:\/[a-z\s]+)?)\b/i;
 const MOUNT_TYPE_RE = /\b(heavy|light)?\s*war\s*horse\b/i;
 const LEADING_BONUS_RE = /\+(\d+)\s+(longsword|full plate mail|shield|bastard sword|lance|dagger|sword|mace|axe|bow|crossbow)/gi;
@@ -135,8 +135,11 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       // Format: "human, 2nd level fighter" - groups [4]=race, [5]=level, [6]=class
       const race = rclMatch[4];
       const level = rclMatch[5];
-      const charClass = rclMatch[6].replace(/s$/, ''); // Remove plural 's'
-      data.raceClass = `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`;
+      const charClassRaw = rclMatch[6];
+      const charClass = charClassRaw ? charClassRaw.replace(/s$/, '') : '';
+      data.raceClass = charClass
+        ? `${race}, ${level}${getSuperscriptOrdinal(level)} level ${charClass}`
+        : `${race}, ${level}${getSuperscriptOrdinal(level)} level`;
       data.level = level;
     }
   }
@@ -206,8 +209,8 @@ export function normalizeDisposition(disposition: string): string {
 
 export function normalizeAttributes(attributes: string, isUnit: boolean): string {
   if (isUnit && /\b(str|dex|con|strength|dexterity|constitution)\b/i.test(attributes)) {
-    // For units with physical attributes, use PA physical shorthand
-    return 'PA physical';
+    // For units with physical attributes, collapse to the long-form category.
+    return 'physical';
   }
 
   // Expand abbreviations for individual NPCs
@@ -312,56 +315,140 @@ export function extractMountFromParenthetical(parenthetical: string): {
   return { cleanedParenthetical: parenthetical };
 }
 
-export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean): string {
-  console.log('DEBUG: buildCanonicalParenthetical called with:', { data, isUnit });
-  const parts: string[] = [];
+function pluralizeClassNameLocal(name: string): string {
+  const lower = name.trim().toLowerCase();
+  const irregulars: Record<string, string> = {
+    'thief': 'thieves',
+    'archer': 'archers',
+    'fighter': 'fighters',
+    'cleric': 'clerics',
+    'paladin': 'paladins',
+    'ranger': 'rangers',
+    'wizard': 'wizards',
+    'warlock': 'warlocks',
+    'druid': 'druids',
+    'bard': 'bards',
+    'monk': 'monks',
+    'rogue': 'rogues',
+    'assassin': 'assassins',
+    'knight': 'knights',
+    'magic-user': 'magic-users'
+  };
 
-  // Build vital stats
+  if (irregulars[lower]) {
+    return irregulars[lower];
+  }
+
+  if (lower.endsWith('man')) {
+    return `${lower.slice(0, -3)}men`;
+  }
+
+  if (lower.endsWith('y')) {
+    return `${lower.slice(0, -1)}ies`;
+  }
+
+  if (lower.endsWith('s')) {
+    return lower;
+  }
+
+  return `${lower}s`;
+}
+
+function extractUnitNounFromTitle(title?: string): string | undefined {
+  if (!title) return undefined;
+  const match = title.toLowerCase().match(/(men-at-arms|militia|warriors|halflings|bowmen|guards|sergeants|fighters|troops)/);
+  return match?.[1];
+}
+
+function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title?: string): string {
+  const subject = isUnit ? 'These' : 'This';
+  let race: string | undefined;
+  let level: string | undefined;
+  let charClass: string | undefined;
+
+  if (data.raceClass) {
+    const match = data.raceClass.match(/([a-z-]+),\s*(\d+)(?:st|nd|rd|th|ˢᵗ|ⁿᵈ|ʳᵈ|ᵗʰ)?\s+level\s+([a-z-]+)/i);
+    if (match) {
+      race = match[1].toLowerCase();
+      level = match[2];
+      charClass = match[3].toLowerCase();
+    } else {
+      const simpleMatch = data.raceClass.match(/([a-z-]+)\s+([a-z-]+)/i);
+      if (simpleMatch) {
+        race = simpleMatch[1].toLowerCase();
+        charClass = simpleMatch[2].toLowerCase();
+      }
+    }
+  }
+
+  const unitNoun = extractUnitNounFromTitle(title);
+
+  if (isUnit) {
+    if (race && level && charClass) {
+      const ordinal = `${level}${getSuperscriptOrdinal(level)}`;
+      return `${subject} ${race} ${ordinal} level ${pluralizeClassNameLocal(charClass)}`.replace(/\s+/g, ' ').trim();
+    }
+
+    if (race && charClass) {
+      return `${subject} ${race} ${pluralizeClassNameLocal(charClass)}`.replace(/\s+/g, ' ').trim();
+    }
+
+    if (race && unitNoun) {
+      return `${subject} ${race} ${unitNoun}`.replace(/\s+/g, ' ').trim();
+    }
+
+    if (unitNoun) {
+      return `${subject} ${unitNoun}`.replace(/\s+/g, ' ').trim();
+    }
+
+    if (race) {
+      return `${subject} ${race} troops`.replace(/\s+/g, ' ').trim();
+    }
+  } else {
+    if (race && level && charClass) {
+      const ordinal = `${level}${getSuperscriptOrdinal(level)}`;
+      return `${subject} ${race}, ${ordinal} level ${charClass}`.replace(/\s+/g, ' ').trim();
+    }
+
+    if (race && charClass) {
+      return `${subject} ${race} ${charClass}`.replace(/\s+/g, ' ').trim();
+    }
+
+    if (race) {
+      return `${subject} ${race} character`.replace(/\s+/g, ' ').trim();
+    }
+  }
+
+  if (data.raceClass) {
+    return `${subject} ${data.raceClass}`.replace(/\s+/g, ' ').trim();
+  }
+
+  return isUnit ? `${subject} creatures` : `${subject} creature`;
+}
+
+export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, title?: string): string {
+  console.log('DEBUG: buildCanonicalParenthetical called with:', { data, isUnit, title });
+  const sentences: string[] = [];
+
   const vitalParts: string[] = [];
   if (data.hp) vitalParts.push(`HP ${data.hp}`);
   if (data.ac) vitalParts.push(`AC ${data.ac}`);
   if (data.disposition) vitalParts.push(`disposition ${data.disposition}`);
 
   if (vitalParts.length > 0) {
-    let descriptor = '';
-
-    if (data.raceClass) {
-      if (isUnit) {
-        // For units: "These 2ⁿᵈ level human fighters'"
-        descriptor = `These ${data.raceClass}`;
-      } else {
-        // For individuals: "This human, 4th level fighter"
-        descriptor = `This ${data.raceClass}`;
-      }
-      console.log('DEBUG: descriptor with raceClass:', descriptor);
-    } else {
-      // Fallback for unknown creatures
-      descriptor = isUnit ? 'These creatures' : 'This creature';
-      console.log('DEBUG: descriptor fallback:', descriptor);
-    }
-
-    parts.push(`${descriptor}'s vital stats are ${vitalParts.join(', ')}`);
+    const descriptor = buildDescriptorFromData(data, isUnit, title);
+    sentences.push(`${descriptor}'s vital stats are ${vitalParts.join(', ')}.`);
   }
 
-  // Add PA physical for units, expanded attributes for individuals
   if (data.attributes) {
     const normalizedAttrs = normalizeAttributes(data.attributes, isUnit);
-    if (isUnit) {
-      // For units, PA physical should be on same line as vital stats
-      if (parts.length > 0) {
-        parts[0] += `, ${normalizedAttrs}`;
-      } else {
-        parts.push(normalizedAttrs);
-      }
-    } else {
-      // For individuals, add as separate clause
-      const possessive = 'his';
-      parts.push(`${possessive} primary attributes are ${normalizedAttrs}`);
-    }
+    const possessive = isUnit ? 'Their' : 'Their';
+    sentences.push(`${possessive} primary attributes are ${normalizedAttrs}.`);
   }
 
+  const wornItems: string[] = [];
+  const carriedItems: string[] = [];
 
-  // Add equipment
   if (data.equipment) {
     let equipment = data.equipment;
     equipment = canonicalizeShields(equipment);
@@ -369,34 +456,45 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     equipment = normalizeEquipmentVerbs(equipment);
     equipment = deduplicateEquipment(equipment);
 
-    // Add magic item mechanics to equipment
-    const equipmentParts = equipment.split(',').map(part => part.trim());
-    const processedEquipment = equipmentParts.map(part => {
-      // Check if it's a magic item and add mechanics
-      if (/\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(part)) {
-        return addMagicItemMechanics(part);
+    const equipmentParts = equipment.split(',').map(part => part.trim()).filter(Boolean);
+
+    for (const part of equipmentParts) {
+      const processed = /\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(part)
+        ? addMagicItemMechanics(part)
+        : part;
+
+      const lower = processed.toLowerCase();
+      if (lower.startsWith('wears ')) {
+        wornItems.push(processed.slice(6).trim());
+      } else if (lower.startsWith('wear ')) {
+        wornItems.push(processed.slice(5).trim());
+      } else if (lower.startsWith('carry ')) {
+        carriedItems.push(processed.slice(6).trim());
+      } else if (/(mail|armor|plate|barding)/i.test(processed)) {
+        wornItems.push(processed.trim());
+      } else {
+        carriedItems.push(processed.trim());
       }
-      return part;
-    }).join(', ');
-
-    const verb = isUnit ? 'wear' : 'wears';
-    const carryVerb = isUnit ? 'carry' : 'carries';
-
-    // Split armor and weapons/gear
-    if (processedEquipment.includes('wears')) {
-      parts.push(processedEquipment.replace(/\bcarry\b/g, `and ${carryVerb}`));
-    } else {
-      parts.push(`${verb} ${processedEquipment}`);
     }
   }
 
-  // Add coins
   if (data.coins) {
-    const carryVerb = isUnit ? 'carry' : 'carries';
-    parts.push(`and ${carryVerb} ${data.coins}`);
+    carriedItems.push(data.coins);
   }
 
-  return parts.join(', ') + '.';
+  if (wornItems.length || carriedItems.length) {
+    const clauses: string[] = [];
+    if (wornItems.length) {
+      clauses.push(`wear ${wornItems.join(', ')}`);
+    }
+    if (carriedItems.length) {
+      clauses.push(`${clauses.length > 0 ? 'carry' : 'carry'} ${carriedItems.join(', ')}`);
+    }
+
+    sentences.push(`They ${clauses.join(' and ')}.`);
+  }
+
+  return sentences.join(' ').replace(/\s+/g, ' ').trim();
 }
 
 export function formatMountBlock(mountBlock: MountBlock): string {
