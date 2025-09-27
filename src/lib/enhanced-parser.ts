@@ -51,7 +51,7 @@ const AC_RE = /\bAC\s*[:\-]?\s*([\d\/]+)\b/i;
 const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|(human|elf|dwarf|halfling|gnome|orc|goblin),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
 const DISPOSITION_RE = /\b(disposition|alignment)\s*[:\-]?\s*([a-z\s]+(?:\/[a-z\s]+)?)\b/i;
 const MOUNT_TYPE_RE = /\b(heavy|light)?\s*war\s*horse\b/i;
-const LEADING_BONUS_RE = /\+(\d+)\s+(longsword|full plate mail|shield|bastard sword|lance|dagger|sword|mace|axe|bow|crossbow)/gi;
+const LEADING_BONUS_RE = /\+(\d+)\s+([a-z\s]+(?:sword|mail|armor|shield|lance|dagger|mace|axe|bow|crossbow|staff|rod|wand|ring|robe|cloak|boots|gauntlets|helm|bracers|pectoral))/gi;
 
 // Corrected shield/buckler regex from earlier bug fix
 const BP_RE = /\b(?:(\+\s*\d+)\s*)?(?:an?\s+)?(?:(?:wooden|steel|iron)\s+)?(buckler|pavis|shield)(?:\s+shield)?(?:\s*(\+\s*\d+))?/gi;
@@ -115,9 +115,15 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     data.ac = acMatch[1];
   }
 
-  // Extract disposition
-  const dispositionMatch = DISPOSITION_RE.exec(parenthetical);
-  if (dispositionMatch) {
+  // Extract disposition with multiple pattern variations
+  let dispositionMatch = DISPOSITION_RE.exec(parenthetical);
+  if (!dispositionMatch) {
+    // Try more liberal patterns
+    dispositionMatch = /\b(lawful\s+good|lawful\s+neutral|lawful\s+evil|neutral\s+good|true\s+neutral|neutral\s+evil|chaotic\s+good|chaotic\s+neutral|chaotic\s+evil|lawful|neutral|chaotic|good|evil)\b/i.exec(parenthetical);
+    if (dispositionMatch) {
+      data.disposition = normalizeDisposition(dispositionMatch[1]);
+    }
+  } else {
     data.disposition = normalizeDisposition(dispositionMatch[2]);
   }
 
@@ -165,8 +171,16 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     }
   }
 
-  // Extract attributes (simplified for now)
-  const attrMatch = /(?:primary\s+attributes?|PA)\s*[:\-]?\s*([^.;,]+)/i.exec(parenthetical);
+  // Extract attributes with multiple pattern variations
+  let attrMatch = /(?:primary\s+attributes?|prime\s+attributes?|PA)\s*[:\-]?\s*([^.;,]+)/i.exec(parenthetical);
+  if (!attrMatch) {
+    // Try without "primary/prime/PA" qualifier
+    attrMatch = /(?:his|their|its)\s+(?:primary\s+)?attributes?\s+are\s+([^.;,]+)/i.exec(parenthetical);
+  }
+  if (!attrMatch) {
+    // Try simple patterns like "STR, DEX, CON" or "strength, dexterity"
+    attrMatch = /\b((?:str|dex|con|int|wis|cha|strength|dexterity|constitution|intelligence|wisdom|charisma)(?:[,\s]+(?:str|dex|con|int|wis|cha|strength|dexterity|constitution|intelligence|wisdom|charisma))*)\b/i.exec(parenthetical);
+  }
   if (attrMatch) {
     data.attributes = attrMatch[1].trim();
   }
@@ -183,10 +197,22 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     data.mountData = parenthetical;
   }
 
-  // Extract coins
-  const coinMatch = /(\d+)[-–](\d+)\s*(?:gp|gold|GP)/i.exec(parenthetical);
+  // Extract coins with multiple pattern variations
+  let coinMatch = /(\d+)[-–](\d+)\s*(?:gp|gold|GP)/i.exec(parenthetical);
   if (coinMatch) {
     data.coins = `${coinMatch[1]}–${coinMatch[2]} gold in coin`;
+  } else {
+    // Try simpler patterns like "carries 10gp" or "has 5gp, 3sp"
+    const simpleCoins = /(?:carries?|has?|with)\s+([^.;,]*(?:gp|sp|cp|pp|gold|silver|copper|platinum)[^.;,]*)/i.exec(parenthetical);
+    if (simpleCoins) {
+      let coins = simpleCoins[1];
+      // Convert abbreviations
+      coins = coins.replace(/(\d+)\s*gp\b/gi, '$1 gold in coin');
+      coins = coins.replace(/(\d+)\s*sp\b/gi, '$1 silver in coin');
+      coins = coins.replace(/(\d+)\s*cp\b/gi, '$1 copper in coin');
+      coins = coins.replace(/(\d+)\s*pp\b/gi, '$1 platinum in coin');
+      data.coins = coins.trim();
+    }
   }
 
   return data;
@@ -216,9 +242,9 @@ export function normalizeDisposition(disposition: string): string {
 }
 
 export function normalizeAttributes(attributes: string, isUnit: boolean): string {
-  if (isUnit && /\b(str|dex|con|strength|dexterity|constitution)\b/i.test(attributes)) {
-    // For units with physical attributes, use PA physical shorthand
-    return 'PA physical';
+  if (isUnit && /\b(str|dex|con|strength|dexterity|constitution|physical)\b/i.test(attributes)) {
+    // For units with physical attributes, expand to narrative phrasing per Jeremy's mandate
+    return 'strength, dexterity, constitution';
   }
 
   // Expand abbreviations for individual NPCs
@@ -231,36 +257,37 @@ export function normalizeAttributes(attributes: string, isUnit: boolean): string
     'cha': 'charisma'
   };
 
-  return attributes.toLowerCase()
+  // Parse and normalize to PHB order per Jeremy's mandate
+  const phbOrder = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
+
+  const attrs = attributes.toLowerCase()
     .split(/[,\s]+/)
     .map(attr => abbrevMap[attr.trim()] || attr.trim())
     .filter(Boolean)
-    .join(', ');
+    .filter(attr => phbOrder.includes(attr))
+    .sort((a, b) => phbOrder.indexOf(a) - phbOrder.indexOf(b));
+
+  return attrs.join(', ');
 }
 
 export function canonicalizeShields(equipment: string): string {
-  // Step by step approach to avoid cascading replacements
+  // Jeremy's mandate: explicit shield type (size + material) per editorial standards
   let result = equipment;
 
-  // First pass: Handle specific bonus cases
-  if (result.includes('+') && result.includes('shield')) {
-    result = result.replace(/\+(\d+)\s+shield/gi, 'medium steel shield +$1');
-  }
+  // First pass: Handle bonus shields - preserve material if specified
+  result = result.replace(/\+(\d+)\s+(wooden|steel|iron)?\s*shield/gi, (match, bonus, material) => {
+    const mat = material || 'steel';
+    return `medium ${mat} shield +${bonus}`;
+  });
 
-  // Second pass: Handle material shields (only if we didn't already process)
-  if (!result.includes('medium steel shield')) {
-    result = result.replace(/\bsteel\s+shield/gi, 'medium steel shield');
-    result = result.replace(/\bwooden\s+shield/gi, 'medium steel shield');
-  }
+  // Second pass: Handle material-only shields (add size)
+  result = result.replace(/\b(wooden|steel|iron)\s+shield(?!\s*\+)/gi, 'medium $1 shield');
 
-  // Third pass: Handle bare "shield" (only if we haven't processed yet)
-  if (!result.includes('medium steel shield')) {
-    result = result.replace(/\b(?:a\s+|an\s+)?shield\b/gi, 'medium steel shield');
-  }
+  // Third pass: Handle bare "shield" (add both size and material)
+  result = result.replace(/\b(?:a\s+|an\s+)?shield(?!\s*\+)(?!\s+\w)/gi, 'medium steel shield');
 
-  // Handle buckler and pavis separately (they don't become medium steel shield)
-  result = result.replace(/\b(?:wooden\s+|steel\s+|iron\s+)buckler\b/gi, 'buckler');
-  result = result.replace(/\b(?:wooden\s+|steel\s+|iron\s+)pavis\b/gi, 'pavis');
+  // Handle buckler and pavis separately (they don't need size qualifiers)
+  result = result.replace(/\b(?:wooden|steel|iron)\s+(buckler|pavis)/gi, '$1');
 
   return result;
 }
@@ -278,11 +305,17 @@ export function deduplicateEquipment(equipment: string): string {
 }
 
 export function normalizeEquipmentVerbs(equipment: string): string {
-  // Convert wears/wearing/worn to "wears" for armor
-  let normalized = equipment.replace(/\b(wears?|wearing|worn)\b\s+/gi, 'wears ');
+  // Jeremy's mandate: "wears" for armor/barding, "carries" for weapons/gear
+  let normalized = equipment;
 
-  // Convert carries/carrying to "carry" for weapons/gear
-  normalized = normalized.replace(/\b(carries|carrying)\b\s+/gi, 'carry ');
+  // Normalize armor verbs to "wears" (for armor, barding, clothing)
+  normalized = normalized.replace(/\b(wear|wearing|worn|has on|dons?)\b\s+/gi, 'wears ');
+
+  // Normalize weapon/gear verbs to "carries" (for weapons, tools, items)
+  normalized = normalized.replace(/\b(carry|carrying|bears?|bearing|holds?|holding|wields?|wielding)\b\s+/gi, 'carries ');
+
+  // Handle "and carry" constructions properly
+  normalized = normalized.replace(/\band\s+carries?/gi, 'and carries');
 
   return normalized;
 }
@@ -387,14 +420,20 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       return part;
     }).join(', ');
 
-    const verb = isUnit ? 'wear' : 'wears';
+    // Jeremy's mandate: consistent equipment verbs per entity type
+    const wearVerb = isUnit ? 'wear' : 'wears';
     const carryVerb = isUnit ? 'carry' : 'carries';
 
-    // Split armor and weapons/gear
-    if (processedEquipment.includes('wears')) {
-      parts.push(processedEquipment.replace(/\bcarry\b/g, `and ${carryVerb}`));
+    // Process equipment with proper verb forms
+    if (processedEquipment.includes('wears ') || processedEquipment.includes('carries ')) {
+      // Equipment already has embedded verbs, normalize them
+      let normalized = processedEquipment.replace(/\bwears\b/g, wearVerb);
+      normalized = normalized.replace(/\bcarries\b/g, carryVerb);
+      normalized = normalized.replace(/\bcarry\b/g, carryVerb);
+      parts.push(normalized);
     } else {
-      parts.push(`${verb} ${processedEquipment}`);
+      // No embedded verbs, add appropriate verb
+      parts.push(`${wearVerb} ${processedEquipment}`);
     }
   }
 
