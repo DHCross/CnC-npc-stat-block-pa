@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "reportId": "personal-2025-09-28-math-brain",
+    "generatedOn": "2025-09-28T12:00:00Z",
+    "kind": "personal",
+    "subject": "Poetic Brain // Math Brain",
+    "includesTransits": true,
+    "timezone": "America/Los_Angeles"
+  },
+  "blueprint": {
+    "modes": {
+      "primary": "Solar Visionary",
+      "secondary": "Lunar Synthesist",
+      "shadow": "Mercurial Dissolver"
+    },
+    "metaphor": "Think of yourself as a lighthouse that also charts the coastline-steady beam plus mapmaker's curiosity.",
+    "balanceOverview": "Your system thrives when insight is grounded in embodied pacing; lean too hard on analysis and your soma runs cold."
+  },
+  "weather": {
+    "field": {
+      "field": "A quiet hum of calibration invites you to notice micro-adjustments, like tuning a favorite instrument before the show.",
+      "map": null,
+      "voice": null
+    },
+    "snapshot": {
+      "summary": "Today's balance tilts toward cerebral brightness with a slight hydration debt in the emotional body.",
+      "keyShifts": [
+        "Primary fire mode elevated by 8%",
+        "Shadow currents softened by steady breathwork"
+      ],
+      "focusAreas": [
+        "Reintegrate warmth through somatic pauses",
+        "Let intuition lead the sequencing of tasks"
+      ],
+      "quantitative": {
+        "clarity": 84,
+        "steadiness": 68,
+        "coherence": 72
+      }
+    }
+  },
+  "growthEdges": [
+    {
+      "name": "Precision vs. Flow",
+      "polarity": [
+        "Meticulous scoring",
+        "Improvised phrasing"
+      ],
+      "field": "You can feel the tug-of-war between polishing every equation and letting the melody breathe.",
+      "map": "Notice what happens when your hands move before the critique arrives.",
+      "voice": null,
+      "integrationCue": "Test a 90-second free-write immediately after a structured planning block."
+    },
+    {
+      "name": "Witness vs. Participant",
+      "polarity": [
+        "Detached observer",
+        "Embodied actor"
+      ],
+      "field": "Moments ask you to climb down from the crow's nest and feel the deck sway.",
+      "map": null,
+      "voice": "If you share where this is landing, I'll mirror what your body already knows.",
+      "integrationCue": "Invite one trusted collaborator into today's experiment so the noticing happens in dialogue."
+    }
+  ],
+  "integration": {
+    "weave": "Your blueprint loves weaving analytical light through compassionate embodiment; today's weather simply turns up the dimmer on curiosity.",
+    "invitation": "Track what shifts when you alternate between observing and inhabiting-drop a note tonight about which rituals kept you centered."
+  },
+  "transits": {
+    "overview": "A short Venus-Mercury duet re-activates relational circuitry within your creative workflow.",
+    "windows": [
+      {
+        "headline": "Venus sextile natal Mercury",
+        "timeframe": "09:00-15:00 PT",
+        "field": "Language is softer, receptive, ready to be tuned for companionship.",
+        "map": "If a conversation reveals where the FIELD is alive, mirror back the feeling-tone before offering solutions.",
+        "voice": null
+      },
+      {
+        "headline": "Moon trine natal Mars",
+        "timeframe": "18:00-22:00 PT",
+        "field": "Body heat returns; movement wants to clear lingering static.",
+        "map": null,
+        "voice": "When you tell me how the evening unfolded, I'll name the muscle memory you're reclaiming."
+      }
+    ]
+  }
+}

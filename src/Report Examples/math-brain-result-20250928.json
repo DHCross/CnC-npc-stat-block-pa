@@ -1,0 +1,264 @@
+{
+  "personal": {
+    "metadata": {
+      "reportId": "math-brain-personal-2025-09-28",
+      "generatedOn": "2025-09-28T12:00:00Z",
+      "kind": "personal",
+      "subject": "Subject Alpha",
+      "sourceSystem": "astrologer_app",
+      "timezone": "America/Los_Angeles",
+      "houseSystem": "Placidus",
+      "ephemeris": "swiss-ephemeris-v2",
+      "maskedSchema": false,
+      "silentGeometryCheck": {
+        "passed": true,
+        "notes": "Sanity-check delta within <0.01 deg threshold."
+      },
+      "notes": "Populate with raw values prior to Poetic Brain interpretation."
+    },
+    "natalBlueprint": {
+      "primaryMode": {
+        "quality": "astrologerAPI.birth_data(subject).data.sun.quality",
+        "element": "astrologerAPI.birth_data(subject).data.sun.element",
+        "sign": "astrologerAPI.birth_data(subject).data.sun.sign",
+        "planet": "Sun",
+        "coordinate": {
+          "longitude": 0.0,
+          "zodiacPosition": "astrologerAPI.birth_data(subject).data.sun.position",
+          "house": 0
+        }
+      },
+      "secondaryMode": {
+        "quality": "astrologerAPI.birth_data(subject).data.moon.quality",
+        "element": "astrologerAPI.birth_data(subject).data.moon.element",
+        "sign": "astrologerAPI.birth_data(subject).data.moon.sign",
+        "planet": "Moon",
+        "coordinate": {
+          "longitude": 0.0,
+          "zodiacPosition": "astrologerAPI.birth_data(subject).data.moon.position",
+          "house": 0
+        }
+      },
+      "shadowMode": {
+        "quality": "astrologerAPI.birth_data(subject).data.mercury.quality",
+        "element": "astrologerAPI.birth_data(subject).data.mercury.element",
+        "sign": "astrologerAPI.birth_data(subject).data.mercury.sign",
+        "planet": "Mercury",
+        "coordinate": {
+          "longitude": 0.0,
+          "zodiacPosition": "astrologerAPI.birth_data(subject).data.mercury.position",
+          "house": 0
+        }
+      },
+      "dominantSignature": {
+        "qualities": [
+          "synthesized dominant quality keyword",
+          "secondary quality keyword"
+        ],
+        "elements": [
+          "synthesized dominant element keyword",
+          "secondary element keyword"
+        ],
+        "synthesisNotes": "Short note describing how qualities and elements combine."
+      },
+      "energeticBalance": {
+        "rawKeywords": [
+          "baseline balance keyword one",
+          "baseline balance keyword two"
+        ],
+        "headline": "Optional balance headline"
+      }
+    },
+    "dailyData": {
+      "date": "2025-09-28",
+      "fieldTriggers": [
+        "keywords from astrologerAPI.get_now aspects"
+      ],
+      "transitContexts": [
+        {
+          "transitingBody": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].p1_name",
+          "aspect": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].aspect",
+          "natalBody": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].p2_name",
+          "orb": 0.42,
+          "applying": true,
+          "exactAt": "2025-09-28T15:00:00Z"
+        }
+      ],
+      "balanceIndices": {
+        "magnitude": 23.4,
+        "valence": 1.2,
+        "volatility": 2.1,
+        "supportFrictionDifferential": 0.18
+      },
+      "referenceLocation": {
+        "latitude": 34.0522,
+        "longitude": -118.2437
+      }
+    },
+    "coreTensions": {
+      "aspects": [
+        {
+          "aspectLabel": "astrologerAPI.natal_aspects_data(subject).aspects[0].p1_name astrologerAPI.natal_aspects_data(subject).aspects[0].aspect astrologerAPI.natal_aspects_data(subject).aspects[0].p2_name",
+          "keywords": [
+            "tension keyword one",
+            "tension keyword two"
+          ]
+        },
+        {
+          "aspectLabel": "astrologerAPI.natal_aspects_data(subject).aspects[1].p1_name astrologerAPI.natal_aspects_data(subject).aspects[1].aspect astrologerAPI.natal_aspects_data(subject).aspects[1].p2_name",
+          "keywords": [
+            "tension keyword three",
+            "tension keyword four"
+          ]
+        }
+      ]
+    },
+    "stitchedNotes": {
+      "majorTheme": [
+        "combined natal and daily keyword"
+      ],
+      "todaysMode": [
+        "daily intensity keyword",
+        "daily valence keyword",
+        "daily stability keyword"
+      ],
+      "observables": [
+        "example manifestation keyword"
+      ]
+    },
+    "sstFlags": {
+      "wb": 12,
+      "abe": 3,
+      "osr": 1
+    }
+  },
+  "relational": {
+    "metadata": {
+      "reportId": "math-brain-relational-2025-09-28",
+      "generatedOn": "2025-09-28T12:05:00Z",
+      "kind": "relational",
+      "subject": "Subject Alpha",
+      "counterpart": "Subject Beta",
+      "sourceSystem": "astrologer_app",
+      "timezone": "America/Los_Angeles",
+      "houseSystem": "Placidus",
+      "ephemeris": "swiss-ephemeris-v2",
+      "maskedSchema": false,
+      "silentGeometryCheck": {
+        "passed": true,
+        "notes": "Synastry grid verified <0.5 deg discrepancy across houses."
+      },
+      "notes": "Raw dyadic data prior to Poetic Brain rendering."
+    },
+    "sharedBlueprint": {
+      "coreDynamic": [
+        "combined dominant quality keyword",
+        "combined dominant element keyword"
+      ],
+      "contrasts": [
+        "primary energetic difference keyword",
+        "secondary energetic difference keyword"
+      ],
+      "keySynastryAspects": [
+        {
+          "transitingBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[0].p1_name",
+          "aspect": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[0].aspect",
+          "natalBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[0].p2_name",
+          "orb": 1.08,
+          "applying": false
+        },
+        {
+          "transitingBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[1].p1_name",
+          "aspect": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[1].aspect",
+          "natalBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[1].p2_name",
+          "orb": 0.76,
+          "applying": true
+        }
+      ],
+      "relationshipScore": {
+        "value": 0.0,
+        "descriptor": "descriptor derived from score range"
+      },
+      "dominantComposite": {
+        "coordinate": {
+          "longitude": 0.0,
+          "zodiacPosition": "compositeChart.sun.position",
+          "house": 0
+        },
+        "label": "composite focal point keyword"
+      }
+    },
+    "dailyData": {
+      "date": "2025-09-28",
+      "sharedFieldTriggers": [
+        "keywords from astrologerAPI.get_now interactions with both charts"
+      ],
+      "transitContexts": [
+        {
+          "transitingBody": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].p1_name",
+          "aspect": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].aspect",
+          "natalBody": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].p2_name",
+          "orb": 0.35,
+          "applying": true,
+          "exactAt": "2025-09-28T18:00:00Z"
+        }
+      ],
+      "balanceIndices": {
+        "magnitude": 27.8,
+        "valence": -0.6,
+        "volatility": 3.4,
+        "supportFrictionDifferential": -0.22
+      },
+      "referenceLocation": {
+        "latitude": 34.0522,
+        "longitude": -118.2437
+      }
+    },
+    "frictionSupport": {
+      "friction": {
+        "label": "label for challenging synastry aspect",
+        "keywords": [
+          "friction keyword one",
+          "friction keyword two"
+        ],
+        "aspectRef": {
+          "transitingBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[2].p1_name",
+          "aspect": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[2].aspect",
+          "natalBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[2].p2_name",
+          "orb": 0.92,
+          "applying": false
+        }
+      },
+      "support": {
+        "label": "label for supportive synastry aspect",
+        "keywords": [
+          "support keyword one",
+          "support keyword two"
+        ],
+        "aspectRef": {
+          "transitingBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[3].p1_name",
+          "aspect": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[3].aspect",
+          "natalBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[3].p2_name",
+          "orb": 0.54,
+          "applying": true
+        }
+      },
+      "paradox": [
+        "recurring relational theme keyword"
+      ]
+    },
+    "compositeNotes": {
+      "climateBaseline": [
+        "baseline relational climate keyword"
+      ],
+      "dailySnapshot": [
+        "daily relational mode keyword"
+      ]
+    },
+    "sstFlags": {
+      "wb": 9,
+      "abe": 4,
+      "osr": 2
+    }
+  }
+}

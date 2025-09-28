@@ -1,0 +1,75 @@
+{
+  "metadata": {
+    "reportId": "relational-2025-09-28-constellation-duet",
+    "generatedOn": "2025-09-28T12:05:00Z",
+    "kind": "relational",
+    "subject": "Alex",
+    "counterpart": "Jordan",
+    "includesTransits": false,
+    "timezone": "America/Los_Angeles"
+  },
+  "blueprint": {
+    "modes": {
+      "primary": "Mutual Spark",
+      "secondary": "Oceanic Resonance",
+      "shadow": "Silent Retreat"
+    },
+    "metaphor": "Together you function like a tidepool laboratory-brimming with discoveries when you let curiosity stay gentle.",
+    "balanceOverview": "The bond hums when shared structure makes room for surprise; collapse happens when both default to strategic quiet.",
+    "contrastHighlights": [
+      "Alex leads with quicker cognitive pivots",
+      "Jordan anchors through steady sensory referencing"
+    ]
+  },
+  "weather": {
+    "sharedField": {
+      "field": "The bond climate feels like a warm draft moving through an open studio-ideas drift in if you keep the windows cracked.",
+      "map": "Check where this breeze shows up between you; name it together before deciding what it means.",
+      "voice": null
+    },
+    "snapshot": {
+      "summary": "Shared circuitry is currently weighted toward collaborative problem-solving with a latent need for co-regulated rest.",
+      "keyShifts": [
+        "Mutual curiosity up 6% after yesterday's sync",
+        "Emotional pacing slightly mismatched"
+      ],
+      "focusAreas": [
+        "Schedule a micro-pause before moving into decision mode",
+        "Let Jordan set the closing ritual tonight"
+      ],
+      "quantitative": {
+        "coherence": 77,
+        "attunement": 71,
+        "momentum": 63
+      }
+    }
+  },
+  "frictionZones": [
+    {
+      "name": "Planning Cadence",
+      "polarity": [
+        "Rapid iteration",
+        "Sustained contemplation"
+      ],
+      "field": "There is a subtle handoff hesitation when the conversation shifts from ideation into concrete plans.",
+      "map": "If you notice a pause stretch too long, ask whose nervous system wants the mic next.",
+      "voice": null,
+      "supportCue": "Use a 3-minute co-regulation check before committing to timelines."
+    },
+    {
+      "name": "Emotional Translation",
+      "polarity": [
+        "Analytical decoding",
+        "Somatic storytelling"
+      ],
+      "field": "Meaning sometimes travels through different channels; one of you speaks in images while the other waits for thesis statements.",
+      "map": null,
+      "voice": "Share a moment when this FIELD is live and I'll reflect the texture you're both tracking.",
+      "supportCue": "Invite a metaphor plus a body cue before moving into solutions."
+    }
+  ],
+  "integration": {
+    "weave": "Your bond stays clearest when experiments and rest stop competing; today's weather favors tandem tinkering followed by a shared landing pad.",
+    "invitation": "Notice which micro-ritual keeps both nervous systems within range, then extend it into tomorrow's opening move."
+  }
+}
