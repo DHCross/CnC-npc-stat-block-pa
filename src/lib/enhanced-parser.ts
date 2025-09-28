@@ -746,7 +746,7 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
   if (isUnit) {
     if (race && level && charClass) {
       const ordinal = `${level}${getSuperscriptOrdinal(level)}`;
-      return `${subject} ${race} ${ordinal} level ${pluralizeClassNameLocal(charClass)}`.replace(/\s+/g, ' ').trim();
+      return `${subject} ${ordinal} level ${race} ${pluralizeClassNameLocal(charClass)}`.replace(/\s+/g, ' ').trim();
     }
 
     if (race && charClass) {
@@ -767,7 +767,7 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
   } else {
     if (race && level && charClass) {
       const ordinal = `${level}${getSuperscriptOrdinal(level)}`;
-      return `${subject} ${race}, ${ordinal} level ${charClass}`.replace(/\s+/g, ' ').trim();
+      return `${subject} ${ordinal} level ${race} ${charClass}`.replace(/\s+/g, ' ').trim();
     }
 
     if (race && charClass) {
@@ -794,9 +794,6 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   const coinsText = data.coins ? canonicalizeCoinsText(data.coins) : undefined;
   let coinsIncludedInWeapons = false;
 
-  // If the original input already had a proper sentence with pronoun, avoid duplication
-  const hasOriginalPronoun = data.originalPronoun && ['these', 'this', 'the'].includes(data.originalPronoun);
-
   // Build vital stats
   const vitalParts: string[] = [];
   if (data.hp) vitalParts.push(`HP ${data.hp}`);
@@ -804,7 +801,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   if (data.disposition) vitalParts.push(`disposition ${data.disposition.toLowerCase()}`);
 
   if (vitalParts.length > 0) {
-    let descriptor = '';
+    let descriptorData = { ...data };
 
     if (data.raceClass) {
       let raceClassText = data.raceClass;
@@ -823,37 +820,10 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
         raceClassText = classLevelMatch ? classLevelMatch[0] : raceClassText;
       }
 
-      // Build descriptor with disposition first, then race/class
-      let descriptorParts: string[] = [];
-
-      // Add disposition first if available
-      if (data.disposition) {
-        descriptorParts.push(data.disposition);
-      }
-
-      // Add race/class text
-      descriptorParts.push(raceClassText);
-
-      const combinedText = descriptorParts.join(' ');
-
-      if (hasOriginalPronoun) {
-        // Original had proper pronoun structure, use it directly to avoid duplication
-        const properPronoun = data.originalPronoun === 'these' ? 'These' :
-                             data.originalPronoun === 'this' ? 'This' : 'The';
-        descriptor = `${properPronoun} ${combinedText}`;
-      } else {
-        // No original pronoun, use standard format
-        if (isUnit) {
-          descriptor = `These ${combinedText}`;
-        } else {
-          descriptor = `This ${combinedText}`;
-        }
-      }
-    } else {
-      // Fallback for unknown creatures
-      descriptor = isUnit ? 'These creatures' : 'This creature';
+      descriptorData = { ...descriptorData, raceClass: raceClassText };
     }
 
+    const descriptor = buildDescriptorFromData(descriptorData, isUnit);
     const possessive = formatPossessiveDescriptor(descriptor, isUnit);
     parts.push(`${possessive} vital stats are ${vitalParts.join(', ')}`);
   }
@@ -938,7 +908,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
 
       // Add coins with proper conjunction
       if (coinsText) {
-        weaponList += `, and ${coinsText}`;
+        weaponList += `, and carry ${coinsText}`;
         coinsIncludedInWeapons = true;
       }
 
