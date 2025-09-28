@@ -127,7 +127,7 @@ export function splitTitleAndBody(text: string): ParsedTitleAndBody {
   return { title, body, parentheticals };
 }
 
-export function extractParentheticalData(parenthetical: string): ParentheticalData {
+export function extractParentheticalData(parenthetical: string, isUnit: boolean = false, title?: string): ParentheticalData {
   const data: ParentheticalData = { raw: parenthetical };
 
   // Extract HP
@@ -210,6 +210,28 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       }
       data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
       data.level = level;
+    }
+  }
+
+  // Try to extract from comma-separated format like "human, fighter, 1st level"
+  if (!data.raceClass) {
+    const commaSeparatedMatch = /\b([a-z]+),\s*([a-z]+),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\b/i.exec(parenthetical);
+    if (commaSeparatedMatch) {
+      const race = commaSeparatedMatch[1];
+      let charClass = commaSeparatedMatch[2];
+      const level = commaSeparatedMatch[3];
+
+      // For units, make class plural
+      const isUnitContext = /\bx\d+\b/i.test(parenthetical) || isUnit || (title && /\bx\d+\b/i.test(title));
+      if (isUnitContext && !charClass.endsWith('s')) {
+        charClass = pluralizeClassNameLocal(charClass);
+      }
+
+      // Convert to superscript ordinal
+      const ordinal = getSuperscriptOrdinal(level);
+      data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
+      data.level = level;
+      if (isUnitContext) data.originalPronoun = 'these';
     }
   }
 
@@ -304,6 +326,27 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
   if (MOUNT_TYPE_RE.test(parenthetical)) {
     // Simple mount detection - more sophisticated extraction needed
     data.mountData = parenthetical;
+  }
+
+  // Add default disposition and coins for military units if not specified
+  if (isUnit) {
+    // Check if this is a military unit based on common military terms (check both parenthetical and title)
+    const militaryTerms = /\b(men-at-arms|guards|militia|troops|soldiers|fighters|warriors|bowmen|crossbowmen|halberdiers|sergeants|knights|cavalry|infantry)\b/i;
+    const isMilitaryUnit = militaryTerms.test(parenthetical) || (title && militaryTerms.test(title));
+
+    if (isMilitaryUnit && !data.disposition) {
+      data.disposition = 'neutral/good';
+    }
+
+    // Add default coins for military units based on level
+    if (isMilitaryUnit && !data.coins && data.level) {
+      const level = parseInt(data.level);
+      if (level === 1) {
+        data.coins = '1–6 gold in coin';
+      } else if (level <= 3) {
+        data.coins = `${level}–${level * 6} gold in coin`;
+      }
+    }
   }
 
   // Extract coins with multiple pattern variations
@@ -564,6 +607,9 @@ function pluralizeEquipmentItem(item: string): string {
     'chain mail': 'chain mail', // uncountable
     'plate mail': 'plate mail', // uncountable
     'full plate mail': 'full plate mail', // uncountable
+    'leather armor': 'leather armor', // uncountable
+    'scale armor': 'scale armor', // uncountable
+    'banded armor': 'banded armor', // uncountable
     'medium steel shield': 'medium steel shields',
     'large steel shield': 'large steel shields',
     'small steel shield': 'small steel shields',
@@ -686,6 +732,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   const vitalParts: string[] = [];
   if (data.hp) vitalParts.push(`HP ${data.hp}`);
   if (data.ac) vitalParts.push(`AC ${data.ac}`);
+  if (data.disposition) vitalParts.push(`disposition ${data.disposition}`);
 
   if (vitalParts.length > 0) {
     let descriptor = '';
@@ -755,6 +802,9 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   }
 
   // Add equipment
+  let hasWeapons = false;
+  let hasArmor = false;
+
   if (data.equipment) {
     let equipment = data.equipment;
     equipment = canonicalizeShields(equipment);
@@ -784,12 +834,15 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       }
 
       // Categorize items
-      if (/\b(shirt|shirts|mail|armor|robe|robes|cloak|cloaks|boots|gauntlets|helm|helms|bracers)\b/i.test(processedPart)) {
+      if (/\b(shirt|shirts|mail|armor|armors|robe|robes|cloak|cloaks|boots|gauntlets|helm|helms|bracers|leather\s+armor|chain\s+mail|plate\s+mail|scale\s+mail|banded\s+mail)\b/i.test(processedPart)) {
         armorItems.push(processedPart);
       } else {
         weaponItems.push(processedPart);
       }
     });
+
+    hasWeapons = weaponItems.length > 0;
+    hasArmor = armorItems.length > 0;
 
     // Build equipment sentences
     const equipmentSentences: string[] = [];
@@ -800,7 +853,12 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       equipmentSentences.push(`They ${wearVerb} ${armorItems.join(', ')}`);
     }
     if (weaponItems.length > 0) {
-      equipmentSentences.push(`${armorItems.length > 0 ? 'and ' : 'They '}${carryVerb} ${weaponItems.join(', ')}`);
+      // Add coins to weapon items if present
+      const weaponAndCoins = [...weaponItems];
+      if (data.coins) {
+        weaponAndCoins.push(data.coins);
+      }
+      equipmentSentences.push(`${armorItems.length > 0 ? 'and ' : 'They '}${carryVerb} ${weaponAndCoins.join(', ')}`);
     }
 
     if (equipmentSentences.length > 0) {
@@ -808,10 +866,17 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     }
   }
 
-  // Add coins
-  if (data.coins) {
-    const carryVerb = isUnit ? 'carry' : 'carries';
-    parts.push(`and ${carryVerb} ${data.coins}`);
+  // Handle coins if no weapons (coins already added to weapons above)
+  if (data.coins && !hasWeapons) {
+    if (hasArmor) {
+      // If only armor, create carry sentence for coins
+      const carryVerb = isUnit ? 'carry' : 'carries';
+      parts.push(`and ${carryVerb} ${data.coins}`);
+    } else {
+      // No equipment, just coins
+      const carryVerb = isUnit ? 'carry' : 'carries';
+      parts.push(`They ${carryVerb} ${data.coins}`);
+    }
   }
 
   return parts.join(', ') + '.';

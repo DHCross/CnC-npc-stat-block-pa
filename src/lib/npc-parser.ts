@@ -455,7 +455,7 @@ function parseBlockEnhanced(block: string): ParsedNPC {
 
   // Process first parenthetical (main NPC data)
   if (parentheticals.length > 0) {
-    const parentheticalData = extractParentheticalData(parentheticals[0]);
+    const parentheticalData = extractParentheticalData(parentheticals[0], isUnit, title);
 
     // Extract mount if present and clean parenthetical
     const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
@@ -465,7 +465,7 @@ function parseBlockEnhanced(block: string): ParsedNPC {
     }
 
     // Re-extract data from cleaned parenthetical
-    const cleanedData = extractParentheticalData(cleanedParenthetical);
+    const cleanedData = extractParentheticalData(cleanedParenthetical, isUnit, title);
 
     // Map extracted data to fields
     if (cleanedData.hp) fields['Hit Points (HP)'] = cleanedData.hp;
@@ -857,7 +857,7 @@ function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): st
     mountBlock = extractedMount;
 
     // Process the cleaned parenthetical (mount data removed)
-    const cleanedParentheticalData = extractParentheticalData(cleanedParenthetical);
+    const cleanedParentheticalData = extractParentheticalData(cleanedParenthetical, isUnit, title);
     const canonicalParenthetical = buildCanonicalParenthetical(cleanedParentheticalData, isUnit);
 
     // Only add parenthetical if it contains meaningful content (not just a period or empty)
