@@ -785,7 +785,9 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       descriptor = isUnit ? 'These creatures' : 'This creature';
     }
 
-    parts.push(`${descriptor}'s vital stats are ${vitalParts.join(', ')}`);
+    // Handle possessive correctly for plurals ending in 's'
+    const possessive = descriptor.endsWith('s') ? `${descriptor}'` : `${descriptor}'s`;
+    parts.push(`${possessive} vital stats are ${vitalParts.join(', ')}`);
   }
 
   // Add primary attributes
@@ -853,12 +855,25 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       equipmentSentences.push(`They ${wearVerb} ${armorItems.join(', ')}`);
     }
     if (weaponItems.length > 0) {
-      // Add coins to weapon items if present
-      const weaponAndCoins = [...weaponItems];
-      if (data.coins) {
-        weaponAndCoins.push(data.coins);
+      // Build weapon list with proper conjunctions
+      let weaponList = '';
+      if (weaponItems.length === 1) {
+        weaponList = weaponItems[0];
+      } else if (weaponItems.length === 2) {
+        weaponList = `${weaponItems[0]} and ${weaponItems[1]}`;
+      } else {
+        // Multiple items: use Oxford comma
+        const allButLast = weaponItems.slice(0, -1);
+        const last = weaponItems[weaponItems.length - 1];
+        weaponList = `${allButLast.join(', ')}, and ${last}`;
       }
-      equipmentSentences.push(`${armorItems.length > 0 ? 'and ' : 'They '}${carryVerb} ${weaponAndCoins.join(', ')}`);
+
+      // Add coins with proper conjunction
+      if (data.coins) {
+        weaponList += `, and ${data.coins}`;
+      }
+
+      equipmentSentences.push(`${armorItems.length > 0 ? 'and ' : 'They '}${carryVerb} ${weaponList}`);
     }
 
     if (equipmentSentences.length > 0) {
