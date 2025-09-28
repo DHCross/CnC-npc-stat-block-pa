@@ -155,6 +155,10 @@ function formatBalanceSnapshot(snapshot: BalanceMeterReading): string {
   return pieces.join(' ');
 }
 
+function isPersonalReport(report: UnifiedReport): report is PersonalUnifiedReport {
+  return report.metadata.kind === 'personal';
+}
+
 function renderPersonalReport(report: PersonalUnifiedReport): string[] {
   const { blueprint, weather, growthEdges, integration } = report;
   const modes = blueprint.modes;
@@ -257,7 +261,7 @@ function renderTransits(transits: TransitSection): string[] {
 }
 
 export function renderUnifiedReport(report: UnifiedReport): string[] {
-  return report.metadata.kind === 'personal'
+  return isPersonalReport(report)
     ? renderPersonalReport(report)
     : renderRelationalReport(report);
 }
