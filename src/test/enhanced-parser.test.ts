@@ -191,7 +191,7 @@ describe('Enhanced Parser Functions', () => {
 
       const result = buildCanonicalParenthetical(data, false, true, false);
 
-      expect(result).toContain('This human, 4ᵗʰ level fighter\'s vital stats are HP 24, AC 16, disposition neutral.');
+      expect(result).toContain('This human, 4ᵗʰ level fighter’s vital stats are HP 24, AC 16, disposition neutral.');
       expect(result).toContain('Their primary attributes are strength, dexterity, constitution.');
       expect(result).toContain('They wear banded mail and carry medium steel shield, longsword, dagger.');
     });
@@ -212,7 +212,7 @@ describe('Enhanced Parser Functions', () => {
       const result = buildCanonicalParenthetical(data, true, true, false);
 
 
-      expect(result).toContain('These human 2ⁿᵈ level fighters\'s vital stats are HP 12, AC 15, disposition neutral.');
+      expect(result).toContain('These human 2ⁿᵈ level fighters’ vital stats are HP 12, AC 15, disposition neutral.');
       expect(result).toContain('Their primary attributes are physical.');
       expect(result).toContain('They wear chain mail and carry longbow, longsword.');
     });
@@ -233,7 +233,7 @@ describe('Enhanced Parser Functions', () => {
 
       const result = formatMountBlock(mountBlock);
 
-      expect(result).toBe('**Warhorse (mount)** *(This creature\'s vital stats are Level 4(d10), HP 35, AC 19, disposition neutral, It attacks with 2 hooves for 1d4 damage each, It wears chainmail barding.)*');
+      expect(result).toBe('**Warhorse (mount)** *(This creature’s vital stats are Level 4(d10), HP 35, AC 19, disposition neutral, It attacks with 2 hooves for 1d4 damage each, It wears chainmail barding.)*');
     });
 
     it('should handle minimal mount data', () => {
@@ -244,7 +244,7 @@ describe('Enhanced Parser Functions', () => {
 
       const result = formatMountBlock(mountBlock);
 
-      expect(result).toBe('**Horse (mount)** *(This creature\'s vital stats are unavailable.)*');
+      expect(result).toBe('**Horse (mount)** *(This creature’s vital stats are unavailable.)*');
     });
   });
 

@@ -785,8 +785,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       descriptor = isUnit ? 'These creatures' : 'This creature';
     }
 
-    // Handle possessive correctly for plurals ending in 's'
-    const possessive = descriptor.endsWith('s') ? `${descriptor}'` : `${descriptor}'s`;
+    const possessive = formatPossessiveDescriptor(descriptor, isUnit);
     parts.push(`${possessive} vital stats are ${vitalParts.join(', ')}`);
   }
 
@@ -894,7 +893,27 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     }
   }
 
-  return parts.join(', ') + '.';
+  if (parts.length === 0) {
+    return '';
+  }
+
+  return `${parts.join(', ')}.`;
+}
+
+function formatPossessiveDescriptor(descriptor: string, isPlural: boolean): string {
+  const trimmed = descriptor.trim();
+  const apostrophe = '’';
+
+  if (!trimmed) {
+    return isPlural ? `These creatures${apostrophe}` : `This creature${apostrophe}s`;
+  }
+
+  const lowerTrimmed = trimmed.toLowerCase();
+  if (isPlural) {
+    return lowerTrimmed.endsWith('s') ? `${trimmed}${apostrophe}` : `${trimmed}${apostrophe}s`;
+  }
+
+  return `${trimmed}${apostrophe}s`;
 }
 
 export function formatMountBlock(mountBlock: MountBlock): string {
@@ -906,9 +925,10 @@ export function formatMountBlock(mountBlock: MountBlock): string {
   if (mountBlock.attacks) parts.push(`It attacks with ${mountBlock.attacks}`);
   if (mountBlock.equipment) parts.push(`It wears ${mountBlock.equipment}`);
 
+  const apostrophe = '’';
   const vitalStats = parts.length > 0
-    ? `This creature's vital stats are ${parts.join(', ')}.`
-    : `This creature's vital stats are unavailable.`;
+    ? `This creature${apostrophe}s vital stats are ${parts.join(', ')}.`
+    : `This creature${apostrophe}s vital stats are unavailable.`;
 
   return `**${mountBlock.name.charAt(0).toUpperCase() + mountBlock.name.slice(1)} (mount)** *(${vitalStats})*`;
 }

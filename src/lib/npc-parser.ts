@@ -758,8 +758,10 @@ function isBasicMonster(parsed: ParsedNPC): boolean {
 
 function formatToMonsterNarrative(parsed: ParsedNPC): string {
   // Extract name and format with proper bolding
-  let name = parsed.name;
-  if (!name.startsWith('**')) name = `**${name.replace(/\*\*/g, '')}**`;
+  let name = parsed.name.trim();
+  if (!name.startsWith('**')) {
+    name = `**${name.replace(/\*\*/g, '').trim()}**`;
+  }
 
   const unitMatch = name.match(/\*\*([^*]+?)\s*x(\d+)\*\*/);
   const isPlural = unitMatch !== null;
@@ -845,8 +847,10 @@ function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): st
   const { title, parentheticals } = splitTitleAndBody(originalBlock);
   const isUnit = isUnitHeading(title);
 
-  let name = parsed.name;
-  if (!name.startsWith('**')) name = `**${name.replace(/\*\*/g, '')}**`;
+  let name = parsed.name.trim();
+  if (!name.startsWith('**')) {
+    name = `**${name.replace(/\*\*/g, '').trim()}**`;
+  }
 
   let result = name;
   let mountBlock: MountBlock | undefined;
@@ -1260,33 +1264,32 @@ function buildSubjectDescriptor(options: SubjectOptions): string {
 
 function toPossessiveSubject(subject: string, isPlural: boolean): string {
   const trimmed = subject.trim();
+  const apostrophe = '’';
   if (!trimmed) {
-    return isPlural ? 'These creatures\'' : "This character's";
+    return isPlural ? `These creatures${apostrophe}` : `This character${apostrophe}s`;
   }
 
   const lower = trimmed.toLowerCase();
-  if (isPlural) {
-    if (lower.endsWith("'")) {
-      return trimmed;
-    }
-    if (lower.endsWith('men') || lower.endsWith('children') || lower.endsWith('people')) {
-      return `${trimmed}'`;
-    }
-    if (lower.endsWith('s')) {
-      return `${trimmed}'`;
-    }
-    return `${trimmed}'s`;
-  }
-
-  if (lower.endsWith("'")) {
+  const alreadyPossessive = lower.endsWith("'") || lower.endsWith(apostrophe);
+  if (alreadyPossessive) {
     return trimmed;
   }
 
-  if (lower.endsWith('s')) {
-    return `${trimmed}'`;
+  if (isPlural) {
+    if (lower.endsWith('men') || lower.endsWith('children') || lower.endsWith('people')) {
+      return `${trimmed}${apostrophe}`;
+    }
+    if (lower.endsWith('s')) {
+      return `${trimmed}${apostrophe}`;
+    }
+    return `${trimmed}${apostrophe}s`;
   }
 
-  return `${trimmed}'s`;
+  if (lower.endsWith('s')) {
+    return `${trimmed}${apostrophe}`;
+  }
+
+  return `${trimmed}${apostrophe}s`;
 }
 
 function pluralizeClassName(name: string): string {
@@ -1338,11 +1341,13 @@ function formatMountBlock(raw: string): string {
     return '';
   }
 
-  const pronounNormalized = trimmed.replace(/this creature's/gi, "This creature's");
+  const pronounNormalized = trimmed
+    .replace(/this creature['’]s/gi, 'This creature’s')
+    .replace(/this character['’]s/gi, 'This character’s');
   if (/^\*\*.+\*\*/.test(pronounNormalized)) {
     return pronounNormalized;
   }
-  if (/This creature's vital stats are/i.test(pronounNormalized)) {
+  if (/This creature['’]s vital stats are/i.test(pronounNormalized)) {
     return pronounNormalized;
   }
 
