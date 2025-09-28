@@ -86,6 +86,18 @@ export function splitTitleAndBody(text: string): ParsedTitleAndBody {
       parentheticals.push(match[1]);
     }
 
+    // Fallback: if no balanced parentheticals found but we have an opening paren,
+    // extract everything after the first opening parenthesis as an unclosed parenthetical
+    if (parentheticals.length === 0 && firstParenMatch) {
+      const openParenIndex = text.indexOf('(');
+      if (openParenIndex !== -1) {
+        const remaining = text.substring(openParenIndex + 1);
+        if (remaining.trim()) {
+          parentheticals.push(remaining.trim());
+        }
+      }
+    }
+
     return { title, body, parentheticals };
   }
 
@@ -98,6 +110,18 @@ export function splitTitleAndBody(text: string): ParsedTitleAndBody {
   PAREN_RE.lastIndex = 0;
   while ((match = PAREN_RE.exec(text)) !== null) {
     parentheticals.push(match[1]);
+  }
+
+  // Fallback: if no balanced parentheticals found but we have an opening paren,
+  // extract everything after the first opening parenthesis as an unclosed parenthetical
+  if (parentheticals.length === 0) {
+    const openParenIndex = text.indexOf('(');
+    if (openParenIndex !== -1) {
+      const remaining = text.substring(openParenIndex + 1);
+      if (remaining.trim()) {
+        parentheticals.push(remaining.trim());
+      }
+    }
   }
 
   return { title, body, parentheticals };
@@ -133,29 +157,40 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
   // Extract race/class/level
   const rclMatch = RCL_RE.exec(parenthetical);
   if (rclMatch) {
+    // Check if this appears to be a unit by looking for plural pronouns
+    const isUnitContext = /\b(these|those)\b/i.test(parenthetical);
+
     // Handle two formats: "2nd level human fighters" or "human, 2nd level fighter"
     if (rclMatch[1]) {
       // Format: "2nd level human fighters" - groups [1]=level, [2]=race, [3]=class
       const level = rclMatch[1];
       const race = rclMatch[2];
-      const charClass = rclMatch[3].replace(/s$/, ''); // Remove plural 's'
+      let charClass = rclMatch[3];
+      // For units, preserve plural; for individuals, use singular
+      if (!isUnitContext && charClass.endsWith('s')) {
+        charClass = charClass.replace(/s$/, ''); // Remove plural 's' for individuals
+      }
       // Preserve original ordinal format
       const ordinalMatch = rclMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
       const ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
       data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
       data.level = level;
+      if (isUnitContext) data.originalPronoun = 'these';
     } else if (rclMatch[4] && rclMatch[5]) {
       // Format: "human, 2nd level fighter" - groups [4]=race, [5]=level, [6]=class
       const race = rclMatch[4];
       const level = rclMatch[5];
-
-      const charClass = rclMatch[6] ? rclMatch[6].replace(/s$/, '') : 'fighter'; // Remove plural 's', default to fighter
+      let charClass = rclMatch[6] ? rclMatch[6] : 'fighter';
+      // For units, preserve plural; for individuals, use singular
+      if (!isUnitContext && charClass.endsWith('s')) {
+        charClass = charClass.replace(/s$/, ''); // Remove plural 's' for individuals
+      }
       // Preserve original ordinal format
       const ordinalMatch = rclMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
       const ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
       data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
-
       data.level = level;
+      if (isUnitContext) data.originalPronoun = 'these';
     }
   }
 
@@ -186,7 +221,11 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
       const disposition = complexProseMatch[2];
       const race = complexProseMatch[3];
       const level = complexProseMatch[4];
-      const charClass = complexProseMatch[5].replace(/s$/, ''); // Remove plural 's'
+      let charClass = complexProseMatch[5]; // Keep as-is for now, handle pluralization in output
+      // For units, ensure class name is plural
+      if (originalPronoun.toLowerCase() === 'these' && !charClass.endsWith('s')) {
+        charClass = pluralizeClassNameLocal(charClass);
+      }
       // Normalize ordinal to superscript format
       const ordinalMatch = complexProseMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
       let ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
@@ -211,7 +250,12 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
   }
 
   // Extract attributes with multiple pattern variations
-  let attrMatch = /(?:primary\s+attributes?|prime\s+attributes?|PA)\s*[:\-]?\s*([^.;,]+)/i.exec(parenthetical);
+  // Try more specific patterns first
+  let attrMatch = /(?:their|his|its)\s+prime\s+attributes\s+are:\s*([^.]+?)(?:\.|$)/i.exec(parenthetical);
+  if (!attrMatch) {
+    // Try "prime attributes are: str, con, dex" format
+    attrMatch = /(?:prime\s+attributes?\s+are|attributes?\s+are)[:\s]*([^.;]+?)(?:\.|They|$)/i.exec(parenthetical);
+  }
   if (!attrMatch) {
     // Try without "primary/prime/PA" qualifier
     attrMatch = /(?:his|their|its)\s+(?:primary\s+)?attributes?\s+are\s+([^.;,]+)/i.exec(parenthetical);
@@ -219,6 +263,10 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
   if (!attrMatch) {
     // Try "primes are" format
     attrMatch = /(?:his|their|its)\s+primes?\s+are[:\s]*([^.;,]+)/i.exec(parenthetical);
+  }
+  if (!attrMatch) {
+    // Try general PA/primary/prime format
+    attrMatch = /(?:primary\s+attributes?|prime\s+attributes?|PA)\s*[:\-]?\s*([^.;,]+)/i.exec(parenthetical);
   }
   if (!attrMatch) {
     // Try simple patterns like "STR, DEX, CON" or "strength, dexterity"
@@ -234,17 +282,17 @@ export function extractParentheticalData(parenthetical: string): ParentheticalDa
     data.equipment = equipMatch[1].trim();
   } else {
     // Try to capture equipment items only (without verbs)
-    equipMatch = /(?:they\s+wear|wears?|carries?|wields?)\s+([^.]+?)(?:\.\s|$)/i.exec(parenthetical);
+    equipMatch = /(?:they\s+wear|wears?|they\s+carry|carries?|wields?)\s+([^.]+?)(?:\.|\s*$)/i.exec(parenthetical);
     if (equipMatch) {
       data.equipment = equipMatch[1].trim();
     } else {
       // Try "have" verb pattern
-      equipMatch = /(?:they\s+(?:each\s+)?have|has?)\s+([^.]+?)(?:\.\s|$)/i.exec(parenthetical);
+      equipMatch = /(?:they\s+(?:each\s+)?have|has?)\s+([^.]+?)(?:\.|\s*$)/i.exec(parenthetical);
       if (equipMatch) {
         data.equipment = equipMatch[1].trim();
       } else {
         // Fallback: simple equipment list
-        equipMatch = /(?:carries?|wields?|they\s+wear|wears?)\s*[:\-]?\s*([^.]+?)(?:\.\s|$)/i.exec(parenthetical);
+        equipMatch = /(?:carries?|wields?|they\s+wear|wears?)\s*[:\-]?\s*([^.]+?)(?:\.|\s*$)/i.exec(parenthetical);
         if (equipMatch) {
           data.equipment = equipMatch[1].trim();
         }
@@ -324,8 +372,8 @@ export function normalizeDisposition(disposition: string): string {
 
 export function normalizeAttributes(attributes: string, isUnit: boolean): string {
   if (isUnit && /\b(str|dex|con|strength|dexterity|constitution|physical)\b/i.test(attributes)) {
-    // For units with physical attributes, use PA physical per Jeremy's mandate
-    return 'PA physical';
+    // For units with physical attributes, return just "physical"
+    return 'physical';
   }
 
   // Expand abbreviations for individual NPCs
@@ -493,6 +541,69 @@ function pluralizeClassNameLocal(name: string): string {
   return `${lower}s`;
 }
 
+function pluralizeEquipmentItem(item: string): string {
+  // Handle magic items with mechanics - preserve the mechanics part
+  const mechanicsMatch = item.match(/^(.+?)(\s*\([^)]+\))$/);
+  if (mechanicsMatch) {
+    const baseItem = mechanicsMatch[1];
+    const mechanics = mechanicsMatch[2];
+    return pluralizeEquipmentItem(baseItem) + mechanics;
+  }
+
+  // Handle italicized magic items
+  const italicsMatch = item.match(/^\*(.+)\*$/);
+  if (italicsMatch) {
+    return `*${pluralizeEquipmentItem(italicsMatch[1])}*`;
+  }
+
+  const trimmed = item.trim().toLowerCase();
+
+  // Equipment-specific irregulars
+  const equipmentIrregulars: Record<string, string> = {
+    'chain shirt': 'chain shirts',
+    'chain mail': 'chain mail', // uncountable
+    'plate mail': 'plate mail', // uncountable
+    'full plate mail': 'full plate mail', // uncountable
+    'medium steel shield': 'medium steel shields',
+    'large steel shield': 'large steel shields',
+    'small steel shield': 'small steel shields',
+    'wooden shield': 'wooden shields',
+    'shield': 'shields',
+    'broadsword': 'broadswords',
+    'longsword': 'longswords',
+    'dagger': 'daggers',
+    'bow': 'bows',
+    'crossbow': 'crossbows',
+    'mace': 'maces',
+    'staff': 'staves',
+    'rod': 'rods',
+    'wand': 'wands'
+  };
+
+  if (equipmentIrregulars[trimmed]) {
+    return equipmentIrregulars[trimmed];
+  }
+
+  // General pluralization rules
+  if (trimmed.endsWith('s') || trimmed.endsWith('mail')) {
+    return item; // Already plural or uncountable
+  }
+
+  if (trimmed.endsWith('y')) {
+    return item.slice(0, -1) + 'ies';
+  }
+
+  if (trimmed.endsWith('f')) {
+    return item.slice(0, -1) + 'ves';
+  }
+
+  if (trimmed.endsWith('fe')) {
+    return item.slice(0, -2) + 'ves';
+  }
+
+  return item + 's';
+}
+
 function extractUnitNounFromTitle(title?: string): string | undefined {
   if (!title) return undefined;
   const match = title.toLowerCase().match(/(men-at-arms|militia|warriors|halflings|bowmen|guards|sergeants|fighters|troops)/);
@@ -575,7 +686,6 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   const vitalParts: string[] = [];
   if (data.hp) vitalParts.push(`HP ${data.hp}`);
   if (data.ac) vitalParts.push(`AC ${data.ac}`);
-  if (data.disposition) vitalParts.push(`disposition ${data.disposition}`);
 
   if (vitalParts.length > 0) {
     let descriptor = '';
@@ -597,17 +707,30 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
         raceClassText = classLevelMatch ? classLevelMatch[0] : raceClassText;
       }
 
+      // Build descriptor with disposition first, then race/class
+      let descriptorParts: string[] = [];
+
+      // Add disposition first if available
+      if (data.disposition) {
+        descriptorParts.push(data.disposition);
+      }
+
+      // Add race/class text
+      descriptorParts.push(raceClassText);
+
+      const combinedText = descriptorParts.join(' ');
+
       if (hasOriginalPronoun) {
         // Original had proper pronoun structure, use it directly to avoid duplication
         const properPronoun = data.originalPronoun === 'these' ? 'These' :
                              data.originalPronoun === 'this' ? 'This' : 'The';
-        descriptor = `${properPronoun} ${raceClassText}`;
+        descriptor = `${properPronoun} ${combinedText}`;
       } else {
         // No original pronoun, use standard format
         if (isUnit) {
-          descriptor = `These ${raceClassText}`;
+          descriptor = `These ${combinedText}`;
         } else {
-          descriptor = `This ${raceClassText}`;
+          descriptor = `This ${combinedText}`;
         }
       }
     } else {
@@ -618,16 +741,12 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     parts.push(`${descriptor}'s vital stats are ${vitalParts.join(', ')}`);
   }
 
-  // Add PA physical for units, expanded attributes for individuals
+  // Add primary attributes
   if (data.attributes) {
     const normalizedAttrs = normalizeAttributes(data.attributes, isUnit);
     if (isUnit) {
-      // For units, PA physical should be on same line as vital stats
-      if (parts.length > 0) {
-        parts[0] += `, ${normalizedAttrs}`;
-      } else {
-        parts.push(normalizedAttrs);
-      }
+      // For units, expand to full sentence
+      parts.push(`Their primary attributes are ${normalizedAttrs === 'PA physical' ? 'physical' : normalizedAttrs}`);
     } else {
       // For individuals, add as separate clause
       const possessive = 'his';
@@ -640,33 +759,52 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     let equipment = data.equipment;
     equipment = canonicalizeShields(equipment);
     equipment = repositionMagicItemBonuses(equipment);
-    equipment = normalizeEquipmentVerbs(equipment);
     equipment = deduplicateEquipment(equipment);
 
-    // Add magic item mechanics to equipment
-    const equipmentParts = equipment.split(',').map(part => part.trim());
-    const processedEquipment = equipmentParts.map(part => {
-      // Check if it's a magic item and add mechanics
-      if (/\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(part)) {
-        return addMagicItemMechanics(part);
-      }
-      return part;
-    }).join(', ');
+    // Split equipment into armor/clothing (wear) and weapons/items (carry)
+    // Handle both comma and "and" separators
+    const equipmentParts = equipment
+      .split(/[,]/)
+      .flatMap(part => part.split(/\s+and\s+/))
+      .map(part => part.trim())
+      .filter(Boolean);
+    const armorItems: string[] = [];
+    const weaponItems: string[] = [];
 
-    // Jeremy's mandate: consistent equipment verbs per entity type
+    equipmentParts.forEach(part => {
+      // Process magic items
+      let processedPart = part;
+      if (/\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(part)) {
+        processedPart = addMagicItemMechanics(part);
+      }
+
+      // For units, pluralize items
+      if (isUnit) {
+        processedPart = pluralizeEquipmentItem(processedPart);
+      }
+
+      // Categorize items
+      if (/\b(shirt|shirts|mail|armor|robe|robes|cloak|cloaks|boots|gauntlets|helm|helms|bracers)\b/i.test(processedPart)) {
+        armorItems.push(processedPart);
+      } else {
+        weaponItems.push(processedPart);
+      }
+    });
+
+    // Build equipment sentences
+    const equipmentSentences: string[] = [];
     const wearVerb = isUnit ? 'wear' : 'wears';
     const carryVerb = isUnit ? 'carry' : 'carries';
 
-    // Process equipment with proper verb forms
-    if (processedEquipment.includes('wears ') || processedEquipment.includes('carries ')) {
-      // Equipment already has embedded verbs, normalize them
-      let normalized = processedEquipment.replace(/\bwears\b/g, wearVerb);
-      normalized = normalized.replace(/\bcarries\b/g, carryVerb);
-      normalized = normalized.replace(/\bcarry\b/g, carryVerb);
-      parts.push(normalized);
-    } else {
-      // No embedded verbs, add appropriate verb
-      parts.push(`${wearVerb} ${processedEquipment}`);
+    if (armorItems.length > 0) {
+      equipmentSentences.push(`They ${wearVerb} ${armorItems.join(', ')}`);
+    }
+    if (weaponItems.length > 0) {
+      equipmentSentences.push(`${armorItems.length > 0 ? 'and ' : 'They '}${carryVerb} ${weaponItems.join(', ')}`);
+    }
+
+    if (equipmentSentences.length > 0) {
+      parts.push(equipmentSentences.join(' '));
     }
   }
 
