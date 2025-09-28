@@ -115,12 +115,13 @@ export function DocumentAnalyzer({ onClose }: DocumentAnalyzerProps) {
         textContent = value;
       } else if (extension === 'pdf' || file.type === 'application/pdf') {
         const pdfjsLib = await import('pdfjs-dist/legacy/build/pdf.mjs');
-        if (pdfjsLib.GlobalWorkerOptions) {
-          pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.min.mjs';
+        const pdfjs = pdfjsLib.default || pdfjsLib;
+        if (pdfjs.GlobalWorkerOptions) {
+          pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.min.mjs';
         }
 
         const arrayBuffer = await file.arrayBuffer();
-        const pdfDocument = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+        const pdfDocument = await pdfjs.getDocument({ data: arrayBuffer }).promise;
         const pages: string[] = [];
 
         for (let pageNumber = 1; pageNumber <= pdfDocument.numPages; pageNumber += 1) {
