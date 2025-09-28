@@ -155,7 +155,7 @@ Mount: heavy war horse`
 
       const result = collapseNPCEntry(input)
 
-      expect(result).toContain("**Heavy War Horse (mount)** *(This creature's vital stats are unavailable.)*")
+      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are unavailable.)*')
     })
   })
 
@@ -231,7 +231,7 @@ Mount: heavy war horse`
       const mainBlock = mainBlockMatch ? mainBlockMatch[1] : ''
       expect(mainBlock).not.toMatch(/\*\*/)
       // Canonical mount block with neutral pronoun
-      expect(result).toContain("**Heavy War Horse (mount)** *(This creature's vital stats are unavailable.)*")
+      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are unavailable.)*')
     })
   })
 
@@ -251,7 +251,7 @@ Mount: heavy war horse`
       expect(result).toContain('mace')
 
       // Mount from prose creates canonical block
-      expect(result).toContain("**Heavy War Horse (mount)** *(This creature's vital stats are unavailable.)*")
+      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are unavailable.)*')
     })
   })
 })
