@@ -35,6 +35,64 @@ export interface MountBlock {
   raw: string;
 }
 
+function numberToWords(num: number): string {
+  if (!Number.isFinite(num) || num < 0) {
+    return num.toString();
+  }
+
+  const units = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+  const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+  if (num < 10) {
+    return units[num];
+  }
+
+  if (num < 20) {
+    return teens[num - 10];
+  }
+
+  if (num < 100) {
+    const tensValue = Math.floor(num / 10);
+    const remainder = num % 10;
+    return remainder === 0 ? tens[tensValue] : `${tens[tensValue]}-${units[remainder]}`;
+  }
+
+  if (num < 1000) {
+    const hundredsValue = Math.floor(num / 100);
+    const remainder = num % 100;
+    const remainderText = remainder === 0 ? '' : ` ${numberToWords(remainder)}`;
+    return `${units[hundredsValue]} hundred${remainderText}`;
+  }
+
+  if (num < 10000) {
+    const thousandsValue = Math.floor(num / 1000);
+    const remainder = num % 1000;
+    const remainderText = remainder === 0 ? '' : ` ${numberToWords(remainder)}`;
+    return `${units[thousandsValue]} thousand${remainderText}`;
+  }
+
+  return num.toString();
+}
+
+function canonicalizeCoinsText(coins: string): string {
+  if (!coins) {
+    return coins;
+  }
+
+  let normalized = coins.trim();
+
+  normalized = normalized.replace(/(\d+)\s*[–-]\s*(\d+)/g, (_, start, end) => {
+    const startNum = parseInt(start, 10);
+    const endNum = parseInt(end, 10);
+    return `${numberToWords(startNum)} to ${numberToWords(endNum)}`;
+  });
+
+  normalized = normalized.replace(/\b(\d+)\b/g, (_, value) => numberToWords(parseInt(value, 10)));
+
+  return normalized;
+}
+
 // Helper function to get superscript ordinal
 function getSuperscriptOrdinal(num: string): string {
   const n = parseInt(num);
@@ -172,7 +230,10 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
       }
       // Preserve original ordinal format
       const ordinalMatch = rclMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
-      const ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
+      let ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
+      if (ordinal === 'st' || ordinal === 'nd' || ordinal === 'rd' || ordinal === 'th') {
+        ordinal = getSuperscriptOrdinal(level);
+      }
       data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
       data.level = level;
       if (isUnitContext) data.originalPronoun = 'these';
@@ -187,7 +248,10 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
       }
       // Preserve original ordinal format
       const ordinalMatch = rclMatch[0].match(/(\d+)(st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/);
-      const ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
+      let ordinal = ordinalMatch ? ordinalMatch[2] : 'th';
+      if (ordinal === 'st' || ordinal === 'nd' || ordinal === 'rd' || ordinal === 'th') {
+        ordinal = getSuperscriptOrdinal(level);
+      }
       data.raceClass = `${race}, ${level}${ordinal} level ${charClass}`;
       data.level = level;
       if (isUnitContext) data.originalPronoun = 'these';
@@ -724,6 +788,11 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
 
 export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, omitRace: boolean = false, useSuperscriptOrdinals: boolean = true): string {
   const parts: string[] = [];
+  const subjectPronoun = isUnit ? 'they' : 'he';
+  const wearVerb = isUnit ? 'wear' : 'wears';
+  const carryVerb = isUnit ? 'carry' : 'carries';
+  const coinsText = data.coins ? canonicalizeCoinsText(data.coins) : undefined;
+  let coinsIncludedInWeapons = false;
 
   // If the original input already had a proper sentence with pronoun, avoid duplication
   const hasOriginalPronoun = data.originalPronoun && ['these', 'this', 'the'].includes(data.originalPronoun);
@@ -732,7 +801,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   const vitalParts: string[] = [];
   if (data.hp) vitalParts.push(`HP ${data.hp}`);
   if (data.ac) vitalParts.push(`AC ${data.ac}`);
-  if (data.disposition) vitalParts.push(`disposition ${data.disposition}`);
+  if (data.disposition) vitalParts.push(`disposition ${data.disposition.toLowerCase()}`);
 
   if (vitalParts.length > 0) {
     let descriptor = '';
@@ -794,7 +863,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     const normalizedAttrs = normalizeAttributes(data.attributes, isUnit);
     if (isUnit) {
       // For units, expand to full sentence
-      parts.push(`Their primary attributes are ${normalizedAttrs === 'PA physical' ? 'physical' : normalizedAttrs}`);
+      parts.push(`their primary attributes are ${normalizedAttrs === 'PA physical' ? 'physical' : normalizedAttrs}`);
     } else {
       // For individuals, add as separate clause
       const possessive = 'his';
@@ -829,6 +898,9 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
         processedPart = addMagicItemMechanics(part);
       }
 
+      processedPart = processedPart.replace(/^(?:and\s+)?(?:they|he|she|it)\s+/i, '');
+      processedPart = processedPart.replace(/^(?:and\s+)?(?:wears|wear|carries|carry)\s+/i, '');
+
       // For units, pluralize items
       if (isUnit) {
         processedPart = pluralizeEquipmentItem(processedPart);
@@ -847,11 +919,8 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
 
     // Build equipment sentences
     const equipmentSentences: string[] = [];
-    const wearVerb = isUnit ? 'wear' : 'wears';
-    const carryVerb = isUnit ? 'carry' : 'carries';
-
     if (armorItems.length > 0) {
-      equipmentSentences.push(`They ${wearVerb} ${armorItems.join(', ')}`);
+      equipmentSentences.push(`${subjectPronoun} ${wearVerb} ${armorItems.join(', ')}`);
     }
     if (weaponItems.length > 0) {
       // Build weapon list with proper conjunctions
@@ -868,11 +937,12 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       }
 
       // Add coins with proper conjunction
-      if (data.coins) {
-        weaponList += `, and ${data.coins}`;
+      if (coinsText) {
+        weaponList += `, and ${coinsText}`;
+        coinsIncludedInWeapons = true;
       }
 
-      equipmentSentences.push(`${armorItems.length > 0 ? 'and ' : 'They '}${carryVerb} ${weaponList}`);
+      equipmentSentences.push(`${armorItems.length > 0 ? 'and ' : `${subjectPronoun} `}${carryVerb} ${weaponList}`);
     }
 
     if (equipmentSentences.length > 0) {
@@ -881,15 +951,13 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   }
 
   // Handle coins if no weapons (coins already added to weapons above)
-  if (data.coins && !hasWeapons) {
+  if (coinsText && !hasWeapons && !coinsIncludedInWeapons) {
     if (hasArmor) {
       // If only armor, create carry sentence for coins
-      const carryVerb = isUnit ? 'carry' : 'carries';
-      parts.push(`and ${carryVerb} ${data.coins}`);
+      parts.push(`and ${carryVerb} ${coinsText}`);
     } else {
       // No equipment, just coins
-      const carryVerb = isUnit ? 'carry' : 'carries';
-      parts.push(`They ${carryVerb} ${data.coins}`);
+      parts.push(`${subjectPronoun} ${carryVerb} ${coinsText}`);
     }
   }
 

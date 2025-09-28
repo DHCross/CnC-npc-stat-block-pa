@@ -191,9 +191,7 @@ describe('Enhanced Parser Functions', () => {
 
       const result = buildCanonicalParenthetical(data, false, true, false);
 
-      expect(result).toContain('This human, 4ᵗʰ level fighter’s vital stats are HP 24, AC 16, disposition neutral.');
-      expect(result).toContain('Their primary attributes are strength, dexterity, constitution.');
-      expect(result).toContain('They wear banded mail and carry medium steel shield, longsword, dagger.');
+      expect(result).toContain('This neutral 4th level fighter’s vital stats are HP 24, AC 16, disposition neutral, his primary attributes are strength, dexterity, constitution, he wears banded mail and carries medium steel shield, longsword, and dagger.');
     });
 
     it('should build canonical format for unit', () => {
@@ -212,9 +210,7 @@ describe('Enhanced Parser Functions', () => {
       const result = buildCanonicalParenthetical(data, true, true, false);
 
 
-      expect(result).toContain('These human 2ⁿᵈ level fighters’ vital stats are HP 12, AC 15, disposition neutral.');
-      expect(result).toContain('Their primary attributes are physical.');
-      expect(result).toContain('They wear chain mail and carry longbow, longsword.');
+      expect(result).toContain('These neutral 2nd level fighters’ vital stats are HP 12, AC 15, disposition neutral, their primary attributes are physical, they wear chain mail and carry longbows and longswords.');
     });
   });
 
