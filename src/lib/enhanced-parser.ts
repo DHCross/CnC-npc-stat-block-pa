@@ -935,7 +935,26 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     return '';
   }
 
-  return `${parts.join(', ')}.`;
+  // Smart joining: detect when we need periods between independent clauses
+  const joinedParts: string[] = [];
+  for (let i = 0; i < parts.length; i++) {
+    const currentPart = parts[i];
+    const nextPart = i < parts.length - 1 ? parts[i + 1] : null;
+
+    // Check if current part is a complete sentence about attributes and next part starts with a pronoun
+    const isAttributeSentence = currentPart.includes('primary attributes are');
+    const nextStartsWithPronoun = nextPart && /^(he|she|they|it)\s/.test(nextPart);
+    const isUnitAttributeSentence = currentPart.includes('their primary attributes are');
+
+    if (isAttributeSentence && nextStartsWithPronoun && isUnitAttributeSentence) {
+      // Add period after complete attribute sentence before independent equipment clause (units only)
+      joinedParts.push(currentPart + '.');
+    } else {
+      joinedParts.push(currentPart);
+    }
+  }
+
+  return `${joinedParts.join(', ')}.`;
 }
 
 function formatPossessiveDescriptor(descriptor: string, isPlural: boolean): string {

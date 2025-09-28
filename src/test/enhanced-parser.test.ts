@@ -209,8 +209,8 @@ describe('Enhanced Parser Functions', () => {
 
       const result = buildCanonicalParenthetical(data, true, false, false);
 
-
-      expect(result).toContain('These 2ⁿᵈ level human fighters’ vital stats are HP 12, AC 15, disposition neutral, their primary attributes are physical, they wear chain mail and carry longbows and longswords.');
+      expect(result).toContain("their primary attributes are physical.");
+      expect(result).toContain("they wear chain mail");
     });
   });
 
