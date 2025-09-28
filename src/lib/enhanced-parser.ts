@@ -105,12 +105,12 @@ function getSuperscriptOrdinal(num: string): string {
 // Core regex patterns based on Jeremy's specifications
 // This regex handles nested parentheses by matching balanced parentheses
 const PAREN_RE = /\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g;
-const HP_RE = /\b(?:HP|Hit\s*Points)\s*[:\-]?\s*(\d+)\b/i;
-const AC_RE = /\bAC\s*[:\-]?\s*([\d\/]+)\b/i;
+const HP_RE = /\b(?:HP|Hit\s*Points)\s*[:-]?\s*(\d+)\b/i;
+const AC_RE = /\bAC\s*[:-]?\s*([\d/]+)\b/i;
 
 const RCL_RE = /\b(?:(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)\s+([a-z-]+)s?|(human|elf|dwarf|halfling|gnome|orc|goblin),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s*level\s+([a-z-]+)s?)\b/i;
 
-const DISPOSITION_RE = /\b(disposition|alignment)\s*[:\-]?\s*([a-z\s]+(?:\/[a-z\s]+)?)\b/i;
+const DISPOSITION_RE = /\b(disposition|alignment)\s*[:‑]?\s*([a-z\s]+(?:\/[a-z\s]+)?)\b/i;
 const MOUNT_TYPE_RE = /\b(heavy|light)?\s*war\s*horse\b/i;
 const LEADING_BONUS_RE = /\+(\d+)\s+((?:\w+\s+)*(?:longsword|sword|mail|armor|shield|lance|dagger|mace|axe|bow|crossbow|staff|rod|wand|ring|robe|cloak|boots|gauntlets|helm|bracers|pectoral))/gi;
 
@@ -352,7 +352,7 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
   }
   if (!attrMatch) {
     // Try general PA/primary/prime format
-    attrMatch = /(?:primary\s+attributes?|prime\s+attributes?|PA)\s*[:\-]?\s*([^.;,]+)/i.exec(parenthetical);
+    attrMatch = /(?:primary\s+attributes?|prime\s+attributes?|PA)\s*[:-]?\s*([^.;,]+)/i.exec(parenthetical);
   }
   if (!attrMatch) {
     // Try simple patterns like "STR, DEX, CON" or "strength, dexterity"
@@ -363,7 +363,7 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
   }
 
   // Extract equipment - preserve verb structure when possible
-  let equipMatch = /(?:EQ|equipment)[\s:\-]+([^.;]+)/i.exec(parenthetical);
+  let equipMatch = /(?:EQ|equipment)[\s:-]+([^.;]+)/i.exec(parenthetical);
   if (equipMatch) {
     data.equipment = equipMatch[1].trim();
   } else {
@@ -378,7 +378,7 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
         data.equipment = equipMatch[1].trim();
       } else {
         // Fallback: simple equipment list
-        equipMatch = /(?:carries?|wields?|they\s+wear|wears?)\s*[:\-]?\s*([^.]+?)(?:\.|\s*$)/i.exec(parenthetical);
+        equipMatch = /(?:carries?|wields?|they\s+wear|wears?)\s*[:-]?\s*([^.]+?)(?:\.|\s*$)/i.exec(parenthetical);
         if (equipMatch) {
           data.equipment = equipMatch[1].trim();
         }
@@ -414,7 +414,7 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
   }
 
   // Extract coins with multiple pattern variations
-  let coinMatch = /(\d+)[-–](\d+)\s*(?:gp|gold|GP)/i.exec(parenthetical);
+  const coinMatch = /(\d+)[-–](\d+)\s*(?:gp|gold|GP)/i.exec(parenthetical);
   if (coinMatch) {
     data.coins = `${coinMatch[1]}–${coinMatch[2]} gold in coin`;
   } else {
@@ -583,7 +583,7 @@ export function extractMountFromParenthetical(parenthetical: string): {
 
   // Extract mount-related data
   const mountHpMatch = /(?:war\s*horse[^.]*?HP\s*(\d+))/i.exec(parenthetical);
-  const mountAcMatch = /(?:war\s*horse[^.]*?AC\s*([\d\/]+))/i.exec(parenthetical);
+  const mountAcMatch = /(?:war\s*horse[^.]*?AC\s*([\d/]+))/i.exec(parenthetical);
   const mountAttackMatch = /((?:hoof|hooves)[^.]*)/i.exec(parenthetical);
 
   if (mountHpMatch || mountAcMatch || mountAttackMatch) {
@@ -597,7 +597,7 @@ export function extractMountFromParenthetical(parenthetical: string): {
     };
 
     // Remove mount data from parenthetical
-    let cleaned = parenthetical
+    const cleaned = parenthetical
       .replace(/[,;\s]*(?:heavy|light)?\s*war\s*horse[^.;,]*/gi, '')
       .replace(/[,;\s]*(?:hoof|hooves)[^.;,]*/gi, '')
       .replace(/[,;\s]+$/, ''); // Clean trailing punctuation

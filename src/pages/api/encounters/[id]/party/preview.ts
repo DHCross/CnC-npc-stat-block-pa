@@ -33,7 +33,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       return folder ? folder.memberIds : [];
     })
   );
-  let picks = uniq([...folderMembers, ...members]).filter((id: string) => !excluded.includes(id));
+  const picks = uniq([...folderMembers, ...members]).filter((id: string) => !excluded.includes(id));
 
   // Fetch character records
   const merged = characters.filter((c: any) => picks.includes(c.id));

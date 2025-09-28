@@ -36,7 +36,7 @@ export interface BlueprintSummary {
   balanceOverview: string;
 }
 
-export interface PersonalBlueprint extends BlueprintSummary {}
+export type PersonalBlueprint = BlueprintSummary;
 
 export interface PersonalWeather {
   field: FieldMapVoiceSegment;

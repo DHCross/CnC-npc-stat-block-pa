@@ -24,7 +24,7 @@ import { visit } from 'unist-util-visit';
 function remarkOrdinals() {
   return (tree) => {
     visit(tree, 'text', (node, idx, parent) => {
-      let text = String(node.value);
+      const text = String(node.value);
 
       // Handle both formats: 1st/2nd/3rd/4th and ^th^/^st^/^nd^/^rd^
       const parts = text.split(/(\b\d{1,3}(?:st|nd|rd|th)\b|\d{1,3}\^(?:st|nd|rd|th)\^)/);
@@ -287,11 +287,10 @@ function App() {
       const useEnhanced = overrides?.useEnhanced ?? useEnhancedParser;
       const correctionOptions = { enableDictionarySuggestions: dictionariesActive };
 
-      let processed: ProcessedNPC[];
       const toParse = shouldNormalize
         ? applyAllHighConfidenceFixes(text, correctionOptions)
         : text;
-      processed = processDumpWithValidation(toParse, useEnhanced);
+      const processed = processDumpWithValidation(toParse, useEnhanced);
 
       const fixes = generateAutoCorrectionFixes(text, correctionOptions);
       setAvailableFixes(fixes);
