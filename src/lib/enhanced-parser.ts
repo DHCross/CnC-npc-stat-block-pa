@@ -949,12 +949,33 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     if (isAttributeSentence && nextStartsWithPronoun && isUnitAttributeSentence) {
       // Add period after complete attribute sentence before independent equipment clause (units only)
       joinedParts.push(currentPart + '.');
+      // Capitalize the next part since it follows a period
+      if (nextPart) {
+        const capitalizedNext = nextPart.charAt(0).toUpperCase() + nextPart.slice(1);
+        joinedParts.push(capitalizedNext);
+        i++; // Skip the next iteration since we've already processed it
+      }
     } else {
       joinedParts.push(currentPart);
     }
   }
 
-  return `${joinedParts.join(', ')}.`;
+  // Join parts, but don't add comma after parts that already end with period
+  let result = '';
+  for (let i = 0; i < joinedParts.length; i++) {
+    const part = joinedParts[i];
+    if (i === 0) {
+      result = part;
+    } else if (joinedParts[i - 1].endsWith('.')) {
+      // Previous part ended with period, add space (not comma)
+      result += ' ' + part;
+    } else {
+      // Normal comma separation
+      result += ', ' + part;
+    }
+  }
+
+  return result.endsWith('.') ? result : result + '.';
 }
 
 function formatPossessiveDescriptor(descriptor: string, isPlural: boolean): string {

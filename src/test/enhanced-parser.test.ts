@@ -209,8 +209,8 @@ describe('Enhanced Parser Functions', () => {
 
       const result = buildCanonicalParenthetical(data, true, false, false);
 
-      expect(result).toContain("their primary attributes are physical,");
-      expect(result).toContain("they wear chain mail");
+      expect(result).toContain("their primary attributes are physical. They wear chain mail");
+      expect(result).toContain("They wear chain mail");
     });
   });
 
