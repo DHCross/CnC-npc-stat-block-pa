@@ -340,11 +340,11 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
   let attrMatch = /(?:their|his|its)\s+prime\s+attributes\s+are:\s*([^.]+?)(?:\.|$)/i.exec(parenthetical);
   if (!attrMatch) {
     // Try "prime attributes are: str, con, dex" format
-    attrMatch = /(?:prime\s+attributes?\s+are|attributes?\s+are)[:\s]*([^.;]+?)(?:\.|They|$)/i.exec(parenthetical);
+    attrMatch = /(?:prime\s+attributes?\s+are|attributes?\s+are)[:\s]*([^.;]+?)(?:\.|,\s*(?:he|they|she|it)\s+(?:wear|carry|wield|have)|They|$)/i.exec(parenthetical);
   }
   if (!attrMatch) {
-    // Try without "primary/prime/PA" qualifier
-    attrMatch = /(?:his|their|its)\s+(?:primary\s+)?attributes?\s+are\s+([^.;,]+)/i.exec(parenthetical);
+    // Try without "primary/prime/PA" qualifier - stop at equipment indicators
+    attrMatch = /(?:his|their|its)\s+(?:primary\s+)?attributes?\s+are\s+((?:strength|dexterity|constitution|intelligence|wisdom|charisma|str|dex|con|int|wis|cha)(?:,?\s*(?:and\s+)?(?:strength|dexterity|constitution|intelligence|wisdom|charisma|str|dex|con|int|wis|cha))*)/i.exec(parenthetical);
   }
   if (!attrMatch) {
     // Try "primes are" format
@@ -862,6 +862,11 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     const weaponItems: string[] = [];
 
     equipmentParts.forEach(part => {
+      // Skip coin references - they'll be handled separately in the coins section
+      if (/\b\d+\s*(?:gp|sp|cp|pp|gold|silver|copper|platinum)\b/i.test(part)) {
+        return;
+      }
+
       // Process magic items
       let processedPart = part;
       if (/\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(part)) {
@@ -924,7 +929,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   if (coinsText && !hasWeapons && !coinsIncludedInWeapons) {
     if (hasArmor) {
       // If only armor, create carry sentence for coins
-      parts.push(`and ${carryVerb} ${coinsText}`);
+      parts.push(`and ${subjectPronoun} ${carryVerb} ${coinsText}`);
     } else {
       // No equipment, just coins
       parts.push(`${subjectPronoun} ${carryVerb} ${coinsText}`);
@@ -945,9 +950,10 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     const isAttributeSentence = currentPart.includes('primary attributes are');
     const nextStartsWithPronoun = nextPart && /^(he|she|they|it)\s/.test(nextPart);
     const isUnitAttributeSentence = currentPart.includes('their primary attributes are');
+    const isIndividualAttributeSentence = currentPart.includes('his primary attributes are') || currentPart.includes('her primary attributes are');
 
-    if (isAttributeSentence && nextStartsWithPronoun && isUnitAttributeSentence) {
-      // Add period after complete attribute sentence before independent equipment clause (units only)
+    if (isAttributeSentence && nextStartsWithPronoun && (isUnitAttributeSentence || isIndividualAttributeSentence)) {
+      // Add period after complete attribute sentence before independent equipment clause
       joinedParts.push(currentPart + '.');
       // Capitalize the next part since it follows a period
       if (nextPart) {
