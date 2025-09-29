@@ -11,6 +11,7 @@ export interface ParentheticalData {
   significantAttributes?: string;
   secondarySkills?: string;
   equipment?: string;
+  formationDetails?: string;
   spells?: string;
   mountData?: string;
   coins?: string;
@@ -365,40 +366,42 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
     data.attributes = attrMatch[1].trim();
   }
 
-  // Extract equipment - preserve verb structure when possible
+  // Extract equipment - preserve verb structure when possible, including conditional equipment
   let equipMatch = /(?:EQ|equipment)[\s:-]+([^.;]+)/i.exec(parenthetical);
   if (equipMatch) {
     data.equipment = equipMatch[1].trim();
   } else {
-    // Try to capture equipment items only (without verbs)
-    equipMatch = /(?:they\s+wear|wears?|they\s+carry|carries?|wields?)\s+([^.]+?)(?:\.|\s*$)/i.exec(parenthetical);
-    if (equipMatch) {
-      let equipment = equipMatch[1].trim();
-      // Clean up broken equipment references like "and a , and carries a"
-      equipment = equipment.replace(/\band\s+a\s*,/gi, '').replace(/\band\s+a\s*$/gi, '').replace(/\band\s+carries?\s+a\s*/gi, '').trim();
-      // Only set equipment if we have meaningful content (not just empty references)
-      if (equipment && equipment !== 'and a' && equipment !== 'a' && !equipment.match(/^\s*(and|carries?|a|,)*\s*$/i)) {
-        data.equipment = equipment;
-      }
+    // Extract equipment from the full text, capturing everything in one pass
+    let fullEquipment = '';
+
+    // Find all equipment mentions starting from "they wear" or "they carry"
+    const fullEquipMatch = /(?:they\s+wear|wears?)\s+([^.]+?)(?:\.\s*they\s+carry\s+([^.]+?))?(?:\.\s*they\s+carry\s+([^.]+?))?(?:\.|$)/i.exec(parenthetical);
+    if (fullEquipMatch) {
+      const wornItems = fullEquipMatch[1]?.trim();
+      const carriedItems1 = fullEquipMatch[2]?.trim();
+      const carriedItems2 = fullEquipMatch[3]?.trim();
+
+      const equipParts: string[] = [];
+      if (wornItems) equipParts.push(wornItems);
+      if (carriedItems1) equipParts.push(carriedItems1);
+      if (carriedItems2) equipParts.push(carriedItems2);
+
+      fullEquipment = equipParts.join(', ');
     } else {
-      // Try "have" verb pattern
-      equipMatch = /(?:they\s+(?:each\s+)?have|has?)\s+([^.]+?)(?:\.|\s*$)/i.exec(parenthetical);
-      if (equipMatch) {
-        let equipment = equipMatch[1].trim();
-        equipment = equipment.replace(/\band\s+a\s*,/gi, '').replace(/\band\s+a\s*$/gi, '').replace(/\band\s+carries?\s+a\s*/gi, '').trim();
-        if (equipment && equipment !== 'and a' && equipment !== 'a' && !equipment.match(/^\s*(and|carries?|a|,)*\s*$/i)) {
-          data.equipment = equipment;
-        }
-      } else {
-        // Fallback: simple equipment list
-        equipMatch = /(?:carries?|wields?|they\s+wear|wears?)\s*[:-]?\s*([^.]+?)(?:\.|\s*$)/i.exec(parenthetical);
-        if (equipMatch) {
-          let equipment = equipMatch[1].trim();
-          equipment = equipment.replace(/\band\s+a\s*,/gi, '').replace(/\band\s+a\s*$/gi, '').replace(/\band\s+carries?\s+a\s*/gi, '').trim();
-          if (equipment && equipment !== 'and a' && equipment !== 'a' && !equipment.match(/^\s*(and|carries?|a|,)*\s*$/i)) {
-            data.equipment = equipment;
-          }
-        }
+      // Fallback: try to capture any equipment patterns
+      const fallbackMatch = /(?:they\s+wear|wears?|they\s+carry|carries?|wields?)\s+([^.]+?)(?:\.|$)/i.exec(parenthetical);
+      if (fallbackMatch) {
+        fullEquipment = fallbackMatch[1].trim();
+      }
+    }
+
+    if (fullEquipment && !fullEquipment.match(/^\s*(and|carries?|a|,)*\s*$/i)) {
+      // Clean up equipment by removing coin references
+      fullEquipment = fullEquipment.replace(/,?\s*and\s+carry\s+\d+[–-]\d+\s*(?:gp|gold|silver|copper|platinum)(?:\s+in\s+coin)?/gi, '');
+      fullEquipment = fullEquipment.replace(/,?\s*\d+[–-]\d+\s*(?:gp|gold|silver|copper|platinum)(?:\s+in\s+coin)?/gi, '');
+      fullEquipment = fullEquipment.trim().replace(/,\s*$/, '');
+      if (fullEquipment) {
+        data.equipment = fullEquipment;
       }
     }
   }
@@ -453,6 +456,8 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
   if (spellMatch) {
     data.spells = spellMatch[1].trim();
   }
+
+  // Formation details are now captured as part of equipment context, not separately
 
   // Extract jewelry separately from coins - do this BEFORE the general currency extraction
   const jewelryMatch = /(\d+)\s*gold\s+worth\s+of\s+jewelry/i.exec(parenthetical);
@@ -907,7 +912,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
 
     equipmentParts.forEach(part => {
       // Skip coin references - they'll be handled separately in the coins section
-      if (/\b\d+\s*(?:gp|sp|cp|pp|gold|silver|copper|platinum)\b/i.test(part)) {
+      if (/\b\d+[–-]\d+\s*(?:gp|sp|cp|pp|gold|silver|copper|platinum)|\b\d+\s*(?:gp|sp|cp|pp|gold|silver|copper|platinum)\b/i.test(part)) {
         return;
       }
 
@@ -989,6 +994,8 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     spellText = spellText.replace(/^(?:the\s+following\s+number\s+of\s+|following\s+)?(cleric\s+|wizard\s+|magic.user\s+)?spells?\s+per\s+day:\s*/i, '');
     parts.push(`${pronounSubject} can cast the following number of spells per day: ${spellText}`);
   }
+
+  // Formation details are now included within equipment descriptions
 
   // Add jewelry
   if (data.jewelry) {
