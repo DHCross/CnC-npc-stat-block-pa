@@ -542,10 +542,10 @@ export function addMagicItemMechanics(item: string): string {
     return item;
   }
 
-  // Check for exact matches first
+  // Check for exact matches first - use em dashes to avoid nested parentheses
   const lowerItem = item.toLowerCase().trim();
   if (MAGIC_ITEM_MECHANICS[lowerItem]) {
-    return `${item} (${MAGIC_ITEM_MECHANICS[lowerItem]})`;
+    return `${item}—${MAGIC_ITEM_MECHANICS[lowerItem]}`;
   }
 
   // Handle +X bonuses for specific items - only add the bonus, not generic mechanics
@@ -553,7 +553,7 @@ export function addMagicItemMechanics(item: string): string {
   if (bonusMatch) {
     const bonus = bonusMatch[1];
     if (MAGIC_ITEM_MECHANICS[`+${bonus}`]) {
-      return `${item} (${MAGIC_ITEM_MECHANICS[`+${bonus}`]})`;
+      return `${item}—${MAGIC_ITEM_MECHANICS[`+${bonus}`]}`;
     }
   }
 
@@ -564,12 +564,12 @@ export function addMagicItemMechanics(item: string): string {
       if (itemName === 'shield' && bonusMatch) {
         continue;
       }
-      return `${item} (${mechanics})`;
+      return `${item}—${mechanics}`;
     }
   }
 
   // If no specific mechanics found, add generic explanation
-  return `${item} (see Appendix: Magic Items)`;
+  return `${item}—see Appendix: Magic Items`;
 }
 
 // Helper function to apply all name mappings

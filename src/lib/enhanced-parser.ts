@@ -922,6 +922,9 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
         processedPart = addMagicItemMechanics(part);
       }
 
+      // Apply block-level italics to ALL gear (Jeremy's Fiat)
+      processedPart = `*${processedPart}*`;
+
       processedPart = processedPart.replace(/^(?:and\s+)?(?:they|he|she|it)\s+/i, '');
       processedPart = processedPart.replace(/^(?:and\s+)?(?:wears|wear|carries|carry)\s+/i, '');
 
@@ -944,7 +947,19 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     // Build equipment sentences
     const equipmentSentences: string[] = [];
     if (armorItems.length > 0) {
-      equipmentSentences.push(`${subjectPronoun} ${wearVerb} ${armorItems.join(', ')}`);
+      // Build armor list with Oxford comma
+      let armorList = '';
+      if (armorItems.length === 1) {
+        armorList = armorItems[0];
+      } else if (armorItems.length === 2) {
+        armorList = `${armorItems[0]} and ${armorItems[1]}`;
+      } else {
+        // Multiple items: use Oxford comma
+        const allButLast = armorItems.slice(0, -1);
+        const last = armorItems[armorItems.length - 1];
+        armorList = `${allButLast.join(', ')}, and ${last}`;
+      }
+      equipmentSentences.push(`${subjectPronoun} ${wearVerb} ${armorList}`);
     }
     if (weaponItems.length > 0) {
       // Build weapon list with proper conjunctions
