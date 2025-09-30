@@ -474,8 +474,14 @@ function parseBlockEnhanced(block: string): ParsedNPC {
     if (cleanedData.raceClass) fields['Race & Class'] = cleanedData.raceClass;
 
     if (cleanedData.attributes) {
-      const normalized = normalizeAttributes(cleanedData.attributes, isUnit);
-      fields['Primary attributes'] = normalized;
+      const normalized = normalizeAttributes(cleanedData.attributes, {
+        isUnit,
+        raceClassText: cleanedData.raceClass,
+        levelText: cleanedData.level
+      });
+      if (normalized.type !== 'none' && normalized.value) {
+        fields['Primary attributes'] = normalized.value;
+      }
     }
 
     if (cleanedData.equipment) {

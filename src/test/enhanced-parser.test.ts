@@ -92,18 +92,36 @@ describe('Enhanced Parser Functions', () => {
   });
 
   describe('normalizeAttributes', () => {
-    it('should convert unit attributes to physical long form', () => {
-      expect(normalizeAttributes('str, dex, con', true)).toBe('physical');
-      expect(normalizeAttributes('strength, dexterity, constitution', true)).toBe('physical');
+    it('should convert unit attributes to physical prime sentence', () => {
+      const result = normalizeAttributes('str, dex, con', { isUnit: true });
+      expect(result.type).toBe('prime');
+      expect(result.value).toBe('physical');
     });
 
-    it('should expand abbreviations for individuals', () => {
-      expect(normalizeAttributes('str, int, wis', false)).toBe('strength, intelligence, wisdom');
-      expect(normalizeAttributes('dex, con, cha', false)).toBe('dexterity, constitution, charisma');
+    it('should filter attributes by modifier thresholds for classed NPCs', () => {
+      const result = normalizeAttributes('str 15, dex 12, con 13', {
+        raceClassText: 'human, 4ᵗʰ level fighter',
+        levelText: '4'
+      });
+      expect(result.type).toBe('list');
+      expect(result.value).toBe('strength, constitution');
     });
 
-    it('should preserve full attribute names', () => {
-      expect(normalizeAttributes('strength, wisdom', false)).toBe('strength, wisdom');
+    it('should always include fighter primes for 1st level fighters', () => {
+      const result = normalizeAttributes('str 11, dex 10, con 9', {
+        raceClassText: 'human, 1ˢᵗ level fighter',
+        levelText: '1'
+      });
+      expect(result.type).toBe('list');
+      expect(result.value).toBe('strength, dexterity, constitution');
+    });
+
+    it('should return prime type for creatures without class levels', () => {
+      const result = normalizeAttributes('str 14, con 13', {
+        raceClassText: 'ogre brute'
+      });
+      expect(result.type).toBe('prime');
+      expect(result.value).toBe('physical');
     });
   });
 
@@ -177,21 +195,22 @@ describe('Enhanced Parser Functions', () => {
   });
 
   describe('buildCanonicalParenthetical', () => {
-    it('should build canonical format for individual NPC', () => {
+    it('should build canonical format for individual NPC with qualifying attributes', () => {
       const data = {
         hp: '24',
         ac: '16',
         disposition: 'neutral',
         raceClass: 'human, 4th level fighter',
         level: '4',
-        attributes: 'strength, dexterity, constitution',
+        attributes: 'strength 15, dexterity 12, constitution 13',
         equipment: 'wears banded mail, carry shield, longsword, dagger',
         raw: 'original'
       };
 
       const result = buildCanonicalParenthetical(data, false, false, false);
 
-      expect(result).toContain('This 4ᵗʰ level human fighter’s vital stats are HP 24, AC 16, disposition neutral, his primary attributes are strength, dexterity, constitution, he wears banded mail and carries medium steel shield, longsword, and dagger.');
+      expect(result).toContain('This 4ᵗʰ level human fighter’s vital stats are HP 24, AC 16, disposition neutral, his primary attributes are strength, constitution.');
+      expect(result).toContain('He wears');
     });
 
     it('should build canonical format for unit', () => {
@@ -201,7 +220,7 @@ describe('Enhanced Parser Functions', () => {
         disposition: 'neutral',
         raceClass: 'human, 2nd level fighters',
         level: '2',
-        attributes: 'str, dex, con',
+        attributes: 'PA physical',
         equipment: 'chain mail, longbow, longsword',
         raw: 'original'
       };
@@ -209,8 +228,24 @@ describe('Enhanced Parser Functions', () => {
 
       const result = buildCanonicalParenthetical(data, true, false, false);
 
-      expect(result).toContain("their primary attributes are physical. They wear chain mail");
-      expect(result).toContain("They wear chain mail");
+      expect(result).toContain('their primary attributes are physical.');
+      expect(result).toContain('*chain mail*');
+    });
+ 
+    it('should use prime statement for creatures without class levels', () => {
+      const data = {
+        hp: '18',
+        ac: '14',
+        disposition: 'chaos/evil',
+        raceClass: 'goblin marauder',
+        attributes: 'dex 14, con 11',
+        equipment: 'leather armor, short sword',
+        raw: 'original'
+      };
+
+      const result = buildCanonicalParenthetical(data, false, false, false);
+
+      expect(result).toContain('their primary attributes are physical');
     });
   });
 
@@ -279,8 +314,9 @@ describe('Enhanced Parser Functions', () => {
       expect(isUnit).toBe(true);
 
       if (data.attributes) {
-        const normalizedAttrs = normalizeAttributes(data.attributes, isUnit);
-        expect(normalizedAttrs).toBe('physical');
+        const normalizedAttrs = normalizeAttributes(data.attributes, { isUnit });
+        expect(normalizedAttrs.type).toBe('prime');
+        expect(normalizedAttrs.value).toBe('physical');
       }
     });
   });
