@@ -1614,12 +1614,6 @@ export function collapseNPCEntry(input: string): string {
 export function findEquipment(equipment: string): string {
   let processed = equipment;
 
-  // Expand coinage abbreviations
-  processed = processed.replace(/(\d+)\s*pp\b/gi, '$1 platinum');
-  processed = processed.replace(/(\d+)\s*gp\b/gi, '$1 gold');
-  processed = processed.replace(/(\d+)\s*sp\b/gi, '$1 silver');
-  processed = processed.replace(/(\d+)\s*cp\b/gi, '$1 copper');
-
   // Apply comprehensive magic item name mappings
   for (const [old, replacement] of Object.entries(MAGIC_ITEM_MAPPINGS)) {
     processed = processed.replace(new RegExp(old, 'gi'), replacement);
