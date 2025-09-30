@@ -86,13 +86,9 @@ function canonicalizeCoinsText(coins: string): string {
 
   let normalized = coins.trim();
 
-  normalized = normalized.replace(/(\d+)\s*[–-]\s*(\d+)/g, (_, start, end) => {
-    const startNum = parseInt(start, 10);
-    const endNum = parseInt(end, 10);
-    return `${numberToWords(startNum)} to ${numberToWords(endNum)}`;
-  });
-
-  normalized = normalized.replace(/\b(\d+)\b/g, (_, value) => numberToWords(parseInt(value, 10)));
+  normalized = normalized.replace(/\s*[-–]\s*/g, '–');
+  normalized = normalized.replace(/(\d)(pp|gp|sp|cp)\b/gi, '$1 $2');
+  normalized = normalized.replace(/\s+/g, ' ');
 
   return normalized;
 }
@@ -423,9 +419,9 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
     if (isMilitaryUnit && !data.coins && data.level) {
       const level = parseInt(data.level);
       if (level === 1) {
-        data.coins = '1–6 gold in coin';
+        data.coins = '1–6 gp';
       } else if (level <= 3) {
-        data.coins = `${level}–${level * 6} gold in coin`;
+        data.coins = `${level}–${level * 6} gp`;
       }
     }
   }
@@ -433,7 +429,7 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
   // Extract coins with multiple pattern variations
   const coinMatch = /(\d+)[-–](\d+)\s*(?:gp|gold|GP)/i.exec(parenthetical);
   if (coinMatch) {
-    data.coins = `${coinMatch[1]}–${coinMatch[2]} gold in coin`;
+    data.coins = `${coinMatch[1]}–${coinMatch[2]} gp`;
   }
 
   // Extract significant attributes with values
@@ -475,19 +471,19 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
       switch (type) {
         case 'gp':
         case 'gold':
-          currencies.push(`${amount} gold in coin`);
+          currencies.push(`${amount} gp`);
           break;
         case 'sp':
         case 'silver':
-          currencies.push(`${amount} silver in coin`);
+          currencies.push(`${amount} sp`);
           break;
         case 'cp':
         case 'copper':
-          currencies.push(`${amount} copper in coin`);
+          currencies.push(`${amount} cp`);
           break;
         case 'pp':
         case 'platinum':
-          currencies.push(`${amount} platinum in coin`);
+          currencies.push(`${amount} pp`);
           break;
       }
     }

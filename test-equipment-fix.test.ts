@@ -33,8 +33,8 @@ describe('Equipment Processing Edge Cases', () => {
     console.log('Currency input:', currencyInput);
     console.log('Currency result:', result[0].converted);
 
-    expect(result[0].converted).toContain('gold');
-    expect(result[0].converted).toContain('silver');
-    expect(result[0].converted).toContain('platinum');
+    expect(result[0].converted).toContain('10 gp');
+    expect(result[0].converted).toContain('5 sp');
+    expect(result[0].converted).toContain('2 pp');
   });
 });
