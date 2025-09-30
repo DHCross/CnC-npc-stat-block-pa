@@ -523,33 +523,166 @@ export function normalizeDisposition(disposition: string): string {
   return mapping[trimmed] ?? disposition.trim();
 }
 
-export function normalizeAttributes(attributes: string, isUnit: boolean): string {
-  if (isUnit && /\b(str|dex|con|strength|dexterity|constitution|physical)\b/i.test(attributes)) {
-    // For units with physical attributes, return just "physical"
-    return 'physical';
+const ATTRIBUTE_ABBREVIATIONS: Record<string, string> = {
+  'str': 'strength',
+  'int': 'intelligence',
+  'wis': 'wisdom',
+  'dex': 'dexterity',
+  'con': 'constitution',
+  'cha': 'charisma'
+};
+
+const PHB_ATTRIBUTE_ORDER = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
+const PHYSICAL_ATTRIBUTE_SET = new Set(['strength', 'dexterity', 'constitution']);
+const MENTAL_ATTRIBUTE_SET = new Set(['intelligence', 'wisdom', 'charisma']);
+
+interface AttributeToken {
+  name: string;
+  score?: number;
+  rawScore?: string;
+}
+
+export interface NormalizeAttributeOptions {
+  isUnit?: boolean;
+  raceClassText?: string;
+  levelText?: string;
+}
+
+export interface NormalizedAttributesResult {
+  type: 'list' | 'prime' | 'none';
+  value?: string;
+}
+
+function parseAttributeTokens(attributes: string): AttributeToken[] {
+  const tokens: AttributeToken[] = [];
+  if (!attributes) return tokens;
+
+  const normalizedInput = attributes.replace(/[–—-]/g, ' ');
+  const pattern = /(strength|dexterity|constitution|intelligence|wisdom|charisma|str|dex|con|int|wis|cha)(?:\s*(?:[:=]|is|was)?\s*\(?([0-9]{1,2}(?:\/[0-9]{2})?)\)?)?/gi;
+
+  let match: RegExpExecArray | null;
+  while ((match = pattern.exec(normalizedInput)) !== null) {
+    const rawName = match[1].toLowerCase();
+    const canonical = ATTRIBUTE_ABBREVIATIONS[rawName] || rawName;
+
+    let score: number | undefined;
+    let rawScore: string | undefined;
+    if (match[2]) {
+      rawScore = match[2];
+      const sanitized = rawScore.replace(/[^0-9/]/g, '');
+      const [base] = sanitized.split('/');
+      const parsedScore = parseInt(base, 10);
+      if (!Number.isNaN(parsedScore)) {
+        score = parsedScore;
+      }
+    }
+
+    tokens.push({ name: canonical, score, rawScore });
   }
 
-  // Expand abbreviations for individual NPCs
-  const abbrevMap: Record<string, string> = {
-    'str': 'strength',
-    'int': 'intelligence',
-    'wis': 'wisdom',
-    'dex': 'dexterity',
-    'con': 'constitution',
-    'cha': 'charisma'
+  return tokens;
+}
+
+function determinePrimeType(attributes: string, tokens: AttributeToken[]): 'physical' | 'mental' | undefined {
+  const lowered = attributes.toLowerCase();
+  if (/\bphysical\b/.test(lowered)) {
+    return 'physical';
+  }
+  if (/\bmental\b/.test(lowered)) {
+    return 'mental';
+  }
+
+  const uniqueNames = new Set(tokens.map(token => token.name));
+  const hasPhysical = Array.from(uniqueNames).some(name => PHYSICAL_ATTRIBUTE_SET.has(name));
+  const hasMental = Array.from(uniqueNames).some(name => MENTAL_ATTRIBUTE_SET.has(name));
+
+  if (hasPhysical && !hasMental) return 'physical';
+  if (hasMental && !hasPhysical) return 'mental';
+  return undefined;
+}
+
+function extractClassInfo(raceClassText?: string, levelText?: string): { className?: string; level?: number; hasClassLevels: boolean } {
+  let className: string | undefined;
+  let level: number | undefined;
+
+  if (raceClassText) {
+    const levelMatch = raceClassText.match(/(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s+level\s+([a-z-]+)/i);
+    if (levelMatch) {
+      level = parseInt(levelMatch[1], 10);
+      className = levelMatch[2].toLowerCase().replace(/s$/, '');
+    } else {
+      const simpleMatch = raceClassText.match(/([a-z-]+)\s+([a-z-]+)$/i);
+      if (simpleMatch) {
+        className = simpleMatch[2].toLowerCase().replace(/s$/, '');
+      }
+    }
+  }
+
+  if (levelText && level === undefined) {
+    const parsed = parseInt(levelText, 10);
+    if (!Number.isNaN(parsed)) {
+      level = parsed;
+    }
+  }
+
+  const hasClassLevels = Boolean(className && level !== undefined);
+  return { className, level, hasClassLevels };
+}
+
+export function normalizeAttributes(attributes: string, options: NormalizeAttributeOptions = {}): NormalizedAttributesResult {
+  const { isUnit = false, raceClassText, levelText } = options;
+  if (!attributes || !attributes.trim()) {
+    return { type: 'none' };
+  }
+
+  const tokens = parseAttributeTokens(attributes);
+  const primeType = determinePrimeType(attributes, tokens);
+
+  if (isUnit) {
+    return { type: 'prime', value: primeType ?? 'physical' };
+  }
+
+  const classInfo = extractClassInfo(raceClassText, levelText);
+
+  if (!classInfo.hasClassLevels) {
+    return primeType ? { type: 'prime', value: primeType } : { type: 'prime', value: 'physical' };
+  }
+
+  const qualifyingAttributes = new Set<string>();
+
+  tokens.forEach(token => {
+    if (!token.name || !PHB_ATTRIBUTE_ORDER.includes(token.name)) {
+      return;
+    }
+    if (token.score === undefined) {
+      return;
+    }
+    if (token.score <= 8 || token.score >= 13) {
+      qualifyingAttributes.add(token.name);
+    }
+  });
+
+  if (classInfo.className === 'fighter' && classInfo.level === 1) {
+    const tokenNames = new Set(tokens.map(token => token.name));
+    ['strength', 'dexterity', 'constitution'].forEach(prime => {
+      if (tokenNames.has(prime)) {
+        qualifyingAttributes.add(prime);
+      }
+    });
+  }
+
+  if (qualifyingAttributes.size === 0) {
+    return { type: 'none' };
+  }
+
+  const sorted = Array.from(qualifyingAttributes).sort(
+    (a, b) => PHB_ATTRIBUTE_ORDER.indexOf(a) - PHB_ATTRIBUTE_ORDER.indexOf(b)
+  );
+
+  return {
+    type: 'list',
+    value: sorted.join(', ')
   };
-
-  // Parse and normalize to PHB order per Jeremy's mandate
-  const phbOrder = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
-
-  const attrs = attributes.toLowerCase()
-    .split(/[,\s]+/)
-    .map(attr => abbrevMap[attr.trim()] || attr.trim())
-    .filter(Boolean)
-    .filter(attr => phbOrder.includes(attr))
-    .sort((a, b) => phbOrder.indexOf(a) - phbOrder.indexOf(b));
-
-  return attrs.join(', ');
 }
 
 export function canonicalizeShields(equipment: string): string {
@@ -876,14 +1009,18 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
 
   // Add primary attributes
   if (data.attributes) {
-    const normalizedAttrs = normalizeAttributes(data.attributes, isUnit);
-    if (isUnit) {
-      // For units, expand to full sentence
-      parts.push(`their primary attributes are ${normalizedAttrs === 'PA physical' ? 'physical' : normalizedAttrs}`);
-    } else {
-      // For individuals, add as separate clause
+    const normalizedAttrs = normalizeAttributes(data.attributes, {
+      isUnit,
+      raceClassText: data.raceClass,
+      levelText: data.level
+    });
+
+    if (normalizedAttrs.type === 'list' && normalizedAttrs.value) {
       const possessive = 'his';
-      parts.push(`${possessive} primary attributes are ${normalizedAttrs}`);
+      parts.push(`${possessive} primary attributes are ${normalizedAttrs.value}`);
+    } else if (normalizedAttrs.type === 'prime' && normalizedAttrs.value) {
+      const pronoun = 'their';
+      parts.push(`${pronoun} primary attributes are ${normalizedAttrs.value}`);
     }
   }
 
@@ -931,7 +1068,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       }
 
       // Categorize items
-      if (/\b(shirt|shirts|mail|armor|armors|robe|robes|cloak|cloaks|boots|gauntlets|helm|helms|bracers|leather\s+armor|chain\s+mail|plate\s+mail|scale\s+mail|banded\s+mail)\b/i.test(processedPart)) {
+      if (/\b(shirt|shirts|mail|armor|armors|robe|robes|cloak|cloaks|boots|gauntlets|helm|helms|bracers|leather|leathers|leather\s+armor|chain\s+mail|plate\s+mail|scale\s+mail|banded\s+mail)\b/i.test(processedPart)) {
         armorItems.push(processedPart);
       } else {
         weaponItems.push(processedPart);
