@@ -367,7 +367,7 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
   }
 
   // Extract equipment - preserve verb structure when possible, including conditional equipment
-  let equipMatch = /(?:EQ|equipment)[\s:-]+([^.;]+)/i.exec(parenthetical);
+  const equipMatch = /(?:EQ|equipment)[\s:-]+([^.;]+)/i.exec(parenthetical);
   if (equipMatch) {
     data.equipment = equipMatch[1].trim();
   } else {
