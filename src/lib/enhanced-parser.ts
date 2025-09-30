@@ -118,9 +118,6 @@ const DISPOSITION_RE = /\b(disposition|alignment)\s*[:‑]?\s*([a-z\s]+(?:\/[a-z
 const MOUNT_TYPE_RE = /\b(heavy|light)?\s*war\s*horse\b/i;
 const LEADING_BONUS_RE = /\+(\d+)\s+((?:\w+\s+)*(?:longsword|sword|mail|armor|shield|lance|dagger|mace|axe|bow|crossbow|staff|rod|wand|ring|robe|cloak|boots|gauntlets|helm|bracers|pectoral))/gi;
 
-// Corrected shield/buckler regex from earlier bug fix
-const BP_RE = /\b(?:(\+\s*\d+)\s*)?(?:an?\s+)?(?:(?:wooden|steel|iron)\s+)?(buckler|pavis|shield)(?:\s+shield)?(?:\s*(\+\s*\d+))?/gi;
-
 // Unit detection patterns
 const UNIT_PATTERNS = [
   /\bx\s*(\d{1,3})\b/i,
