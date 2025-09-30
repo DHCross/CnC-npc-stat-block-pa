@@ -1,0 +1,480 @@
+📖 Master Canonicalizer Specification
+
+(Jeremey’s Fiat + OGL Conversion Rules)
+
+This rulebook governs the canonical conversion of all NPCs, troop units, monsters, mounts, items, and spells for Castles & Crusades material. It enforces strict editorial fiat to maintain consistency with the Players Handbook (PHB) and Monsters & Treasure (M&T).
+
+⸻
+
+I. General Formatting and Structure
+	•	Heading Style: Bold the title line only. Use full title/name/office, separated by commas. Never use colons.
+	•	Race & Class: Race precedes class: “human fighter,” not “fighter, human.”
+	•	Level Notation:
+	•	In headings: superscript ordinals (e.g., 4ᵗʰ level).
+	•	In stat blocks: “Level X(dX),” plain numerals. No superscripts inside parentheses.
+	•	Parenthetical Stat Blocks:
+	•	Begin immediately after the bolded name (same line).
+	•	Entire block italicized in Appendix I/J style.
+	•	Always begin with “This” (singular) or “These” (plural).
+	•	No nested parentheses.
+	•	Grammar/Punctuation: Fix errors; always use Oxford comma.
+	Capitalization: The pronoun This is capitalized at the start of every parenthetical block.
+
+Disposition: “chaotic/neutral” → “chaos/neutrality” per disposition rules.
+
+Italics: Only the parenthetical is italicized, not the “Warrior x1.”
+
+Punctuation & Grammar: Periods inside the block are preserved with Oxford commas as required.
+	
+	Parenthetical Placement: The italicized parenthetical stat block is placed immediately after the bolded title line on the same line, fulfilling the structural mandate for compactness.
+2. Linguistic Flow: The block begins with the capitalized plural pronoun "These" to establish correct grammatical flow for a unit entry.
+3. Core Statistics Conversion: The level is converted to a superscript ordinal (2ⁿᵈ level), and the disposition is rendered in the mandatory noun-form (neutrality).
+4. Attribute Expansion: The shorthand "PA" is expanded to the canonical phrasing for troop units: "Their primary attributes are physical".
+5. Equipment Formatting: Equipment verbs are standardized ("wear" for armor, "carry" for gear), and currency is fully spelled out (one to six gold in coin).
+6. Tactical Qualifiers: The conditional phrase regarding shields being used "in formation" is treated as a tactical qualifier and is retained in a separate follow-on sentence within the parenthetical stat block, as mandated for usability by the Castle Keeper. The shield type (medium steel shields) is explicitly detailed in this note.
+7. Italics Treatment: The entire parenthetical block is italicized, adhering to the house style fiat for compact Orders of Battle entries 
+
+⸻
+
+II. Attributes & Core Statistics
+	•	Attribute Names: Lowercase, strict PHB order: strength, dexterity, constitution, intelligence, wisdom, charisma.
+	•	Disposition: Always noun-form (chaos/good, law/evil, neutrality).
+	•	NPCs (classed): HP expressed as flat sum.
+	•	Monsters/Mounts: Retain HD expression with fixed HP (e.g., Level 3(d10), HP 22).
+	•	Troop Units: Replace “PA” with “Their primary attributes are physical.”
+	•	Saving Throws (Monsters): Use Physical (P), Mental (M), Both (M,P), or None (N), not attribute-based saves.
+
+⸻
+
+III. Equipment, Magic Items, and Currency
+	•	Verb Usage:
+	•	wears = armor/barding.
+	•	carries = weapons, shields, gear, treasure.
+	•	Shield Detail: Always specify (small/medium/large, wooden/steel).
+	•	Magic Items:
+	•	Italicize item names.
+	•	Bonuses go at the end: longsword +1, not +1 longsword.
+	•	Provide short mechanical notes when not obvious.
+	•	Spells: Italicize spell names; always use the current canonical name.
+	•	Currency: Fully spelled out: “ten gold in coin,” not “10 gp.”
+
+⸻
+
+IV. Mount Reference Rules (Orders of Battle)
+	•	Standard Mounts (light/heavy war horses): Do not duplicate full M&T stat blocks. Reproducing them in unit appendices is a failure state.
+	•	Reference Formula:
+	•	[He/They] ride [light/heavy] war horse(s) in battle (see Monsters & Treasure*). [It/They] wear [barding type], and thus AC [value].*
+	•	Troop Standards:
+	•	Light war horse + leather barding = AC 12.
+	•	Heavy war horse + chain mail barding = AC 19.
+	•	Unique Mounts: If named, magical, or non-standard → full canonical block required (neutral phrasing: “This creature’s vital stats are…”).
+	•	Footnote Gating: Global notes like “All knights ride heavy war horses” only if exact wording matches.
+
+⸻
+
+V. Tactical Qualifiers
+	•	Never strip tactical conditionals.
+	•	Examples: when in formation, at range, on horseback.
+	•	Place conditionals after the equipment list in a follow-on sentence.
+	•	Example: “…carry medium steel shields. When in formation, they fight with shields interlocked, raising their AC by 1.”
+
+⸻
+
+VI. Monster Name Conversions
+	•	Standardize to canonical M&T forms.
+	•	Examples:
+	•	Arrowhawk → Lightning Hawk
+	•	Behir → Lightning Wyrm
+	•	Belker → Shadow Demon
+	•	Flumph → Flumm
+	•	Xorn → Zorn
+	•	Group conversions: mephits → Implings.
+	•	Retain pre-1974 sources (e.g., ion stone).
+	•	Remove names with no SRD status (e.g., Acephali).
+
+⸻
+
+VII. Magic Item Conversions
+	•	Canonicalize to M&T equivalents; rename or clarify ambiguous items.
+	•	Italicize names; bonuses at the end (robe +3).
+	•	Provide explanatory notes where necessary (e.g., elixir of healing (heals 4–16 hit points)).
+	•	Example conversions:
+	•	Amulet of Protection from Alignment → amulet of protection from disposition
+	•	Boots of Speed → boots of flight of foot
+
+⸻
+
+VIII. Spell Conversions
+	•	Always italicize spell names.
+	•	Always use the latest canonical name.
+	•	Examples:
+	•	Detect Alignment → detect disposition
+	•	Animal Friendship → animal bond
+	•	Anti-Magic Shell → anti magic sphere
+	•	Protection from Alignment → protection from disposition
+	•	Reversible spells: marked with an asterisk (heal*).
+	•	Combined scalable spells (e.g., illusion) → specify casting/emulation level.
+
+⸻
+
+IX. Formatting & Output Mandates
+	•	Never expose draft markup (LaTeX, HTML, Markdown).
+	•	Final text must be paste-ready:
+	•	magic missile not \textit{magic missile}
+	•	2ⁿᵈ not $2^{\text{nd}}$
+	•	Bold = titles only.
+	•	Italics = stat block (Appendix I/J), all magic items, all spell names, book references.
+	•	Superscripts only in headings (levels).
+	•	Plain numerals everywhere else.
+
+⸻
+
+X. Example Entries
+
+Named NPC
+Sir Alec of Gaxhill, 12ᵗʰ level human fighter (This character’s vital stats are HP 80, AC 23, disposition chaos/good. His primary attributes are strength, dexterity, and charisma. His significant attributes are constitution 13, dexterity 14, and charisma 15. He wears full plate mail +2 and a medium steel shield +2, and an armband of giant strength +7 (grants +7 to strength). He carries a longsword +3, lance, battle axe, and mace, along with an elixir of healing (heals 4–16 hit points), 100 gold in coin, and 2,000 gold worth of jewelry.)
+He rides a heavy war horse in battle (see Monsters & Treasure). It wears chain mail barding, and thus AC 19.
+
+Troop Unit
+Men-at-Arms, Mounted x10 (These 2ⁿᵈ level human fighters’ vital stats are HP 14, AC 14, disposition neutrality. Their primary attributes are physical. They wear studded leather and carry medium steel shields, longswords, lances, and daggers, and carry two to twelve gold in coin.)
+They ride light war horses in battle (see Monsters & Treasure). They wear leather barding, and thus AC 12.
+
+⸻
+
+✅ This Master Spec unifies the Orders of Battle formatting rules with OGL name/item/spell conversion mandates. It covers headings, attributes, HP/HD, equipment, mounts, tactical qualifiers, name canonicalization, and output mandates.
+
+
+---
+
+# 📖 Canonicalizer Conversion Rules (Jeremey’s Fiat)
+
+These rules govern how all NPC, monster, and troop entries must be normalized in *Castle Zagyg* / *Orders of Battle* material. They apply to named characters, generic units, and their mounts.
+
+---
+
+## 1. Title & Heading Rules
+
+* **Bold only the title line.**
+* Full name/title/office is given, separated by commas.
+* **Race before class:** “human fighter,” not “fighter, human.”
+* **Levels**:
+
+  * In prose headings: use **superscript ordinals** (e.g., 4ᵗʰ level).
+  * In stat blocks (parenthetical vital stats): use **plain “Level X(dX)”** format, no superscripts.
+* **No colons** in headings.
+
+---
+
+## 2. Parenthetical Stat Block
+
+* The block begins **immediately after the bolded name** on the same line.
+* Entire block italicized for Appendix I/J style.
+* Always begin with **“This”** (singular NPC/monster) or **“These”** (plural unit).
+* **No nested parentheses**.
+
+---
+
+## 3. Attributes & Core Statistics
+
+* Attribute names are **lowercase** and listed in **PHB order**: strength, dexterity, constitution, intelligence, wisdom, charisma.
+* **Primary attributes** must be spelled out: “His primary attributes are strength, dexterity, and charisma.”
+* **Disposition** must always be noun-form: chaos/good, law/evil, neutrality.
+* For classed NPCs: hit points (HP) given as a **flat sum**.
+* For monsters/mounts: keep **HD expression** plus fixed HP (e.g., Level 3(d10), HP 22).
+
+---
+
+## 4. Equipment & Magic Items
+
+* Verbs are standardized:
+
+  * **“wears”** → armor/barding.
+  * **“carries”** → weapons, shields, gear, treasure.
+* **Shield type must be explicit** (medium steel shield, large wooden shield, etc.).
+* **Magic items and spells are italicized**.
+* **Item bonuses** always follow the item name:
+
+  * Incorrect: +1 longsword.
+  * Correct: *longsword +1*.
+* Every magic item requires a **brief mechanical note** (e.g., “*elixir of healing* (heals 4–16 hit points)”).
+* **Currency spelled out**: “ten gold in coin,” not “10 gp.”
+
+---
+
+## 5. Mount Reference Rules
+
+* **Do not reproduce full M&T stat blocks** for standard mounts (light/heavy war horses).
+* Instead, use the **Mount Reference Formula**:
+
+  * *He rides a [light/heavy] war horse in battle (see* Monsters & Treasure*). It wears [barding type], and thus AC [value].*
+  * For troops, pluralize: *They ride… They wear… and thus AC…*
+* **Unique or non-standard mounts** (named chargers, magical steeds, griffons, dragons, etc.) require full canonical stat blocks.
+* **Editorial fiat ACs for mounts**:
+
+  * Light war horse + leather barding = **AC 12** (troop standard).
+  * Heavy war horse + chain mail barding = **AC 19** (Yggsburgh precedent).
+
+---
+
+## 6. Tactical Qualifiers
+
+* **Do not strip tactical notes.**
+* Conditional details like *“when in formation,” “on horseback,” “at range”* are preserved.
+* Place these after the equipment list in a **separate sentence**:
+
+  * Example: “…carry medium steel shields. When in formation, they fight with shields interlocked, raising their AC by 1.”
+
+---
+
+## 7. Formatting Mandates
+
+* **No markup leakage**: never show LaTeX, HTML, or Markdown control characters. Output final styled text only.
+* Bold: title line only.
+* Italics: entire parenthetical block, all magic items, all spell names.
+* Superscripts: levels in headings only.
+* Plain numerals: all other places (HP, AC, Level X(dX)).
+
+---
+
+## 8. Examples
+
+**Named NPC**
+**Sir Alec of Gaxhill, 12ᵗʰ level human fighter** *(This character’s vital stats are HP 80, AC 23, disposition chaos/good. His primary attributes are strength, dexterity, and charisma. His significant attributes are constitution 13, dexterity 14, and charisma 15. He wears full plate mail +2 and a medium steel shield +2, and an *armband of giant strength +7* (grants +7 to strength). He carries a *longsword +3*, lance, battle axe, and mace, along with an *elixir of healing* (heals 4–16 hit points), 100 gold in coin, and 2,000 gold worth of jewelry.)*
+He rides a heavy war horse in battle (see *Monsters & Treasure*). It wears chain mail barding, and thus AC 19.
+
+**Troop Unit**
+**Men-at-Arms, Mounted x10** *(These 2ⁿᵈ level human fighters’ vital stats are HP 14, AC 14, disposition neutrality. Their primary attributes are physical. They wear studded leather and carry medium steel shields, longswords, lances, and daggers, and carry two to twelve gold in coin.)*
+They ride light war horses in battle (see *Monsters & Treasure*). They wear leather barding, and thus AC 12.
+
+---
+
+The Canonicalizer Conversion Rules strictly govern the formatting of all entity data, particularly within condensed indices such as Orders of Battle (Appendix I/J). These rules, often derived from Jeremey's Editorial Fiat, ensure comprehensive adherence to the *Castles & Crusades* style guide, enforcing PHB and *Monsters & Treasure* (*M&T*) standards.
+
+Below is the comprehensive list of mandates enforced by the Canonicalizer:
+
+### I. General Formatting and Structure
+
+| Mandate | Canonical Rule | Citations |
+| :--- | :--- | :--- |
+| **Heading Style** | The NPC or monster title line must be **bolded**. High-ranking figures must use the full title, name, and office, separated by commas (no colons). | |
+| **Parenthetical Start** | Parenthetical stat blocks must begin with **this** (singular) or **these** (plural) to establish linguistic flow. | |
+| **Italicization (General)**| *Magic* item names, their numeric bonuses, *spell* names, and book/source titles must be **italicized**. | |
+| **Italicization (Appendix I/J)** | The entire abbreviated parenthetical block may be **italicized as a whole** when presented in the compact Orders of Battle style (Appendix I/J). Mundane gear should otherwise not be italicized. | |
+| **Grammar/Punctuation** | Improper grammar and punctuation must be fixed. Standard rules of punctuation, including the Oxford comma, must be used. | |
+| **Level Notation** | Levels must use **superscript ordinals** (e.g., 2ⁿᵈ level, 6ᵗʰ level). Level ordinals must **not be bolded** inside abbreviated stat blocks. | |
+
+### II. Character and Unit Statistics
+
+| Mandate | Canonical Rule | Citations |
+| :--- | :--- | :--- |
+| **Disposition/Alignment**| Must be rendered universally in the **noun form** (e.g., *neutrality*, *chaos/good*). | |
+| **Attributes (Case/Order)** | Attributes must be written in **lowercase** and follow the strict **PHB order** (strength, dexterity, constitution, intelligence, wisdom, charisma). | |
+| **Attributes (Named NPCs)** | For singular/classed NPCs, attributes are spelled out fully in PHB order. | |
+| **Attributes (Troop Units)** | For generic troop groups/hirelings, the phrase "**their primary attributes are physical**" must be used, replacing the internal abbreviation "PA". | |
+| **HP (Classed NPCs)** | Must be presented as a **flat sum** (e.g., HP 59). | |
+| **HP (Monsters/Units)** | Must retain the **Hit Dice (HD) format** (e.g., HD 4d10, Level 1(d8)). | |
+| **Race & Class** | Race must be included before class/level (e.g., human, 6ᵗʰ level fighter). | |
+
+### III. Equipment, Magic Items, and Currency
+
+| Mandate | Canonical Rule | Citations |
+| :--- | :--- | :--- |
+| **Armor/Barding Verb** | Use the verb **wears** consistently for armor and barding. | |
+| **Gear/Weapons Verb** | Use the verb **carries** (or carry/carries) for shields, weapons, and other gear. | |
+| **Shield Detail** | The shield type (small/medium/large and wooden/steel) must be explicitly specified. | |
+| **Magic Item Bonus** | Numeric bonuses must be placed **at the end** of the item name, and the entire item name (including the bonus) must be italicized (e.g., *longsword +1*). | |
+| **Magic Item Clarity** | Provide a short mechanical explanation or effect text for unusual or unique magic items. | |
+| **Currency** | All currency must be **spelled out in full words** (e.g., "gold in coin," "copper pieces"), avoiding abbreviations like gp. | |
+
+### IV. Mount Reference Rules (Orders of Battle)
+
+The processing of mounts must distinguish between generic troop units (which require the concise reference fiat) and unique mounts/NPCs (which require a full, separate stat block).
+
+| Mandate | Canonical Rule | Citations |
+| :--- | :--- | :--- |
+| **Core Mandate (Standard Mounts)** | **Do not duplicate** the full *Monsters & Treasure* (*M&T*) entries for standard mounts. Reproducing the full *M&T* block in unit appendices is considered a **failure state**. | |
+| **Standard Mount Reference (Units)** | The standard mount entry must use the concise prose formula, always referring back to *M&T* and including barding and the resultant AC value. | |
+| **Reference Formula** | The mandatory prose structure is: "*[He/They] ride [light/heavy] war horse(s) in battle (see Monsters & Treasure). [It/They] wear [barding type], and thus AC [value].*". | |
+| **Unique Mount Block** | Only unique, named, non-standard, or *magic* mounts receive a full, dedicated, **separate canonical block** immediately following the rider. | |
+| **Footnote Gating** | The efficiency footnote ("*All knights ride heavy war horses.*") is strictly **gated** and must *only* be appended if the mount exactly equals the phrase "heavy war horse". | |
+| **Mount Block Phrasing** | If a full block is used, it must start with neutral phrasing: "(This creature’s vital stats are HD [dice], HP [sum], AC [value], disposition [noun-form]...)". | |
+
+The Canonicalizer Conversion Rules are the core mandates used to standardize all character, monster, and unit data into a consistent *Castles & Crusades* format, strictly enforcing adherence to the *Players Handbook* (PHB) and *Monsters & Treasure* (*M&T*) style conventions.
+
+The system is built upon Jeremey's Fiat, prioritizing clarity and strict style implementation, often requiring extensive linguistic and structural remediation of source material.
+
+### I. General Formatting and Structure
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Heading Style** | The entity's name and title must be **bolded** (e.g., **Gerald Overton, captain of the town guard**). High-ranking figures must use the full title, name, and office, separated by commas (no colons). | |
+| **Linguistic Flow** | The parenthetical stat block must establish linguistic flow by beginning with the capitalized word "**this**" (singular NPC/monster) or "**these**" (plural unit). | |
+| **Grammar & Punctuation** | Improper grammar and punctuation, including peculiar defects or incorrect phrasing, must be actively sought out and fixed. The Oxford comma is used in lists. | |
+| **Level Notation** | Levels must use superscript ordinals (e.g., 1ˢᵗ level, 6ᵗʰ level). Level numbers must not be bolded inside the abbreviated stat block. | |
+| **Italicization** | *Magic* item names, numeric bonuses, *spell* names, and source titles (e.g., *Monsters & Treasure*) must be italicized. | |
+| **Appendix Formatting**| When presenting consolidated unit data in Orders of Battle (Appendix I/J) style, the entire abbreviated stat block for the unit is enclosed in italics, reflecting the editorial fiat for that specific section. | |
+
+### II. Core Statistics and Attributes
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Attribute Display** | Attributes must be written in **lowercase**. They must follow the strict **PHB order**: strength, dexterity, constitution, intelligence, wisdom, charisma. | |
+| **Disposition** | Disposition (alignment) must be converted universally to the **noun form** (e.g., *law/good*, *neutrality*). | |
+| **Hit Points (NPCs)** | For **classed NPCs** (named characters), HP must be presented as a **flat sum** (e.g., HP 59), eliminating dice notation. | |
+| **Hit Dice (Monsters/Units)** | **Monsters** and **mounts** retain the **HD format** (dice notation) for their HP presentation (e.g., HD 4d10 or Level 1(d8)). | |
+| **Unit Attribute Shorthand** | For generic troop groups/units, the abbreviation "PA" must be expanded to the canonical shorthand phrase: "**Their primary attributes are physical**". | |
+| **Armor Class** | AC must be present and capitalized (e.g., AC 16). | |
+
+### III. Equipment and Magic
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Coinage** | All currency must be **spelled out in full words** (e.g., "gold in coin," "two to twelve gold in coin"). | |
+| **Equipment Verbs** | The verb "**wears**" must be used consistently for armor and barding. The verb "**carries**" must be used consistently for weapons, shields, and gear. | |
+| **Shield Detail** | The description of a shield must specify its type (small/medium/large and wooden/steel) whenever possible. | |
+| **Magic Bonus Placement** | Numeric bonuses for *magic* items must be placed **at the end** of the item name, and the entire phrase is italicized (e.g., *longsword +1*). | |
+
+### IV. Canonical Mount Reference Rules (Orders of Battle)
+
+Mount handling depends strictly on whether the mount is a unique entity or a standard component of a troop unit.
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Standard Mounts Mandate** | **Do not duplicate** the full *Monsters & Treasure* (*M&T*) entry for standard mounts in unit appendices; this is the **failure state**. | |
+| **Reference Formula (Units)** | Instead, use the required concise prose reference: "*[He/They] ride [light/heavy] war horse(s) in battle (see* *Monsters & Treasure*). [It/They] wear [barding type], and thus AC [value].*". | |
+| **Unique Mount Block** | Mounts that are named, unique, or *magical* must be rendered as a **separate, canonical mount block** immediately following the rider, detailing HD, HP, AC, disposition, attacks, and barding. This block must use neutral phrasing: "(This creature’s vital stats are...)". | |
+| **Footnote Gating** | The global footnote ("*All knights ride heavy war horses.*") is strictly **gated** and may **only** be appended when the detected mount exactly equals the phrase "heavy war horse". | |
+
+The Canonicalizer Conversion Rules contain deep nuances designed to enforce strict editorial control, ensuring consistency, clarity, and adherence to the *Castles & Crusades* house style, even when that means sacrificing brevity.
+
+Beyond the foundational requirements for attributes and disposition, the following nuances and mandatory rules must be observed across entity data blocks:
+
+### I. Linguistic and Structural Nuances
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Linguistic Flow Starter** | The parenthetical stat block must establish linguistic flow by starting with the capitalized word "**this**" (singular) or "**these**" (plural), overriding the verbatim copying of source material. | |
+| **Title and Casing** | High-ranking entities must use the **full title, name, and office**, separated strictly by **commas**, and the entire heading must be **bolded** (e.g., **Gerald Overton, captain of the town guard**). | |
+| **Grammar and Punctuation**| Improper grammar and punctuation must be actively sought out and fixed. This includes enforcing the Oxford comma when listing items. | |
+| **Casing Enforcement** | Attribute names (strength, dexterity, etc.) must be strictly **lowercase**. However, the abbreviations **HP** and **AC** must be **uppercase**. | |
+| **Formatting Prohibition** | The final output **must never** include draft markup or LaTeX/math-mode garbage (e.g., $2^{\text{nd}}$), as this is a critical failure condition. | |
+| **Pronoun Usage** | If gender is not explicit in the heading or anchored in the text, neutral phrasing (e.g., "**this creature**," "**this NPC**") is mandatory. | |
+
+### II. Statistical Detail and Taxonomy
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Disposition Form** | Disposition (alignment) must be rendered in the **noun form** consistently (e.g., *chaos/good*, *neutrality*), converting adjective forms. The disposition listed first is the primary. | |
+| **HP Notation Split** | **Classed NPCs** (named characters) must have HP expressed as a **flat sum** (e.g., HP 28). **Monsters** and **mounts** must retain the **Hit Dice (HD) expression** (e.g., HD 3d10). | |
+| **Monster Saves** | Monsters typically forgo individual attribute saves and use the broader save categories: **Physical (P)**, **Mental (M)**, **Both (M, P)**, or **None (N)**. | |
+| **Unit Attribute Shorthand**| The abbreviation "PA" must be expanded to the full canonical phrasing for troop units: "**Their primary attributes are physical**". | |
+
+### III. Equipment and Magic Item Nuances
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Magic Item Format** | Numeric bonuses must be moved to the **end** of the item name, and the **entire item name plus the bonus** must be italicized (e.g., *longsword +1*). | |
+| **Naming Canonicalization**| Item names must be normalized to the latest *Monsters & Treasure* equivalents, replacing older or ambiguous names. | |
+| **Mechanical Clarity** | A short mechanical explanation or effect text must be added for **unusual or unique magic items** to ensure the Castle Keeper understands its function. | |
+| **Spell-Like Abilities (SLA)** | When a creature emulates a combined spell (like *illusion*), the **level at which they are emulating the spell** must be explicitly stated. | |
+| **Currency Spelled Out** | Abbreviations (like "gp") must be replaced by **fully spelled-out currency** (e.g., "gold in coin") everywhere. |. |
+
+### IV. Contextual and Tactical Nuances
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Mount Block Structure (Unique)** | If a mount is unique, named, or *magical*, it must be parsed out of the rider's prose and rendered in a **separate, dedicated block** immediately following the rider, beginning with neutral phrasing ("this creature's vital stats are..."). | |
+| **Mount Footnote Gating** | The space-saving global footnote (*All knights ride heavy war horses.*) is **strictly gated** and must **only** be applied when the mount is *exactly* "heavy war horse" to prevent scope creep. | |
+| **Tactical Qualifiers** | Conditional phrases conveying CK-facing tactical effects (e.g., "when in formation," "skilled at mounted combat") must **not be removed** as redundant prose. They must be placed in a **separate follow-on sentence** immediately after the equipment list. | |
+
+The Canonicalizer Conversion Rules mandate strict adherence to established *Castles & Crusades* house style for nomenclature, particularly concerning monster names, spell names, and magic items, often requiring conversion from older, ambiguous, or non-canonical terminology found in module sources. The goal is consistency with *Monsters & Treasure* (*M&T*) and the *Players Handbook* (PHB).
+
+### I. Monster Name Conversion
+
+The canonical system requires numerous monster name changes to replace previous, ambiguous, or copyrighted terms, ensuring adherence to the final, established names.
+
+| Rule | Details and Examples | Citations |
+| :--- | :--- | :--- |
+| **Name Changes** | There has been an extensive process of changing monster names to standardize them. | |
+| **Specific Conversions** | *Arrowhawk* became *Lightning Hawk*. *Behir* became *Lightning Wyrm*. *Belker* became *Shadow Demon*. *Flumph* became *Flumm*. *Cadaver Caterpillar* became *Carrion Crawler* with a name change. *Gibbering Mouther* became *Gibbering Abomination* or *Gibbering Madness*. *Xorn* became *Zorn*. | |
+| **Group Conversions** | Various mephits were combined into *Implings* (e.g., *Mephit, Fire* became *Impling, Fire*). | |
+| **Source/Origin Retention** | Names originating from sources predating 1974, such as "ion stone" (from Jack Vance), were kept. | |
+| **Removal** | Some creatures were removed based on their origin (e.g., from mythology Codex) or due to lack of SRD status (e.g., *Acephali*, *Bagiennik*). | |
+
+### II. Magic Item Name Conversion
+
+Canonicalizing magic items is considered "more of an art than a science" because many original items are not found in the standard *Monsters & Treasure* (*M&T*) book. Ambiguous or older names must be swapped out for known equivalents or given a mechanical explanation.
+
+| Rule | Details and Examples | Citations |
+| :--- | :--- | :--- |
+| **Canonicalization** | Item names are canonicalized to the *Monsters & Treasure* forms. | |
+| **Italicization** | Magic item names must be **italicized**. | |
+| **Bonus Placement** | Numeric bonuses on magic items must be placed **at the end** of the item name, and the entire phrase must be italicized (e.g., “+1 longsword” converts to “*longsword +1*”). | |
+| **Mechanical Note** | A short mechanical explanation or effect text must be inserted for **unusual or unique magic items**. | |
+| **Specific Conversions** | *Robe of Protection* might be renamed to *robe of armor* or possibly *robe plus three* (or *Robe +3*). *Well of Many Worlds* became *Portable Portal*. *Amulet of Protection from Alignment* became *Potion of Protection from Disposition*. *Boots of Speed* became *Boots of Flight of Foot*. *Ring of Detect Alignment* became *Ring of Detect Disposition*. | |
+
+### III. Spell Name Conversion
+
+The Canonicalizer must resolve inconsistencies arising from the existence of "three versions" of many spell names: the original, the "old new name," and the current (new) name.
+
+| Rule | Details and Examples | Citations |
+| :--- | :--- | :--- |
+| **Italicization** | Spell names must be **italicized**. | |
+| **Current Name Enforcement** | Conversions must use the **New Name** (current version). | |
+| **Specific Conversions** | *Detect Alignment* became *Detect Disposition*. *Animal Friendship* became *Animal Bond*. *Anti-Magic Shell* became *Anti Magic Sphere*. *Protection From Alignment* became *Protection from Disposition*. | |
+| **Reversible Spells** | Reversible spells are denoted by an **asterisk (\*)** next to the name (e.g., *Heal***). | |
+| **Combined Spells (Nuance)** | If multiple spells (like the image spells: *minor image*, *major image*, etc.) were combined into a single scalable spell (like *Illusion*), and an entity uses this as a spell-like ability, the Canonicalizer **must state the level** at which the ability is being emulated. | |
+
+The Canonicalizer applies rigorous rules for the conversion of monster names and statistics to ensure strict adherence to the *Castles & Crusades* format, primarily referencing *Monsters & Treasure* (*M&T*).
+
+The conversion rules encompass nomenclature changes, structural changes to stat blocks (especially regarding HP and attributes), and standardized formatting of abilities and saving throws.
+
+### I. Monster Name Conversion (Nomenclature)
+
+A major conversion effort involves changing inconsistent, ambiguous, or proprietary monster names to the established canonical terminology.
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Name Changes** | An extensive process of changing monster names exists to standardize terminology. | |
+| **Specific Conversions** | *Arrowhawk* became *Lightning Hawk*; *Behir* became *Lightning Wyrm*, or *Behemoth* (though *Behemoth* is generally a different creature); *Belker* became *Shadow Demon*, though also listed as *Bel Demon*; *Flumph* became *Flumm*; and *Xorn* became *Zorn* (or *Xork*). *Cadaver Caterpillar* became *Carrion Crawler with name changed*, although it is listed as *Cadaver Caterpillar* in the *M&T* Index and table. | |
+| **Group Conversions** | Various mephits were combined into *Implings* (e.g., *Mephit, Fire* became *Impling, Fire*). | |
+| **Creature Removals** | Some creatures were removed due to their origin (e.g., from mythology Codex) or lack of SRD status (e.g., *Acephali*, *Bagiennik*, *Ala*). | |
+| **Name Retention** | Names originating from sources predating 1974, such as "ion stone" (from Jack Vance), were kept. | |
+| **Ooze/Slime Naming** | *Gelatinous Cube* became *Ooze, Gelatinous*; *Green Slime* is listed as *Green Slime* or *Green Slime/Mucus/whatever*; *Ooze, Black Pudding* remains *Ooze, Black Pudding*. | |
+
+### II. Monster Statistical and Structural Conversion
+
+Monster entries must conform to a specific structure emphasizing abstract mechanics rather than detailed character-like attributes.
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Linguistic Flow** | Abbreviated stat blocks must begin with the phrase **"this creature’s vital stats are..."** (singular) or **"these creatures’ vital stats are..."** (plural). | |
+| **Level/HD Format** | Monsters and mounts must retain the **HD format** (dice notation) for their HP presentation (e.g., HD 4d10). The Level is included in the HD notation (e.g., Level 4(d10)). | |
+| **Flat HP Prohibition** | The flat sum HP format, reserved for classed NPCs, must **not** be used for generic monsters or mounts. | |
+| **Attribute Abstraction**| Monsters typically **do not have character-like attributes** (Strength, Dexterity, etc.); reliance on specific attribute scores must be deleted from monster blocks. | |
+| **Saving Throws** | Monsters rely on the broader saving throw categories: **Physical (P)**, **Mental (M)**, **Both (M, P)**, or **None (N)**. Physical (P) covers Strength, Constitution, and Dexterity; Mental (M) covers Intelligence, Wisdom, and Charisma. | |
+| **Disposition/Alignment**| Must be presented in the **noun form** (e.g., *chaos/evil*, *neutrality*). The first term listed is the core outlook. | |
+| **Experience Points (XP)** | XP calculation must be adjusted for any modifications made to the monster's abilities, adding special ability experience points to the base XP. | |
+| **Armor/Gear Verbs** | The verb **wears** must be used for armor and barding, and **carries** for gear and weapons. | |
+
+### III. Special Abilities and Magic
+
+Monster abilities, particularly those that reference spells or special effects, require specific formatting and cross-referencing.
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Ability Abbreviation**| To keep entries abbreviated, detailed explanations of core abilities (e.g., ghoul paralysis) may be omitted, directing the CK to "**refer to *Monsters & Treasure* for more information**". | |
+| **Spell Emulation (SLA)**| When a monster uses a combined or scalable spell as a Spell-Like Ability (SLA) (e.g., *Illusion* derived from *minor image* and *major image*), the editor must explicitly **calculate and state the emulation level** (the level at which the ability is cast). | |
+| **Magic Item Italicization**| *Magic* item names and their numeric bonuses within monster descriptions must be **italicized** (e.g., *robe +3*). | |
+| **Unique Powers** | Detailed explanations of special powers (e.g., the Bronze Golem's unique powers) are kept when the monster does not warrant a full write-up in a new appendix. | |
+| **Spell Resistance (SR)** | Spell Resistance (SR) must be listed in the stat block; if not listed, assume SR 1 is innate. | |
+
+### IV. Environment and Ecology (M&T Details)
+
+Monster entries must integrate environmental and supplementary information, often defined in reference texts like *M&T* and *Castle Keepers Guide* (*CKG*).
+
+| Mandate | Canonical Rule | Source Details |
+| :--- | :--- | :--- |
+| **Climate and Biome** | The entry must include the monster's Climate and Biome, referencing standardized categories like Tropical, Temperate, Forests, and Underground, detailed in *M&T* and *CKG*. | |
+| **Sanity Score** | The optional **Sanity score** (used for pulp horror elements) should be included, even though its full rules are explained in *Monsters and Treasure of Erid*. | |
+| **Treasure Type** | The appropriate **Treasure Type** must be designated (e.g., Treasure 8). | |
