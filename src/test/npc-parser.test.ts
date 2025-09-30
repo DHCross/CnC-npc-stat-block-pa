@@ -168,10 +168,29 @@ Mount: heavy war horse`
     })
   })
 
+  describe('Title sanitization', () => {
+    it('should remove race/class descriptors from the title line', () => {
+      const input = `**Captain Alaric, human, 5th level fighter**
+Disposition: lawful good
+Race & Class: human, 5th level fighter
+Hit Points (HP): 45
+Armor Class (AC): 17`;
+
+      const result = collapseNPCEntry(input);
+
+      expect(result.startsWith('**Captain Alaric**')).toBe(true);
+      expect(result).not.toMatch(/\*\*Captain Alaric, human/i);
+
+      const parentheticalMatch = result.match(/\*\((.+?)\)\*/);
+      const parenthetical = parentheticalMatch ? parentheticalMatch[1] : '';
+      expect(parenthetical).toMatch(/This human 5ᵗʰ level fighter/i);
+    });
+  });
+
   describe('Race/Class/Level Parsing', () => {
     it('should parse race, class, and level correctly', () => {
       const result = parseRaceClassLevel('human, 16th level cleric')
-      
+
       expect(result.race).toBe('human')
       expect(result.level).toBe('16')
       expect(result.charClass).toBe('cleric')
