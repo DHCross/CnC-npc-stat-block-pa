@@ -68,6 +68,67 @@ const dictionaries: Dictionaries = {
   monsters: new Set<string>(),
 };
 
+const escapeForPattern = (value: string): string => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const KNOWN_RACES = [
+  'human',
+  'elf',
+  'dwarf',
+  'halfling',
+  'gnome',
+  'half-elf',
+  'half-orc',
+  'orc',
+  'hobgoblin',
+  'goblin',
+  'kobold',
+  'gnoll',
+  'bugbear',
+  'lizardman',
+  'ogre',
+  'troll',
+  'dragonborn',
+  'tiefling',
+  'aasimar',
+  'drow',
+  'duergar',
+  'svirfneblin',
+  'githyanki',
+  'githzerai',
+];
+
+const KNOWN_CLASSES = [
+  'fighter',
+  'cleric',
+  'wizard',
+  'magic-user',
+  'paladin',
+  'ranger',
+  'thief',
+  'rogue',
+  'assassin',
+  'illusionist',
+  'druid',
+  'monk',
+  'bard',
+  'cavalier',
+  'barbarian',
+  'knight',
+  'sorcerer',
+  'warlock',
+  'witch',
+  'shaman',
+  'priest',
+  'priestess',
+  'acolyte',
+  'mage',
+];
+
+const RACE_PATTERN = new RegExp(`\\b(${KNOWN_RACES.map(escapeForPattern).join('|')})\\b`, 'i');
+const CLASS_PATTERN = new RegExp(`\\b(${KNOWN_CLASSES.map(escapeForPattern).join('|')})s?\\b`, 'i');
+const LEVEL_PATTERN = /\b\d+(?:st|nd|rd|th)?\s+level\b/i;
+const GENDER_PATTERN = /\b(male|female)\b/i;
+
 const FIELD_ORDER = [
   'Disposition',
   'Race & Class',
@@ -509,7 +570,7 @@ function parseBlockEnhanced(block: string): ParsedNPC {
   }
 
   return {
-    name: stripMarkdown(title),
+    name: sanitizeName(title),
     fields,
     notes: [], // Enhanced parser focuses on parenthetical data
     original: block
@@ -741,7 +802,7 @@ function parseBlock(block: string): ParsedNPC {
   }
 
   return {
-    name: stripMarkdown(nameLine),
+    name: sanitizeName(nameLine),
     fields,
     notes,
     original: block,
@@ -1152,6 +1213,107 @@ function capitalize(value: string): string {
 
 function stripMarkdown(value: string): string {
   return value.replace(/^\*\*/g, '').replace(/\*\*$/g, '').trim();
+}
+
+function containsRace(segment: string): boolean {
+  return RACE_PATTERN.test(segment);
+}
+
+function containsClass(segment: string): boolean {
+  return CLASS_PATTERN.test(segment);
+}
+
+function containsLevel(segment: string): boolean {
+  return LEVEL_PATTERN.test(segment);
+}
+
+function containsGender(segment: string): boolean {
+  return GENDER_PATTERN.test(segment);
+}
+
+function sanitizeName(rawName: string): string {
+  const baseName = stripMarkdown(rawName);
+  let name = baseName.replace(/\s+/g, ' ').trim();
+
+  const isDescriptorSegment = (segment: string, allowRaceOnly: boolean): boolean => {
+    const trimmed = segment.trim();
+    if (!trimmed) {
+      return false;
+    }
+
+    const hasRace = containsRace(trimmed);
+    const hasClass = containsClass(trimmed);
+    const hasLevel = containsLevel(trimmed);
+    const hasGender = containsGender(trimmed);
+
+    if (hasLevel && (hasClass || hasRace || hasGender)) {
+      return true;
+    }
+
+    if (hasClass && (hasRace || hasLevel || hasGender)) {
+      return true;
+    }
+
+    if (hasRace && (allowRaceOnly || hasClass || hasLevel || hasGender)) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const removeDescriptorAfterSeparator = (): boolean => {
+    const match = name.match(/^(.*?)([,;:–—-]\s*)([^,;:–—-]+)$/);
+    if (!match) {
+      return false;
+    }
+
+    const prefix = match[1];
+    const candidate = match[3].trim();
+    if (isDescriptorSegment(candidate, true)) {
+      name = prefix.trim();
+      return true;
+    }
+
+    return false;
+  };
+
+  const removeTrailingDescriptorWords = (): boolean => {
+    const words = name.split(/\s+/);
+    if (words.length < 3) {
+      return false;
+    }
+
+    const segmentLengths = [4, 3, 2];
+    for (const length of segmentLengths) {
+      if (words.length <= length) {
+        continue;
+      }
+
+      const candidateWords = words.slice(-length).join(' ');
+      if (isDescriptorSegment(candidateWords, false)) {
+        name = words.slice(0, -length).join(' ').trim();
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  let changed = true;
+  while (changed) {
+    changed = false;
+    if (removeDescriptorAfterSeparator()) {
+      changed = true;
+      continue;
+    }
+
+    if (removeTrailingDescriptorWords()) {
+      changed = true;
+    }
+  }
+
+  name = name.trim();
+  return name.length > 0 ? name : baseName.trim();
 }
 
 function parseCsvToSet(csv: string): Set<string> {
