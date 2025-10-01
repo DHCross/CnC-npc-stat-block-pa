@@ -210,6 +210,12 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
     data.disposition = normalizeDisposition(dispositionMatch[2]);
   }
 
+  // Extract Level with dice notation for non-classed creatures (e.g., "Level 1(d6)")
+  const levelDiceMatch = /\bLevel\s+(\d+\([^)]+\))/i.exec(parenthetical);
+  if (levelDiceMatch) {
+    data.level = levelDiceMatch[1];
+  }
+
   // Extract race/class/level
   const rclMatch = RCL_RE.exec(parenthetical);
   if (rclMatch) {
@@ -934,8 +940,21 @@ function pluralizeEquipmentItem(item: string): string {
 
 function extractUnitNounFromTitle(title?: string): string | undefined {
   if (!title) return undefined;
-  const match = title.toLowerCase().match(/(men-at-arms|militia|warriors|halflings|bowmen|guards|sergeants|fighters|troops)/);
-  return match?.[1];
+
+  // First try specific unit types
+  const specificMatch = title.toLowerCase().match(/(men-at-arms|militia|warriors|bowmen|guards|sergeants|fighters|troops)/);
+  if (specificMatch) {
+    return specificMatch[1];
+  }
+
+  // Then try to extract race/creature names from the title (before "x##")
+  // e.g., "Halflings x14" -> "halflings", "Goblin Marauders x8" -> "goblin marauders"
+  const unitQuantityMatch = title.match(/^([A-Za-z\s-]+?)\s+x\d+/);
+  if (unitQuantityMatch) {
+    return unitQuantityMatch[1].toLowerCase().trim();
+  }
+
+  return undefined;
 }
 
 function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title?: string): string {
@@ -1049,7 +1068,7 @@ function formatSpellLevels(spellText: string): string {
   });
 }
 
-export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, omitRace: boolean = false, useSuperscriptOrdinals: boolean = true): string {
+export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, omitRace: boolean = false, useSuperscriptOrdinals: boolean = true, title?: string): string {
   const parts: string[] = [];
   const subjectPronoun = isUnit ? 'they' : 'he';
   const wearVerb = isUnit ? 'wear' : 'wears';
@@ -1098,7 +1117,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       descriptorData = { ...descriptorData, raceClass: raceClassText };
     }
 
-    const descriptor = buildDescriptorFromData(descriptorData, isUnit);
+    const descriptor = buildDescriptorFromData(descriptorData, isUnit, title);
     const possessive = formatPossessiveDescriptor(descriptor, isUnit);
     parts.push(`${possessive} vital stats are ${vitalParts.join(', ')}`);
   }
