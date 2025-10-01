@@ -59,6 +59,8 @@ describe('Enhanced Parser Functions', () => {
     it('should extract disposition and normalize it', () => {
       expect(extractParentheticalData('alignment: lawful good').disposition).toBe('law/good');
       expect(extractParentheticalData('disposition neutral').disposition).toBe('neutral');
+      expect(extractParentheticalData('disposition neutral/neutral').disposition).toBe('neutral');
+      expect(extractParentheticalData('disposition true neutral').disposition).toBe('neutral');
     });
 
     it('should extract equipment', () => {
@@ -81,7 +83,8 @@ describe('Enhanced Parser Functions', () => {
       expect(normalizeDisposition('lawful good')).toBe('law/good');
       expect(normalizeDisposition('Chaotic Evil')).toBe('chaos/evil');
       expect(normalizeDisposition('neutral good')).toBe('neutral/good');
-      expect(normalizeDisposition('true neutral')).toBe('neutral/neutral');
+      expect(normalizeDisposition('true neutral')).toBe('neutral');
+      expect(normalizeDisposition('neutral/neutral')).toBe('neutral');
     });
 
     it('should handle single-word alignments', () => {
@@ -98,13 +101,14 @@ describe('Enhanced Parser Functions', () => {
       expect(result.value).toBe('physical');
     });
 
-    it('should filter attributes by modifier thresholds for classed NPCs', () => {
+    it('should include all prime attributes for classed NPCs', () => {
       const result = normalizeAttributes('str 15, dex 12, con 13', {
         raceClassText: 'human, 4ᵗʰ level fighter',
         levelText: '4'
       });
       expect(result.type).toBe('list');
-      expect(result.value).toBe('strength, constitution');
+      // Fighters have strength, dexterity, constitution as primes
+      expect(result.value).toBe('strength, dexterity, constitution');
     });
 
     it('should always include fighter primes for 1st level fighters', () => {
@@ -209,7 +213,9 @@ describe('Enhanced Parser Functions', () => {
 
       const result = buildCanonicalParenthetical(data, false, false, false);
 
-      expect(result).toContain('This 4ᵗʰ level human fighter’s vital stats are HP 24, AC 16, disposition neutral, his primary attributes are strength, constitution.');
+      expect(result).toContain("HP 24, AC 16, disposition neutral");
+      // Fighters list all primes: strength, dexterity, constitution
+      expect(result).toContain("His primary attributes are strength, dexterity, constitution");
       expect(result).toContain('He wears');
     });
 
@@ -228,7 +234,7 @@ describe('Enhanced Parser Functions', () => {
 
       const result = buildCanonicalParenthetical(data, true, false, false);
 
-      expect(result).toContain('their primary attributes are physical.');
+      expect(result).toContain('Their primary attributes are physical');
       expect(result).toContain('*chain mail*');
     });
  
@@ -245,7 +251,31 @@ describe('Enhanced Parser Functions', () => {
 
       const result = buildCanonicalParenthetical(data, false, false, false);
 
-      expect(result).toContain('their primary attributes are physical');
+      // For non-classed creatures, "Their" is capitalized and vital stats ends with period
+      expect(result).toContain('Their primary attributes are physical');
+      expect(result).toMatch(/vital stats are .+\.\s+Their primary attributes/);
+    });
+
+    it('should merge jewelry and coins into single carry sentence when no weapons present', () => {
+      const data = {
+        hp: '30',
+        ac: '12',
+        disposition: 'neutral',
+        raceClass: 'human merchant',
+        equipment: 'leather armor',
+        jewelry: '50 gold worth of jewelry',
+        coins: '25gp',
+        raw: 'original'
+      };
+
+      const result = buildCanonicalParenthetical(data, false, false, false);
+
+      // Should have exactly one carry sentence that includes both jewelry and coins
+      expect(result).toContain('He carries 25 in coin and fifty in jewelry');
+
+      // Should only have one instance of "carries" (merged into single sentence)
+      const carriesCount = (result.match(/\bcarries\b/g) || []).length;
+      expect(carriesCount).toBe(1);
     });
   });
 
@@ -264,7 +294,9 @@ describe('Enhanced Parser Functions', () => {
 
       const result = formatMountBlock(mountBlock);
 
-      expect(result).toBe('**Warhorse (mount)** *(This creature’s vital stats are Level 4(d10), HP 35, AC 19, disposition neutral, It attacks with 2 hooves for 1d4 damage each, It wears chainmail barding.)*');
+      expect(result).toContain("Level 4(d10), HP 35, AC 19, disposition neutral");
+      expect(result).toContain("It attacks with 2 hooves for 1d4 damage each");
+      expect(result).toContain("It wears chainmail barding");
     });
 
     it('should handle minimal mount data', () => {
