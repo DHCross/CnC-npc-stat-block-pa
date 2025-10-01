@@ -235,7 +235,9 @@ describe('Enhanced Parser Functions', () => {
       const result = buildCanonicalParenthetical(data, true, false, false);
 
       expect(result).toContain('Their primary attributes are physical');
-      expect(result).toContain('*chain mail*');
+      // Mundane equipment should NOT be italicized
+      expect(result).toContain('chain mail');
+      expect(result).not.toContain('*chain mail*');
     });
  
     it('should use prime statement for creatures without class levels', () => {

@@ -462,7 +462,7 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
   }
 
   // Extract secondary skills
-  const skillMatch = /(?:secondary\s+skill|skills?)\s+(?:is|are)\s+([^.]+?)(?:\.|$)/i.exec(parenthetical);
+  const skillMatch = /(?:secondary\s+skill|skills?)\s+(?:is|are|of)[:\s]*([^.]+?)(?:\.|$)/i.exec(parenthetical);
   if (skillMatch) {
     data.secondarySkills = skillMatch[1].trim();
   }
@@ -688,6 +688,24 @@ export function normalizeAttributes(attributes: string, options: NormalizeAttrib
     // If no scores provided, but we have a prime type (physical/mental), use that
     if (!hasScores && primeType) {
       return { type: 'prime', value: primeType };
+    }
+
+    // If attributes are listed without scores (like "str, dex, int"), list them all
+    if (!hasScores && tokens.length > 0) {
+      const validAttributes = tokens.filter(token =>
+        token.name && PHB_ATTRIBUTE_ORDER.includes(token.name)
+      );
+
+      if (validAttributes.length > 0) {
+        const sorted = validAttributes
+          .map(token => token.name)
+          .sort((a, b) => PHB_ATTRIBUTE_ORDER.indexOf(a) - PHB_ATTRIBUTE_ORDER.indexOf(b));
+
+        return {
+          type: 'list',
+          value: sorted.join(', ')
+        };
+      }
     }
 
     // We have scores, so list individual attributes
@@ -980,8 +998,8 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
   let charClass: string | undefined;
 
   if (data.raceClass) {
-    // Try matching full format: "human, 4th/5th level fighter/assassin"
-    const match = data.raceClass.match(/([a-z-]+),\s*([0-9\/thndrdst]+)\s+level\s+([a-z\/-]+)/i);
+    // Try matching full format: "human, 4th/5th level fighter/assassin" or "human, 2ⁿᵈ level fighters"
+    const match = data.raceClass.match(/([a-z-]+),\s*([0-9\/thndrdstⁿᵈˢᵗʳᵈᵗʰ]+)\s+level\s+([a-z\/-]+)/i);
     if (match) {
       race = match[1].toLowerCase();
       level = match[2];
@@ -999,7 +1017,9 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
 
   if (isUnit) {
     if (race && level && charClass) {
-      const ordinal = `${level}${getSuperscriptOrdinal(level)}`;
+      // If level already has ordinal markers (regular or superscript), don't add more
+      const hasOrdinal = /\d+(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/.test(level);
+      const ordinal = hasOrdinal ? level : `${level}${getSuperscriptOrdinal(level)}`;
       return `${subject} ${ordinal} level ${race} ${pluralizeClassNameLocal(charClass)}`.replace(/\s+/g, ' ').trim();
     }
 
@@ -1020,8 +1040,8 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
     }
   } else {
     if (race && level && charClass) {
-      // If level already has ordinal markers (th/nd/st/rd), don't add more
-      const hasOrdinal = /\d+(?:st|nd|rd|th)/.test(level);
+      // If level already has ordinal markers (regular or superscript), don't add more
+      const hasOrdinal = /\d+(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)/.test(level);
       const ordinal = hasOrdinal ? level : `${level}${getSuperscriptOrdinal(level)}`;
       return `${subject} ${ordinal} level ${race} ${charClass}`.replace(/\s+/g, ' ').trim();
     }
@@ -1121,10 +1141,13 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
 
       // Convert regular ordinals to superscript for output consistency if requested
       if (useSuperscriptOrdinals) {
-        raceClassText = raceClassText.replace(/(\d+)(st|nd|rd|th)(\s+level)/g, (match, level, ordinal, levelText) => {
-          const superscriptOrdinal = getSuperscriptOrdinal(level);
-          return `${level}${superscriptOrdinal}${levelText}`;
-        });
+        // Skip conversion if this is multiclass notation (contains slash)
+        if (!/\//.test(raceClassText)) {
+          raceClassText = raceClassText.replace(/(\d+)(st|nd|rd|th)(\s+level)/g, (match, level, ordinal, levelText) => {
+            const superscriptOrdinal = getSuperscriptOrdinal(level);
+            return `${level}${superscriptOrdinal}${levelText}`;
+          });
+        }
       }
 
       if (omitRace) {
