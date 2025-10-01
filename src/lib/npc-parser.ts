@@ -200,7 +200,11 @@ export function processDump(input: string): ProcessedNPC[] {
   return processDumpWithValidation(input);
 }
 
-export function processDumpWithValidation(input: string, useEnhancedParser: boolean = false): ProcessedNPC[] {
+export function processDumpWithValidation(
+  input: string,
+  useEnhancedParser: boolean = false,
+  formatterMode?: 'enhanced' | 'npc' | 'monster'
+): ProcessedNPC[] {
   const trimmed = input.trim();
   if (!trimmed) {
     return [];
@@ -209,7 +213,20 @@ export function processDumpWithValidation(input: string, useEnhancedParser: bool
   const blocks = splitIntoBlocks(trimmed);
   return blocks.map((block) => {
     const parsed = useEnhancedParser ? parseBlockEnhanced(block) : parseBlock(block);
-    const converted = useEnhancedParser ? formatToEnhancedNarrative(parsed, block) : formatToNarrative(parsed);
+
+    // Determine which formatter to use
+    let converted: string;
+    if (formatterMode === 'monster') {
+      // Force monster formatting
+      converted = formatToMonsterNarrative(parsed);
+    } else if (formatterMode === 'npc') {
+      // Force NPC formatting (skip monster detection)
+      converted = formatToNarrative(parsed);
+    } else {
+      // Enhanced or auto-detect mode
+      converted = useEnhancedParser ? formatToEnhancedNarrative(parsed, block) : formatToNarrative(parsed);
+    }
+
     const validation = buildValidation(parsed);
 
     return {

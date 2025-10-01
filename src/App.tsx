@@ -12,7 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Toaster } from '@/components/ui/sonner';
-import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode as FileHtml, FileCheck } from 'lucide-react';
+import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode as FileHtml, FileCheck, Users, Skull } from 'lucide-react';
 import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, processDumpEnhanced, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, setDictionaries, ValidationResult } from '@/lib/npc-parser';
 import { formatVersionString } from '@/lib/version';
 import ReactMarkdown from 'react-markdown';
@@ -261,7 +261,7 @@ function App() {
   const [availableFixes, setAvailableFixes] = useState<CorrectionFix[]>([]);
   const [normalizeInput, setNormalizeInput] = useState(true);
   const [dictEnabled, setDictEnabled] = useState(true);
-  const [useEnhancedParser, setUseEnhancedParser] = useState(true);
+  const [formatterMode, setFormatterMode] = useState<'enhanced' | 'npc' | 'monster'>('enhanced');
   const [dictCounts, setDictCounts] = useState({ spells: 0, items: 0, monsters: 0 });
 
   // Initialize pre-loaded dictionaries on component mount
@@ -272,7 +272,7 @@ function App() {
 
   const processInput = (
     text: string,
-    overrides?: { normalizeInput?: boolean; dictionaryEnabled?: boolean; useEnhanced?: boolean },
+    overrides?: { normalizeInput?: boolean; dictionaryEnabled?: boolean; formatterMode?: 'enhanced' | 'npc' | 'monster' },
   ) => {
     if (!text.trim()) {
       setResults([]);
@@ -284,13 +284,16 @@ function App() {
     try {
       const shouldNormalize = overrides?.normalizeInput ?? normalizeInput;
       const dictionariesActive = overrides?.dictionaryEnabled ?? dictEnabled;
-      const useEnhanced = overrides?.useEnhanced ?? useEnhancedParser;
+      const mode = overrides?.formatterMode ?? formatterMode;
       const correctionOptions = { enableDictionarySuggestions: dictionariesActive };
 
       const toParse = shouldNormalize
         ? applyAllHighConfidenceFixes(text, correctionOptions)
         : text;
-      const processed = processDumpWithValidation(toParse, useEnhanced);
+
+      // Use enhanced parser for 'enhanced' mode, regular for 'npc' and 'monster'
+      const useEnhanced = mode === 'enhanced';
+      const processed = processDumpWithValidation(toParse, useEnhanced, mode);
 
       const fixes = generateAutoCorrectionFixes(text, correctionOptions);
       setAvailableFixes(fixes);
@@ -763,19 +766,54 @@ function App() {
                     aria-label="Normalize input before parsing"
                   />
                 </div>
-                <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-3 text-sm">
-                  <div>
-                    <div className="font-medium text-card-foreground">Enhanced parenthetical parser</div>
-                    <div className="text-xs text-card-foreground/70">Uses advanced extraction rules for parenthetical data, mount separation, and shield canonicalization.</div>
+                <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <div className="mb-3">
+                    <div className="font-medium text-card-foreground mb-1">Formatter Mode</div>
+                    <div className="text-xs text-card-foreground/70">Choose the formatting style for your stat blocks</div>
                   </div>
-                  <Switch
-                    checked={useEnhancedParser}
-                    onCheckedChange={(checked) => {
-                      setUseEnhancedParser(checked);
-                      processInput(inputText, { useEnhanced: checked });
-                    }}
-                    aria-label="Use enhanced parenthetical parser"
-                  />
+                  <div className="flex gap-2">
+                    <Button
+                      variant={formatterMode === 'enhanced' ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => {
+                        setFormatterMode('enhanced');
+                        processInput(inputText, { formatterMode: 'enhanced' });
+                      }}
+                      className="flex-1 gap-2"
+                    >
+                      <Sparkle className="h-4 w-4" />
+                      Enhanced
+                    </Button>
+                    <Button
+                      variant={formatterMode === 'npc' ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => {
+                        setFormatterMode('npc');
+                        processInput(inputText, { formatterMode: 'npc' });
+                      }}
+                      className="flex-1 gap-2"
+                    >
+                      <Users className="h-4 w-4" />
+                      NPC
+                    </Button>
+                    <Button
+                      variant={formatterMode === 'monster' ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => {
+                        setFormatterMode('monster');
+                        processInput(inputText, { formatterMode: 'monster' });
+                      }}
+                      className="flex-1 gap-2"
+                    >
+                      <Skull className="h-4 w-4" />
+                      Monster
+                    </Button>
+                  </div>
+                  <div className="mt-3 text-xs text-card-foreground/60">
+                    {formatterMode === 'enhanced' && '✨ Advanced extraction with mount separation and shield canonicalization'}
+                    {formatterMode === 'npc' && '👥 Standard NPC formatting for characters with classes'}
+                    {formatterMode === 'monster' && '💀 Monster formatting for creatures with HD, TREASURE, and XP'}
+                  </div>
                 </div>
                 {availableFixes.length > 0 && (
                   <Card className="mt-4 border-primary/40 bg-primary/10 text-primary-foreground">
