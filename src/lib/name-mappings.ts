@@ -548,14 +548,7 @@ export function addMagicItemMechanics(item: string): string {
     return `${item}—${MAGIC_ITEM_MECHANICS[lowerItem]}`;
   }
 
-  // Handle +X bonuses for specific items - only add the bonus, not generic mechanics
   const bonusMatch = item.match(/\+(\d+)/);
-  if (bonusMatch) {
-    const bonus = bonusMatch[1];
-    if (MAGIC_ITEM_MECHANICS[`+${bonus}`]) {
-      return `${item}—${MAGIC_ITEM_MECHANICS[`+${bonus}`]}`;
-    }
-  }
 
   // Check for partial matches (but avoid double-matching shields with bonuses)
   for (const [itemName, mechanics] of Object.entries(MAGIC_ITEM_MECHANICS)) {
@@ -565,6 +558,14 @@ export function addMagicItemMechanics(item: string): string {
         continue;
       }
       return `${item}—${mechanics}`;
+    }
+  }
+
+  // Handle +X bonuses for specific items - only add the bonus, not generic mechanics
+  if (bonusMatch) {
+    const bonus = bonusMatch[1];
+    if (MAGIC_ITEM_MECHANICS[`+${bonus}`]) {
+      return `${item}—${MAGIC_ITEM_MECHANICS[`+${bonus}`]}`;
     }
   }
 
