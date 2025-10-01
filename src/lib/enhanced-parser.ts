@@ -999,13 +999,13 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
 
   if (data.raceClass) {
     // Try matching full format: "human, 4th/5th level fighter/assassin" or "human, 2ⁿᵈ level fighters"
-    const match = data.raceClass.match(/([a-z-]+),\s*([0-9\/thndrdstⁿᵈˢᵗʳᵈᵗʰ]+)\s+level\s+([a-z\/-]+)/i);
+  const match = data.raceClass.match(/([a-z-]+),\s*([0-9/thndrdstⁿᵈˢᵗʳᵈᵗʰ]+)\s+level\s+([a-z/-]+)/i);
     if (match) {
       race = match[1].toLowerCase();
       level = match[2];
       charClass = match[3].toLowerCase();
     } else {
-      const simpleMatch = data.raceClass.match(/([a-z-]+)\s+([a-z\/-]+)/i);
+  const simpleMatch = data.raceClass.match(/([a-z-]+)\s+([a-z/-]+)/i);
       if (simpleMatch) {
         race = simpleMatch[1].toLowerCase();
         charClass = simpleMatch[2].toLowerCase();
