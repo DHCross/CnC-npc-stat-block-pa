@@ -303,6 +303,22 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
     }
   }
 
+  // Try to extract from format like "He is a neutral evil, human, 4th/5th level fighter/assassin"
+  if (!data.raceClass) {
+    const heIsPattern = /(he|she|it)\s+is\s+a\s+(.+?),\s*([a-z-]+),\s*([0-9\/thndrdst]+)\s+level\s+([a-z\/-]+)/i.exec(parenthetical);
+    if (heIsPattern) {
+      const pronoun = heIsPattern[1].toLowerCase();
+      const disposition = heIsPattern[2];
+      const race = heIsPattern[3];
+      const level = heIsPattern[4];
+      const charClass = heIsPattern[5]; // Could be fighter/assassin
+      data.raceClass = `${race}, ${level} level ${charClass}`;
+      data.level = level;
+      data.originalPronoun = pronoun;
+      data.disposition = normalizeDisposition(disposition);
+    }
+  }
+
   // Try to extract from format like "These are chaotic good, human, 2nd level fighters"
   if (!data.raceClass) {
     const complexProseMatch = /(these|this|the)\s+are\s+(chaotic\s+good|chaotic\s+evil|chaotic\s+neutral|lawful\s+good|lawful\s+evil|lawful\s+neutral|neutral\s+good|neutral\s+evil|neutral),\s*([a-z-]+),\s*(\d+)(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s+level\s+([a-z-]+)s?/i.exec(parenthetical);
@@ -964,13 +980,14 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
   let charClass: string | undefined;
 
   if (data.raceClass) {
-    const match = data.raceClass.match(/([a-z-]+),\s*(\d+)(?:st|nd|rd|th|ˢᵗ|ⁿᵈ|ʳᵈ|ᵗʰ)?\s+level\s+([a-z-]+)/i);
+    // Try matching full format: "human, 4th/5th level fighter/assassin"
+    const match = data.raceClass.match(/([a-z-]+),\s*([0-9\/thndrdst]+)\s+level\s+([a-z\/-]+)/i);
     if (match) {
       race = match[1].toLowerCase();
       level = match[2];
       charClass = match[3].toLowerCase();
     } else {
-      const simpleMatch = data.raceClass.match(/([a-z-]+)\s+([a-z-]+)/i);
+      const simpleMatch = data.raceClass.match(/([a-z-]+)\s+([a-z\/-]+)/i);
       if (simpleMatch) {
         race = simpleMatch[1].toLowerCase();
         charClass = simpleMatch[2].toLowerCase();
@@ -1003,7 +1020,9 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
     }
   } else {
     if (race && level && charClass) {
-      const ordinal = `${level}${getSuperscriptOrdinal(level)}`;
+      // If level already has ordinal markers (th/nd/st/rd), don't add more
+      const hasOrdinal = /\d+(?:st|nd|rd|th)/.test(level);
+      const ordinal = hasOrdinal ? level : `${level}${getSuperscriptOrdinal(level)}`;
       return `${subject} ${ordinal} level ${race} ${charClass}`.replace(/\s+/g, ' ').trim();
     }
 
@@ -1176,12 +1195,16 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       processedPart = processedPart.replace(/^(?:and\s+)?(?:they|he|she|it)\s+/i, '');
       processedPart = processedPart.replace(/^(?:and\s+)?(?:wears|wear|carries|carry)\s+/i, '');
 
-      // Apply block-level italics to ALL gear (Jeremy's Fiat)
-      processedPart = `*${processedPart}*`;
-
-      // For units, pluralize items
+      // For units, pluralize items (do this before italicization)
       if (isUnit) {
         processedPart = pluralizeEquipmentItem(processedPart);
+      }
+
+      // Only italicize magical items, not mundane equipment
+      // Magical items have: +X bonuses, "of" construction, or are already processed with mechanics
+      const isMagicalItem = /\+\d+|—|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of|wand of|bow of|dagger of|mace of|axe of/i.test(processedPart);
+      if (isMagicalItem) {
+        processedPart = `*${processedPart}*`;
       }
 
       // Categorize items
