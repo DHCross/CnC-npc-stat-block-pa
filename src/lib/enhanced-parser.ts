@@ -26,7 +26,7 @@ export interface ParsedTitleAndBody {
   parentheticals: string[];
 }
 
-import { addMagicItemMechanics } from './name-mappings';
+import { addMagicItemMechanics, applyNameMappings } from './name-mappings';
 
 export interface MountBlock {
   name: string;
@@ -1047,16 +1047,17 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       }
 
       // Process magic items
-      let processedPart = part;
-      if (/\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(part)) {
-        processedPart = addMagicItemMechanics(part);
-      }
+      let processedPart = applyNameMappings(part);
 
-      // Apply block-level italics to ALL gear (Jeremy's Fiat)
-      processedPart = `*${processedPart}*`;
+      if (/\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(processedPart)) {
+        processedPart = addMagicItemMechanics(processedPart);
+      }
 
       processedPart = processedPart.replace(/^(?:and\s+)?(?:they|he|she|it)\s+/i, '');
       processedPart = processedPart.replace(/^(?:and\s+)?(?:wears|wear|carries|carry)\s+/i, '');
+
+      // Apply block-level italics to ALL gear (Jeremy's Fiat)
+      processedPart = `*${processedPart}*`;
 
       // For units, pluralize items
       if (isUnit) {
