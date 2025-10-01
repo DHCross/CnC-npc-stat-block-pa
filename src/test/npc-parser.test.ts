@@ -164,7 +164,7 @@ Mount: heavy war horse`
       expect(extractDisposition('Disposition: lawful good')).toBe('law/good')
       expect(extractDisposition('Disposition: chaos/evil')).toBe('chaos/evil')
       expect(extractDisposition('Alignment: Chaotic Neutral')).toBe('chaos/neutral')
-      expect(extractDisposition('He is neutral')).toBe('neutral')
+      expect(extractDisposition('He is neutral')).toBe('neutrality')
     })
   })
 

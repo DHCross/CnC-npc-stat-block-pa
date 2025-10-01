@@ -745,7 +745,7 @@ function parseBlock(block: string): ParsedNPC {
       if (hdMatch) mountStats.push(`HD ${hdMatch[1]}`);
       if (hpMatch) mountStats.push(`HP ${hpMatch[1]}`);
       if (acMatch) mountStats.push(`AC ${acMatch[1]}`);
-      mountStats.push('disposition neutral');
+      mountStats.push('disposition neutrality');
 
       let attackText = '';
       if (attackMatch) {
@@ -961,7 +961,7 @@ function formatToNarrative(parsed: ParsedNPC): string {
 
   // Add default disposition for military units if missing
   if (!parsed.fields['Disposition'] && isPlural) {
-    parsed.fields['Disposition'] = 'neutral/neutral';
+    parsed.fields['Disposition'] = 'neutrality';
   }
 
   // Build the condensed stat block content
@@ -1194,8 +1194,9 @@ function normalizeDisposition(value: string): string {
     'lawful neutral': 'law/neutral',
     'lawful evil': 'law/evil',
     'neutral good': 'neutral/good',
-    'true neutral': 'neutral/neutral',
-    'neutral': 'neutral/neutral',
+    'true neutral': 'neutrality',
+    'neutral': 'neutrality',
+    'neutral/neutral': 'neutrality',
     'neutral evil': 'neutral/evil',
     'chaotic good': 'chaos/good',
     'chaotic neutral': 'chaos/neutral',
@@ -1714,8 +1715,11 @@ export function extractDisposition(text: string): string {
   const proseMatch = text.match(/(?:he|she|they)\s+(?:is|are)\s+(?:a\s+)?(lawful\s+good|chaotic\s+good|neutral\s+good|lawful\s+evil|chaotic\s+evil|neutral\s+evil|lawful\s+neutral|chaotic\s+neutral|neutral|good|evil|lawful|chaotic)(?:\s+\w+)?/i);
   if (proseMatch) {
     const candidate = proseMatch[1].trim();
-    // If it's a single word alignment like "neutral", don't normalize to "neutral/neutral"
-    if (/^(neutral|good|evil|chaotic|lawful)$/i.test(candidate)) {
+    // Preserve single-word alignments except for neutral, which now maps to neutrality
+    if (/^neutral$/i.test(candidate)) {
+      return 'neutrality';
+    }
+    if (/^(good|evil|chaotic|lawful)$/i.test(candidate)) {
       return candidate.toLowerCase();
     }
     return normalizeDisposition(candidate);

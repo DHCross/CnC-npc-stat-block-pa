@@ -58,7 +58,7 @@ describe('Enhanced Parser Functions', () => {
 
     it('should extract disposition and normalize it', () => {
       expect(extractParentheticalData('alignment: lawful good').disposition).toBe('law/good');
-      expect(extractParentheticalData('disposition neutral').disposition).toBe('neutral');
+      expect(extractParentheticalData('disposition neutral').disposition).toBe('neutrality');
     });
 
     it('should extract equipment', () => {
@@ -81,13 +81,14 @@ describe('Enhanced Parser Functions', () => {
       expect(normalizeDisposition('lawful good')).toBe('law/good');
       expect(normalizeDisposition('Chaotic Evil')).toBe('chaos/evil');
       expect(normalizeDisposition('neutral good')).toBe('neutral/good');
-      expect(normalizeDisposition('true neutral')).toBe('neutral/neutral');
+      expect(normalizeDisposition('true neutral')).toBe('neutrality');
+      expect(normalizeDisposition('neutral/neutral')).toBe('neutrality');
     });
 
     it('should handle single-word alignments', () => {
       expect(normalizeDisposition('lawful')).toBe('law/neutral');
       expect(normalizeDisposition('chaotic')).toBe('chaos/neutral');
-      expect(normalizeDisposition('neutral')).toBe('neutral');
+      expect(normalizeDisposition('neutral')).toBe('neutrality');
     });
   });
 
@@ -199,7 +200,7 @@ describe('Enhanced Parser Functions', () => {
       const data = {
         hp: '24',
         ac: '16',
-        disposition: 'neutral',
+        disposition: 'neutrality',
         raceClass: 'human, 4th level fighter',
         level: '4',
         attributes: 'strength 15, dexterity 12, constitution 13',
@@ -209,7 +210,8 @@ describe('Enhanced Parser Functions', () => {
 
       const result = buildCanonicalParenthetical(data, false, false, false);
 
-      expect(result).toContain('This 4ᵗʰ level human fighter’s vital stats are HP 24, AC 16, disposition neutral, his primary attributes are strength, constitution.');
+      expect(result).toContain('This 4ᵗʰ level human fighter’s vital stats are HP 24, AC 16, disposition neutrality, his primary attributes are strength, constitution.');
+      expect(result).toContain('disposition neutrality');
       expect(result).toContain('He wears');
     });
 
@@ -217,7 +219,7 @@ describe('Enhanced Parser Functions', () => {
       const data = {
         hp: '12',
         ac: '15',
-        disposition: 'neutral',
+        disposition: 'neutrality',
         raceClass: 'human, 2nd level fighters',
         level: '2',
         attributes: 'PA physical',
@@ -256,7 +258,7 @@ describe('Enhanced Parser Functions', () => {
         level: '4(d10)',
         hp: '35',
         ac: '19',
-        disposition: 'neutral',
+        disposition: 'neutrality',
         attacks: '2 hooves for 1d4 damage each',
         equipment: 'chainmail barding',
         raw: 'original'
@@ -264,7 +266,7 @@ describe('Enhanced Parser Functions', () => {
 
       const result = formatMountBlock(mountBlock);
 
-      expect(result).toBe('**Warhorse (mount)** *(This creature’s vital stats are Level 4(d10), HP 35, AC 19, disposition neutral, It attacks with 2 hooves for 1d4 damage each, It wears chainmail barding.)*');
+      expect(result).toBe('**Warhorse (mount)** *(This creature’s vital stats are Level 4(d10), HP 35, AC 19, disposition neutrality, It attacks with 2 hooves for 1d4 damage each, It wears chainmail barding.)*');
     });
 
     it('should handle minimal mount data', () => {
