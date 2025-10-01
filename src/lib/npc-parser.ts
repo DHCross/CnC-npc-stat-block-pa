@@ -1653,13 +1653,13 @@ export function findEquipment(equipment: string): string {
         magicItem = `${item} ${bonus}`;
       }
 
-      // Italicize magic item name only, add mechanics outside
+      // Italicize magic item with mechanics inside
       const withMechanics = addMagicItemMechanics(magicItem);
       if (withMechanics !== magicItem) {
-        // Mechanics were added, separate them
-        const mechanicsMatch = withMechanics.match(/^(.+?)\s*(\([^)]+\))$/);
+        // Mechanics were added with em dash, convert to parentheses inside italics
+        const mechanicsMatch = withMechanics.match(/^(.+?)—(.+)$/);
         if (mechanicsMatch) {
-          return `*${mechanicsMatch[1]}* ${mechanicsMatch[2]}`;
+          return `*${mechanicsMatch[1]} (${mechanicsMatch[2]})*`;
         }
       }
       return `*${magicItem}*`;

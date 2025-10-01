@@ -548,23 +548,28 @@ export function addMagicItemMechanics(item: string): string {
     return `${item}—${MAGIC_ITEM_MECHANICS[lowerItem]}`;
   }
 
-  // Handle +X bonuses for specific items - only add the bonus, not generic mechanics
+  // Check for partial matches BEFORE generic +X bonus fallback
+  // This ensures "pectoral of armor +3" matches "pectoral of armor" not just "+3"
   const bonusMatch = item.match(/\+(\d+)/);
-  if (bonusMatch) {
-    const bonus = bonusMatch[1];
-    if (MAGIC_ITEM_MECHANICS[`+${bonus}`]) {
-      return `${item}—${MAGIC_ITEM_MECHANICS[`+${bonus}`]}`;
-    }
-  }
-
-  // Check for partial matches (but avoid double-matching shields with bonuses)
   for (const [itemName, mechanics] of Object.entries(MAGIC_ITEM_MECHANICS)) {
+    // Skip pure bonus entries like "+1", "+2" for now
+    if (itemName.startsWith('+')) {
+      continue;
+    }
     if (lowerItem.includes(itemName.toLowerCase())) {
       // Skip generic "shield" match if this is a specific shield with a bonus
       if (itemName === 'shield' && bonusMatch) {
         continue;
       }
       return `${item}—${mechanics}`;
+    }
+  }
+
+  // Handle generic +X bonuses as fallback
+  if (bonusMatch) {
+    const bonus = bonusMatch[1];
+    if (MAGIC_ITEM_MECHANICS[`+${bonus}`]) {
+      return `${item}—${MAGIC_ITEM_MECHANICS[`+${bonus}`]}`;
     }
   }
 
