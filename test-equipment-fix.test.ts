@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { processDumpEnhanced } from './src/lib/npc-parser';
+import { buildCanonicalParenthetical } from './src/lib/enhanced-parser';
 
 describe('Equipment Processing Edge Cases', () => {
   it('should handle unit equipment verbs correctly', () => {
@@ -36,5 +37,19 @@ describe('Equipment Processing Edge Cases', () => {
     expect(result[0].converted).toContain('10 gp');
     expect(result[0].converted).toContain('5 sp');
     expect(result[0].converted).toContain('2 pp');
+  });
+
+  it('remaps magic items before adding mechanics', () => {
+    const parenthetical = buildCanonicalParenthetical(
+      {
+        equipment: 'ring of protection +5',
+        raw: 'ring of protection +5'
+      },
+      false
+    );
+
+    console.log('Ring parenthetical:', parenthetical);
+
+    expect(parenthetical).toContain('*ring of armor +5—AC +1 to +5*');
   });
 });
