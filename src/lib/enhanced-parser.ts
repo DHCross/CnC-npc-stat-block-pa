@@ -305,7 +305,7 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
 
   // Try to extract from format like "He is a neutral evil, human, 4th/5th level fighter/assassin"
   if (!data.raceClass) {
-    const heIsPattern = /(he|she|it)\s+is\s+a\s+(.+?),\s*([a-z-]+),\s*([0-9\/thndrdst]+)\s+level\s+([a-z\/-]+)/i.exec(parenthetical);
+    const heIsPattern = /(he|she|it)\s+is\s+a\s+(.+?),\s*([a-z-]+),\s*([0-9/thndrdst]+)\s+level\s+([a-z/-]+)/i.exec(parenthetical);
     if (heIsPattern) {
       const pronoun = heIsPattern[1].toLowerCase();
       const disposition = heIsPattern[2];
