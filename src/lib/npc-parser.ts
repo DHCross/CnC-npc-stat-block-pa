@@ -1,16 +1,12 @@
-export type WarningType = 'error' | 'warning' | 'info';
+import type { ParsedNPC, ValidationResult, ValidationWarning, WarningType } from './stat-block-types';
+import {
+  buildSubjectDescriptor,
+  normalizeDisposition,
+  toPossessiveSubject,
+  toSuperscript,
+} from './stat-block-helpers';
 
-export interface ValidationWarning {
-  type: WarningType;
-  category: string;
-  message: string;
-  suggestion?: string;
-}
-
-export interface ValidationResult {
-  warnings: ValidationWarning[];
-  complianceScore: number;
-}
+export type { ParsedNPC, ValidationResult, ValidationWarning, WarningType } from './stat-block-types';
 
 export interface ProcessedNPC {
   name: string;
@@ -53,13 +49,7 @@ import {
   formatToMonsterNarrative,
   buildMonsterValidation
 } from './monster-formatter';
-
-interface ParsedNPC {
-  name: string;
-  fields: Record<string, string>;
-  notes: string[];
-  original: string;
-}
+import { parseMonsterBlock } from './monster-parser';
 
 interface Dictionaries {
   spells: Set<string>;
@@ -212,26 +202,35 @@ export function processDumpWithValidation(
 
   const blocks = splitIntoBlocks(trimmed);
   return blocks.map((block) => {
-    const parsed = useEnhancedParser ? parseBlockEnhanced(block) : parseBlock(block);
+    const npcParsed = useEnhancedParser ? parseBlockEnhanced(block) : parseBlock(block);
+    const monsterParsed = formatterMode === 'npc' ? undefined : parseMonsterBlock(block);
 
-    // Determine which formatter to use
+    let finalParsed: ParsedNPC = npcParsed;
     let converted: string;
+    let validation: ValidationResult;
+
     if (formatterMode === 'monster') {
-      // Force monster formatting
-      converted = formatToMonsterNarrative(parsed);
+      finalParsed = monsterParsed ?? parseMonsterBlock(block);
+      converted = formatToMonsterNarrative(finalParsed);
+      validation = buildMonsterValidation(finalParsed);
     } else if (formatterMode === 'npc') {
-      // Force NPC formatting (skip monster detection)
-      converted = formatToNarrative(parsed);
+      converted = useEnhancedParser ? formatToEnhancedNarrative(npcParsed, block) : formatToNarrative(npcParsed);
+      validation = buildValidation(npcParsed);
     } else {
-      // Enhanced or auto-detect mode
-      converted = useEnhancedParser ? formatToEnhancedNarrative(parsed, block) : formatToNarrative(parsed);
+      const candidateMonster = monsterParsed ?? parseMonsterBlock(block);
+      if (isBasicMonster(candidateMonster)) {
+        finalParsed = candidateMonster;
+        converted = formatToMonsterNarrative(finalParsed);
+        validation = buildMonsterValidation(finalParsed);
+      } else {
+        converted = useEnhancedParser ? formatToEnhancedNarrative(npcParsed, block) : formatToNarrative(npcParsed);
+        validation = buildValidation(npcParsed);
+      }
     }
 
-    const validation = buildValidation(parsed);
-
     return {
-      name: parsed.name,
-      original: parsed.original,
+      name: finalParsed.name,
+      original: finalParsed.original,
       converted,
       validation,
     } satisfies ProcessedNPC;
@@ -1077,24 +1076,6 @@ function formatFieldValue(field: string, value: string): string {
   return value;
 }
 
-function normalizeDisposition(value: string): string {
-  const trimmed = value.trim().toLowerCase();
-  const mapping: Record<string, string> = {
-    'lawful good': 'law/good',
-    'lawful neutral': 'law/neutral',
-    'lawful evil': 'law/evil',
-    'neutral good': 'neutral/good',
-    'true neutral': 'neutral',
-    'neutral': 'neutral',
-    'neutral/neutral': 'neutral',
-    'neutral evil': 'neutral/evil',
-    'chaotic good': 'chaos/good',
-    'chaotic neutral': 'chaos/neutral',
-    'chaotic evil': 'chaos/evil',
-  };
-  return mapping[trimmed] ?? value.trim();
-}
-
 function capitalize(value: string): string {
   return value
     .split(/\s+/)
@@ -1217,11 +1198,6 @@ function parseCsvToSet(csv: string): Set<string> {
   return set;
 }
 
-function toSuperscript(value: string): string {
-  // Tests expect regular digits followed by 'ᵗʰ', not superscript digits
-  return value + 'ᵗʰ';
-}
-
 interface VitalStatsOptions {
   isPlural: boolean;
   race?: string;
@@ -1273,125 +1249,6 @@ function buildVitalStatsSentence(options: VitalStatsOptions): string | null {
   const possessiveSubject = toPossessiveSubject(subject, options.isPlural);
 
   return `${possessiveSubject} vital stats are ${fragments.join(', ')}.`;
-}
-
-interface SubjectOptions {
-  isPlural: boolean;
-  race?: string;
-  level?: string;
-  charClass?: string;
-  fallback?: string | null;
-}
-
-function buildSubjectDescriptor(options: SubjectOptions): string {
-  const pronoun = options.isPlural ? 'These' : 'This';
-  const descriptorParts: string[] = [];
-
-  if (options.race) {
-    descriptorParts.push(options.race.trim().toLowerCase());
-  }
-
-  if (options.level) {
-    descriptorParts.push(`${toSuperscript(options.level.trim())} level`);
-  }
-
-  if (options.charClass) {
-    const baseClass = options.charClass.trim().toLowerCase();
-    const classDescriptor = options.isPlural ? pluralizeClassName(baseClass) : baseClass;
-    descriptorParts.push(classDescriptor);
-  }
-
-  let descriptor = descriptorParts.filter(Boolean).join(' ').trim();
-
-  if (!descriptor) {
-    const fallback = options.fallback?.trim();
-    if (fallback) {
-      descriptor = fallback
-        .replace(/[,]+/g, ' ')
-        .replace(/\s+/g, ' ')
-        .toLowerCase();
-    }
-  }
-
-  if (!descriptor) {
-    descriptor = options.isPlural ? 'creatures' : options.charClass ? options.charClass : 'character';
-    descriptor = descriptor.toLowerCase();
-  }
-
-  return `${pronoun} ${descriptor}`.replace(/\s+/g, ' ').trim();
-}
-
-function toPossessiveSubject(subject: string, isPlural: boolean): string {
-  const trimmed = subject.trim();
-  const apostrophe = '’';
-  if (!trimmed) {
-    return isPlural ? `These creatures${apostrophe}` : `This character${apostrophe}s`;
-  }
-
-  const lower = trimmed.toLowerCase();
-  const alreadyPossessive = lower.endsWith("'") || lower.endsWith(apostrophe);
-  if (alreadyPossessive) {
-    return trimmed;
-  }
-
-  if (isPlural) {
-    if (lower.endsWith('men') || lower.endsWith('children') || lower.endsWith('people')) {
-      return `${trimmed}${apostrophe}`;
-    }
-    if (lower.endsWith('s')) {
-      return `${trimmed}${apostrophe}`;
-    }
-    return `${trimmed}${apostrophe}s`;
-  }
-
-  if (lower.endsWith('s')) {
-    return `${trimmed}${apostrophe}`;
-  }
-
-  return `${trimmed}${apostrophe}s`;
-}
-
-function pluralizeClassName(name: string): string {
-  const lower = name.trim().toLowerCase();
-  const irregulars: Record<string, string> = {
-    'thief': 'thieves',
-    'archer': 'archers',
-    'fighter': 'fighters',
-    'cleric': 'clerics',
-    'paladin': 'paladins',
-    'ranger': 'rangers',
-    'wizard': 'wizards',
-    'warlock': 'warlocks',
-    'druid': 'druids',
-    'bard': 'bards',
-    'monk': 'monks',
-    'rogue': 'rogues',
-    'assassin': 'assassins',
-    'knight': 'knights',
-    'magic-user': 'magic-users',
-  };
-
-  if (irregulars[lower]) {
-    return irregulars[lower];
-  }
-
-  if (lower.endsWith('man')) {
-    return `${lower.slice(0, -3)}men`;
-  }
-  if (lower.endsWith('fe')) {
-    return `${lower.slice(0, -2)}ves`;
-  }
-  if (lower.endsWith('f')) {
-    return `${lower.slice(0, -1)}ves`;
-  }
-  if (lower.endsWith('y') && !/[aeiou]y$/.test(lower)) {
-    return `${lower.slice(0, -1)}ies`;
-  }
-  if (lower.endsWith('s')) {
-    return lower;
-  }
-
-  return `${lower}s`;
 }
 
 function formatMountBlock(raw: string): string {
