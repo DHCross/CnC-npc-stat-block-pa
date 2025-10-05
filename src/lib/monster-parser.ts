@@ -304,9 +304,13 @@ function cleanValue(value: string): string {
 function buildFieldPattern(label: string): RegExp {
   const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
 
+  const suffix = '(?:\\s*[.:;–—-])?\\s*';
+  return new RegExp(`^${escaped}${suffix}`, 'i');
+
   return new RegExp(String.raw`^${escaped}(?:\s*[.:;–—-])?\s*`, 'i');
 
   return new RegExp(`^${escaped}(?:\s*[.:;–—-])?\s*`, 'i');
+
 
 }
 
