@@ -61,6 +61,33 @@ describe('monster parser', () => {
     expect(parsed.fields['Special Abilities']).toMatch(/restrained/);
   });
 
+  it('parses legacy inline uppercase field sequences without delimiters', () => {
+    const legacyBlock = [
+      'TURTLE, HUGE SNAPPING NO. ENCOUNTERED: 1',
+      'SIZE: Large HD: 5 (d8)',
+      'MOVE: 3 feet on land, 6 feet swimming AC: 19 shell, 12 head, limbs and tail ATTACKS: Bite (2d4+10)',
+      'SPECIAL: Continuing Damage SAVES: P',
+      'INT: Animal ALIGNMENT: Neutral TYPE: Animal TREASURE: Nil',
+      'XP: 100+5',
+    ].join('\n');
+
+    const parsed = parseMonsterBlock(legacyBlock);
+
+    expect(parsed.name).toBe('TURTLE, HUGE SNAPPING NO. ENCOUNTERED: 1');
+    expect(parsed.fields['Size']).toBe('Large');
+    expect(parsed.fields['HD']).toBe('5 (d8)');
+    expect(parsed.fields['Move']).toBe('3 feet on land, 6 feet swimming');
+    expect(parsed.fields['AC']).toBe('19 shell, 12 head, limbs and tail');
+    expect(parsed.fields['Attacks']).toBe('Bite (2d4+10)');
+    expect(parsed.fields['Special Abilities']).toBe('Continuing Damage');
+    expect(parsed.fields['Saves']).toBe('P');
+    expect(parsed.fields['Intelligence']).toBe('Animal');
+    expect(parsed.fields['Disposition']).toBe('neutral');
+    expect(parsed.fields['Type']).toBe('Animal');
+    expect(parsed.fields['Treasure']).toBe('Nil');
+    expect(parsed.fields['XP']).toBe('100+5');
+  });
+
   it('splits multi-block dumps and integrates with formatting + validation', () => {
     const dump = `${ORC_BLOCK}\n\n**Goblin Sentry**\nHD 1d6, AC 14, Move 30 ft\nAttacks: spear +1 (1d6)\nSaves: P\nType: Humanoid\nTreasure: 1d4 gp\nXP: 20\nAlignment: Neutral Evil`;
     const monsters = parseMonsterBlocks(dump);
