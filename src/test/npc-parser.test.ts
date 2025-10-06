@@ -25,7 +25,7 @@ Spells: 0–6, 1st–6`
       
       // Should have the pattern **Name[, Title]** *(italic content)*
       expect(result).toMatch(/\*\*[^*]+\*\* \*\(.*\)\*/)
-      expect(result).toContain('*(This human 16ᵗʰ level cleric')
+      expect(result).toContain('*(This 16ᵗʰ level human cleric')
       expect(result).toContain('disposition law/good.')
     })
   })
@@ -182,7 +182,7 @@ Armor Class (AC): 17`;
 
       const parentheticalMatch = result.match(/\*\((.+?)\)\*/);
       const parenthetical = parentheticalMatch ? parentheticalMatch[1] : '';
-      expect(parenthetical).toMatch(/This human 5ᵗʰ level fighter/i);
+      expect(parenthetical).toMatch(/This 5ᵗʰ level human fighter/i);
     });
   });
 
@@ -241,7 +241,7 @@ Mount: heavy war horse`
       // Check all major formatting requirements
       expect(result).toMatch(/\*\*.*\*\* \*\(.*\)\*/) // Italicized stat block
       expect(result).toContain('disposition law/good.') // Complete sentence
-      expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order
+      expect(result).toContain('strength, wisdom, charisma') // Lowercase PHB order
       expect(result).toContain('*pectoral of armor +3 (AC +1 to +3)*') // PHB rename + italics
 	expect(result).toContain('medium steel shield') // Shield normalization (defaults)
       expect(result).toContain('*staff of striking (see Appendix: Magic Items)*') // Magic item italics
