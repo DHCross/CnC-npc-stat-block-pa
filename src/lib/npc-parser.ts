@@ -29,7 +29,7 @@ export interface AutoCorrectionOptions {
   enableDictionarySuggestions?: boolean;
 }
 
-import { MAGIC_ITEM_MAPPINGS, SPELL_NAME_MAPPINGS, applyNameMappings, addMagicItemMechanics } from './name-mappings';
+import { MAGIC_ITEM_MAPPINGS, addMagicItemMechanics } from './name-mappings';
 import {
   splitTitleAndBody,
   extractParentheticalData,
@@ -123,22 +123,6 @@ const RACE_PATTERN = new RegExp(`\\b(${KNOWN_RACES.map(escapeForPattern).join('|
 const CLASS_PATTERN = new RegExp(`\\b(${KNOWN_CLASSES.map(escapeForPattern).join('|')})s?\\b`, 'i');
 const LEVEL_PATTERN = /\b\d+(?:st|nd|rd|th)?\s+level\b/i;
 const GENDER_PATTERN = /\b(male|female)\b/i;
-
-const FIELD_ORDER = [
-  'Disposition',
-  'Race & Class',
-  'Hit Points (HP)',
-  'Armor Class (AC)',
-  'Primary attributes',
-  'Secondary Skills',
-  'Equipment',
-  'Spells',
-  'Mount',
-  'Gear',
-  'Special Abilities',
-  'Vision',
-  'Background',
-];
 
 const VALIDATION_RULES: Array<{
   field: string;
@@ -536,8 +520,7 @@ function parseBlockEnhanced(block: string): ParsedNPC {
   let mountBlock: string | undefined;
 
   // Process first parenthetical (main NPC data)
-  if (parentheticals.length > 0) {
-    const parentheticalData = extractParentheticalData(parentheticals[0], isUnit, title);
+    if (parentheticals.length > 0) {
 
     // Extract mount if present and clean parenthetical
     const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
@@ -547,7 +530,7 @@ function parseBlockEnhanced(block: string): ParsedNPC {
     }
 
     // Re-extract data from cleaned parenthetical
-    const cleanedData = extractParentheticalData(cleanedParenthetical, isUnit, title);
+      const cleanedData = extractParentheticalData(cleanedParenthetical, isUnit, title);
 
     // Map extracted data to fields
     if (cleanedData.hp) fields['Hit Points (HP)'] = cleanedData.hp;
@@ -1067,13 +1050,6 @@ function normalizeFieldLabel(label: string): string {
     'xp': 'XP',
   };
   return mapping[normalized] ?? capitalize(label.trim());
-}
-
-function formatFieldValue(field: string, value: string): string {
-  if (field === 'Disposition') {
-    return normalizeDisposition(value);
-  }
-  return value;
 }
 
 function capitalize(value: string): string {

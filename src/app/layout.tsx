@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 // Font loading with comprehensive fallbacks for offline environments
+// eslint-disable-next-line react-refresh/only-export-components
 export const metadata = {
   title: "C&C NPC and Monster Parser",
   description: "Comprehensive stat block validator for Castles & Crusades NPCs and monsters",

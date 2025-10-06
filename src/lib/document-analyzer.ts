@@ -1,4 +1,4 @@
-import { processDumpWithValidation, ProcessedNPC, ValidationResult, ValidationWarning } from './npc-parser';
+import { processDumpWithValidation, ProcessedNPC } from './npc-parser';
 
 export interface DocumentStatBlock {
   npc: ProcessedNPC;
@@ -47,7 +47,6 @@ const STAT_BLOCK_PATTERNS = [
 ];
 
 export function analyzeDocument(documentText: string, documentName: string = 'Untitled Document'): DocumentComplianceReport {
-  const lines = documentText.split(/\r?\n/);
   const statBlocks = extractStatBlocksFromDocument(documentText);
 
   if (statBlocks.length === 0) {
@@ -151,7 +150,7 @@ function extractStatBlocksFromDocument(documentText: string): DocumentStatBlock[
           });
         }
       } catch (error) {
-        // Skip malformed stat blocks
+        console.warn('Skipping malformed stat block segment:', error);
       }
 
       inStatBlock = false;
@@ -175,7 +174,7 @@ function extractStatBlocksFromDocument(documentText: string): DocumentStatBlock[
         });
       }
     } catch (error) {
-      // Skip malformed stat blocks
+      console.warn('Skipping malformed trailing stat block segment:', error);
     }
   }
 
