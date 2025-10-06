@@ -669,7 +669,7 @@ function extractClassInfo(raceClassText?: string, levelText?: string): { classNa
 }
 
 export function normalizeAttributes(attributes: string, options: NormalizeAttributeOptions = {}): NormalizedAttributesResult {
-  const { isUnit = false, raceClassText, levelText } = options;
+  const { raceClassText, levelText } = options;
   if (!attributes || !attributes.trim()) {
     return { type: 'none' };
   }
@@ -1109,7 +1109,6 @@ function formatSpellLevels(spellText: string): string {
 
 export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, omitRace: boolean = false, useSuperscriptOrdinals: boolean = true, title?: string): string {
   const parts: string[] = [];
-  const subjectPronoun = isUnit ? 'they' : 'he';
   const wearVerb = isUnit ? 'wear' : 'wears';
   const carryVerb = isUnit ? 'carry' : 'carries';
   const coinsText = data.coins ? canonicalizeCoinsText(data.coins) : undefined;

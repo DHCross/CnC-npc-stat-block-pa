@@ -13,7 +13,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Toaster } from '@/components/ui/sonner';
 import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode as FileHtml, FileCheck, Users, Skull } from 'lucide-react';
-import { processDump, generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, processDumpEnhanced, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, setDictionaries, ValidationResult } from '@/lib/npc-parser';
+import { generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, ValidationResult } from '@/lib/npc-parser';
 import { formatVersionString } from '@/lib/version';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -322,7 +322,8 @@ function App() {
     try {
       await navigator.clipboard.writeText(text);
       toast.success('Copied to clipboard');
-    } catch (err) {
+    } catch (error) {
+      console.error('Failed to copy text to clipboard:', error);
       toast.error('Failed to copy to clipboard');
     }
   };
@@ -338,21 +339,26 @@ function App() {
       html = convertToHtml(text);
     }
     try {
-      const anyWindow = window as any;
-      if (anyWindow.ClipboardItem && navigator.clipboard && (navigator.clipboard as any).write) {
+      type ClipboardCapableWindow = Window & { ClipboardItem?: typeof ClipboardItem };
+      type ClipboardWithWrite = Clipboard & { write?: (items: ClipboardItem[]) => Promise<void> };
+
+      const clipboardWindow = window as ClipboardCapableWindow;
+      const clipboard = navigator.clipboard as ClipboardWithWrite;
+
+      if (clipboardWindow.ClipboardItem && clipboard && typeof clipboard.write === 'function') {
         const blob = new Blob([html], { type: 'text/html' });
-        const clipboardItem = new anyWindow.ClipboardItem({ 'text/html': blob });
-        await (navigator.clipboard as any).write([clipboardItem]);
+        const clipboardItem = new clipboardWindow.ClipboardItem({ 'text/html': blob });
+        await clipboard.write([clipboardItem]);
         toast.success('Copied as rich text (HTML)');
         return;
       }
       throw new Error('ClipboardItem not available');
-    } catch (err) {
+    } catch (error) {
       try {
         await navigator.clipboard.writeText(html);
         toast.success('Copied as rich text (fallback)');
-      } catch (err2) {
-        console.error('Failed to copy HTML to clipboard:', err, err2);
+      } catch (fallbackError) {
+        console.error('Failed to copy HTML to clipboard:', error, fallbackError);
         toast.error('Failed to copy as rich text.');
       }
     }
@@ -364,7 +370,8 @@ function App() {
       await navigator.clipboard.writeText(npcWithReport);
       const hasIssues = result.validation.warnings.length > 0;
       toast.success(`Copied NPC${hasIssues ? ' with validation report' : ' (fully compliant)'}`);
-    } catch (err) {
+    } catch (error) {
+      console.error('Failed to copy NPC report to clipboard:', error);
       toast.error('Failed to copy to clipboard');
     }
   };
@@ -378,12 +385,13 @@ function App() {
       await navigator.clipboard.writeText(fullText);
       const totalIssues = results.reduce((sum, r) => sum + r.validation.warnings.length, 0);
       toast.success(`Copied ${results.length} NPCs${totalIssues > 0 ? ' with validation report' : ' (all compliant)'}`);
-    } catch (err) {
+    } catch (error) {
+      console.error('Failed to copy NPC batch report to clipboard:', error);
       toast.error('Failed to copy to clipboard');
     }
   };
 
-  const generateSingleNPCReport = (result: ProcessedNPC, index: number): string => {
+  const generateSingleNPCReport = (result: ProcessedNPC, _index: number): string => {
     const npcName = result.converted.split('(')[0].trim().replace(/^\*\*|\*\*$/g, '');
     const warnings = result.validation.warnings;
     

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 // Simple test script to verify the fix
 const input = "Men-at-Arms, Bowmen x10 (these 2ⁿᵈ level human fighters' vital stats are HP 14, AC 12, disposition neutral. PA physical. they wear leather armor and carry longbows, longswords, belt axes, and carry 2–12 gold in coin. they carry medium steel shields.)";
 

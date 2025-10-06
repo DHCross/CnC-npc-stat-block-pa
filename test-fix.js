@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { processDumpEnhanced } = require('./dist/lib/npc-parser.js');
 const fs = require('fs');
 
