@@ -30,6 +30,7 @@ export interface AutoCorrectionOptions {
 }
 
 import { MAGIC_ITEM_MAPPINGS, addMagicItemMechanics } from './name-mappings';
+import type { ParentheticalData } from './enhanced-parser';
 import {
   splitTitleAndBody,
   extractParentheticalData,
@@ -42,7 +43,10 @@ import {
   buildCanonicalParenthetical,
   formatMountBlock as formatEnhancedMountBlock,
   normalizeAttributes,
-  MountBlock
+  MountBlock,
+  canonicalizeMountBlock,
+  lookupCanonicalMount,
+  buildMountBridgeSentence,
 } from './enhanced-parser';
 import {
   isBasicMonster,
@@ -762,7 +766,7 @@ function parseBlock(block: string): ParsedNPC {
       });
       const mountPossessive = toPossessiveSubject(mountSubject, false);
       mountBlock += `*(${mountPossessive} vital stats are ${mountStats.join(', ')}${attackText})*`;
-      fields['Mount'] = formatMountBlock(mountBlock);
+      fields['Mount'] = formatMountBlockFromString(mountBlock);
     }
   }
 
@@ -815,41 +819,72 @@ function parseBlock(block: string): ParsedNPC {
 
 // isBasicMonster and formatToMonsterNarrative moved to monster-formatter.ts
 
-function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): string {
-  // Use enhanced parser formatting
-  const { title, parentheticals } = splitTitleAndBody(originalBlock);
-  const isUnit = isUnitHeading(title);
-
-  let name = parsed.name.trim();
-  if (!name.startsWith('**')) {
-    name = `**${name.replace(/\*\*/g, '').trim()}**`;
-  }
-
-  let result = name;
-  let mountBlock: MountBlock | undefined;
-
-  if (parentheticals.length > 0) {
-    // Extract mount first (Jeremy's mandate: separate mounts into dedicated blocks)
-    const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
-    mountBlock = extractedMount;
-
-    // Process the cleaned parenthetical (mount data removed)
-    const cleanedParentheticalData = extractParentheticalData(cleanedParenthetical, isUnit, title);
-    const canonicalParenthetical = buildCanonicalParenthetical(cleanedParentheticalData, isUnit, false, true, title);
-
-    // Only add parenthetical if it contains meaningful content (not just a period or empty)
-    if (canonicalParenthetical && canonicalParenthetical.trim().length > 1 && canonicalParenthetical.trim() !== '.') {
-      result = `${name} *(${canonicalParenthetical})*`;
+  function resolveMountPronoun(
+    data: ParentheticalData | undefined,
+    canonicalParenthetical: string,
+    isUnit: boolean,
+  ): 'He' | 'She' | 'They' {
+    const explicitPronounMatch = canonicalParenthetical.match(/\b(He|She|They)\s+(?:wear|carry|carries|can|wields|rides|ride)\b/);
+    if (explicitPronounMatch) {
+      return explicitPronounMatch[1] as 'He' | 'She' | 'They';
     }
+
+    const originalPronoun = data?.originalPronoun?.toLowerCase();
+    if (originalPronoun) {
+      if (['she', 'her'].includes(originalPronoun)) return 'She';
+      if (['they', 'their', 'these', 'those'].includes(originalPronoun)) return 'They';
+      if (['he', 'his', 'this'].includes(originalPronoun)) return 'He';
+    }
+
+    return isUnit ? 'They' : 'He';
   }
 
-  // Add separated mount block per Jeremy's editorial mandate
-  if (mountBlock) {
-    result += `\n\n${formatEnhancedMountBlock(mountBlock)}`;
-  }
+  function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): string {
+    // Use enhanced parser formatting
+    const { title, parentheticals } = splitTitleAndBody(originalBlock);
+    const isUnit = isUnitHeading(title);
 
-  return result;
-}
+    let name = parsed.name.trim();
+    if (!name.startsWith('**')) {
+      name = `**${name.replace(/\*\*/g, '').trim()}**`;
+    }
+
+    let result = name;
+    let mountBlock: MountBlock | undefined;
+    let parentheticalData: ParentheticalData | undefined;
+    let canonicalParenthetical = '';
+
+    if (parentheticals.length > 0) {
+      // Extract mount first (Jeremy's mandate: separate mounts into dedicated blocks)
+      const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
+      mountBlock = extractedMount ? canonicalizeMountBlock(extractedMount) : undefined;
+
+      // Process the cleaned parenthetical (mount data removed)
+      parentheticalData = extractParentheticalData(cleanedParenthetical, isUnit, title);
+      canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit, false, true, title);
+
+      // Only add parenthetical if it contains meaningful content (not just a period or empty)
+      if (canonicalParenthetical && canonicalParenthetical.trim().length > 1 && canonicalParenthetical.trim() !== '.') {
+        result = `${name} *(${canonicalParenthetical})*`;
+      }
+    }
+
+    // Add separated mount block per Jeremy's editorial mandate
+    if (mountBlock) {
+      const pronoun = resolveMountPronoun(parentheticalData, canonicalParenthetical, isUnit);
+      const mountSentence = buildMountBridgeSentence(mountBlock.name, pronoun);
+      if (!result.includes(mountSentence)) {
+        result += `\n\n${mountSentence}`;
+      }
+
+      const formattedMount = formatEnhancedMountBlock(mountBlock);
+      if (!result.includes(formattedMount)) {
+        result += `\n\n${formattedMount}`;
+      }
+    }
+
+    return result;
+  }
 
 function formatToNarrative(parsed: ParsedNPC): string {
   // Check if this is a Basic Monster
@@ -948,7 +983,7 @@ function formatToNarrative(parsed: ParsedNPC): string {
   let mountBlock = '';
   if (mount) {
     // Mount is already formatted as a complete canonical block from extraction
-    mountBlock = `\n\n${formatMountBlock(mount)}`;
+    mountBlock = `\n\n${formatMountBlockFromString(mount)}`;
   }
 
   const parenthetical = sentences.length > 0 ? ` *(${sentences.join(' ')})*` : '';
@@ -1227,7 +1262,7 @@ function buildVitalStatsSentence(options: VitalStatsOptions): string | null {
   return `${possessiveSubject} vital stats are ${fragments.join(', ')}.`;
 }
 
-function formatMountBlock(raw: string): string {
+function formatMountBlockFromString(raw: string): string {
   const trimmed = raw.trim();
   if (!trimmed) {
     return '';
@@ -1241,6 +1276,11 @@ function formatMountBlock(raw: string): string {
   }
   if (/This creature['’]s vital stats are/i.test(pronounNormalized)) {
     return pronounNormalized;
+  }
+
+  const canonicalMount = lookupCanonicalMount(pronounNormalized);
+  if (canonicalMount) {
+    return formatEnhancedMountBlock(canonicalMount);
   }
 
   const nameWithoutTrailingPeriod = pronounNormalized.replace(/[.\s]+$/, '');
@@ -1311,8 +1351,34 @@ export function collapseNPCEntry(input: string): string {
   }
   final = final.replace(/ \*\s*\*\(/g, ' *(');
   final = final.replace(/\*\(([^)]*)\)\*/g, (_, inner) => `*(${inner.replace(/\*\*/g, '*')})*`);
+
+
+  if (mountBlock) {
+    const mountNameMatch = mountBlock.match(/\*\*([^*]+?) \(mount\)\*\*/i);
+    const mountName = mountNameMatch ? mountNameMatch[1] : '';
+    const canonicalMount = mountName ? lookupCanonicalMount(mountName) : undefined;
+    const resolvedMountName = canonicalMount ? canonicalMount.name : mountName;
+    const canonicalMountBlock = canonicalMount
+      ? formatEnhancedMountBlock(canonicalMount)
+      : mountBlock;
+
+    const pronounMatch = final.match(/\*\([^)]*\.\s+(He|She|They)\b/);
+    const pronoun = (pronounMatch ? pronounMatch[1] : 'He') as 'He' | 'She' | 'They';
+
+    if (resolvedMountName) {
+      const mountSentence = buildMountBridgeSentence(resolvedMountName, pronoun);
+      if (!final.includes(mountSentence)) {
+        final = `${final}\n\n${mountSentence}`;
+      }
+    }
+
+    if (!final.includes(canonicalMountBlock)) {
+      final = `${final}\n\n${canonicalMountBlock}`;
+    }
+
   if (mountBlock && !final.includes(mountBlock)) {
     final = `${final}\n\n${mountBlock}`;
+
   }
   return final;
 }
@@ -1406,7 +1472,10 @@ export function formatPrimaryAttributes(attributes: string): string {
 }
 
 export function findMountOneLiner(mount: string): string {
-  return `rides a ${mount}.`;
+  const normalized = mount.trim();
+  const article = /^[aeiou]/i.test(normalized) ? 'an' : 'a';
+  const mountName = normalized.replace(/war\s+horse/gi, 'warhorse');
+  return `rides ${article} ${mountName} in battle.`;
 }
 
 export function extractDisposition(text: string): string {

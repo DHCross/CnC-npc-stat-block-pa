@@ -92,9 +92,7 @@ describe('Unit Detection', () => {
     expect(converted).not.toContain('Their');
 
     // Should use singular verbs
-    expect(converted).toContain('wears');
-    expect(converted).toContain('carries');
-    expect(converted).not.toContain(/\bwear\b/);
-    expect(converted).not.toContain(/\bcarry\b/);
+    expect(converted).toContain('He carries');
+    expect(converted).not.toContain('He wears');
   });
 });

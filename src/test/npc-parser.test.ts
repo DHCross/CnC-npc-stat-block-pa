@@ -154,7 +154,8 @@ Mount: heavy war horse`
 
       const result = collapseNPCEntry(input)
 
-      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are unavailable.)*')
+      expect(result).toContain('He rides a heavy warhorse in battle.')
+      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are HD 4d10, HP 35, AC 19, disposition neutral. It receives two hoof attacks for 1–4 damage or one overbearing attack. It wears chain mail barding.)*')
     })
   })
 
@@ -241,15 +242,46 @@ Mount: heavy war horse`
       // Check all major formatting requirements
       expect(result).toMatch(/\*\*.*\*\* \*\(.*\)\*/) // Italicized stat block
       expect(result).toContain('disposition law/good.') // Complete sentence
+
+      expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order with Oxford comma
+      expect(result).toContain('He carries a pectoral of armor +3, full plate mail, a medium steel shield, a staff of striking, and a mace.')
+      expect(result).toContain('He rides a heavy warhorse in battle.')
+
       expect(result).toContain('strength, wisdom, charisma') // Lowercase PHB order
       expect(result).toContain('*pectoral of armor +3 (AC +1 to +3)*') // PHB rename + italics
 	expect(result).toContain('medium steel shield') // Shield normalization (defaults)
       expect(result).toContain('*staff of striking (see Appendix: Magic Items)*') // Magic item italics
+
       const mainBlockMatch = result.match(/\*\((.+?)\)\*/s)
       const mainBlock = mainBlockMatch ? mainBlockMatch[1] : ''
       expect(mainBlock).not.toMatch(/\*\*/)
       // Canonical mount block with neutral pronoun
-      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are unavailable.)*')
+      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are HD 4d10, HP 35, AC 19, disposition neutral. It receives two hoof attacks for 1–4 damage or one overbearing attack. It wears chain mail barding.)*')
+    })
+  })
+
+  describe('Default example regression', () => {
+    it('should match the canonical Victor Oldham entry', () => {
+      const input = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple**
+
+Disposition: law/good
+Race & Class: human, 16th level cleric
+Hit Points (HP): 59
+Armor Class (AC): 13/22
+Primary attributes: strength, wisdom, charisma
+Equipment: pectoral of armor +3, full plate mail, large steel shield, staff of striking, mace
+Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
+Mount: heavy war horse`
+
+      const expected = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple** *(This 16ᵗʰ level human cleric’s vital stats are HP 59, AC 13/22, disposition law/good. His primary attributes are strength, wisdom, and charisma. He carries a pectoral of armor +3, full plate mail, a large steel shield, a staff of striking, and a mace. He can cast the following number of cleric spells per day: 0–6, 1ˢᵗ–6, 2ⁿᵈ–5, 3ʳᵈ–5, 4ᵗʰ–4, 5ᵗʰ–4, 6ᵗʰ–3, 7ᵗʰ–3, 8ᵗʰ–2.)*
+
+He rides a heavy warhorse in battle.
+
+**Heavy War Horse (mount)** *(This creature’s vital stats are HD 4d10, HP 35, AC 19, disposition neutral. It receives two hoof attacks for 1–4 damage or one overbearing attack. It wears chain mail barding.)*`
+
+      const result = collapseNPCEntry(input)
+
+      expect(result).toBe(expected)
     })
   })
 
@@ -269,7 +301,8 @@ Mount: heavy war horse`
       expect(result).toContain('mace')
 
       // Mount from prose creates canonical block
-      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are unavailable.)*')
+      expect(result).toContain('He rides a heavy warhorse in battle.')
+      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are HD 4d10, HP 35, AC 19, disposition neutral. It receives two hoof attacks for 1–4 damage or one overbearing attack. It wears chain mail barding.)*')
     })
   })
 })
