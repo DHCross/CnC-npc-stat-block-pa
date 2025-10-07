@@ -1352,6 +1352,7 @@ export function collapseNPCEntry(input: string): string {
   final = final.replace(/ \*\s*\*\(/g, ' *(');
   final = final.replace(/\*\(([^)]*)\)\*/g, (_, inner) => `*(${inner.replace(/\*\*/g, '*')})*`);
 
+
   if (mountBlock) {
     const mountNameMatch = mountBlock.match(/\*\*([^*]+?) \(mount\)\*\*/i);
     const mountName = mountNameMatch ? mountNameMatch[1] : '';
@@ -1374,6 +1375,10 @@ export function collapseNPCEntry(input: string): string {
     if (!final.includes(canonicalMountBlock)) {
       final = `${final}\n\n${canonicalMountBlock}`;
     }
+
+  if (mountBlock && !final.includes(mountBlock)) {
+    final = `${final}\n\n${mountBlock}`;
+
   }
   return final;
 }

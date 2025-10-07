@@ -242,9 +242,16 @@ Mount: heavy war horse`
       // Check all major formatting requirements
       expect(result).toMatch(/\*\*.*\*\* \*\(.*\)\*/) // Italicized stat block
       expect(result).toContain('disposition law/good.') // Complete sentence
+
       expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order with Oxford comma
       expect(result).toContain('He carries a pectoral of armor +3, full plate mail, a medium steel shield, a staff of striking, and a mace.')
       expect(result).toContain('He rides a heavy warhorse in battle.')
+
+      expect(result).toContain('strength, wisdom, charisma') // Lowercase PHB order
+      expect(result).toContain('*pectoral of armor +3 (AC +1 to +3)*') // PHB rename + italics
+	expect(result).toContain('medium steel shield') // Shield normalization (defaults)
+      expect(result).toContain('*staff of striking (see Appendix: Magic Items)*') // Magic item italics
+
       const mainBlockMatch = result.match(/\*\((.+?)\)\*/s)
       const mainBlock = mainBlockMatch ? mainBlockMatch[1] : ''
       expect(mainBlock).not.toMatch(/\*\*/)
