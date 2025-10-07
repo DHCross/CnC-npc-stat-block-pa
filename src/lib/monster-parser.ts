@@ -96,7 +96,7 @@ const FIELD_ALIASES: FieldAlias[] = [
   },
   {
     field: 'Intelligence',
-    patterns: [buildFieldPattern('Intelligence')],
+    patterns: [buildFieldPattern('Intelligence'), buildFieldPattern('INT')],
   },
   {
     field: 'Size',
@@ -168,7 +168,7 @@ export function parseMonsterBlock(block: string): ParsedNPC {
       handled = true;
 
       if (alias.consumeRestOfLine) {
-        break;
+        continue;
       }
     }
 
@@ -282,15 +282,28 @@ function splitSegments(line: string): string[] {
       depth = Math.max(0, depth - 1);
     }
 
-    if (depth === 0 && (char === ',' || char === ';')) {
-      const remainder = line.slice(i + 1).trim();
-      if (remainder && looksLikeFieldStart(remainder)) {
-        push();
-        continue;
-      }
+    current += char;
+
+    if (depth > 0) {
+      continue;
     }
 
-    current += char;
+    const remainder = line.slice(i + 1);
+    if (!remainder) {
+      continue;
+    }
+
+    const trimmedRemainder = remainder.replace(/^[\s,;]+/, '');
+    if (!trimmedRemainder) {
+      continue;
+    }
+
+    if (looksLikeFieldStart(trimmedRemainder)) {
+      push();
+      const consumed = remainder.length - trimmedRemainder.length;
+      i += consumed;
+      continue;
+    }
   }
 
   push();
@@ -303,7 +316,11 @@ function cleanValue(value: string): string {
 
 function buildFieldPattern(label: string): RegExp {
   const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
+
+  return new RegExp(`^${escaped}\\b(?:\\s*[.:;–—-])?\\s*`, 'i');
+
   return new RegExp(`^${escaped}(?:\\s*[.:;–—-])?\\s*`, 'i');
+
 }
 
 function sanitizeName(lines: string[]): string {
