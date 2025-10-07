@@ -5,19 +5,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Textarea } from '@/components/ui/textarea';
-import { Progress } from '@/components/ui/progress';
 import { Separator } from '@/components/ui/separator';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import {
   FileText,
-  Upload,
   Download,
   Copy,
   ChevronDown,
   ChevronRight,
   AlertTriangle,
   CheckCircle,
-  Info,
   BarChart3,
   FileCheck,
   AlertCircle,
@@ -26,10 +23,6 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { analyzeDocument, DocumentComplianceReport, generateDocumentReport } from '@/lib/document-analyzer';
-
-interface DocumentAnalyzerProps {
-  onClose?: () => void;
-}
 
 const EXAMPLE_DOCUMENT = `# Chapter 3: The Royal Court
 
@@ -91,7 +84,7 @@ HP: 12
 AC: 10
 Equipment: spell book, component pouch, 50 gp`;
 
-export function DocumentAnalyzer({ onClose }: DocumentAnalyzerProps) {
+export function DocumentAnalyzer() {
   const [documentText, setDocumentText] = useState('');
   const [documentName, setDocumentName] = useState('');
   const [report, setReport] = useState<DocumentComplianceReport | null>(null);
@@ -188,6 +181,7 @@ export function DocumentAnalyzer({ onClose }: DocumentAnalyzerProps) {
       await navigator.clipboard.writeText(reportText);
       toast.success('Report copied to clipboard');
     } catch (error) {
+      console.error('Failed to copy document analysis report to clipboard:', error);
       toast.error('Failed to copy report');
     }
   };

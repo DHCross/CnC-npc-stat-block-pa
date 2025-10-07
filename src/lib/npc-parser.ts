@@ -29,7 +29,7 @@ export interface AutoCorrectionOptions {
   enableDictionarySuggestions?: boolean;
 }
 
-import { MAGIC_ITEM_MAPPINGS, SPELL_NAME_MAPPINGS, applyNameMappings, addMagicItemMechanics } from './name-mappings';
+import { MAGIC_ITEM_MAPPINGS, addMagicItemMechanics } from './name-mappings';
 import {
   splitTitleAndBody,
   extractParentheticalData,
@@ -123,22 +123,6 @@ const RACE_PATTERN = new RegExp(`\\b(${KNOWN_RACES.map(escapeForPattern).join('|
 const CLASS_PATTERN = new RegExp(`\\b(${KNOWN_CLASSES.map(escapeForPattern).join('|')})s?\\b`, 'i');
 const LEVEL_PATTERN = /\b\d+(?:st|nd|rd|th)?\s+level\b/i;
 const GENDER_PATTERN = /\b(male|female)\b/i;
-
-const FIELD_ORDER = [
-  'Disposition',
-  'Race & Class',
-  'Hit Points (HP)',
-  'Armor Class (AC)',
-  'Primary attributes',
-  'Secondary Skills',
-  'Equipment',
-  'Spells',
-  'Mount',
-  'Gear',
-  'Special Abilities',
-  'Vision',
-  'Background',
-];
 
 const VALIDATION_RULES: Array<{
   field: string;
@@ -536,8 +520,7 @@ function parseBlockEnhanced(block: string): ParsedNPC {
   let mountBlock: string | undefined;
 
   // Process first parenthetical (main NPC data)
-  if (parentheticals.length > 0) {
-    const parentheticalData = extractParentheticalData(parentheticals[0], isUnit, title);
+    if (parentheticals.length > 0) {
 
     // Extract mount if present and clean parenthetical
     const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
@@ -547,7 +530,7 @@ function parseBlockEnhanced(block: string): ParsedNPC {
     }
 
     // Re-extract data from cleaned parenthetical
-    const cleanedData = extractParentheticalData(cleanedParenthetical, isUnit, title);
+      const cleanedData = extractParentheticalData(cleanedParenthetical, isUnit, title);
 
     // Map extracted data to fields
     if (cleanedData.hp) fields['Hit Points (HP)'] = cleanedData.hp;
@@ -1069,13 +1052,6 @@ function normalizeFieldLabel(label: string): string {
   return mapping[normalized] ?? capitalize(label.trim());
 }
 
-function formatFieldValue(field: string, value: string): string {
-  if (field === 'Disposition') {
-    return normalizeDisposition(value);
-  }
-  return value;
-}
-
 function capitalize(value: string): string {
   return value
     .split(/\s+/)
@@ -1298,65 +1274,47 @@ function dedupeFixes(fixes: CorrectionFix[]): CorrectionFix[] {
 // New functions required by tests and NotebookLM feedback
 
 export function collapseNPCEntry(input: string): string {
-  const processed = processDumpWithValidation(input);
-  if (processed.length === 0) return input;
-
-  const npc = processed[0];
-  const parsed = parseBlock(npc.original);
-
-  // Canonicalize and validate all required fields
-  let name = parsed.name;
-  if (!name.startsWith('**')) name = `**${name.replace(/\*/g, '')}**`;
-
-  // Mandatory fields: Race & Class, HP, AC, Disposition
-  const raceClass = parsed.fields['Race & Class'] || '[race/class missing]';
-  const { race, level, charClass } = parseRaceClassLevel(raceClass);
-  const disposition = parsed.fields['Disposition'] ? normalizeDisposition(parsed.fields['Disposition']) : '[disposition missing]';
-  const hp = parsed.fields['Hit Points (HP)'] || '[hp missing]';
-  const ac = parsed.fields['Armor Class (AC)'] || '[ac missing]';
-
-  // Linguistic flow: race before level/class
-  const raceClassPhrase = buildSubjectDescriptor({
-    isPlural: false,
-    race,
-    level,
-    charClass,
-    fallback: raceClass,
-  });
-  const possessivePhrase = toPossessiveSubject(raceClassPhrase, false);
-
-  // Primary attributes
-  const primaryAttrs = parsed.fields['Primary attributes']
-    ? formatPrimaryAttributes(parsed.fields['Primary attributes'])
-    : '[primary attributes missing]';
-
-  // Secondary skills
-  const secondarySkills = parsed.fields['Secondary Skills'];
-
-  // Equipment (canonicalize, apply wording rules, bonus placement, italics)
-  const equipment = parsed.fields['Equipment']
-    ? findEquipment(parsed.fields['Equipment'])
-    : '[equipment missing]';
-
-  // Mount: output as separate canonical block if present
-  let mountBlock = '';
-  if (parsed.fields['Mount']) {
-    mountBlock = `\n\n${formatMountBlock(parsed.fields['Mount'])}`;
+  const basePass = processDumpWithValidation(input, false, 'npc');
+  if (basePass.length === 0) {
+    return input.trim();
   }
 
-  // Build stat block content, enforcing punctuation and semicolons for equipment clauses
-  const sentences: string[] = [];
-  sentences.push(`${possessivePhrase} vital stats are HP ${hp}, AC ${ac}, disposition ${disposition}.`);
-  sentences.push(`Their primary attributes are ${primaryAttrs}.`);
-  if (secondarySkills) {
-    sentences.push(`Their secondary skill is ${secondarySkills}.`);
+  let intermediate = basePass[0].converted;
+  const mountBlockMatch = intermediate.match(/\r?\n\r?\n(\*\*[^*]+ \(mount\)\*\* \*\([^]*?\)\*)/);
+  const mountBlock = mountBlockMatch ? mountBlockMatch[1].trim() : '';
+
+  // Reorder race/class phrasing so that level precedes race ("This 5ᵗʰ level human fighter")
+  intermediate = intermediate.replace(
+    /(This|These)\s+([a-z-]+)\s+(\d+[^\s]*)\s+level\s+([a-z/-]+)([’']s)/gi,
+    (_, pronoun, race, level, charClass, possessive) =>
+      `${pronoun} ${level} level ${race} ${charClass}${possessive}`,
+  );
+
+  // Encourage enhanced parser spell extraction by standardizing the lead-in phrase
+  intermediate = intermediate.replace(
+    /(They|He|She) can cast ([^.]+)\./i,
+    (_, pronoun, list) => `${pronoun} can cast the following number of spells per day: ${list}.`,
+  );
+
+  const enhancedPass = processDumpWithValidation(intermediate, true, 'npc');
+  if (enhancedPass.length === 0) {
+    return intermediate.trim();
   }
-  sentences.push(`They carry ${equipment}.`);
 
-  // Markdown: wrap parenthetical in single outer italics, no nested asterisks
-  const parenthetical = `*(${sentences.join(' ')})*`;
-
-  return `${name} ${parenthetical}${mountBlock}`;
+  let final = enhancedPass[0].converted.trim();
+  const nameMatch = final.match(/^(\*\*[^*]+?\*\*)(.*)$/s);
+  if (nameMatch) {
+    const [, name, rest] = nameMatch;
+    const normalizedRest = rest.replace(/^\s*\*+/, ' *');
+    const normalizedName = name.replace(/\s+\*\*$/, '**');
+    final = `${normalizedName}${normalizedRest}`;
+  }
+  final = final.replace(/ \*\s*\*\(/g, ' *(');
+  final = final.replace(/\*\(([^)]*)\)\*/g, (_, inner) => `*(${inner.replace(/\*\*/g, '*')})*`);
+  if (mountBlock && !final.includes(mountBlock)) {
+    final = `${final}\n\n${mountBlock}`;
+  }
+  return final;
 }
 
 export function findEquipment(equipment: string): string {

@@ -316,7 +316,11 @@ function cleanValue(value: string): string {
 
 function buildFieldPattern(label: string): RegExp {
   const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
+
   return new RegExp(`^${escaped}\\b(?:\\s*[.:;–—-])?\\s*`, 'i');
+
+  return new RegExp(`^${escaped}(?:\\s*[.:;–—-])?\\s*`, 'i');
+
 }
 
 function sanitizeName(lines: string[]): string {
