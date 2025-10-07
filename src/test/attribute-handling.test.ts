@@ -54,7 +54,7 @@ describe('Attribute Handling Rules', () => {
 
       expect(result.type).toBe('list');
       // All fighter primes: strength, dexterity, constitution
-      expect(result.value).toBe('strength, dexterity, constitution');
+      expect(result.value).toBe('strength, dexterity, and constitution');
     });
 
     it('should list cleric prime (wisdom) when score provided', () => {
@@ -76,7 +76,7 @@ describe('Attribute Handling Rules', () => {
 
       expect(result.type).toBe('list');
       // Wizard prime is intelligence, charisma 14 also has modifier
-      expect(result.value).toBe('intelligence, charisma');
+      expect(result.value).toBe('intelligence and charisma');
     });
 
     it('should list rogue prime (dexterity) when provided', () => {
@@ -98,7 +98,7 @@ describe('Attribute Handling Rules', () => {
 
       expect(result.type).toBe('list');
       // Ranger primes: strength, dexterity, wisdom (all provided with modifiers)
-      expect(result.value).toBe('strength, dexterity, wisdom');
+      expect(result.value).toBe('strength, dexterity, and wisdom');
     });
   });
 
@@ -146,7 +146,7 @@ describe('Attribute Handling Rules', () => {
       expect(result.type).toBe('list');
       // Fighter primes: str, dex, con (all listed)
       // Plus int 8 and cha 14 have modifiers
-      expect(result.value).toBe('strength, dexterity, constitution, intelligence, charisma');
+      expect(result.value).toBe('strength, dexterity, constitution, intelligence, and charisma');
     });
 
     it('should handle paladin with multiple primes and high strength', () => {
@@ -157,7 +157,7 @@ describe('Attribute Handling Rules', () => {
 
       expect(result.type).toBe('list');
       // Paladin primes: wisdom, charisma; also strength 14 has a modifier
-      expect(result.value).toBe('strength, wisdom, charisma');
+      expect(result.value).toBe('strength, wisdom, and charisma');
     });
   });
 });

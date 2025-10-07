@@ -108,7 +108,7 @@ describe('Enhanced Parser Functions', () => {
       });
       expect(result.type).toBe('list');
       // Fighters have strength, dexterity, constitution as primes
-      expect(result.value).toBe('strength, dexterity, constitution');
+      expect(result.value).toBe('strength, dexterity, and constitution');
     });
 
     it('should always include fighter primes for 1st level fighters', () => {
@@ -117,7 +117,7 @@ describe('Enhanced Parser Functions', () => {
         levelText: '1'
       });
       expect(result.type).toBe('list');
-      expect(result.value).toBe('strength, dexterity, constitution');
+      expect(result.value).toBe('strength, dexterity, and constitution');
     });
 
     it('should return prime type for creatures without class levels', () => {
@@ -182,7 +182,7 @@ describe('Enhanced Parser Functions', () => {
       const result = extractMountFromParenthetical(input);
 
       expect(result.mountBlock).toBeDefined();
-      expect(result.mountBlock?.name).toBe('warhorse');
+      expect(result.mountBlock?.name).toBe('heavy war horse');
       expect(result.mountBlock?.hp).toBe('35');
       expect(result.mountBlock?.ac).toBe('19');
       expect(result.cleanedParenthetical).not.toContain('war horse');
@@ -215,8 +215,8 @@ describe('Enhanced Parser Functions', () => {
 
       expect(result).toContain("HP 24, AC 16, disposition neutral");
       // Fighters list all primes: strength, dexterity, constitution
-      expect(result).toContain("His primary attributes are strength, dexterity, constitution");
-      expect(result).toContain('He wears');
+      expect(result).toContain('His primary attributes are strength, dexterity, and constitution');
+      expect(result).toContain('He carries banded mail, a medium steel shield, a longsword, and a dagger');
     });
 
     it('should build canonical format for unit', () => {
@@ -273,7 +273,7 @@ describe('Enhanced Parser Functions', () => {
       const result = buildCanonicalParenthetical(data, false, false, false);
 
       // Should have exactly one carry sentence that includes both jewelry and coins
-      expect(result).toContain('He carries 25 in coin and fifty in jewelry');
+      expect(result).toContain('He carries leather armor, 25 in coin, and fifty in jewelry.');
 
       // Should only have one instance of "carries" (merged into single sentence)
       const carriesCount = (result.match(/\bcarries\b/g) || []).length;

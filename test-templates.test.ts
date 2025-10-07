@@ -50,7 +50,7 @@ describe('Template Format Verification', () => {
     console.log('');
 
     expect(result).toContain('His primary attributes are');
-    expect(result).toContain('He wears');
+    expect(result).toContain('He carries');
   });
 
   it('Template 3: Unit of Classed NPCs', () => {

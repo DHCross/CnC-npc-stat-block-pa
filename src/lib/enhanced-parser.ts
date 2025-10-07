@@ -31,12 +31,112 @@ import { addMagicItemMechanics, applyNameMappings } from './name-mappings';
 export interface MountBlock {
   name: string;
   level?: string;
+  hd?: string;
   hp?: string;
   ac?: string;
   disposition?: string;
   attacks?: string;
   equipment?: string;
-  raw: string;
+  raw?: string;
+}
+
+interface CanonicalMountData {
+  name: string;
+  level?: string;
+  hd?: string;
+  hp?: string;
+  ac?: string;
+  disposition?: string;
+  attacks?: string;
+  equipment?: string;
+}
+
+const CANONICAL_MOUNT_DATA: Record<string, CanonicalMountData> = {
+  'heavy war horse': {
+    name: 'heavy war horse',
+    hd: '4d10',
+    hp: '35',
+    ac: '19',
+    disposition: 'neutral',
+    attacks: 'It receives two hoof attacks for 1–4 damage or one overbearing attack.',
+    equipment: 'It wears chain mail barding.'
+  }
+};
+
+function normalizeMountKey(raw: string): string {
+  return raw
+    .replace(/\(mount\)/gi, '')
+    .replace(/[^a-zA-Z\s-]/g, ' ')
+    .replace(/warhorse/gi, 'war horse')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+export function lookupCanonicalMount(raw: string): MountBlock | undefined {
+  const key = normalizeMountKey(raw);
+  if (!key) {
+    return undefined;
+  }
+
+  const canonical = CANONICAL_MOUNT_DATA[key];
+  if (!canonical) {
+    return undefined;
+  }
+
+  return {
+    name: canonical.name,
+    level: canonical.level,
+    hd: canonical.hd,
+    hp: canonical.hp,
+    ac: canonical.ac,
+    disposition: canonical.disposition,
+    attacks: canonical.attacks,
+    equipment: canonical.equipment,
+    raw: canonical.name
+  };
+}
+
+export function canonicalizeMountBlock(block: MountBlock): MountBlock {
+  const source = block.name || block.raw || '';
+  const canonical = source ? lookupCanonicalMount(source) : undefined;
+
+  if (!canonical) {
+    const normalizedName = block.name
+      ? block.name
+      : block.raw
+        ? block.raw.replace(/[.\s]+$/, '')
+        : 'mount';
+
+    return {
+      ...block,
+      name: normalizedName,
+    };
+  }
+
+  return {
+    name: canonical.name,
+    raw: block.raw ?? canonical.raw,
+    level: block.level ?? canonical.level,
+    hd: block.hd ?? canonical.hd,
+    hp: block.hp ?? canonical.hp,
+    ac: block.ac ?? canonical.ac,
+    disposition: block.disposition ?? canonical.disposition,
+    attacks: block.attacks ?? canonical.attacks,
+    equipment: block.equipment ?? canonical.equipment,
+  };
+}
+
+export function buildMountBridgeSentence(mountName: string, pronoun: 'He' | 'She' | 'They'): string {
+  const rideVerb = pronoun === 'They' ? 'ride' : 'rides';
+  const normalized = mountName
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .replace(/war\s+horse/g, 'warhorse');
+  const needsArticle = !/^(?:a|an|the)\b/.test(normalized);
+  const article = /^[aeiou]/.test(normalized) ? 'an' : 'a';
+  const descriptor = needsArticle ? `${article} ${normalized}` : normalized;
+  return `${pronoun} ${rideVerb} ${descriptor} in battle.`;
 }
 
 function numberToWords(num: number): string {
@@ -96,7 +196,7 @@ function canonicalizeCoinsText(coins: string): string {
 // Helper function to get superscript ordinal
 function getSuperscriptOrdinal(num: string): string {
   const n = parseInt(num);
-  if (n === 0) return 'ˢᵗ'; // Zero uses ˢᵗ (0ˢᵗ level spells)
+  if (n === 0) return '';
   if (n % 10 === 1 && n % 100 !== 11) return 'ˢᵗ';
   if (n % 10 === 2 && n % 100 !== 12) return 'ⁿᵈ';
   if (n % 10 === 3 && n % 100 !== 13) return 'ʳᵈ';
@@ -703,7 +803,7 @@ export function normalizeAttributes(attributes: string, options: NormalizeAttrib
 
         return {
           type: 'list',
-          value: sorted.join(', ')
+          value: formatOxfordList(sorted)
         };
       }
     }
@@ -745,7 +845,7 @@ export function normalizeAttributes(attributes: string, options: NormalizeAttrib
 
       return {
         type: 'list',
-        value: sorted.join(', ')
+        value: formatOxfordList(sorted)
       };
     }
 
@@ -840,13 +940,17 @@ export function extractMountFromParenthetical(parenthetical: string): {
   }
 
   // Extract mount-related data
+  const mountNameMatch = parenthetical.match(MOUNT_TYPE_RE);
+  const mountName = mountNameMatch
+    ? mountNameMatch[0].replace(/\s+/g, ' ').trim().toLowerCase()
+    : 'war horse';
   const mountHpMatch = /(?:war\s*horse[^.]*?HP\s*(\d+))/i.exec(parenthetical);
   const mountAcMatch = /(?:war\s*horse[^.]*?AC\s*([\d/]+))/i.exec(parenthetical);
   const mountAttackMatch = /((?:hoof|hooves)[^.]*)/i.exec(parenthetical);
 
   if (mountHpMatch || mountAcMatch || mountAttackMatch) {
     const mountBlock: MountBlock = {
-      name: 'warhorse',
+      name: mountName,
       hp: mountHpMatch?.[1],
       ac: mountAcMatch?.[1],
       disposition: 'neutral',
@@ -854,13 +958,15 @@ export function extractMountFromParenthetical(parenthetical: string): {
       raw: parenthetical
     };
 
+    const canonicalMount = canonicalizeMountBlock(mountBlock);
+
     // Remove mount data from parenthetical
     const cleaned = parenthetical
       .replace(/[,;\s]*(?:heavy|light)?\s*war\s*horse[^.;,]*/gi, '')
       .replace(/[,;\s]*(?:hoof|hooves)[^.;,]*/gi, '')
       .replace(/[,;\s]+$/, ''); // Clean trailing punctuation
 
-    return { cleanedParenthetical: cleaned, mountBlock };
+    return { cleanedParenthetical: cleaned, mountBlock: canonicalMount };
   }
 
   return { cleanedParenthetical: parenthetical };
@@ -1100,11 +1206,17 @@ function formatJewelryForTreasure(jewelry: string): string {
 
 // Helper function to add superscript ordinals to spell levels
 function formatSpellLevels(spellText: string): string {
-  // Convert "0–4, 1–5, 2–4" to "0ˢᵗ–4, 1ˢᵗ–5, 2ⁿᵈ–4"
-  return spellText.replace(/(\d+)(–\d+)/g, (match, level, rest) => {
+  let formatted = spellText.replace(/(\d+)(st|nd|rd|th)/gi, (_, level) => {
     const ordinal = getSuperscriptOrdinal(level);
-    return `${level}${ordinal}${rest}`;
+    return ordinal ? `${level}${ordinal}` : level;
   });
+
+  formatted = formatted.replace(/(\d+)(?=–)/g, (level: string) => {
+    const ordinal = getSuperscriptOrdinal(level);
+    return ordinal ? `${level}${ordinal}` : level;
+  });
+
+  return formatted;
 }
 
 export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, omitRace: boolean = false, useSuperscriptOrdinals: boolean = true, title?: string): string {
@@ -1112,13 +1224,16 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   const wearVerb = isUnit ? 'wear' : 'wears';
   const carryVerb = isUnit ? 'carry' : 'carries';
   const coinsText = data.coins ? canonicalizeCoinsText(data.coins) : undefined;
+  const jewelryText = data.jewelry ? formatJewelryForTreasure(data.jewelry) : undefined;
   let coinsIncludedInWeapons = false;
+  let jewelryIncludedInEquipment = false;
+  const classInfo = extractClassInfo(data.raceClass, data.level);
 
   // Build vital stats
   const vitalParts: string[] = [];
 
   // Determine if this is a non-classed creature (for Level field)
-  const hasClassLevels = data.raceClass && /\d+(?:st|nd|rd|th|ⁿᵈ|ˢᵗ|ʳᵈ|ᵗʰ)?\s+level/i.test(data.raceClass);
+  const hasClassLevels = classInfo.hasClassLevels;
 
   // Add Level for non-classed creatures
   if (data.level && !hasClassLevels) {
@@ -1193,6 +1308,8 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
 
     // Split equipment into armor/clothing (wear) and weapons/items (carry)
     // Handle both comma and "and" separators
+    const treatEquipmentAsPlain = !isUnit && (hasClassLevels || Boolean(classInfo.className));
+
     const equipmentParts = equipment
       .split(/[,]/)
       .flatMap(part => part.split(/\s+and\s+/))
@@ -1210,7 +1327,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       // Process magic items
       let processedPart = applyNameMappings(part);
 
-      if (/\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(processedPart)) {
+      if (!treatEquipmentAsPlain && /\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(processedPart)) {
         processedPart = addMagicItemMechanics(processedPart);
       }
 
@@ -1225,7 +1342,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       // Only italicize magical items, not mundane equipment
       // Magical items have: +X bonuses, "of" construction, or are already processed with mechanics
       const isMagicalItem = /\+\d+|—|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of|wand of|bow of|dagger of|mace of|axe of/i.test(processedPart);
-      if (isMagicalItem) {
+      if (isMagicalItem && !treatEquipmentAsPlain) {
         processedPart = `*${processedPart}*`;
       }
 
@@ -1242,48 +1359,48 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
 
     // Build equipment sentences
     const capitalizedPronoun = isUnit ? 'They' : 'He';
-    const equipmentSentences: string[] = [];
-    if (armorItems.length > 0) {
-      // Build armor list with Oxford comma
-      let armorList = '';
-      if (armorItems.length === 1) {
-        armorList = armorItems[0];
-      } else if (armorItems.length === 2) {
-        armorList = `${armorItems[0]} and ${armorItems[1]}`;
-      } else {
-        // Multiple items: use Oxford comma
-        const allButLast = armorItems.slice(0, -1);
-        const last = armorItems[armorItems.length - 1];
-        armorList = `${allButLast.join(', ')}, and ${last}`;
-      }
-      equipmentSentences.push(`${capitalizedPronoun} ${wearVerb} ${armorList}`);
-    }
-    if (weaponItems.length > 0) {
-      // Build weapon list with proper conjunctions
-      let weaponList = '';
-      if (weaponItems.length === 1) {
-        weaponList = weaponItems[0];
-      } else if (weaponItems.length === 2) {
-        weaponList = `${weaponItems[0]} and ${weaponItems[1]}`;
-      } else {
-        // Multiple items: use Oxford comma
-        const allButLast = weaponItems.slice(0, -1);
-        const last = weaponItems[weaponItems.length - 1];
-        weaponList = `${allButLast.join(', ')}, and ${last}`;
-      }
+    if (treatEquipmentAsPlain) {
+      const combinedItems: string[] = [];
 
-      // Add coins with proper conjunction
-      if (coinsText) {
-        const formattedCoins = formatCoinsForTreasure(coinsText);
-        weaponList += `, and ${formattedCoins}`;
+      armorItems.forEach(item => combinedItems.push(item));
+      weaponItems.forEach(item => combinedItems.push(item));
+
+      if (coinsText && !coinsIncludedInWeapons) {
+        combinedItems.push(formatCoinsForTreasure(coinsText));
         coinsIncludedInWeapons = true;
       }
 
-      equipmentSentences.push(`${armorItems.length > 0 ? `and ${carryVerb}` : `${capitalizedPronoun} ${carryVerb}`} ${weaponList}`);
-    }
+      if (jewelryText) {
+        combinedItems.push(formatJewelryForTreasure(data.jewelry!));
+        jewelryIncludedInEquipment = true;
+      }
 
-    if (equipmentSentences.length > 0) {
-      parts.push(equipmentSentences.join(' '));
+      if (combinedItems.length > 0) {
+        const normalizedItems = combinedItems.map(item => ensureIndefiniteArticle(sanitizeEquipmentClause(item)));
+        const list = formatOxfordList(normalizedItems);
+        parts.push(`${capitalizedPronoun} ${carryVerb} ${list}`);
+      }
+    } else {
+      const equipmentSentences: string[] = [];
+      if (armorItems.length > 0) {
+        const armorList = formatOxfordList(armorItems);
+        equipmentSentences.push(`${capitalizedPronoun} ${wearVerb} ${armorList}`);
+      }
+      if (weaponItems.length > 0) {
+        let weaponList = formatOxfordList(weaponItems);
+
+        if (coinsText) {
+          const formattedCoins = formatCoinsForTreasure(coinsText);
+          weaponList += `, and ${formattedCoins}`;
+          coinsIncludedInWeapons = true;
+        }
+
+        equipmentSentences.push(`${armorItems.length > 0 ? `and ${carryVerb}` : `${capitalizedPronoun} ${carryVerb}`} ${weaponList}`);
+      }
+
+      if (equipmentSentences.length > 0) {
+        parts.push(equipmentSentences.join(' '));
+      }
     }
   }
 
@@ -1307,22 +1424,22 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     spellText = spellText.replace(/^(?:the\s+following\s+number\s+of\s+|following\s+)?(cleric\s+|wizard\s+|magic.user\s+)?spells?\s+per\s+day:\s*/i, '');
     // Add superscript ordinals to spell levels
     spellText = formatSpellLevels(spellText);
-    parts.push(`${pronounSubject} can cast the following number of spells per day: ${spellText}`);
+    const spellLabel = classInfo.className ? `${classInfo.className} spells` : 'spells';
+    parts.push(`${pronounSubject} can cast the following number of ${spellLabel} per day: ${spellText}`);
   }
 
   // Formation details are now included within equipment descriptions
 
   // Handle jewelry and coins together when no weapons present
-  const jewelryText = data.jewelry ? formatJewelryForTreasure(data.jewelry) : undefined;
   const formattedCoinsText = data.coins ? formatCoinsForTreasure(data.coins) : undefined;
   const capitalizedPronoun = isUnit ? 'They' : 'He';
 
   // Merge jewelry and coins into single carry clause when no weapons
-  if (jewelryText && formattedCoinsText && !hasWeapons && !coinsIncludedInWeapons) {
+  if (jewelryText && formattedCoinsText && !hasWeapons && !coinsIncludedInWeapons && !jewelryIncludedInEquipment) {
     // Both jewelry and coins: combine into single sentence
     const prefix = hasArmor || hasWeapons ? capitalizedPronoun : capitalizedPronoun;
     parts.push(`${prefix} ${carryVerb} ${formattedCoinsText} and ${jewelryText}`);
-  } else if (jewelryText) {
+  } else if (jewelryText && !jewelryIncludedInEquipment) {
     // Only jewelry
     const prefix = hasWeapons || hasArmor ? capitalizedPronoun : capitalizedPronoun;
     parts.push(`${prefix} ${carryVerb} ${jewelryText}`);
@@ -1370,6 +1487,77 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   return result.endsWith('.') ? result : result + '.';
 }
 
+function stripOuterItalics(value: string): string {
+  const trimmed = value.trim();
+  const italicsMatch = trimmed.match(/^\*(.+)\*$/);
+  return italicsMatch ? italicsMatch[1] : trimmed;
+}
+
+function sanitizeEquipmentClause(item: string): string {
+  let sanitized = stripOuterItalics(item);
+  sanitized = sanitized.replace(/—[^,]+/g, '');
+  sanitized = sanitized.replace(/\s*\((?:AC|see Appendix: Magic Items|bonus|attack|damage)[^)]*\)/gi, '');
+  sanitized = sanitized.replace(/\s+/g, ' ').trim();
+  return sanitized;
+}
+
+function ensureIndefiniteArticle(item: string): string {
+  const trimmed = item.trim();
+  if (!trimmed) {
+    return trimmed;
+  }
+
+  if (/^\d/.test(trimmed)) {
+    return trimmed;
+  }
+
+  const lower = trimmed.toLowerCase();
+  if (/^(?:a|an|the|some|several|many|various|pair|set|his|her|their|its|\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand)\b/.test(lower)) {
+    return trimmed;
+  }
+
+  const normalized = lower.replace(/\s*\+\d+.*$/, '').trim();
+  if ((/(?:mail|armor|barding|clothing)\b/.test(normalized) && !/\bof\b/.test(normalized)) ||
+      /\b(boots|gauntlets|bracers|sandals|gloves)\b/.test(normalized)) {
+    return trimmed;
+  }
+
+  if (/s$/.test(normalized)) {
+    return trimmed;
+  }
+
+  const wordMatch = trimmed.match(/^[^a-zA-Z]*([a-zA-Z]+)/);
+  const firstWord = wordMatch ? wordMatch[1] : '';
+  const article = /^[aeiou]/i.test(firstWord) ? 'an' : 'a';
+  return `${article} ${trimmed}`;
+}
+
+function formatOxfordList(items: string[]): string {
+  if (items.length === 0) return '';
+  if (items.length === 1) return items[0];
+  if (items.length === 2) return `${items[0]} and ${items[1]}`;
+  const allButLast = items.slice(0, -1).join(', ');
+  const last = items[items.length - 1];
+  return `${allButLast}, and ${last}`;
+}
+
+function formatMountSentence(clause: string, defaultLead: string): string {
+  const trimmed = clause.trim();
+  if (!trimmed) {
+    return '';
+  }
+
+  const sentence = /^[A-Z]/.test(trimmed) ? trimmed : `${defaultLead} ${trimmed}`;
+  return sentence.endsWith('.') ? sentence : `${sentence}.`;
+}
+
+function titleCase(value: string): string {
+  return value
+    .split(/\s+/)
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join(' ');
+}
+
 function formatPossessiveDescriptor(descriptor: string, isPlural: boolean): string {
   const trimmed = descriptor.trim();
   const apostrophe = '’';
@@ -1387,21 +1575,33 @@ function formatPossessiveDescriptor(descriptor: string, isPlural: boolean): stri
 }
 
 export function formatMountBlock(mountBlock: MountBlock): string {
-  const parts: string[] = [];
-  if (mountBlock.level) parts.push(`Level ${mountBlock.level}`);
-  if (mountBlock.hp) parts.push(`HP ${mountBlock.hp}`);
-  if (mountBlock.ac) parts.push(`AC ${mountBlock.ac}`);
-  if (mountBlock.disposition) {
-    const normalizedDisposition = normalizeDisposition(mountBlock.disposition);
-    parts.push(`disposition ${normalizedDisposition}`);
-  }
-  if (mountBlock.attacks) parts.push(`It attacks with ${mountBlock.attacks}`);
-  if (mountBlock.equipment) parts.push(`It wears ${mountBlock.equipment}`);
-
   const apostrophe = '’';
-  const vitalStats = parts.length > 0
-    ? `This creature${apostrophe}s vital stats are ${parts.join(', ')}.`
-    : `This creature${apostrophe}s vital stats are unavailable.`;
+  const canonicalMount = canonicalizeMountBlock(mountBlock);
+  const vitalParts: string[] = [];
+  if (canonicalMount.level) vitalParts.push(`Level ${canonicalMount.level}`);
+  if (canonicalMount.hd) vitalParts.push(`HD ${canonicalMount.hd}`);
+  if (canonicalMount.hp) vitalParts.push(`HP ${canonicalMount.hp}`);
+  if (canonicalMount.ac) vitalParts.push(`AC ${canonicalMount.ac}`);
+  if (canonicalMount.disposition) {
+    const normalizedDisposition = normalizeDisposition(canonicalMount.disposition);
+    vitalParts.push(`disposition ${normalizedDisposition}`);
+  }
 
-  return `**${mountBlock.name.charAt(0).toUpperCase() + mountBlock.name.slice(1)} (mount)** *(${vitalStats})*`;
+  const sentences: string[] = [];
+  if (vitalParts.length > 0) {
+    sentences.push(`This creature${apostrophe}s vital stats are ${vitalParts.join(', ')}.`);
+  } else {
+    sentences.push(`This creature${apostrophe}s vital stats are unavailable.`);
+  }
+
+  if (canonicalMount.attacks) {
+    sentences.push(formatMountSentence(canonicalMount.attacks, 'It attacks with'));
+  }
+  if (canonicalMount.equipment) {
+    sentences.push(formatMountSentence(canonicalMount.equipment, 'It wears'));
+  }
+
+  const name = titleCase(canonicalMount.name);
+  const content = sentences.filter(Boolean).join(' ');
+  return `**${name} (mount)** *(${content})*`;
 }
