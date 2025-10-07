@@ -1375,11 +1375,8 @@ export function collapseNPCEntry(input: string): string {
     if (!final.includes(canonicalMountBlock)) {
       final = `${final}\n\n${canonicalMountBlock}`;
     }
-
-  if (mountBlock && !final.includes(mountBlock)) {
-    final = `${final}\n\n${mountBlock}`;
-
   }
+
   return final;
 }
 
