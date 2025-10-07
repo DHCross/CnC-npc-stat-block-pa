@@ -235,7 +235,7 @@ function collectContinuation(value: string, lines: string[], startIndex: number)
       continue;
     }
 
-    if (looksLikeFieldStart(trimmed)) {
+    if (looksLikeFieldStart(trimmed, true)) {
       break;
     }
 
@@ -249,10 +249,28 @@ function collectContinuation(value: string, lines: string[], startIndex: number)
   };
 }
 
-function looksLikeFieldStart(line: string): boolean {
+function looksLikeFieldStart(line: string, strict = false): boolean {
   for (const alias of FIELD_ALIASES) {
     for (const pattern of alias.patterns) {
-      if (pattern.test(line)) {
+      const match = pattern.exec(line);
+      if (!match) {
+        continue;
+      }
+
+      if (!strict) {
+        return true;
+      }
+
+      // In strict mode, we require a separator to be present.
+      // The pattern is designed to be a bit loose and might match a field name
+      // at the start of a sentence. This check ensures it's a real field.
+      const matchedText = match[0].trimEnd();
+      if (/[.:;–—]$/.test(matchedText)) {
+        return true;
+      }
+
+      const afterMatch = line.substring(match[0].length);
+      if (/^\s*[.:;–—]/.test(afterMatch)) {
         return true;
       }
     }
@@ -316,11 +334,7 @@ function cleanValue(value: string): string {
 
 function buildFieldPattern(label: string): RegExp {
   const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
-
   return new RegExp(`^${escaped}\\b(?:\\s*[.:;–—-])?\\s*`, 'i');
-
-  return new RegExp(`^${escaped}(?:\\s*[.:;–—-])?\\s*`, 'i');
-
 }
 
 function sanitizeName(lines: string[]): string {

@@ -106,4 +106,23 @@ describe('monster parser', () => {
     expect(forced.validation).toEqual(validation);
     expect(auto.validation).toEqual(validation);
   });
+
+  it('correctly parses multiline fields that contain field-like words', () => {
+    const block = [
+      '**Mind Flayer**',
+      'HD 8d8, AC 15, Move 30 ft.',
+      'Attacks: 4 tentacles +7 (1d4+2) plus mind blast',
+      'Saves: M',
+      'Special Abilities: Mind Blast',
+      '  The mind flayer can discharge a cone of psychic energy.',
+      '  Intelligence of targets is irrelevant to this attack.',
+      '  Saves vs. paralysis are required to resist.',
+    ].join('\n');
+
+    const parsed = parseMonsterBlock(block);
+
+    expect(parsed.fields['Special Abilities']).toBe(
+      'Mind Blast The mind flayer can discharge a cone of psychic energy. Intelligence of targets is irrelevant to this attack. Saves vs. paralysis are required to resist.'
+    );
+  });
 });
