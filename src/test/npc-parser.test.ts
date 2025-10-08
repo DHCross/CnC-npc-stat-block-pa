@@ -1,12 +1,12 @@
 import { describe, it, expect } from 'vitest'
-import { 
+import {
   collapseNPCEntry,
-  findEquipment,
   formatPrimaryAttributes,
   extractDisposition,
   parseRaceClassLevel,
   validateStatBlock
-} from '@/lib/npc-parser'
+} from '@/lib/npc-parser';
+import { findEquipment } from '@/lib/enhanced-parser';
 
 describe('NPC Parser - Jeremy Farkas Editor Requirements', () => {
   describe('Italicized Stat Blocks', () => {
@@ -244,10 +244,10 @@ Mount: heavy war horse`
       expect(result).toContain('disposition law/good.') // Complete sentence
 
       expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order with Oxford comma
-      expect(result).toContain('He carries a pectoral of armor +3, full plate mail, a medium steel shield, a staff of striking, and a mace.')
+      expect(result).toContain('He carries *pectoral of armor +3 (AC +1 to +3)*, full plate mail, a medium steel shield, *staff of striking (see Appendix: Magic Items)*, and a mace.')
       expect(result).toContain('He rides a heavy warhorse in battle.')
 
-      expect(result).toContain('strength, wisdom, charisma') // Lowercase PHB order
+      expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order
       expect(result).toContain('*pectoral of armor +3 (AC +1 to +3)*') // PHB rename + italics
 	expect(result).toContain('medium steel shield') // Shield normalization (defaults)
       expect(result).toContain('*staff of striking (see Appendix: Magic Items)*') // Magic item italics
@@ -273,7 +273,7 @@ Equipment: pectoral of armor +3, full plate mail, large steel shield, staff of s
 Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
 Mount: heavy war horse`
 
-      const expected = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple** *(This 16ᵗʰ level human cleric’s vital stats are HP 59, AC 13/22, disposition law/good. His primary attributes are strength, wisdom, and charisma. He carries a pectoral of armor +3, full plate mail, a large steel shield, a staff of striking, and a mace. He can cast the following number of cleric spells per day: 0–6, 1ˢᵗ–6, 2ⁿᵈ–5, 3ʳᵈ–5, 4ᵗʰ–4, 5ᵗʰ–4, 6ᵗʰ–3, 7ᵗʰ–3, 8ᵗʰ–2.)*
+      const expected = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple** *(This 16ᵗʰ level human cleric’s vital stats are HP 59, AC 13/22, disposition law/good. His primary attributes are strength, wisdom, and charisma. He carries *pectoral of armor +3 (AC +1 to +3)*, full plate mail, a large steel shield, *staff of striking (see Appendix: Magic Items)*, and a mace. He can cast the following number of cleric spells per day: 0–6, 1ˢᵗ–6, 2ⁿᵈ–5, 3ʳᵈ–5, 4ᵗʰ–4, 5ᵗʰ–4, 6ᵗʰ–3, 7ᵗʰ–3, 8ᵗʰ–2.)*
 
 He rides a heavy warhorse in battle.
 
