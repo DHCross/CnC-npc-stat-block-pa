@@ -47,6 +47,7 @@ import {
   canonicalizeMountBlock,
   lookupCanonicalMount,
   buildMountBridgeSentence,
+  findEquipment,
 } from './enhanced-parser';
 import {
   isBasicMonster,
@@ -586,7 +587,24 @@ function parseBlockEnhanced(block: string): ParsedNPC {
 }
 
 function parseBlock(block: string): ParsedNPC {
-  const lines = block.split(/\r?\n/);
+  // Pre-process block to handle single-line formats
+  let processedBlock = block;
+  if (block.split('\n').length < 3) {
+    const fieldKeywords = [
+      'Disposition',
+      'Race & Class',
+      'Hit Points \\(HP\\)',
+      'Armor Class \\(AC\\)',
+      'Primary attributes',
+      'Equipment',
+      'Spells',
+      'Mount',
+    ];
+    const regex = new RegExp(`\\b(${fieldKeywords.join('|')}):`, 'g');
+    processedBlock = processedBlock.replace(regex, '\n$1:');
+  }
+
+  const lines = processedBlock.split(/\r?\n/);
   const trimmedLines = lines.map((line) => line.trim()).filter((line) => line.length > 0);
   let nameLine = trimmedLines[0] ?? 'Unnamed NPC';
 
@@ -1380,64 +1398,6 @@ export function collapseNPCEntry(input: string): string {
   return final;
 }
 
-export function findEquipment(equipment: string): string {
-  let processed = equipment;
-
-  // Apply comprehensive magic item name mappings
-  for (const [old, replacement] of Object.entries(MAGIC_ITEM_MAPPINGS)) {
-    processed = processed.replace(new RegExp(old, 'gi'), replacement);
-  }
-
-  // Shield normalization: split by comma, process each part individually
-  const parts = processed.split(',').map(part => part.trim());
-  const processedParts = parts.map(part => {
-    let workingPart = part;
-
-    // Check for generic "shield" (not preceded by shield type)
-    if (/^shield(\s*\+\d+)?$/.test(workingPart.trim())) {
-      // Replace generic shield with medium steel shield
-      workingPart = workingPart.replace(/^shield(\s*\+\d+)?$/, 'medium steel shield$1');
-    } else if (/\bshield\b/.test(workingPart) && !/(?:medium|large|small|wooden|steel)\s+shield/.test(workingPart)) {
-      // If shield appears in a longer description without a qualifier
-      workingPart = workingPart.replace(/\bshield\b/, 'medium steel shield');
-    }
-
-    // Check for magic items (items with bonuses or known magic words)
-    const isMagic = /\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(workingPart);
-
-    if (isMagic) {
-      // Move bonus to end and add mechanical explanations
-      let magicItem = workingPart;
-
-      // Handle bonus at end: "ring of armor +5"
-      const bonusAtEndMatch = workingPart.match(/^(.+?)(\s*\+\d+)(.*)$/);
-      if (bonusAtEndMatch) {
-        const [, item, bonus, rest] = bonusAtEndMatch;
-        magicItem = `${item.trim()}${rest}${bonus}`;
-      }
-      // Handle bonus at beginning: "+2 dagger"
-      const bonusAtStartMatch = workingPart.match(/^(\+\d+)\s+(.+)$/);
-      if (bonusAtStartMatch) {
-        const [, bonus, item] = bonusAtStartMatch;
-        magicItem = `${item} ${bonus}`;
-      }
-
-      // Italicize magic item with mechanics inside
-      const withMechanics = addMagicItemMechanics(magicItem);
-      if (withMechanics !== magicItem) {
-        // Mechanics were added with em dash, convert to parentheses inside italics
-        const mechanicsMatch = withMechanics.match(/^(.+?)—(.+)$/);
-        if (mechanicsMatch) {
-          return `*${mechanicsMatch[1]} (${mechanicsMatch[2]})*`;
-        }
-      }
-      return `*${magicItem}*`;
-    }
-    return workingPart;
-  });
-
-  return processedParts.join(', ');
-}
 
 export function formatPrimaryAttributes(attributes: string): string {
   // PHB canonical order: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
