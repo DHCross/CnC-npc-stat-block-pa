@@ -29,7 +29,6 @@ export interface AutoCorrectionOptions {
   enableDictionarySuggestions?: boolean;
 }
 
-import { MAGIC_ITEM_MAPPINGS, addMagicItemMechanics } from './name-mappings';
 import type { ParentheticalData } from './enhanced-parser';
 import {
   splitTitleAndBody,
@@ -47,6 +46,7 @@ import {
   canonicalizeMountBlock,
   lookupCanonicalMount,
   buildMountBridgeSentence,
+  findEquipment,
 } from './enhanced-parser';
 import {
   isBasicMonster,
@@ -191,7 +191,7 @@ export function processDumpWithValidation(
   const blocks = splitIntoBlocks(trimmed);
   return blocks.map((block) => {
     const npcParsed = useEnhancedParser ? parseBlockEnhanced(block) : parseBlock(block);
-    const monsterParsed = formatterMode === 'npc' ? undefined : parseMonsterBlock(block);
+    const monsterParsed = formatterMode === 'npc' || formatterMode === 'enhanced' ? undefined : parseMonsterBlock(block);
 
     let finalParsed: ParsedNPC = npcParsed;
     let converted: string;
@@ -205,14 +205,19 @@ export function processDumpWithValidation(
       converted = useEnhancedParser ? formatToEnhancedNarrative(npcParsed, block) : formatToNarrative(npcParsed);
       validation = buildValidation(npcParsed);
     } else {
-      const candidateMonster = monsterParsed ?? parseMonsterBlock(block);
-      if (isBasicMonster(candidateMonster)) {
-        finalParsed = candidateMonster;
-        converted = formatToMonsterNarrative(finalParsed);
-        validation = buildMonsterValidation(finalParsed);
-      } else {
+      if (formatterMode === 'enhanced') {
         converted = useEnhancedParser ? formatToEnhancedNarrative(npcParsed, block) : formatToNarrative(npcParsed);
         validation = buildValidation(npcParsed);
+      } else {
+        const candidateMonster = monsterParsed ?? parseMonsterBlock(block);
+        if (isBasicMonster(candidateMonster)) {
+          finalParsed = candidateMonster;
+          converted = formatToMonsterNarrative(finalParsed);
+          validation = buildMonsterValidation(finalParsed);
+        } else {
+          converted = useEnhancedParser ? formatToEnhancedNarrative(npcParsed, block) : formatToNarrative(npcParsed);
+          validation = buildValidation(npcParsed);
+        }
       }
     }
 
@@ -577,16 +582,63 @@ function parseBlockEnhanced(block: string): ParsedNPC {
     fields['Mount'] = mountBlock;
   }
 
+  // Fallback to classic parser to fill in any missing fields
+  const fallbackParsed = parseBlock(block);
+  for (const [key, value] of Object.entries(fallbackParsed.fields)) {
+    if (!fields[key] && value) {
+      fields[key] = value;
+    }
+  }
+
+  const explicitFieldLines = block.split(/\r?\n/).slice(1);
+  for (const rawLine of explicitFieldLines) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith('**')) {
+      continue;
+    }
+
+    const match = /^(.*?):\s*(.+)$/.exec(line);
+    if (!match) {
+      continue;
+    }
+
+    const label = normalizeFieldLabel(match[1]);
+    const value = match[2].trim();
+
+    if (value && !fields[label]) {
+      fields[label] = value;
+    }
+  }
+
+  const resolvedName = sanitizeName(title) || fallbackParsed.name;
+
   return {
-    name: sanitizeName(title),
+    name: resolvedName,
     fields,
-    notes: [], // Enhanced parser focuses on parenthetical data
+    notes: fallbackParsed.notes ?? [],
     original: block
   };
 }
 
 function parseBlock(block: string): ParsedNPC {
-  const lines = block.split(/\r?\n/);
+  // Pre-process block to handle single-line formats
+  let processedBlock = block;
+  if (block.split('\n').length < 3) {
+    const fieldKeywords = [
+      'Disposition',
+      'Race & Class',
+      'Hit Points \\(HP\\)',
+      'Armor Class \\(AC\\)',
+      'Primary attributes',
+      'Equipment',
+      'Spells',
+      'Mount',
+    ];
+    const regex = new RegExp(`\\b(${fieldKeywords.join('|')}):`, 'g');
+    processedBlock = processedBlock.replace(regex, '\n$1:');
+  }
+
+  const lines = processedBlock.split(/\r?\n/);
   const trimmedLines = lines.map((line) => line.trim()).filter((line) => line.length > 0);
   let nameLine = trimmedLines[0] ?? 'Unnamed NPC';
 
@@ -840,6 +892,14 @@ function parseBlock(block: string): ParsedNPC {
   }
 
   function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): string {
+    // If the enhanced parser returns no fields, it's likely because the stat block
+    // is not in the expected parenthetical format. In this case, we fall back to the
+    // standard parser and formatter to handle line-by-line formats gracefully.
+    if (Object.keys(parsed.fields).length === 0 && !isUnitHeading(parsed.name)) {
+      const fallbackParsed = parseBlock(originalBlock);
+      return formatToNarrative(fallbackParsed);
+    }
+
     // Use enhanced parser formatting
     const { title, parentheticals } = splitTitleAndBody(originalBlock);
     const isUnit = isUnitHeading(title);
@@ -851,8 +911,9 @@ function parseBlock(block: string): ParsedNPC {
 
     let result = name;
     let mountBlock: MountBlock | undefined;
-    let parentheticalData: ParentheticalData | undefined;
+    let rawParentheticalData: ParentheticalData | undefined;
     let canonicalParenthetical = '';
+
 
     if (parentheticals.length > 0) {
       // Extract mount first (Jeremy's mandate: separate mounts into dedicated blocks)
@@ -860,8 +921,12 @@ function parseBlock(block: string): ParsedNPC {
       mountBlock = extractedMount ? canonicalizeMountBlock(extractedMount) : undefined;
 
       // Process the cleaned parenthetical (mount data removed)
-      parentheticalData = extractParentheticalData(cleanedParenthetical, isUnit, title);
-      canonicalParenthetical = buildCanonicalParenthetical(parentheticalData, isUnit, false, true, title);
+      rawParentheticalData = extractParentheticalData(cleanedParenthetical, isUnit, title);
+    }
+
+    const enrichedParentheticalData = enrichParentheticalData(rawParentheticalData, parsed, isUnit);
+    if (enrichedParentheticalData) {
+      canonicalParenthetical = buildCanonicalParenthetical(enrichedParentheticalData, isUnit, false, true, title);
 
       // Only add parenthetical if it contains meaningful content (not just a period or empty)
       if (canonicalParenthetical && canonicalParenthetical.trim().length > 1 && canonicalParenthetical.trim() !== '.') {
@@ -871,7 +936,7 @@ function parseBlock(block: string): ParsedNPC {
 
     // Add separated mount block per Jeremy's editorial mandate
     if (mountBlock) {
-      const pronoun = resolveMountPronoun(parentheticalData, canonicalParenthetical, isUnit);
+      const pronoun = resolveMountPronoun(enrichedParentheticalData ?? rawParentheticalData, canonicalParenthetical, isUnit);
       const mountSentence = buildMountBridgeSentence(mountBlock.name, pronoun);
       if (!result.includes(mountSentence)) {
         result += `\n\n${mountSentence}`;
@@ -884,6 +949,92 @@ function parseBlock(block: string): ParsedNPC {
     }
 
     return result;
+  }
+
+  function enrichParentheticalData(
+    existing: ParentheticalData | undefined,
+    parsed: ParsedNPC,
+    isUnit: boolean,
+  ): ParentheticalData | null {
+    const merged: ParentheticalData = {
+      raw: existing?.raw ?? '',
+      hp: existing?.hp,
+      ac: existing?.ac,
+      disposition: existing?.disposition,
+      raceClass: existing?.raceClass,
+      level: existing?.level,
+      attributes: existing?.attributes,
+      significantAttributes: existing?.significantAttributes,
+      secondarySkills: existing?.secondarySkills,
+      equipment: existing?.equipment,
+      formationDetails: existing?.formationDetails,
+      spells: existing?.spells,
+      mountData: existing?.mountData,
+      coins: existing?.coins,
+      jewelry: existing?.jewelry,
+      originalPronoun: existing?.originalPronoun,
+    };
+
+    const assign = (key: keyof ParentheticalData, value?: string | null) => {
+      if (merged[key]) {
+        return;
+      }
+      const trimmed = value?.trim();
+      if (trimmed) {
+        merged[key] = trimmed;
+      }
+    };
+
+    const fields = parsed.fields;
+    assign('hp', fields['Hit Points (HP)']);
+    assign('ac', fields['Armor Class (AC)']);
+    const sanitizeDisposition = (value?: string): string | undefined => {
+      if (!value) {
+        return undefined;
+      }
+
+      const normalized = normalizeDisposition(value);
+      const lowered = normalized.toLowerCase();
+      if (/^(law|chaos|neutral|good|evil)(\/(law|chaos|neutral|good|evil))?$/.test(lowered)) {
+        return lowered;
+      }
+      if (/^(lawful|chaotic|neutral|good|evil)(\s+(good|evil|neutral))?$/.test(value.trim().toLowerCase())) {
+        return normalizeDisposition(value);
+      }
+      return undefined;
+    };
+
+    assign('disposition', sanitizeDisposition(fields['Disposition']));
+    assign('raceClass', fields['Race & Class']);
+    if (fields['Level'] && /\d/.test(fields['Level'])) {
+      assign('level', fields['Level']);
+    }
+    assign('attributes', fields['Primary attributes']);
+    assign('significantAttributes', fields['Significant attributes']);
+    assign('secondarySkills', fields['Secondary Skills']);
+    assign('equipment', fields['Equipment']);
+    assign('spells', fields['Spells']);
+
+    if (!merged.originalPronoun && isUnit) {
+      merged.originalPronoun = 'these';
+    }
+
+    const hasContent = Boolean(
+      merged.hp ||
+        merged.ac ||
+        merged.disposition ||
+        merged.raceClass ||
+        merged.level ||
+        merged.attributes ||
+        merged.significantAttributes ||
+        merged.secondarySkills ||
+        merged.equipment ||
+        merged.spells ||
+        merged.coins ||
+        merged.jewelry,
+    );
+
+    return hasContent ? merged : existing ?? null;
   }
 
 function formatToNarrative(parsed: ParsedNPC): string {
@@ -1389,73 +1540,18 @@ export function collapseNPCEntry(input: string): string {
     if (!final.includes(canonicalMountBlock)) {
       final = `${final}\n\n${canonicalMountBlock}`;
     }
+
   }
 
   if (mountBlock && !final.includes(mountBlock)) {
     final = `${final}\n\n${mountBlock}`;
 
-  }
+
+
+
   return final;
 }
 
-export function findEquipment(equipment: string): string {
-  let processed = equipment;
-
-  // Apply comprehensive magic item name mappings
-  for (const [old, replacement] of Object.entries(MAGIC_ITEM_MAPPINGS)) {
-    processed = processed.replace(new RegExp(old, 'gi'), replacement);
-  }
-
-  // Shield normalization: split by comma, process each part individually
-  const parts = processed.split(',').map(part => part.trim());
-  const processedParts = parts.map(part => {
-    let workingPart = part;
-
-    // Check for generic "shield" (not preceded by shield type)
-    if (/^shield(\s*\+\d+)?$/.test(workingPart.trim())) {
-      // Replace generic shield with medium steel shield
-      workingPart = workingPart.replace(/^shield(\s*\+\d+)?$/, 'medium steel shield$1');
-    } else if (/\bshield\b/.test(workingPart) && !/(?:medium|large|small|wooden|steel)\s+shield/.test(workingPart)) {
-      // If shield appears in a longer description without a qualifier
-      workingPart = workingPart.replace(/\bshield\b/, 'medium steel shield');
-    }
-
-    // Check for magic items (items with bonuses or known magic words)
-    const isMagic = /\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(workingPart);
-
-    if (isMagic) {
-      // Move bonus to end and add mechanical explanations
-      let magicItem = workingPart;
-
-      // Handle bonus at end: "ring of armor +5"
-      const bonusAtEndMatch = workingPart.match(/^(.+?)(\s*\+\d+)(.*)$/);
-      if (bonusAtEndMatch) {
-        const [, item, bonus, rest] = bonusAtEndMatch;
-        magicItem = `${item.trim()}${rest}${bonus}`;
-      }
-      // Handle bonus at beginning: "+2 dagger"
-      const bonusAtStartMatch = workingPart.match(/^(\+\d+)\s+(.+)$/);
-      if (bonusAtStartMatch) {
-        const [, bonus, item] = bonusAtStartMatch;
-        magicItem = `${item} ${bonus}`;
-      }
-
-      // Italicize magic item with mechanics inside
-      const withMechanics = addMagicItemMechanics(magicItem);
-      if (withMechanics !== magicItem) {
-        // Mechanics were added with em dash, convert to parentheses inside italics
-        const mechanicsMatch = withMechanics.match(/^(.+?)—(.+)$/);
-        if (mechanicsMatch) {
-          return `*${mechanicsMatch[1]} (${mechanicsMatch[2]})*`;
-        }
-      }
-      return `*${magicItem}*`;
-    }
-    return workingPart;
-  });
-
-  return processedParts.join(', ');
-}
 
 export function formatPrimaryAttributes(attributes: string): string {
   // PHB canonical order: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
@@ -1511,7 +1607,7 @@ export function extractDisposition(text: string): string {
     return normalizeDisposition(candidate);
   }
 
-  return text.trim();
+  return '';
 }
 
 export function parseRaceClassLevel(text: string): { race: string; level: string; charClass: string } {

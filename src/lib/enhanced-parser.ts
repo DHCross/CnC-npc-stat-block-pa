@@ -26,7 +26,7 @@ export interface ParsedTitleAndBody {
   parentheticals: string[];
 }
 
-import { addMagicItemMechanics, applyNameMappings } from './name-mappings';
+import { addMagicItemMechanics, applyNameMappings, MAGIC_ITEM_MAPPINGS } from './name-mappings';
 
 export interface MountBlock {
   name: string;
@@ -1236,7 +1236,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   const hasClassLevels = classInfo.hasClassLevels;
 
   // Add Level for non-classed creatures
-  if (data.level && !hasClassLevels) {
+  if (data.level && !hasClassLevels && /\d/.test(data.level)) {
     vitalParts.push(`Level ${data.level}`);
   }
 
@@ -1324,6 +1324,15 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
         return;
       }
 
+      if (part.startsWith('*') && part.endsWith('*')) {
+        if (/\b(shirt|shirts|mail|armor|armors|robe|robes|cloak|cloaks|boots|gauntlets|helm|helms|bracers|leather|leathers|leather\s+armor|chain\s+mail|plate\s+mail|scale\s+mail|banded\s+mail)\b/i.test(part)) {
+          armorItems.push(part);
+        } else {
+          weaponItems.push(part);
+        }
+        return;
+      }
+
       // Process magic items
       let processedPart = applyNameMappings(part);
 
@@ -1376,7 +1385,12 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       }
 
       if (combinedItems.length > 0) {
-        const normalizedItems = combinedItems.map(item => ensureIndefiniteArticle(sanitizeEquipmentClause(item)));
+        const normalizedItems = combinedItems.map(item => {
+          if (item.startsWith('*') && item.endsWith('*')) {
+            return item;
+          }
+          return ensureIndefiniteArticle(sanitizeEquipmentClause(item));
+        });
         const list = formatOxfordList(normalizedItems);
         parts.push(`${capitalizedPronoun} ${carryVerb} ${list}`);
       }
@@ -1604,4 +1618,63 @@ export function formatMountBlock(mountBlock: MountBlock): string {
   const name = titleCase(canonicalMount.name);
   const content = sentences.filter(Boolean).join(' ');
   return `**${name} (mount)** *(${content})*`;
+}
+
+export function findEquipment(equipment: string): string {
+  let processed = equipment;
+
+  // Apply comprehensive magic item name mappings
+  for (const [old, replacement] of Object.entries(MAGIC_ITEM_MAPPINGS)) {
+    processed = processed.replace(new RegExp(old, 'gi'), replacement);
+  }
+
+  // Shield normalization: split by comma, process each part individually
+  const parts = processed.split(',').map(part => part.trim());
+  const processedParts = parts.map(part => {
+    let workingPart = part;
+
+    // Check for generic "shield" (not preceded by shield type)
+    if (/^shield(\s*\+\d+)?$/.test(workingPart.trim())) {
+      // Replace generic shield with medium steel shield
+      workingPart = workingPart.replace(/^shield(\s*\+\d+)?$/, 'medium steel shield$1');
+    } else if (/\bshield\b/.test(workingPart) && !/(?:medium|large|small|wooden|steel)\s+shield/.test(workingPart)) {
+      // If shield appears in a longer description without a qualifier
+      workingPart = workingPart.replace(/\bshield\b/, 'medium steel shield');
+    }
+
+    // Check for magic items (items with bonuses or known magic words)
+    const isMagic = /\+\d+|staff of|sword of|ring of|robe of|cloak of|boots of|gauntlets of|helm of|bracers of|pectoral of/i.test(workingPart) || /pectoral of armor/i.test(workingPart);
+
+    if (isMagic) {
+      // Move bonus to end and add mechanical explanations
+      let magicItem = workingPart;
+
+      // Handle bonus at end: "ring of armor +5"
+      const bonusAtEndMatch = workingPart.match(/^(.+?)(\s*\+\d+)(.*)$/);
+      if (bonusAtEndMatch) {
+        const [, item, bonus, rest] = bonusAtEndMatch;
+        magicItem = `${item.trim()}${rest}${bonus}`;
+      }
+      // Handle bonus at beginning: "+2 dagger"
+      const bonusAtStartMatch = workingPart.match(/^(\+\d+)\s+(.+)$/);
+      if (bonusAtStartMatch) {
+        const [, bonus, item] = bonusAtStartMatch;
+        magicItem = `${item} ${bonus}`;
+      }
+
+      // Italicize magic item with mechanics inside
+      const withMechanics = addMagicItemMechanics(magicItem);
+      if (withMechanics !== magicItem) {
+        // Mechanics were added with em dash, convert to parentheses inside italics
+        const mechanicsMatch = withMechanics.match(/^(.+?)—(.+)$/);
+        if (mechanicsMatch) {
+          return `*${mechanicsMatch[1]} (${mechanicsMatch[2]})*`;
+        }
+      }
+      return `*${magicItem}*`;
+    }
+    return workingPart;
+  });
+
+  return processedParts.join(', ');
 }
