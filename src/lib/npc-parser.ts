@@ -29,7 +29,6 @@ export interface AutoCorrectionOptions {
   enableDictionarySuggestions?: boolean;
 }
 
-import { MAGIC_ITEM_MAPPINGS, addMagicItemMechanics } from './name-mappings';
 import type { ParentheticalData } from './enhanced-parser';
 import {
   splitTitleAndBody,
