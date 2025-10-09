@@ -892,6 +892,14 @@ function parseBlock(block: string): ParsedNPC {
   }
 
   function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): string {
+    // If the enhanced parser returns no fields, it's likely because the stat block
+    // is not in the expected parenthetical format. In this case, we fall back to the
+    // standard parser and formatter to handle line-by-line formats gracefully.
+    if (Object.keys(parsed.fields).length === 0 && !isUnitHeading(parsed.name)) {
+      const fallbackParsed = parseBlock(originalBlock);
+      return formatToNarrative(fallbackParsed);
+    }
+
     // Use enhanced parser formatting
     const { title, parentheticals } = splitTitleAndBody(originalBlock);
     const isUnit = isUnitHeading(title);
