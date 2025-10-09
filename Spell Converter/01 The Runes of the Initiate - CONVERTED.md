@@ -7,18 +7,18 @@ These are the Foundation. These are common runes, and they are without number.
 **Arrest Motion**, Reforged Spell
 _Chr Roan ot Kepulch_
 
-*Description:* Arrest motion stops objects in motion or keeps them from moving, if already motionless. It has an area of effect of 10'×10' +5' per level and lasts one round per level.
+*Description:* Arrest motion stops objects in motion or keeps them from moving, if already motionless. It has an area of effect of 10 ft. × 10 ft., +5 ft. to each side per level, and lasts one round per level.
 
-*Effect:* The targets are held exactly as they are when the rune is activated. If they are in flight, they are held in flight. Both humans and monsters can be stopped, as can items thrown or hurled. The rune mark must make a successful charisma save for the rune to work. The caster can cast it on himself; in such cases there is no attribute check required.
+*Effect:* The targets are held exactly as they are when the rune is activated. If they are in flight, they are held in flight. Both humans and monsters can be stopped, as can items thrown or hurled. The caster can cast it on himself; in such cases there is no attribute check required.
 
-The item or person in stasis can be moved by outside influence, or in the case of a living creature, it can attempt to move itself by making a successful strength check (CL equal to the level of the rune caster) in the round following the rune's activation. If an outside force is attempting to move the target, the source of the interference must make the strength check.
+The item or person in stasis can be moved by outside influence, or in the case of a living creature, it can attempt to move itself by making a successful Strength check (CL equal to the level of the rune caster) in the round following the rune's activation. If an outside force is attempting to move the target, the source of the interference must make the Strength check.
 
 Statistics:
 - Casting Time: 1
 - Range: 150 feet
 - Duration: 1 round per level
-- Saving Throw: see below
-- Spell Resistance: yes
+- Saving Throw: Caster Charisma check (CL = target's HD) to activate; Strength negates movement (CL = caster level)
+- Spell Resistance: Yes (creatures only)
 - Components: S
 
 ---
@@ -26,14 +26,14 @@ Statistics:
 **Bend Light**, Reforged Spell
 _Int Roan ot Amnuel_
 
-*Description:* Bend light allows the user to manipulate light, forcing it away from the rune's target. It affects a 20-foot diameter sphere and lasts one turn per level. The redirected light makes the target invisible from anyone looking at it, as no light is reflected back from the target for the eye to see. It does not, of course, hide the target from any other senses, such as smell, touch, or even magical vision such as true seeing.
+*Description:* Bend light allows the user to manipulate light, forcing it away from the rune's target. It affects a 20-foot diameter sphere and lasts one turn per level. The redirected light makes the target invisible from anyone looking at it, as no light is reflected back from the target for the eye to see. It does not hide the target from any other senses, such as smell, touch, or even magical vision such as true seeing.
 
 Statistics:
 - Casting Time: 1
 - Range: 100 feet
-- Duration: 10 minute per level
-- Saving Throw: none
-- Spell Resistance: no
+- Duration: 10 minutes per level
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -43,14 +43,14 @@ _Chr Roan ot Paath-uk_
 
 *Description:* Binding has many uses, as it can be used to join two mundane objects together. The binding is permanent until the rune mark releases it. Spells such as dispel magic, knock, or a similar spell can be used to break the binding. It affects one object, great or small.
 
-*Effect:* The binding rune can be used to bind a door and the door jamb, two covers of a book, torn armor, a broken sword hilt, etc. Any existing portal, magical or mundane, bound with the rune remains open. If used with the opening rune, the binding rune binds the target open, keeping a door from closing, a book from closing, etc. The rune also has broader implications, as it can be used to open or close magical portals, etc.
+*Effect:* The binding rune can be used in two modes: **Bind Closed** seals two surfaces together (door and jamb, book covers, torn armor, broken sword hilt); **Bind Open** holds an existing portal open, preventing a door from closing, a book from closing, etc. Both modes are broken by dispel magic, knock, or the rune mark's release.
 
 Statistics:
 - Casting Time: 1
-- Range: touch
-- Duration: 10 minute per level
-- Saving Throw: none
-- Spell Resistance: no
+- Range: Touch
+- Duration: Permanent (until released or dispelled)
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -62,10 +62,10 @@ _Int Roan ot Ilj_
 
 Statistics:
 - Casting Time: 2
-- Range: touch
-- Duration: permanent
-- Saving Throw: none
-- Spell Resistance: no
+- Range: Touch
+- Duration: Permanent
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -73,14 +73,14 @@ Statistics:
 **Breath**, Reforged Spell
 _Chr Roan ot Higle_
 
-*Description:* Breath creates breathable air and is useful in almost every environment under water, in sulfurous caverns, in the Void, or on other planes where air might be in short supply or does not exist at all. The rune is cast by touching the target, living or otherwise. This rune does not expire as normal runes do, but rather creates enough air to keep an adult human alive for 24 hours. If the rune is cast upon an object, it creates a 20-foot diameter sphere. Its power dissipates, though it gives breathable air to more than one person. One adult human has enough air for 24 hours, or two adult humans for 12 hours, or three adult humans for 6 hours, etc.
+*Description:* Breath creates breathable air and is useful in almost every environment under water, in sulfurous caverns, in the Void, or on other planes where air might be in short supply or does not exist at all. The rune is cast by touching the target, living or otherwise. This rune does not expire as normal runes do, but rather creates enough air to keep an adult human alive for 24 hours. If the rune is cast upon an object, it creates a 20-foot diameter sphere of breathable air for up to 24 creature-hours total. Its power dissipates among multiple creatures: one adult human has enough air for 24 hours, two adult humans for 12 hours, three adult humans for 6 hours, etc.
 
 Statistics:
 - Casting Time: 1
-- Range: touch
-- Duration: see below
-- Saving Throw: none
-- Spell Resistance: no
+- Range: Touch
+- Duration: Special (creates 24 hours of breathable air for one adult; divides proportionally among multiple creatures)
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -88,16 +88,16 @@ Statistics:
 **Composition**, Reforged Spell
 _Int Roan ot ietulth_
 
-*Description:* This rune allows the user to know the substance of things. It has a range of up to 10 feet per caster level. The rune lasts one round per level. Casting the rune allows the rune mark to understand what something is composed of, i. e. what types of minerals, liquids, gases, or elements are present. He cannot determine the exact breakdown, such as percentages, ratios, or other measurements. One could ascertain if an approaching gas cloud has acid qualities within, the wood of which a door is made, the magical metal(s) within a sword, etc. Upon a second successful intelligence check (CL determined by CK), the user can determine the age of the substance in question.
+*Description:* This rune allows the user to know the substance of things. It has a range of up to 10 feet per caster level. The rune lasts one round per level. Casting the rune allows the rune mark to understand what something is composed of, i.e. what types of minerals, liquids, gases, or elements are present. He cannot determine the exact breakdown, such as percentages, ratios, or other measurements. One could ascertain if an approaching gas cloud has acid qualities within, the wood of which a door is made, the magical metal(s) within a sword, etc. Upon a second successful Intelligence check (CL determined by CK), the user can determine the age of the substance in question.
 
-*Effect:* If cast on magic items, the item is allowed a saving throw against the level of the user. If it fails, the user can understand the magical makeup of the item, allowing him to know its bonus power as well as any special qualities it possesses. When cast upon a living target, composition reveals the creature's alignment. As with magic items, the target is allowed an intelligence saving throw, CL equal to the level of the rune mark; any bonus for level, attribute, or magical protection are included.
+*Effect:* If cast on magic items, the item is allowed a saving throw against the level of the user. If it fails, the user can understand the magical makeup of the item, allowing him to know its bonus power as well as any special qualities it possesses. When cast upon a living target, composition reveals the creature's alignment. As with magic items, the target is allowed an Intelligence saving throw, CL equal to the level of the rune mark; any bonus for level, attribute, or magical protection are included.
 
 Statistics:
 - Casting Time: 1
 - Range: 10 feet per level
 - Duration: 1 round per level
-- Saving Throw: see below
-- Spell Resistance: no
+- Saving Throw: Intelligence negates (CL = caster level)
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -105,14 +105,14 @@ Statistics:
 **Darkness**, Reforged Spell
 _Int Roan ot Unk_
 
-*Description:* Darkness extinguishes any normal, natural light source, such as fire, candles, torches, etc. , in a 20-foot radius. No attribute check is required. However, for the darkness to extinguish magical light, the rune mark must make a successful attribute check, the CL equal to 10 plus the item's bonus. In the case of a light or similar spell, the CL is equal to the level of the one who cast the light spell. Items with no bonus receive a +1/+2/+3 at the CK's discretion.
+*Description:* Darkness extinguishes any normal, natural light source, such as fire, candles, torches, etc., in a 20-foot radius. No attribute check is required for mundane light. However, for the darkness to extinguish magical light, the rune mark must make a successful attribute check: CL = 10 + magic item bonus; vs. spell light, CL = opposing caster level. Non-magical magic items use CL 11 (minor trinket), CL 13 (standard item), or CL 15 (greater item).
 
 Statistics:
 - Casting Time: 1
 - Range: 100 feet
-- Duration: see below
-- Saving Throw: none
-- Spell Resistance: no
+- Duration: Instantaneous
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -120,18 +120,18 @@ Statistics:
 **Drain Heat**, Reforged Spell
 _Chr Roan ot freaul_
 
-*Description:* Drain heat draws the heat from any individual target. If cast on an object it affects 5'×5' +5 square feet per level. The rune lasts one round per level.
+*Description:* Drain heat draws the heat from any individual target. If cast on an object it affects 5 ft. × 5 ft., +5 square feet per level. The rune lasts one round per level.
 
-*Effect:* The rune can be deadly, freezing the blood in the target's veins, killing all bodily functions. In the case of torches, camp fires, and other heat-producing targets, it can cause them to fizzle out and die. Once cast, the rune mark can draw out the heat of a target for as many rounds as it survives or the rune lasts; it draws out 1d4 HP of heat per round. If cast upon an object, it draws out 1d2 HP per round, eventually making the item brittle.
+*Effect:* The rune can be deadly, freezing the blood in the target's veins, killing all bodily functions. In the case of torches, camp fires, and other heat-producing targets, it can cause them to fizzle out and die. Once cast, the rune mark can draw out the heat of a target for as many rounds as it survives or the rune lasts; targets take 1d4 hit points of cold damage each round. If cast upon an object, it takes 1d2 hit points per round, eventually making the item brittle.
 
-Any creatures or substances caught in the cloud suffer the effects of the rune. Water freezes, rain turns to ice and snow, fingers become frostbitten, etc. The rune mark can cancel the rune at any time. If the target's hit points are drained, the target dies, burns out, etc. The CL is adjusted by any spell or spell-like effect that might counter drain heat, such as endure elements.
+Any creatures or substances caught in the area suffer the effects of the rune. Water freezes, rain turns to ice and snow, fingers become frostbitten, etc. The rune mark can cancel the rune at any time. If the target's hit points are drained, the target dies, burns out, etc. The CL is adjusted by any spell or spell-like effect that might counter drain heat, such as endure elements.
 
 Statistics:
-- Casting Time: see below
+- Casting Time: 1
 - Range: 50 feet
 - Duration: 1 round per level
-- Saving Throw: none
-- Spell Resistance: yes
+- Saving Throw: Constitution negates (per round)
+- Spell Resistance: Yes
 - Components: S
 
 ---
@@ -145,14 +145,14 @@ _Chr Roan ot Arvagen_
 
 There is a small chance that the echo will become sentient, creating a disembodied doppelganger of its host source. Every time the rune is cast there is a 1% chance of this occurring. In such cases the echo lingers near the host source, but eventually drifts away.
 
-The host source suffers no apparent damage, but will from time to time, at the CK's discretion, see what the echo sees, hear what the echo hears, etc. Anytime this happens the host source automatically suffers a -1 to all combat or rune-related rolls for so long as he experiences the echo's senses. This usually doesn't last more than a few rounds.
+The host source suffers no apparent damage, but will from time to time, at the CK's discretion, see what the echo sees, hear what the echo hears, etc. During bleed-through, the host source automatically suffers –1 to attack rolls and rune checks for several rounds (CK adjudication).
 
 Statistics:
 - Casting Time: 1
-- Range: see below
-- Duration: see below
-- Saving Throw: none
-- Spell Resistance: yes
+- Range: Self (echo remains within 10 ft.)
+- Duration: Permanent (until triggered or dispelled)
+- Saving Throw: None
+- Spell Resistance: Yes
 - Components: S
 
 ---
@@ -160,14 +160,14 @@ Statistics:
 **Horn Of Plenty**, Reforged Spell
 _Chr Roan ot Pfilk_
 
-*Description:* When this rune is cast upon a drinking horn or similar vessel containing mead, the mead is blessed with knowledge and wisdom. The rune affects only one physical horn and lasts for five rounds +1 per caster level. Whoever drinks the entire horn gains a +1 bonus on all intelligence, charisma, and wisdom checks for the rune's duration. Once drained, the horn may be refilled and reused, however, it takes three rounds for the new mead to become potent. Any bonuses granted from drinking a second horn are cumulative. If three horns are consumed by the same individual he must make a constitution save or pass out for 1-6 hours (CL equal to the rune mark's level). For each horn consumed thereafter, the drinker must make a constitution save, with the CL going up by 5 each horn, as does the corresponding number of hours; for four horns he would pass out for 5 +1-6, for 5 horns, 10+1-6 hours, and so on.
+*Description:* When this rune is cast upon a drinking horn or similar vessel containing mead, the mead is blessed with knowledge and wisdom. The rune affects only one physical horn and lasts for 5 rounds +1 per caster level. Whoever drinks the entire horn gains a +1 bonus on all Intelligence, Charisma, and Wisdom checks for the rune's duration. Once drained, the horn may be refilled and reused, however, it takes three rounds for the new mead to become potent. Any bonuses granted from drinking a second horn are cumulative. If three horns are consumed by the same individual he must make a Constitution save or pass out for 1d6 hours (CL equal to the rune mark's level). For each horn consumed thereafter, the drinker must make a Constitution save, with the CL going up by +5 each horn; for four horns he would be unconscious for 5 +1d6 hours, for 5 horns, 10 +1d6 hours, and so on.
 
 Statistics:
 - Casting Time: 1
-- Range: touch
-- Duration: 1 round per level
-- Saving Throw: see below
-- Spell Resistance: no
+- Range: Touch
+- Duration: 5 rounds +1 round per level
+- Saving Throw: Constitution negates unconsciousness (after 3rd horn)
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -181,10 +181,10 @@ _Int Roan ot Mur_
 
 Statistics:
 - Casting Time: 1
-- Range: see below
-- Duration: 10 minute per level
-- Saving Throw: none
-- Spell Resistance: none
+- Range: Touch (object or glyph)
+- Duration: 10 minutes per level
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -198,10 +198,10 @@ _Chr Roan ot Lam-uk_
 
 Statistics:
 - Casting Time: 1
-- Range: see below
-- Duration: permanent
-- Saving Throw: none
-- Spell Resistance: no
+- Range: Touch (to rune or glyph being linked)
+- Duration: Permanent (until triggered or dispelled)
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -211,14 +211,14 @@ _Chr Roan ot Erigress_
 
 *Description:* Luck tips the circumstances in the rune mark's favor. The luck rune lasts for one round per level of the rune mark. It can affect only one item.
 
-*Effect:* Luck changes or affects the outcome of any single event. Whoever bares the luck-inscribed rune gains its benefit. The luck can range from re-rolling a die to gaining a +1 to an attribute check; the CK must determine and adjudicate the rune's activation.
+*Effect:* Luck changes or affects the outcome of any single event. Whoever bears the luck-inscribed rune gains its benefit. Once during the duration, the bearer may reroll one d20 roll or gain +1 to a single attribute check (CK determines when rune is inscribed).
 
 Statistics:
 - Casting Time: 1
 - Range: 50 feet
 - Duration: 1 round per level
-- Saving Throw: none
-- Spell Resistance: no
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -226,16 +226,16 @@ Statistics:
 **Lure**, Reforged Spell
 _Int Roan ot Loke_
 
-*Description:* Lure creates a pulsating point of light that attracts living things. It lasts for 2-12 rounds and affects all creatures within a 50-foot area.
+*Description:* Lure creates a pulsating point of light that attracts living things. It lasts for 2d6 rounds and affects all creatures within a 50-foot area.
 
-*Effect:* The point of light is little more than a foot in diameter and puts off a very bright light equivalent to 10 torches. Any living creature that spies these beams must make a successful wisdom save or be attracted and drawn to the light at standard movement rate. Once within 20 feet of the rune/light he is held enraptured, unable to move. However, every four melee rounds he may make a second wisdom save in an attempt to break the power of the rune. If the victim is attacked, jostled, or in any way interrupted, he may make another wisdom save with a bonus of +4.
+*Effect:* The point of light is little more than a foot in diameter and puts off a very bright light equivalent to 10 torches. Any living creature that spies these beams must make a successful Wisdom save or be attracted and drawn to the light at standard movement rate. Once within 20 feet of the rune/light he is held enraptured, unable to move. However, every four melee rounds he may make a second Wisdom save in an attempt to break the power of the rune. If the victim is attacked, jostled, or in any way interrupted, he may make another Wisdom save with a bonus of +4.
 
 Statistics:
 - Casting Time: 1
-- Range: touch
-- Duration: 10 minute per level
-- Saving Throw: wisdom negates
-- Spell Resistance: no
+- Range: Touch
+- Duration: 2d6 rounds
+- Saving Throw: Wisdom negates (initial and every 4 rounds; +4 if attacked or jostled)
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -245,14 +245,14 @@ _Chr Roan ot Naum_
 
 *Description:* Marking magically places the rune mark's personal sign or symbol upon a non-magical item. The runes last for as many turns as the rune mark levels.
 
-*Effect:* That sign can be any symbol, shape, or design of the rune mark's choosing. The sign establishes a link between the item and the rune mark. Any action taken using the marked item grants the rune mark a bonus +1 to any charisma check. Other than the rune mark, anyone attempting to pick up or wield the item will struggle with its weight and suffer a -1 to all charisma checks. The rune mark can cancel the rune at any time.
+*Effect:* That sign can be any symbol, shape, or design of the rune mark's choosing. The sign establishes a link between the item and the rune mark. Bearer gains +1 on Charisma checks using the marked item; non-bearers suffer –1 to Charisma checks while wielding it. The rune mark can cancel the rune at any time.
 
 Statistics:
 - Casting Time: 2
-- Range: touch
-- Duration: permanent
-- Saving Throw: none
-- Spell Resistance: no
+- Range: Touch
+- Duration: 1 turn per level
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -268,10 +268,10 @@ The “kanu rune” can also be used to mentally attack an enemy, by creating a 
 
 Statistics:
 - Casting Time: 1
-- Range: touch
-- Duration: 10 minute per level
+- Range: Touch
+- Duration: 10 minutes per level
 - Saving Throw: intelligence for half
-- Spell Resistance: yes
+- Spell Resistance: Yes
 - Components: S
 
 ---
@@ -283,14 +283,14 @@ _Int Roan ot Nuclus_
 
 *Effect:* The rune does not allow for any type of control, nor does it allow the user to read the target's thoughts, or even grasp at the target's interpretation of what he is seeing; it allows only the actual vision. If the target possesses twilight, dusk, or dark vision, or any magically enhanced vision such as a true seeing spell, the rune mark is able to see that as well. The rune mark must inscribe the rune upon the target.
 
-There is a small chance that the target may discover the invasion and realize what is happening. Any target with an intelligence of 12 or greater must make a successful intelligence save, CL equal to the level of the rune mark, to notice the sorcery, and may block it with a second successful intelligence save.
+There is a small chance that the target may discover the invasion and realize what is happening. Any target with an Intelligence of 12 or greater must make a successful Intelligence save (CL equal to the level of the rune mark) to notice the sorcery, and may block it with a second successful Intelligence save.
 
 Statistics:
 - Casting Time: 1
-- Range: 400 feet +1 per level
+- Range: 400 ft. +100 ft. per level
 - Duration: 10 rounds +1 per level
-- Saving Throw: none
-- Spell Resistance: no
+- Saving Throw: Intelligence to notice and block (CL = caster level)
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -298,7 +298,7 @@ Statistics:
 **Nutrient**, Reforged Spell
 _Int Roan ot Nordfuel_
 
-*Description:* Nutrient allows the caster to draw greater nutrition from the nord stone. It is one of the few runes which require a material component. The nord stone itself is rare and is found where receding glaciers have ground against veins of sandstone. When exposed to the sunlight, it expands and flakes (see New Magic Items). The flakes are edible and serve to heal whoever eats them for 1-2 points of damage. The rocks are very fragile, light, and dissolve when consumed.
+*Description:* Nutrient allows the caster to draw greater nutrition from the nord stone. It is one of the few runes which require a material component. The nord stone itself is rare and is found where receding glaciers have ground against veins of sandstone. When exposed to the sunlight, it expands and flakes (see New Magic Items). The flakes are edible and serve to heal whoever eats them for 1d2 points of damage. The rocks are very fragile, light, and dissolve when consumed.
 
 *Effect:* When nutrient is cast upon a nord stone, the stone's natural healing powers are enhanced. Whoever consumes these flakes heals 1d4 points of damage; the flakes also provide him with enough sustenance to survive for a day without food or drink. Someone may consume more than one flake to speed up healing time, but he will not feed himself for more than a day. For example, consuming two flakes of the stone at the same time heals 2d4 points of damage but only provides enough sustenance for one day.
 
@@ -306,10 +306,10 @@ The material component for this rune is a nord stone.
 
 Statistics:
 - Casting Time: 1
-- Range: touch
-- Duration: permanent
-- Saving Throw: none
-- Spell Resistance: no
+- Range: Touch
+- Duration: Permanent
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S, M
 
 ---
@@ -317,16 +317,16 @@ Statistics:
 **Offering**, Reforged Spell
 _Chr Roan ot Hile_
 
-*Description:* Offering allows the rune mark to give of himself or another willing subject. Carving the rune upon the body it allows the subject to transfer 1-2 of their hit points per level to another.
+*Description:* Offering allows the rune mark to give of himself or another willing subject. Carving the rune upon the body it allows the subject to transfer 1d2 of their hit points per level to another.
 
-*Effect:* The subject suffers the transferred damage. At 8th level the offering may consist of 1-4 attribute points per week. Any losses the subject suffers are healed normally, or in the case of attribute points, 1 per week. Unless used with another rune that allows it, at no point may the recipient of the offering exceed their normal amount of hit points or attribute points.
+*Effect:* The subject suffers the transferred damage. At 8th level the offering may consist of 1d4 attribute points per week. Any losses the subject suffers are healed normally, or in the case of attribute points, 1 per week. Unless used with another rune that allows it, at no point may the recipient of the offering exceed their normal amount of hit points or attribute points.
 
 Statistics:
 - Casting Time: 1
-- Range: touch
+- Range: Touch
 - Duration: see below
-- Saving Throw: none
-- Spell Resistance: no
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -341,9 +341,9 @@ _Chr Roan ot Kast_
 Statistics:
 - Casting Time: 1
 - Range: 100 feet
-- Duration: immediate
-- Saving Throw: none
-- Spell Resistance: yes
+- Duration: Instantaneous
+- Saving Throw: None
+- Spell Resistance: Yes
 - Components: S
 
 ---
@@ -358,9 +358,9 @@ _Chr Roan ot Hugin_
 Statistics:
 - Casting Time: 4
 - Range: 100 feet
-- Duration: permanent
-- Saving Throw: none
-- Spell Resistance: no
+- Duration: Permanent
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -370,17 +370,17 @@ _Int Roan ot Ahff_
 
 *Description:* Redirect forces a moving item or person in a different direction. Redirect can affect items that weigh up to 50 pounds per level of the user. Anything encountering the rune or the item upon which it is inscribed is affected.
 
-*Effect:* The target cannot be made to turn back 180 degrees, but is rather deflected off its current path. The rune can move things left, right, up, down, etc. , up to five feet off target. When used against human or monster targets, the rune forces any charging opponent to veer in the desired direction. Arrows, spears, and the like also move in the desired direction.
+*Effect:* The target cannot be made to turn back 180 degrees, but is rather deflected off its current path. The rune can move things left, right, up, down, etc., up to five feet off target. When used against human or monster targets, the rune forces any charging opponent to veer in the desired direction. Arrows, spears, and the like also move in the desired direction.
 
 The material component for this rune is a piece of flint.
 
 Statistics:
 - Casting Time: 1
 - Range: 150 feet
-- Duration: 10 minute per level
-- Saving Throw: yes
-- Spell Resistance: yes (h)
-- Components: S, M
+- Duration: 10 minutes per level
+- Saving Throw: Dexterity negates (missiles); Strength negates (charging creatures)
+- Spell Resistance: Yes
+- Components: S, M (flint)
 
 ---
 
@@ -392,9 +392,9 @@ _Chr Roan ot Burnetu_
 Statistics:
 - Casting Time: 1
 - Range: 10 feet per level
-- Duration: immediate
-- Saving Throw: strength negates
-- Spell Resistance: no
+- Duration: Instantaneous
+- Saving Throw: Strength negates
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -408,8 +408,8 @@ Statistics:
 - Casting Time: 1
 - Range: 100 feet
 - Duration: 1 round per level
-- Saving Throw: strength negates
-- Spell Resistance: yes
+- Saving Throw: Strength negates
+- Spell Resistance: Yes
 - Components: S
 
 ---
@@ -423,8 +423,8 @@ Statistics:
 - Casting Time: 1
 - Range: 300 feet
 - Duration: 1 round per level
-- Saving Throw: none
-- Spell Resistance: no
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -439,9 +439,9 @@ _Int Roan ot Nahluk_
 Statistics:
 - Casting Time: 1
 - Range: 100 feet
-- Duration: 10 minute per level
-- Saving Throw: strength
-- Spell Resistance: yes
+- Duration: 10 minutes per level
+- Saving Throw: Strength
+- Spell Resistance: Yes
 - Components: S
 
 ---
@@ -453,16 +453,16 @@ _Int Roan ot Luetfrea_
 
 *Effect:* These threads extend out from a point of the user's choosing; the user must touch the point where the threads begin. The threads of ice are extraordinarily strong, able to hold or pull a tremendous amount of weight. Threads is generally used to hold items or people, for it lasts until dispelled or destroyed by the user. It serves those who travel on the planes as a floating disk, for multiple castings will produce several threads which are easy to weave into a platform. The rune has other applications as well. It can, for instance, be used to create restraints and rope, or to bind doors, etc. The spell may also be used as a weapon, freezing the moisture in a target's mouth, etc.
 
-For every ounce of water the user possesses or has access to, he is able to freeze 100 feet of ice; the thread is no thicker than the lead of an ordinary pencil and is practically invisible. The ice requires one round per 10 feet to freeze. The resulting thread is very light, with every 100 feet weighing about 1 pound. The thread is very malleable, able to be coiled, rolled up, etc. It is, however, easily entangled with other threads, as it is lightweight and very difficult to see. Several threads can be joined together, but this is difficult and time consuming, requiring a successful dexterity check (CL 10). Each thread so joined requires one turn to do so. Creating a platform can be a long and arduous task. The threads possess tremendous strength, able to hold up to 20 pounds per foot.
+For every ounce of water the user possesses or has access to, he is able to freeze 100 feet of ice; the thread is no thicker than the lead of an ordinary pencil and is practically invisible. The ice requires one round per 10 feet to freeze. The resulting thread is very light, with every 100 feet weighing about 1 pound. The thread is very malleable, able to be coiled, rolled up, etc. It is, however, easily entangled with other threads, as it is lightweight and very difficult to see. Several threads can be joined together, but this is difficult and time consuming, requiring a successful Dexterity check (CL 10). Each thread so joined requires one turn to do so. Creating a platform can be a long and arduous task. The threads possess tremendous strength, able to hold up to 20 pounds per foot.
 
-The icy threads are highly susceptible to heat and exposure to sun light; a single thread must make a saving throw each round it is exposed to any form of heat, including sunlight. Challenge base for the save is 18, CL determined by the CK; the spell caster adds his own level and intelligence attribute bonus to the save. If it fails, the ice dissolves instantly into gas. Ambient light cast by magic items and magical spells such as light do not affect the thread. However, the magic spells flame shield or fireball will affect the threads. A dispel magic spell can destroy the threads, and the user himself may cancel the rune.
+The icy threads are highly susceptible to heat and exposure to sun light; a single thread must make a saving throw each round it is exposed to any form of heat, including sunlight. Challenge base for the save is 18, CL determined by the CK; the spell caster adds his own level and Intelligence attribute bonus to the save. If it fails, the ice dissolves instantly into gas. Ambient light cast by magic items and magical spells such as light do not affect the thread. However, the magic spells flame shield or fireball will affect the threads. A dispel magic spell can destroy the threads, and the user himself may cancel the rune.
 
 Statistics:
-- Casting Time: see below
-- Range: 1 feet per level
-- Duration: see below
-- Saving Throw: none
-- Spell Resistance: no
+- Casting Time: 1 round per 10 ft. created
+- Range: Touch (to starting point); 1 ft. per level
+- Duration: Permanent (until destroyed or dispelled)
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -478,8 +478,8 @@ Statistics:
 - Casting Time: 1
 - Range: 150 feet
 - Duration: 4 rounds +1 round per level
-- Saving Throw: none
-- Spell Resistance: no
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -489,14 +489,14 @@ _Chr Roan ot Oethule_
 
 *Description:* This rune is etched upon the throat, and when done correctly, intones the voice with magic. It lasts 1 minute +1 minute per level. It affects all who can hear it.
 
-*Effect:* The wielder's voice becomes deep and measured. It adopts a melodic, almost hypnotic tone for any who can hear it, altering the speaker's normal speech patterns in order to appeal to others, no matter their cultural, social, racial, or linguistic backgrounds, and changing even to account for social nuances such as religion and emotive responses. The wielder of the rune gains a +2 on all charisma checks, and those to whom the voice is directed become calm and very reluctant to attack the wielder. They will only do so if they are attacked by the wielder or any of those who serve him. Furthermore, they become susceptible to mind-altering spells and simple verbal suggestions, suffering a -2 on all charisma, wisdom, or intelligence saving throws or attribute checks. As the rune mark increases in level, the power of the voice does so as well. At 5th level the bonus rises to +4 and the penalty to -4. At 10th level this increases to +8/-8, respectively.
+*Effect:* The wielder's voice becomes deep and measured. It adopts a melodic, almost hypnotic tone for any who can hear it, altering the speaker's normal speech patterns in order to appeal to others, no matter their cultural, social, racial, or linguistic backgrounds, and changing even to account for social nuances such as religion and emotive responses. The wielder of the rune gains a +2 on all Charisma checks, and those to whom the voice is directed become calm and very reluctant to attack the wielder. Targets refrain from initiating hostile actions unless provoked. Furthermore, they become susceptible to mind-altering spells and simple verbal suggestions, suffering a –2 on all Charisma, Wisdom, or Intelligence saving throws or attribute checks. As the rune mark increases in level, the power of the voice does so as well. At 5th level the bonus rises to +4 and the penalty to –4. At 10th level this increases to +8/–8, respectively.
 
 Statistics:
 - Casting Time: 1
-- Range: touch
+- Range: Touch
 - Duration: 1 minute +1 minute per level
-- Saving Throw: none
-- Spell Resistance: no
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
@@ -504,14 +504,14 @@ Statistics:
 **Weightlessness**, Reforged Spell
 _Roan ot Illtut_
 
-*Description:* Weightlessness reduces the weight of the item upon which the rune is scribed. The weight of the item in question (and any contents within) is reduced by 25 pounds +10 per level per level of the rune mark. Weightlessness can be inscribed upon a living creature, but if so, it does not affect the items worn. If, however, it is cast upon the armor the person is wearing, the armor is considered to contain the person and the whole; both armor and person's weight are reduced. An axe in the person's hand would not, however, be affected by the rune. It does not reduce the encumbrance of additional items on the person
+*Description:* Weightlessness reduces the weight of the item upon which the rune is scribed. The weight of the item in question (and any contents within) is reduced by 25 lb. +10 lb. per level of the rune mark. Weightlessness can be inscribed upon a living creature, but if so, it does not affect the items worn. If, however, it is cast upon the armor the person is wearing, the armor is considered to contain the person and the whole; both armor and person's weight are reduced. An axe in the person's hand would not, however, be affected by the rune. It does not reduce the encumbrance of additional items on the person unless they bear the rune.
 
 Statistics:
 - Casting Time: 1
-- Range: touch
-- Duration: 10 minute per level
-- Saving Throw: none
-- Spell Resistance: no
+- Range: Touch
+- Duration: 10 minutes per level
+- Saving Throw: None
+- Spell Resistance: No
 - Components: S
 
 ---
