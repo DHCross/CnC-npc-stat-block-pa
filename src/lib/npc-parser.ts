@@ -30,6 +30,7 @@ export interface AutoCorrectionOptions {
 }
 
 import type { ParentheticalData } from './enhanced-parser';
+import { applyNameMappings } from './name-mappings';
 import {
   splitTitleAndBody,
   extractParentheticalData,
@@ -183,7 +184,8 @@ export function processDumpWithValidation(
   useEnhancedParser: boolean = false,
   formatterMode?: 'enhanced' | 'npc' | 'monster'
 ): ProcessedNPC[] {
-  const trimmed = input.trim();
+  const correctedInput = applyNameMappings(input);
+  const trimmed = correctedInput.trim();
   if (!trimmed) {
     return [];
   }
@@ -1545,9 +1547,7 @@ export function collapseNPCEntry(input: string): string {
 
   if (mountBlock && !final.includes(mountBlock)) {
     final = `${final}\n\n${mountBlock}`;
-
-
-
+  }
 
   return final;
 }
