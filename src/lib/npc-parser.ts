@@ -1545,9 +1545,7 @@ export function collapseNPCEntry(input: string): string {
 
   if (mountBlock && !final.includes(mountBlock)) {
     final = `${final}\n\n${mountBlock}`;
-
-
-
+  }
 
   return final;
 }
