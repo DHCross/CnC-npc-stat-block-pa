@@ -205,6 +205,7 @@ import { useKV } from '@/hooks/use-kv';
 import { Switch } from '@/components/ui/switch';
 import { initializePreloadedDictionaries, getDictionaryCounts } from '@/data';
 import { DocumentAnalyzer } from '@/components/DocumentAnalyzer';
+import { SpellConverter } from '@/components/SpellConverter';
 
 const EXAMPLE_TEXT = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple**
 
@@ -645,7 +646,7 @@ function App() {
           </div>
 
           <Tabs defaultValue="single" className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-8">
               <TabsTrigger value="single" className="flex items-center gap-2">
                 <Upload className="h-4 w-4" />
                 Single/Batch Parser
@@ -653,6 +654,10 @@ function App() {
               <TabsTrigger value="document" className="flex items-center gap-2">
                 <FileCheck className="h-4 w-4" />
                 Document Analyzer
+              </TabsTrigger>
+              <TabsTrigger value="spell" className="flex items-center gap-2">
+                <Wand className="h-4 w-4" />
+                Spell Converter
               </TabsTrigger>
             </TabsList>
 
@@ -1095,6 +1100,10 @@ function App() {
 
             <TabsContent value="document">
               <DocumentAnalyzer />
+            </TabsContent>
+
+            <TabsContent value="spell">
+              <SpellConverter />
             </TabsContent>
           </Tabs>
         </div>
