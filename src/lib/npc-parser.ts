@@ -1513,8 +1513,22 @@ export function collapseNPCEntry(input: string): string {
       ? formatEnhancedMountBlock(canonicalMount)
       : mountBlock;
 
-    const pronounMatch = final.match(/\*\([^)]*\.\s+(He|She|They)\b/);
-    const pronoun = (pronounMatch ? pronounMatch[1] : 'He') as 'He' | 'She' | 'They';
+    const pronounToken =
+      final.match(/\b(He|She|They)\b/)?.[1] ?? final.match(/\b(His|Her|Their)\b/)?.[1];
+    const unitNameMatch = final.match(/\*\*[^*]+?\s+x\d+\*\*/);
+    const defaultPronoun: 'He' | 'She' | 'They' = unitNameMatch ? 'They' : 'He';
+    const pronounMap: Record<'He' | 'She' | 'They' | 'His' | 'Her' | 'Their', 'He' | 'She' | 'They'> = {
+      He: 'He',
+      She: 'She',
+      They: 'They',
+      His: 'He',
+      Her: 'She',
+      Their: 'They',
+    };
+    const pronoun: 'He' | 'She' | 'They' =
+      (pronounToken
+        ? pronounMap[pronounToken as keyof typeof pronounMap]
+        : defaultPronoun) ?? defaultPronoun;
 
     if (resolvedMountName) {
       const mountSentence = buildMountBridgeSentence(resolvedMountName, pronoun);
@@ -1526,7 +1540,14 @@ export function collapseNPCEntry(input: string): string {
     if (!final.includes(canonicalMountBlock)) {
       final = `${final}\n\n${canonicalMountBlock}`;
     }
+
   }
+
+  if (mountBlock && !final.includes(mountBlock)) {
+    final = `${final}\n\n${mountBlock}`;
+
+
+
 
   return final;
 }
