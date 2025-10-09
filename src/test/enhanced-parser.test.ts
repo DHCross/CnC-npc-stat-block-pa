@@ -13,6 +13,7 @@ import {
   buildCanonicalParenthetical,
   formatMountBlock
 } from '../lib/enhanced-parser';
+import { processDumpWithValidation } from '../lib/npc-parser';
 
 describe('Enhanced Parser Functions', () => {
   describe('splitTitleAndBody', () => {
@@ -352,6 +353,30 @@ describe('Enhanced Parser Functions', () => {
         expect(normalizedAttrs.type).toBe('prime');
         expect(normalizedAttrs.value).toBe('physical');
       }
+    });
+
+    it('should retain equipment and spells for the marquee NPC example', () => {
+      const example = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple**
+
+Disposition: law/good
+Race & Class: human, 16th level cleric
+Hit Points (HP): 59
+Armor Class (AC): 13/22
+Primary attributes: strength, wisdom, charisma
+Equipment: pectoral of armor +3, full plate mail, large steel shield, staff of striking, mace
+Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
+Mount: heavy war horse`;
+
+      const [processed] = processDumpWithValidation(example, true, 'enhanced');
+
+      expect(processed).toBeDefined();
+      const { converted } = processed;
+
+      expect(converted).toContain('HP 59');
+      expect(converted).toContain('AC 13/22');
+      expect(converted).toMatch(/pectoral of armor \+3/i);
+      expect(converted).toMatch(/staff of striking/i);
+      expect(converted).toMatch(/can cast the following number of cleric spells per day/i);
     });
   });
 });

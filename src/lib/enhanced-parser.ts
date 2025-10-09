@@ -1236,7 +1236,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
   const hasClassLevels = classInfo.hasClassLevels;
 
   // Add Level for non-classed creatures
-  if (data.level && !hasClassLevels) {
+  if (data.level && !hasClassLevels && /\d/.test(data.level)) {
     vitalParts.push(`Level ${data.level}`);
   }
 
