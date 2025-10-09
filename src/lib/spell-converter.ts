@@ -151,7 +151,7 @@ function isHeading(line: string): boolean {
   if (hasParens && upper > 0) return true;
   
   // 4. Starts with capital letter and looks like a title (multiple words, title case)
-  if (/^[A-Z][a-z]+(\s+[A-Z][a-z]+)*$/.test(trimmed)) return true;
+  if (/^[A-Z][A-Za-z'’-]*(\s+[A-Z][A-Za-z'’-]*)*$/.test(trimmed)) return true;
   
   // 5. Starts with capital and has more uppercase than lowercase (for abbreviated names)
   if (/^[A-Z]/.test(trimmed) && upper >= lower && upper >= 2) return true;
@@ -281,27 +281,26 @@ function extractStatistics(lines: string[]): { linesConsumed: number; statistics
   // Join all collected stat lines and normalize whitespace
   const combined = collected.join(' ').replace(/\s+/g, ' ').trim();
   if (combined) {
-    const padded = ` ${combined} `;
-    const labels = Object.keys(FIELD_LABELS);
+    const sentinel = '__STAT_SPLIT__';
+    const normalized = combined.replace(/(^|[^A-Za-z0-9])(CT|R|D|SV|SR|Comp)(?=[^A-Za-z]|$)/g, (match, prefix, label) => {
+      return `${prefix}${sentinel}${label} `;
+    });
 
-    labels.forEach((label, index) => {
-      const search = ` ${label} `;
-      const start = padded.indexOf(search);
-      if (start === -1) return;
-      let end = padded.length;
-      for (let j = index + 1; j < labels.length; j += 1) {
-        const nextLabel = labels[j];
-        const nextSearch = ` ${nextLabel} `;
-        const nextIndex = padded.indexOf(nextSearch, start + search.length);
-        if (nextIndex !== -1) {
-          end = Math.min(end, nextIndex);
-          break;
-        }
-      }
-      const rawValue = padded.slice(start + search.length, end).trim();
-      const normalized = normalizeMeasurement(rawValue);
-      const key = FIELD_LABELS[label];
-      stats[key] = normalized;
+    const parts = normalized
+      .split(sentinel)
+      .map((part) => part.trim())
+      .filter((part) => part.length > 0);
+
+    parts.forEach((part) => {
+      const labelMatch = part.match(/^(CT|R|D|SV|SR|Comp)(.*)$/i);
+      if (!labelMatch) return;
+      const rawLabel = labelMatch[1];
+      let rawValue = labelMatch[2].trim();
+      rawValue = rawValue.replace(/^[:\-–—=]+/, '').trim();
+      if (!rawValue) return;
+      const normalizedValue = normalizeMeasurement(rawValue);
+      const key = FIELD_LABELS[rawLabel as keyof typeof FIELD_LABELS];
+      stats[key] = normalizedValue;
     });
   }
 
@@ -316,6 +315,8 @@ function normalizeMeasurement(value: string): string {
   
   // Remove stray periods before slashes (e.g., "rd./lvl" -> "rd/lvl")
   normalized = normalized.replace(/\.\s*\//g, '/');
+  // Remove stray periods before plus signs (e.g., "+1./lvl" or ".+1")
+  normalized = normalized.replace(/\.\s*\+/g, ' +');
   
   MEASUREMENT_REPLACEMENTS.forEach(([pattern, replacement]) => {
     normalized = normalized.replace(pattern, replacement);
@@ -324,6 +325,26 @@ function normalizeMeasurement(value: string): string {
   // Convert slashes to "per" (e.g., "/level" -> " per level")
   normalized = normalized.replace(/\/\s*(level|round|minute|hour)/gi, ' per $1');
   
+  // Normalize pluralization for basic measurement units
+  normalized = normalized.replace(/(\d+)\s+(foot|feet|round|rounds|minute|minutes|hour|hours)\b/gi, (match, num, unit) => {
+    const quantity = parseInt(num, 10);
+    const lowerUnit = unit.toLowerCase();
+    const unitMap: Record<string, { singular: string; plural: string }> = {
+      foot: { singular: 'foot', plural: 'feet' },
+      feet: { singular: 'foot', plural: 'feet' },
+      round: { singular: 'round', plural: 'rounds' },
+      rounds: { singular: 'round', plural: 'rounds' },
+      minute: { singular: 'minute', plural: 'minutes' },
+      minutes: { singular: 'minute', plural: 'minutes' },
+      hour: { singular: 'hour', plural: 'hours' },
+      hours: { singular: 'hour', plural: 'hours' },
+    };
+    const mapping = unitMap[lowerUnit];
+    if (!mapping) return match;
+    const nextUnit = quantity === 1 ? mapping.singular : mapping.plural;
+    return `${quantity} ${nextUnit}`;
+  });
+
   // Normalize whitespace and remove stray periods
   normalized = normalized.replace(/\s+/g, ' ').trim();
   normalized = normalized.replace(/\.\s+per\b/gi, ' per');
@@ -335,6 +356,11 @@ function normalizeMeasurement(value: string): string {
   normalized = normalized.replace(/\bper level level\b/gi, 'per level');
   normalized = normalized.replace(/\bround level\b/gi, 'round per level');
   normalized = normalized.replace(/\bminute level\b/gi, 'minute per level');
+  normalized = normalized.replace(/\bfeet foot\b/gi, 'feet');
+  normalized = normalized.replace(/\bhour hour\b/gi, 'hour');
+
+  // Remove erroneous leading digits before "see below"
+  normalized = normalized.replace(/^\d+\s+(see below)$/i, '$1');
   
   return normalized;
 }

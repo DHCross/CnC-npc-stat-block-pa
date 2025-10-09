@@ -22,7 +22,7 @@ The targets are held exactly as they are when the rune is activated.`;
       expect(results[0].metadata).toBe('Chr Roan ot Kepulch');
       expect(results[0].statistics.castingTime).toBe('1');
       expect(results[0].statistics.range).toBe('150 feet');
-      expect(results[0].statistics.duration).toBe('1 round per level');
+  expect(results[0].statistics.duration).toBe('1 round per level');
       expect(results[0].statistics.savingThrow).toBe('see below');
       expect(results[0].statistics.spellResistance).toBe('yes');
       expect(results[0].statistics.components).toBe('S');
@@ -75,7 +75,7 @@ Test description.`;
       expect(results).toHaveLength(1);
       expect(results[0].statistics.castingTime).toBe('1 round');
       expect(results[0].statistics.range).toBe('50 feet');
-      expect(results[0].statistics.duration).toBe('10 minute per level');
+  expect(results[0].statistics.duration).toBe('10 minutes per level');
     });
 
     it('should handle spells with no description paragraphs', () => {
@@ -109,7 +109,7 @@ The light extends up to 20 feet in radius.`;
       expect(formatted).toContain('Statistics:');
       expect(formatted).toContain('- Casting Time: 1');
       expect(formatted).toContain('- Range: see below');
-      expect(formatted).toContain('- Duration: 10 minute per level');
+      expect(formatted).toContain('- Duration: 10 minutes per level');
     });
   });
 
@@ -175,6 +175,48 @@ Missing lots of data.`;
   });
 
   describe('Edge Cases', () => {
+    it('should parse statistics when labels are concatenated without spacing', () => {
+      const input = `**The Voice**
+
+CT 1   R touch   D1 min.+1min./lvl.   SV none   SR no   Comp S
+
+Voice magic.`;
+
+      const results = convertLegacySpellText(input);
+
+      expect(results).toHaveLength(1);
+      expect(results[0].statistics.range).toBe('touch');
+      expect(results[0].statistics.duration).toBe('1 minute +1 minute per level');
+    });
+
+    it('should normalize chained bonuses with proper spacing and plurals', () => {
+      const input = `**Mind's Eye**
+
+CT 1   R 400 ft.+1./lvl.   D 10 rds. +1/lvl.   SV none   SR no   Comp S
+
+Mind sight.`;
+
+      const results = convertLegacySpellText(input);
+
+      expect(results).toHaveLength(1);
+      expect(results[0].statistics.range).toBe('400 feet +1 per level');
+      expect(results[0].statistics.duration).toBe('10 rounds +1 per level');
+    });
+
+    it('should strip erroneous leading digits from "see below" values', () => {
+      const input = `**Echo**
+
+CT 1   R see below   D 1 see below   SV none   SR yes   Comp S
+
+Echo senses.`;
+
+      const results = convertLegacySpellText(input);
+
+      expect(results).toHaveLength(1);
+      expect(results[0].statistics.duration).toBe('see below');
+      expect(results[0].statistics.range).toBe('see below');
+    });
+
     it('should handle empty input', () => {
       const results = convertLegacySpellText('');
       expect(results).toHaveLength(0);

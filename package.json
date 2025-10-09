@@ -1,6 +1,7 @@
 {
   "name": "cnc-npc-stat-block-pa",
   "version": "1.0.0",
+  "type": "module",
   "description": "CNC NPC Stat Block Parser and App (Next.js/React)",
   "scripts": {
     "dev": "next dev",

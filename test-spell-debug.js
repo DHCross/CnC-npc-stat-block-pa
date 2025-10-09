@@ -1,4 +1,4 @@
-const { convertLegacySpellText } = require('./src/lib/spell-converter.ts');
+import { convertLegacySpellText } from './src/lib/spell-converter.ts';
 
 const input = `**Arrest Motion** **(Chr) (Roan** **ot** **Kepulch)**
 
