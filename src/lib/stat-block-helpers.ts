@@ -55,7 +55,12 @@ export function buildSubjectDescriptor(options: SubjectOptions): string {
   }
 
   if (!descriptor) {
-    descriptor = options.isPlural ? 'creatures' : options.charClass ? options.charClass : 'character';
+    if (options.isPlural) {
+      descriptor = 'creatures';
+    } else {
+      // Default to "human" if no race is specified for a single character.
+      descriptor = options.charClass ? options.charClass : 'human';
+    }
     descriptor = descriptor.toLowerCase();
   }
 
