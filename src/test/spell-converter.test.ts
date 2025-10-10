@@ -17,18 +17,23 @@ The targets are held exactly as they are when the rune is activated.`;
       const results = convertLegacySpellText(input);
 
       expect(results).toHaveLength(1);
-      expect(results[0].originalName).toBe('Arrest Motion');
-      expect(results[0].canonicalName).toBe('Arrest Motion');
-      expect(results[0].metadata).toBe('Chr Roan ot Kepulch');
-      expect(results[0].statistics.castingTime).toBe('1');
-      expect(results[0].statistics.range).toBe('150 feet');
-  expect(results[0].statistics.duration).toBe('1 round per level');
-      expect(results[0].statistics.savingThrow).toBe('see below');
-      expect(results[0].statistics.spellResistance).toBe('yes');
-      expect(results[0].statistics.components).toBe('S');
-      expect(results[0].description).toContain('stops objects in motion');
-      expect(results[0].effect).toContain('held exactly as they are');
-      expect(results[0].warnings).toHaveLength(0);
+      const spell = results[0];
+      expect(spell.originalName).toBe('Arrest Motion');
+      expect(spell.canonicalName).toBe('Arrest Motion');
+      expect(spell.metadata).toBe('Chr Roan ot Kepulch');
+      expect(spell.statistics.castingTime).toBe('1');
+      expect(spell.statistics.range).toBe('150 feet');
+      expect(spell.statistics.duration).toBe('1 round per level');
+      expect(spell.statistics.savingThrow).toBe('see below');
+      expect(spell.statistics.spellResistance).toBe('yes');
+      expect(spell.statistics.components).toBe('S');
+      expect(spell.description).toContain('stops objects in motion');
+      expect(spell.effect).toContain('held exactly as they are');
+      expect(spell.formatMeta.descriptor).toBe('Reforged Spell');
+      expect(spell.formatMeta.noun).toBe('rune');
+      expect(spell.formatMeta.runeKey).toBe('Chr Roan ot Kepulch');
+      expect(spell.formatted).toContain('**Casting** this rune');
+      expect(spell.warnings).toHaveLength(0);
     });
 
     it('should map original spell names to canonical names', () => {
@@ -75,7 +80,7 @@ Test description.`;
       expect(results).toHaveLength(1);
       expect(results[0].statistics.castingTime).toBe('1 round');
       expect(results[0].statistics.range).toBe('50 feet');
-  expect(results[0].statistics.duration).toBe('10 minutes per level');
+      expect(results[0].statistics.duration).toBe('10 minutes per level');
     });
 
     it('should handle spells with no description paragraphs', () => {
@@ -103,16 +108,34 @@ The light extends up to 20 feet in radius.`;
 
       expect(results).toHaveLength(1);
       const formatted = results[0].formatted;
-  expect(formatted).toContain('**LIGHT**, *Reforged Spell*');
-      expect(formatted).toContain('*[Add narrative opening: 1-3 sentences describing what the magic feels or looks like]*');
-      expect(formatted).toContain('This rune sheds light.');
+      expect(formatted).toContain('**LIGHT**');
+      expect(formatted).toContain('*This rune sheds light.*');
       expect(formatted).toContain('The light extends up to 20 feet in radius.');
-      expect(formatted).toContain('Casting this rune requires the caster\'s combat action for the round.');
-      expect(formatted).toContain('The rune\'s **range** is see below.');
-      expect(formatted).toContain('Its **duration** is 10 minutes per level.');
-      expect(formatted).toContain('There is **no saving throw**.');
-      expect(formatted).toContain('The rune is **unaffected by spell resistance**.');
-      expect(formatted).toContain('Its **components** are somatic.');
+      expect(formatted).toContain('**Casting** this spell requires the caster\'s combat action for the round.');
+      expect(formatted).toContain('The spell\'s **range** is see below with a **duration of 10 minutes per level**.');
+      expect(formatted).toContain('**There is no saving throw.**');
+      expect(formatted).toContain('The spell is **unaffected by spell resistance**.');
+      expect(formatted).toContain('**The casting components** are **somatic**.');
+      expect(formatted).not.toContain('Statistics:');
+      expect(formatted).not.toContain('Casting Time:');
+    });
+
+    it('should render area of effect and components in separate prose paragraphs', () => {
+      const input = `**Sonic Lattice (Int) (Roan ot Vel)**
+
+CT 2 rds.   R 60 ft.   D 3 rds.   SV negates   SR yes   AoE 20 ft. radius   Comp V, S, M
+
+Sound shards lash from the rune in a pulsing pattern.
+
+Creatures within the sphere are pelted by razored sound-waves and deafened.`;
+
+      const results = convertLegacySpellText(input);
+
+      expect(results).toHaveLength(1);
+      const formatted = results[0].formatted;
+      expect(formatted).toContain('**The area of effect** is 20 feet radius.');
+      expect(formatted).toContain('**The casting components** are **verbal, somatic, and material**.');
+      expect(formatted).toContain('**Casting** this rune requires the caster to devote 2 rounds.');
     });
   });
 

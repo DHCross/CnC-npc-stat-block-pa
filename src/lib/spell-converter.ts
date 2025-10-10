@@ -10,6 +10,16 @@ export type SpellStatistics = {
   components?: string;
 };
 
+export type SpellFormatMetadata = {
+  name: string;
+  descriptor?: string;
+  className?: string;
+  level?: number;
+  noun?: string;
+  runeKey?: string;
+  intro?: string;
+};
+
 export type SpellConversionResult = {
   originalName: string;
   canonicalName: string;
@@ -19,6 +29,7 @@ export type SpellConversionResult = {
   statistics: SpellStatistics;
   formatted: string;
   warnings: string[];
+  formatMeta: SpellFormatMetadata;
 };
 
 const FIELD_LABELS: Record<string, keyof SpellStatistics> = {
@@ -177,10 +188,16 @@ function convertBlockToResult(block: string): SpellConversionResult | null {
   const { description, effect } = extractNarrative(bodyLines.join('\n'));
 
   const warnings = buildWarnings(statistics, description, effect);
+  const formatMeta: SpellFormatMetadata = {
+    ...buildSpellFormatMetadata({
+      canonicalName,
+      rawMetadata: metadata,
+    }),
+    intro: description || undefined,
+  };
 
   const formatted = formatResult({
-    canonicalName,
-    metadata,
+    meta: formatMeta,
     description,
     effect,
     statistics,
@@ -195,6 +212,7 @@ function convertBlockToResult(block: string): SpellConversionResult | null {
     statistics,
     formatted,
     warnings,
+    formatMeta,
   };
 }
 
@@ -223,6 +241,65 @@ function extractNameAndMetadata(line: string): { name: string; metadata?: string
   }
   
   return { name: titleCase(trimmed) };
+}
+
+function buildSpellFormatMetadata(params: { canonicalName: string; rawMetadata?: string }): SpellFormatMetadata {
+  const { canonicalName, rawMetadata } = params;
+  const meta: SpellFormatMetadata = {
+    name: canonicalName,
+  };
+
+  const classLevel = rawMetadata ? parseClassLevel(rawMetadata) : null;
+  if (classLevel) {
+    meta.level = classLevel.level;
+    meta.className = classLevel.className;
+  }
+
+  if (rawMetadata) {
+    const potentialRuneKey = classLevel
+      ? rawMetadata.replace(classLevel.matchedText, '').trim()
+      : rawMetadata.trim();
+    if (potentialRuneKey) {
+      meta.runeKey = potentialRuneKey;
+    }
+  }
+
+  const isRune = Boolean(rawMetadata && /roan\s+ot/i.test(rawMetadata));
+  if (isRune) {
+    meta.descriptor = meta.descriptor ?? 'Reforged Spell';
+    meta.noun = 'rune';
+  } else {
+    meta.noun = 'spell';
+  }
+
+  if (!meta.descriptor && !classLevel) {
+    // Default descriptor for generalized conversions can remain undefined
+    // allowing pure PHB entries (with class/level line) to omit the italic descriptor.
+  }
+
+  return meta;
+}
+
+function parseClassLevel(metadata: string): { level: number; className: string; matchedText: string } | null {
+  const levelFirst = metadata.match(/level\s+(\d+)\s+([A-Za-z][A-Za-z\s']*)/i);
+  if (levelFirst) {
+    return {
+      level: Number(levelFirst[1]),
+      className: titleCase(levelFirst[2].trim()),
+      matchedText: levelFirst[0],
+    };
+  }
+
+  const classFirst = metadata.match(/([A-Za-z][A-Za-z\s']*)\s+level\s+(\d+)/i);
+  if (classFirst) {
+    return {
+      className: titleCase(classFirst[1].trim()),
+      level: Number(classFirst[2]),
+      matchedText: classFirst[0],
+    };
+  }
+
+  return null;
 }
 
 function resolveCanonicalName(rawName: string): string {
@@ -360,6 +437,7 @@ function normalizeMeasurement(value: string): string {
   normalized = normalized.replace(/\bminute level\b/gi, 'minute per level');
   normalized = normalized.replace(/\bfeet foot\b/gi, 'feet');
   normalized = normalized.replace(/\bhour hour\b/gi, 'hour');
+  normalized = normalized.replace(/\.\s+(?=[a-z])/gi, ' ');
 
   // Remove erroneous leading digits before "see below"
   normalized = normalized.replace(/^\d+\s+(see below)$/i, '$1');
@@ -415,8 +493,8 @@ function buildWarnings(statistics: SpellStatistics, description: string, effect:
   return warnings;
 }
 
-function generateMechanicsProse(statistics: SpellStatistics): string[] {
-  const noun = 'rune';
+function generateMechanicsProse(statistics: SpellStatistics, noun = 'spell'): string[] {
+  const paragraphs: string[] = [];
   const sentences: string[] = [];
 
   if (statistics.castingTime) {
@@ -424,114 +502,155 @@ function generateMechanicsProse(statistics: SpellStatistics): string[] {
     if (isSingleRound(ct)) {
       sentences.push(`**Casting** this ${noun} requires the caster's combat action for the round.`);
     } else {
-      sentences.push(`**Casting** this ${noun} requires the caster to devote ${ct.toLowerCase()}.`);
+      const durationText = lowercaseFirstLetter(trimTrailingPeriod(ct));
+      sentences.push(`**Casting** this ${noun} requires the caster to devote ${durationText}.`);
     }
   }
 
-  if (statistics.range) {
-    const range = ensureCompletePhrase('range', statistics.range);
-    sentences.push(`The ${noun}'s **range** is ${range.toLowerCase()}.`);
-  }
-
-  if (statistics.duration) {
-    const duration = ensureCompletePhrase('duration', statistics.duration);
-    sentences.push(`Its **duration** is ${duration.toLowerCase()}.`);
-  }
-
-  if (statistics.areaOfEffect) {
-    const aoe = statistics.areaOfEffect.trim();
-    sentences.push(`The **area of effect** is ${aoe.toLowerCase()}.`);
+  if (statistics.range && statistics.duration) {
+    const range = lowercaseFirstLetter(trimTrailingPeriod(ensureCompletePhrase('range', statistics.range)));
+    const duration = lowercaseFirstLetter(trimTrailingPeriod(ensureCompletePhrase('duration', statistics.duration)));
+    sentences.push(`The ${noun}'s **range** is ${range} with a **duration of ${duration}**.`);
+  } else if (statistics.range) {
+    const range = lowercaseFirstLetter(trimTrailingPeriod(ensureCompletePhrase('range', statistics.range)));
+    sentences.push(`The ${noun}'s **range** is ${range}.`);
+  } else if (statistics.duration) {
+    const duration = lowercaseFirstLetter(trimTrailingPeriod(ensureCompletePhrase('duration', statistics.duration)));
+    sentences.push(`Its **duration** is ${duration}.`);
   }
 
   if (statistics.savingThrow) {
-    const save = ensureCompletePhrase('savingThrow', statistics.savingThrow);
-    const lower = save.toLowerCase();
-    if (lower.startsWith('none;')) {
-        const [, remainder = ''] = save.split(/;/, 2);
-    const clause = remainder.trim().replace(/\.$/, '');
-    const suffix = clause ? `, though ${lowercaseFirstLetter(clause)}` : '';
-        sentences.push(`There is **no saving throw**${suffix}.`);
-    } else if (lower === 'none') {
-      sentences.push('There is **no saving throw**.');
-    } else if (lower === 'see below') {
-      sentences.push('The **saving throw** is determined as described above.');
-    } else {
-      sentences.push(`A **${save} saving throw** applies.`);
+    const savingThrowSentence = formatSavingThrowSentence(statistics.savingThrow);
+    if (savingThrowSentence) {
+      sentences.push(savingThrowSentence);
     }
   }
 
   if (statistics.spellResistance) {
-    const sr = ensureCompletePhrase('spellResistance', statistics.spellResistance);
-    const lower = sr.toLowerCase();
-    if (lower === 'yes') {
-      sentences.push(`The ${noun} is **affected by spell resistance**.`);
-    } else if (lower === 'no' || lower === 'none') {
-      sentences.push(`The ${noun} is **unaffected by spell resistance**.`);
-    } else if (lower === 'see below') {
-      sentences.push('Spell resistance is handled as described above.');
-    } else {
-      sentences.push(`Spell resistance is **${sr.toLowerCase()}**.`);
+    const spellResistanceSentence = formatSpellResistanceSentence(noun, statistics.spellResistance);
+    if (spellResistanceSentence) {
+      sentences.push(spellResistanceSentence);
     }
   }
 
+  if (sentences.length > 0) {
+    paragraphs.push(sentences.join(' '));
+  }
+
+  if (statistics.areaOfEffect) {
+    const aoe = lowercaseFirstLetter(trimTrailingPeriod(statistics.areaOfEffect));
+    paragraphs.push(`**The area of effect** is ${aoe}.`);
+  }
+
   if (statistics.components) {
-    const components = formatComponents(statistics.components);
-    sentences.push(`Its **components** are ${components.toLowerCase()}.`);
+    const components = formatComponents(statistics.components).toLowerCase();
+    paragraphs.push(`**The casting components** are **${components}**.`);
   }
 
-  if (sentences.length === 0) {
-    return [];
-  }
-
-  return [sentences.join(' ')];
+  return paragraphs;
 }
 
 function formatResult(params: {
-  canonicalName: string;
-  metadata?: string;
+  meta: SpellFormatMetadata;
   description: string;
   effect: string;
   statistics: SpellStatistics;
 }): string {
-  const { canonicalName, metadata, description, effect, statistics } = params;
-  const lines: string[] = [];
+  const { meta, description, effect, statistics } = params;
+  const sections: string[] = [];
 
-  // Title line: **SPELL NAME**, *Reforged Spell*
-  lines.push(`**${canonicalName.toUpperCase()}**, *Reforged Spell*`);
+  sections.push(formatTitle(meta));
 
-  // Metadata line (if present): _metadata_
-  if (metadata) {
-    lines.push(`_${metadata}_`);
+  if (meta.runeKey) {
+    sections.push(`_${meta.runeKey}_`);
   }
 
-  // Placeholder for italicized narrative opening (to be added manually)
-  lines.push('');
-  lines.push('*[Add narrative opening: 1-3 sentences describing what the magic feels or looks like]*');
-
-  // Body paragraphs (regular prose) - combine into unified prose
-  const bodyParts: string[] = [];
-  if (description) {
-    bodyParts.push(description);
-  }
-  if (effect) {
-    bodyParts.push(effect);
+  const introText = (meta.intro ?? description)?.trim();
+  if (introText) {
+    const formattedIntro = formatIntro(introText);
+    if (formattedIntro) {
+      sections.push(formattedIntro);
+    }
   }
 
-  if (bodyParts.length > 0) {
-    lines.push('');
-    lines.push(bodyParts.join('\n\n'));
+  const bodyText = effect.trim();
+  if (bodyText) {
+    sections.push(bodyText);
   }
 
-  // True PHB Continuous Prose Standard - mechanics as complete sentences
-  const mechanicsParagraphs = generateMechanicsProse(statistics);
-  if (mechanicsParagraphs.length > 0) {
-    lines.push('');
-    mechanicsParagraphs.forEach((paragraph) => {
-      lines.push(paragraph);
-    });
+  const mechanicsParagraphs = generateMechanicsProse(statistics, meta.noun ?? 'spell');
+  mechanicsParagraphs.forEach((paragraph) => {
+    if (paragraph.trim()) {
+      sections.push(paragraph);
+    }
+  });
+
+  return sections.filter((section) => section && section.trim().length > 0).join('\n\n');
+}
+
+function formatTitle(meta: SpellFormatMetadata): string {
+  const baseName = `**${meta.name.toUpperCase()}**`;
+  const descriptor = meta.descriptor ? `, *${meta.descriptor}*` : '';
+  const titleLine = `${baseName}${descriptor}`;
+
+  if (meta.level != null && meta.className) {
+    return `${titleLine}\n***Level ${meta.level} ${meta.className}***`;
   }
 
-  return lines.join('\n');
+  return titleLine;
+}
+
+function formatIntro(intro: string): string {
+  const stripped = intro.replace(/^\*+/, '').replace(/\*+$/, '').trim();
+  if (!stripped) return '';
+  return `*${stripped}*`;
+}
+
+function trimTrailingPeriod(value: string): string {
+  return value.replace(/\.\s*$/, '').trim();
+}
+
+function formatSavingThrowSentence(value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) return '';
+  const lower = trimmed.toLowerCase();
+
+  if (lower.startsWith('none;')) {
+    const [, remainder = ''] = trimmed.split(/;/, 2);
+    const clause = remainder.trim().replace(/\.$/, '');
+    const suffix = clause ? `, though ${lowercaseFirstLetter(clause)}` : '';
+    return `**There is no saving throw**${suffix}.`;
+  }
+
+  if (lower === 'none') {
+    return '**There is no saving throw.**';
+  }
+
+  if (lower === 'see below') {
+    return '**The saving throw** is determined as described above.';
+  }
+
+  return `A **${trimmed} saving throw** applies.`;
+}
+
+function formatSpellResistanceSentence(noun: string, value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) return '';
+  const lower = trimmed.toLowerCase();
+
+  if (lower === 'yes') {
+    return `The ${noun} is **affected by spell resistance**.`;
+  }
+
+  if (lower === 'no' || lower === 'none' || lower === 'unaffected') {
+    return `The ${noun} is **unaffected by spell resistance**.`;
+  }
+
+  if (lower === 'see below') {
+    return 'Spell resistance is handled as described above.';
+  }
+
+  return `Spell resistance is **${lower}**.`;
 }
 
 function expandComponents(value: string): string {
