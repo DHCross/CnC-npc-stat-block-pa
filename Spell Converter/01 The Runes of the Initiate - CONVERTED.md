@@ -4,69 +4,53 @@ These are the Foundation. These are common runes, and they are without number.
 
 ---
 
-**Arrest Motion**, Reforged Spell
+**ARREST MOTION**, Reforged Spell
 _Chr Roan ot Kepulch_
 
-*Description:* Arrest motion stops objects in motion or keeps them from moving, if already motionless. It has an area of effect of 10 ft. × 10 ft., +5 ft. to each side per level, and lasts one round per level.
+*Bound to the elements of motion and stillness, the rune hums with tension, halting the rush of movement as if time itself forgot to breathe.*
 
-*Effect:* The targets are held exactly as they are when the rune is activated. If they are in flight, they are held in flight. Both humans and monsters can be stopped, as can items thrown or hurled. The caster can cast it on himself; in such cases there is no attribute check required.
+Arrest motion stops objects in motion or keeps them from moving, if already motionless. It has an area of effect of 10 feet by 10 feet, plus 5 feet to each side per level, and lasts one round per level.
 
-The item or person in stasis can be moved by outside influence, or in the case of a living creature, it can attempt to move itself by making a successful Strength check (CL equal to the level of the rune caster) in the round following the rune's activation. If an outside force is attempting to move the target, the source of the interference must make the Strength check.
+The targets are held exactly as they are when the rune is activated. If they are in flight, they are held in flight. Both humans and monsters can be stopped, as can items thrown or hurled. The caster can cast it on himself; in such cases there is no attribute check required.
 
-Statistics:
-- Casting Time: 1
-- Range: 150 feet
-- Duration: 1 round per level
-- Saving Throw: Caster Charisma check (CL = target's HD) to activate; Strength negates movement (CL = caster level)
-- Spell Resistance: Yes (creatures only)
-- Components: S
+The item or person in stasis can be moved by outside influence, or in the case of a living creature, it can attempt to move itself by making a successful Strength check in the round following the rune's activation. The challenge level equals the level of the rune caster. If an outside force is attempting to move the target, the source of the interference must make the Strength check.
+
+**Casting Time:** 1 round. **Range:** 150 feet. **Duration:** 1 round per level. **Saving Throw:** Caster Charisma check to activate; Strength negates movement. **Spell Resistance:** Yes (creatures only). **Area of Effect:** 10 feet by 10 feet, plus 5 feet to each side per level. **Components:** Speech and gesture.
 
 ---
 
-**Bend Light**, Reforged Spell
+**BEND LIGHT**, Reforged Spell
 _Int Roan ot Amnuel_
 
-*Description:* Bend light allows the user to manipulate light, forcing it away from the rune's target. It affects a 20-foot diameter sphere and lasts one turn per level. The redirected light makes the target invisible from anyone looking at it, as no light is reflected back from the target for the eye to see. It does not hide the target from any other senses, such as smell, touch, or even magical vision such as true seeing.
+*The air shimmers and bends, as if reality itself turns aside, and where light once fell, now only shadow remains—a cloak woven from absence.*
 
-Statistics:
-- Casting Time: 1
-- Range: 100 feet
-- Duration: 10 minutes per level
-- Saving Throw: None
-- Spell Resistance: No
-- Components: S
+Bend light allows the user to manipulate light, forcing it away from the rune's target. It affects a 20-foot diameter sphere and lasts one turn per level. The redirected light makes the target invisible from anyone looking at it, as no light is reflected back from the target for the eye to see. It does not hide the target from any other senses, such as smell, touch, or even magical vision such as true seeing.
+
+**Casting Time:** 1 round. **Range:** 100 feet. **Duration:** 10 minutes per level. **Saving Throw:** None. **Spell Resistance:** No. **Area of Effect:** 20-foot diameter sphere. **Components:** Speech and gesture.
 
 ---
 
-**Bind**, Reforged Spell
+**BIND**, Reforged Spell
 _Chr Roan ot Paath-uk_
 
-*Description:* Binding has many uses, as it can be used to join two mundane objects together. The binding is permanent until the rune mark releases it. Spells such as dispel magic, knock, or a similar spell can be used to break the binding. It affects one object, great or small.
+*Threads of force knit together what was sundered, or hold fast what wishes to part—the rune remembers wholeness, and commands it to remain.*
 
-*Effect:* The binding rune can be used in two modes: **Bind Closed** seals two surfaces together (door and jamb, book covers, torn armor, broken sword hilt); **Bind Open** holds an existing portal open, preventing a door from closing, a book from closing, etc. Both modes are broken by dispel magic, knock, or the rune mark's release.
+Binding has many uses, as it can be used to join two mundane objects together. The binding is permanent until the rune mark releases it. Spells such as dispel magic, knock, or a similar spell can be used to break the binding. It affects one object, great or small.
 
-Statistics:
-- Casting Time: 1
-- Range: Touch
-- Duration: Permanent (until released or dispelled)
-- Saving Throw: None
-- Spell Resistance: No
-- Components: S
+The binding rune can be used in two modes: Bind Closed seals two surfaces together such as a door and jamb, book covers, torn armor, or a broken sword hilt. Bind Open holds an existing portal open, preventing a door from closing, a book from closing, etc. Both modes are broken by dispel magic, knock, or the rune mark's release.
+
+**Casting Time:** 1 round. **Range:** Touch. **Duration:** Permanent (until released or dispelled). **Saving Throw:** None. **Spell Resistance:** No. **Area of Effect:** One object. **Components:** Speech and gesture.
 
 ---
 
-**Bottle**, Reforged Spell
+**BOTTLE**, Reforged Spell
 _Int Roan ot Ilj_
 
-*Description:* Bottle creates an interdimensional space within a vessel. It is permanent until dispelled magically or canceled by the rune mark. The space is shaped much like a bottle, being round and rather small. The space created is equal to one square foot for every level of the rune mark. It commonly serves the traveler as a vessel for carrying water, as it serves to hold simple substances such as liquids and gases. The space cannot be corroded, so any substance placed within it does no harm to the vessel. Bottle must be cast upon a flask, bottle, or similar container.
+*A fold in space opens within the vessel, creating a pocket that exists nowhere and everywhere at once—a refuge from corrosion, a sanctuary for the carried.*
 
-Statistics:
-- Casting Time: 2
-- Range: Touch
-- Duration: Permanent
-- Saving Throw: None
-- Spell Resistance: No
-- Components: S
+Bottle creates an interdimensional space within a vessel. It is permanent until dispelled magically or canceled by the rune mark. The space is shaped much like a bottle, being round and rather small. The space created is equal to one square foot for every level of the rune mark. It commonly serves the traveler as a vessel for carrying water, as it serves to hold simple substances such as liquids and gases. The space cannot be corroded, so any substance placed within it does no harm to the vessel. Bottle must be cast upon a flask, bottle, or similar container.
+
+**Casting Time:** 2 rounds. **Range:** Touch. **Duration:** Permanent. **Saving Throw:** None. **Spell Resistance:** No. **Area of Effect:** One vessel. **Components:** Speech and gesture.
 
 ---
 

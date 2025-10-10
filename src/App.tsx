@@ -9,11 +9,13 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
+import { DictionaryStats } from '@/components/DictionaryStats';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Toaster } from '@/components/ui/sonner';
 import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode as FileHtml, FileCheck, Users, Skull } from 'lucide-react';
 import { generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, ValidationResult } from '@/lib/npc-parser';
+import type { DictionaryCounts } from '@/lib/dictionary-counts';
 import { formatVersionString } from '@/lib/version';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -263,7 +265,7 @@ function App() {
   const [normalizeInput, setNormalizeInput] = useState(true);
   const [dictEnabled, setDictEnabled] = useState(true);
   const [formatterMode, setFormatterMode] = useState<'enhanced' | 'npc' | 'monster'>('enhanced');
-  const [dictCounts, setDictCounts] = useState({ spells: 0, items: 0, monsters: 0 });
+  const [dictCounts, setDictCounts] = useState<DictionaryCounts>(() => getDictionaryCounts());
 
   // Initialize pre-loaded dictionaries on component mount
   React.useEffect(() => {
@@ -630,20 +632,21 @@ function App() {
             <div className="text-xs text-foreground/50 font-mono">
               {formatVersionString()}
             </div>
-            <p className="text-lg text-foreground/80 md:text-xl">
-              Transform raw notes into polished Castles & Crusades NPC stat blocks with automatic formatting, validation, and export tools.
-            </p>
-            <div className="flex flex-col items-center gap-3 text-sm text-foreground/70 sm:flex-row">
-              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 shadow-inner shadow-black/20">
-                <Sparkle className="h-4 w-4 text-primary" />
-                <span>Auto-fixes shield types, primes, and level ordinals</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 shadow-inner shadow-black/20">
-                <Info className="h-4 w-4 text-accent" />
-                <span>23-point compliance validation with reporting</span>
-              </div>
+          <p className="text-lg text-foreground/80 md:text-xl">
+            Transform raw notes into polished Castles & Crusades NPC stat blocks with automatic formatting, validation, and export tools.
+          </p>
+          <div className="flex flex-col items-center gap-3 text-sm text-foreground/70 sm:flex-row">
+            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 shadow-inner shadow-black/20">
+              <Sparkle className="h-4 w-4 text-primary" />
+              <span>Auto-fixes shield types, primes, and level ordinals</span>
+            </div>
+            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 shadow-inner shadow-black/20">
+              <Info className="h-4 w-4 text-accent" />
+              <span>23-point compliance validation with reporting</span>
             </div>
           </div>
+          <DictionaryStats counts={dictCounts} className="mt-6 w-full" />
+        </div>
 
           <Tabs defaultValue="single" className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-8">

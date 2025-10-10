@@ -1,0 +1,464 @@
+Old_Name,New_Name,Type
+Potion of Giant Strength,Potion of Giant Strength,Magic Item
+Potion of Longevity,Potion of Youth,Magic Item
+Potion of Protection from Alignment,Potion of Protection from Dispostion,Magic Item
+Potion of Trap the Soul,Potion of Trap Entity,Magic Item
+Scroll of Restoration,"Scroll of Restoration (Least, Lesser, Greater, Greatest)",Magic Item
+Scroll of Protection,Scroll of Protection,Magic Item
+Scroll of Anti-Magic Shell,Scroll of Anti-Magic Sphere,Magic Item
+Scroll of Heal,Scroll of Heal,Magic Item
+Bane Sword,"Bane Sword, formatted as X Bane (i.e. dragonbane, giantbane)",Magic Item
+Sword of Dancing,Sword of Dancing,Magic Item
+Sword of Defending,Sword of Defending,Magic Item
+Dragon Slayer,Dragonslayer,Magic Item
+Featheredged Sword,Featheredged Sword,Magic Item
+Flaming Sword,Flaming Sword,Magic Item
+Frost Brand,Frostfire or Frostlight,Magic Item
+Holy Avenger,Holy Avenger,Magic Item
+Sword of Life Stealing,Sword of Life Thieving,Magic Item
+Luck Blade,Luck Blade,Magic Item
+Nine Lives Stealer,Nine Lives Thief,Magic Item
+Sword of Puncturing,Sword of Puncturing,Magic Item
+Sylvan Blade,Sylvan Blade,Magic Item
+Vorpal Sword,Vorpal Sword,Magic Item
+Sword of Wounding,Sword of Stinging,Magic Item
+Bane Weapon,"Bane Weapon, formatted as X Bane (i.e. dragonbane, giantbane)",Magic Item
+Club of Dagda,Club of Dagda,Magic Item
+Dagger of Venom,Dagger of Envenomation,Magic Item
+Dwarven Thrower,Dwarven Hammer of Throwing,Magic Item
+Featheredged Axe,Featheredged Axe,Magic Item
+Javelin of Lightning,Lightning Javelin,Magic Item
+Mace (Hammer) of Disruption,Mace (Hammer) of Turning,Magic Item
+Mace of Smiting,Mace of Banishment,Magic Item
+Mace of Terror,Mace of Scourge,Magic Item
+Oathbow,Oathkeeper Bow,Magic Item
+Slaying Arrow,Arrow of Slaying (formatted as Arrow of XYZ Slaying),Magic Item
+Sleep Arrow,Sleep Arrow,Magic Item
+Sylvan Weapon,Sylvan Weapon,Magic Item
+Trident of Fish Command,Trident of Sea Creature Command,Magic Item
+Weapon of Wounding,Weapon of Stinging,Magic Item
+Armor of Cold Resistance,Armor of Cold Resistance,Magic Item
+Armor of Etherealness,Armor of the Ethereal Knight,Magic Item
+Armor of Fire Resistance,Armor of Fire Resistance,Magic Item
+Armor of Kavacha,Armor of Kavacha,Magic Item
+Armor of Spell Resistance,Armor of Spell Resistance,Magic Item
+Animated Shield,Animated Shield,Magic Item
+Blinding Shield,Blinding Shield,Magic Item
+Dwarven Plate,Dwarven Fullplate,Magic Item
+Elven Chain,Elven Chainmail,Magic Item
+Lion's Shield,Shield of the Roaring Lion,Magic Item
+Plate Armor of the Deep,Plate Armor of the Diver,Magic Item
+Shield of Bashing,Shield of Attack,Magic Item
+Shield of El Cid,Shield of El Cid,Magic Item
+Amulet of Health,Amulet of Superior Health,Magic Item
+Amulet of Mighty Fists,Amulet of Mighty Blows,Magic Item
+Amulet of Natural Armor,Amulet of Bestial Armor,Magic Item
+Amulet of the Planes,Amulet of Planar Travel,Magic Item
+Bag of Holding,Dimensional Pouch,Magic Item
+Bag of Tricks,Bag of Beasts,Magic Item
+(Gray Colored Bag),(Gray Colored Bag),Magic Item
+(Rust Colored Bag),(Rust Colored Bag),Magic Item
+(Tan Colored Bag),(Tan Colored Bag),Magic Item
+Belt of Giant Strength,"Harness of Giant Strength or Belt of the Giant (Hill, Frost, etc)",Magic Item
+Blessed Book,Book of Budget-Conscious Spellcraft,Magic Item
+"Boat, Folding","Boat, Foldable",Magic Item
+Boots of Elvenkind,Boots of the Elves,Magic Item
+Boots of Levitation,Boots of Levitation,Magic Item
+Boots of Speed,Boots of Flight of Foot,Magic Item
+Boots of Striding and Springing,Boots of Striding and Leaping,Magic Item
+Boots of Teleportation,Boots of Teleporting,Magic Item
+Boots of the Winterlands,Boots of the Winter Dark,Magic Item
+Bowl of Commanding Water Elementals,Bowl of Elemental Water Command,Magic Item
+Bracers of Armor,Bracers of Armor,Magic Item
+Bracers of Deflection,Bracers of Deflecting,Magic Item
+Brazier of Commanding Fire Elementals,Brazier of Elemental Fire Command,Magic Item
+Brooch of Shielding,Brooch of Shielding,Magic Item
+Broom of Flying,Flying Broomstick,Magic Item
+Candle of Invocation,Priest's Candle,Magic Item
+Cape of the Mountebank,Trickster's Cape,Magic Item
+Carpet of Flying,Flying Carpet,Magic Item
+Censer of Commanding Air Elementals,Censer of Elemental Air Command,Magic Item
+Chime of Interruption,Chime of Discordance,Magic Item
+Chime of Opening,Opening Chime OR Bell of Opening,Magic Item
+Circlet of Persuasion,Circlet of Charisma,Magic Item
+Cloak of Arachnida,Cloak of the Spider,Magic Item
+Cloak of the Bat,Cloak of the Bat,Magic Item
+Cloak of Charisma,Cloak of Charisma,Magic Item
+Cloak of Displacement,Cloak of Distortion,Magic Item
+Cloak of Elvenkind,Cloak of the Elves,Magic Item
+Cloak of Etherealness,Cloak of Ethereal Travel,Magic Item
+Cloak of the Manta Ray,Cloak of the Ray,Magic Item
+Cloak of Resistance,Cloak of Resistance,Magic Item
+"Coin, Sampo",Sampo Coin,Magic Item
+Crystal Ball,Crystal ball,Magic Item
+Cube of Force,Cube of Force,Magic Item
+Cube of Frost Resistance,Cube of Cold Resistance,Magic Item
+Cubic Gate,Carnelian Cube,Magic Item
+Decanter of Endless Water,Decanter of Unending Water,Magic Item
+Dragon's Teeth,Dragon's Teeth,Magic Item
+Drums of Panic,Drums of Doom,Magic Item
+Dust of Appearance,Dust of Appearing or Dust of Illumination,Magic Item
+Dust of Disappearance,Dust of Vanishing or Dust of Evanesce,Magic Item
+Dust of Illusion,Dust of Seeming,Magic Item
+Efficient Quiver,Efficient Quiver,Magic Item
+Efreeti Bottle,Magic Lamp,Magic Item
+Elemental Gem,Gem of Elemental Conjuring,Magic Item
+Eversmoking Bottle,Eversmoking Lamp,Magic Item
+Eyes of Doom,Lenses of Doom OR REMOVE,Magic Item
+Eyes of the Eagle,Eagle Eyes,Magic Item
+Feather Token,Feathers of Power,Magic Item
+(Anchor),(Pelican),Magic Item
+(Bird),(Pigeon),Magic Item
+(Fan),(Roc),Magic Item
+(Swan Boat),(Swan),Magic Item
+(Tree),(Robin),Magic Item
+(Whip),(Lyrebird),Magic Item
+Figurines of Wondrous Power,Figurines of Animal Awakening,Magic Item
+(Bronze Griffon),(Electrum Griffon),Magic Item
+(Ebony Fly),(Jet Fly),Magic Item
+(Golden Lions),(Jade Tigers),Magic Item
+"(Ivory Goats - Travelling, Travail, Terror)","(Pewter Goats - Riding, War, Fear)",Magic Item
+(Marble Elephant),(Ivory Elephant),Magic Item
+(Obsidian Steed),(Bloodstone Steed),Magic Item
+(Onyx Dog),(Lapis Hound),Magic Item
+(Serpentine Owl),(Golden Owl),Magic Item
+(Silver Raven),(Brass Raven),Magic Item
+Fruit of the Lotus Tree,Fruit of the Lotus Tree,Magic Item
+Gauntlets of Ogre Power,Gauntlets of Ogrish Might,Magic Item
+Gem of Brightness,Gem of Light,Magic Item
+Gem of Seeing,Gem of Truth,Magic Item
+Gloves of Dexterity,Gloves of Dexterity,Magic Item
+Gloves of Swimming and Climbing,Gloves of the Wildman,Magic Item
+Handy Haversack,Dimensional Backpack,Magic Item
+Harp of Charming,Harp of Ensorcellment,Magic Item
+Hat of Disguise,Hat of False Appearance,Magic Item
+Helm of Brilliance,Helm of Glimmering,Magic Item
+Helm of Comprehend Languages and Read Magic,Helm of Comprehension,Magic Item
+Helm of Telepathy,Helm of Thoughts OR Helm of the Mindreader,Magic Item
+Helm of Teleportation,Helm of Teleporting,Magic Item
+Helm of Underwater Action,Helm of the Diver,Magic Item
+Horn of Blasting,Trumpet of Blasting,Magic Item
+Horn of Fog,Horn of Mist ,Magic Item
+Horn of Goodness/Evil,Trumpet of Good and Evil,Magic Item
+Horn of the Merfolk,Horn of the Merfolk,Magic Item
+Horn of Valhalla,Horn of Valhalla,Magic Item
+Horseshoes of Speed,Horseshoes of Swiftness,Magic Item
+Horseshoes of the Zephyr,Horseshoes of the Windrunner,Magic Item
+Instant Fortress,Instant Fortress,Magic Item
+Ioun Stones,Ioun Stones,Magic Item
+Iron Bands of Binding,Iron Bands of Binding,Magic Item
+Iron Flask,Iron Phial,Magic Item
+Lady of the Lake's Gift,Lady of the Lake's Gift,Magic Item
+Lyre of Building,Lyre of Creation,Magic Item
+Mantle of Babr-E Bayan,Mantle of Babr-E Bayan,Magic Item
+Mantle of Spell Resistance,Mantle of Superior Spell Resistance,Magic Item
+Manual of Bodily Health,Manual of Bodily Wellness,Magic Item
+Manual of Gainful Exercise,Manual of Gainful Strength,Magic Item
+Manual of Quickness of Action,Manual of Dexterous Action,Magic Item
+Mattock of the Titans,Mattock of the Ancient Ones,Magic Item
+Maul of the Titans,Maul of the Ancient Ones,Magic Item
+Mead of Stuttungr,Mead of Stuttungr,Magic Item
+Medallion of Thoughts,Medallion of ESP,Magic Item
+Mirror of Life Trapping,Mirror of Soul Trapping,Magic Item
+Mirror of Mental Prowess,Mirror of Revealing,Magic Item
+Mirror of Opposition,Mirror of Dark Reflection,Magic Item
+Necklace of Adaptation,Necklace of Fresh Air,Magic Item
+Necklace of Fireballs,Necklace of Fiery Beads,Magic Item
+Orb of Storms,Orb of Atmospheric Control,Magic Item
+Pearl of Power,Pearl of Recall,Magic Item
+Pearl of the Sirines,Pearl of the Sea Kings,Magic Item
+Periapt of Health,Jewel of Health,Magic Item
+Periapt of Proof Against Poison,Jewel of Proof Against Poison,Magic Item
+Periapt of Wisdom,Jewel of Wisdom,Magic Item
+Periapt of Wound Closure,Jewel of Healing,Magic Item
+Phylactery of Faithfulness,Phylactery of the Devout,Magic Item
+Phylactery of Undead Turning,Phylactery of Turning,Magic Item
+Pipes of the Sewers,Piper's Pipes,Magic Item
+Portable Hole,Portable Hole,Magic Item
+Restorative Ointment,Restorative Salve ,Magic Item
+Ring Gates,Transporter Gates,Magic Item
+Robe of the Archmagi,Robe of the High Magus,Magic Item
+Robe of Blending,Robe of Camouflage,Magic Item
+Robe of Eyes,Robe of Oculos,Magic Item
+Robe of Scintillating Colors,Robe of Many Colors,Magic Item
+Robe of Useful Items,Robe of Many Items,Magic Item
+Rope of Climbing,Rogue's Rope,Magic Item
+Rope of Entanglement,Rope of Entanglement,Magic Item
+Scabbard of Sharpness,Scabbard of Keen Edges,Magic Item
+Scarab of Protection,Scarab of Protection,Magic Item
+Seven-League Boots,Seven-League boots,Magic Item
+Shrouds of Disintegration,Cerements of Disintegration,Magic Item
+Slippers of Spider Climbing,Slippers of Spider Walking,Magic Item
+Stone of Alarm,Cube of Alarm,Magic Item
+Stone of Controlling Earth Elementals,Stone of Elemental Earth Command,Magic Item
+Stone of Good Luck (Luckstone),Stone of Good Fortune,Magic Item
+Stone Horse,Stone Horse,Magic Item
+Strand of Prayer Beads,String of Prayer Beads,Magic Item
+(Bead of Blessing),(Bead of Bestowing),Magic Item
+(Bead of Healing),(Bead of Restoration),Magic Item
+(Bead of Karma),(Bead of Riteousness),Magic Item
+(Bead of Smiting),(Bead of Smiting),Magic Item
+(Bead of Summons),(Bead of Invocation),Magic Item
+(Bead of Wind Walking),(Bead of Wind Travel),Magic Item
+Thunderstones,Greatstones,Magic Item
+Tome of Clear Thought,Tome of Superior Intellect,Magic Item
+Tome of Leadership and Influence,Tome of Magnetic Charisma,Magic Item
+Tome of Raudskinna,Tome of Raudskinna,Magic Item
+Tome of Understanding,Tome of Sagacious Wisdom,Magic Item
+Well of Many Worlds,Portable Portal,Magic Item
+Wind Fan,Wind-Master's Fan,Magic Item
+Wings of Flying,Wings of Flight ,Magic Item
+Yata-No Kagami,Yata-No Kagami,Magic Item
+Ring of Animal Friendship,Ring of Animal Loyalty,Magic Item
+Ring of Blinking,Blinking Band,Magic Item
+Ring of Chameleon Power,Ring of Disguise,Magic Item
+Ring of Climbing,Ring of the Climber,Magic Item
+Ring of Counterspells,Ring of Spell Negation,Magic Item
+Ring of Detect Alignment,Ring of Detect Disposition,Magic Item
+Ring of Djinni Calling,Ring of the Djinni Master,Magic Item
+Ring of X Elemental Command,"Ring of Elemental X Command (Air, earth, fire, water)",Magic Item
+Ring of Energy Resistance,Ring of Resistance,Magic Item
+Ring of Enfeeblement,Ring of Weakening,Magic Item
+Ring of Evasion,Ring of Dodging,Magic Item
+Ring of Feather Falling,Ring of Feather-Lightness,Magic Item
+Ring of Flying,Ring of Flying,Magic Item
+Ring of Force Shield,Ring of Spectral Shielding,Magic Item
+Ring of Freedom of Movement,Ring of Free Motion,Magic Item
+Ring of Friend Shield,Ring of Friend Shielding,Magic Item
+Gyges Ring,Gyges Ring,Magic Item
+Ring of Invisibility,Ring of Invisibility,Magic Item
+Ring of Jumping,Ring of Mighty Leaping,Magic Item
+Lancelot's Ring,Lancelot's Ring,Magic Item
+Ring of Mind Shielding,Ring of Opaque Thought,Magic Item
+Ring of Protection,Ring of Armor,Magic Item
+Ring of the Ram,Ring of Ramming,Magic Item
+Ring of Regeneration,Ring of Regeneration,Magic Item
+Ring of Shooting Stars,Ring of Starlight,Magic Item
+Ring of Spell Storing,Ring of Spell Keeping,Magic Item
+Ring of Spell Turning,Ring of Spell Deflection,Magic Item
+Ring of Sustenance,Ring of Nourishment,Magic Item
+Ring of Swimming,Ring of Swimming,Magic Item
+Ring of Telekinesis,Ring of Telekinetic Power,Magic Item
+Ring of Three Wishes,Ring of Granting,Magic Item
+Ring of Water Walking,Ring of Water Striding,Magic Item
+Ring of Wizardry,Ring of Eldritch Wizardry,Magic Item
+Ring of X-Ray Vision,Ring of X-Ray Vision,Magic Item
+Rod of Absorption,Rod of Spell Stealing,Magic Item
+Rod of Cancellation,Rod of Disenchantment,Magic Item
+Rod of Lordly Might,Rod of Supreme Usefulness,Magic Item
+Rod of Negation,Rod of Deactivation,Magic Item
+Rod of the Python,Rod of the Serpent,Magic Item
+Rod of Rulership,Rod of Regality,Magic Item
+Rod of Thunder and Lightning,Rod of Thunderstorms,Magic Item
+Rod of Withering,Rod of Atrophy,Magic Item
+Rod of Wonder,Rod of Chaos,Magic Item
+Staff of Abjuration,Staff of Abjuration,Magic Item
+Staff of Charming,Staff of Charm,Magic Item
+Staff of Conjuration,Staff of Conjuration,Magic Item
+Staff of Evocation,Staff of Evocation,Magic Item
+Staff of Fire,Staff of Pyromancy,Magic Item
+Staff of Frost,Staff of the Winter Dark / Staff of Cryomancy,Magic Item
+Staff of Healing,Staff of Healing,Magic Item
+Staff of Power,Staff of Power,Magic Item
+Staff of Resurrection,Staff of Resurrection,Magic Item
+Staff of Striking,Staff of Striking Blows,Magic Item
+Staff of the Woodlands,Staff of the Druids,Magic Item
+Wand of Illusion,Wand of Illusion,Magic Item
+Amulet of Inescapable Location,Amulet of Inescapable Observation,Magic Item
+Armor of Rage,Armor of Hate,Magic Item
+Bag of Devouring,Devouring Dimensional Pouch,Magic Item
+Boots of Dancing,Boots of Uncontrollable Dance,Magic Item
+Bracers of Defenselessness,Bracers of Vulnerability,Magic Item
+Flask of Curses,Bottle of Doom,Magic Item
+Gauntlets of Fumbling,Gauntlets of Clumsiness,Magic Item
+Helm of Opposite Aligmnent,Helmet of Opposite Disposition,Magic Item
+Incense of Obsession,Incense of Magical Obsession,Magic Item
+Mace of Blood,Mace of Gore,Magic Item
+Medallion of Thought Projection,Medallion of the Open Mind,Magic Item
+Necklace of Strangulation,Necklace of Asphyxiation,Magic Item
+Net of Snaring,Net of Return,Magic Item
+Periapt of Foul Rotting,Jewel of Foul Rotting,Magic Item
+Potion of Poison,Potion of Poison,Magic Item
+Robe of Powerlessness,Robe of Enfeeblement,Magic Item
+Robe of Vermin,Robe of Insects,Magic Item
+Ring of Clumsiness,Ring of Fumbling,Magic Item
+Scarab of Death,Scarab of Burrowing,Magic Item
+"Spear, Cursed Backbiter","Spear, Backbiting",Magic Item
+Stone of Weight (Loadstone),Stone of Burden,Magic Item
+"Sword, Cursed","Sword, Cursed",Magic Item
+"Sword, Berserking","Sword, Berserking",Magic Item
+Vacuous Grimoire,Vacuous Tome,Magic Item
+Zane's Ire,Zane's Ire,Magic Item
+Aegis,Aegis,Magic Item
+Andvaranaut,Andvaranaut,Magic Item
+Angurvadal,Angurvadal,Magic Item
+Book of Infinite Spells,Infinite Spellbook,Magic Item
+Caduceus,Caduceus,Magic Item
+Carnwennan,Carnwennan,Magic Item
+Chentu,Chentu,Magic Item
+The Cowl of the Black Fox,The Cowl of the Black Fox,Magic Item
+Deck of Many Things,XX,Magic Item
+Excalibur,Excalibur,Magic Item
+The Fail-Not Bow of Tristan,The Fail-Not Bow of Tristan,Magic Item
+Hammer of Thunderbolts,Hammer of Thunderbolts,Magic Item
+The Hand of Glory,The Hand Which Knocks,Magic Item
+Jarrod's Blade,Jarrod's Blade,Magic Item
+Kladenets,Kladenets,Magic Item
+The Lantern of Diogenes,The Lantern of Diogenes,Magic Item
+The Mace of the Dove,The Mace of the Dove,Magic Item
+The Mantle of Lorenzo,The Mantle of Lorenzo,Magic Item
+Mjolnir,Mjolnir,Magic Item
+Moaning Diamond,Diamond of Grouzal OR Diamond of Agony,Magic Item
+The Orbs of Dragonkind,Orbs of the Dragon OR Orbs of the Dragon Masters,Magic Item
+Philosopher's Stone,Philosopher's Stone,Magic Item
+The Ruyi Jingu Bang,The Ruyi Jingu Bang,Magic Item
+The Saint's Mace,The Saint's Mace,Magic Item
+The Shadowstaff,Darkenstaff OR Staff of Penumbra,Magic Item
+Sharanga,Sharanga,Magic Item
+Shaield of Maccabee,Shield of Maccabee,Magic Item
+The Shield of the Sun,The Shield of Solar Incandescence,Magic Item
+Sphere of Annihiliation,Sphere of Obliteration,Magic Item
+Staff of the Magi,Staff of the Magus,Magic Item
+The Sword of Conaire Mor,The Sword of Conaire Mor,Magic Item
+The Sword of Peleus,The Sword of Peleus,Magic Item
+Talisman of Pure Good,Talisman of Unwavering Good,Magic Item
+Talisman of the Sphere,Talisman of the Obliterator ,Magic Item
+Talisman of Ultimate Evil,Talisman of Unyielding Evil,Magic Item
+Tarnhelm,Tarnhelm,Magic Item
+Tome of the Unclean,Tome of the Unclean,Magic Item
+Tyrfing,Tyrfing,Magic Item
+Uchide No Kozuchi,Uchide No Kozuchi,Magic Item
+Varunastra,Varunastra,Magic Item
+Amulet of Proof Against Detection and Location,Amulet of Warding Against Detection,Magic Item
+Incense of Meditation,Incense of Tranquility,Magic Item
+Boots of Climbing,Rogue's Boots,Magic Item
+Bracers of Defense,Magic Bracers,Magic Item
+Cloak of Protection,Cloak of Armor,Magic Item
+Buckler of Defense,Buckler of Defense,Magic Item
+Flametongue,XX,Magic Item
+Hag Eye,Hag's Eye,Magic Item
+Sunlight Vulnerablity ,Weakness to Sunlight,Monster Ability
+Amulet of Mighty Fists,Amulet of Mighty Fists,Reference Item (No Change)
+Amulet of Natural Armor,Amulet of Natural Armor,Reference Item (No Change)
+Amulet of the Planes,Amulet of the Planes,Reference Item (No Change)
+Bag of Holding,Bag of Holding,Reference Item (No Change)
+Bag of Tricks,Bag of Tricks,Reference Item (No Change)
+Belt of Giant Strength,Belt of Giant Strength,Reference Item (No Change)
+Blessed Book,Blessed Book,Reference Item (No Change)
+"Boat, Folding","Boat, Folding",Reference Item (No Change)
+Boots of Elvenkind,Boots of Elvenkind,Reference Item (No Change)
+Boots of Levitation,Boots of Levitation,Reference Item (No Change)
+Boots of Speed,Boots of Speed,Reference Item (No Change)
+Boots of Striding and Springing,Boots of Striding and Springing,Reference Item (No Change)
+Boots of Teleportation,Boots of Teleportation,Reference Item (No Change)
+Boots of the Winterlands,Boots of the Winterlands,Reference Item (No Change)
+Bowl of Commanding Water Elementals,Bowl of Commanding Water Elementals,Reference Item (No Change)
+Bracers of Armor,Bracers of Armor,Reference Item (No Change)
+Bracers of Deflection,Bracers of Deflection,Reference Item (No Change)
+Brazier of Commanding Fire Elementals,Brazier of Commanding Fire Elementals,Reference Item (No Change)
+Brooch of Shielding,Brooch of Shielding,Reference Item (No Change)
+Broom of Flying,Broom of Flying,Reference Item (No Change)
+Candle of Invocation,Candle of Invocation,Reference Item (No Change)
+Cape of the Mountebank,Cape of the Mountebank,Reference Item (No Change)
+Carpet of Flying,Carpet of Flying,Reference Item (No Change)
+Censer of Commanding Air Elementals,Censer of Commanding Air Elementals,Reference Item (No Change)
+Chime of Interruption,Chime of Interruption,Reference Item (No Change)
+Chime of Opening,Chime of Opening,Reference Item (No Change)
+Circlet of Persuasion,Circlet of Persuasion,Reference Item (No Change)
+Cloak of Arachnida,Cloak of Arachnida,Reference Item (No Change)
+Cloak of the Bat,Cloak of the Bat,Reference Item (No Change)
+Cloak of Charisma,Cloak of Charisma,Reference Item (No Change)
+Cloak of Displacement,Cloak of Displacement,Reference Item (No Change)
+Cloak of Elvenkind,Cloak of Elvenkind,Reference Item (No Change)
+Cloak of Etherealness,Cloak of Etherealness,Reference Item (No Change)
+Cloak of the Manta Ray,Cloak of the Manta Ray,Reference Item (No Change)
+Cloak of Resistance,Cloak of Resistance,Reference Item (No Change)
+Crystal Ball,Crystal Ball,Reference Item (No Change)
+Cube of Force,Cube of Force,Reference Item (No Change)
+Cube of Frost Resistance,Cube of Frost Resistance,Reference Item (No Change)
+Cubic Gate,Cubic Gate,Reference Item (No Change)
+Decanter of Endless Water,Decanter of Endless Water,Reference Item (No Change)
+Drums of Panic,Drums of Panic,Reference Item (No Change)
+Dust of Appearance,Dust of Appearance,Reference Item (No Change)
+Dust of Disappearance,Dust of Disappearance,Reference Item (No Change)
+Dust of Illusion,Dust of Illusion,Reference Item (No Change)
+Efficient Quiver,Efficient Quiver,Reference Item (No Change)
+Efreeti Bottle,Efreeti Bottle,Reference Item (No Change)
+Elemental Gem,Elemental Gem,Reference Item (No Change)
+Eversmoking Bottle,Eversmoking Bottle,Reference Item (No Change)
+Eyes of the Eagle,Eyes of the Eagle,Reference Item (No Change)
+Feather Token,Feather Token,Reference Item (No Change)
+Figurines of Wondrous Power,Figurines of Wondrous Power,Reference Item (No Change)
+Gauntlets of Ogre Power,Gauntlets of Ogre Power,Reference Item (No Change)
+Gem of Brightness,Gem of Brightness,Reference Item (No Change)
+Gem of Seeing,Gem of Seeing,Reference Item (No Change)
+Gloves of Dexterity,Gloves of Dexterity,Reference Item (No Change)
+Gloves of Swimming and Climbing,Gloves of Swimming and Climbing,Reference Item (No Change)
+Handy Haversack,Handy Haversack,Reference Item (No Change)
+Harp of Charming,Harp of Charming,Reference Item (No Change)
+Hat of Disguise,Hat of Disguise,Reference Item (No Change)
+Helm of Brilliance,Helm of Brilliance,Reference Item (No Change)
+Helm of Comprehend Languages and Read Magic,Helm of Comprehend Languages and Read Magic,Reference Item (No Change)
+Helm of Telepathy,Helm of Telepathy,Reference Item (No Change)
+Helm of Teleportation,Helm of Teleportation,Reference Item (No Change)
+Helm of Underwater Action,Helm of Underwater Action,Reference Item (No Change)
+Horn of Blasting,Horn of Blasting,Reference Item (No Change)
+Horn of Fog,Horn of Fog,Reference Item (No Change)
+Horn of Goodness/Evil,Horn of Goodness/Evil,Reference Item (No Change)
+Horn of the Merfolk,Horn of the Merfolk,Reference Item (No Change)
+Horn of Valhalla,Horn of Valhalla,Reference Item (No Change)
+Horseshoes of Speed,Horseshoes of Speed,Reference Item (No Change)
+Horseshoes of the Zephyr,Horseshoes of the Zephyr,Reference Item (No Change)
+Instant Fortress,Instant Fortress,Reference Item (No Change)
+Ioun Stones,Ioun Stones,Reference Item (No Change)
+Iron Bands of Binding,Iron Bands of Binding,Reference Item (No Change)
+Iron Flask,Iron Flask,Reference Item (No Change)
+Lyre of Building,Lyre of Building,Reference Item (No Change)
+Mantle of Spell Resistance,Mantle of Spell Resistance,Reference Item (No Change)
+Manual of Bodily Health,Manual of Bodily Health,Reference Item (No Change)
+Manual of Gainful Exercise,Manual of Gainful Exercise,Reference Item (No Change)
+Manual of Quickness of Action,Manual of Quickness of Action,Reference Item (No Change)
+Mattock of the Titans,Mattock of the Titans,Reference Item (No Change)
+Maul of the Titans,Maul of the Titans,Reference Item (No Change)
+Medallion of Thoughts,Medallion of Thoughts,Reference Item (No Change)
+Mirror of Life Trapping,Mirror of Life Trapping,Reference Item (No Change)
+Mirror of Mental Prowess,Mirror of Mental Prowess,Reference Item (No Change)
+Mirror of Opposition,Mirror of Opposition,Reference Item (No Change)
+Necklace of Adaptation,Necklace of Adaptation,Reference Item (No Change)
+Necklace of Fireballs,Necklace of Fireballs,Reference Item (No Change)
+Orb of Storms,Orb of Storms,Reference Item (No Change)
+Pearl of Power,Pearl of Power,Reference Item (No Change)
+Pearl of the Sirines,Pearl of the Sirines,Reference Item (No Change)
+Periapt of Health,Periapt of Health,Reference Item (No Change)
+Periapt of Proof Against Poison,Periapt of Proof Against Poison,Reference Item (No Change)
+Periapt of Wisdom,Periapt of Wisdom,Reference Item (No Change)
+Periapt of Wound Closure,Periapt of Wound Closure,Reference Item (No Change)
+Phylactery of Faithfulness,Phylactery of Faithfulness,Reference Item (No Change)
+Phylactery of Undead Turning,Phylactery of Undead Turning,Reference Item (No Change)
+Pipes of the Sewers,Pipes of the Sewers,Reference Item (No Change)
+Portable Hole,Portable Hole,Reference Item (No Change)
+Restorative Ointment,Restorative Ointment,Reference Item (No Change)
+Ring Gates,Ring Gates,Reference Item (No Change)
+Robe of the Archmagi,Robe of the Archmagi,Reference Item (No Change)
+Robe of Blending,Robe of Blending,Reference Item (No Change)
+Robe of Eyes,Robe of Eyes,Reference Item (No Change)
+Robe of Scintillating Colors,Robe of Scintillating Colors,Reference Item (No Change)
+Robe of Useful Items,Robe of Useful Items,Reference Item (No Change)
+Rope of Climbing,Rope of Climbing,Reference Item (No Change)
+Rope of Entanglement,Rope of Entanglement,Reference Item (No Change)
+Scabbard of Sharpness,Scabbard of Sharpness,Reference Item (No Change)
+Scarab of Protection,Scarab of Protection,Reference Item (No Change)
+Shrouds of Disintegration,Shrouds of Disintegration,Reference Item (No Change)
+Slippers of Spider Climbing,Slippers of Spider Climbing,Reference Item (No Change)
+Stone of Alarm,Stone of Alarm,Reference Item (No Change)
+Stone of Controlling Earth Elementals,Stone of Controlling Earth Elementals,Reference Item (No Change)
+Stone of Good Luck (Luckstone),Stone of Good Luck (Luckstone),Reference Item (No Change)
+Stone Horse,Stone Horse,Reference Item (No Change)
+Strand of Prayer Beads,Strand of Prayer Beads,Reference Item (No Change)
+Thunderstones,Thunderstones,Reference Item (No Change)
+Tome of Clear Thought,Tome of Clear Thought,Reference Item (No Change)
+Tome of Leadership and Influence,Tome of Leadership and Influence,Reference Item (No Change)
+Tome of Understanding,Tome of Understanding,Reference Item (No Change)
+Well of Many Worlds,Well of Many Worlds,Reference Item (No Change)
+Wind Fan,Wind Fan,Reference Item (No Change)
+Wings of Flying,Wings of Flying,Reference Item (No Change)

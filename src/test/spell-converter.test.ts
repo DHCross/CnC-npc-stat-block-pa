@@ -103,13 +103,16 @@ The light extends up to 20 feet in radius.`;
 
       expect(results).toHaveLength(1);
       const formatted = results[0].formatted;
-      expect(formatted).toContain('**Light**, Reforged Spell');
-      expect(formatted).toContain('*Description:* This rune sheds light.');
-      expect(formatted).toContain('*Effect:* The light extends up to 20 feet in radius.');
-      expect(formatted).toContain('Statistics:');
-      expect(formatted).toContain('- Casting Time: 1');
-      expect(formatted).toContain('- Range: see below');
-      expect(formatted).toContain('- Duration: 10 minutes per level');
+  expect(formatted).toContain('**LIGHT**, *Reforged Spell*');
+      expect(formatted).toContain('*[Add narrative opening: 1-3 sentences describing what the magic feels or looks like]*');
+      expect(formatted).toContain('This rune sheds light.');
+      expect(formatted).toContain('The light extends up to 20 feet in radius.');
+      expect(formatted).toContain('Casting this rune requires the caster\'s combat action for the round.');
+      expect(formatted).toContain('The rune\'s **range** is see below.');
+      expect(formatted).toContain('Its **duration** is 10 minutes per level.');
+      expect(formatted).toContain('There is **no saving throw**.');
+      expect(formatted).toContain('The rune is **unaffected by spell resistance**.');
+      expect(formatted).toContain('Its **components** are somatic.');
     });
   });
 

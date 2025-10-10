@@ -6,6 +6,7 @@ export type SpellStatistics = {
   duration?: string;
   savingThrow?: string;
   spellResistance?: string;
+  areaOfEffect?: string;
   components?: string;
 };
 
@@ -26,6 +27,7 @@ const FIELD_LABELS: Record<string, keyof SpellStatistics> = {
   D: 'duration',
   SV: 'savingThrow',
   SR: 'spellResistance',
+  AoE: 'areaOfEffect',
   Comp: 'components',
 };
 
@@ -57,7 +59,7 @@ const MEASUREMENT_REPLACEMENTS: Array<[RegExp, string]> = [
   [/\b\+\s+/g, '+'],
 ];
 
-const STATISTICS_ORDER: Array<[keyof SpellStatistics, string]> = [
+const REQUIRED_STATISTICS: Array<[keyof SpellStatistics, string]> = [
   ['castingTime', 'Casting Time'],
   ['range', 'Range'],
   ['duration', 'Duration'],
@@ -252,7 +254,7 @@ function extractStatistics(lines: string[]): { linesConsumed: number; statistics
     if (!trimmed && foundStats) {
       // Peek ahead to see if there's more stats
       const nextNonBlank = lines.slice(i + 1).find(l => l.trim());
-      if (nextNonBlank && /\b(CT|R|D|SV|SR|Comp)\b/.test(nextNonBlank)) {
+      if (nextNonBlank && /\b(CT|R|D|SV|SR|AoE|Comp)\b/.test(nextNonBlank)) {
         // More stats ahead, continue
         endIndex = i + 1;
         continue;
@@ -264,7 +266,7 @@ function extractStatistics(lines: string[]): { linesConsumed: number; statistics
     }
     
     // Check if this line contains stat fields
-    if (/\b(CT|R|D|SV|SR|Comp)\b/.test(trimmed)) {
+    if (/\b(CT|R|D|SV|SR|AoE|Comp)\b/.test(trimmed)) {
       collected.push(line);
       foundStats = true;
       endIndex = i + 1;
@@ -282,7 +284,7 @@ function extractStatistics(lines: string[]): { linesConsumed: number; statistics
   const combined = collected.join(' ').replace(/\s+/g, ' ').trim();
   if (combined) {
     const sentinel = '__STAT_SPLIT__';
-    const normalized = combined.replace(/(^|[^A-Za-z0-9])(CT|R|D|SV|SR|Comp)(?=[^A-Za-z]|$)/g, (match, prefix, label) => {
+    const normalized = combined.replace(/(^|[^A-Za-z0-9])(CT|R|D|SV|SR|AoE|Comp)(?=[^A-Za-z]|$)/g, (_match, prefix, label) => {
       return `${prefix}${sentinel}${label} `;
     });
 
@@ -292,7 +294,7 @@ function extractStatistics(lines: string[]): { linesConsumed: number; statistics
       .filter((part) => part.length > 0);
 
     parts.forEach((part) => {
-      const labelMatch = part.match(/^(CT|R|D|SV|SR|Comp)(.*)$/i);
+      const labelMatch = part.match(/^(CT|R|D|SV|SR|AoE|Comp)(.*)$/i);
       if (!labelMatch) return;
       const rawLabel = labelMatch[1];
       let rawValue = labelMatch[2].trim();
@@ -391,7 +393,7 @@ function normalizeSentence(paragraph: string): string {
 
 function buildWarnings(statistics: SpellStatistics, description: string, effect: string): string[] {
   const warnings: string[] = [];
-  STATISTICS_ORDER.forEach(([key, label]) => {
+  REQUIRED_STATISTICS.forEach(([key, label]) => {
     if (!statistics[key]) {
       warnings.push(`Missing ${label.toLowerCase()}`);
     }
@@ -413,6 +415,77 @@ function buildWarnings(statistics: SpellStatistics, description: string, effect:
   return warnings;
 }
 
+function generateMechanicsProse(statistics: SpellStatistics): string[] {
+  const noun = 'rune';
+  const sentences: string[] = [];
+
+  if (statistics.castingTime) {
+    const ct = ensureCompletePhrase('castingTime', statistics.castingTime);
+    if (isSingleRound(ct)) {
+      sentences.push(`**Casting** this ${noun} requires the caster's combat action for the round.`);
+    } else {
+      sentences.push(`**Casting** this ${noun} requires the caster to devote ${ct.toLowerCase()}.`);
+    }
+  }
+
+  if (statistics.range) {
+    const range = ensureCompletePhrase('range', statistics.range);
+    sentences.push(`The ${noun}'s **range** is ${range.toLowerCase()}.`);
+  }
+
+  if (statistics.duration) {
+    const duration = ensureCompletePhrase('duration', statistics.duration);
+    sentences.push(`Its **duration** is ${duration.toLowerCase()}.`);
+  }
+
+  if (statistics.areaOfEffect) {
+    const aoe = statistics.areaOfEffect.trim();
+    sentences.push(`The **area of effect** is ${aoe.toLowerCase()}.`);
+  }
+
+  if (statistics.savingThrow) {
+    const save = ensureCompletePhrase('savingThrow', statistics.savingThrow);
+    const lower = save.toLowerCase();
+    if (lower.startsWith('none;')) {
+        const [, remainder = ''] = save.split(/;/, 2);
+    const clause = remainder.trim().replace(/\.$/, '');
+    const suffix = clause ? `, though ${lowercaseFirstLetter(clause)}` : '';
+        sentences.push(`There is **no saving throw**${suffix}.`);
+    } else if (lower === 'none') {
+      sentences.push('There is **no saving throw**.');
+    } else if (lower === 'see below') {
+      sentences.push('The **saving throw** is determined as described above.');
+    } else {
+      sentences.push(`A **${save} saving throw** applies.`);
+    }
+  }
+
+  if (statistics.spellResistance) {
+    const sr = ensureCompletePhrase('spellResistance', statistics.spellResistance);
+    const lower = sr.toLowerCase();
+    if (lower === 'yes') {
+      sentences.push(`The ${noun} is **affected by spell resistance**.`);
+    } else if (lower === 'no' || lower === 'none') {
+      sentences.push(`The ${noun} is **unaffected by spell resistance**.`);
+    } else if (lower === 'see below') {
+      sentences.push('Spell resistance is handled as described above.');
+    } else {
+      sentences.push(`Spell resistance is **${sr.toLowerCase()}**.`);
+    }
+  }
+
+  if (statistics.components) {
+    const components = formatComponents(statistics.components);
+    sentences.push(`Its **components** are ${components.toLowerCase()}.`);
+  }
+
+  if (sentences.length === 0) {
+    return [];
+  }
+
+  return [sentences.join(' ')];
+}
+
 function formatResult(params: {
   canonicalName: string;
   metadata?: string;
@@ -422,30 +495,150 @@ function formatResult(params: {
 }): string {
   const { canonicalName, metadata, description, effect, statistics } = params;
   const lines: string[] = [];
-  lines.push(`**${canonicalName}**, Reforged Spell`);
+
+  // Title line: **SPELL NAME**, *Reforged Spell*
+  lines.push(`**${canonicalName.toUpperCase()}**, *Reforged Spell*`);
+
+  // Metadata line (if present): _metadata_
   if (metadata) {
     lines.push(`_${metadata}_`);
   }
+
+  // Placeholder for italicized narrative opening (to be added manually)
+  lines.push('');
+  lines.push('*[Add narrative opening: 1-3 sentences describing what the magic feels or looks like]*');
+
+  // Body paragraphs (regular prose) - combine into unified prose
+  const bodyParts: string[] = [];
   if (description) {
-    lines.push('');
-    lines.push(`*Description:* ${description}`);
+    bodyParts.push(description);
   }
   if (effect) {
-    lines.push('');
-    lines.push(`*Effect:* ${effect}`);
+    bodyParts.push(effect);
   }
-  const statsLines = STATISTICS_ORDER
-    .map(([key, label]) => {
-      const value = statistics[key];
-      return value ? `- ${label}: ${value}` : null;
-    })
-    .filter((line): line is string => Boolean(line));
-  if (statsLines.length > 0) {
+
+  if (bodyParts.length > 0) {
     lines.push('');
-    lines.push('Statistics:');
-    lines.push(...statsLines);
+    lines.push(bodyParts.join('\n\n'));
   }
+
+  // True PHB Continuous Prose Standard - mechanics as complete sentences
+  const mechanicsParagraphs = generateMechanicsProse(statistics);
+  if (mechanicsParagraphs.length > 0) {
+    lines.push('');
+    mechanicsParagraphs.forEach((paragraph) => {
+      lines.push(paragraph);
+    });
+  }
+
   return lines.join('\n');
+}
+
+function expandComponents(value: string): string {
+  return value
+    .replace(/\bS\b/g, 'Somatic')
+    .replace(/\bV\b/g, 'Verbal')
+    .replace(/\bM\b/g, 'Material')
+    .replace(/\bDF\b/g, 'Divine Focus')
+    .replace(/\bF\b/g, 'Focus')
+    .trim();
+}
+
+function formatComponents(value: string): string {
+  const expanded = expandComponents(value);
+  const tokens = expanded
+    .split(/[,/]+|\s+and\s+/i)
+    .map((token) => token.trim())
+    .filter((token) => token.length > 0);
+
+  if (tokens.length === 0) {
+    return expanded.toLowerCase();
+  }
+
+  if (tokens.length === 1) {
+    return tokens[0];
+  }
+
+  if (tokens.length === 2) {
+    return `${tokens[0]} and ${tokens[1]}`;
+  }
+
+  return `${tokens.slice(0, -1).join(', ')}, and ${tokens[tokens.length - 1]}`;
+}
+
+function capitalizeFirstLetter(value: string): string {
+  if (!value) return value;
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function lowercaseFirstLetter(value: string): string {
+  if (!value) return value;
+  return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
+function ensureCompletePhrase(key: keyof SpellStatistics, value: string): string {
+  // Ensure each statistic value is a complete phrase with proper units
+  let phrase = value.trim();
+
+  // Casting Time: ensure "1" becomes "1 round"
+  if (key === 'castingTime') {
+    // If it's just a number, add "round" or "rounds"
+    if (/^\d+$/.test(phrase)) {
+      const num = parseInt(phrase, 10);
+      phrase = num === 1 ? '1 round' : `${num} rounds`;
+    }
+    // Ensure it ends with a period when standalone
+    if (!phrase.endsWith('.')) {
+      phrase = phrase + '.';
+    }
+    // Remove trailing period (will be added by the formatter)
+    phrase = phrase.replace(/\.$/, '');
+  }
+
+  // Range: capitalize "see below"
+  if (key === 'range') {
+    phrase = capitalizeFirstLetter(phrase);
+  }
+
+  // Duration: ensure proper format
+  if (key === 'duration') {
+    phrase = capitalizeFirstLetter(phrase);
+  }
+
+  // Saving Throw: expand abbreviations and provide complete phrases
+  if (key === 'savingThrow') {
+    const lower = phrase.toLowerCase();
+    if (lower === 'none') {
+      phrase = 'None';
+    } else if (lower === 'see below') {
+      // Keep "see below" but note it should ideally be expanded in body text
+      phrase = 'See below';
+    } else {
+      // Capitalize first letter
+      phrase = capitalizeFirstLetter(phrase);
+    }
+  }
+
+  // Spell Resistance: capitalize yes/no/none
+  if (key === 'spellResistance') {
+    const lower = phrase.toLowerCase();
+    if (lower === 'yes') {
+      phrase = 'Yes';
+    } else if (lower === 'no') {
+      phrase = 'No';
+    } else if (lower === 'none') {
+      phrase = 'None';
+    } else {
+      phrase = capitalizeFirstLetter(phrase);
+    }
+  }
+
+  return phrase;
+}
+
+function isSingleRound(value: string): boolean {
+  const normalized = value.trim().toLowerCase();
+  return normalized === '1' || normalized === '1 round' || normalized === 'one round';
 }
 
 function titleCase(value: string): string {

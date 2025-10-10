@@ -2,6 +2,7 @@ import { SPELL_NAMES } from './spell-names';
 import { MONSTER_NAMES } from './monster-names';
 import { MAGIC_ITEM_NAMES } from './magic-item-names';
 import { setDictionaries } from '@/lib/npc-parser';
+export { getDictionaryCounts } from '@/lib/dictionary-counts';
 
 // Convert arrays to CSV format for the setDictionaries function
 function arrayToCsv(items: string[]): string {
@@ -19,13 +20,4 @@ export function initializePreloadedDictionaries(): void {
     itemsCsv,
     monstersCsv
   });
-}
-
-// Export the counts for display
-export function getDictionaryCounts() {
-  return {
-    spells: SPELL_NAMES.length,
-    items: MAGIC_ITEM_NAMES.length,
-    monsters: MONSTER_NAMES.length
-  };
 }
