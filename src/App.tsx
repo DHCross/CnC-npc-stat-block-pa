@@ -961,7 +961,7 @@ function App() {
                             <strong>Preview:</strong> The box below shows how your stat block will look when pasted into Word or other rich text editors.<br />
                             <span>
                               <b>Bold</b> is used for the NPC name only. <i>Italics</i> are used for magic items, spells, and books. Parentheses are always plain except for allowed italics.<br />
-                              To copy with formatting, use <b>Copy HTML</b> below. In Word, use <b>Paste Special &rarr; HTML</b> or <b>Paste</b> (Word will preserve bold/italics automatically).
+                              To copy with formatting, use <b>Copy for Word/Docs</b> below. In Word or Google Docs, a standard <b>Paste</b> (Ctrl/Cmd+V) will preserve bold and italics.
                             </span>
                           </div>
 
@@ -999,7 +999,7 @@ function App() {
                               className="flex items-center gap-2 flex-1 min-w-[100px]"
                             >
                               <FileHtml size={16} />
-                              Copy HTML
+                              Word/Docs
                             </Button>
                             <Button
                               variant="outline"
