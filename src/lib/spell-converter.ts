@@ -79,6 +79,16 @@ const REQUIRED_STATISTICS: Array<[keyof SpellStatistics, string]> = [
   ['components', 'Components'],
 ];
 
+const NEVER_OUTPUT = /see\s*below/i;
+
+function sanitizeStatValue(value?: string | null): string | null {
+  if (!value) return null;
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  if (NEVER_OUTPUT.test(trimmed)) return null;
+  return trimmed;
+}
+
 export function convertLegacySpellText(text: string): SpellConversionResult[] {
   const sanitized = sanitizeInput(text);
   const blocks = splitIntoSpellBlocks(sanitized);
@@ -262,15 +272,14 @@ function buildSpellFormatMetadata(params: { canonicalName: string; rawMetadata?:
     if (potentialRuneKey) {
       meta.runeKey = potentialRuneKey;
     }
+
+    if (/^\s*(arcane|cleric|druid|illusionist|paladin|wizard|spell|invocation|rune)\b/i.test(potentialRuneKey)) {
+      meta.descriptor = titleCase(potentialRuneKey);
+    }
   }
 
   const isRune = Boolean(rawMetadata && /roan\s+ot/i.test(rawMetadata));
-  if (isRune) {
-    meta.descriptor = meta.descriptor ?? 'Reforged Spell';
-    meta.noun = 'rune';
-  } else {
-    meta.noun = 'spell';
-  }
+  meta.noun = isRune ? 'rune' : 'spell';
 
   if (!meta.descriptor && !classLevel) {
     // Default descriptor for generalized conversions can remain undefined
@@ -377,9 +386,11 @@ function extractStatistics(lines: string[]): { linesConsumed: number; statistics
       let rawValue = labelMatch[2].trim();
       rawValue = rawValue.replace(/^[:\-–—=]+/, '').trim();
       if (!rawValue) return;
-      const normalizedValue = normalizeMeasurement(rawValue);
+      const normalizedValue = sanitizeStatValue(normalizeMeasurement(rawValue));
       const key = FIELD_LABELS[rawLabel as keyof typeof FIELD_LABELS];
-      stats[key] = normalizedValue;
+      if (normalizedValue) {
+        stats[key] = normalizedValue;
+      }
     });
   }
 
@@ -445,6 +456,62 @@ function normalizeMeasurement(value: string): string {
   return normalized;
 }
 
+type ResolvedStatistics = SpellStatistics & { notes?: string[] };
+
+function resolveStatsFromBody(stats: SpellStatistics, body: string): ResolvedStatistics {
+  const notes: string[] = [];
+  const resolved: ResolvedStatistics = { ...stats, notes };
+  const normalizedBody = body.replace(/\u2019/g, "'").replace(/\s+/g, ' ').trim();
+
+  if (!sanitizeStatValue(resolved.range)) {
+    const rangeFeetMatch = normalizedBody.match(/\brange\s+(?:is|of|extends to|extends up to|equals)?\s*(?:up to\s*)?(\d+)\s*(foot|feet)\b/i);
+    if (rangeFeetMatch) {
+      resolved.range = `${rangeFeetMatch[1]} feet`;
+    } else if (/\brange\s+(?:is\s+)?touch\b/i.test(normalizedBody)) {
+      resolved.range = 'touch';
+    } else if (/\brange\s+(?:is\s+)?personal\b/i.test(normalizedBody)) {
+      resolved.range = 'personal';
+    } else if (/\brange\b.*\bper level\b/i.test(normalizedBody)) {
+      const perLevelMatch = normalizedBody.match(/\brange\b.*?(\d+)\s*(?:foot|feet)\s*per\s*level\b/i);
+      if (perLevelMatch) {
+        resolved.range = `${perLevelMatch[1]} feet per level`;
+      }
+    } else if (/\bcentered on (?:the|this) inscription\b/i.test(normalizedBody)) {
+      resolved.range = 'varies (centered on the inscription)';
+    }
+  }
+
+  if (!sanitizeStatValue(resolved.duration)) {
+    const perLevel = normalizedBody.match(/\b(\d+)\s*(round|minute|turn|hour)s?\s+per\s+level\b/i);
+    const fixed = normalizedBody.match(/\b(\d+)\s*(round|minute|turn|hour)s?\b(?!\s*per level)/i);
+    if (perLevel) {
+      const count = perLevel[1];
+      const unit = perLevel[2];
+      resolved.duration = `${count} ${unit}${count === '1' ? '' : 's'} per level`;
+    } else if (fixed) {
+      const count = fixed[1];
+      const unit = fixed[2];
+      resolved.duration = `${count} ${unit}${count === '1' ? '' : 's'}`;
+    } else if (/\bpermanent\b/i.test(normalizedBody)) {
+      resolved.duration = 'permanent';
+    } else if (/\bimmediate\b/i.test(normalizedBody)) {
+      resolved.duration = 'immediate';
+    } else if (/\bremains until\b/i.test(normalizedBody)) {
+      resolved.duration = 'until dismissed or dispelled';
+    }
+  }
+
+  if (!sanitizeStatValue(resolved.castingTime)) {
+    if (/\brequires two rounds\b/i.test(normalizedBody) || /\bto devote 2 rounds\b/i.test(normalizedBody)) {
+      resolved.castingTime = 'two rounds of concentration';
+    } else if (/\brequires the caster['’]s combat action\b/i.test(normalizedBody)) {
+      resolved.castingTime = "the caster's combat action for the round";
+    }
+  }
+
+  return resolved;
+}
+
 function extractNarrative(body: string): { description: string; effect: string } {
   const paragraphs = body
     .split(/\n{2,}/)
@@ -493,58 +560,30 @@ function buildWarnings(statistics: SpellStatistics, description: string, effect:
   return warnings;
 }
 
-function generateMechanicsProse(statistics: SpellStatistics, noun = 'spell'): string[] {
+function generateMechanicsProse(statistics: SpellStatistics, noun = 'spell', bodyText = ''): string[] {
+  const resolved = resolveStatsFromBody(statistics, bodyText);
   const paragraphs: string[] = [];
-  const sentences: string[] = [];
 
-  if (statistics.castingTime) {
-    const ct = ensureCompletePhrase('castingTime', statistics.castingTime);
-    if (isSingleRound(ct)) {
-      sentences.push(`**Casting** this ${noun} requires the caster's combat action for the round.`);
-    } else {
-      const durationText = lowercaseFirstLetter(trimTrailingPeriod(ct));
-      sentences.push(`**Casting** this ${noun} requires the caster to devote ${durationText}.`);
-    }
+  const castingText = normalizeCasting(resolved.castingTime, noun);
+  const rangeText = normalizeRange(resolved.range, noun);
+  const durationText = normalizeDuration(resolved.duration);
+  const savingThrowText = normalizeSavingThrow(resolved.savingThrow);
+  const spellResistanceText = normalizeSpellResistance(resolved.spellResistance, noun);
+
+  const firstParagraph = [castingText, `${rangeText} ${durationText}.`, savingThrowText, spellResistanceText]
+    .filter(Boolean)
+    .join(' ');
+
+  if (firstParagraph.trim()) {
+    paragraphs.push(firstParagraph.replace(/\s+([.,])/g, '$1'));
   }
 
-  if (statistics.range && statistics.duration) {
-    const range = lowercaseFirstLetter(trimTrailingPeriod(ensureCompletePhrase('range', statistics.range)));
-    const duration = lowercaseFirstLetter(trimTrailingPeriod(ensureCompletePhrase('duration', statistics.duration)));
-    sentences.push(`The ${noun}'s **range** is ${range} with a **duration of ${duration}**.`);
-  } else if (statistics.range) {
-    const range = lowercaseFirstLetter(trimTrailingPeriod(ensureCompletePhrase('range', statistics.range)));
-    sentences.push(`The ${noun}'s **range** is ${range}.`);
-  } else if (statistics.duration) {
-    const duration = lowercaseFirstLetter(trimTrailingPeriod(ensureCompletePhrase('duration', statistics.duration)));
-    sentences.push(`Its **duration** is ${duration}.`);
+  if (resolved.areaOfEffect) {
+    paragraphs.push(`**The area of effect** is ${normalizeArea(resolved.areaOfEffect)}.`);
   }
 
-  if (statistics.savingThrow) {
-    const savingThrowSentence = formatSavingThrowSentence(statistics.savingThrow);
-    if (savingThrowSentence) {
-      sentences.push(savingThrowSentence);
-    }
-  }
-
-  if (statistics.spellResistance) {
-    const spellResistanceSentence = formatSpellResistanceSentence(noun, statistics.spellResistance);
-    if (spellResistanceSentence) {
-      sentences.push(spellResistanceSentence);
-    }
-  }
-
-  if (sentences.length > 0) {
-    paragraphs.push(sentences.join(' '));
-  }
-
-  if (statistics.areaOfEffect) {
-    const aoe = lowercaseFirstLetter(trimTrailingPeriod(statistics.areaOfEffect));
-    paragraphs.push(`**The area of effect** is ${aoe}.`);
-  }
-
-  if (statistics.components) {
-    const components = formatComponents(statistics.components).toLowerCase();
-    paragraphs.push(`**The casting components** are **${components}**.`);
+  if (resolved.components) {
+    paragraphs.push(`**The casting components** are **${normalizeComponents(resolved.components)}**.`);
   }
 
   return paragraphs;
@@ -578,7 +617,9 @@ function formatResult(params: {
     sections.push(bodyText);
   }
 
-  const mechanicsParagraphs = generateMechanicsProse(statistics, meta.noun ?? 'spell');
+  const bodyForResolution = [description, effect].filter(Boolean).join(' ');
+
+  const mechanicsParagraphs = generateMechanicsProse(statistics, meta.noun ?? 'spell', bodyForResolution);
   mechanicsParagraphs.forEach((paragraph) => {
     if (paragraph.trim()) {
       sections.push(paragraph);
@@ -610,47 +651,167 @@ function trimTrailingPeriod(value: string): string {
   return value.replace(/\.\s*$/, '').trim();
 }
 
-function formatSavingThrowSentence(value: string): string {
-  const trimmed = value.trim();
-  if (!trimmed) return '';
-  const lower = trimmed.toLowerCase();
-
-  if (lower.startsWith('none;')) {
-    const [, remainder = ''] = trimmed.split(/;/, 2);
-    const clause = remainder.trim().replace(/\.$/, '');
-    const suffix = clause ? `, though ${lowercaseFirstLetter(clause)}` : '';
-    return `**There is no saving throw**${suffix}.`;
+function normalizeCasting(value: string | null | undefined, noun: string): string {
+  const sanitized = sanitizeStatValue(value);
+  if (!sanitized) {
+    return `**Casting** this ${noun} requires the caster's combat action for the round.`;
   }
-
-  if (lower === 'none') {
-    return '**There is no saving throw.**';
+  const phrase = ensureCompletePhrase('castingTime', sanitized);
+  if (isSingleRound(phrase)) {
+    return `**Casting** this ${noun} requires the caster's combat action for the round.`;
   }
-
-  if (lower === 'see below') {
-    return '**The saving throw** is determined as described above.';
+  const simpleRounds = phrase.match(/^(\d+)\s+rounds?$/i);
+  if (simpleRounds) {
+    const count = parseInt(simpleRounds[1], 10);
+    const word = numberToWords(count);
+    return `**Casting** this ${noun} requires the caster to devote ${word} round${count === 1 ? '' : 's'} of concentration.`;
   }
-
-  return `A **${trimmed} saving throw** applies.`;
+  const trimmed = lowercaseFirstLetter(trimTrailingPeriod(phrase));
+  return `**Casting** this ${noun} requires ${trimmed}.`;
 }
 
-function formatSpellResistanceSentence(noun: string, value: string): string {
-  const trimmed = value.trim();
-  if (!trimmed) return '';
-  const lower = trimmed.toLowerCase();
-
-  if (lower === 'yes') {
-    return `The ${noun} is **affected by spell resistance**.`;
+function normalizeRange(value: string | null | undefined, noun: string): string {
+  const sanitized = sanitizeStatValue(value);
+  if (!sanitized) {
+    return `The ${noun}'s **range** varies as described above`;
   }
+  const phrase = lowercaseFirstLetter(trimTrailingPeriod(ensureCompletePhrase('range', sanitized)));
+  if (/^varies/i.test(phrase)) {
+    return `The ${noun}'s **range** ${phrase}`;
+  }
+  return `The ${noun}'s **range** is ${phrase}`;
+}
 
-  if (lower === 'no' || lower === 'none' || lower === 'unaffected') {
+function normalizeDuration(value: string | null | undefined): string {
+  const sanitized = sanitizeStatValue(value);
+  if (!sanitized) {
+    return 'with a **duration that varies as described above**';
+  }
+  const phrase = lowercaseFirstLetter(trimTrailingPeriod(ensureCompletePhrase('duration', sanitized)));
+  if (/^varies/i.test(phrase)) {
+    return `with a **duration that ${phrase}**`;
+  }
+  return `with a **duration of ${phrase}**`;
+}
+
+const ABILITY_NAMES = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'] as const;
+
+function capitalizeAbility(word: string): string {
+  if (!word) return '';
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
+
+function normalizeSavingThrow(value: string | null | undefined): string {
+  const sanitized = sanitizeStatValue(value);
+  if (!sanitized) {
+    return '**There is no saving throw.**';
+  }
+  const lower = sanitized.toLowerCase();
+  for (const ability of ABILITY_NAMES) {
+    if (lower.includes(ability)) {
+      if (lower.includes('negates')) {
+        return `**${capitalizeAbility(ability)} saving throw negates the effect.**`;
+      }
+      if (lower.includes('half')) {
+        const article = /^[aeiou]/i.test(ability) ? 'An' : 'A';
+        return `**${article} ${capitalizeAbility(ability)} saving throw reduces the effect by half.**`;
+      }
+    }
+  }
+  if (lower.includes('negates')) {
+    return '**A saving throw negates the effect.**';
+  }
+  if (lower.includes('half')) {
+    return '**A saving throw reduces the effect by half.**';
+  }
+  if (lower.includes('none')) {
+    return '**There is no saving throw.**';
+  }
+  return '**A saving throw may apply as described above.**';
+}
+
+function normalizeSpellResistance(value: string | null | undefined, noun: string): string {
+  const sanitized = sanitizeStatValue(value);
+  if (!sanitized) {
     return `The ${noun} is **unaffected by spell resistance**.`;
   }
-
-  if (lower === 'see below') {
-    return 'Spell resistance is handled as described above.';
+  const lower = sanitized.toLowerCase();
+  if (lower === 'yes' || lower === 'affected') {
+    return `The ${noun} is **affected by spell resistance**.`;
   }
-
+  if (lower === 'no' || lower === 'none' || lower.includes('unaffected')) {
+    return `The ${noun} is **unaffected by spell resistance**.`;
+}
+  if (lower.includes('varies')) {
+    return `The ${noun}'s interaction with spell resistance varies as described above.`;
+  }
   return `Spell resistance is **${lower}**.`;
+}
+
+const NUMBER_WORDS: Record<number, string> = {
+  0: 'zero',
+  1: 'one',
+  2: 'two',
+  3: 'three',
+  4: 'four',
+  5: 'five',
+  6: 'six',
+  7: 'seven',
+  8: 'eight',
+  9: 'nine',
+  10: 'ten',
+  11: 'eleven',
+  12: 'twelve',
+  13: 'thirteen',
+  14: 'fourteen',
+  15: 'fifteen',
+  16: 'sixteen',
+  17: 'seventeen',
+  18: 'eighteen',
+  19: 'nineteen',
+  20: 'twenty',
+};
+
+function numberToWords(num: number): string {
+  if (NUMBER_WORDS[num]) return NUMBER_WORDS[num];
+  if (num < 100 && num % 10 === 0) {
+    const tens = NUMBER_WORDS[Math.floor(num / 10) * 10];
+    if (tens) return tens;
+  }
+  return num.toString();
+}
+
+function convertFeetTokens(text: string): string {
+  return text.replace(/(\d+)'/g, (_, digits: string) => {
+    const num = parseInt(digits, 10);
+    const word = numberToWords(num);
+    return `${word} feet`;
+  });
+}
+
+function normalizeArea(value: string): string {
+  let text = value.replace(/\u2019/g, "'").replace(/\u00d7/g, 'x');
+  text = convertFeetTokens(text);
+  text = text.replace(/(\d+)\s*feet/gi, (_, digits: string) => {
+    const num = parseInt(digits, 10);
+    const word = numberToWords(num);
+    return `${word} feet`;
+  });
+  text = text.replace(/(\d+)\s*x\s*(\d+)/gi, (_, a, b) => {
+    const first = numberToWords(parseInt(a, 10));
+    const second = numberToWords(parseInt(b, 10));
+    return `${first} by ${second}`;
+  });
+  text = text.replace(/\+\s*(\d+)\s*feet/gi, (_, digits) => {
+    const word = numberToWords(parseInt(digits, 10));
+    return `plus ${word} feet`;
+  });
+  return lowercaseFirstLetter(text.trim().replace(/\s+/g, ' '));
+}
+
+function normalizeComponents(value: string): string {
+  const formatted = formatComponents(value);
+  return formatted.toLowerCase();
 }
 
 function expandComponents(value: string): string {

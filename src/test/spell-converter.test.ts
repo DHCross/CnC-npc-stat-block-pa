@@ -24,16 +24,18 @@ The targets are held exactly as they are when the rune is activated.`;
       expect(spell.statistics.castingTime).toBe('1');
       expect(spell.statistics.range).toBe('150 feet');
       expect(spell.statistics.duration).toBe('1 round per level');
-      expect(spell.statistics.savingThrow).toBe('see below');
+      expect(spell.statistics.savingThrow).toBeUndefined();
       expect(spell.statistics.spellResistance).toBe('yes');
       expect(spell.statistics.components).toBe('S');
       expect(spell.description).toContain('stops objects in motion');
       expect(spell.effect).toContain('held exactly as they are');
-      expect(spell.formatMeta.descriptor).toBe('Reforged Spell');
+      expect(spell.formatMeta.descriptor).toBeUndefined();
       expect(spell.formatMeta.noun).toBe('rune');
       expect(spell.formatMeta.runeKey).toBe('Chr Roan ot Kepulch');
       expect(spell.formatted).toContain('**Casting** this rune');
-      expect(spell.warnings).toHaveLength(0);
+      expect(spell.formatted).not.toContain('Reforged Spell');
+      expect(spell.formatted).not.toMatch(/see below/i);
+      expect(spell.warnings).toContain('Missing saving throw');
     });
 
     it('should map original spell names to canonical names', () => {
@@ -112,12 +114,14 @@ The light extends up to 20 feet in radius.`;
       expect(formatted).toContain('*This rune sheds light.*');
       expect(formatted).toContain('The light extends up to 20 feet in radius.');
       expect(formatted).toContain('**Casting** this spell requires the caster\'s combat action for the round.');
-      expect(formatted).toContain('The spell\'s **range** is see below with a **duration of 10 minutes per level**.');
+      expect(formatted).toContain('The spell\'s **range** varies as described above with a **duration of 10 minutes per level**.');
       expect(formatted).toContain('**There is no saving throw.**');
       expect(formatted).toContain('The spell is **unaffected by spell resistance**.');
       expect(formatted).toContain('**The casting components** are **somatic**.');
       expect(formatted).not.toContain('Statistics:');
       expect(formatted).not.toContain('Casting Time:');
+      expect(formatted).not.toContain('Reforged Spell');
+      expect(formatted).not.toMatch(/see below/i);
     });
 
     it('should render area of effect and components in separate prose paragraphs', () => {
@@ -133,9 +137,10 @@ Creatures within the sphere are pelted by razored sound-waves and deafened.`;
 
       expect(results).toHaveLength(1);
       const formatted = results[0].formatted;
-      expect(formatted).toContain('**The area of effect** is 20 feet radius.');
+      expect(formatted).toContain('**The area of effect** is twenty feet radius.');
       expect(formatted).toContain('**The casting components** are **verbal, somatic, and material**.');
-      expect(formatted).toContain('**Casting** this rune requires the caster to devote 2 rounds.');
+      expect(formatted).toContain('**Casting** this rune requires the caster to devote two rounds of concentration.');
+      expect(formatted).not.toMatch(/see below/i);
     });
   });
 
@@ -158,8 +163,8 @@ Darkness extinguishes any normal, natural light source, such as fire, candles, t
       expect(results).toHaveLength(2);
       expect(results[0].originalName).toBe('Light');
       expect(results[1].originalName).toBe('Darkness');
-      expect(results[0].warnings).toHaveLength(0);
-      expect(results[1].warnings).toHaveLength(0);
+      expect(results[0].warnings).toContain('Missing range');
+      expect(results[1].warnings).toContain('Missing duration');
     });
 
     it('should skip preamble text before first spell', () => {
@@ -239,8 +244,8 @@ Echo senses.`;
       const results = convertLegacySpellText(input);
 
       expect(results).toHaveLength(1);
-      expect(results[0].statistics.duration).toBe('see below');
-      expect(results[0].statistics.range).toBe('see below');
+      expect(results[0].statistics.duration).toBeUndefined();
+      expect(results[0].statistics.range).toBeUndefined();
     });
 
     it('should handle empty input', () => {
@@ -293,7 +298,7 @@ Description text.`;
       expect(results).toHaveLength(1);
       expect(results[0].statistics.castingTime).toBe('1');
       expect(results[0].statistics.range).toBe('150 feet');
-      expect(results[0].statistics.savingThrow).toBe('see below');
+      expect(results[0].statistics.savingThrow).toBeUndefined();
     });
 
     it('should handle multi-paragraph effects', () => {
