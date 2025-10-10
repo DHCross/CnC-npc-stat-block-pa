@@ -80,6 +80,81 @@ const REQUIRED_STATISTICS: Array<[keyof SpellStatistics, string]> = [
 ];
 
 const NEVER_OUTPUT = /see\s*below/i;
+const MECHANICAL_KEYWORDS = [
+  'range',
+  'duration',
+  'saving throw',
+  'save',
+  'spell resistance',
+  'component',
+  'per level',
+  'for the round',
+  'round',
+  'minute',
+  'hour',
+  'ft',
+  'feet',
+  'square feet',
+  'touch',
+  'personal',
+  'negates',
+  'half',
+  'affected',
+  'unaffected',
+  'check',
+  'challenge level',
+  'cl',
+  'dc',
+  '1d',
+  '2d',
+  '3d',
+  '4d',
+  'd4',
+  'd6',
+  'd8',
+  'd10',
+  'damage',
+  'target',
+  'caster',
+  'per side',
+] as const;
+const SENSORY_KEYWORDS = [
+  'glow',
+  'glows',
+  'glowing',
+  'hum',
+  'hums',
+  'crackle',
+  'crackles',
+  'spark',
+  'sparkle',
+  'sparkles',
+  'sparkling',
+  'whisper',
+  'whispers',
+  'whispering',
+  'scent',
+  'smell',
+  'aroma',
+  'perfume',
+  'taste',
+  'echo',
+  'echoes',
+  'shadow',
+  'shadows',
+  'silence',
+  'stillness',
+  'chill',
+  'cold',
+  'warmth',
+  'heat',
+  'air tightens',
+  'light folds',
+  'melodic',
+  'hypnotic',
+  'luminous',
+  'radiance',
+] as const;
 
 function sanitizeStatValue(value?: string | null): string | null {
   if (!value) return null;
@@ -463,49 +538,90 @@ function resolveStatsFromBody(stats: SpellStatistics, body: string): ResolvedSta
   const resolved: ResolvedStatistics = { ...stats, notes };
   const normalizedBody = body.replace(/\u2019/g, "'").replace(/\s+/g, ' ').trim();
 
-  if (!sanitizeStatValue(resolved.range)) {
-    const rangeFeetMatch = normalizedBody.match(/\brange\s+(?:is|of|extends to|extends up to|equals)?\s*(?:up to\s*)?(\d+)\s*(foot|feet)\b/i);
-    if (rangeFeetMatch) {
-      resolved.range = `${rangeFeetMatch[1]} feet`;
-    } else if (/\brange\s+(?:is\s+)?touch\b/i.test(normalizedBody)) {
-      resolved.range = 'touch';
-    } else if (/\brange\s+(?:is\s+)?personal\b/i.test(normalizedBody)) {
-      resolved.range = 'personal';
-    } else if (/\brange\b.*\bper level\b/i.test(normalizedBody)) {
-      const perLevelMatch = normalizedBody.match(/\brange\b.*?(\d+)\s*(?:foot|feet)\s*per\s*level\b/i);
-      if (perLevelMatch) {
-        resolved.range = `${perLevelMatch[1]} feet per level`;
-      }
-    } else if (/\bcentered on (?:the|this) inscription\b/i.test(normalizedBody)) {
-      resolved.range = 'varies (centered on the inscription)';
+  let bodyRange: string | null = null;
+  const rangeFeetMatch = normalizedBody.match(/\brange\s+(?:is|of|extends to|extends up to|equals)?\s*(?:up to\s*)?(\d+)\s*(foot|feet)\b/i);
+  if (rangeFeetMatch) {
+    bodyRange = `${rangeFeetMatch[1]} feet`;
+  } else if (/\brange\s+(?:is\s+)?touch\b/i.test(normalizedBody)) {
+    bodyRange = 'touch';
+  } else if (/\brange\s+(?:is\s+)?personal\b/i.test(normalizedBody)) {
+    bodyRange = 'personal';
+  } else if (/\brange\b.*\bper level\b/i.test(normalizedBody)) {
+    const perLevelMatch = normalizedBody.match(/\brange\b.*?(\d+)\s*(?:foot|feet)\s*per\s*level\b/i);
+    if (perLevelMatch) {
+      bodyRange = `${perLevelMatch[1]} feet per level`;
     }
+  } else if (/\bcentered on (?:the|this) inscription\b/i.test(normalizedBody)) {
+    bodyRange = 'varies (centered on the inscription)';
+  }
+  if (bodyRange) {
+    resolved.range = bodyRange;
   }
 
-  if (!sanitizeStatValue(resolved.duration)) {
-    const perLevel = normalizedBody.match(/\b(\d+)\s*(round|minute|turn|hour)s?\s+per\s+level\b/i);
-    const fixed = normalizedBody.match(/\b(\d+)\s*(round|minute|turn|hour)s?\b(?!\s*per level)/i);
+  let bodyDuration: string | null = null;
+  if (/\bpermanent\b/i.test(normalizedBody)) {
+    bodyDuration = 'permanent';
+  } else if (/\bimmediate\b/i.test(normalizedBody)) {
+    bodyDuration = 'immediate';
+  } else if (/\bremains until\b/i.test(normalizedBody) || /\buntil (?:dismissed|dispelled|destroyed)\b/i.test(normalizedBody)) {
+    bodyDuration = 'until dismissed or dispelled';
+  } else {
+    const perLevel = normalizedBody.match(/\b(\d+)\s*(round|minute|turn|hour)s?\s+\+\s*(\d+)\s*per\s*[a-z]+\s*level\b/i);
     if (perLevel) {
-      const count = perLevel[1];
+      const base = perLevel[1];
       const unit = perLevel[2];
-      resolved.duration = `${count} ${unit}${count === '1' ? '' : 's'} per level`;
-    } else if (fixed) {
-      const count = fixed[1];
-      const unit = fixed[2];
-      resolved.duration = `${count} ${unit}${count === '1' ? '' : 's'}`;
-    } else if (/\bpermanent\b/i.test(normalizedBody)) {
-      resolved.duration = 'permanent';
-    } else if (/\bimmediate\b/i.test(normalizedBody)) {
-      resolved.duration = 'immediate';
-    } else if (/\bremains until\b/i.test(normalizedBody)) {
-      resolved.duration = 'until dismissed or dispelled';
+      const bonus = perLevel[3];
+      bodyDuration = `${base} ${unit}${base === '1' ? '' : 's'} +${bonus} per level`;
+    } else {
+      const simplePerLevel = normalizedBody.match(/\b(\d+)\s*(round|minute|turn|hour)s?\s+per\s+level\b/i);
+      if (simplePerLevel) {
+        const count = simplePerLevel[1];
+        const unit = simplePerLevel[2];
+        bodyDuration = `${count} ${unit}${count === '1' ? '' : 's'} per level`;
+      } else {
+        const fixed = normalizedBody.match(/\b(\d+)\s*(round|minute|turn|hour)s?\b(?!\s*per level)/i);
+        if (fixed) {
+          const count = fixed[1];
+          const unit = fixed[2];
+          bodyDuration = `${count} ${unit}${count === '1' ? '' : 's'}`;
+        }
+      }
     }
   }
+  if (bodyDuration) {
+    resolved.duration = bodyDuration;
+  }
 
-  if (!sanitizeStatValue(resolved.castingTime)) {
-    if (/\brequires two rounds\b/i.test(normalizedBody) || /\bto devote 2 rounds\b/i.test(normalizedBody)) {
-      resolved.castingTime = 'two rounds of concentration';
-    } else if (/\brequires the caster['’]s combat action\b/i.test(normalizedBody)) {
-      resolved.castingTime = "the caster's combat action for the round";
+  let bodyCasting: string | null = null;
+  if (/\brequires two rounds\b/i.test(normalizedBody) || /\bto devote 2 rounds\b/i.test(normalizedBody)) {
+    bodyCasting = 'two rounds of concentration';
+  } else if (/\brequires the caster['’]s combat action\b/i.test(normalizedBody)) {
+    bodyCasting = "the caster's combat action for the round";
+  }
+  if (bodyCasting) {
+    resolved.castingTime = bodyCasting;
+  }
+
+  if (!sanitizeStatValue(resolved.savingThrow)) {
+    for (const ability of ABILITY_NAMES) {
+      const abilityRegex = new RegExp(`\\b${ability}\\s+(?:saving throw|save)([^.]*?)\\b`, 'i');
+      const match = normalizedBody.match(abilityRegex);
+      if (match) {
+        const trailing = match[1]?.toLowerCase() ?? '';
+        if (trailing.includes('negate') || trailing.includes('prevent')) {
+          resolved.savingThrow = `${ability} saving throw negates`;
+        } else if (trailing.includes('half')) {
+          resolved.savingThrow = `${ability} saving throw for half`;
+        } else {
+          resolved.savingThrow = `${ability} saving throw`;
+        }
+        break;
+      }
+    }
+    if (!sanitizeStatValue(resolved.savingThrow)) {
+      if (/\bno saving throw\b/i.test(normalizedBody)) {
+        resolved.savingThrow = 'none';
+      }
     }
   }
 
@@ -582,8 +698,9 @@ function generateMechanicsProse(statistics: SpellStatistics, noun = 'spell', bod
     paragraphs.push(`**The area of effect** is ${normalizeArea(resolved.areaOfEffect)}.`);
   }
 
-  if (resolved.components) {
-    paragraphs.push(`**The casting components** are **${normalizeComponents(resolved.components)}**.`);
+  const componentText = normalizeComponents(resolved.components, bodyText);
+  if (componentText) {
+    paragraphs.push(`**The casting components** are **${componentText}**.`);
   }
 
   return paragraphs;
@@ -604,20 +721,25 @@ function formatResult(params: {
     sections.push(`_${meta.runeKey}_`);
   }
 
-  const introText = (meta.intro ?? description)?.trim();
-  if (introText) {
-    const formattedIntro = formatIntro(introText);
-    if (formattedIntro) {
-      sections.push(formattedIntro);
-    }
+  const narrativeCandidate = description ? description.trim() : '';
+  const narrativeIsIntro = narrativeCandidate ? isNarrativeParagraph(narrativeCandidate) : false;
+
+  const bodyParagraphs: string[] = [];
+  if (narrativeIsIntro) {
+    sections.push(`*${stripOuterItalics(narrativeCandidate)}*`);
+  } else if (narrativeCandidate) {
+    bodyParagraphs.push(stripOuterItalics(narrativeCandidate));
   }
 
-  const bodyText = effect.trim();
-  if (bodyText) {
-    sections.push(bodyText);
+  if (effect.trim()) {
+    bodyParagraphs.push(effect.trim());
   }
 
-  const bodyForResolution = [description, effect].filter(Boolean).join(' ');
+  if (bodyParagraphs.length > 0) {
+    sections.push(bodyParagraphs.join('\n\n'));
+  }
+
+  const bodyForResolution = bodyParagraphs.join('\n\n');
 
   const mechanicsParagraphs = generateMechanicsProse(statistics, meta.noun ?? 'spell', bodyForResolution);
   mechanicsParagraphs.forEach((paragraph) => {
@@ -641,14 +763,31 @@ function formatTitle(meta: SpellFormatMetadata): string {
   return titleLine;
 }
 
-function formatIntro(intro: string): string {
-  const stripped = intro.replace(/^\*+/, '').replace(/\*+$/, '').trim();
-  if (!stripped) return '';
-  return `*${stripped}*`;
-}
-
 function trimTrailingPeriod(value: string): string {
   return value.replace(/\.\s*$/, '').trim();
+}
+
+function stripOuterItalics(value: string): string {
+  return value.replace(/^\*(.*)\*$/s, '$1').trim();
+}
+
+function isNarrativeParagraph(text: string): boolean {
+  if (!text) return false;
+  const trimmed = stripOuterItalics(text);
+  if (!trimmed) return false;
+
+  const lower = trimmed.toLowerCase();
+
+  const sentenceCount = lower.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0).length;
+  if (sentenceCount === 0 || sentenceCount > 3) return false;
+
+  if (MECHANICAL_KEYWORDS.some((keyword) => lower.includes(keyword))) {
+    return false;
+  }
+
+  if (/[0-9]/.test(lower)) return false;
+
+  return SENSORY_KEYWORDS.some((keyword) => lower.includes(keyword));
 }
 
 function normalizeCasting(value: string | null | undefined, noun: string): string {
@@ -691,6 +830,12 @@ function normalizeDuration(value: string | null | undefined): string {
   if (/^varies/i.test(phrase)) {
     return `with a **duration that ${phrase}**`;
   }
+  if (phrase === 'permanent' || phrase === 'immediate') {
+    return `with a **duration that is ${phrase}**`;
+  }
+  if (phrase.startsWith('until ')) {
+    return `with a **duration that lasts ${phrase}**`;
+  }
   return `with a **duration of ${phrase}**`;
 }
 
@@ -716,6 +861,8 @@ function normalizeSavingThrow(value: string | null | undefined): string {
         const article = /^[aeiou]/i.test(ability) ? 'An' : 'A';
         return `**${article} ${capitalizeAbility(ability)} saving throw reduces the effect by half.**`;
       }
+      const article = /^[aeiou]/i.test(ability) ? 'An' : 'A';
+      return `**${article} ${capitalizeAbility(ability)} saving throw may apply as described above.**`;
     }
   }
   if (lower.includes('negates')) {
@@ -782,68 +929,75 @@ function numberToWords(num: number): string {
 }
 
 function convertFeetTokens(text: string): string {
-  return text.replace(/(\d+)'/g, (_, digits: string) => {
-    const num = parseInt(digits, 10);
-    const word = numberToWords(num);
-    return `${word} feet`;
-  });
+  return text.replace(/(\d+)'/g, '$1 feet');
 }
 
 function normalizeArea(value: string): string {
   let text = value.replace(/\u2019/g, "'").replace(/\u00d7/g, 'x');
   text = convertFeetTokens(text);
-  text = text.replace(/(\d+)\s*feet/gi, (_, digits: string) => {
-    const num = parseInt(digits, 10);
-    const word = numberToWords(num);
-    return `${word} feet`;
-  });
-  text = text.replace(/(\d+)\s*x\s*(\d+)/gi, (_, a, b) => {
-    const first = numberToWords(parseInt(a, 10));
-    const second = numberToWords(parseInt(b, 10));
-    return `${first} by ${second}`;
-  });
-  text = text.replace(/\+\s*(\d+)\s*feet/gi, (_, digits) => {
-    const word = numberToWords(parseInt(digits, 10));
-    return `plus ${word} feet`;
-  });
-  return lowercaseFirstLetter(text.trim().replace(/\s+/g, ' '));
+  text = text.replace(/feet\s*x\s*/gi, 'feet by ');
+  text = text.replace(/\bx\s*(\d+)/gi, 'by $1');
+  text = text.replace(/\+\s*(\d+)\s*feet\s*\/?\s*(?:level|lvl)/gi, 'plus $1 feet per level');
+  text = text.replace(/\+\s*(\d+)\s*feet/gi, 'plus $1 feet');
+  text = text.replace(/\/\s*level/gi, ' per level');
+  text = text.replace(/\s+/g, ' ').trim();
+  if (/plus/.test(text) && /by/.test(text) && !/,/.test(text)) {
+    text = text.replace(/(feet by \d+ feet)\s+(plus)/i, '$1, $2');
+  }
+  return lowercaseFirstLetter(text);
 }
 
-function normalizeComponents(value: string): string {
-  const formatted = formatComponents(value);
-  return formatted.toLowerCase();
+const COMPONENT_LABELS: Record<string, string> = {
+  S: 'gesture',
+  V: 'speech',
+  M: 'material component',
+  F: 'focus',
+};
+
+const COMPONENT_OUTPUT_ORDER = ['speech', 'gesture', 'material component', 'focus'] as const;
+
+function deriveComponentTokens(value: string | null | undefined, body: string): string[] {
+  const tokens = new Set<string>();
+  const sanitized = sanitizeStatValue(value);
+  if (sanitized) {
+    sanitized
+      .split(/[,/\s]+/)
+      .map((part) => part.trim().toUpperCase())
+      .filter((part) => part.length > 0)
+      .forEach((part) => {
+        const mapped = COMPONENT_LABELS[part];
+        if (mapped) tokens.add(mapped);
+      });
+  }
+
+  const lowerBody = body.toLowerCase();
+  if (/material component/i.test(lowerBody) || /material focus/i.test(lowerBody)) {
+    tokens.add('material component');
+  }
+  if (/focus/i.test(lowerBody)) {
+    tokens.add('focus');
+  }
+  if (/speech|spoken|chant|utter|incant/i.test(lowerBody)) {
+    tokens.add('speech');
+  }
+  if (/gesture|gestures|hand movements|hand signs|signs?/i.test(lowerBody)) {
+    tokens.add('gesture');
+  }
+
+  return COMPONENT_OUTPUT_ORDER.filter((key) => tokens.has(key));
 }
 
-function expandComponents(value: string): string {
-  return value
-    .replace(/\bS\b/g, 'Somatic')
-    .replace(/\bV\b/g, 'Verbal')
-    .replace(/\bM\b/g, 'Material')
-    .replace(/\bDF\b/g, 'Divine Focus')
-    .replace(/\bF\b/g, 'Focus')
-    .trim();
-}
-
-function formatComponents(value: string): string {
-  const expanded = expandComponents(value);
-  const tokens = expanded
-    .split(/[,/]+|\s+and\s+/i)
-    .map((token) => token.trim())
-    .filter((token) => token.length > 0);
-
-  if (tokens.length === 0) {
-    return expanded.toLowerCase();
-  }
-
-  if (tokens.length === 1) {
-    return tokens[0];
-  }
-
-  if (tokens.length === 2) {
-    return `${tokens[0]} and ${tokens[1]}`;
-  }
-
+function formatComponentList(tokens: string[]): string {
+  if (tokens.length === 0) return '';
+  if (tokens.length === 1) return tokens[0];
+  if (tokens.length === 2) return `${tokens[0]} and ${tokens[1]}`;
   return `${tokens.slice(0, -1).join(', ')}, and ${tokens[tokens.length - 1]}`;
+}
+
+function normalizeComponents(value: string | null | undefined, bodyText: string): string | null {
+  const tokens = deriveComponentTokens(value, bodyText);
+  if (tokens.length === 0) return null;
+  return formatComponentList(tokens);
 }
 
 function capitalizeFirstLetter(value: string): string {
