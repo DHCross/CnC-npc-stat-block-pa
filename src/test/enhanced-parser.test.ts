@@ -96,10 +96,10 @@ describe('Enhanced Parser Functions', () => {
   });
 
   describe('normalizeAttributes', () => {
-    it('should convert unit attributes to physical prime sentence', () => {
+    it('should list specific unit attributes instead of collapsing to "physical"', () => {
       const result = normalizeAttributes('str, dex, con', { isUnit: true });
-      expect(result.type).toBe('prime');
-      expect(result.value).toBe('physical');
+      expect(result.type).toBe('list');
+      expect(result.value).toBe('strength, dexterity, and constitution');
     });
 
     it('should include all prime attributes for classed NPCs', () => {
@@ -121,12 +121,12 @@ describe('Enhanced Parser Functions', () => {
       expect(result.value).toBe('strength, dexterity, and constitution');
     });
 
-    it('should return prime type for creatures without class levels', () => {
+    it('should list specific attributes for creatures without class levels', () => {
       const result = normalizeAttributes('str 14, con 13', {
         raceClassText: 'ogre brute'
       });
-      expect(result.type).toBe('prime');
-      expect(result.value).toBe('physical');
+      expect(result.type).toBe('list');
+      expect(result.value).toBe('strength and constitution');
     });
   });
 
@@ -220,14 +220,14 @@ describe('Enhanced Parser Functions', () => {
       expect(result).toContain('He carries banded mail, a medium steel shield, a longsword, and a dagger');
     });
 
-    it('should build canonical format for unit', () => {
+    it('should build canonical format for unit with explicit physical designation', () => {
       const data = {
         hp: '12',
         ac: '15',
         disposition: 'neutral',
         raceClass: 'human, 2nd level fighters',
         level: '2',
-        attributes: 'PA physical',
+        attributes: 'PA physical',  // Explicitly says "physical" so should keep it
         equipment: 'chain mail, longbow, longsword',
         raw: 'original'
       };
@@ -235,28 +235,29 @@ describe('Enhanced Parser Functions', () => {
 
       const result = buildCanonicalParenthetical(data, true, false, false);
 
+      // When input explicitly says "physical", keep it
       expect(result).toContain('Their primary attributes are physical');
       // Mundane equipment should NOT be italicized
       expect(result).toContain('chain mail');
       expect(result).not.toContain('*chain mail*');
     });
  
-    it('should use prime statement for creatures without class levels', () => {
+    it('should list specific attributes for creatures without class levels', () => {
       const data = {
         hp: '18',
         ac: '14',
         disposition: 'chaos/evil',
         raceClass: 'goblin marauder',
-        attributes: 'dex 14, con 11',
+        attributes: 'dex 14, con 11',  // Specific attributes provided
         equipment: 'leather armor, short sword',
         raw: 'original'
       };
 
       const result = buildCanonicalParenthetical(data, false, false, false);
 
-      // For non-classed creatures, "Their" is capitalized and vital stats ends with period
-      expect(result).toContain('Their primary attributes are physical');
-      expect(result).toMatch(/vital stats are .+\.\s+Their primary attributes/);
+      // For non-classed creatures, list specific attributes not "physical"
+      expect(result).toContain('His primary attributes are dexterity and constitution');
+      expect(result).toMatch(/vital stats are .+\.\s+His primary attributes/);
     });
 
     it('should merge jewelry and coins into single carry sentence when no weapons present', () => {
@@ -349,9 +350,14 @@ describe('Enhanced Parser Functions', () => {
       expect(isUnit).toBe(true);
 
       if (data.attributes) {
-        const normalizedAttrs = normalizeAttributes(data.attributes, { isUnit });
-        expect(normalizedAttrs.type).toBe('prime');
-        expect(normalizedAttrs.value).toBe('physical');
+        const normalizedAttrs = normalizeAttributes(data.attributes, {
+          isUnit,
+          raceClassText: data.raceClass,
+          levelText: data.level
+        });
+        expect(normalizedAttrs.type).toBe('list');
+        // Should list specific attributes, not collapse to "physical"
+        expect(normalizedAttrs.value).toBe('strength, dexterity, and constitution');
       }
     });
 

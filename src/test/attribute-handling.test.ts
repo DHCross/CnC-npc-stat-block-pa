@@ -23,25 +23,25 @@ describe('Attribute Handling Rules', () => {
       expect(result.value).toBe('mental');
     });
 
-    it('should infer physical from attribute names for classless creatures', () => {
+    it('should list specific attributes for classless creatures when provided', () => {
       const result = normalizeAttributes('str 16, dex 14, con 10, int 8', {
         raceClassText: 'orc',
         levelText: undefined
       });
 
-      expect(result.type).toBe('prime');
-      // Classless creatures infer type from attribute names (has physical attrs → "physical")
-      expect(result.value).toBe('physical');
+      expect(result.type).toBe('list');
+      // List the specific attributes provided, not "physical"
+      expect(result.value).toBe('strength, dexterity, constitution, and intelligence');
     });
 
-    it('should use physical designation if no modifiers', () => {
+    it('should list specific attributes even if no modifiers', () => {
       const result = normalizeAttributes('str 10, dex 11, con 12', {
         raceClassText: 'human peasant',
         levelText: undefined
       });
 
-      expect(result.type).toBe('prime');
-      expect(result.value).toBe('physical');
+      expect(result.type).toBe('list');
+      expect(result.value).toBe('strength, dexterity, and constitution');
     });
   });
 

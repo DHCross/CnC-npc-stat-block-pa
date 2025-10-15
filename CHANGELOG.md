@@ -1,6 +1,36 @@
 # Changelog
 
+## 2025-10-14
 
+### Bug Fixes
+- **Fixed: Attributes being collapsed to "physical" or "mental"**
+  - Issue: Parser was converting specific attributes (strength, dexterity, etc.) to generic "physical" or "mental" labels
+  - Root cause: `normalizeAttributes()` in `enhanced-parser.ts` was defaulting to prime type designations
+  - Fix: Modified logic to preserve and list specific attribute names in PHB order
+  - Now properly outputs: "strength, dexterity, and constitution" instead of "physical"
+  - Only uses "physical" or "mental" if explicitly stated in the input text
+  - Applies to both classed NPCs (when no scores provided) and unclassed units
+
+### Development Experiments
+- **Attempted Jules API Integration (Reverted)**
+  - Explored integrating Google's Jules AI API for developer assistance
+  - Created chat interface UI components (`JulesChat.tsx`, `dialog.tsx`, `scroll-area.tsx`)
+  - Added API route (`/api/jules/route.ts`) with environment variable configuration
+  - **Discovery**: Jules API is session-based and designed for GitHub repository automation (creating PRs, fixing bugs), not real-time chat
+  - **Decision**: Removed integration as it didn't match the intended use case
+  - Cleaned up UI components and removed Dev button from footer
+
+### UI Components Added (Available for Future Use)
+- Implemented Radix UI Dialog component (`src/components/ui/dialog.tsx`)
+- Implemented Radix UI Scroll Area component (`src/components/ui/scroll-area.tsx`)
+- These remain available for future features requiring modal dialogs or scrollable content
+
+### Lessons Learned
+- Jules API uses `X-Goog-Api-Key` header authentication (not Bearer tokens)
+- Base URL: `https://jules.googleapis.com/v1alpha/`
+- API structure: Sources (repos) → Sessions (tasks) → Activities (work updates)
+- Not all AI APIs are designed for conversational chat interfaces
+- Alternative APIs for chat: OpenAI GPT, Anthropic Claude, Google Gemini, GitHub Copilot Chat
 
 ## 2025-09-20
 

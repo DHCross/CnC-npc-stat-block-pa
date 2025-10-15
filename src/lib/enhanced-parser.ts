@@ -471,8 +471,8 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
     attrMatch = /(?:his|their|its)\s+primes?\s+are[:\s]*([^.;,]+)/i.exec(parenthetical);
   }
   if (!attrMatch) {
-    // Try general PA/primary/prime format
-    attrMatch = /(?:primary\s+attributes?|prime\s+attributes?|PA)\s*[:-]?\s*([^.;,]+)/i.exec(parenthetical);
+    // Try general PA/primary/prime format - capture until semicolon, period, or "EQ"
+    attrMatch = /(?:primary\s+attributes?|prime\s+attributes?|PA)\s*[:-]?\s*([^.;]+?)(?:;|\.|\s+EQ\s+|\s+equipment|$)/i.exec(parenthetical);
   }
   if (!attrMatch) {
     // Try simple patterns like "STR, DEX, CON" or "strength, dexterity"
@@ -785,11 +785,6 @@ export function normalizeAttributes(attributes: string, options: NormalizeAttrib
     // Check if we have any actual attribute scores
     const hasScores = tokens.some(token => token.score !== undefined);
 
-    // If no scores provided, but we have a prime type (physical/mental), use that
-    if (!hasScores && primeType) {
-      return { type: 'prime', value: primeType };
-    }
-
     // If attributes are listed without scores (like "str, dex, int"), list them all
     if (!hasScores && tokens.length > 0) {
       const validAttributes = tokens.filter(token =>
@@ -849,12 +844,39 @@ export function normalizeAttributes(attributes: string, options: NormalizeAttrib
       };
     }
 
-    // Classed NPCs with no qualifying attributes: no output
+    // Check if prime type was explicitly stated (e.g., "PA physical")
+    if (primeType) {
+      return { type: 'prime', value: primeType };
+    }
+
+    // Classed NPCs with no qualifying attributes and no prime type: no output
     return { type: 'none' };
   }
 
-  // No character class: use physical/mental designation
-  return { type: 'prime', value: primeType ?? 'physical' };
+  // No character class: list individual attributes if provided
+  if (tokens.length > 0) {
+    const validAttributes = tokens.filter(token =>
+      token.name && PHB_ATTRIBUTE_ORDER.includes(token.name)
+    );
+
+    if (validAttributes.length > 0) {
+      const sorted = validAttributes
+        .map(token => token.name)
+        .sort((a, b) => PHB_ATTRIBUTE_ORDER.indexOf(a) - PHB_ATTRIBUTE_ORDER.indexOf(b));
+
+      return {
+        type: 'list',
+        value: formatOxfordList(sorted)
+      };
+    }
+  }
+
+  // Fallback: only use physical/mental if explicitly stated in input
+  if (primeType) {
+    return { type: 'prime', value: primeType };
+  }
+
+  return { type: 'none' };
 }
 
 export function canonicalizeShields(equipment: string): string {
