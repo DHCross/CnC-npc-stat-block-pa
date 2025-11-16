@@ -33,9 +33,10 @@
       "hp": "23",
       "ac": "15",
       "disposition": "neutral",
+      "raceClass": "animal",
       "attributes": "strength"
     },
-    "canonicalParenthetical": "HD 4d10, HP 23, AC 15, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 23, AC 15, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 59104,
@@ -71,7 +72,8 @@
       "ac": "13",
       "disposition": "neutral/evil",
       "attributes": "physical",
-      "coins": "6 sp"
+      "coins": "6 sp",
+      "raceClass": "0th level, neutral evil, human fighters"
     },
     "canonicalParenthetical": "HP 4, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
   },
@@ -109,7 +111,8 @@
       "ac": "14",
       "disposition": "neutral/evil",
       "attributes": "physical",
-      "coins": "6 gp"
+      "coins": "6 gp",
+      "raceClass": "2nd level, neutral evil, human fighters"
     },
     "canonicalParenthetical": "HP 14, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin."
   },
@@ -146,9 +149,10 @@
       "hd": "1d2",
       "hp": "1",
       "ac": "12",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 1d2, HP 1, AC 12, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 1, AC 12, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 60136,
@@ -184,6 +188,7 @@
       "hp": "5",
       "ac": "14",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "coins": "6 cp"
     },
     "canonicalParenthetical": "HP 5, AC 14, disposition chaos/evil. Saves: P. It has 6 copper in coin."
@@ -222,9 +227,10 @@
       "hp": "15",
       "ac": "13",
       "disposition": "neutral",
+      "raceClass": "animal",
       "attributes": "ws for 1d4+1 damage and a bite for 1d6+1 damage"
     },
-    "canonicalParenthetical": "HD 3d8, HP 15, AC 13, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 15, AC 13, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 60899,
@@ -259,9 +265,10 @@
       "hd": "2d8",
       "hp": "8",
       "ac": "16",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
-    "canonicalParenthetical": "HD 2d8, HP 8, AC 16, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 8, AC 16, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 61144,
@@ -297,7 +304,8 @@
       "ac": "13",
       "disposition": "neutral/evil",
       "attributes": "physical",
-      "coins": "6 gp"
+      "coins": "6 gp",
+      "raceClass": "1st level, neutral evil, human fighters"
     },
     "canonicalParenthetical": "HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin."
   },
@@ -335,7 +343,8 @@
       "ac": "14",
       "disposition": "neutral/evil",
       "attributes": "physical",
-      "coins": "6 sp"
+      "coins": "6 sp",
+      "raceClass": "1st level, neutral evil, human fighters"
     },
     "canonicalParenthetical": "HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
   },
@@ -373,7 +382,8 @@
       "ac": "15",
       "disposition": "neutral/evil",
       "attributes": "physical",
-      "coins": "8 gp"
+      "coins": "8 gp",
+      "raceClass": "2nd level, neutral evil, human fighters"
     },
     "canonicalParenthetical": "HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 8 gold in coin."
   },
@@ -411,10 +421,11 @@
       "hp": "16",
       "ac": "16",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "attributes": "tchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength",
       "coins": "4 gp"
     },
-    "canonicalParenthetical": "HD 3d10, HP 16, AC 16, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+    "canonicalParenthetical": "HP 16, AC 16, disposition chaos/evil. Saves: P. It has 4 gold in coin."
   },
   {
     "sourceIndex": 62393,
@@ -451,9 +462,10 @@
       "ac": "12",
       "disposition": "chaos/neutral",
       "attributes": "physical",
-      "coins": "18 sp"
+      "coins": "18 sp",
+      "raceClass": "1st level, chaotic neutral fighters"
     },
-    "canonicalParenthetical": "HD 1d10, HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin."
+    "canonicalParenthetical": "HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin."
   },
   {
     "sourceIndex": 62830,
@@ -490,9 +502,10 @@
       "ac": "13",
       "disposition": "chaos/neutral",
       "attributes": "physical",
-      "coins": "12 sp"
+      "coins": "12 sp",
+      "raceClass": "1st level, chaotic neutral fighters"
     },
-    "canonicalParenthetical": "HD 1d10, HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin."
+    "canonicalParenthetical": "HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin."
   },
   {
     "sourceIndex": 63267,
@@ -529,9 +542,10 @@
       "ac": "14",
       "disposition": "chaos/neutral",
       "attributes": "physical",
-      "coins": "2–12 gp"
+      "coins": "2–12 gp",
+      "raceClass": "1st - 3rd level, chaotic neutral fighters"
     },
-    "canonicalParenthetical": "HD 1d10, HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin."
+    "canonicalParenthetical": "HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin."
   },
   {
     "sourceIndex": 63705,
@@ -567,9 +581,10 @@
       "hp": "10",
       "ac": "14",
       "disposition": "chaos/evil",
+      "raceClass": "undead",
       "attributes": "ralysis or become rigid [paralyzed]"
     },
-    "canonicalParenthetical": "HD 2d8, HP 10, AC 14, disposition chaos/evil. Saves: P."
+    "canonicalParenthetical": "HP 10, AC 14, disposition chaos/evil. Saves: P."
   },
   {
     "sourceIndex": 64380,
@@ -605,10 +620,11 @@
       "hp": "13",
       "ac": "15",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "attributes": "tchwork leather armor, shield, throwing club, morning star, and 2d4 gp",
       "coins": "4 gp"
     },
-    "canonicalParenthetical": "HD 2d10, HP 13, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+    "canonicalParenthetical": "HP 13, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
   },
   {
     "sourceIndex": 64699,
@@ -644,9 +660,10 @@
       "hp": "4",
       "ac": "14",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 sp"
     },
-    "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
+    "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
   },
   {
     "sourceIndex": 65005,
@@ -682,6 +699,7 @@
       "hp": "15",
       "ac": "16",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "coins": "4 gp"
     },
@@ -720,9 +738,10 @@
       "hd": "7d10",
       "hp": "45",
       "ac": "17",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 7d10, HP 45, AC 17, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 45, AC 17, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 65660,
@@ -758,10 +777,11 @@
       "hp": "8",
       "ac": "15",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "coins": "4 sp"
     },
-    "canonicalParenthetical": "HD 1d10, HP 8, AC 15, disposition law/evil. Saves: P. It has 4 silver in coin."
+    "canonicalParenthetical": "HP 8, AC 15, disposition law/evil. Saves: P. It has 4 silver in coin."
   },
   {
     "sourceIndex": 65971,
@@ -797,9 +817,10 @@
       "hp": "3",
       "ac": "15",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 sp"
     },
-    "canonicalParenthetical": "HD 1d4, HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+    "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
   },
   {
     "sourceIndex": 66281,
@@ -834,9 +855,10 @@
       "hd": "4d8",
       "hp": "20",
       "ac": "16",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
-    "canonicalParenthetical": "HD 4d8, HP 20, AC 16, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 20, AC 16, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 66601,
@@ -871,9 +893,10 @@
       "hd": "2d8",
       "hp": "10",
       "ac": "15",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 2d8, HP 10, AC 15, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 10, AC 15, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 66823,
@@ -909,6 +932,7 @@
       "hp": "10",
       "ac": "14",
       "disposition": "neutral/evil",
+      "raceClass": "humanoid",
       "attributes": "strength"
     },
     "canonicalParenthetical": "HP 10, AC 14, disposition neutral/evil. Saves: P."
@@ -947,7 +971,8 @@
       "ac": "12",
       "disposition": "neutral",
       "attributes": "physical",
-      "coins": "6 sp"
+      "coins": "6 sp",
+      "raceClass": "0th-2nd level, neutral, human fighters"
     },
     "canonicalParenthetical": "HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
   },
@@ -985,10 +1010,11 @@
       "hp": "35",
       "ac": "15",
       "disposition": "neutral",
+      "raceClass": "creature",
       "attributes": "strength",
       "equipment": "spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, medium steel shield, teleport, etc"
     },
-    "canonicalParenthetical": "HD 7d8, HP 35, AC 15, disposition neutral. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc."
+    "canonicalParenthetical": "HP 35, AC 15, disposition neutral. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc."
   },
   {
     "sourceIndex": 68589,
@@ -1024,9 +1050,10 @@
       "hp": "3",
       "ac": "14",
       "disposition": "neutral",
+      "raceClass": "creature",
       "spells": "water breathing at will and cast a powerful charm person spell that lasts for one year"
     },
-    "canonicalParenthetical": "HD 1d4, HP 3, AC 14, disposition neutral. Saves: P. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
+    "canonicalParenthetical": "HP 3, AC 14, disposition neutral. Saves: P. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
   },
   {
     "sourceIndex": 68931,
@@ -1062,9 +1089,10 @@
       "hp": "5",
       "ac": "13",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 gp"
     },
-    "canonicalParenthetical": "HD 1d8, HP 5, AC 13, disposition law/evil. Saves: P. It has 6 gold in coin."
+    "canonicalParenthetical": "HP 5, AC 13, disposition law/evil. Saves: P. It has 6 gold in coin."
   },
   {
     "sourceIndex": 69249,
@@ -1099,9 +1127,10 @@
       "hd": "4d8",
       "hp": "21",
       "ac": "15",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 4d8, HP 21, AC 15, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 21, AC 15, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 69448,
@@ -1137,9 +1166,10 @@
       "hp": "19",
       "ac": "15",
       "disposition": "neutral",
+      "raceClass": "monster",
       "attributes": "strength"
     },
-    "canonicalParenthetical": "HD 3d10, HP 19, AC 15, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 19, AC 15, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 70000,
@@ -1174,9 +1204,10 @@
       "hd": "1d4",
       "hp": "2",
       "ac": "13",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
-    "canonicalParenthetical": "HD 1d4, HP 2, AC 13, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 70331,
@@ -1213,9 +1244,10 @@
       "ac": "11",
       "disposition": "chaos/neutral",
       "attributes": "physical",
-      "secondarySkills": "Nautical Ability, which is described in the CZY Appendix"
+      "secondarySkills": "Nautical Ability",
+      "raceClass": "0th level, chaotic neutral, human fighters"
     },
-    "canonicalParenthetical": "HD 1d8, HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability, which is described in the CZY Appendix."
+    "canonicalParenthetical": "HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability."
   },
   {
     "sourceIndex": 70677,
@@ -1250,9 +1282,10 @@
       "hd": "1d6",
       "hp": "4",
       "ac": "14",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
-    "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 4, AC 14, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 70950,
@@ -1287,9 +1320,10 @@
       "hd": "2d6",
       "hp": "7",
       "ac": "14",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
-    "canonicalParenthetical": "HD 2d6, HP 7, AC 14, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 7, AC 14, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 71269,
@@ -1325,9 +1359,10 @@
       "hp": "15",
       "ac": "15",
       "disposition": "neutral",
+      "raceClass": "creature",
       "attributes": "ralyzation for 1d6 hours"
     },
-    "canonicalParenthetical": "HD 3d8, HP 15, AC 15, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 15, AC 15, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 71684,
@@ -1362,9 +1397,10 @@
       "hd": "1d6",
       "hp": "3",
       "ac": "16",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 1d6, HP 3, AC 16, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 3, AC 16, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 71967,
@@ -1400,7 +1436,8 @@
       "ac": "14",
       "disposition": "variable",
       "attributes": "physical",
-      "coins": "6 gp"
+      "coins": "6 gp",
+      "raceClass": "3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves"
     },
     "canonicalParenthetical": "HP 4, AC 14, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin."
   },
@@ -1438,6 +1475,7 @@
       "hp": "20",
       "ac": "19",
       "disposition": "neutral",
+      "raceClass": "creature",
       "attributes": "physical"
     },
     "canonicalParenthetical": "HP 20, AC 19, disposition neutral. Saves: P."
@@ -1475,9 +1513,10 @@
       "hd": "2d8",
       "hp": "9",
       "ac": "13",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
-    "canonicalParenthetical": "HD 2d8, HP 9, AC 13, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 9, AC 13, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 73400,
@@ -1513,9 +1552,10 @@
       "hp": "16",
       "ac": "15",
       "disposition": "neutral",
+      "raceClass": "creature",
       "attributes": "strength, dexterity"
     },
-    "canonicalParenthetical": "HD 3d8, HP 16, AC 15, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 16, AC 15, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 88639,
@@ -1551,6 +1591,7 @@
       "hp": "32",
       "ac": "16",
       "disposition": "neutral/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "equipment": "splint mail armor and carry a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger",
       "coins": "125 gp"
@@ -1591,10 +1632,11 @@
       "hp": "25",
       "ac": "12",
       "disposition": "neutral/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "spells": "a mixture of cleric and wizard spells at a 5th level ability"
     },
-    "canonicalParenthetical": "HD 4d8+4, HP 25, AC 12, disposition neutral/evil. Saves: P. It can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*."
+    "canonicalParenthetical": "HP 25, AC 12, disposition neutral/evil. Saves: P. It can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*."
   },
   {
     "sourceIndex": 89896,
@@ -1630,9 +1672,10 @@
       "hp": "16",
       "ac": "14",
       "disposition": "neutral/evil",
+      "raceClass": "humanoid",
       "attributes": "strength"
     },
-    "canonicalParenthetical": "HD 2d8+4, HP 16, AC 14, disposition neutral/evil. Saves: P."
+    "canonicalParenthetical": "HP 16, AC 14, disposition neutral/evil. Saves: P."
   },
   {
     "sourceIndex": 90458,
@@ -1668,9 +1711,10 @@
       "hp": "10",
       "ac": "14",
       "disposition": "neutral/evil",
+      "raceClass": "humanoid",
       "attributes": "strength"
     },
-    "canonicalParenthetical": "HD 1d8+4, HP 10, AC 14, disposition neutral/evil. Saves: P."
+    "canonicalParenthetical": "HP 10, AC 14, disposition neutral/evil. Saves: P."
   },
   {
     "sourceIndex": 91060,
@@ -1706,10 +1750,11 @@
       "hp": "6",
       "ac": "12",
       "disposition": "neutral/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "equipment": "clubs [+1 \"to hit\"; 1d6+1 damage]"
     },
-    "canonicalParenthetical": "HD 1d8, HP 6, AC 12, disposition neutral/evil. Saves: P. It has *clubs [+1 \"to hit\"; 1d6+1 damage]*."
+    "canonicalParenthetical": "HP 6, AC 12, disposition neutral/evil. Saves: P. It has *clubs [+1 \"to hit\"; 1d6+1 damage]*."
   },
   {
     "sourceIndex": 92960,
@@ -1745,7 +1790,8 @@
       "ac": "13",
       "disposition": "chaos/neutral",
       "attributes": "strength and wisdom",
-      "coins": "12 cp"
+      "coins": "12 cp",
+      "raceClass": "within 20'"
     },
     "canonicalParenthetical": "HP 22, AC 13, disposition chaos/neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 12 copper in coin."
   },
@@ -1783,6 +1829,7 @@
       "hp": "27",
       "ac": "16",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "attributes": "dlock"
     },
     "canonicalParenthetical": "HP 27, AC 16, disposition chaos/evil. Saves: P."
@@ -1820,9 +1867,10 @@
       "hd": "1d2",
       "hp": "2",
       "ac": "10",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10"
     },
-    "canonicalParenthetical": "HD 1d2, HP 2, AC 10, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 2, AC 10, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 103505,
@@ -1857,7 +1905,8 @@
       "hd": "1d8",
       "hp": "5",
       "ac": "14",
-      "disposition": "chaos/evil"
+      "disposition": "chaos/evil",
+      "raceClass": "humanoid"
     },
     "canonicalParenthetical": "HP 5, AC 14, disposition chaos/evil. Saves: P."
   },
@@ -1895,6 +1944,7 @@
       "hp": "20",
       "ac": "14",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "equipment": "a diamond-studded gold necklace worth 1, 000 gp",
       "jewelry": "1000 gold worth of jewelry",
@@ -1936,9 +1986,10 @@
       "hp": "13",
       "ac": "15",
       "disposition": "neutral",
+      "raceClass": "creature",
       "attributes": "ralyzation for 1d6 hours"
     },
-    "canonicalParenthetical": "HD 3d8, HP 13, AC 15, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 13, AC 15, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 107407,
@@ -1974,6 +2025,7 @@
       "hp": "13",
       "ac": "13",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "attributes": "charisma"
     },
     "canonicalParenthetical": "HP 13, AC 13, disposition chaos/evil. Saves: P."
@@ -2011,9 +2063,10 @@
       "hd": "2d8",
       "hp": "11",
       "ac": "15",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 2d8, HP 11, AC 15, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 11, AC 15, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 111852,
@@ -2050,7 +2103,8 @@
       "ac": "12",
       "disposition": "chaos/neutral",
       "attributes": "physical",
-      "coins": "18 sp"
+      "coins": "18 sp",
+      "raceClass": "1st level, chaotic neutral fighters"
     },
     "canonicalParenthetical": "HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin."
   },
@@ -2090,7 +2144,8 @@
       "disposition": "chaos/neutral",
       "attributes": "physical",
       "significantAttributes": "strength 17 and dexterity 17",
-      "coins": "35 sp, 100 gp"
+      "coins": "35 sp, 100 gp",
+      "raceClass": "He is a 4th level, chaotic neutral fighter whose"
     },
     "canonicalParenthetical": "HP 22, AC 16, disposition chaos/neutral. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has 35 sp, 100 gp."
   },
@@ -2128,15 +2183,16 @@
       "hp": "23",
       "ac": "15",
       "disposition": "variable",
+      "raceClass": "animal",
       "attributes": "physical",
       "equipment": "a splint mail, great helm, and carry a magical heavy flail",
       "coins": "2–12 gp",
       "significantAttributes": "strength 17 and dexterity 17",
-      "secondarySkills": "Nautical Ability, which is described in the CZY Appendix",
+      "secondarySkills": "Nautical Ability",
       "spells": "water breathing at will and cast a powerful charm person spell that lasts for one year",
       "jewelry": "25 gold worth of jewelry"
     },
-    "canonicalParenthetical": "HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability, which is described in the CZY Appendix. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
+    "canonicalParenthetical": "HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
   },
   {
     "sourceIndex": 115657,
@@ -2172,9 +2228,10 @@
       "hp": "2",
       "ac": "14",
       "disposition": "neutral",
+      "raceClass": "animal",
       "attributes": "ble of combat, fleeing from danger"
     },
-    "canonicalParenthetical": "HD 1d2, HP 2, AC 14, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 2, AC 14, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 116651,
@@ -2210,7 +2267,8 @@
       "ac": "12",
       "disposition": "neutral/evil",
       "attributes": "physical",
-      "coins": "6 sp"
+      "coins": "6 sp",
+      "raceClass": "1st level, neutral evil, human fighters"
     },
     "canonicalParenthetical": "HP 4, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
   },
@@ -2247,9 +2305,10 @@
       "hd": "1d2",
       "hp": "1",
       "ac": "12",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 1d2, HP 1, AC 12, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 1, AC 12, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 128374,
@@ -2284,9 +2343,10 @@
       "hd": "2d3",
       "hp": "3",
       "ac": "18",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 2d3, HP 3, AC 18, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 3, AC 18, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 128665,
@@ -2321,7 +2381,8 @@
       "hd": "1d10",
       "hp": "6",
       "ac": "16",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "These neutral insects'"
     },
     "canonicalParenthetical": "HP 6, AC 16, disposition neutral. Saves: P."
   },
@@ -2358,9 +2419,10 @@
       "hd": "1d4",
       "hp": "2",
       "ac": "13",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
-    "canonicalParenthetical": "HD 1d4, HP 2, AC 13, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 129247,
@@ -2395,9 +2457,10 @@
       "hd": "1d6",
       "hp": "4",
       "ac": "14",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
-    "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 4, AC 14, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 129551,
@@ -2433,9 +2496,10 @@
       "hp": "13",
       "ac": "15",
       "disposition": "neutral",
+      "raceClass": "creature",
       "attributes": "ralyzation for 1d6 hours"
     },
-    "canonicalParenthetical": "HD 3d8, HP 13, AC 15, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 13, AC 15, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 130089,
@@ -2470,9 +2534,10 @@
       "hd": "2d8",
       "hp": "11",
       "ac": "15",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 2d8, HP 11, AC 15, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 11, AC 15, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 131969,
@@ -2507,9 +2572,10 @@
       "hd": "2d8",
       "hp": "9",
       "ac": "13",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
-    "canonicalParenthetical": "HD 2d8, HP 9, AC 13, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 9, AC 13, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 133978,
@@ -2585,6 +2651,7 @@
       "hp": "3",
       "ac": "15",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 sp"
     },
     "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. They have 6 silver in coin."
@@ -2622,9 +2689,10 @@
       "hd": "3d8",
       "hp": "15",
       "ac": "14",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 3d8, HP 15, AC 14, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 15, AC 14, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 141713,
@@ -2660,7 +2728,8 @@
       "ac": "10",
       "disposition": "law/evil",
       "equipment": "a silver armlet worth 5 gp, carry key to the door of this room, and 3 cp",
-      "coins": "5 gp, 3 cp"
+      "coins": "5 gp, 3 cp",
+      "raceClass": "kobold"
     },
     "canonicalParenthetical": "HP 2, AC 10, disposition law/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries has a key to the door of this room, and 5 gp, 3 cp."
   },
@@ -2698,9 +2767,10 @@
       "hp": "3",
       "ac": "15",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 sp"
     },
-    "canonicalParenthetical": "HD 1d4, HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+    "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
   },
   {
     "sourceIndex": 142809,
@@ -2736,9 +2806,10 @@
       "hp": "6",
       "ac": "15",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 sp"
     },
-    "canonicalParenthetical": "HD 2d4, HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+    "canonicalParenthetical": "HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
   },
   {
     "sourceIndex": 144008,
@@ -2774,9 +2845,10 @@
       "hp": "3",
       "ac": "15",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 sp"
     },
-    "canonicalParenthetical": "HD 1d4, HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+    "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
   },
   {
     "sourceIndex": 144305,
@@ -2812,9 +2884,10 @@
       "hp": "6",
       "ac": "15",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 sp"
     },
-    "canonicalParenthetical": "HD 2d4, HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+    "canonicalParenthetical": "HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
   },
   {
     "sourceIndex": 146654,
@@ -2850,6 +2923,7 @@
       "hp": "14",
       "ac": "17",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "equipment": "plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber",
       "coins": "18 gp"
@@ -2890,6 +2964,7 @@
       "hp": "7",
       "ac": "15",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 sp"
     },
     "canonicalParenthetical": "HP 7, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
@@ -2928,9 +3003,10 @@
       "hp": "4",
       "ac": "14",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "equipment": "a loin cloth"
     },
-    "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has a loin cloth."
+    "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has a loin cloth."
   },
   {
     "sourceIndex": 151141,
@@ -2966,6 +3042,7 @@
       "hp": "20",
       "ac": "16",
       "disposition": "chaos/neutral",
+      "raceClass": "humanoid",
       "attributes": "strength"
     },
     "canonicalParenthetical": "HP 20, AC 16, disposition chaos/neutral. Saves: P."
@@ -3004,9 +3081,10 @@
       "hp": "4",
       "ac": "14",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 cp"
     },
-    "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin."
+    "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin."
   },
   {
     "sourceIndex": 157044,
@@ -3042,9 +3120,10 @@
       "hp": "4",
       "ac": "14",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 cp"
     },
-    "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. They have 6 copper in coin."
+    "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. They have 6 copper in coin."
   },
   {
     "sourceIndex": 158677,
@@ -3080,9 +3159,10 @@
       "hp": "4",
       "ac": "14",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 cp"
     },
-    "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin."
+    "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin."
   },
   {
     "sourceIndex": 161831,
@@ -3118,10 +3198,11 @@
       "hp": "3",
       "ac": "14",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "equipment": "a gold chain worth 50 gp",
       "coins": "6 cp, 50 gp"
     },
-    "canonicalParenthetical": "HD 1d6, HP 3, AC 14, disposition law/evil. Saves: P. It has 6 cp, 50 gp."
+    "canonicalParenthetical": "HP 3, AC 14, disposition law/evil. Saves: P. It has 6 cp, 50 gp."
   },
   {
     "sourceIndex": 162165,
@@ -3156,9 +3237,10 @@
       "hd": "1d6",
       "hp": "2",
       "ac": "12",
-      "disposition": "law/evil"
+      "disposition": "law/evil",
+      "raceClass": "humanoid"
     },
-    "canonicalParenthetical": "HD 1d6, HP 2, AC 12, disposition law/evil. Saves: P."
+    "canonicalParenthetical": "HP 2, AC 12, disposition law/evil. Saves: P."
   },
   {
     "sourceIndex": 168595,
@@ -3194,9 +3276,10 @@
       "hp": "4",
       "ac": "14",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 sp"
     },
-    "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
+    "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
   },
   {
     "sourceIndex": 168929,
@@ -3232,11 +3315,12 @@
       "hp": "11",
       "ac": "16",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "equipment": "a breastplate and carry medium steel shield, morning star, shortsword, whip, a brass belt ring with keys to #18 and #20",
       "coins": "5 gp, 6 sp"
     },
-    "canonicalParenthetical": "HD 2d6, HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp."
+    "canonicalParenthetical": "HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp."
   },
   {
     "sourceIndex": 171131,
@@ -3269,7 +3353,8 @@
     "canonicalData": {
       "raw": "weak and non-combatant, HP 2, AC 10",
       "hp": "2",
-      "ac": "10"
+      "ac": "10",
+      "raceClass": "bat"
     },
     "canonicalParenthetical": "HP 2, AC 10. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma."
   },
@@ -3306,7 +3391,8 @@
       "hp": "2",
       "ac": "11",
       "disposition": "law/good",
-      "attributes": "_ _as yet_ _undeveloped"
+      "attributes": "_ _as yet_ _undeveloped",
+      "raceClass": "This lawful good, 0th level, human knight"
     },
     "canonicalParenthetical": "HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma."
   },
@@ -3344,7 +3430,8 @@
       "ac": "10",
       "disposition": "chaos/good",
       "attributes": "strength and dexterity",
-      "equipment": "a loin cloth"
+      "equipment": "a loin cloth",
+      "raceClass": "This chaotic good, 2nd_ _level, dwarf fighter"
     },
     "canonicalParenthetical": "HP 18, AC 10, disposition chaos/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries a loin cloth."
   },
@@ -3381,7 +3468,8 @@
       "hp": "2",
       "ac": "8",
       "disposition": "neutral",
-      "attributes": "mental"
+      "attributes": "mental",
+      "raceClass": "This neutral, 0th level, human commoner"
     },
     "canonicalParenthetical": "HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma."
   },
@@ -3419,12 +3507,13 @@
       "hp": "15",
       "ac": "10",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "ralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21",
       "equipment": "a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21",
       "jewelry": "250 gold worth of jewelry",
       "coins": "30 gp, 250 gp"
     },
-    "canonicalParenthetical": "HD 4d6, HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry."
+    "canonicalParenthetical": "HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry."
   },
   {
     "sourceIndex": 178128,
@@ -3459,7 +3548,8 @@
       "hd": "1d12",
       "hp": "8",
       "ac": "13",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "undead"
     },
     "canonicalParenthetical": "HP 8, AC 13, disposition neutral. Saves: P."
   },
@@ -3497,9 +3587,10 @@
       "hp": "6",
       "ac": "14",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "coins": "6 sp"
     },
-    "canonicalParenthetical": "HD 1d6, HP 6, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
+    "canonicalParenthetical": "HP 6, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
   },
   {
     "sourceIndex": 184388,
@@ -3535,6 +3626,7 @@
       "hp": "18",
       "ac": "18",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "jewelry": "50 gold worth of jewelry",
       "coins": "12 gp, 50 gp"
@@ -3574,9 +3666,10 @@
       "hd": "1d6",
       "hp": "2",
       "ac": "12",
-      "disposition": "law/evil"
+      "disposition": "law/evil",
+      "raceClass": "humanoid"
     },
-    "canonicalParenthetical": "HD 1d6, HP 2, AC 12, disposition law/evil. Saves: P."
+    "canonicalParenthetical": "HP 2, AC 12, disposition law/evil. Saves: P."
   },
   {
     "sourceIndex": 186327,
@@ -3611,9 +3704,10 @@
       "hd": "1d2",
       "hp": "1",
       "ac": "12",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 1d2, HP 1, AC 12, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 1, AC 12, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 188927,
@@ -3648,9 +3742,10 @@
       "hd": "1d2",
       "hp": "1",
       "ac": "11",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "These neutral insects'"
     },
-    "canonicalParenthetical": "HD 1d2, HP 1, AC 11, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 1, AC 11, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 190284,
@@ -3685,9 +3780,10 @@
       "hd": "1d6",
       "hp": "4",
       "ac": "14",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
-    "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 4, AC 14, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 192531,
@@ -3723,9 +3819,10 @@
       "hp": "16",
       "ac": "10",
       "disposition": "neutral",
+      "raceClass": "creature",
       "attributes": "constitution"
     },
-    "canonicalParenthetical": "HD 4d8, HP 16, AC 10, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 16, AC 10, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 194494,
@@ -3760,9 +3857,10 @@
       "hd": "1d4",
       "hp": "2",
       "ac": "13",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
-    "canonicalParenthetical": "HD 1d4, HP 2, AC 13, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 196194,
@@ -3797,7 +3895,8 @@
       "hd": "2d10",
       "hp": "15",
       "ac": "12",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
     "canonicalParenthetical": "HP 15, AC 12, disposition neutral. Saves: P."
   },
@@ -3834,7 +3933,8 @@
       "hd": "1d4",
       "hp": "2",
       "ac": "18",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
     "canonicalParenthetical": "HP 2, AC 18, disposition neutral. Saves: P."
   },
@@ -3871,9 +3971,10 @@
       "hd": "1d8",
       "hp": "5",
       "ac": "14",
-      "disposition": "law/evil"
+      "disposition": "law/evil",
+      "raceClass": "humanoid"
     },
-    "canonicalParenthetical": "HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P."
+    "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
   },
   {
     "sourceIndex": 202054,
@@ -3908,9 +4009,10 @@
       "hd": "1d8",
       "hp": "5",
       "ac": "14",
-      "disposition": "law/evil"
+      "disposition": "law/evil",
+      "raceClass": "humanoid"
     },
-    "canonicalParenthetical": "HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P."
+    "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
   },
   {
     "sourceIndex": 204714,
@@ -3945,9 +4047,10 @@
       "hd": "1d8",
       "hp": "5",
       "ac": "14",
-      "disposition": "law/evil"
+      "disposition": "law/evil",
+      "raceClass": "humanoid"
     },
-    "canonicalParenthetical": "HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P."
+    "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
   },
   {
     "sourceIndex": 205532,
@@ -3982,7 +4085,8 @@
       "hd": "1d8",
       "hp": "7",
       "ac": "14",
-      "disposition": "law/evil"
+      "disposition": "law/evil",
+      "raceClass": "humanoid"
     },
     "canonicalParenthetical": "HP 7, AC 14, disposition law/evil. Saves: P."
   },
@@ -4020,6 +4124,7 @@
       "hp": "20",
       "ac": "18",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "coins": "30 gp"
     },
@@ -4059,6 +4164,7 @@
       "hp": "4",
       "ac": "12",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "equipment": "a 4-inch knife, and 100 gp worth of gold jewelry",
       "coins": "100 gp"
     },
@@ -4097,9 +4203,10 @@
       "hd": "1d8",
       "hp": "5",
       "ac": "14",
-      "disposition": "law/evil"
+      "disposition": "law/evil",
+      "raceClass": "humanoid"
     },
-    "canonicalParenthetical": "HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P."
+    "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
   },
   {
     "sourceIndex": 211687,
@@ -4135,10 +4242,11 @@
       "hp": "12",
       "ac": "14",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "coins": "30 gp"
     },
-    "canonicalParenthetical": "HD 2d8, HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin."
+    "canonicalParenthetical": "HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin."
   },
   {
     "sourceIndex": 216535,
@@ -4173,9 +4281,10 @@
       "hd": "2d12",
       "hp": "12",
       "ac": "12",
-      "disposition": "neutral/evil"
+      "disposition": "neutral/evil",
+      "raceClass": "undead"
     },
-    "canonicalParenthetical": "HD 2d12, HP 12, AC 12, disposition neutral/evil. Saves: P."
+    "canonicalParenthetical": "HP 12, AC 12, disposition neutral/evil. Saves: P."
   },
   {
     "sourceIndex": 218587,
@@ -4210,9 +4319,10 @@
       "hd": "1d12",
       "hp": "8",
       "ac": "13",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "undead"
     },
-    "canonicalParenthetical": "HD 1d12, HP 8, AC 13, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 8, AC 13, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 222850,
@@ -4248,6 +4358,7 @@
       "hp": "63",
       "ac": "17",
       "disposition": "chaos/neutral",
+      "raceClass": "humanoid",
       "attributes": "ir of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash",
       "equipment": "hide armor and carry a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash"
     },
@@ -4286,7 +4397,8 @@
       "hd": "4d10",
       "hp": "27",
       "ac": "13",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "monster"
     },
     "canonicalParenthetical": "HP 27, AC 13, disposition neutral. Saves: P."
   },
@@ -4324,6 +4436,7 @@
       "hp": "15",
       "ac": "13",
       "disposition": "neutral",
+      "raceClass": "animal",
       "attributes": "ws for 1d4+1 damage and a bite for 1d6+1 damage"
     },
     "canonicalParenthetical": "HP 15, AC 13, disposition neutral. Saves: P."
@@ -4361,7 +4474,8 @@
       "hd": "1d8",
       "hp": "6",
       "ac": "12",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
     "canonicalParenthetical": "HP 6, AC 12, disposition neutral. Saves: P."
   },
@@ -4398,7 +4512,8 @@
       "hd": "1d4",
       "hp": "2",
       "ac": "13",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "animal"
     },
     "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
   },
@@ -4435,9 +4550,10 @@
       "hd": "1d6",
       "hp": "3",
       "ac": "16",
-      "disposition": "neutral"
+      "disposition": "neutral",
+      "raceClass": "creature"
     },
-    "canonicalParenthetical": "HD 1d6, HP 3, AC 16, disposition neutral. Saves: P."
+    "canonicalParenthetical": "HP 3, AC 16, disposition neutral. Saves: P."
   },
   {
     "sourceIndex": 241850,
@@ -4473,10 +4589,11 @@
       "hp": "17",
       "ac": "16",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "attributes": "tchwork ring mail, buckler, bastard sword, light throwing hammers x 2",
       "coins": "6 gp"
     },
-    "canonicalParenthetical": "HD 3d10, HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin."
+    "canonicalParenthetical": "HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin."
   },
   {
     "sourceIndex": 248459,
@@ -4512,11 +4629,12 @@
       "hp": "8",
       "ac": "15",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "equipment": "chain mail armor and carry composite short bows, x12 arrows, battle-axes, and 2d4 gp each",
       "coins": "4 gp"
     },
-    "canonicalParenthetical": "HD 1d10, HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin."
+    "canonicalParenthetical": "HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin."
   },
   {
     "sourceIndex": 249977,
@@ -4552,11 +4670,12 @@
       "hp": "6",
       "ac": "15",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "equipment": "crude chain mail armor, carry halberds, and carry 2d4 gp each",
       "coins": "4 gp"
     },
-    "canonicalParenthetical": "HD 1d10, HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin."
+    "canonicalParenthetical": "HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin."
   },
   {
     "sourceIndex": 250292,
@@ -4591,9 +4710,10 @@
       "hd": "1d6",
       "hp": "3",
       "ac": "12",
-      "disposition": "law/evil"
+      "disposition": "law/evil",
+      "raceClass": "humanoid"
     },
-    "canonicalParenthetical": "HD 1d6, HP 3, AC 12, disposition law/evil. Saves: P."
+    "canonicalParenthetical": "HP 3, AC 12, disposition law/evil. Saves: P."
   },
   {
     "sourceIndex": 252899,
@@ -4629,10 +4749,11 @@
       "hp": "8",
       "ac": "15",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "coins": "4 gp"
     },
-    "canonicalParenthetical": "HD 1d10, HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin."
+    "canonicalParenthetical": "HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin."
   },
   {
     "sourceIndex": 254444,
@@ -4668,6 +4789,7 @@
       "hp": "18",
       "ac": "16",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "equipment": "full chain mail armor and carry a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows",
       "coins": "12 gp"
@@ -4708,10 +4830,11 @@
       "hp": "3",
       "ac": "12",
       "disposition": "law/evil",
+      "raceClass": "humanoid",
       "equipment": "an engraved silver armband worth 2 gp",
       "coins": "2 gp"
     },
-    "canonicalParenthetical": "HD 1d6, HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin."
+    "canonicalParenthetical": "HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin."
   },
   {
     "sourceIndex": 257035,
@@ -4747,10 +4870,11 @@
       "hp": "12",
       "ac": "15",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "attributes": "tchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp",
       "coins": "4 gp"
     },
-    "canonicalParenthetical": "HD 2d10, HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+    "canonicalParenthetical": "HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
   },
   {
     "sourceIndex": 259311,
@@ -4786,10 +4910,11 @@
       "hp": "12",
       "ac": "15",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "attributes": "tchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp",
       "coins": "4 gp"
     },
-    "canonicalParenthetical": "HD 2d10, HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+    "canonicalParenthetical": "HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
   },
   {
     "sourceIndex": 259645,
@@ -4825,9 +4950,10 @@
       "hp": "5",
       "ac": "12",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "coins": "4 sp"
     },
-    "canonicalParenthetical": "HD 1d10, HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin."
+    "canonicalParenthetical": "HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin."
   },
   {
     "sourceIndex": 260733,
@@ -4863,10 +4989,11 @@
       "hp": "14",
       "ac": "15",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "coins": "4 gp"
     },
-    "canonicalParenthetical": "HD 2d10, HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin."
+    "canonicalParenthetical": "HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin."
   },
   {
     "sourceIndex": 261048,
@@ -4902,6 +5029,7 @@
       "hp": "20",
       "ac": "17",
       "disposition": "chaos/evil",
+      "raceClass": "humanoid",
       "attributes": "strength",
       "equipment": "plate mail armor, and carry a throwing club, morning star, and 10-inch knife",
       "coins": "24 gp"

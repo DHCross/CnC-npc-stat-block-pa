@@ -68,6 +68,11 @@ function analyzeAndCanonicalize() {
       // Ensure raw points back
       data.raw = item.parenthetical;
 
+      // Fall back to parsed raceClass if extractor didn't find it
+      if (!data.raceClass && item.raceClass) {
+        data.raceClass = item.raceClass;
+      }
+
       const canonicalData = buildCanonicalDataFromParenthetical(title, data);
       const preCheck = extractPreCheckData(title, canonicalData);
       const classification = classifyCreature(title, canonicalData);

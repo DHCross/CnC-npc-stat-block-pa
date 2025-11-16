@@ -587,6 +587,15 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
     }
   }
 
+  // Try to extract from descriptive format like "This chaotic neutral humanoid" or "These neutral animals"
+  if (!data.raceClass) {
+    const descriptiveMatch = /(?:this|these|this\s+[a-z-]+)\s+(?:(?:lawful|chaotic|neutral)\s+)?(?:good|evil|neutral)?\s*(humanoid|animal|creature|monster|beast|undead|giant|dragon)s?/i.exec(parenthetical);
+    if (descriptiveMatch) {
+      const creatureType = descriptiveMatch[1];
+      data.raceClass = creatureType;
+    }
+  }
+
   // Extract attributes with multiple pattern variations
   // Try more specific patterns first
   let attrMatch = /(?:their|his|its)\s+prime\s+attributes\s+are:\s*([^.]+?)(?:\.|$)/i.exec(parenthetical);
@@ -696,7 +705,12 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
   // Extract secondary skills
   const skillMatch = /(?:secondary\s+skill|skills?)\s+(?:is|are|of)[:\s]*([^.]+?)(?:\.|$)/i.exec(parenthetical);
   if (skillMatch) {
-    data.secondarySkills = skillMatch[1].trim();
+    let skill = skillMatch[1].trim();
+    // Strip narrative clauses that belong in notes, not quick-reference
+    // Remove "which is described in...", "as described in...", etc.
+    skill = skill.replace(/[,;]?\s*(?:which|as)\s+(?:is|are)\s+described\s+in\s+.+$/i, '');
+    skill = skill.replace(/[,;]?\s*\(see\s+.+?\)$/i, '');
+    data.secondarySkills = skill.trim();
   }
 
   // Extract spells
@@ -1742,7 +1756,14 @@ export function buildCanonicalParenthetical(
   // Add secondary skills (comes before significant attributes per template)
   if (data.secondarySkills) {
     const possessive = resolvedPossessive;
-    parts.push(`${possessive} secondary skill is ${data.secondarySkills}`);
+    // Ensure narrative clauses are stripped for canonical output
+    let skill = data.secondarySkills;
+    skill = skill.replace(/[,;]?\s*(?:which|as)\s+(?:is|are)\s+described\s+in\s+.+$/i, '');
+    skill = skill.replace(/[,;]?\s*\(see\s+.+?\)$/i, '');
+    skill = skill.trim();
+    if (skill) {
+      parts.push(`${possessive} secondary skill is ${skill}`);
+    }
   }
 
   // Add significant attributes

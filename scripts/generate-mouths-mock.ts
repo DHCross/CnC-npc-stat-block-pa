@@ -4,13 +4,46 @@ import { analyzeFullDocument } from '@/lib/full-document-pipeline';
 
 async function main() {
   const cwd = process.cwd();
+  
+  // Load canonical data if available
+  const canonicalPath = path.join(cwd, 'data', 'mouths-of-madness', 'entities.canonical.json');
+  let canonicalData: any[] = [];
+  if (fs.existsSync(canonicalPath)) {
+    try {
+      canonicalData = JSON.parse(fs.readFileSync(canonicalPath, 'utf8'));
+      console.log(`Loaded ${canonicalData.length} canonical entries from entities.canonical.json`);
+    } catch (err) {
+      console.warn('Failed to load canonical data:', err);
+    }
+  }
+  
+  // Load canonical report for accurate validation metrics
+  const reportPath = path.join(cwd, 'data', 'mouths-of-madness', 'canonical_report.json');
+  let canonicalReport: any = null;
+  if (fs.existsSync(reportPath)) {
+    try {
+      canonicalReport = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+      console.log(`Loaded canonical report with ${canonicalReport.flagged?.length || 0} flagged items`);
+    } catch (err) {
+      console.warn('Failed to load canonical report:', err);
+    }
+  }
+  
   // Try to find the mouths-of-madness canonical file in 'CnC Docs' folder
+  // Prefer mouths-of-madness-canonical-clean.md without date suffix
   const docsDirCandidates = [path.join(cwd, 'CnC Docs'), path.join(cwd, 'CnC-Docs'), path.join(cwd, 'CnC Docs/')];
   let filePath = '';
   for (const dir of docsDirCandidates) {
     if (!fs.existsSync(dir)) continue;
+    // Try exact match first
+    const preferredFile = path.join(dir, 'mouths-of-madness-canonical-clean.md');
+    if (fs.existsSync(preferredFile)) {
+      filePath = preferredFile;
+      break;
+    }
+    // Fall back to any canonical file
     const files = fs.readdirSync(dir);
-    const candidate = files.find(f => f.startsWith('mouths-of-madness-canonical'));
+    const candidate = files.find(f => f.startsWith('mouths-of-madness-canonical') && !f.includes('.11.14'));
     if (candidate) {
       filePath = path.join(dir, candidate);
       break;
@@ -29,6 +62,58 @@ async function main() {
 
   console.log('Running full-document pipeline on:', filePath);
   const analysis = analyzeFullDocument(md, 'Mouths of Madness', 'enhanced');
+  
+  // Merge canonical data into creatures
+  if (canonicalData.length > 0 && analysis.creatures) {
+    console.log(`Merging canonical data into ${analysis.creatures.length} creatures`);
+    
+    // Build a map of flagged entries from canonical report
+    const flaggedMap = new Map<string, string[]>();
+    if (canonicalReport?.flagged) {
+      for (const item of canonicalReport.flagged) {
+        if (item.title && item.flags) {
+          flaggedMap.set(item.title, item.flags);
+        }
+      }
+    }
+    
+    for (let i = 0; i < analysis.creatures.length && i < canonicalData.length; i++) {
+      const creature = analysis.creatures[i];
+      const canonical = canonicalData[i];
+      
+      if (canonical.canonicalParenthetical) {
+        creature.converted = creature.converted.replace(
+          /\*[^*]+\*\s*$/,
+          `*${canonical.canonicalParenthetical}*`
+        );
+      }
+      
+      // Also add the canonical data to the creature object for reference
+      if (canonical.canonicalData) {
+        creature.canonicalData = canonical.canonicalData;
+      }
+      
+      // Update validation based on canonical report
+      const flags = flaggedMap.get(canonical.title);
+      if (flags && flags.length > 0) {
+        // This creature is flagged - lower compliance score
+        creature.validation = {
+          warnings: flags.map(flag => ({
+            type: 'warning' as const,
+            category: 'Canonical Analysis',
+            message: flag,
+          })),
+          complianceScore: 80,
+        };
+      } else {
+        // This creature passed canonical validation - high compliance
+        creature.validation = {
+          warnings: [],
+          complianceScore: 95,
+        };
+      }
+    }
+  }
   
   // If we have classification results, merge them into the analysis for Storybook use
   const classificationPath = path.join(process.cwd(), 'data', 'mouths-of-madness', 'creature-classifications.json');
@@ -59,6 +144,31 @@ async function main() {
     } catch (err) {
       console.warn('Failed to attach classification data to Storybook mock', err);
     }
+  }
+  
+  // Override validation report with canonical report data
+  if (canonicalReport && analysis.validationReport) {
+    console.log('Replacing validation report with canonical analyzer results');
+    const flaggedCount = canonicalReport.flagged?.length || 0;
+    const totalEntries = canonicalData.length || analysis.creatures?.length || 0;
+    
+    // Calculate compliance based on entries without critical flags
+    const compliance = totalEntries > 0 
+      ? Math.round(((totalEntries - flaggedCount) / totalEntries) * 100)
+      : 100;
+    
+    analysis.validationReport = {
+      totalValidationScore: compliance,
+      perCreatureScores: analysis.creatures?.map(() => compliance) || [],
+      crossEntryIssues: [],
+      statisticalAnomalies: [],
+      recommendations: [
+        ...(compliance < 70 ? ['Overall compliance is below 70% - consider using auto-correction features'] : []),
+        ...(flaggedCount > 0 ? [`${flaggedCount} entries flagged in canonical report - review for completeness`] : []),
+      ],
+      totalIssues: flaggedCount,
+      criticalIssues: flaggedCount,
+    };
   }
 
   // Sanitize the object: remove circular or complex data if needed

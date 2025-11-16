@@ -10,7 +10,7 @@
 
 ### 1. Ape, carnivorous
 
-*HD 4d10, HP 23, AC 15, disposition neutral. Saves: P.*
+*HP 23, AC 15, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 23, AC 15, Disposition neutral
 
@@ -52,9 +52,10 @@
     "hp": "23",
     "ac": "15",
     "disposition": "neutral",
+    "raceClass": "animal",
     "attributes": "strength"
   },
-  "canonicalParenthetical": "HD 4d10, HP 23, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 23, AC 15, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -105,7 +106,8 @@
     "ac": "13",
     "disposition": "neutral/evil",
     "attributes": "physical",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "raceClass": "0th level, neutral evil, human fighters"
   },
   "canonicalParenthetical": "HP 4, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
 }
@@ -158,7 +160,8 @@
     "ac": "14",
     "disposition": "neutral/evil",
     "attributes": "physical",
-    "coins": "6 gp"
+    "coins": "6 gp",
+    "raceClass": "2nd level, neutral evil, human fighters"
   },
   "canonicalParenthetical": "HP 14, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin."
 }
@@ -169,7 +172,7 @@
 
 ### 4. Bat, giant cave
 
-*HD 1d2, HP 1, AC 12, disposition neutral. Saves: P.*
+*HP 1, AC 12, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 1, AC 12, Disposition neutral
 
@@ -210,9 +213,10 @@
     "hd": "1d2",
     "hp": "1",
     "ac": "12",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 1d2, HP 1, AC 12, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 1, AC 12, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -263,6 +267,7 @@
     "hp": "5",
     "ac": "14",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "coins": "6 cp"
   },
   "canonicalParenthetical": "HP 5, AC 14, disposition chaos/evil. Saves: P. It has 6 copper in coin."
@@ -274,7 +279,7 @@
 
 ### 6. Bear, black
 
-*HD 3d8, HP 15, AC 13, disposition neutral. Saves: P.*
+*HP 15, AC 13, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 15, AC 13, Disposition neutral
 
@@ -316,9 +321,10 @@
     "hp": "15",
     "ac": "13",
     "disposition": "neutral",
+    "raceClass": "animal",
     "attributes": "ws for 1d4+1 damage and a bite for 1d6+1 damage"
   },
-  "canonicalParenthetical": "HD 3d8, HP 15, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 15, AC 13, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -327,7 +333,7 @@
 
 ### 7. Boar, wild
 
-*HD 2d8, HP 8, AC 16, disposition neutral. Saves: P.*
+*HP 8, AC 16, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 8, AC 16, Disposition neutral
 
@@ -368,9 +374,10 @@
     "hd": "2d8",
     "hp": "8",
     "ac": "16",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
-  "canonicalParenthetical": "HD 2d8, HP 8, AC 16, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 8, AC 16, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -421,7 +428,8 @@
     "ac": "13",
     "disposition": "neutral/evil",
     "attributes": "physical",
-    "coins": "6 gp"
+    "coins": "6 gp",
+    "raceClass": "1st level, neutral evil, human fighters"
   },
   "canonicalParenthetical": "HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin."
 }
@@ -474,7 +482,8 @@
     "ac": "14",
     "disposition": "neutral/evil",
     "attributes": "physical",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "raceClass": "1st level, neutral evil, human fighters"
   },
   "canonicalParenthetical": "HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
 }
@@ -527,7 +536,8 @@
     "ac": "15",
     "disposition": "neutral/evil",
     "attributes": "physical",
-    "coins": "8 gp"
+    "coins": "8 gp",
+    "raceClass": "2nd level, neutral evil, human fighters"
   },
   "canonicalParenthetical": "HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 8 gold in coin."
 }
@@ -538,7 +548,7 @@
 
 ### 11. Bugbear
 
-*HD 3d10, HP 16, AC 16, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
+*HP 16, AC 16, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
 
 **Core Stats:** HP 16, AC 16, Disposition chaos/evil
 
@@ -580,10 +590,11 @@
     "hp": "16",
     "ac": "16",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "attributes": "tchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HD 3d10, HP 16, AC 16, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+  "canonicalParenthetical": "HP 16, AC 16, disposition chaos/evil. Saves: P. It has 4 gold in coin."
 }
 ```
 </details>
@@ -592,7 +603,7 @@
 
 ### 12. Elf, Wood, bowman
 
-*HD 1d10, HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin.*
+*HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin.*
 
 **Core Stats:** HP 8, AC 12, Disposition chaos/neutral
 
@@ -635,9 +646,10 @@
     "ac": "12",
     "disposition": "chaos/neutral",
     "attributes": "physical",
-    "coins": "18 sp"
+    "coins": "18 sp",
+    "raceClass": "1st level, chaotic neutral fighters"
   },
-  "canonicalParenthetical": "HD 1d10, HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin."
+  "canonicalParenthetical": "HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin."
 }
 ```
 </details>
@@ -646,7 +658,7 @@
 
 ### 13. Elf, Wood, spearman
 
-*HD 1d10, HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin.*
+*HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin.*
 
 **Core Stats:** HP 8, AC 13, Disposition chaos/neutral
 
@@ -689,9 +701,10 @@
     "ac": "13",
     "disposition": "chaos/neutral",
     "attributes": "physical",
-    "coins": "12 sp"
+    "coins": "12 sp",
+    "raceClass": "1st level, chaotic neutral fighters"
   },
-  "canonicalParenthetical": "HD 1d10, HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin."
+  "canonicalParenthetical": "HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin."
 }
 ```
 </details>
@@ -700,7 +713,7 @@
 
 ### 14. Elf, Wood, swordsman
 
-*HD 1d10, HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin.*
+*HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin.*
 
 **Core Stats:** HP 5, AC 14, Disposition chaos/neutral
 
@@ -743,9 +756,10 @@
     "ac": "14",
     "disposition": "chaos/neutral",
     "attributes": "physical",
-    "coins": "2–12 gp"
+    "coins": "2–12 gp",
+    "raceClass": "1st - 3rd level, chaotic neutral fighters"
   },
-  "canonicalParenthetical": "HD 1d10, HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin."
+  "canonicalParenthetical": "HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin."
 }
 ```
 </details>
@@ -754,7 +768,7 @@
 
 ### 15. Ghoul
 
-*HD 2d8, HP 10, AC 14, disposition chaos/evil. Saves: P.*
+*HP 10, AC 14, disposition chaos/evil. Saves: P.*
 
 **Core Stats:** HP 10, AC 14, Disposition chaos/evil
 
@@ -796,9 +810,10 @@
     "hp": "10",
     "ac": "14",
     "disposition": "chaos/evil",
+    "raceClass": "undead",
     "attributes": "ralysis or become rigid [paralyzed]"
   },
-  "canonicalParenthetical": "HD 2d8, HP 10, AC 14, disposition chaos/evil. Saves: P."
+  "canonicalParenthetical": "HP 10, AC 14, disposition chaos/evil. Saves: P."
 }
 ```
 </details>
@@ -807,7 +822,7 @@
 
 ### 16. Gnoll
 
-*HD 2d10, HP 13, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
+*HP 13, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
 
 **Core Stats:** HP 13, AC 15, Disposition chaos/evil
 
@@ -849,10 +864,11 @@
     "hp": "13",
     "ac": "15",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "attributes": "tchwork leather armor, shield, throwing club, morning star, and 2d4 gp",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HD 2d10, HP 13, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+  "canonicalParenthetical": "HP 13, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
 }
 ```
 </details>
@@ -861,7 +877,7 @@
 
 ### 17. Goblin, raider
 
-*HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -903,9 +919,10 @@
     "hp": "4",
     "ac": "14",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 sp"
   },
-  "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
 }
 ```
 </details>
@@ -956,6 +973,7 @@
     "hp": "15",
     "ac": "16",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "coins": "4 gp"
   },
@@ -968,7 +986,7 @@
 
 ### 19. Griffon
 
-*HD 7d10, HP 45, AC 17, disposition neutral. Saves: P.*
+*HP 45, AC 17, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 45, AC 17, Disposition neutral
 
@@ -1009,9 +1027,10 @@
     "hd": "7d10",
     "hp": "45",
     "ac": "17",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 7d10, HP 45, AC 17, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 45, AC 17, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -1020,7 +1039,7 @@
 
 ### 20. Hobgoblin
 
-*HD 1d10, HP 8, AC 15, disposition law/evil. Saves: P. It has 4 silver in coin.*
+*HP 8, AC 15, disposition law/evil. Saves: P. It has 4 silver in coin.*
 
 **Core Stats:** HP 8, AC 15, Disposition law/evil
 
@@ -1062,10 +1081,11 @@
     "hp": "8",
     "ac": "15",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "coins": "4 sp"
   },
-  "canonicalParenthetical": "HD 1d10, HP 8, AC 15, disposition law/evil. Saves: P. It has 4 silver in coin."
+  "canonicalParenthetical": "HP 8, AC 15, disposition law/evil. Saves: P. It has 4 silver in coin."
 }
 ```
 </details>
@@ -1074,7 +1094,7 @@
 
 ### 21. Kobold
 
-*HD 1d4, HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
 
 **Core Stats:** HP 3, AC 15, Disposition law/evil
 
@@ -1116,9 +1136,10 @@
     "hp": "3",
     "ac": "15",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 sp"
   },
-  "canonicalParenthetical": "HD 1d4, HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
 }
 ```
 </details>
@@ -1127,7 +1148,7 @@
 
 ### 22. Lion (mountain, forest)
 
-*HD 4d8, HP 20, AC 16, disposition neutral. Saves: P.*
+*HP 20, AC 16, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 20, AC 16, Disposition neutral
 
@@ -1168,9 +1189,10 @@
     "hd": "4d8",
     "hp": "20",
     "ac": "16",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
-  "canonicalParenthetical": "HD 4d8, HP 20, AC 16, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 20, AC 16, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -1179,7 +1201,7 @@
 
 ### 23. Lizardfolk
 
-*HD 2d8, HP 10, AC 15, disposition neutral. Saves: P.*
+*HP 10, AC 15, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 10, AC 15, Disposition neutral
 
@@ -1220,9 +1242,10 @@
     "hd": "2d8",
     "hp": "10",
     "ac": "15",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 2d8, HP 10, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 10, AC 15, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -1273,6 +1296,7 @@
     "hp": "10",
     "ac": "14",
     "disposition": "neutral/evil",
+    "raceClass": "humanoid",
     "attributes": "strength"
   },
   "canonicalParenthetical": "HP 10, AC 14, disposition neutral/evil. Saves: P."
@@ -1326,7 +1350,8 @@
     "ac": "12",
     "disposition": "neutral",
     "attributes": "physical",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "raceClass": "0th-2nd level, neutral, human fighters"
   },
   "canonicalParenthetical": "HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
 }
@@ -1337,7 +1362,7 @@
 
 ### 26. Naga, Water
 
-*HD 7d8, HP 35, AC 15, disposition neutral. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc.*
+*HP 35, AC 15, disposition neutral. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc.*
 
 **Core Stats:** HP 35, AC 15, Disposition neutral
 
@@ -1379,10 +1404,11 @@
     "hp": "35",
     "ac": "15",
     "disposition": "neutral",
+    "raceClass": "creature",
     "attributes": "strength",
     "equipment": "spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, medium steel shield, teleport, etc"
   },
-  "canonicalParenthetical": "HD 7d8, HP 35, AC 15, disposition neutral. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc."
+  "canonicalParenthetical": "HP 35, AC 15, disposition neutral. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc."
 }
 ```
 </details>
@@ -1391,7 +1417,7 @@
 
 ### 27. Nixies (sprite)
 
-*HD 1d4, HP 3, AC 14, disposition neutral. Saves: P. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*
+*HP 3, AC 14, disposition neutral. Saves: P. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*
 
 **Core Stats:** HP 3, AC 14, Disposition neutral
 
@@ -1433,9 +1459,10 @@
     "hp": "3",
     "ac": "14",
     "disposition": "neutral",
+    "raceClass": "creature",
     "spells": "water breathing at will and cast a powerful charm person spell that lasts for one year"
   },
-  "canonicalParenthetical": "HD 1d4, HP 3, AC 14, disposition neutral. Saves: P. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
+  "canonicalParenthetical": "HP 3, AC 14, disposition neutral. Saves: P. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
 }
 ```
 </details>
@@ -1444,7 +1471,7 @@
 
 ### 28. Orc
 
-*HD 1d8, HP 5, AC 13, disposition law/evil. Saves: P. It has 6 gold in coin.*
+*HP 5, AC 13, disposition law/evil. Saves: P. It has 6 gold in coin.*
 
 **Core Stats:** HP 5, AC 13, Disposition law/evil
 
@@ -1486,9 +1513,10 @@
     "hp": "5",
     "ac": "13",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 gp"
   },
-  "canonicalParenthetical": "HD 1d8, HP 5, AC 13, disposition law/evil. Saves: P. It has 6 gold in coin."
+  "canonicalParenthetical": "HP 5, AC 13, disposition law/evil. Saves: P. It has 6 gold in coin."
 }
 ```
 </details>
@@ -1497,7 +1525,7 @@
 
 ### 29. Otter, giant
 
-*HD 4d8, HP 21, AC 15, disposition neutral. Saves: P.*
+*HP 21, AC 15, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 21, AC 15, Disposition neutral
 
@@ -1538,9 +1566,10 @@
     "hd": "4d8",
     "hp": "21",
     "ac": "15",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 4d8, HP 21, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 21, AC 15, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -1549,7 +1578,7 @@
 
 ### 30. Owlbear (small)
 
-*HD 3d10, HP 19, AC 15, disposition neutral. Saves: P.*
+*HP 19, AC 15, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 19, AC 15, Disposition neutral
 
@@ -1591,9 +1620,10 @@
     "hp": "19",
     "ac": "15",
     "disposition": "neutral",
+    "raceClass": "monster",
     "attributes": "strength"
   },
-  "canonicalParenthetical": "HD 3d10, HP 19, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 19, AC 15, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -1602,7 +1632,7 @@
 
 ### 31. Rats, River (giant)
 
-*HD 1d4, HP 2, AC 13, disposition neutral. Saves: P.*
+*HP 2, AC 13, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 2, AC 13, Disposition neutral
 
@@ -1643,9 +1673,10 @@
     "hd": "1d4",
     "hp": "2",
     "ac": "13",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
-  "canonicalParenthetical": "HD 1d4, HP 2, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -1654,7 +1685,7 @@
 
 ### 32. Rivermen
 
-*HD 1d8, HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability, which is described in the CZY Appendix.*
+*HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability.*
 
 **Core Stats:** HP 5, AC 11, Disposition chaos/neutral
 
@@ -1697,9 +1728,10 @@
     "ac": "11",
     "disposition": "chaos/neutral",
     "attributes": "physical",
-    "secondarySkills": "Nautical Ability, which is described in the CZY Appendix"
+    "secondarySkills": "Nautical Ability",
+    "raceClass": "0th level, chaotic neutral, human fighters"
   },
-  "canonicalParenthetical": "HD 1d8, HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability, which is described in the CZY Appendix."
+  "canonicalParenthetical": "HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability."
 }
 ```
 </details>
@@ -1708,7 +1740,7 @@
 
 ### 33. Snake, poisonous
 
-*HD 1d6, HP 4, AC 14, disposition neutral. Saves: P.*
+*HP 4, AC 14, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 4, AC 14, Disposition neutral
 
@@ -1749,9 +1781,10 @@
     "hd": "1d6",
     "hp": "4",
     "ac": "14",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
-  "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 4, AC 14, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -1760,7 +1793,7 @@
 
 ### 34. Snake, poisonous (deadly)
 
-*HD 2d6, HP 7, AC 14, disposition neutral. Saves: P.*
+*HP 7, AC 14, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 7, AC 14, Disposition neutral
 
@@ -1801,9 +1834,10 @@
     "hd": "2d6",
     "hp": "7",
     "ac": "14",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
-  "canonicalParenthetical": "HD 2d6, HP 7, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 7, AC 14, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -1812,7 +1846,7 @@
 
 ### 35. Spider, Giant (medium-sized)
 
-*HD 3d8, HP 15, AC 15, disposition neutral. Saves: P.*
+*HP 15, AC 15, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 15, AC 15, Disposition neutral
 
@@ -1854,9 +1888,10 @@
     "hp": "15",
     "ac": "15",
     "disposition": "neutral",
+    "raceClass": "creature",
     "attributes": "ralyzation for 1d6 hours"
   },
-  "canonicalParenthetical": "HD 3d8, HP 15, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 15, AC 15, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -1865,7 +1900,7 @@
 
 ### 36. Stirges
 
-*HD 1d6, HP 3, AC 16, disposition neutral. Saves: P.*
+*HP 3, AC 16, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 3, AC 16, Disposition neutral
 
@@ -1906,9 +1941,10 @@
     "hd": "1d6",
     "hp": "3",
     "ac": "16",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 1d6, HP 3, AC 16, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 3, AC 16, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -1959,7 +1995,8 @@
     "ac": "14",
     "disposition": "variable",
     "attributes": "physical",
-    "coins": "6 gp"
+    "coins": "6 gp",
+    "raceClass": "3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves"
   },
   "canonicalParenthetical": "HP 4, AC 14, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin."
 }
@@ -2012,6 +2049,7 @@
     "hp": "20",
     "ac": "19",
     "disposition": "neutral",
+    "raceClass": "creature",
     "attributes": "physical"
   },
   "canonicalParenthetical": "HP 20, AC 19, disposition neutral. Saves: P."
@@ -2023,7 +2061,7 @@
 
 ### 39. Wolf, Grey
 
-*HD 2d8, HP 9, AC 13, disposition neutral. Saves: P.*
+*HP 9, AC 13, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 9, AC 13, Disposition neutral
 
@@ -2064,9 +2102,10 @@
     "hd": "2d8",
     "hp": "9",
     "ac": "13",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
-  "canonicalParenthetical": "HD 2d8, HP 9, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 9, AC 13, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -2075,7 +2114,7 @@
 
 ### 40. Wolverine (small, normal)
 
-*HD 3d8, HP 16, AC 15, disposition neutral. Saves: P.*
+*HP 16, AC 15, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 16, AC 15, Disposition neutral
 
@@ -2117,9 +2156,10 @@
     "hp": "16",
     "ac": "15",
     "disposition": "neutral",
+    "raceClass": "creature",
     "attributes": "strength, dexterity"
   },
-  "canonicalParenthetical": "HD 3d8, HP 16, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 16, AC 15, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -2170,6 +2210,7 @@
     "hp": "32",
     "ac": "16",
     "disposition": "neutral/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "equipment": "splint mail armor and carry a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger",
     "coins": "125 gp"
@@ -2183,7 +2224,7 @@
 
 ### 42. Ji'gun-tima (Losel Shaman)
 
-*HD 4d8+4, HP 25, AC 12, disposition neutral/evil. Saves: P. It can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*.*
+*HP 25, AC 12, disposition neutral/evil. Saves: P. It can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*.*
 
 **Core Stats:** HP 25, AC 12, Disposition neutral/evil
 
@@ -2225,10 +2266,11 @@
     "hp": "25",
     "ac": "12",
     "disposition": "neutral/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "spells": "a mixture of cleric and wizard spells at a 5th level ability"
   },
-  "canonicalParenthetical": "HD 4d8+4, HP 25, AC 12, disposition neutral/evil. Saves: P. It can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*."
+  "canonicalParenthetical": "HP 25, AC 12, disposition neutral/evil. Saves: P. It can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*."
 }
 ```
 </details>
@@ -2237,7 +2279,7 @@
 
 ### 43. Losel sub-chiefs x 10
 
-*HD 2d8+4, HP 16, AC 14, disposition neutral/evil. Saves: P.*
+*HP 16, AC 14, disposition neutral/evil. Saves: P.*
 
 **Core Stats:** HP 16, AC 14, Disposition neutral/evil
 
@@ -2279,9 +2321,10 @@
     "hp": "16",
     "ac": "14",
     "disposition": "neutral/evil",
+    "raceClass": "humanoid",
     "attributes": "strength"
   },
-  "canonicalParenthetical": "HD 2d8+4, HP 16, AC 14, disposition neutral/evil. Saves: P."
+  "canonicalParenthetical": "HP 16, AC 14, disposition neutral/evil. Saves: P."
 }
 ```
 </details>
@@ -2290,7 +2333,7 @@
 
 ### 44. Losel warriors x 30
 
-*HD 1d8+4, HP 10, AC 14, disposition neutral/evil. Saves: P.*
+*HP 10, AC 14, disposition neutral/evil. Saves: P.*
 
 **Core Stats:** HP 10, AC 14, Disposition neutral/evil
 
@@ -2332,9 +2375,10 @@
     "hp": "10",
     "ac": "14",
     "disposition": "neutral/evil",
+    "raceClass": "humanoid",
     "attributes": "strength"
   },
-  "canonicalParenthetical": "HD 1d8+4, HP 10, AC 14, disposition neutral/evil. Saves: P."
+  "canonicalParenthetical": "HP 10, AC 14, disposition neutral/evil. Saves: P."
 }
 ```
 </details>
@@ -2343,7 +2387,7 @@
 
 ### 45. Losel females x 35
 
-*HD 1d8, HP 6, AC 12, disposition neutral/evil. Saves: P. It has *clubs [+1 "to hit"; 1d6+1 damage]*.*
+*HP 6, AC 12, disposition neutral/evil. Saves: P. It has *clubs [+1 "to hit"; 1d6+1 damage]*.*
 
 **Core Stats:** HP 6, AC 12, Disposition neutral/evil
 
@@ -2385,10 +2429,11 @@
     "hp": "6",
     "ac": "12",
     "disposition": "neutral/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "equipment": "clubs [+1 \"to hit\"; 1d6+1 damage]"
   },
-  "canonicalParenthetical": "HD 1d8, HP 6, AC 12, disposition neutral/evil. Saves: P. It has *clubs [+1 \"to hit\"; 1d6+1 damage]*."
+  "canonicalParenthetical": "HP 6, AC 12, disposition neutral/evil. Saves: P. It has *clubs [+1 \"to hit\"; 1d6+1 damage]*."
 }
 ```
 </details>
@@ -2439,7 +2484,8 @@
     "ac": "13",
     "disposition": "chaos/neutral",
     "attributes": "strength and wisdom",
-    "coins": "12 cp"
+    "coins": "12 cp",
+    "raceClass": "within 20'"
   },
   "canonicalParenthetical": "HP 22, AC 13, disposition chaos/neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 12 copper in coin."
 }
@@ -2492,6 +2538,7 @@
     "hp": "27",
     "ac": "16",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "attributes": "dlock"
   },
   "canonicalParenthetical": "HP 27, AC 16, disposition chaos/evil. Saves: P."
@@ -2503,7 +2550,7 @@
 
 ### 48. Children x 3-6
 
-*HD 1d2, HP 2, AC 10, disposition neutral. Saves: P.*
+*HP 2, AC 10, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 2, AC 10, Disposition neutral
 
@@ -2544,9 +2591,10 @@
     "hd": "1d2",
     "hp": "2",
     "ac": "10",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10"
   },
-  "canonicalParenthetical": "HD 1d2, HP 2, AC 10, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 2, AC 10, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -2596,7 +2644,8 @@
     "hd": "1d8",
     "hp": "5",
     "ac": "14",
-    "disposition": "chaos/evil"
+    "disposition": "chaos/evil",
+    "raceClass": "humanoid"
   },
   "canonicalParenthetical": "HP 5, AC 14, disposition chaos/evil. Saves: P."
 }
@@ -2649,6 +2698,7 @@
     "hp": "20",
     "ac": "14",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "equipment": "a diamond-studded gold necklace worth 1, 000 gp",
     "jewelry": "1000 gold worth of jewelry",
@@ -2663,7 +2713,7 @@
 
 ### 51. Spider, Giant (medium-sized) x 2
 
-*HD 3d8, HP 13, AC 15, disposition neutral. Saves: P.*
+*HP 13, AC 15, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 13, AC 15, Disposition neutral
 
@@ -2705,9 +2755,10 @@
     "hp": "13",
     "ac": "15",
     "disposition": "neutral",
+    "raceClass": "creature",
     "attributes": "ralyzation for 1d6 hours"
   },
-  "canonicalParenthetical": "HD 3d8, HP 13, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 13, AC 15, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -2758,6 +2809,7 @@
     "hp": "13",
     "ac": "13",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "attributes": "charisma"
   },
   "canonicalParenthetical": "HP 13, AC 13, disposition chaos/evil. Saves: P."
@@ -2769,7 +2821,7 @@
 
 ### 53. Tick, Giant x 3
 
-*HD 2d8, HP 11, AC 15, disposition neutral. Saves: P.*
+*HP 11, AC 15, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 11, AC 15, Disposition neutral
 
@@ -2810,9 +2862,10 @@
     "hd": "2d8",
     "hp": "11",
     "ac": "15",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 2d8, HP 11, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 11, AC 15, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -2864,7 +2917,8 @@
     "ac": "12",
     "disposition": "chaos/neutral",
     "attributes": "physical",
-    "coins": "18 sp"
+    "coins": "18 sp",
+    "raceClass": "1st level, chaotic neutral fighters"
   },
   "canonicalParenthetical": "HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin."
 }
@@ -2919,7 +2973,8 @@
     "disposition": "chaos/neutral",
     "attributes": "physical",
     "significantAttributes": "strength 17 and dexterity 17",
-    "coins": "35 sp, 100 gp"
+    "coins": "35 sp, 100 gp",
+    "raceClass": "He is a 4th level, chaotic neutral fighter whose"
   },
   "canonicalParenthetical": "HP 22, AC 16, disposition chaos/neutral. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has 35 sp, 100 gp."
 }
@@ -2930,7 +2985,7 @@
 
 ### 56. 86-90
 
-*HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability, which is described in the CZY Appendix. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*
+*HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*
 
 **Core Stats:** HP 23, AC 15, Disposition variable
 
@@ -2972,15 +3027,16 @@
     "hp": "23",
     "ac": "15",
     "disposition": "variable",
+    "raceClass": "animal",
     "attributes": "physical",
     "equipment": "a splint mail, great helm, and carry a magical heavy flail",
     "coins": "2–12 gp",
     "significantAttributes": "strength 17 and dexterity 17",
-    "secondarySkills": "Nautical Ability, which is described in the CZY Appendix",
+    "secondarySkills": "Nautical Ability",
     "spells": "water breathing at will and cast a powerful charm person spell that lasts for one year",
     "jewelry": "25 gold worth of jewelry"
   },
-  "canonicalParenthetical": "HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability, which is described in the CZY Appendix. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
+  "canonicalParenthetical": "HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
 }
 ```
 </details>
@@ -2989,7 +3045,7 @@
 
 ### 57. Raven "One-Eye"
 
-*HD 1d2, HP 2, AC 14, disposition neutral. Saves: P.*
+*HP 2, AC 14, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 2, AC 14, Disposition neutral
 
@@ -3031,9 +3087,10 @@
     "hp": "2",
     "ac": "14",
     "disposition": "neutral",
+    "raceClass": "animal",
     "attributes": "ble of combat, fleeing from danger"
   },
-  "canonicalParenthetical": "HD 1d2, HP 2, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 2, AC 14, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -3084,7 +3141,8 @@
     "ac": "12",
     "disposition": "neutral/evil",
     "attributes": "physical",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "raceClass": "1st level, neutral evil, human fighters"
   },
   "canonicalParenthetical": "HP 4, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
 }
@@ -3095,7 +3153,7 @@
 
 ### 59. Bat, Cave
 
-*HD 1d2, HP 1, AC 12, disposition neutral. Saves: P.*
+*HP 1, AC 12, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 1, AC 12, Disposition neutral
 
@@ -3136,9 +3194,10 @@
     "hd": "1d2",
     "hp": "1",
     "ac": "12",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 1d2, HP 1, AC 12, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 1, AC 12, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -3147,7 +3206,7 @@
 
 ### 60. Centipedes, Black, Giant
 
-*HD 2d3, HP 3, AC 18, disposition neutral. Saves: P.*
+*HP 3, AC 18, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 3, AC 18, Disposition neutral
 
@@ -3188,9 +3247,10 @@
     "hd": "2d3",
     "hp": "3",
     "ac": "18",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 2d3, HP 3, AC 18, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 3, AC 18, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -3240,7 +3300,8 @@
     "hd": "1d10",
     "hp": "6",
     "ac": "16",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "These neutral insects'"
   },
   "canonicalParenthetical": "HP 6, AC 16, disposition neutral. Saves: P."
 }
@@ -3251,7 +3312,7 @@
 
 ### 62. Rats, Giant
 
-*HD 1d4, HP 2, AC 13, disposition neutral. Saves: P.*
+*HP 2, AC 13, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 2, AC 13, Disposition neutral
 
@@ -3292,9 +3353,10 @@
     "hd": "1d4",
     "hp": "2",
     "ac": "13",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
-  "canonicalParenthetical": "HD 1d4, HP 2, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -3303,7 +3365,7 @@
 
 ### 63. Snake, Poisonous
 
-*HD 1d6, HP 4, AC 14, disposition neutral. Saves: P.*
+*HP 4, AC 14, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 4, AC 14, Disposition neutral
 
@@ -3344,9 +3406,10 @@
     "hd": "1d6",
     "hp": "4",
     "ac": "14",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
-  "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 4, AC 14, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -3355,7 +3418,7 @@
 
 ### 64. Spider, Giant (medium-sized)
 
-*HD 3d8, HP 13, AC 15, disposition neutral. Saves: P.*
+*HP 13, AC 15, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 13, AC 15, Disposition neutral
 
@@ -3397,9 +3460,10 @@
     "hp": "13",
     "ac": "15",
     "disposition": "neutral",
+    "raceClass": "creature",
     "attributes": "ralyzation for 1d6 hours"
   },
-  "canonicalParenthetical": "HD 3d8, HP 13, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 13, AC 15, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -3408,7 +3472,7 @@
 
 ### 65. Tick, Giant
 
-*HD 2d8, HP 11, AC 15, disposition neutral. Saves: P.*
+*HP 11, AC 15, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 11, AC 15, Disposition neutral
 
@@ -3449,9 +3513,10 @@
     "hd": "2d8",
     "hp": "11",
     "ac": "15",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 2d8, HP 11, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 11, AC 15, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -3460,7 +3525,7 @@
 
 ### 66. Wolves x 5
 
-*HD 2d8, HP 9, AC 13, disposition neutral. Saves: P.*
+*HP 9, AC 13, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 9, AC 13, Disposition neutral
 
@@ -3501,9 +3566,10 @@
     "hd": "2d8",
     "hp": "9",
     "ac": "13",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
-  "canonicalParenthetical": "HD 2d8, HP 9, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 9, AC 13, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -3609,6 +3675,7 @@
     "hp": "3",
     "ac": "15",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 sp"
   },
   "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. They have 6 silver in coin."
@@ -3620,7 +3687,7 @@
 
 ### 69. Mastiff
 
-*HD 3d8, HP 15, AC 14, disposition neutral. Saves: P.*
+*HP 15, AC 14, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 15, AC 14, Disposition neutral
 
@@ -3661,9 +3728,10 @@
     "hd": "3d8",
     "hp": "15",
     "ac": "14",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 3d8, HP 15, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 15, AC 14, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -3714,7 +3782,8 @@
     "ac": "10",
     "disposition": "law/evil",
     "equipment": "a silver armlet worth 5 gp, carry key to the door of this room, and 3 cp",
-    "coins": "5 gp, 3 cp"
+    "coins": "5 gp, 3 cp",
+    "raceClass": "kobold"
   },
   "canonicalParenthetical": "HP 2, AC 10, disposition law/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries has a key to the door of this room, and 5 gp, 3 cp."
 }
@@ -3725,7 +3794,7 @@
 
 ### 71. Kobold warrior x 6
 
-*HD 1d4, HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
 
 **Core Stats:** HP 3, AC 15, Disposition law/evil
 
@@ -3767,9 +3836,10 @@
     "hp": "3",
     "ac": "15",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 sp"
   },
-  "canonicalParenthetical": "HD 1d4, HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
 }
 ```
 </details>
@@ -3778,7 +3848,7 @@
 
 ### 72. Kobold serjeant x 1
 
-*HD 2d4, HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
 
 **Core Stats:** HP 6, AC 15, Disposition law/evil
 
@@ -3820,9 +3890,10 @@
     "hp": "6",
     "ac": "15",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 sp"
   },
-  "canonicalParenthetical": "HD 2d4, HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
 }
 ```
 </details>
@@ -3831,7 +3902,7 @@
 
 ### 73. Kobold warrior x
 
-*HD 1d4, HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
 
 **Core Stats:** HP 3, AC 15, Disposition law/evil
 
@@ -3873,9 +3944,10 @@
     "hp": "3",
     "ac": "15",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 sp"
   },
-  "canonicalParenthetical": "HD 1d4, HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
 }
 ```
 </details>
@@ -3884,7 +3956,7 @@
 
 ### 74. Kobold serjeant x 1
 
-*HD 2d4, HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
 
 **Core Stats:** HP 6, AC 15, Disposition law/evil
 
@@ -3926,9 +3998,10 @@
     "hp": "6",
     "ac": "15",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 sp"
   },
-  "canonicalParenthetical": "HD 2d4, HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
 }
 ```
 </details>
@@ -3979,6 +4052,7 @@
     "hp": "14",
     "ac": "17",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "equipment": "plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber",
     "coins": "18 gp"
@@ -4034,6 +4108,7 @@
     "hp": "7",
     "ac": "15",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 sp"
   },
   "canonicalParenthetical": "HP 7, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
@@ -4045,7 +4120,7 @@
 
 ### 77. Goblin prisoner
 
-*HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has a loin cloth.*
+*HP 4, AC 14, disposition law/evil. Saves: P. It has a loin cloth.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -4087,9 +4162,10 @@
     "hp": "4",
     "ac": "14",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "equipment": "a loin cloth"
   },
-  "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has a loin cloth."
+  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has a loin cloth."
 }
 ```
 </details>
@@ -4140,6 +4216,7 @@
     "hp": "20",
     "ac": "16",
     "disposition": "chaos/neutral",
+    "raceClass": "humanoid",
     "attributes": "strength"
   },
   "canonicalParenthetical": "HP 20, AC 16, disposition chaos/neutral. Saves: P."
@@ -4151,7 +4228,7 @@
 
 ### 79. Goblin patrol warriors x 5
 
-*HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*
+*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -4193,9 +4270,10 @@
     "hp": "4",
     "ac": "14",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 cp"
   },
-  "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin."
+  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin."
 }
 ```
 </details>
@@ -4204,7 +4282,7 @@
 
 ### 80. Goblin guards x 4
 
-*HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. They have 6 copper in coin.*
+*HP 4, AC 14, disposition law/evil. Saves: P. They have 6 copper in coin.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -4246,9 +4324,10 @@
     "hp": "4",
     "ac": "14",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 cp"
   },
-  "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. They have 6 copper in coin."
+  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. They have 6 copper in coin."
 }
 ```
 </details>
@@ -4257,7 +4336,7 @@
 
 ### 81. Goblin patrol warriors x 6
 
-*HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*
+*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -4299,9 +4378,10 @@
     "hp": "4",
     "ac": "14",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 cp"
   },
-  "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin."
+  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin."
 }
 ```
 </details>
@@ -4310,7 +4390,7 @@
 
 ### 82. Goblin males x 8
 
-*HD 1d6, HP 3, AC 14, disposition law/evil. Saves: P. It has 6 cp, 50 gp.*
+*HP 3, AC 14, disposition law/evil. Saves: P. It has 6 cp, 50 gp.*
 
 **Core Stats:** HP 3, AC 14, Disposition law/evil
 
@@ -4352,10 +4432,11 @@
     "hp": "3",
     "ac": "14",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "equipment": "a gold chain worth 50 gp",
     "coins": "6 cp, 50 gp"
   },
-  "canonicalParenthetical": "HD 1d6, HP 3, AC 14, disposition law/evil. Saves: P. It has 6 cp, 50 gp."
+  "canonicalParenthetical": "HP 3, AC 14, disposition law/evil. Saves: P. It has 6 cp, 50 gp."
 }
 ```
 </details>
@@ -4364,7 +4445,7 @@
 
 ### 83. Goblin females x 13
 
-*HD 1d6, HP 2, AC 12, disposition law/evil. Saves: P.*
+*HP 2, AC 12, disposition law/evil. Saves: P.*
 
 **Core Stats:** HP 2, AC 12, Disposition law/evil
 
@@ -4405,9 +4486,10 @@
     "hd": "1d6",
     "hp": "2",
     "ac": "12",
-    "disposition": "law/evil"
+    "disposition": "law/evil",
+    "raceClass": "humanoid"
   },
-  "canonicalParenthetical": "HD 1d6, HP 2, AC 12, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "HP 2, AC 12, disposition law/evil. Saves: P."
 }
 ```
 </details>
@@ -4416,7 +4498,7 @@
 
 ### 84. Goblin warriors x 3
 
-*HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -4458,9 +4540,10 @@
     "hp": "4",
     "ac": "14",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 sp"
   },
-  "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
 }
 ```
 </details>
@@ -4469,7 +4552,7 @@
 
 ### 85. Goblin serjeant
 
-*HD 2d6, HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp.*
+*HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp.*
 
 **Core Stats:** HP 11, AC 16, Disposition law/evil
 
@@ -4511,11 +4594,12 @@
     "hp": "11",
     "ac": "16",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "equipment": "a breastplate and carry medium steel shield, morning star, shortsword, whip, a brass belt ring with keys to #18 and #20",
     "coins": "5 gp, 6 sp"
   },
-  "canonicalParenthetical": "HD 2d6, HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp."
+  "canonicalParenthetical": "HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp."
 }
 ```
 </details>
@@ -4563,7 +4647,8 @@
   "canonicalData": {
     "raw": "weak and non-combatant, HP 2, AC 10",
     "hp": "2",
-    "ac": "10"
+    "ac": "10",
+    "raceClass": "bat"
   },
   "canonicalParenthetical": "HP 2, AC 10. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma."
 }
@@ -4615,7 +4700,8 @@
     "hp": "2",
     "ac": "11",
     "disposition": "law/good",
-    "attributes": "_ _as yet_ _undeveloped"
+    "attributes": "_ _as yet_ _undeveloped",
+    "raceClass": "This lawful good, 0th level, human knight"
   },
   "canonicalParenthetical": "HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma."
 }
@@ -4668,7 +4754,8 @@
     "ac": "10",
     "disposition": "chaos/good",
     "attributes": "strength and dexterity",
-    "equipment": "a loin cloth"
+    "equipment": "a loin cloth",
+    "raceClass": "This chaotic good, 2nd_ _level, dwarf fighter"
   },
   "canonicalParenthetical": "HP 18, AC 10, disposition chaos/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries a loin cloth."
 }
@@ -4720,7 +4807,8 @@
     "hp": "2",
     "ac": "8",
     "disposition": "neutral",
-    "attributes": "mental"
+    "attributes": "mental",
+    "raceClass": "This neutral, 0th level, human commoner"
   },
   "canonicalParenthetical": "HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma."
 }
@@ -4731,7 +4819,7 @@
 
 ### 90. Goblin shaman
 
-*HD 4d6, HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry.*
+*HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry.*
 
 **Core Stats:** HP 15, AC 10, Disposition law/evil
 
@@ -4773,12 +4861,13 @@
     "hp": "15",
     "ac": "10",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "ralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21",
     "equipment": "a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21",
     "jewelry": "250 gold worth of jewelry",
     "coins": "30 gp, 250 gp"
   },
-  "canonicalParenthetical": "HD 4d6, HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry."
+  "canonicalParenthetical": "HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry."
 }
 ```
 </details>
@@ -4828,7 +4917,8 @@
     "hd": "1d12",
     "hp": "8",
     "ac": "13",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "undead"
   },
   "canonicalParenthetical": "HP 8, AC 13, disposition neutral. Saves: P."
 }
@@ -4839,7 +4929,7 @@
 
 ### 92. Goblin warriors x 2
 
-*HD 1d6, HP 6, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*HP 6, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*
 
 **Core Stats:** HP 6, AC 14, Disposition law/evil
 
@@ -4881,9 +4971,10 @@
     "hp": "6",
     "ac": "14",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "coins": "6 sp"
   },
-  "canonicalParenthetical": "HD 1d6, HP 6, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "HP 6, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
 }
 ```
 </details>
@@ -4934,6 +5025,7 @@
     "hp": "18",
     "ac": "18",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "jewelry": "50 gold worth of jewelry",
     "coins": "12 gp, 50 gp"
@@ -4947,7 +5039,7 @@
 
 ### 94. Goblin females x 6
 
-*HD 1d6, HP 2, AC 12, disposition law/evil. Saves: P.*
+*HP 2, AC 12, disposition law/evil. Saves: P.*
 
 **Core Stats:** HP 2, AC 12, Disposition law/evil
 
@@ -4988,9 +5080,10 @@
     "hd": "1d6",
     "hp": "2",
     "ac": "12",
-    "disposition": "law/evil"
+    "disposition": "law/evil",
+    "raceClass": "humanoid"
   },
-  "canonicalParenthetical": "HD 1d6, HP 2, AC 12, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "HP 2, AC 12, disposition law/evil. Saves: P."
 }
 ```
 </details>
@@ -4999,7 +5092,7 @@
 
 ### 95. Cave bats x 80
 
-*HD 1d2, HP 1, AC 12, disposition neutral. Saves: P.*
+*HP 1, AC 12, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 1, AC 12, Disposition neutral
 
@@ -5040,9 +5133,10 @@
     "hd": "1d2",
     "hp": "1",
     "ac": "12",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 1d2, HP 1, AC 12, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 1, AC 12, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -5051,7 +5145,7 @@
 
 ### 96. )** _
 
-*HD 1d2, HP 1, AC 11, disposition neutral. Saves: P.*
+*HP 1, AC 11, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 1, AC 11, Disposition neutral
 
@@ -5092,9 +5186,10 @@
     "hd": "1d2",
     "hp": "1",
     "ac": "11",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "These neutral insects'"
   },
-  "canonicalParenthetical": "HD 1d2, HP 1, AC 11, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 1, AC 11, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -5103,7 +5198,7 @@
 
 ### 97. Snakes, poisonous
 
-*HD 1d6, HP 4, AC 14, disposition neutral. Saves: P.*
+*HP 4, AC 14, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 4, AC 14, Disposition neutral
 
@@ -5144,9 +5239,10 @@
     "hd": "1d6",
     "hp": "4",
     "ac": "14",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
-  "canonicalParenthetical": "HD 1d6, HP 4, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 4, AC 14, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -5155,7 +5251,7 @@
 
 ### 98. Green slime
 
-*HD 4d8, HP 16, AC 10, disposition neutral. Saves: P.*
+*HP 16, AC 10, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 16, AC 10, Disposition neutral
 
@@ -5197,9 +5293,10 @@
     "hp": "16",
     "ac": "10",
     "disposition": "neutral",
+    "raceClass": "creature",
     "attributes": "constitution"
   },
-  "canonicalParenthetical": "HD 4d8, HP 16, AC 10, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 16, AC 10, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -5208,7 +5305,7 @@
 
 ### 99. Rats, giant x 3-12
 
-*HD 1d4, HP 2, AC 13, disposition neutral. Saves: P.*
+*HP 2, AC 13, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 2, AC 13, Disposition neutral
 
@@ -5249,9 +5346,10 @@
     "hd": "1d4",
     "hp": "2",
     "ac": "13",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
-  "canonicalParenthetical": "HD 1d4, HP 2, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -5301,7 +5399,8 @@
     "hd": "2d10",
     "hp": "15",
     "ac": "12",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
   "canonicalParenthetical": "HP 15, AC 12, disposition neutral. Saves: P."
 }
@@ -5353,7 +5452,8 @@
     "hd": "1d4",
     "hp": "2",
     "ac": "18",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
   "canonicalParenthetical": "HP 2, AC 18, disposition neutral. Saves: P."
 }
@@ -5364,7 +5464,7 @@
 
 ### 102. Orcs x 3
 
-*HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P.*
+*HP 5, AC 14, disposition law/evil. Saves: P.*
 
 **Core Stats:** HP 5, AC 14, Disposition law/evil
 
@@ -5405,9 +5505,10 @@
     "hd": "1d8",
     "hp": "5",
     "ac": "14",
-    "disposition": "law/evil"
+    "disposition": "law/evil",
+    "raceClass": "humanoid"
   },
-  "canonicalParenthetical": "HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
 }
 ```
 </details>
@@ -5416,7 +5517,7 @@
 
 ### 103. Orcs x 4
 
-*HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P.*
+*HP 5, AC 14, disposition law/evil. Saves: P.*
 
 **Core Stats:** HP 5, AC 14, Disposition law/evil
 
@@ -5457,9 +5558,10 @@
     "hd": "1d8",
     "hp": "5",
     "ac": "14",
-    "disposition": "law/evil"
+    "disposition": "law/evil",
+    "raceClass": "humanoid"
   },
-  "canonicalParenthetical": "HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
 }
 ```
 </details>
@@ -5468,7 +5570,7 @@
 
 ### 104. Orcs x 6
 
-*HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P.*
+*HP 5, AC 14, disposition law/evil. Saves: P.*
 
 **Core Stats:** HP 5, AC 14, Disposition law/evil
 
@@ -5509,9 +5611,10 @@
     "hd": "1d8",
     "hp": "5",
     "ac": "14",
-    "disposition": "law/evil"
+    "disposition": "law/evil",
+    "raceClass": "humanoid"
   },
-  "canonicalParenthetical": "HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
 }
 ```
 </details>
@@ -5561,7 +5664,8 @@
     "hd": "1d8",
     "hp": "7",
     "ac": "14",
-    "disposition": "law/evil"
+    "disposition": "law/evil",
+    "raceClass": "humanoid"
   },
   "canonicalParenthetical": "HP 7, AC 14, disposition law/evil. Saves: P."
 }
@@ -5614,6 +5718,7 @@
     "hp": "20",
     "ac": "18",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "coins": "30 gp"
   },
@@ -5668,6 +5773,7 @@
     "hp": "4",
     "ac": "12",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "equipment": "a 4-inch knife, and 100 gp worth of gold jewelry",
     "coins": "100 gp"
   },
@@ -5680,7 +5786,7 @@
 
 ### 108. Orcs x 4
 
-*HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P.*
+*HP 5, AC 14, disposition law/evil. Saves: P.*
 
 **Core Stats:** HP 5, AC 14, Disposition law/evil
 
@@ -5721,9 +5827,10 @@
     "hd": "1d8",
     "hp": "5",
     "ac": "14",
-    "disposition": "law/evil"
+    "disposition": "law/evil",
+    "raceClass": "humanoid"
   },
-  "canonicalParenthetical": "HD 1d8, HP 5, AC 14, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
 }
 ```
 </details>
@@ -5732,7 +5839,7 @@
 
 ### 109. Orc lieutenant
 
-*HD 2d8, HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin.*
+*HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin.*
 
 **Core Stats:** HP 12, AC 14, Disposition law/evil
 
@@ -5774,10 +5881,11 @@
     "hp": "12",
     "ac": "14",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "coins": "30 gp"
   },
-  "canonicalParenthetical": "HD 2d8, HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin."
+  "canonicalParenthetical": "HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin."
 }
 ```
 </details>
@@ -5786,7 +5894,7 @@
 
 ### 110. Zombies x 6
 
-*HD 2d12, HP 12, AC 12, disposition neutral/evil. Saves: P.*
+*HP 12, AC 12, disposition neutral/evil. Saves: P.*
 
 **Core Stats:** HP 12, AC 12, Disposition neutral/evil
 
@@ -5827,9 +5935,10 @@
     "hd": "2d12",
     "hp": "12",
     "ac": "12",
-    "disposition": "neutral/evil"
+    "disposition": "neutral/evil",
+    "raceClass": "undead"
   },
-  "canonicalParenthetical": "HD 2d12, HP 12, AC 12, disposition neutral/evil. Saves: P."
+  "canonicalParenthetical": "HP 12, AC 12, disposition neutral/evil. Saves: P."
 }
 ```
 </details>
@@ -5838,7 +5947,7 @@
 
 ### 111. Skeletons x 8
 
-*HD 1d12, HP 8, AC 13, disposition neutral. Saves: P.*
+*HP 8, AC 13, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 8, AC 13, Disposition neutral
 
@@ -5879,9 +5988,10 @@
     "hd": "1d12",
     "hp": "8",
     "ac": "13",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "undead"
   },
-  "canonicalParenthetical": "HD 1d12, HP 8, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 8, AC 13, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -5932,6 +6042,7 @@
     "hp": "63",
     "ac": "17",
     "disposition": "chaos/neutral",
+    "raceClass": "humanoid",
     "attributes": "ir of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash",
     "equipment": "hide armor and carry a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash"
   },
@@ -5985,7 +6096,8 @@
     "hd": "4d10",
     "hp": "27",
     "ac": "13",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "monster"
   },
   "canonicalParenthetical": "HP 27, AC 13, disposition neutral. Saves: P."
 }
@@ -6038,6 +6150,7 @@
     "hp": "15",
     "ac": "13",
     "disposition": "neutral",
+    "raceClass": "animal",
     "attributes": "ws for 1d4+1 damage and a bite for 1d6+1 damage"
   },
   "canonicalParenthetical": "HP 15, AC 13, disposition neutral. Saves: P."
@@ -6090,7 +6203,8 @@
     "hd": "1d8",
     "hp": "6",
     "ac": "12",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
   "canonicalParenthetical": "HP 6, AC 12, disposition neutral. Saves: P."
 }
@@ -6142,7 +6256,8 @@
     "hd": "1d4",
     "hp": "2",
     "ac": "13",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "animal"
   },
   "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
 }
@@ -6153,7 +6268,7 @@
 
 ### 117. Stirges x 8
 
-*HD 1d6, HP 3, AC 16, disposition neutral. Saves: P.*
+*HP 3, AC 16, disposition neutral. Saves: P.*
 
 **Core Stats:** HP 3, AC 16, Disposition neutral
 
@@ -6194,9 +6309,10 @@
     "hd": "1d6",
     "hp": "3",
     "ac": "16",
-    "disposition": "neutral"
+    "disposition": "neutral",
+    "raceClass": "creature"
   },
-  "canonicalParenthetical": "HD 1d6, HP 3, AC 16, disposition neutral. Saves: P."
+  "canonicalParenthetical": "HP 3, AC 16, disposition neutral. Saves: P."
 }
 ```
 </details>
@@ -6205,7 +6321,7 @@
 
 ### 118. Bugbears x 3
 
-*HD 3d10, HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin.*
+*HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin.*
 
 **Core Stats:** HP 17, AC 16, Disposition chaos/evil
 
@@ -6247,10 +6363,11 @@
     "hp": "17",
     "ac": "16",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "attributes": "tchwork ring mail, buckler, bastard sword, light throwing hammers x 2",
     "coins": "6 gp"
   },
-  "canonicalParenthetical": "HD 3d10, HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin."
+  "canonicalParenthetical": "HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin."
 }
 ```
 </details>
@@ -6259,7 +6376,7 @@
 
 ### 119. Hobgoblin sentries x 2
 
-*HD 1d10, HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*
+*HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*
 
 **Core Stats:** HP 8, AC 15, Disposition law/evil
 
@@ -6301,11 +6418,12 @@
     "hp": "8",
     "ac": "15",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "equipment": "chain mail armor and carry composite short bows, x12 arrows, battle-axes, and 2d4 gp each",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HD 1d10, HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin."
+  "canonicalParenthetical": "HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin."
 }
 ```
 </details>
@@ -6314,7 +6432,7 @@
 
 ### 120. Hobgoblin males x 2 or 4
 
-*HD 1d10, HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*
+*HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*
 
 **Core Stats:** HP 6, AC 15, Disposition law/evil
 
@@ -6356,11 +6474,12 @@
     "hp": "6",
     "ac": "15",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "equipment": "crude chain mail armor, carry halberds, and carry 2d4 gp each",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HD 1d10, HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin."
+  "canonicalParenthetical": "HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin."
 }
 ```
 </details>
@@ -6369,7 +6488,7 @@
 
 ### 121. Hobgoblin females x 9
 
-*HD 1d6, HP 3, AC 12, disposition law/evil. Saves: P.*
+*HP 3, AC 12, disposition law/evil. Saves: P.*
 
 **Core Stats:** HP 3, AC 12, Disposition law/evil
 
@@ -6410,9 +6529,10 @@
     "hd": "1d6",
     "hp": "3",
     "ac": "12",
-    "disposition": "law/evil"
+    "disposition": "law/evil",
+    "raceClass": "humanoid"
   },
-  "canonicalParenthetical": "HD 1d6, HP 3, AC 12, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "HP 3, AC 12, disposition law/evil. Saves: P."
 }
 ```
 </details>
@@ -6421,7 +6541,7 @@
 
 ### 122. Hobgoblin warriors x 2
 
-*HD 1d10, HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin.*
+*HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin.*
 
 **Core Stats:** HP 8, AC 15, Disposition law/evil
 
@@ -6463,10 +6583,11 @@
     "hp": "8",
     "ac": "15",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HD 1d10, HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin."
+  "canonicalParenthetical": "HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin."
 }
 ```
 </details>
@@ -6517,6 +6638,7 @@
     "hp": "18",
     "ac": "16",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "equipment": "full chain mail armor and carry a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows",
     "coins": "12 gp"
@@ -6530,7 +6652,7 @@
 
 ### 124. Hobgoblin females x 3
 
-*HD 1d6, HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin.*
+*HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin.*
 
 **Core Stats:** HP 3, AC 12, Disposition law/evil
 
@@ -6572,10 +6694,11 @@
     "hp": "3",
     "ac": "12",
     "disposition": "law/evil",
+    "raceClass": "humanoid",
     "equipment": "an engraved silver armband worth 2 gp",
     "coins": "2 gp"
   },
-  "canonicalParenthetical": "HD 1d6, HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin."
+  "canonicalParenthetical": "HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin."
 }
 ```
 </details>
@@ -6584,7 +6707,7 @@
 
 ### 125. Gnoll sentries x 2
 
-*HD 2d10, HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
+*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
 
 **Core Stats:** HP 12, AC 15, Disposition chaos/evil
 
@@ -6626,10 +6749,11 @@
     "hp": "12",
     "ac": "15",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "attributes": "tchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HD 2d10, HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+  "canonicalParenthetical": "HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
 }
 ```
 </details>
@@ -6638,7 +6762,7 @@
 
 ### 126. Gnoll males x 4
 
-*HD 2d10, HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
+*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
 
 **Core Stats:** HP 12, AC 15, Disposition chaos/evil
 
@@ -6680,10 +6804,11 @@
     "hp": "12",
     "ac": "15",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "attributes": "tchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HD 2d10, HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+  "canonicalParenthetical": "HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
 }
 ```
 </details>
@@ -6692,7 +6817,7 @@
 
 ### 127. Gnoll females x 5
 
-*HD 1d10, HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin.*
+*HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin.*
 
 **Core Stats:** HP 5, AC 12, Disposition chaos/evil
 
@@ -6734,9 +6859,10 @@
     "hp": "5",
     "ac": "12",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "coins": "4 sp"
   },
-  "canonicalParenthetical": "HD 1d10, HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin."
+  "canonicalParenthetical": "HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin."
 }
 ```
 </details>
@@ -6745,7 +6871,7 @@
 
 ### 128. Gnoll guards x 2
 
-*HD 2d10, HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin.*
+*HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin.*
 
 **Core Stats:** HP 14, AC 15, Disposition chaos/evil
 
@@ -6787,10 +6913,11 @@
     "hp": "14",
     "ac": "15",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HD 2d10, HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin."
+  "canonicalParenthetical": "HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin."
 }
 ```
 </details>
@@ -6841,6 +6968,7 @@
     "hp": "20",
     "ac": "17",
     "disposition": "chaos/evil",
+    "raceClass": "humanoid",
     "attributes": "strength",
     "equipment": "plate mail armor, and carry a throwing club, morning star, and 10-inch knife",
     "coins": "24 gp"
