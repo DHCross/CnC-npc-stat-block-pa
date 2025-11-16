@@ -402,7 +402,7 @@
 
 ### 50. Blook-glook (Batrachianoid Chieftain)
 
-*HP 20, AC 14, disposition chaos/evil. Saves: P. It has a diamond-studded gold necklace worth 1 and 000 gold in coin.*
+*HP 20, AC 14, disposition chaos/evil. Saves: P. It has a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry.*
 
 **Core Stats:** HP 20, AC 14, Disposition chaos/evil
 
@@ -450,7 +450,7 @@
 
 ### 56. 86-90
 
-*HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, and 2–12 gold in coin. Its secondary skill is Nautical Ability, which is described in the CZY Appendix. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*
+*HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability, which is described in the CZY Appendix. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*
 
 **Core Stats:** HP 23, AC 15, Disposition variable
 
@@ -722,7 +722,7 @@
 
 ### 90. Goblin shaman
 
-*HD 4d6, HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, and 30 gp, 250 gp.*
+*HD 4d6, HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry.*
 
 **Core Stats:** HP 15, AC 10, Disposition law/evil
 
@@ -746,7 +746,7 @@
 
 ### 93. Gruzz Kree (Goblin Chieftain)
 
-*HP 18, AC 18, disposition law/evil. Saves: P. It has 12 gp, 50 gp.*
+*HP 18, AC 18, disposition law/evil. Saves: P. It has 12 gp, 50 gp and fifty in jewelry.*
 
 **Core Stats:** HP 18, AC 18, Disposition law/evil
 
