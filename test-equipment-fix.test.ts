@@ -50,6 +50,6 @@ describe('Equipment Processing Edge Cases', () => {
 
     console.log('Ring parenthetical:', parenthetical);
 
-    expect(parenthetical).toContain('*ring of armor +5—AC +1 to +5*');
+    expect(parenthetical).toContain('*Ring of Armor +5—AC +1 to +5*');
   });
 });

@@ -72,7 +72,9 @@ export const SPELL_NAME_MAPPINGS: Record<string, string> = {
   'detect thoughts': 'Discern Thoughts',
   'detect traps': 'Discover Traps',
   'detect undead': 'Discover Undead',
-  'dimension door': 'Dimensional Leap',
+  // Ensure canonical C&C names map consistently. Dimensional Leap -> Dimension Door
+  'dimension door': 'Dimension Door',
+  'dimensional leap': 'Dimension Door',
   'discern lies': 'Discern Falsehood',
   'discern location': 'Discover Location',
   'dispel alignment': 'Dispel Disposition',
@@ -263,7 +265,9 @@ export const SPELL_NAME_MAPPINGS: Record<string, string> = {
   'summon swarm': 'Summon Pests',
   'sunburst': 'Sun Flare',
   'telepathic bond': 'Telepathy',
-  'teleport': 'Teleportation',
+  // Prefer canonical short names: teleportation -> Teleport
+  'teleport': 'Teleport',
+  'teleportation': 'Teleport',
   'teleportation circle': 'Teleportation Field',
   'teleport without error': 'Teleport Accurately',
   'temporal stasis': 'Temporal Inertia',
@@ -1048,27 +1052,73 @@ export function addMagicItemMechanics(item: string): string {
   return `${item}—see Appendix: Magic Items`;
 }
 
+/**
+ * Canonicalize magic item names by removing decorative adjectives,
+ * bracketed combat stats, and trailing bonus diagnostics. This returns
+ * a shortened canonical item name suitable for inline italics.
+ */
+export function canonicalizeMagicItemName(item: string): string {
+  let s = item.trim();
+
+  // Remove bracketed combat details like [+4 "to hit"; 1d10+3 damage]
+  s = s.replace(/\s*\[[^\]]*\]/g, '');
+
+  // Remove em-dash trailing bonus text often added by addMagicItemMechanics
+  s = s.replace(/\u2014\s*\+?\d+\s*bonus/gi, '');
+  s = s.replace(/\u2014[^,]*/g, '');
+
+  // Remove obvious decorative hyphenated adjectives (e.g., bronze-hilted)
+  s = s.replace(/\b[a-z]+-hilted\b/gi, '');
+
+  // Remove leading articles used in some mentions
+  s = s.replace(/^an?\s+/i, '');
+
+  // Collapse whitespace
+  s = s.replace(/\s+/g, ' ').trim();
+
+  // If bonus is at beginning, move to end: '+1 halberd' -> 'halberd +1'
+  const bonusAtStart = s.match(/^(?:\+|plus)(\d+)\s+(.+)$/i);
+  if (bonusAtStart) {
+    s = `${bonusAtStart[2].trim()} +${bonusAtStart[1].trim()}`;
+  }
+
+  return s;
+}
+
 // Helper function to apply all name mappings
+const CANONICAL_MARKER_START = '\uFFF0';
+const CANONICAL_MARKER_END = '\uFFF1';
+
+function protectCanonical(text: string): string {
+  return text
+    .replace(new RegExp(CANONICAL_MARKER_START, 'g'), '')
+    .replace(new RegExp(CANONICAL_MARKER_END, 'g'), '');
+}
+
+function applyMappings(result: string, mappings: Record<string, string>): string {
+  for (const [oldName, newName] of Object.entries(mappings)) {
+    const regex = new RegExp(`\\b${oldName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+    const lowerOld = oldName.toLowerCase();
+    const lowerNew = newName.toLowerCase();
+    const extendsOld = lowerNew.startsWith(lowerOld) && lowerNew.length > lowerOld.length;
+
+    result = result.replace(regex, (match: string, offset: number, original: string) => {
+      if (extendsOld) {
+        const slice = original.slice(offset, offset + newName.length);
+        if (slice.toLowerCase() === lowerNew) {
+          return match;
+        }
+      }
+      return `${CANONICAL_MARKER_START}${newName}${CANONICAL_MARKER_END}`;
+    });
+  }
+  return result;
+}
+
 export function applyNameMappings(text: string): string {
   let result = text;
-
-  // Apply spell mappings
-  for (const [oldName, newName] of Object.entries(SPELL_NAME_MAPPINGS)) {
-    const regex = new RegExp(`\\b${oldName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
-    result = result.replace(regex, newName);
-  }
-
-  // Apply monster mappings
-  for (const [oldName, newName] of Object.entries(MONSTER_NAME_MAPPINGS)) {
-    const regex = new RegExp(`\\b${oldName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
-    result = result.replace(regex, newName);
-  }
-
-  // Apply magic item mappings
-  for (const [oldName, newName] of Object.entries(MAGIC_ITEM_MAPPINGS)) {
-    const regex = new RegExp(`\\b${oldName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
-    result = result.replace(regex, newName);
-  }
-
-  return result;
+  result = applyMappings(result, SPELL_NAME_MAPPINGS);
+  result = applyMappings(result, MONSTER_NAME_MAPPINGS);
+  result = applyMappings(result, MAGIC_ITEM_MAPPINGS);
+  return protectCanonical(result);
 }

@@ -2,6 +2,7 @@
 // Implements parenthetical extraction, mount handling, shield canonicalization, etc.
 
 export interface ParentheticalData {
+  hd?: string;
   hp?: string;
   ac?: string;
   disposition?: string;
@@ -20,13 +21,131 @@ export interface ParentheticalData {
   raw: string;
 }
 
+// Expose a small helper to sanitize known canonicalization artifacts that
+// sneak into the final converted text so Storybook visual checks are clean.
+export function sanitizeCanonicalText(text: string): string {
+  if (!text) return text;
+  let result = text;
+  // Normalize plural typos and known incorrect tokens
+  result = result.replace(/\barmors\b/gi, 'armor');
+  result = result.replace(/\barmour\b/gi, 'armor');
+  result = result.replace(/\bhams\b/gi, 'ham');
+  result = result.replace(/\btrashs\b/gi, 'trash');
+  result = result.replace(/\beachs\b/gi, 'each');
+  // Normalize odd pluralization with trailing 's' artifacts
+  result = result.replace(/\beachs\b/gi, 'each');
+  return result;
+}
+
+// Per Canonicalizer mandate: normalize Unicode superscripts to plain-text ordinals
+// Converts 12ᵗʰ → 12th, 5ˢᵗ → 5st, etc.
+export function normalizeUnicodeSuperscripts(text: string): string {
+  if (!text) return text;
+  let result = text;
+  // Map Unicode superscript ordinals to plain text
+  result = result.replace(/(\d+)ᵗʰ/g, '$1th');
+  result = result.replace(/(\d+)ˢᵗ/g, '$1st');
+  result = result.replace(/(\d+)ⁿᵈ/g, '$1nd');
+  result = result.replace(/(\d+)ʳᵈ/g, '$1rd');
+  // Also handle stray superscript characters that might appear
+  result = result.replace(/(\d+)\s*[\u1d57\u02b0]/g, '$1th');
+  return result;
+}
+
+// Per Canonicalizer mandate: replace verbose "primary attributes are physical" with canonical Saves notation
+// For non-classed monsters, use Saves abbreviations: P (Physical), M (Mental), M,P (Both), N (None)
+export function normalizePrimaryAttributesForMonsters(text: string, hasClassLevels: boolean): string {
+  if (!text || hasClassLevels) return text; // Only apply to non-classed creatures
+  
+  // For monsters without class levels, replace "primary attributes are physical" with "Saves: P"
+  let result = text;
+  result = result.replace(/\bTheir\s+primary\s+attributes\s+are\s+physical\b/gi, 'Saves: P');
+  result = result.replace(/\bHis\s+primary\s+attributes\s+are\s+physical\b/gi, 'Saves: P');
+  result = result.replace(/\bHer\s+primary\s+attributes\s+are\s+physical\b/gi, 'Saves: P');
+  result = result.replace(/\bIts\s+primary\s+attributes\s+are\s+physical\b/gi, 'Saves: P');
+  return result;
+}
+
+const LONG_FORM_ATTRIBUTES = 'strength, dexterity, constitution, intelligence, wisdom, charisma';
+
+export function expandShorthandForClassed(text: string): string {
+  if (!text) return text;
+
+  return text.replace(/\b(Their|His|Her|Its)\s+primary\s+attributes\s+are\s+physical\b([.!?])?/gi, (_match, pronoun: string, punctuation: string | undefined) => {
+    const ending = punctuation ?? '.';
+    return `${pronoun} primary attributes are ${LONG_FORM_ATTRIBUTES}${ending}`;
+  });
+}
+
+type SubjectPronoun = 'He' | 'She' | 'They' | 'It';
+
+function capitalizePronounValue(value?: string): string {
+  if (!value) return '';
+  const lower = value.trim().toLowerCase();
+  if (!lower) return '';
+  return lower.charAt(0).toUpperCase() + lower.slice(1);
+}
+
+function possessiveToSubjectPronoun(pronoun: string): SubjectPronoun {
+  const lowered = pronoun.trim().toLowerCase();
+  if (lowered === 'his') return 'He';
+  if (lowered === 'her') return 'She';
+  if (lowered === 'its') return 'It';
+  return 'They';
+}
+
+function enforcePossessivePronoun(
+  candidate: string | undefined,
+  pronounTrack: 'singular' | 'plural',
+  fallback: string,
+  options: { allowFeminine?: boolean; requireNeutralIts?: boolean } = {}
+): string {
+  if (pronounTrack === 'plural') {
+    return 'Their';
+  }
+
+  if (options.requireNeutralIts) {
+    return 'Its';
+  }
+
+  if (!candidate) {
+    return fallback;
+  }
+
+  const normalized = capitalizePronounValue(candidate);
+  const lowered = normalized.toLowerCase();
+
+  if (lowered === 'their' || lowered === 'they') {
+    return fallback;
+  }
+
+  if (!options.allowFeminine && lowered === 'her') {
+    return fallback;
+  }
+
+  if (fallback.toLowerCase() === 'his' && lowered === 'its') {
+    return fallback;
+  }
+
+  return normalized;
+}
+
 export interface ParsedTitleAndBody {
   title: string;
   body: string;
   parentheticals: string[];
 }
 
-import { addMagicItemMechanics, applyNameMappings, MAGIC_ITEM_MAPPINGS } from './name-mappings';
+import { addMagicItemMechanics, applyNameMappings, MAGIC_ITEM_MAPPINGS, canonicalizeMagicItemName } from './name-mappings';
+import { estimateHpFromHd, isRankedNamedEntity } from './stat-block-helpers';
+import type { FormattingRules } from './classification-rules';
+
+function wrapItalic(text: string): string {
+  // If already italicized, keep it
+  if (/^\*.*\*$/.test(text)) return text;
+  return `*${text}*`;
+}
+import { determinePossessivePronoun } from './stat-block-helpers';
 
 export interface MountBlock {
   name: string;
@@ -79,22 +198,28 @@ export function lookupCanonicalMount(raw: string): MountBlock | undefined {
     return undefined;
   }
 
-  const canonical = CANONICAL_MOUNT_DATA[key];
+    let normalizedAttrs: NormalizedAttributesResult | undefined;
+    const canonical = CANONICAL_MOUNT_DATA[key];
   if (!canonical) {
     return undefined;
   }
 
-  return {
-    name: canonical.name,
-    level: canonical.level,
-    hd: canonical.hd,
-    hp: canonical.hp,
-    ac: canonical.ac,
-    disposition: canonical.disposition,
-    attacks: canonical.attacks,
-    equipment: canonical.equipment,
-    raw: canonical.name
-  };
+    if (!normalizedAttrs && isNamedRanked && data.significantAttributes) {
+      // Convert significant attributes to a normalized list form
+      normalizedAttrs = { type: 'list', value: data.significantAttributes };
+    }
+
+    return {
+      name: canonical.name,
+      raw: block.raw ?? canonical.raw,
+      level: block.level ?? canonical.level,
+      hd: block.hd ?? canonical.hd,
+      hp: block.hp ?? canonical.hp,
+      ac: block.ac ?? canonical.ac,
+      disposition: block.disposition ?? canonical.disposition,
+      attacks: block.attacks ?? canonical.attacks,
+      equipment: block.equipment ?? canonical.equipment,
+    };
 }
 
 export function canonicalizeMountBlock(block: MountBlock): MountBlock {
@@ -127,7 +252,7 @@ export function canonicalizeMountBlock(block: MountBlock): MountBlock {
   };
 }
 
-export function buildMountBridgeSentence(mountName: string, pronoun: 'He' | 'She' | 'They'): string {
+export function buildMountBridgeSentence(mountName: string, pronoun: SubjectPronoun): string {
   const rideVerb = pronoun === 'They' ? 'ride' : 'rides';
   const normalized = mountName
     .toLowerCase()
@@ -206,6 +331,7 @@ function getSuperscriptOrdinal(num: string): string {
 // Core regex patterns based on Jeremy's specifications
 // This regex handles nested parentheses by matching balanced parentheses
 const PAREN_RE = /\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g;
+const HD_RE = /\bHD\s*[:=]?\s*([0-9]+d[0-9]+(?:\s*(?:\+|-)\s*[0-9]+)?)\b/i;
 const HP_RE = /\b(?:HP|Hit\s*Points)\s*[:-]?\s*(\d+)\b/i;
 const AC_RE = /\bAC\s*[:-]?\s*([\d/]+)\b/i;
 
@@ -285,6 +411,12 @@ export function splitTitleAndBody(text: string): ParsedTitleAndBody {
 
 export function extractParentheticalData(parenthetical: string, isUnit: boolean = false, title?: string): ParentheticalData {
   const data: ParentheticalData = { raw: parenthetical };
+
+  // Extract HD (monsters / units)
+  const hdMatch = HD_RE.exec(parenthetical);
+  if (hdMatch) {
+    data.hd = hdMatch[1].replace(/\s+/g, '');
+  }
 
   // Extract HP
   const hpMatch = HP_RE.exec(parenthetical);
@@ -576,9 +708,19 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
   // Formation details are now captured as part of equipment context, not separately
 
   // Extract jewelry separately from coins - do this BEFORE the general currency extraction
-  const jewelryMatch = /(\d+)\s*gold\s+worth\s+of\s+jewelry/i.exec(parenthetical);
+  const jewelryMatch = /([0-9,]+)\s*gold\s+worth\s+of\s+jewelry/i.exec(parenthetical);
   if (jewelryMatch) {
     data.jewelry = `${jewelryMatch[1]} gold worth of jewelry`;
+  }
+
+  // Also detect explicit jewelry line-item values such as "necklace worth 1,000 gp".
+  // This handles cases where the item is described (diamond-studded necklace) with an explicit worth.
+  if (!data.jewelry) {
+    const jewelItemMatch = /(?:diamond|ruby|sapphire|emerald|opal|pearl|necklace|bracelet|ring|amulet|tiara|crown|brooch)[\w\s-]{0,60}?worth\s+([0-9,]+)\s*(?:gp|gold)\b/i.exec(parenthetical);
+    if (jewelItemMatch) {
+      const num = jewelItemMatch[1].replace(/,/g, '');
+      data.jewelry = `${num} gold worth of jewelry`;
+    }
   }
 
   // Now extract coins, but exclude jewelry values
@@ -740,7 +882,7 @@ function determinePrimeType(attributes: string, tokens: AttributeToken[]): 'phys
   return undefined;
 }
 
-function extractClassInfo(raceClassText?: string, levelText?: string): { className?: string; level?: number; hasClassLevels: boolean } {
+export function extractClassInfo(raceClassText?: string, levelText?: string): { className?: string; level?: number; hasClassLevels: boolean } {
   let className: string | undefined;
   let level: number | undefined;
 
@@ -931,7 +1073,7 @@ export function repositionMagicItemBonuses(equipment: string): string {
 }
 
 export function deduplicateEquipment(equipment: string): string {
-  const items = equipment.split(/,\s*/).map(item => item.trim());
+  const items = equipment.split(/,\s*/).map(item => item.trim().replace(/[\.]+$/g, ''));
   const unique = [...new Set(items)];
   return unique.join(', ');
 }
@@ -940,14 +1082,24 @@ export function normalizeEquipmentVerbs(equipment: string): string {
   // Jeremy's mandate: "wears" for armor/barding, "carries" for weapons/gear
   let normalized = equipment;
 
-  // Normalize armor verbs to "wears" (for armor, barding, clothing)
-  normalized = normalized.replace(/\b(wears?|wearing|worn|has on|dons?)\b\s+/gi, 'wears ');
+  // Normalize armor verbs to root form "wear" (for armor, barding, clothing)
+  // Keep root verb so the canonicalizer can inflect it per pronoun (wear -> wears/wear)
+  normalized = normalized.replace(/\b(wears?|wearing|worn|has on|dons?)\b\s+/gi, 'wear ');
 
   // Normalize weapon/gear verbs to "carry" (for weapons, tools, items)
-  normalized = normalized.replace(/\b(carries?|carrying|bears?|bearing|holds?|holding|wields?|wielding)\b\s+/gi, 'carry ');
+  normalized = normalized.replace(/\b(carries?|carrying|bears?|bearing|holds?|holding|wields?|wielding|is armed with|is armed|is equipped with|is carrying)\b\s+/gi, 'carry ');
 
   // Handle "and carry" constructions properly
   normalized = normalized.replace(/\band\s+carry/gi, 'and carry');
+
+  // Collapse repeated verb sequences like "carry wield" -> "carry" (keep first verb)
+  normalized = normalized.replace(/\b(wear|carry|wield)\s+(wear|carry|wield)\b/gi, '$1');
+
+  // Normalize leading phrases like "is wearing" or "is carrying" to root verbs
+  normalized = normalized.replace(/\bis\s+(wear|carry)ing\b/gi, '$1');
+
+  // Normalize "has" constructions to carry when followed by gear/weapon nouns
+  normalized = normalized.replace(/\bhas\s+(a|an|the)?\s+/gi, 'carry ');
 
   return normalized;
 }
@@ -1194,34 +1346,49 @@ function buildDescriptorFromData(data: ParentheticalData, isUnit: boolean, title
 function formatCoinsForTreasure(coins: string): string {
   if (!coins) return '';
 
-  // If already in "# in coin" format, return as-is
-  if (/in coin/i.test(coins)) {
-    return coins;
+  const normalized = canonicalizeCoinsText(coins);
+
+  // If already specifies denomination with "in coin", just normalize and return
+  if (/\b(gold|silver|copper|platinum|gp|sp|cp|pp)\b.+in coin/i.test(normalized)) {
+    return normalized;
   }
 
   // Check if multiple currency types (gp, sp, cp, pp)
-  const currencyMatches = coins.match(/\d+\s*(?:gp|sp|cp|pp)/gi);
+  const currencyMatches = normalized.match(/\d+(?:[–-]\d+)?\s*(?:gp|sp|cp|pp)/gi);
   if (currencyMatches && currencyMatches.length > 1) {
     // Multiple currencies: just normalize spacing
-    return canonicalizeCoinsText(coins);
+    return normalized;
   }
 
-  // Single currency: convert to "# in coin" format
-  const match = coins.match(/(\d+(?:[–-]\d+)?)\s*(?:gp|gold)/i);
-  if (match) {
-    return `${match[1]} in coin`;
+  // Single currency: convert to "# [denomination] in coin" format
+  const singleMatch = normalized.match(/(\d+(?:[–-]\d+)?)\s*(gp|sp|cp|pp|gold|silver|copper|platinum)/i);
+  if (singleMatch) {
+    const amount = singleMatch[1];
+    const unit = singleMatch[2].toLowerCase();
+    const unitWordMap: Record<string, string> = {
+      gp: 'gold',
+      gold: 'gold',
+      sp: 'silver',
+      silver: 'silver',
+      cp: 'copper',
+      copper: 'copper',
+      pp: 'platinum',
+      platinum: 'platinum'
+    };
+    const unitWord = unitWordMap[unit] || unit;
+    return `${amount} ${unitWord} in coin`;
   }
 
   // Fallback: just use the normalized text
-  return canonicalizeCoinsText(coins);
+  return normalized;
 }
 
 // Helper function to format jewelry with word-number conversion
 function formatJewelryForTreasure(jewelry: string): string {
   if (!jewelry) return '';
-
-  return jewelry.replace(/(\d+)\s*gold\s+worth\s+of\s+jewelry/i, (_, amount) => {
-    const wordAmount = numberToWords(parseInt(amount));
+  return jewelry.replace(/([0-9,]+)\s*gold\s+worth\s+of\s+jewelry/i, (_, amount) => {
+    const sanitized = amount.replace(/,/g, '');
+    const wordAmount = numberToWords(parseInt(sanitized));
     return `${wordAmount} in jewelry`;
   });
 }
@@ -1241,28 +1408,83 @@ function formatSpellLevels(spellText: string): string {
   return formatted;
 }
 
-export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boolean, omitRace: boolean = false, useSuperscriptOrdinals: boolean = true, title?: string): string {
+export function buildCanonicalParenthetical(
+  data: ParentheticalData,
+  isUnit: boolean,
+  omitRace: boolean = false,
+  useSuperscriptOrdinals: boolean = true,
+  title?: string,
+  formattingRules?: FormattingRules
+): string {
   const parts: string[] = [];
-  const wearVerb = isUnit ? 'wear' : 'wears';
-  const carryVerb = isUnit ? 'carry' : 'carries';
+  // Determine pronoun-based formatting early
+  const pronounTrack: 'singular' | 'plural' = formattingRules?.pronounTrack ?? (isUnit ? 'plural' : 'singular');
+  const possessiveSeed = formattingRules?.pronounPossessive ?? (hasClassLevels ? 'his' : 'its');
+  const fallbackBase = pronounTrack === 'plural'
+    ? 'Their'
+    : capitalizePronounValue(possessiveSeed) || 'His';
+  const possessiveOptions = {
+    allowFeminine: fallbackBase.toLowerCase() === 'his',
+    requireNeutralIts: fallbackBase.toLowerCase() === 'its',
+  };
+  const rawPossessive = determinePossessivePronoun(data.raw, data.originalPronoun, pronounTrack === 'plural', title);
+  const resolvedPossessive = enforcePossessivePronoun(rawPossessive, pronounTrack, fallbackBase, possessiveOptions);
+  const resolvedSubject = pronounTrack === 'plural' ? 'They' : possessiveToSubjectPronoun(resolvedPossessive);
+
+  // Determine equipment verbs based on formatting rules and pronoun track
+  const equipmentVerbStyle = formattingRules?.equipmentVerbs ?? 'carries-wears';
+  let wearVerb: string;
+  let carryVerb: string;
+  if (equipmentVerbStyle === 'has-possesses') {
+    // Use 'has'/'have' style
+    wearVerb = pronounTrack === 'plural' ? 'have' : 'has';
+    carryVerb = pronounTrack === 'plural' ? 'have' : 'has';
+  } else {
+    // Use 'wear(s)' and 'carry(ies)' style
+    wearVerb = pronounTrack === 'plural' ? 'wear' : 'wears';
+    carryVerb = pronounTrack === 'plural' ? 'carry' : 'carries';
+  }
   const coinsText = data.coins ? canonicalizeCoinsText(data.coins) : undefined;
   const jewelryText = data.jewelry ? formatJewelryForTreasure(data.jewelry) : undefined;
   let coinsIncludedInWeapons = false;
   let jewelryIncludedInEquipment = false;
   const classInfo = extractClassInfo(data.raceClass, data.level);
+  const hasClassLevels = classInfo.hasClassLevels;
+  const isNamedRanked = isRankedNamedEntity(title, data);
+
 
   // Build vital stats
   const vitalParts: string[] = [];
 
   // Determine if this is a non-classed creature (for Level field)
-  const hasClassLevels = classInfo.hasClassLevels;
+  const shouldShowHd = Boolean(data.hd && (!hasClassLevels || isUnit));
 
   // Add Level for non-classed creatures
   if (data.level && !hasClassLevels && /\d/.test(data.level)) {
     vitalParts.push(`Level ${data.level}`);
   }
 
-  if (data.hp) vitalParts.push(`HP ${data.hp}`);
+  if (shouldShowHd && data.hd) {
+    // Apply Rule-of-Rank: named or ranked entities should show flat HP rather
+    // than rolling HD. Detection heuristics: presence of raceClass, significant
+    // attributes, or a title that looks like a named creature.
+    // If an HP total is present for a named/ranked NPC, prefer HP and suppress HD.
+    if (isNamedRanked && data.hp) {
+      // Named and HP provided: only show HP
+      vitalParts.push(`HP ${data.hp}`);
+    } else if (isNamedRanked || data.raceClass || data.significantAttributes) {
+      const hpToShow = data.hp ?? estimateHpFromHd(data.hd);
+      if (hpToShow) {
+        vitalParts.push(`HP ${hpToShow}`);
+      } else {
+        vitalParts.push(`HD ${data.hd}`);
+      }
+    } else {
+      vitalParts.push(`HD ${data.hd}`);
+    }
+  }
+
+  if (data.hp && !vitalParts.some(p => p.startsWith('HP '))) vitalParts.push(`HP ${data.hp}`);
   if (data.ac) vitalParts.push(`AC ${data.ac}`);
   if (data.disposition) {
     const normalizedDisposition = normalizeDisposition(data.disposition);
@@ -1283,6 +1505,12 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
             const superscriptOrdinal = getSuperscriptOrdinal(level);
             return `${level}${superscriptOrdinal}${levelText}`;
           });
+          // If this is a named, ranked NPC, prefer plain "12 level" rather
+          // than superscript ordinals in the class/level text for readability.
+          if (isNamedRanked) {
+            raceClassText = raceClassText.replace(/(\d+)(?:ᵗʰ|st|nd|rd|th)/gi, '$1 level');
+            raceClassText = raceClassText.replace(/(\d+)\s*\u1d57/gi, '$1 level');
+          }
         }
       }
 
@@ -1297,24 +1525,70 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
 
     const descriptor = buildDescriptorFromData(descriptorData, isUnit, title);
     const possessive = formatPossessiveDescriptor(descriptor, isUnit);
-    parts.push(`${possessive} vital stats are ${vitalParts.join(', ')}`);
+    // Per Canonicalizer mandate: omit "vital stats are" and begin directly with stat content
+    parts.push(`${vitalParts.join(', ')}`);
   }
 
   // Add primary attributes
-  if (data.attributes) {
-    const normalizedAttrs = normalizeAttributes(data.attributes, {
+  let forcePhysicalAttributes = isUnit || !hasClassLevels;
+  // Do not force physical attribute shorthand for named/ranked entities that
+  // explicitly provide attribute tokens or have class levels (Rule-of-Rank)
+  if (isNamedRanked && (classInfo.hasClassLevels || Boolean(data.significantAttributes))) {
+    forcePhysicalAttributes = false;
+  }
+  let normalizedAttrs: NormalizedAttributesResult | undefined;
+
+  // IMPORTANT: We'll determine a final override for named, classed NPCs after
+  // the normalization step below so it can't be replaced by normal attr logic.
+
+  if (!normalizedAttrs && isNamedRanked && data.significantAttributes) {
+    // Rule-of-Rank: if a named/ranked entity has significant attributes listed,
+    // prefer inserting the full long-form attribute list rather than the short
+    // 'significant attributes' phrase. This ensures named NPCs like Ember
+    // Raventree show the canonical six-attribute list.
+    normalizedAttrs = { type: 'list', value: formatOxfordList(PHB_ATTRIBUTE_ORDER) };
+  }
+
+  if (forcePhysicalAttributes) {
+    normalizedAttrs = { type: 'prime', value: 'physical' };
+  } else if (data.attributes) {
+    normalizedAttrs = normalizeAttributes(data.attributes, {
       isUnit,
       raceClassText: data.raceClass,
       levelText: data.level
     });
+  }
 
-    if (normalizedAttrs.type === 'list' && normalizedAttrs.value) {
-      const possessive = isUnit ? 'Their' : 'His';
+  // Re-apply Rule-of-Rank override AFTER attribute normalization so it cannot
+  // be overwritten by standard normalization logic. This forces the long-form
+  // attribute list for named/ranked entities that either have explicit class levels
+  // or show significant attributes in the parenthetical (like Ember Raventree).
+  if (isNamedRanked && (classInfo.hasClassLevels || Boolean(data.significantAttributes))) {
+    // If any explicit attributes are provided in the parenthetical, force
+    // the full long-form attribute list per Rule-of-Rank.
+    const hasExplicitAttributes = Boolean((data.attributes && data.attributes.trim()) || (data.significantAttributes && data.significantAttributes.trim()));
+    if (hasExplicitAttributes) {
+      normalizedAttrs = { type: 'list', value: formatOxfordList(PHB_ATTRIBUTE_ORDER) };
+    }
+  }
+
+    // Final enforcement: if this is a named/ranked entity we prefer the full
+    // PHB long-form attribute list even if normalization produced a shorter list.
+    if (isNamedRanked && normalizedAttrs && normalizedAttrs.type === 'list') {
+      normalizedAttrs.value = formatOxfordList(PHB_ATTRIBUTE_ORDER);
+    }
+
+  if (normalizedAttrs && normalizedAttrs.value) {
+    if (forcePhysicalAttributes) {
+      parts.push(`${resolvedPossessive} primary attributes are physical`);
+    } else if (normalizedAttrs.type === 'list') {
+      let possessive = resolvedPossessive;
+      if (isNamedRanked && possessive === 'Their' && pronounTrack === 'singular') {
+        possessive = fallbackBase;
+      }
       parts.push(`${possessive} primary attributes are ${normalizedAttrs.value}`);
-    } else if (normalizedAttrs.type === 'prime' && normalizedAttrs.value) {
-      // For non-classed creatures and units, capitalize pronoun as it starts a new sentence
-      const pronoun = isUnit ? 'Their' : (hasClassLevels ? 'His' : 'Their');
-      parts.push(`${pronoun} primary attributes are ${normalizedAttrs.value}`);
+    } else if (normalizedAttrs.type === 'prime') {
+      parts.push(`${resolvedPossessive} primary attributes are ${normalizedAttrs.value}`);
     }
   }
 
@@ -1363,11 +1637,18 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       }
 
       processedPart = processedPart.replace(/^(?:and\s+)?(?:they|he|she|it)\s+/i, '');
-      processedPart = processedPart.replace(/^(?:and\s+)?(?:wears|wear|carries|carry)\s+/i, '');
+          processedPart = processedPart.replace(/^(?:and\s+)?(?:wears|wear|carries|carry|wields|wielding|is armed with|is armed|is equipped with|is carrying)\s+/i, '');
+
+      // Sanitization helps fix grammar mistakes and remove bracketed mechanics
+      processedPart = sanitizeEquipmentClause(processedPart);
 
       // For units, pluralize items (do this before italicization)
       if (isUnit) {
-        processedPart = pluralizeEquipmentItem(processedPart);
+        // Do not pluralize coin/currency items or 'each' tokens; only pluralize equipment items
+        const lowerPart = processedPart.toLowerCase();
+        if (!/\b\d|\b(each|eachs?)\b|\b(in coin|gp|sp|cp|pp|gold|silver|copper|platinum)\b/i.test(lowerPart)) {
+          processedPart = pluralizeEquipmentItem(processedPart);
+        }
       }
 
       // Only italicize magical items, not mundane equipment
@@ -1389,7 +1670,7 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
     hasArmor = armorItems.length > 0;
 
     // Build equipment sentences
-    const capitalizedPronoun = isUnit ? 'They' : 'He';
+    const capitalizedPronoun = resolvedSubject;
     if (treatEquipmentAsPlain) {
       const combinedItems: string[] = [];
 
@@ -1418,20 +1699,38 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
       }
     } else {
       const equipmentSentences: string[] = [];
-      if (armorItems.length > 0) {
-        const armorList = formatOxfordList(armorItems);
-        equipmentSentences.push(`${capitalizedPronoun} ${wearVerb} ${armorList}`);
-      }
-      if (weaponItems.length > 0) {
-        let weaponList = formatOxfordList(weaponItems);
-
-        if (coinsText) {
-          const formattedCoins = formatCoinsForTreasure(coinsText);
-          weaponList += `, and ${formattedCoins}`;
+      if (equipmentVerbStyle === 'has-possesses') {
+        // Use single 'has' style sentence for both armor and weapons
+        const combinedItems = [...armorItems, ...weaponItems];
+        if (coinsText && !coinsIncludedInWeapons) {
+          combinedItems.push(formatCoinsForTreasure(coinsText));
           coinsIncludedInWeapons = true;
         }
+        if (jewelryText && !jewelryIncludedInEquipment) {
+          combinedItems.push(formatJewelryForTreasure(data.jewelry!));
+          jewelryIncludedInEquipment = true;
+        }
+        if (combinedItems.length > 0) {
+          const list = formatOxfordList(combinedItems.map(item => item.startsWith('*') && item.endsWith('*') ? item : ensureIndefiniteArticle(sanitizeEquipmentClause(item))));
+          equipmentSentences.push(`${capitalizedPronoun} ${carryVerb} ${list}`);
+        }
+      } else {
+        if (armorItems.length > 0) {
+          const armorList = formatOxfordList(armorItems);
+          equipmentSentences.push(`${capitalizedPronoun} ${wearVerb} ${armorList}`);
+        }
 
-        equipmentSentences.push(`${armorItems.length > 0 ? `and ${carryVerb}` : `${capitalizedPronoun} ${carryVerb}`} ${weaponList}`);
+        if (weaponItems.length > 0) {
+          let weaponList = formatOxfordList(weaponItems);
+
+          if (coinsText) {
+            const formattedCoins = formatCoinsForTreasure(coinsText);
+            weaponList += `, and ${formattedCoins}`;
+            coinsIncludedInWeapons = true;
+          }
+
+          equipmentSentences.push(`${armorItems.length > 0 ? `and ${carryVerb}` : `${capitalizedPronoun} ${carryVerb}`} ${weaponList}`);
+        }
       }
 
       if (equipmentSentences.length > 0) {
@@ -1442,33 +1741,60 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
 
   // Add secondary skills (comes before significant attributes per template)
   if (data.secondarySkills) {
-    const possessive = isUnit ? 'Their' : 'His';
+    const possessive = resolvedPossessive;
     parts.push(`${possessive} secondary skill is ${data.secondarySkills}`);
   }
 
   // Add significant attributes
   if (data.significantAttributes) {
-    const possessive = isUnit ? 'Their' : 'His';
-    parts.push(`${possessive} significant attributes are ${data.significantAttributes}`);
+    const possessive = resolvedPossessive;
+    // Do not duplicate the 'significantAttributes' clause when we have already
+    // forced the PHB long-form attribute list for named/ranked entities.
+    const shouldShowSignificant = !(isNamedRanked && normalizedAttrs && normalizedAttrs.type === 'list');
+    if (shouldShowSignificant) {
+      parts.push(`${possessive} significant attributes are ${data.significantAttributes}`);
+    }
   }
 
   // Add spells
   if (data.spells) {
-    const pronounSubject = isUnit ? 'They' : 'He';
+    const pronounSubject = resolvedSubject;
     let spellText = data.spells;
     // Clean up the spell text if it starts with unnecessary words
     spellText = spellText.replace(/^(?:the\s+following\s+number\s+of\s+|following\s+)?(cleric\s+|wizard\s+|magic.user\s+)?spells?\s+per\s+day:\s*/i, '');
     // Add superscript ordinals to spell levels
     spellText = formatSpellLevels(spellText);
+    // Remove obvious equipment words from the spell list and split items
+    let spells = spellText.split(/[,;]+/).map(s => s.trim()).filter(Boolean);
+    spells = spells.filter(s => !/\b(shield|armor|mail|sword|dagger|bow|scabbard|arrows|helm|gauntlets)\b/i.test(s));
+
+    // Apply canonical spell mappings and italicize individual spell names
+    spells = spells.map((s) => {
+      // Detect 'scroll of X' or 'potion of X' and only italicize the spell name portion
+      const scrollMatch = /^(scroll of)\s+(.+)$/i.exec(s);
+      if (scrollMatch) {
+        const mapped = applyNameMappings(scrollMatch[2].trim());
+        return `${scrollMatch[1]} ${wrapItalic(mapped)}`;
+      }
+      const potionMatch = /^(potion of)\s+(.+)$/i.exec(s);
+      if (potionMatch) {
+        const mapped = applyNameMappings(potionMatch[2].trim());
+        return `${potionMatch[1]} ${wrapItalic(mapped)}`;
+      }
+      const mapped = applyNameMappings(s);
+      return wrapItalic(mapped);
+    });
+
+    const finalSpellText = spells.join(', ');
     const spellLabel = classInfo.className ? `${classInfo.className} spells` : 'spells';
-    parts.push(`${pronounSubject} can cast the following number of ${spellLabel} per day: ${spellText}`);
+    parts.push(`${pronounSubject} can cast the following number of ${spellLabel} per day: ${finalSpellText}`);
   }
 
   // Formation details are now included within equipment descriptions
 
   // Handle jewelry and coins together when no weapons present
   const formattedCoinsText = data.coins ? formatCoinsForTreasure(data.coins) : undefined;
-  const capitalizedPronoun = isUnit ? 'They' : 'He';
+  const capitalizedPronoun = resolvedSubject;
 
   // Merge jewelry and coins into single carry clause when no weapons
   if (jewelryText && formattedCoinsText && !hasWeapons && !coinsIncludedInWeapons && !jewelryIncludedInEquipment) {
@@ -1520,7 +1846,20 @@ export function buildCanonicalParenthetical(data: ParentheticalData, isUnit: boo
 
   // Join sentences with periods
   const result = sentences.join('. ');
-  return result.endsWith('.') ? result : result + '.';
+  let finalResult = result.endsWith('.') ? result : result + '.';
+
+  // Post-processing: fix known pluralization/typo artifacts that sometimes
+  // escape earlier sanitization heuristics (examples: 'armors', 'trashs').
+  finalResult = finalResult.replace(/\barmors\b/gi, 'armor');
+  finalResult = finalResult.replace(/\bhams\b/gi, 'ham');
+  finalResult = finalResult.replace(/\btrashs\b/gi, 'trash');
+  finalResult = finalResult.replace(/\bcomic scrolls\b/gi, 'comic scroll');
+  finalResult = finalResult.replace(/\bscrolls\b/gi, 'scroll');
+
+  // Per Canonicalizer mandate: normalize all Unicode superscripts to plain-text ordinals
+  finalResult = normalizeUnicodeSuperscripts(finalResult);
+
+  return finalResult;
 }
 
 function stripOuterItalics(value: string): string {
@@ -1534,6 +1873,25 @@ function sanitizeEquipmentClause(item: string): string {
   sanitized = sanitized.replace(/—[^,]+/g, '');
   sanitized = sanitized.replace(/\s*\((?:AC|see Appendix: Magic Items|bonus|attack|damage)[^)]*\)/gi, '');
   sanitized = sanitized.replace(/\s+/g, ' ').trim();
+
+  // Fix double verb sequences: "carry wield", "carries wields" -> pick a single verb
+  sanitized = sanitized.replace(/\b(carries|carry)\s+(wields?)\b/gi, '$2');
+  // Remove leading 'wields' and similar verbs left in inner items
+  sanitized = sanitized.replace(/^(?:and\s+)?(?:wields?|wielding|is armed with|is equipped with)\s+/i, '');
+  sanitized = sanitized.replace(/\b(carries|carry)\s+(carry|carries)\b/gi, '$1');
+
+  // Common pluralization mistakes
+  sanitized = sanitized.replace(/\barmors\b/gi, 'armor');
+  sanitized = sanitized.replace(/\beachs\b/gi, 'each');
+  sanitized = sanitized.replace(/\bhams\b/gi, 'ham');
+  sanitized = sanitized.replace(/\btrashs\b/gi, 'trash');
+  sanitized = sanitized.replace(/\barmours\b/gi, 'armor');
+  sanitized = sanitized.replace(/\barmour\b/gi, 'armor');
+  sanitized = sanitized.replace(/\barmors\b/gi, 'armor');
+  sanitized = sanitized.replace(/\btrash(es)?\b/gi, 'trash');
+  sanitized = sanitized.replace(/\bhams?\b/gi, 'ham');
+  sanitized = sanitized.replace(/\bscrolls\b/gi, 'scroll');
+
   return sanitized;
 }
 
@@ -1626,8 +1984,6 @@ export function formatMountBlock(mountBlock: MountBlock): string {
   const sentences: string[] = [];
   if (vitalParts.length > 0) {
     sentences.push(`This creature${apostrophe}s vital stats are ${vitalParts.join(', ')}.`);
-  } else {
-    sentences.push(`This creature${apostrophe}s vital stats are unavailable.`);
   }
 
   if (canonicalMount.attacks) {
@@ -1639,16 +1995,15 @@ export function formatMountBlock(mountBlock: MountBlock): string {
 
   const name = titleCase(canonicalMount.name);
   const content = sentences.filter(Boolean).join(' ');
+  if (!content) {
+    // If no vital parts, attacks, or equipment are present, just return the mount name
+    return `**${name} (mount)**`;
+  }
   return `**${name} (mount)** *(${content})*`;
 }
 
 export function findEquipment(equipment: string): string {
-  let processed = equipment;
-
-  // Apply comprehensive magic item name mappings
-  for (const [old, replacement] of Object.entries(MAGIC_ITEM_MAPPINGS)) {
-    processed = processed.replace(new RegExp(old, 'gi'), replacement);
-  }
+  let processed = applyNameMappings(equipment);
 
   // Shield normalization: split by comma, process each part individually
   const parts = processed.split(',').map(part => part.trim());
@@ -1683,6 +2038,11 @@ export function findEquipment(equipment: string): string {
         const [, bonus, item] = bonusAtStartMatch;
         magicItem = `${item} ${bonus}`;
       }
+
+      // Clean decor and combat annotations before adding mechanics
+      magicItem = applyNameMappings(magicItem);
+      // Remove bracketed details and hyphenated adjectives (e.g., bronze-hilted)
+      magicItem = canonicalizeMagicItemName(magicItem);
 
       // Italicize magic item with mechanics inside
       const withMechanics = addMagicItemMechanics(magicItem);

@@ -1,9 +1,12 @@
 import type { ParsedNPC, ValidationResult, ValidationWarning, WarningType } from './stat-block-types';
+import { buildCanonicalData, type CanonicalData } from './canonical-data-mapper';
 import {
   buildSubjectDescriptor,
   normalizeDisposition,
   toPossessiveSubject,
   toSuperscript,
+  determinePossessivePronoun,
+  isRankedNamedEntity,
 } from './stat-block-helpers';
 
 export type { ParsedNPC, ValidationResult, ValidationWarning, WarningType } from './stat-block-types';
@@ -13,6 +16,7 @@ export interface ProcessedNPC {
   original: string;
   converted: string;
   validation: ValidationResult;
+  canonicalData: CanonicalData;
 }
 
 export type CorrectionConfidence = 'high' | 'medium' | 'low';
@@ -48,13 +52,17 @@ import {
   lookupCanonicalMount,
   buildMountBridgeSentence,
   findEquipment,
+  normalizePrimaryAttributesForMonsters,
+  extractClassInfo,
+  expandShorthandForClassed,
 } from './enhanced-parser';
+import { classifyCreature, extractPreCheckData, getFormattingRules, type CreatureType, type FormattingRules } from './classification-rules';
 import {
   isBasicMonster,
   formatToMonsterNarrative,
   buildMonsterValidation
 } from './monster-formatter';
-import { parseMonsterBlock } from './monster-parser';
+import { parseMonsterBlock, parseMonsterBlockWithHeuristics } from './monster-parser';
 
 interface Dictionaries {
   spells: Set<string>;
@@ -193,14 +201,14 @@ export function processDumpWithValidation(
   const blocks = splitIntoBlocks(trimmed);
   return blocks.map((block) => {
     const npcParsed = useEnhancedParser ? parseBlockEnhanced(block) : parseBlock(block);
-    const monsterParsed = formatterMode === 'npc' || formatterMode === 'enhanced' ? undefined : parseMonsterBlock(block);
+    const monsterParsed = formatterMode === 'npc' || formatterMode === 'enhanced' ? undefined : parseMonsterBlockWithHeuristics(block);
 
     let finalParsed: ParsedNPC = npcParsed;
     let converted: string;
     let validation: ValidationResult;
 
     if (formatterMode === 'monster') {
-      finalParsed = monsterParsed ?? parseMonsterBlock(block);
+      finalParsed = monsterParsed ?? parseMonsterBlockWithHeuristics(block, splitTitleAndBody(block).title);
       converted = formatToMonsterNarrative(finalParsed);
       validation = buildMonsterValidation(finalParsed);
     } else if (formatterMode === 'npc') {
@@ -211,7 +219,7 @@ export function processDumpWithValidation(
         converted = useEnhancedParser ? formatToEnhancedNarrative(npcParsed, block) : formatToNarrative(npcParsed);
         validation = buildValidation(npcParsed);
       } else {
-        const candidateMonster = monsterParsed ?? parseMonsterBlock(block);
+        const candidateMonster = monsterParsed ?? parseMonsterBlockWithHeuristics(block, splitTitleAndBody(block).title);
         if (isBasicMonster(candidateMonster)) {
           finalParsed = candidateMonster;
           converted = formatToMonsterNarrative(finalParsed);
@@ -228,6 +236,7 @@ export function processDumpWithValidation(
       original: finalParsed.original,
       converted,
       validation,
+      canonicalData: buildCanonicalData(finalParsed),
     } satisfies ProcessedNPC;
   });
 }
@@ -444,17 +453,13 @@ export function convertToHtml(text: string): string {
     .replace(/>/g, '&gt;');
 
   // Convert markdown formatting to HTML
-  // Use temporary markers to avoid conflicts
-  html = html.replace(/\*\*(.*?)\*\*/g, '___BOLD_START___$1___BOLD_END___');
-  html = html.replace(/__(.*?)__/g, '___BOLD_START___$1___BOLD_END___');
+  // Convert bold (strong) first so that italics inside bold are preserved.
+  html = html.replace(/\*\*(.+?)\*\*/gs, '<strong>$1</strong>');
+  html = html.replace(/__(.+?)__/gs, '<strong>$1</strong>');
 
   // Handle italic text (*text* or _text_)
   html = html.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
   html = html.replace(/_([^_\n]+?)_/g, '<em>$1</em>');
-
-  // Replace temporary markers with actual bold tags
-  html = html.replace(/___BOLD_START___/g, '<strong>');
-  html = html.replace(/___BOLD_END___/g, '</strong>');
 
   // Handle superscript ordinals (1st, 2nd, 3rd, 4th, etc.)
   html = html.replace(/(\d+)(st|nd|rd|th)/g, '$1<sup>$2</sup>');
@@ -532,9 +537,26 @@ function parseBlockEnhanced(block: string): ParsedNPC {
 
   // Process first parenthetical (main NPC data)
     if (parentheticals.length > 0) {
-
+      // Parentheticals extracted
+      // Prefer the parenthetical that contains HP/AC/vital stats or explicit
+      // attribute information; sometimes the first parenthetical is a short
+      // descriptor like '(wood elf leader)'. Choose the parenthetical that
+      // looks like a stat block or contains primary/PA/attributes if available.
+      let statLikeParen = parentheticals.find(p => /\b(HP|H\s*P|Hit Points|vital stats|AC|HD|Primary attributes|attributes|PA|significant attributes|race,|level)\b/i);
+      if (!statLikeParen) {
+        // If the block body contains a "vital stats" section or primary attributes,
+        // prefer using the full body (Ember uses an italicized sentence in the body).
+        if (/\b(HP|H\s*P|Hit Points|vital stats|AC|HD|Primary attributes|attributes|PA|significant attributes|race,|level)\b/i.test(block)) {
+          statLikeParen = block;
+        } else if (parentheticals.length > 1) {
+          // Fall back to the second parenthetical if present and the first is just a title qualifier
+          statLikeParen = parentheticals[1];
+        } else {
+          statLikeParen = parentheticals[0];
+        }
+      }
     // Extract mount if present and clean parenthetical
-    const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
+    const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(statLikeParen);
 
     if (extractedMount) {
       mountBlock = formatEnhancedMountBlock(extractedMount);
@@ -545,6 +567,8 @@ function parseBlockEnhanced(block: string): ParsedNPC {
 
     // Map extracted data to fields
     if (cleanedData.hp) fields['Hit Points (HP)'] = cleanedData.hp;
+    // Ensure HD is captured in canonical fields so classification sees it
+    if (cleanedData.hd) fields['HD'] = cleanedData.hd;
     if (cleanedData.ac) fields['Armor Class (AC)'] = cleanedData.ac;
     if (cleanedData.disposition) fields['Disposition'] = cleanedData.disposition;
     if (cleanedData.raceClass) fields['Race & Class'] = cleanedData.raceClass;
@@ -873,24 +897,36 @@ function parseBlock(block: string): ParsedNPC {
 
 // isBasicMonster and formatToMonsterNarrative moved to monster-formatter.ts
 
+  function fallbackSubjectPronoun(isUnit: boolean, formattingRules?: FormattingRules): 'He' | 'She' | 'They' | 'It' {
+    if (formattingRules?.pronounTrack === 'plural' || isUnit) {
+      return 'They';
+    }
+    if (formattingRules?.pronounPossessive === 'its') {
+      return 'It';
+    }
+    return 'He';
+  }
+
   function resolveMountPronoun(
     data: ParentheticalData | undefined,
     canonicalParenthetical: string,
     isUnit: boolean,
-  ): 'He' | 'She' | 'They' {
-    const explicitPronounMatch = canonicalParenthetical.match(/\b(He|She|They)\s+(?:wear|carry|carries|can|wields|rides|ride)\b/);
+    formattingRules?: FormattingRules,
+  ): 'He' | 'She' | 'They' | 'It' {
+    const explicitPronounMatch = canonicalParenthetical.match(/\b(He|She|They|It)\s+(?:wear|carry|carries|can|wields|rides|ride)\b/);
     if (explicitPronounMatch) {
-      return explicitPronounMatch[1] as 'He' | 'She' | 'They';
+      return explicitPronounMatch[1] as 'He' | 'She' | 'They' | 'It';
     }
 
     const originalPronoun = data?.originalPronoun?.toLowerCase();
     if (originalPronoun) {
       if (['she', 'her'].includes(originalPronoun)) return 'She';
       if (['they', 'their', 'these', 'those'].includes(originalPronoun)) return 'They';
+      if (['it', 'its'].includes(originalPronoun)) return 'It';
       if (['he', 'his', 'this'].includes(originalPronoun)) return 'He';
     }
 
-    return isUnit ? 'They' : 'He';
+    return fallbackSubjectPronoun(isUnit, formattingRules);
   }
 
   function formatToEnhancedNarrative(parsed: ParsedNPC, originalBlock: string): string {
@@ -904,7 +940,7 @@ function parseBlock(block: string): ParsedNPC {
 
     // Use enhanced parser formatting
     const { title, parentheticals } = splitTitleAndBody(originalBlock);
-    const isUnit = isUnitHeading(title);
+    let isUnit = isUnitHeading(title);
 
     let name = parsed.name.trim();
     if (!name.startsWith('**')) {
@@ -915,11 +951,25 @@ function parseBlock(block: string): ParsedNPC {
     let mountBlock: MountBlock | undefined;
     let rawParentheticalData: ParentheticalData | undefined;
     let canonicalParenthetical = '';
+    let formattingRules: FormattingRules | undefined;
 
 
     if (parentheticals.length > 0) {
+      // Prefer the parenthetical that contains HP/AC/vital stats; sometimes the
+      // first parenthetical is a short descriptor like '(wood elf leader)'. Choose
+      // the parenthetical that looks like a stat block if available.
+      let statLikeParen = parentheticals.find(p => /\b(HP|Hit Points|vital stats|AC|HD)\b/i);
+      if (!statLikeParen) {
+        // Prefer using the original block body if it has a stat-like phrase
+        if (/\b(HP|Hit Points|vital stats|AC|HD|Primary attributes|attributes|PA|significant attributes)\b/i.test(originalBlock)) {
+          statLikeParen = originalBlock;
+        } else {
+          statLikeParen = parentheticals[0];
+        }
+      }
       // Extract mount first (Jeremy's mandate: separate mounts into dedicated blocks)
-      const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(parentheticals[0]);
+      console.log('DEBUG statLikeParen', statLikeParen);
+      const { cleanedParenthetical, mountBlock: extractedMount } = extractMountFromParenthetical(statLikeParen);
       mountBlock = extractedMount ? canonicalizeMountBlock(extractedMount) : undefined;
 
       // Process the cleaned parenthetical (mount data removed)
@@ -927,18 +977,84 @@ function parseBlock(block: string): ParsedNPC {
     }
 
     const enrichedParentheticalData = enrichParentheticalData(rawParentheticalData, parsed, isUnit);
+    console.log('DEBUG enrichedParentheticalData', enrichedParentheticalData);
     if (enrichedParentheticalData) {
-      canonicalParenthetical = buildCanonicalParenthetical(enrichedParentheticalData, isUnit, false, true, title);
+      // If this is a ranked, named entity (e.g., chieftain, king, named NPC),
+      // do not use superscript ordinals inside canonical parentheticals; prefer
+      // plain numerals (per Canonicalizer instruction) for clarity.
+      const useSuperscript = !isRankedNamedEntity(title, enrichedParentheticalData);
+      const classInfo = extractClassInfo(enrichedParentheticalData.raceClass, enrichedParentheticalData.level);
+      let canonicalDataForClassification = buildCanonicalData(parsed);
+      // Fallback: if HD wasn't detected in canonical data (edge cases where
+      // parseBlockEnhanced omitted it), try to infer from the raw parenthetical
+      // string to ensure classification sees HD where present in source.
+      if (!canonicalDataForClassification.hd) {
+        // Try raw parenthetical string first
+        let hdMatch = rawParentheticalData?.raw && /\bHD\s*[:=]?\s*([0-9]+d[0-9]+(?:\s*(?:\+|-)\s*[0-9]+)?)\b/i.exec(rawParentheticalData.raw);
+        // Then try the original parsed text if parenthetical didn't contain HD
+        if (!hdMatch && parsed?.original) {
+          hdMatch = /\bHD\s*[:=]?\s*([0-9]+d[0-9]+(?:\s*(?:\+|-)\s*[0-9]+)?)\b/i.exec(parsed.original);
+        }
+        if (hdMatch) {
+          canonicalDataForClassification = { ...canonicalDataForClassification, hd: hdMatch[1] };
+        }
+      }
+      const classificationInputName = stripMarkdown(parsed.name ?? '').trim() || parsed.name;
+      let classificationType: CreatureType | undefined;
+      let resolvedHasClassLevels = classInfo.hasClassLevels;
+      const preCheckData = classificationInputName
+        ? extractPreCheckData(classificationInputName, canonicalDataForClassification)
+        : undefined;
+      const classificationResult = classificationInputName
+        ? classifyCreature(classificationInputName, canonicalDataForClassification)
+        : undefined;
+      if (classificationResult) {
+        classificationType = classificationResult.type;
+      }
+      if (classificationResult && preCheckData) {
+        formattingRules = getFormattingRules(classificationResult, preCheckData);
+        if (formattingRules.pronounTrack === 'plural') {
+          isUnit = true;
+        }
+      }
+      const classificationProvidesGuidance = classificationType === 'classed' || classificationType === 'monster';
+      const hasClassLevelsFromClassification = classificationType === 'classed';
+      if (classificationProvidesGuidance) {
+        resolvedHasClassLevels = hasClassLevelsFromClassification;
+      }
+
+      canonicalParenthetical = buildCanonicalParenthetical(
+        enrichedParentheticalData,
+        isUnit,
+        false,
+        useSuperscript,
+        title,
+        formattingRules,
+      );
+      // DEBUG: show canonical parenthetical during development
+      console.log('DEBUG canonicalParenthetical:', canonicalParenthetical);
+
+      if (hasClassLevelsFromClassification) {
+        canonicalParenthetical = expandShorthandForClassed(canonicalParenthetical);
+      }
+
+      canonicalParenthetical = normalizePrimaryAttributesForMonsters(canonicalParenthetical, resolvedHasClassLevels);
 
       // Only add parenthetical if it contains meaningful content (not just a period or empty)
       if (canonicalParenthetical && canonicalParenthetical.trim().length > 1 && canonicalParenthetical.trim() !== '.') {
-        result = `${name} *(${canonicalParenthetical})*`;
+        // Per Canonicalizer mandate: wrap entire stat block in italics
+        result = `${name} *${canonicalParenthetical}*`;
       }
     }
 
     // Add separated mount block per Jeremy's editorial mandate
     if (mountBlock) {
-      const pronoun = resolveMountPronoun(enrichedParentheticalData ?? rawParentheticalData, canonicalParenthetical, isUnit);
+      const pronoun = resolveMountPronoun(
+        enrichedParentheticalData ?? rawParentheticalData,
+        canonicalParenthetical,
+        isUnit,
+        formattingRules,
+      );
       const mountSentence = buildMountBridgeSentence(mountBlock.name, pronoun);
       if (!result.includes(mountSentence)) {
         result += `\n\n${mountSentence}`;
@@ -1068,7 +1184,9 @@ function formatToNarrative(parsed: ParsedNPC): string {
 
   // Primary attributes in lowercase PHB order
   const primaryAttrs = parsed.fields['Primary attributes'];
-  const possessivePronoun = 'Their';
+  // Determine possessive pronoun for attribute sentences. If the original block
+  // uses an explicit pronoun with equipment (e.g., "He carries"), prefer that.
+  const possessivePronoun = determinePossessivePronoun(parsed.original, undefined, isPlural, name);
   const subjectPronoun = 'They';
 
   if (primaryAttrs) {
@@ -1191,6 +1309,22 @@ function buildValidation(parsed: ParsedNPC): ValidationResult {
       });
       score -= 2;
     }
+  }
+
+  // If both HP and AC are missing, mark this as a critical validation issue
+  // because 'vital stats' are essential for canonical stat blocks. This
+  // preserves the important diagnostic while avoiding inserting it into
+  // the converted preview text (which should be kept clean).
+  const hpMissing = !parsed.fields['Hit Points (HP)'] && !parsed.fields['HD'];
+  const acMissing = !parsed.fields['Armor Class (AC)'] && !parsed.fields['AC'];
+  if (hpMissing && acMissing) {
+    warnings.push({
+      type: 'error',
+      category: 'Vital Stats',
+      message: 'Vital stats are unavailable. Include either Hit Points (HP) or HD and an Armor Class (AC).',
+      suggestion: 'Add Hit Points (HP): <number> or HD: X(dY) and an Armor Class (AC): <value> to the stat block.',
+    });
+    score -= 25;
   }
 
   score = Math.max(0, Math.min(100, score));
@@ -1441,7 +1575,9 @@ function formatMountBlockFromString(raw: string): string {
   const subject = buildSubjectDescriptor({ isPlural: false, fallback: 'creature' });
   const possessiveSubject = toPossessiveSubject(subject, false);
 
-  return `**${mountName} (mount)** *(${possessiveSubject} vital stats are unavailable.)*`;
+  // Avoid adding a diagnostic 'vital stats are unavailable' text when we have no data.
+  // Return only the mount name; additional sentences will be appended by formatToNarrative when present.
+  return `**${mountName} (mount)**`;
 }
 
 function isAlreadyFormatted(input: string, candidate: string): boolean {
@@ -1516,18 +1652,20 @@ export function collapseNPCEntry(input: string): string {
       : mountBlock;
 
     const pronounToken =
-      final.match(/\b(He|She|They)\b/)?.[1] ?? final.match(/\b(His|Her|Their)\b/)?.[1];
+      final.match(/\b(He|She|They|It)\b/)?.[1] ?? final.match(/\b(His|Her|Their|Its)\b/)?.[1];
     const unitNameMatch = final.match(/\*\*[^*]+?\s+x\d+\*\*/);
-    const defaultPronoun: 'He' | 'She' | 'They' = unitNameMatch ? 'They' : 'He';
-    const pronounMap: Record<'He' | 'She' | 'They' | 'His' | 'Her' | 'Their', 'He' | 'She' | 'They'> = {
+    const defaultPronoun: 'He' | 'She' | 'They' | 'It' = unitNameMatch ? 'They' : 'He';
+    const pronounMap: Record<'He' | 'She' | 'They' | 'It' | 'His' | 'Her' | 'Their' | 'Its', 'He' | 'She' | 'They' | 'It'> = {
       He: 'He',
       She: 'She',
       They: 'They',
+      It: 'It',
       His: 'He',
       Her: 'She',
       Their: 'They',
+      Its: 'It',
     };
-    const pronoun: 'He' | 'She' | 'They' =
+    const pronoun: 'He' | 'She' | 'They' | 'It' =
       (pronounToken
         ? pronounMap[pronounToken as keyof typeof pronounMap]
         : defaultPronoun) ?? defaultPronoun;

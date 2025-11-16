@@ -1,0 +1,130 @@
+Entry,Creature Name,Type,Subtype,Confidence,Has HP,Has HD,Has Level,Pronoun Track,Attribute Phrasing,Reasoning,Warnings
+1,"Ape, carnivorous",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+2,Bandit,classed,implicit-fighter,medium,YES,NO,NO,singular,full-phb,Generic hireling type 'bandit' with flat HP (implicit fighter),
+3,"Bandit, Lieutenant",classed,rank-inferred,medium,YES,NO,NO,singular,full-phb,Has flat HP and leadership title 'lieutenant' (suggests fighter),Inferred class 'fighter' from title 'lieutenant'
+4,"Bat, giant cave",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+5,Batrachianoid,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+6,"Bear, black",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+7,"Boar, wild",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+8,"Brigand, crossbowmen",classed,implicit-fighter,medium,YES,NO,NO,singular,full-phb,Generic hireling type 'brigand' with flat HP (implicit fighter),
+9,"Brigand, flailmen",classed,implicit-fighter,medium,YES,NO,NO,singular,full-phb,Generic hireling type 'brigand' with flat HP (implicit fighter),
+10,"Brigand, Serjeant",classed,rank-inferred,medium,YES,NO,NO,singular,full-phb,Has flat HP and leadership title 'serjeant' (suggests fighter),Inferred class 'fighter' from title 'serjeant'
+11,Bugbear,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+12,"Elf, Wood, bowman",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+13,"Elf, Wood, spearman",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+14,"Elf, Wood, swordsman",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+15,Ghoul,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+16,Gnoll,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+17,"Goblin, raider",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+18,"Goblin, leader (corporal)",classed,rank-inferred,medium,YES,NO,NO,singular,full-phb,Has flat HP and leadership title 'leader' (suggests fighter),Inferred class 'fighter' from title 'leader'
+19,Griffon,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+20,Hobgoblin,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+21,Kobold,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+22,"Lion (mountain, forest)",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+23,Lizardfolk,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+24,Losel,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+25,(fisherman/hunter/trapper/woodcutter),classed,implicit-fighter,medium,YES,NO,NO,singular,full-phb,Generic hireling type 'fisherman' with flat HP (implicit fighter),
+26,"Naga, Water",monster,,high,YES,YES,YES,singular,saves-notation,Monster race from M&T using HD,
+27,Nixies (sprite),monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+28,Orc,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+29,"Otter, giant",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+30,Owlbear (small),monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+31,"Rats, River (giant)",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+32,Rivermen,monster,,high,YES,YES,NO,singular,saves-notation,Named unique monster with HD (proper name does not grant class levels),Named entity but uses HD - remains monster per rule 5.2
+33,"Snake, poisonous",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+34,"Snake, poisonous (deadly)",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+35,"Spider, Giant (medium-sized)",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+36,Stirges,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+37,Thieves,classed,implicit-fighter,medium,YES,NO,NO,singular,full-phb,Generic hireling type 'thieves' with flat HP (implicit fighter),
+38,"Turtle, Huge Snapping",classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+39,"Wolf, Grey",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+40,"Wolverine (small, normal)",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+41,Grimlock Manface (Losel Chieftain),classed,rank-inferred,medium,YES,NO,NO,singular,full-phb,Has flat HP and leadership title 'chief' (suggests fighter),Inferred class 'fighter' from title 'chief'
+42,Ji'gun-tima (Losel Shaman),monster,monster-leader,high,YES,YES,YES,singular,saves-notation,Monster race with HD and leadership title 'shaman',Title 'shaman' indicates leader role but remains monster (M&T chiefs use HD)
+43,Losel sub-chiefs x 10,monster,monster-leader,high,YES,YES,NO,singular,saves-notation,Monster race with HD and leadership title 'chief',Title 'chief' indicates leader role but remains monster (M&T chiefs use HD)
+44,Losel warriors x 30,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+45,Losel females x 35,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+46,Iggy the Mad,classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+47,The Ogre,classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+48,Children x 3-6,monster,,low,YES,YES,NO,singular,saves-notation,Has HD without clear classification indicators (default to monster),Has HD but unclear race/type - defaulting to monster
+49,Batrachianoids* x 6:,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+50,Blook-glook (Batrachianoid Chieftain),monster,monster-leader,high,YES,YES,NO,singular,saves-notation,Monster race with HD and leadership title 'chief',Title 'chief' indicates leader role but remains monster (M&T chiefs use HD)
+51,"Spider, Giant (medium-sized) x 2",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+52,Harpy,monster,,high,YES,YES,NO,singular,saves-notation,Named unique monster with HD (proper name does not grant class levels),Named entity but uses HD - remains monster per rule 5.2
+53,"Tick, Giant x 3",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+54,Wood Elf Scouts x 11,classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+55,Ember Raventree (wood elf leader),classed,rank-inferred,medium,YES,NO,NO,singular,full-phb,Has flat HP and leadership title 'leader' (suggests fighter),Inferred class 'fighter' from title 'leader'
+56,86-90,monster,,low,YES,YES,NO,singular,saves-notation,Has HD without clear classification indicators (default to monster),Has HD but unclear race/type - defaulting to monster
+57,"Raven ""One-Eye""",monster,,low,YES,YES,NO,singular,saves-notation,Has HD without clear classification indicators (default to monster),Has HD but unclear race/type - defaulting to monster
+58,Bandit sentries x 8,classed,implicit-fighter,medium,YES,NO,NO,singular,full-phb,Generic hireling type 'bandit' with flat HP (implicit fighter),
+59,"Bat, Cave",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+60,"Centipedes, Black, Giant",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+61,"Fire Beetles*, Giant:",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+62,"Rats, Giant",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+63,"Snake, Poisonous",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+64,"Spider, Giant (medium-sized)",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+65,"Tick, Giant",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+66,Wolves x 5,monster,,low,YES,YES,NO,singular,saves-notation,Has HD without clear classification indicators (default to monster),Has HD but unclear race/type - defaulting to monster
+67,The Little Hillwood Werewolf,classed,implicit-fighter,low,YES,NO,YES,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+68,Kobold Guards x 2,classed,implicit-fighter,medium,YES,NO,NO,singular,full-phb,Generic hireling type 'guard' with flat HP (implicit fighter),
+69,Mastiff,monster,,high,YES,YES,NO,singular,saves-notation,Named unique monster with HD (proper name does not grant class levels),Named entity but uses HD - remains monster per rule 5.2
+70,Fekk,classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+71,Kobold warrior x 6,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+72,Kobold serjeant x 1,monster,monster-leader,high,YES,YES,NO,singular,saves-notation,Monster race with HD and leadership title 'serjeant',Title 'serjeant' indicates leader role but remains monster (M&T chiefs use HD)
+73,Kobold warrior x,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+74,Kobold serjeant x 1,monster,monster-leader,high,YES,YES,NO,singular,saves-notation,Monster race with HD and leadership title 'serjeant',Title 'serjeant' indicates leader role but remains monster (M&T chiefs use HD)
+75,King Griggle-gruk (Kobold Chieftain),classed,rank-inferred,medium,YES,NO,NO,singular,full-phb,Has flat HP and leadership title 'chief' (suggests fighter),Inferred class 'fighter' from title 'chief'
+76,Kobold Bodyguards x 2,classed,implicit-fighter,medium,YES,NO,NO,singular,full-phb,Generic hireling type 'guard' with flat HP (implicit fighter),
+77,Goblin prisoner,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+78,"""Charlie"" the Ogre",classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+79,Goblin patrol warriors x 5,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+80,Goblin guards x 4,monster,monster-unit,high,YES,YES,NO,plural,saves-notation,Monster race in group formation (plural track),
+81,Goblin patrol warriors x 6,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+82,Goblin males x 8,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+83,Goblin females x 13,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+84,Goblin warriors x 3,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+85,Goblin serjeant,monster,monster-leader,high,YES,YES,NO,singular,saves-notation,Monster race with HD and leadership title 'serjeant',Title 'serjeant' indicates leader role but remains monster (M&T chiefs use HD)
+86,Prisoner #2: An elderly orc,classed,rank-inferred,medium,YES,NO,NO,singular,full-phb,Has flat HP and leadership title 'elder' (suggests cleric),Inferred class 'cleric' from title 'elder'
+87,Robert Cooper,classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+88,Oni Blackbeard (Dwarf Crossbowman),classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+89,Wilbur Hornblower,classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+90,Goblin shaman,monster,monster-leader,high,YES,YES,NO,singular,saves-notation,Monster race with HD and leadership title 'shaman',Title 'shaman' indicates leader role but remains monster (M&T chiefs use HD)
+91,Goblin Skeletons x 4,classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+92,Goblin warriors x 2,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+93,Gruzz Kree (Goblin Chieftain),classed,rank-inferred,medium,YES,NO,NO,singular,full-phb,Has flat HP and leadership title 'chief' (suggests fighter),Inferred class 'fighter' from title 'chief'
+94,Goblin females x 6,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+95,Cave bats x 80,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+96,),monster,,low,YES,YES,NO,singular,saves-notation,Has HD without clear classification indicators (default to monster),Has HD but unclear race/type - defaulting to monster
+97,"Snakes, poisonous",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+98,Green slime,classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+99,"Rats, giant x 3-12",monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+100,Gray Ooze (small),classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+101,"Black Centipedes, giant x 5",classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+102,Orcs x 3,monster,monster-unit,high,YES,YES,NO,plural,saves-notation,Monster race in group formation (plural track),
+103,Orcs x 4,monster,monster-unit,high,YES,YES,NO,plural,saves-notation,Monster race in group formation (plural track),
+104,Orcs x 6,monster,monster-unit,high,YES,YES,NO,plural,saves-notation,Monster race in group formation (plural track),
+105,Orc Guards x 2,classed,implicit-fighter,medium,YES,NO,NO,singular,full-phb,Generic hireling type 'guard' with flat HP (implicit fighter),
+106,King Krusher (Orc Leader),classed,rank-inferred,medium,YES,NO,NO,singular,full-phb,Has flat HP and leadership title 'leader' (suggests fighter),Inferred class 'fighter' from title 'leader'
+107,Orc chieftain's mate,classed,rank-inferred,medium,YES,NO,NO,singular,full-phb,Has flat HP and leadership title 'chief' (suggests fighter),Inferred class 'fighter' from title 'chief'
+108,Orcs x 4,monster,monster-unit,high,YES,YES,NO,plural,saves-notation,Monster race in group formation (plural track),
+109,Orc lieutenant,monster,monster-leader,high,YES,YES,NO,singular,saves-notation,Monster race with HD and leadership title 'lieutenant',Title 'lieutenant' indicates leader role but remains monster (M&T chiefs use HD)
+110,Zombies x 6,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+111,Skeletons x 8,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+112,"Wily Wil, Giant of the Hill",classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+113,"""Pinky"" the Owlbear",classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+114,Black Bear,classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+115,Black Bear cubs x 2,classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+116,"River Rats, giant x 40",classed,implicit-fighter,low,YES,NO,NO,singular,full-phb,Has flat HP without clear class/role indicators (default to fighter),Has flat HP but no clear class indicators - assuming classed NPC
+117,Stirges x 8,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+118,Bugbears x 3,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+119,Hobgoblin sentries x 2,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+120,Hobgoblin males x 2 or 4,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+121,Hobgoblin females x 9,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+122,Hobgoblin warriors x 2,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+123,Hub-Gub the Bloody (Hobgoblin Chieftain),classed,rank-inferred,medium,YES,NO,NO,singular,full-phb,Has flat HP and leadership title 'chief' (suggests fighter),Inferred class 'fighter' from title 'chief'
+124,Hobgoblin females x 3,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+125,Gnoll sentries x 2,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+126,Gnoll males x 4,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+127,Gnoll females x 5,monster,,high,YES,YES,NO,singular,saves-notation,Monster race from M&T using HD,
+128,Gnoll guards x 2,monster,monster-unit,high,YES,YES,NO,plural,saves-notation,Monster race in group formation (plural track),
+129,Yeexuul (Gnoll Chieftain),monster,monster-leader,high,YES,YES,NO,singular,saves-notation,Monster race with HD and leadership title 'chief',Title 'chief' indicates leader role but remains monster (M&T chiefs use HD)

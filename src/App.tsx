@@ -13,7 +13,7 @@ import { DictionaryStats } from '@/components/DictionaryStats';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Toaster } from '@/components/ui/sonner';
-import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode as FileHtml, FileCheck, Users, Skull } from 'lucide-react';
+import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode, FileCode as FileHtml, FileCheck, Users, Skull } from 'lucide-react';
 import { generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, ValidationResult } from '@/lib/npc-parser';
 import type { DictionaryCounts } from '@/lib/dictionary-counts';
 import { formatVersionString } from '@/lib/version';
@@ -207,6 +207,7 @@ import { useKV } from '@/hooks/use-kv';
 import { Switch } from '@/components/ui/switch';
 import { initializePreloadedDictionaries, getDictionaryCounts } from '@/data';
 import { DocumentAnalyzer } from '@/components/DocumentAnalyzer';
+import { FullDocumentPipeline } from '@/components/FullDocumentPipeline';
 import { SpellConverter } from '@/components/SpellConverter';
 
 const EXAMPLE_TEXT = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple**
@@ -649,7 +650,7 @@ function App() {
         </div>
 
           <Tabs defaultValue="single" className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-8">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-4 mb-8">
               <TabsTrigger value="single" className="flex items-center gap-2">
                 <Upload className="h-4 w-4" />
                 Single/Batch Parser
@@ -662,6 +663,10 @@ function App() {
                 <Wand className="h-4 w-4" />
                 Spell Converter
               </TabsTrigger>
+                <TabsTrigger value="pipeline" className="flex items-center gap-2">
+                  <FileCode className="h-4 w-4" />
+                  Full Document Pipeline
+                </TabsTrigger>
             </TabsList>
 
             <TabsContent value="single">
@@ -1104,6 +1109,10 @@ function App() {
             <TabsContent value="document">
               <DocumentAnalyzer />
             </TabsContent>
+
+              <TabsContent value="pipeline">
+                <FullDocumentPipeline />
+              </TabsContent>
 
             <TabsContent value="spell">
               <SpellConverter />

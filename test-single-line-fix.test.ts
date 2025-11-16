@@ -22,7 +22,7 @@ describe('Single-Line NPC Stat Block Parsing', () => {
     expect(npc.converted).toContain('pectoral of armor +3');
     expect(npc.converted).toContain('full plate mail');
     expect(npc.converted).toContain('large steel shield');
-    expect(npc.converted).toContain('staff of striking');
+    expect(npc.converted).toContain('Staff of Striking Blows');
     expect(npc.converted).toContain('mace');
     expect(npc.converted).toContain('0-6, 1st-6, 2nd-5, 3rd-5, 4th-4, 5th-4, 6th-3, 7th- 3, 8th-2');
     expect(npc.converted).toContain('**Heavy War Horse (mount)**');

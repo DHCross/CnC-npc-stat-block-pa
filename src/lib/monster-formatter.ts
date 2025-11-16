@@ -58,6 +58,12 @@ export function formatToMonsterNarrative(parsed: ParsedNPC): string {
     statParts.push(`Level ${level}`);
   }
 
+  // Hit Points (prefer explicit HP if present for named creatures or when available)
+  const hp = parsed.fields['Hit Points (HP)'];
+  if (hp) {
+    statParts.push(`HP ${hp}`);
+  }
+
   // AC
   const ac = parsed.fields['Armor Class (AC)'] || parsed.fields['AC'];
   if (ac) {
@@ -119,11 +125,13 @@ export function formatToMonsterNarrative(parsed: ParsedNPC): string {
   });
   const possessiveSubject = toPossessiveSubject(subject, isPlural);
   const statsText = statParts.join(', ');
-  const vitalSection = statsText
-    ? `${possessiveSubject} vital stats are ${statsText}.`
-    : `${possessiveSubject} vital stats are unavailable.`;
+  if (!statsText) {
+    // If we don't have any vital stats for this monster, return the name only.
+    // Avoid appending a diagnostic sentence—this should not appear in final canonical output.
+    return name;
+  }
 
-  return `${name} *(${vitalSection})*`;
+  return `${name} *(${possessiveSubject} vital stats are ${statsText}.)*`;
 }
 
 /**
@@ -191,6 +199,20 @@ export function buildMonsterValidation(parsed: ParsedNPC): ValidationResult {
   }
 
   score = Math.max(0, Math.min(100, score));
+
+  // If both HD/Level and AC are missing, add a critical 'Vital Stats' error so
+  // it surfaces separately from the individual HD/AC checks.
+  const hdMissing = !parsed.fields['HD'] && !parsed.fields['Level'];
+  const acMissing = !parsed.fields['Armor Class (AC)'] && !parsed.fields['AC'];
+  if (hdMissing && acMissing) {
+    warnings.push({
+      type: 'error',
+      category: 'Vital Stats',
+      message: 'Vital stats are unavailable. Include either Hit Dice (HD) or Level and Armor Class (AC).',
+      suggestion: 'Add HD: XdY or Level: X(dY) and Armor Class (AC): <value>',
+    });
+    score = Math.max(0, score - 25);
+  }
 
   return {
     warnings,

@@ -5,6 +5,7 @@ import {
   extractDisposition,
   parseRaceClassLevel,
   validateStatBlock
+  , processDumpWithValidation
 } from '@/lib/npc-parser';
 import { findEquipment } from '@/lib/enhanced-parser';
 
@@ -63,7 +64,44 @@ Armor Class (AC): 18`
       const result = formatPrimaryAttributes('Dexterity, Strength')
       expect(result).toBe('strength and dexterity')
     })
+    
+    it('should use singular possessive pronoun when prose uses "He carries" (enhanced)', () => {
+      const input = `**Bruno** (HP 10, AC 12) He carries a dagger.`;
+      const processed = processDumpWithValidation(input, true, 'enhanced');
+      expect(processed.length).toBeGreaterThan(0);
+      const converted = processed[0].converted;
+      expect(converted).toContain('HP 10, AC 12');
+      expect(converted).toContain('His primary attributes are physical');
+    });
   })
+
+  describe('Classification-driven attribute phrasing', () => {
+    it('converts shorthand to long-form attributes for classed NPCs', () => {
+      const input = `**Bandit Sentry** (*HP 4; AC 7; Disposition: neutral; Their primary attributes are physical; Equipment: dagger*)`;
+      const processed = processDumpWithValidation(input, true, 'enhanced');
+      expect(processed.length).toBeGreaterThan(0);
+      const converted = processed[0].converted;
+      expect(converted).toContain('primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.');
+      expect(converted).not.toContain('Saves:');
+    });
+
+    it('applies Saves notation for monsters with HD-based stat blocks', () => {
+      const input = `**Ape, carnivorous** (*HD 4d10; AC 15; Disposition: neutral; Their primary attributes are physical; Equipment: claws*)`;
+      const processed = processDumpWithValidation(input, true, 'enhanced');
+      expect(processed.length).toBeGreaterThan(0);
+      const converted = processed[0].converted;
+      expect(converted).toContain('Saves: P');
+      expect(converted).not.toContain('primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.');
+    });
+
+    it('applies Saves notation for HD+HP monsters (Bat, giant cave)', () => {
+      const input = `**Bat, giant cave** (*HD 1d2; HP 1; AC 12; disposition: neutral; Their primary attributes are physical*)`;
+      const processed = processDumpWithValidation(input, true, 'enhanced');
+      const converted = processed[0].converted;
+      expect(converted).toContain('Saves: P');
+      expect(converted).not.toContain('primary attributes are strength, dexterity');
+    });
+  });
 
   describe('Shield Type Specification', () => {
     it('should normalize generic shield to medium steel shield', () => {
@@ -103,7 +141,7 @@ Armor Class (AC): 18`
       const input = 'ring of protection, mace'
       const result = findEquipment(input)
       
-      expect(result).toContain('ring of armor')
+      expect(result).toContain('Ring of Armor (AC +1 to +5)')
       expect(result).not.toContain('ring of protection')
     })
 
@@ -111,7 +149,7 @@ Armor Class (AC): 18`
       const input = 'dagger of venom, bow'
       const result = findEquipment(input)
       
-      expect(result).toContain('dagger of envenomation')
+      expect(result).toContain('Dagger of Envenomation')
       expect(result).not.toContain('dagger of venom')
     })
   })
@@ -122,7 +160,7 @@ Armor Class (AC): 18`
       const result = findEquipment(input)
       
       expect(result).toContain('*sword +1 (+1 bonus)*')
-      expect(result).toContain('*staff of striking (see Appendix: Magic Items)*')
+      expect(result).toContain('*Staff of Striking Blows (see Appendix: Magic Items)*')
       expect(result).toContain('normal mace') // Not italicized
       expect(result).not.toContain('*normal mace*')
     })
@@ -185,6 +223,14 @@ Armor Class (AC): 17`;
       const parenthetical = parentheticalMatch ? parentheticalMatch[1] : '';
       expect(parenthetical).toMatch(/This 5ᵗʰ level human fighter/i);
     });
+  
+    it('should canonicalize magic item names and remove bracket detail', () => {
+      const input = 'a bronze-hilted +1 poniard—+1 bonus, potion of extra healing [3d8+3]—heals 2d8+2 HPs';
+      const result = findEquipment(input);
+      expect(result).toContain('*poniard +1*');
+      expect(result).toContain('*potion of extra healing* (heals 2d8+2 HP)');
+      expect(result).not.toContain('bronze-hilted');
+    });
   });
 
   describe('Race/Class/Level Parsing', () => {
@@ -244,13 +290,13 @@ Mount: heavy war horse`
       expect(result).toContain('disposition law/good.') // Complete sentence
 
       expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order with Oxford comma
-      expect(result).toContain('He carries *pectoral of armor +3 (AC +1 to +3)*, full plate mail, a medium steel shield, *staff of striking (see Appendix: Magic Items)*, and a mace.')
+      expect(result).toContain('He carries *pectoral of armor +3 (AC +1 to +3)*, full plate mail, a medium steel shield, *Staff of Striking Blows (see Appendix: Magic Items)*, and a mace.')
       expect(result).toContain('He rides a heavy warhorse in battle.')
 
       expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order
       expect(result).toContain('*pectoral of armor +3 (AC +1 to +3)*') // PHB rename + italics
 	expect(result).toContain('medium steel shield') // Shield normalization (defaults)
-      expect(result).toContain('*staff of striking (see Appendix: Magic Items)*') // Magic item italics
+      expect(result).toContain('*Staff of Striking Blows (see Appendix: Magic Items)*') // Magic item italics
 
       const mainBlockMatch = result.match(/\*\((.+?)\)\*/s)
       const mainBlock = mainBlockMatch ? mainBlockMatch[1] : ''
@@ -273,7 +319,7 @@ Equipment: pectoral of armor +3, full plate mail, large steel shield, staff of s
 Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
 Mount: heavy war horse`
 
-      const expected = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple** *(This 16ᵗʰ level human cleric’s vital stats are HP 59, AC 13/22, disposition law/good. His primary attributes are strength, wisdom, and charisma. He carries *pectoral of armor +3 (AC +1 to +3)*, full plate mail, a large steel shield, *staff of striking (see Appendix: Magic Items)*, and a mace. He can cast the following number of cleric spells per day: 0–6, 1ˢᵗ–6, 2ⁿᵈ–5, 3ʳᵈ–5, 4ᵗʰ–4, 5ᵗʰ–4, 6ᵗʰ–3, 7ᵗʰ–3, 8ᵗʰ–2.)*
+      const expected = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple** *(This 16ᵗʰ level human cleric’s vital stats are HP 59, AC 13/22, disposition law/good. His primary attributes are strength, wisdom, and charisma. He carries *pectoral of armor +3 (AC +1 to +3)*, full plate mail, a large steel shield, *Staff of Striking Blows (see Appendix: Magic Items)*, and a mace. He can cast the following number of cleric spells per day: 0–6, 1ˢᵗ–6, 2ⁿᵈ–5, 3ʳᵈ–5, 4ᵗʰ–4, 5ᵗʰ–4, 6ᵗʰ–3, 7ᵗʰ–3, 8ᵗʰ–2.)*
 
 He rides a heavy warhorse in battle.
 
@@ -297,7 +343,7 @@ He rides a heavy warhorse in battle.
       // Equipment from prose, with PHB rename and shield normalization
       expect(result).toContain('*pectoral of armor +3 (AC +1 to +3)*')
       expect(result).toContain('full plate mail')
-  expect(result).toContain('medium steel shield')
+      expect(result).toContain('medium steel shield')
       expect(result).toContain('mace')
 
       // Mount from prose creates canonical block

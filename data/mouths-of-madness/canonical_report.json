@@ -1,0 +1,1100 @@
+{
+  "total": 129,
+  "processed": 129,
+  "canonicalBuilt": 129,
+  "flagged": [
+    {
+      "title": "Ape, carnivorous",
+      "start": 58495,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Bandit",
+      "start": 59104,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Bandit, Lieutenant",
+      "start": 59395,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Bat, giant cave",
+      "start": 59695,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "**Batrachianoid*:** _",
+      "start": 60136,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Bear, black",
+      "start": 60547,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Boar, wild",
+      "start": 60899,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Brigand, crossbowmen",
+      "start": 61144,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Brigand, flailmen",
+      "start": 61483,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Brigand, Serjeant",
+      "start": 61749,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Bugbear",
+      "start": 62055,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Elf, Wood, bowman",
+      "start": 62393,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Elf, Wood, spearman",
+      "start": 62830,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Elf, Wood, swordsman",
+      "start": 63267,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Ghoul",
+      "start": 63705,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Gnoll",
+      "start": 64380,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin, raider",
+      "start": 64699,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin, leader (corporal)",
+      "start": 65005,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Griffon",
+      "start": 65369,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Hobgoblin",
+      "start": 65660,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Kobold",
+      "start": 65971,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Lion (mountain, forest)",
+      "start": 66281,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Lizardfolk",
+      "start": 66601,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "**Losel*:** _",
+      "start": 66823,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "(fisherman/hunter/trapper/woodcutter)",
+      "start": 67390,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Naga, Water",
+      "start": 67707,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Nixies (sprite)",
+      "start": 68589,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Orc",
+      "start": 68931,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Otter, giant",
+      "start": 69249,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Owlbear (small)",
+      "start": 69448,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Rats, River (giant)",
+      "start": 70000,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Rivermen",
+      "start": 70331,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Snake, poisonous",
+      "start": 70677,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Snake, poisonous (deadly)",
+      "start": 70950,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Spider, Giant (medium-sized)",
+      "start": 71269,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Stirges",
+      "start": 71684,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Thieves",
+      "start": 71967,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Turtle, Huge Snapping",
+      "start": 72473,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Wolf, Grey",
+      "start": 73124,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Wolverine (small, normal)",
+      "start": 73400,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Grimlock Manface (Losel Chieftain)",
+      "start": 88639,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Ji'gun-tima (Losel Shaman)",
+      "start": 89263,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Losel sub-chiefs x 10",
+      "start": 89896,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Losel warriors x 30",
+      "start": 90458,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Losel females x 35",
+      "start": 91060,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "**Iggy the Mad*:** _",
+      "start": 92960,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "The Ogre",
+      "start": 96795,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Children x 3-6",
+      "start": 97199,
+      "flags": [
+        "missing raceClass",
+        "missing XP"
+      ]
+    },
+    {
+      "title": "**Batrachianoids* x 6:** _",
+      "start": 103505,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Blook-glook (Batrachianoid Chieftain)",
+      "start": 104261,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Spider, Giant (medium-sized) x 2",
+      "start": 105936,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "**Harpy*:** _",
+      "start": 107407,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Tick, Giant x 3",
+      "start": 108895,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Wood Elf Scouts x 11",
+      "start": 111852,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Ember Raventree (wood elf leader)",
+      "start": 112303,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "86-90",
+      "start": 55432,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Raven \"One-Eye\"",
+      "start": 115657,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Bandit sentries x 8",
+      "start": 116651,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Bat, Cave",
+      "start": 127925,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Centipedes, Black, Giant",
+      "start": 128374,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "**Fire Beetles*, Giant:** _",
+      "start": 128665,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Rats, Giant",
+      "start": 128908,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Snake, Poisonous",
+      "start": 129247,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Spider, Giant (medium-sized)",
+      "start": 129551,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Tick, Giant",
+      "start": 130089,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Wolves x 5",
+      "start": 131969,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Kobold Guards x 2",
+      "start": 138174,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Mastiff",
+      "start": 138585,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Fekk",
+      "start": 141713,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Kobold warrior x 6",
+      "start": 142512,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Kobold serjeant x 1",
+      "start": 142809,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Kobold warrior x",
+      "start": 144008,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Kobold serjeant x 1",
+      "start": 144305,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "King Griggle-gruk (Kobold Chieftain)",
+      "start": 146654,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Kobold Bodyguards x 2",
+      "start": 147108,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin prisoner",
+      "start": 148467,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "\"Charlie\" the Ogre",
+      "start": 151141,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin patrol warriors x 5",
+      "start": 155973,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin guards x 4",
+      "start": 157044,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin patrol warriors x 6",
+      "start": 158677,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin males x 8",
+      "start": 161831,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin females x 13",
+      "start": 162165,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin warriors x 3",
+      "start": 168595,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin serjeant",
+      "start": 168929,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Prisoner #2: An elderly orc",
+      "start": 171131,
+      "flags": [
+        "missing raceClass",
+        "missing XP"
+      ]
+    },
+    {
+      "title": "Robert Cooper",
+      "start": 172453,
+      "flags": [
+        "missing raceClass",
+        "missing XP"
+      ]
+    },
+    {
+      "title": "Oni Blackbeard (Dwarf Crossbowman)",
+      "start": 173642,
+      "flags": [
+        "missing raceClass",
+        "missing XP"
+      ]
+    },
+    {
+      "title": "Wilbur Hornblower",
+      "start": 174887,
+      "flags": [
+        "missing raceClass",
+        "missing XP"
+      ]
+    },
+    {
+      "title": "Goblin shaman",
+      "start": 177449,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin Skeletons x 4",
+      "start": 178128,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin warriors x 2",
+      "start": 181975,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Gruzz Kree (Goblin Chieftain)",
+      "start": 184388,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Goblin females x 6",
+      "start": 184824,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Cave bats x 80",
+      "start": 186327,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": ")** _",
+      "start": 188927,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Snakes, poisonous",
+      "start": 190284,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Green slime",
+      "start": 192531,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Rats, giant x 3-12",
+      "start": 194494,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Gray Ooze (small)",
+      "start": 196194,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Black Centipedes, giant x 5",
+      "start": 199320,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Orcs x 3",
+      "start": 201602,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Orcs x 4",
+      "start": 202054,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Orcs x 6",
+      "start": 204714,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Orc Guards x 2",
+      "start": 205532,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "King Krusher (Orc Leader)",
+      "start": 208684,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Orc chieftain's mate",
+      "start": 209707,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Orcs x 4",
+      "start": 211369,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Orc lieutenant",
+      "start": 211687,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Zombies x 6",
+      "start": 216535,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Skeletons x 8",
+      "start": 218587,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Wily Wil, Giant of the Hill",
+      "start": 222850,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "\"Pinky\" the Owlbear",
+      "start": 225293,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Black Bear",
+      "start": 229920,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Black Bear cubs x 2",
+      "start": 230329,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "River Rats, giant x 40",
+      "start": 231908,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Stirges x 8",
+      "start": 240182,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Bugbears x 3",
+      "start": 241850,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Hobgoblin sentries x 2",
+      "start": 248459,
+      "flags": [
+        "missing raceClass",
+        "missing XP"
+      ]
+    },
+    {
+      "title": "Hobgoblin males x 2 or 4",
+      "start": 249977,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Hobgoblin females x 9",
+      "start": 250292,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Hobgoblin warriors x 2",
+      "start": 252899,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Hub-Gub the Bloody (Hobgoblin Chieftain)",
+      "start": 254444,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Hobgoblin females x 3",
+      "start": 254900,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Gnoll sentries x 2",
+      "start": 257035,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Gnoll males x 4",
+      "start": 259311,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Gnoll females x 5",
+      "start": 259645,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Gnoll guards x 2",
+      "start": 260733,
+      "flags": [
+        "missing raceClass"
+      ]
+    },
+    {
+      "title": "Yeexuul (Gnoll Chieftain)",
+      "start": 261048,
+      "flags": [
+        "missing raceClass"
+      ]
+    }
+  ],
+  "sample": [
+    {
+      "sourceIndex": 58495,
+      "title": "Ape, carnivorous",
+      "labels": {
+        "inline": "Ape, carnivorous",
+        "titleLine": "The Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification."
+      },
+      "isUnit": true,
+      "parsed": {
+        "parenthetical": "This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4",
+        "start": 58495,
+        "end": 59086,
+        "startLine": 691,
+        "endLine": 691,
+        "titleLineNum": 689,
+        "titleLine": "The Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification.",
+        "inlineLabel": "Ape, carnivorous",
+        "inlineContext": "**Ape, carnivorous:** _",
+        "lineText": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_ ",
+        "snippet": "The Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification. **Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_",
+        "hp": 23,
+        "ac": 15,
+        "hd": "4d10",
+        "xp": "80+4",
+        "level": null,
+        "raceClass": "This neutral animal",
+        "notes": "This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4"
+      },
+      "canonicalData": {
+        "raw": "This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4",
+        "hd": "4d10",
+        "hp": "23",
+        "ac": "15",
+        "disposition": "neutral",
+        "attributes": "strength"
+      },
+      "canonicalParenthetical": "HD 4d10, HP 23, AC 15, disposition neutral. Saves: P."
+    },
+    {
+      "sourceIndex": 59104,
+      "title": "Bandit",
+      "labels": {
+        "inline": "Bandit",
+        "titleLine": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_"
+      },
+      "isUnit": false,
+      "parsed": {
+        "parenthetical": "They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1",
+        "start": 59104,
+        "end": 59366,
+        "startLine": 693,
+        "endLine": 693,
+        "titleLineNum": 691,
+        "titleLine": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_",
+        "inlineLabel": "Bandit",
+        "inlineContext": "**Bandit:** _",
+        "lineText": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_",
+        "snippet": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_ **Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_",
+        "hp": 4,
+        "ac": 13,
+        "hd": null,
+        "xp": "5+1",
+        "level": 0,
+        "raceClass": "0th level, neutral evil, human fighters",
+        "notes": "They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1"
+      },
+      "canonicalData": {
+        "raw": "They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1",
+        "hp": "4",
+        "ac": "13",
+        "disposition": "neutral/evil",
+        "attributes": "physical",
+        "coins": "6 sp"
+      },
+      "canonicalParenthetical": "HP 4, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
+    },
+    {
+      "sourceIndex": 59395,
+      "title": "Bandit, Lieutenant",
+      "labels": {
+        "inline": "Bandit, Lieutenant",
+        "titleLine": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_"
+      },
+      "isUnit": false,
+      "parsed": {
+        "parenthetical": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2",
+        "start": 59395,
+        "end": 59668,
+        "startLine": 695,
+        "endLine": 695,
+        "titleLineNum": 693,
+        "titleLine": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_",
+        "inlineLabel": "Bandit, Lieutenant",
+        "inlineContext": "**Bandit, Lieutenant:** _",
+        "lineText": "**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_ ",
+        "snippet": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_ **Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_",
+        "hp": 14,
+        "ac": 14,
+        "hd": null,
+        "xp": "10+2",
+        "level": 2,
+        "raceClass": "2nd level, neutral evil, human fighters",
+        "notes": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2"
+      },
+      "canonicalData": {
+        "raw": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2",
+        "hp": "14",
+        "ac": "14",
+        "disposition": "neutral/evil",
+        "attributes": "physical",
+        "coins": "6 gp"
+      },
+      "canonicalParenthetical": "HP 14, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin."
+    },
+    {
+      "sourceIndex": 59695,
+      "title": "Bat, giant cave",
+      "labels": {
+        "inline": "Bat, giant cave",
+        "titleLine": "**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_"
+      },
+      "isUnit": true,
+      "parsed": {
+        "parenthetical": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1",
+        "start": 59695,
+        "end": 60110,
+        "startLine": 697,
+        "endLine": 697,
+        "titleLineNum": 695,
+        "titleLine": "**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_",
+        "inlineLabel": "Bat, giant cave",
+        "inlineContext": "**Bat, giant cave:** _",
+        "lineText": "**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_ ",
+        "snippet": "**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_ **Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_",
+        "hp": 1,
+        "ac": 12,
+        "hd": "1d2",
+        "xp": "5+1",
+        "level": null,
+        "raceClass": "These neutral creatures'",
+        "notes": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1"
+      },
+      "canonicalData": {
+        "raw": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1",
+        "hd": "1d2",
+        "hp": "1",
+        "ac": "12",
+        "disposition": "neutral"
+      },
+      "canonicalParenthetical": "HD 1d2, HP 1, AC 12, disposition neutral. Saves: P."
+    },
+    {
+      "sourceIndex": 60136,
+      "title": "**Batrachianoid*:** _",
+      "labels": {
+        "inline": "**Batrachianoid*:** _",
+        "titleLine": "**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_"
+      },
+      "isUnit": false,
+      "parsed": {
+        "parenthetical": "These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1",
+        "start": 60136,
+        "end": 60524,
+        "startLine": 699,
+        "endLine": 699,
+        "titleLineNum": 697,
+        "titleLine": "**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_",
+        "inlineLabel": "**Batrachianoid*:** _",
+        "inlineContext": "**Batrachianoid*:** _",
+        "lineText": "**Batrachianoid*:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1)_ ",
+        "snippet": "**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_ **Batrachianoid*:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1)_",
+        "hp": 5,
+        "ac": 14,
+        "hd": "1d8",
+        "xp": "11+1",
+        "level": null,
+        "raceClass": "These chaotic evil humanoids'",
+        "notes": "These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1"
+      },
+      "canonicalData": {
+        "raw": "These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1",
+        "hd": "1d8",
+        "hp": "5",
+        "ac": "14",
+        "disposition": "chaos/evil",
+        "coins": "6 cp"
+      },
+      "canonicalParenthetical": "HP 5, AC 14, disposition chaos/evil. Saves: P. It has 6 copper in coin."
+    }
+  ]
+}

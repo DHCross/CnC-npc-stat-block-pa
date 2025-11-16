@@ -1,0 +1,1510 @@
+CASTLE ZAGYGTM
+
+**GAZETTEER of the EAST MARK**
+
+**As Compiled by the Sages' Guild of Yggsburgh**
+
+by 
+
+Gary Gygax
+
+© 2007 Trigee Enterprises Company. All rights reserved.
+
+Castle Zagyg is the trademark of Trigee Enterprises Company.
+
+**Author**: Gary Gygax
+
+**Contributing Author**: Jeffrey P. Talanian
+
+**Edited by**: Jeffrey P. Talanian
+
+**Production**: ???
+
+**Cover Artist**: Peter Bradley
+
+**Artists**: ???
+
+**Cartographer**: Peter Bradley
+
+**Title Logo**: ???
+
+**TABLE of CONTENTS**
+
+Forward							xxx
+
+The East Mark in Relation to
+
+the Whole of the Urth & Celestial Heavens			xxx
+
+Weather & Climate						xxx
+
+Trees of the East Mark					xxx
+
+A Brief History of the East Mark				xxx
+
+An Examination of East Mark Populations			xxx
+
+East Mark Society						xxx
+
+Ancient and Current Languages				xxx
+
+The Free Town of Yggsburgh					xxx
+
+Geographical Features of the East Mark			xxx
+
+Deities of the East Mark					xxx
+
+Appendices
+
+Noble Hierarchies & Honorifics (Appendix I)		xxx
+
+Heraldry of the East Mark (Appendix II)			xxx
+
+Knighthood (Appendix III)					xxx
+
+**FORWARD:**
+
+It is with great pride that I present on behalf of the Sages' Guild of Yggsburgh this Gazetteer of the East Mark. For five years, we the Sages have been collecting and compiling this intelligence, here presented for benefit of the scholar, savant, or worldly traveler. Included you will find chronologies, climatology, cosmologies, cultures, geographies, histories, knighthoods, hierarchies and honorifics, legends, myths, and more. 
+
+_Herbert Franklin, Savant-Sage_
+
+_Y.Y. 96_ 
+
+**The EAST MARK in RELATION to** 
+
+**the WHOLE of the URTH & CELESTIAL HEAVENS**
+
+There is little doubt that the East Mark cradles the epitome of culture, enlightenment and sophistication in the known world, that being the Free Town of Yggsburgh. The East Mark is relatively small, a bit less than 1,500 square miles, an area of some 44 miles east and west, 34 north and south. Thus, the extent of this region in relation to the Whole of the Urth is minute. The scope of the region belies its significance, the reasons for which may be gleaned through the careful study of this treatise.
+
+Notwithstanding, we would be remiss if we did not present our knowledge and understanding of the Urth in relation to the Heavens, for clearly our grasp of this topic dwarfs that of any other centre of learning. Through painstaking calculation we have ascertained the nature of the world and its corresponding place in the heavens. What we present is a series of indisputable truths. The Urth revolves around The Sun in exactly 364 days, and in that time it visits the 12 Dens of the Zodiac thus passing under these noted constellations.  
+
+**12 Dens of the Zodiac:**
+
+FAFNIR (The Dragon)
+
+AVENGER (The Great Sword)
+
+BRIMIR (The Giant with Club)
+
+WOTAN (The Wandering Wizard)  
+
+FREKI & GERI (The Two Wolves)
+
+CHIRON (The Centaur)
+
+ECCLESIARCH (The Priest)
+
+BJORN (The Upright Bear)
+
+ARGO (The Ship [its prow north])
+
+VALKYRIE (The Warrior Maiden with Shield)
+
+PEGUSUS (The Flying Horse)
+
+CHARLEMAGNE (The Crown)
+
+The Moon revolves around the Urth, its phases corresponding to the 28 days of each month as indicated hereafter. Astrologers also speak of a rogue moon, small and dark and scarcely observed, and when it shows its gloomy face, great portents are soon realized. For this reason, this heavenly body is often called the _Witch's Moon_.
+
+_"Her face is like unto a churning cauldron, the broth of which when sipped reveals omens of good and ill portent."_ --Maldrane the Druid, Y.Y. 19 
+
+As the Urth revolves around the Sun, it passes under the 12 Dens of the Zodiac, each constellation cast in spherical firmament. Each zodiacal den dominates the night sky for a period of 30 days, thus comprising 360 of the 364 day year. The 12 Dens are thus divided by the two solstices and two equinoxes of the calendar year. There are five wandering stars that traverse the firmament, their place among the heavens ever changing yet not without pattern. Myriad phenomena likewise effect unpredictable spectacles of cosmic wonder and destruction, but discussions of such are the purview of another treatise. 
+
+The names of each of the 13 months are given below, followed by the phases of The Moon and a listing of the Solstices and Equinoxes. Lastly the seven days of the week are named and noted for how they are observed. 
+
+**The 13 Month Lunar Calendar:**
+
+NEWYEAR MONTH (“Nunth”) Days 1-28
+
+SECOND MONTH (“Secunth”) Days 29-56 
+
+THIRD MONTH (“Thrunth”) Days 57-84 
+
+FOURTH MONTH (“Forunth”) Days 85-112
+
+FIFTH MONTH (“Finth”) Days 113-140
+
+SIXTH MONTH (“Sunth”) Days 141-168 
+
+MIDYEAR MONTH (“Midunth”) Days 169-196
+
+EIGHTH MONTH (“Eitunth”) Days 197-224
+
+NINTH MONTH (“Ninunth”) Days 225-252
+
+TENTH MONTH (“Tunth”) Days 253-280
+
+ELEVENTH MONTH (“Levunth”) Days 281-308
+
+TWELFTH MONTH (“Twelunth”) Days 309-336
+
+YEAREND MONTH (“Yendunth”) Days 337-364
+
+**Phases of The Moon:**
+
+1st-2nd: _dark_3rd-5th: 
+_waxing crescent_6th-8th: 
+_waxing quarter_9th-12th: 
+_waxing three quarter_13th-16th: 
+_full_17th-20th: 
+_waning three quarter_21st-23rd: 
+_waning quarter_24th-26th: 
+_waning crescent_27th-28th: 
+_dark_
+
+**Solstices and Equinoxes:**
+
+The solstices and equinoxes are times of celebration and festival, each lasting for a period of 7 days. These are times in which Druids of The Old Faith exert their greatest influence, such traditions stretching back through the ages.  
+
+WINTER SOLSTICE (day 1)
+
+VERNAL EQUINOX (day 92)
+
+SUMMER SOLSTICE (day 183)
+
+AUTUMNAL EQUINOX (day 294)
+
+**Days of the Week:**
+
+Godsday
+
+Serviceday
+
+Urthday
+
+Moonday
+
+Sunday
+
+Starday 
+
+Freeday
+
+“Godsday” is the Sabbath on which persons attend worship services and work for the religious organizations, “Serviceday” the one in which obligatory labor is done for one’s overlord or community, and “Freeday” the day of rest. Thus, all personal work at one’s occupation is basically confined to the four “Celestial Days”—“Urthday,” “Moonday,” “Sunday,” and “Starday.” Of course some vocations require some work on a seven-day-a-week basis—dairy farming for example. Others will demand attention six days a week.
+
+**WEATHER & CLIMATE**
+
+The climate of the East Mark is relatively mild, winters are short, and precipitation is more usual as cold rain than snow. Ground accumulation of snow above a few inches occurs only in hill country, and even there it is usually under a foot in depth, doesn’t last long, melting partially during intervals between storms. As a general guideline assume the following:
+
+**_Winter_** lasts for two months _("Yendunth" to "Nunth")_, with daytime temperatures usually above freezing, and only about two weeks of continuous cold can be expected to come in mid winter.
+
+**_Spring_** lasts for about three months _("Secunth" to mid-"Finth")_, with no freezing temperatures at night, even in early spring, but near freezing common at night then.
+
+**_Summer_** is over four months long _(mid-"Finth" to "Ninunth")_, but highest temperatures in mid summer do not much exceed 90 degrees Fahrenheit. Frequent rain showers help keep the heat from becoming oppressive.
+
+**_Autumn**'s_ cooler weather is three month’s duration _("Tunth" to "Twelunth")_, first frost occurring late during the last month of the season.
+
+**TREES of THE EAST MARK**
+
+**General Woodlands:**
+
+_Bottomlands-good soil:_
+
+Ash
+
+Ash, mountain
+
+Beech
+
+Box elder
+
+Buckeye (horse chestnut)
+
+Catalpa
+
+Chestnut
+
+Dogwood
+
+Elm, red
+
+Elm, slippery
+
+Elm, white
+
+Hackberry (elm family)
+
+Hazel
+
+Hickory
+
+Hornbeam
+
+Locust, black
+
+Locust, honey
+
+Maple
+
+Mulberry
+
+Oak, burr
+
+Oak, red
+
+Oak, water
+
+Oak, white
+
+Pecan
+
+Persimmon
+
+Rowan (rose family)
+
+Sugar maple
+
+Sycamore
+
+Walnut, black
+
+Walnut, white (butternut)
+
+Witch hazel
+
+_Hills and Ridges, poor soil:_
+
+Beech
+
+Cherry
+
+Choke cherry
+
+Crabapple
+
+Hawthorn
+
+Hickory
+
+Oak, black
+
+Oak, post
+
+Oak, white
+
+Walnut, black
+
+_Bottomlands, wet:_
+
+Birch
+
+Cottonwood
+
+Larch
+
+Poplar
+
+Tamarack (larch)
+
+Willow
+
+_Berry bushes:_
+
+Blackberry
+
+Currant, black
+
+Currant, red
+
+Currant, white
+
+Raspberry, black
+
+Raspberry, red
+
+Whortleberry (blueberry)
+
+_Orchards:_
+
+Apple
+
+Apricot
+
+Cherry
+
+Peach
+
+Pear
+
+Pecan
+
+Plum
+
+**(The) Wychwood:**
+
+Almond
+
+Apricot
+
+Beech
+
+Catalpa
+
+Cedar
+
+Chestnut
+
+Cumquat
+
+Ebony
+
+Elm, red
+
+Elm, slippery
+
+Elm, white
+
+Grapefruit
+
+Hazel
+
+Laurel, bay
+
+Lemon
+
+Lignum vitae
+
+Lime
+
+Locust, honey
+
+Magnolia
+
+Mahogany
+
+Maple
+
+Mulberry
+
+Oak, burr
+
+Oak, live
+
+Oak, red
+
+Oak, white
+
+Oleander 
+
+Olive
+
+Orange
+
+Peach
+
+Pecan
+
+Persimmon
+
+Pomegranate
+
+Rosewood
+
+Rowan (rose family)
+
+Sandalwood
+
+Sycamore
+
+Teak
+
+Zitan
+
+**A BRIEF HISTORY of the EAST MARK**
+
+Three centuries before the lands of the East Mark were civilized, a number of fierce and barbaric tribes dwelled in this region. The most powerful and feared of these tribes was called the _Cnobrii_, and their lands encompassed most of the territory that surrounds Yggsburgh. The Cnobrii were able river sailors, and used the Nemo and other streams to carry their warriors far and wide to raid and plunder. Their last and greatest chief styled himself as "The River King." His actual name is lost to history, but his wealth and cruelty are legendary.
+
+The walled town of Yggsburgh is about 300 years old, but up until around 100 years ago it was no more than a large trading village with low walls and a lot of river traffic stopping at it to gain its salt and agricultural produce. When gold and valuable garnet and quartz gems were discovered in what is now known as the Glittering Knobs a century ago, there was an immediate dispute amongst three nobles whose lands were adjacent to the area—Huon (Baron Redfort), Delkart (Count Easmoor), and Edmund (Marquis Talworth). As there was no strong monarch ruling them the dispute between the nobles soon broke into open warfare.
+
+When Marquis Talworth managed to capture the area, he set his architects and engineers to work immediately. Soon Yggsburgh was aswarm with masons, other craftsmen, and laborers intent on building walls and towers around the now burgeoning village. With the aid of various mages, the whole construction, including a considerable canal between the Urt and Nemo Rivers to serve as both a transport artery and vast moat for the new town was accomplished in a mere five years. Costs were financed by the salt mine in the Serpent Ridge and with ore and gems being mined from the Glittering Knobs.
+
+Neither of Talworth’s rivals was satisfied with the outcome, so Baron Redfort and Count Easmoor made common cause. Thus allied, their forces met and defeated those of the Marquis in what is known locally as the _Battle of the Westfields_. However, their victory did not bring the desired result. A local petty noble, Edward, properly Lewis Edward Garmonde, Lord Yggs, to whom the village and salt mine had belonged, with a handful of knights, cut down the foreign garrison, closed the gates and defied the would-be conquerors. Because the local populace were heartily fed up with heavy-handed rule and ruinous taxes, those in the community as well as those from the lands around flocked to the town in arms and swore vassalage to Lord Yggs, promising to defend it, him and his lands. Even so there were scarcely enough warriors to man all the walls and towers properly. The massed forces of Baron Redfort and Count Easmoor laid siege to Yggsburgh, began building barges and rafts. 
+
+Things looked grim for Lord Yggs as the investing army managed to get across the canal and the Urt River, establish bridgeheads near the town walls, and attack both the Moatgate and the Rivergate by siege engine and magical spell. Although no spell-casters of note were within the walls, the attackers were driven back by great dweomers. Some unknown wizard had come to Yggsburgh, used his power to counter the assailants’ magic, and used his own spells to rain destruction on the enemy. Having suffered great losses thus, the two nobles abandoned the field.
+
+So it came to pass that the town was ruled by Lord Yggs for some 20 years, and under his guiding hand it grew and became wealthy from trade and manufacture as well as exploitation of nearby mineral resources. As it prospered, he caused a great temple to be built in thanks for the deliverance and the flourishing condition of town and lands around. When Lord Yggs died childless his officers and knights were astonished at the contents of his will. Lewis Edward Garmonde, Lord Yggs, commanded that his estates be kept as their own by those holding the lands and that the town become a free one, the nobles owing vassalage to the community at large and its lord mayor. His will decreed that a council of eight great men of the community serve to make laws and elect for a period of 10 years one other like man who was not a council member to serve as lord mayor and administer the town. At least six council members had to agree to the one to be chosen as lord mayor. The lord mayor was to see to the maintenance and security of Yggsburgh, enforce the council’s laws, levy taxes approved by the council, and police it.
+
+The eight members of the council had been named by the dying lord as the chief priest of the grand temple to serve as president, the masters of the two largest town guilds, its wealthiest banker as its treasurer, the most able mage in the town, the president of Yggsburgh College as its secretary, and two knights who dwelled in the town and held the largest estates adjacent to town-held land.
+
+Of course the citizens of the town and its surrounding lands were overjoyed at this bequest. Not all of the officers and knights of the deceased lord were so pleased, though. There was much muttering and clandestine meetings amongst the two dozen or so highly influential persons in Yggsburgh, but all came to naught in regards to declaration of Lord Lewis Edward Garmonde’s Last Will & Testament as invalid. The most powerful figures decided that being a permanent council member was better than risking a many-sided fight for rulership of the town, for surely those who elected its lord mayor held the real reins of power. So the will of the last Lord Yggs was carried out, and Yggsburgh and its adjacent lands are free, ruled by an elected Lord Mayor, this condition existing for over 90 years.
+
+It need not be stressed that the council is so divided amongst power and interest groups that it rarely acts in unity, so the Lord Mayor is quite secure in his 10-year office tenure as long as he performs reasonably well and avoids open graft and corruption.
+
+**A Chronological Table of Events:**
+
+As the motto _"None Can Deny Us Independence"_ is of paramount significance to the citizens of Yggsburgh; hence, the liberation of The Free Town is prescribed as the beginning of East Mark chronology. Of course this is of local significance alone, the world at large and its many nations following other chronologies. Reckoning of years thus commences in Yggs Years (Y.Y.) with the year 1 being that when Lord Yggs liberated the town from the yoke of foreign oppressors. For purposes of this catalogue, events of local significance alone, or those concerning the East Mark, are presented. There is no year zero; rather, year 1 is preceded by year -1. 
+
+Also note that the singularity known as Castle Zagyg, despite its prominence, has proved elusive to date, some prescribing its age as 500 (c.) years, others insisting 300 (c.) and others saying its existence was effected within the last 50 years. Its reported ruins suggest it to be a place of antiquity, though none can seem to quantify it with any semblance of accuracy, it being the purview of Zagyg, that most Mad of Archmagi. 
+
+**Yggs Year (Y.Y.) / Event**
+
+**-500 (c.)** / The fall of the Cnobrii, it being the most fierce and prominent of barbarian tribes in the region, its fall signifying the end of barbaric rule.
+
+**-200 (c.)** / The village of Yggsburgh is settled by farmers and fishermen.
+
+**-198** / The first Lord Yggs, Franz, discovers salt along the west end of the Serpent Ridge. He orders digging to commence, and the income thus derived enables him to become wealthy.
+
+**-16** / A powerful demon lord is accidentally released from an imprisonment. It wreaks havoc on the lands around, engaging in acts of unspeakable cruelty. At the site of the village of Stonewyck, a lone wandering paladin sacrifices himself to destroy the vile fiend.
+
+**-12** / Gold, valuable garnet, and quartz are discovered in the Glittering Knobs. An immediate dispute amongst Baron Redfort, Count Easmoor, and Marquis Talworth begins. This soon leads to open warfare.
+
+**-10** / Marquis Talworth captures the area and begins to rebuild the town. Costs are financed by the salt mine in the Serpent Ridge and with ore and gems being mined from the Glittering Knobs.
+
+**-5** / After five years of engineering and dweomercraeft, the walls and towers of Yggsburgh are completed, including a considerable canal between the Urt and Nemo Rivers.
+
+**-4** / The Cabal of the Hierarchs passes through the region during the Summer Solstice.
+
+**-2** / Count Easmoor and Baron Redfort make common cause to usurp Marquis Talworth.
+
+ 
+
+**-1** / At the _Battle of the Westfields_ Count Easmoor and Baron Redfort defeat Marquis Talworth. Meantime, in the walled town of Yggsburgh, Lord Yggs, with a handful of knights, cuts down the foreign garrison and defies the would-be conquerors. The local populace flocks to the town and swears vassalage to Lord Yggs.  
+
+**1** / Baron Redfort and Count Easmoor lay siege to Yggsburgh. The attackers are driven back by the great dweomers of an unknown wizard, this followed by a rain of destruction upon the enemy. Lord Yggs is victorious and is declared Lord Mayor of Yggsburgh.
+
+**6** / Lord Yggs sees to the construction of a large monument, dedicated to the memory of Sir Reillomark, a knight of outstanding bravery.
+
+**18** / The construction of Grand Temple of Odin is finished.
+
+**20** / Lewis Edward Garmonde, Lord Yggs and Lord Mayor of Yggsburgh, dies. His will and testament is carried out and Yggsburgh is thus declared to forever be a Free Town.
+
+**21** / The second Lord Mayor, Sir Frederick Arleigh, begins his one term.
+
+**31** / The third Lord Mayor, The Supernal Harold Strong, begins his two terms.
+
+**51** / The fourth Lord Mayor, Raymond Wright, Master of the Merchants’ Guild, begins his one term.
+
+**61** / The fifth Lord Mayor, Sir Hugh Burdock, begins his one term.
+
+**65** / Dwarves from Hiddendale arrive from Yggsburgh, proclaiming Hiddendale as cursed.
+
+**71** / The sixth Lord Mayor, Brandon Proctor, President of Yggsburgh College, begins his one term.
+
+**81** / The seventh Lord Mayor, Sir Maxwell Green, completes his one term.
+
+**91**/ Lord Mayor: Druid Lochinvar Beachwood, begins his first term (currently serving his 6th year in office).
+
+**96** / The Sages' Guild of Yggsburgh completes the Gazetteer of the East Mark.
+
+**AN EXAMINATION of EAST MARK POPULATIONS**
+
+**Humans:**
+
+“Racial purity” amongst the human populations of the East Mark is scarcely evidenced, as Yggsburgh, the very epicenter of the region, has for the last 100 years experienced a population explosion due to its prosperity, resources, and trade. As the original inhabitants did not consider themselves a unique and superior people, racial assimilation was thus unavoidable, an unplanned but effective intermixing of the races as it were. There are thus few strains of racial purity to be found in the area. They are as follows:
+
+**_The Gypsies_**: Gypsy bands have long frequented the East Mark, often arriving in wagon trains and also departing thus. Most are short of height, of brown skin, and tend to be slight of build though lean with muscle. Their hair is mostly dark brown or black and curly, and their eyes range from brown, to hazel, to emerald green. Their lifestyle is unique, as they have no known permanent settlement, ever migrating. Their bands are often led by a "Prince" and consist of various gamblers, trick riders, knife throwers, musicians, fortune tellers, dancers, and young runaway "servants." They follow a pantheon of deities known as the Vedsudic. Gypsy tribes are often reputed to be horse and cattle thieves, as well as stealers of children. Although the Sages are not inclined to subscribe to such generalizations, we likewise find little reason to refute such claims.
+
+**_Cnobrii-kin_**: There are extant groups of rivermen and woodsmen interspersed about the East Mark whose lineage is said to be derived from the barbarian tribes (not necessarily the Cnobrii) that controlled the area before the arrival of more civilized peoples. While any claims of racial purity are of dubious nature, many of these persons indeed exhibit the characteristic bronze to copper-colored complexion and broad shoulders. In the summer months their complexions darken to a rich brown. Eye color is variable, with brown and black being most common, but strains of amber and blue are not unusual. Their hair is wavy and usually of black or brown coloration, with russet and sandy-colored hair being least common.
+
+**_The Sungkinese:_** Refugee bands of this strange race have only recently arrived in the East Mark. They are of ivory to yellow-hued skin complexion and have slanting eyes. Most speak the Common Tongue but poorly, and have their own sing-song language (_Sungkinese_) that is quite unintelligible to all but a few of the local population. They originate from somewhere far to the east, and they honor deities called the Sungkinese. These foreigners have different social customs, dress in loose blouses and pantaloons of cotton or gowns and robes of silk, wear oddly-shaped caps and hats, and tend to keep to themselves outside of commerce, seeking to dwell in enclaves of their own people.
+
+**Demi-humans:**
+
+The East Mark is largely humanocentric. Demi-humans are clearly a minority, though evidence suggests that this has not always been the case. As human populations have grown, demi-humans appear to stagnate and in some cases reduce. Intelligence is difficult to gather, however, so we must also acknowledge that the clandestine nature of the various tribes and factions make it nigh impossible to conduct a proper census. 
+
+**_Dwarves_**: There are no significant hamlets or thorps of dwarves in the East Mark, this demi-human race living as a racial minority in Yggsburgh, though in the Glittering Knobs and other like areas, dwarfish miners can be found in small groups.
+
+**_Elves_**: There are three sub-species of elves dwelling in the East Mark. They are as follows:
+
+_High elves_ tend to be the most gregarious of the elves, readily socializing and intermixing with the predominantly human population of Yggsburgh; thus we have found that most likely occurrence of interbreeding between human and elves is with the high elf sub-race.
+
+_Wild elves_ are never found in Yggsburgh, these being the most primitive and nomadic of the elves. They sequester themselves in the deeps of the woodlands, such as the Deerwood, Dire Forest, Lake Woods, and Richwood Forest, and often travel in small family groups. Historical fragments, mostly passed down through tale or verse, indicate that the wild elves often warred with the barbaric tribes of the ancient past. 
+
+_Wood elves_ are slightly more gregarious than wild elves, though not as much so as high elves. They tend to inhabit local woodlands, most notably the eastern portion of the Little Hillwood. There is also said to be a small band of wood elves located not far from the banks of Cress Brook, in the hills of the Richwood Forest.
+
+**_Gnomes_**: The gnomes of Yggsburgh are actually the largest of the minority groups in the Free Town, though small groups are known to mine at the Glittering Knobs and the Lonely Valley. Gnomes of distinction are masters of the arcane art of illusion, some of which have graduated from the Academy of Magic. 
+
+**_Halflings_**: In addition to the minority population of halflings found throughout Yggsburgh, there is a hamlet where such wee folk dwell at the eastern verge of the meadowlands known as Wild Mead. They live as crofters and herders, stout of build and hairy of foot.
+
+_Tallfellow halflings_ have been observed in the eastern portion of the Little Hillwood, where they are believed to live in harmony with the resident wood elves, and so exhibit elfish qualities and habits.
+
+**Humanoids:**
+
+There is little doubt that the fortress of the Mad Archmage, Castle Zagyg, has long been a catalyst for humanoid activity in the East Mark. Likewise the prosperity of the region, it being rich in resources, has served to attract those of malign intent. While there is little to no humanoid activity within the confines of Yggsburgh, the environs of the East Mark are often challenged by their ilk, including but not limited to bipedal batrachianoids, bugbears, giants, goblins, kobolds, hobgoblins, lizardmen, losels, ogres, and orcs. 
+
+Many humanoids migrate down from the Menhir Hills to pillage and plunder. They also arrive from the badlands of scrub east-northeast of Scragwick, and from north in the Great Hillwood come their raiders. But worst of all is the western portion of the Little Hillwood, where the fortress of the Mad Archmage lies. There, humanoid populations are said to swell, these perpetrators of evil mingling amongst the monsters and other fell creatures.
+
+Notwithstanding, it is not impossible for some of the more civilized and less anti-social humanoids (such as half-orcs) to live amongst the human populace, though most of their ilk are of malign predilection and thus driven to the outcast fringes of society.
+
+**EAST MARK SOCIETY**
+
+**Population Distribution:**
+
+The majority of East Mark population is of course located in the Free Town of Yggsburgh, the urban center of the region, as well as the center of commerce, trade, culture, and enlightenment, the last of which is clearly evidenced by the presence of the Sages' Guild.
+
+**Thorps and Villages:**
+
+Communities of free folk are classed as “farm(stead)s” consisting of an extended family and hired workers numbering from c. 5 to 20 individuals, “thorps,” settlements of c. 100 persons, and “hamlets,” communities of c. 200 or more persons, but under 1,000 (where “town” becomes proper name). Censuses indicate one craft or trade business for every 50 inhabitants over 100 persons in a community, so a thorp of 150 persons might well have a blacksmith or an ale house, while a hamlet of c. 250 population would have both and perhaps a general store as well. Notable villages and thorps include:
+
+**_Great Hillwood (and into Menhir Hills south):_**
+
+**Castle Gaxhill** _(Sir Alec Gaxhill)_ 
+
+(and Stonewyck Hamlet)
+
+_Number of villages_: 4
+
+V1: Axewood
+
+V2: Greeley
+
+V3: Gaxstede
+
+V4: Twinhill
+
+_Number of thorps_: 3
+
+T1: Oakby
+
+T2: Barleyfield
+
+T3: Edgewood
+
+**_Broadview Valley:_**
+
+_Number of thorps_: 2
+
+T4. Fairbank
+
+T5. Berrydell
+
+**_Westfields:_**
+
+**C 1. Castle Kark** _(Sir Donald Kark)_ 
+
+_Number of villages_: 3
+
+V5: Redmede
+
+V6: Riverfield
+
+V7: Karksteade
+
+_Number of thorps_: 2
+
+T6: Hammlet
+
+T7: Wheaton
+
+**C 2. Thornly Manor** _(Sir Charles Thornly)_
+
+_Number of villages_: 3 
+
+V8: Thornlyton
+
+V9: Flowerfarm
+
+V10: Goodspring
+
+_Number of thorps_: 2
+
+T8: Barnstead
+
+T9: Thorne
+
+**C 3. Montjoy Manor** _(Sir Reynard Montjoy)_
+
+_Number of villages_: 2 
+
+V11: Orchardton
+
+V12: Montjoyville
+
+_Number of thorps_: 1
+
+T10: Trowford
+
+**C 4. Trillingby Castle** _(Sir Bertram Trillingby)_
+
+_Number of villages_: 2.
+
+V13: Trillington
+
+V14: Beeley
+
+_Number of thorps_: 3
+
+T11: Haverhill
+
+T12: Waggonton
+
+T13: Weston
+
+**_South Pastures:_**
+
+**C 5. Manse Belvoir** _(Sir Anthony Belvoir)_: 
+
+_Number of villages_: 2.
+
+V15: Meadowspring
+
+V16: Belvoirton
+
+_Number of thorps_: 3
+
+T14: Babblebrook
+
+T15: Fallowsfield
+
+T16: Stonefield
+
+**C 6. Castle Fulgent** _(Sir Wade Fulgent)_: 
+
+_Number of villages_: 2.
+
+V17: Fulgentstead
+
+V18: Oldfield
+
+_Number of thorps_: 4
+
+T17: Bogberry
+
+T18: Burrstead
+
+T19: Heather
+
+T20: Lonelyoak
+
+_Other thorps and villages of note include_ **_Coverdale**,_ **_Garham**,_ **_Hawfair Green**,_ **_Hewerton**,_ **_Marblestead**, and_ **_Scragwick**._  
+
+**Other Manors & Fortifications**:
+
+It is obvious that The Citadel of Yggsburgh is the most secure and defendable fortification in the East Mark, it being the last line of defense of a heavily fortified community (i.e. Yggsburgh). In addition to the above listed fortifications, the Purple Tower (q.v.) of Lord Uvoll is perhaps the most notable omission. Other strongholds occur in the borderlands of the East Mark, these being the holdings of independent nobles, petty lords, and bandit lords. 
+
+**Government**:
+
+The society of the East Mark is generally feudal in political structure. Feudalism is defined as lordship and vassalage, the vassal owing the lord fealty, service, and taxes from the fief granted. A fief of land is hereditary, as is the title that goes with it. Only treason or like crime empowers the lord to reclaim the fief and title. Knighthood is non-hereditary, but lands granted to a knight pass on entire to his eldest male heir (primogeniture and entail). Feudalism is decentralized government, with vassals governing their fiefs, not the lord, and meting out even high justice (capital punishment included) in regards to villeins. Here the feudalism is a mix of the agrarian manorial fiefs and a kind of pension fief. That is, some of the vassals receive business enterprises in return for their vassalage instead land. Such enterprise yields them an income for which they owe fealty, service, and taxes. In any case both sorts of fiefs must be managed properly to support the vassal and generate a tax return.
+
+The manorial fief includes villeins bound to the land and dwelling in _villages_, and who receive all law and justice from their lord, the vassal of the overlord. The manorial fief also encompasses yeomen, freemen who own their land by having paid over money to the vassal for it, socmen, freemen who pay rent to the vassal for their land, and communities of such free folk. Freemen are entitled to high justice, that dispensed by the overlord, for major crimes, but they are subject to local (low) justice for ordinary misdemeanors. Note that many places of the East Mark are “free,” independent of the Town of Yggsburgh, have an independent lord or are free of any vassalage—Graham, for example. 
+
+The business fief does not include all of that, but the workers are employed at the whim of the vassal, and he dispenses low justice to them, including life and death, and might have the power of taxation.
+
+**Socio-Economic Classes:**
+
+_Underclass_: Non-free persons such as slaves, villeins, free persons without property and unemployed (beggars, masterless men and vagabonds), and all known criminals, even those who practice an approved or licensed wrongful activity such as theft, prostitution, or begging. The underclass has the standard three tiers—lower, middle, and upper. The upper class of the underclass is comprised of the most successful criminal element. Assume most of the persons here are not numerate or literate. Average annual income isindeterminate, but the members of the uppermost tier of the criminal underclass are wealthy.
+
+_Lower Class_: Free folk of little economic means who range from common laborers in the lower tier, through peddlers in the middle, to servants of the upper class at the top tier. The least clerics, friars, monks, and nuns are in this class, but in the upper tier of it. Because of ecclesiastic educators, assume some of the persons here are numerate, barely so in the lowest tier, in the middle barely literate, and in the upper tier most persons numerate and literate as would be provided by a fourth grade education. Average annual income for this strata, from lowest tier to highest, excluding the clergy, is: 20 gp to 32 gp (LLC), 40 gp to 70 gp (MLC), 80 gp to 120 gp (ULC).
+
+_Middle Class_: Free folk of moderate economic means who range from small tradesmen in the lower tier, through craftsmen in the middle, to wealthy merchants at the top tier. The average local cleric is in this class. The middle and upper tiers of this class are fully numerate and generally literate, as would be provided by an eighth grade or higher education. Average annual income for this area, from lowest tier to highest, is: 60 gp to 120 gp (LMC), 150 gp to 250 gp (MMC), 300 gp to 1,000 gp (UMC).
+
+_Upper Class_: The very wealthy freemen and aristocrats who range from great landowners and bankers and gentle folk in the lower tier, knights and petty nobles in the middle, to the great nobility of the town and its Lord Mayor in the top tier. The high clerics are in this class. The average education of this class is greater in the lower tier than in much of those above, with an average educational level equal to completion of high school. Average annual income for this area, from lowest tier to highest:, 900 gp to 1,800 gp (LUC), 1,500 gp to 4,000 gp (MUC), 2,500 gp to 5,500 gp (UUC).
+
+**Productivity of the Land:**
+
+The climate and soil in the region make it agriculturally rich. When one considers magical aids in agriculture and husbandry, assume that one acre of good, productive land will support annually approximately 200 pounds of mammalian or avian life directly benefiting from its cultivation, ignoring such "pests" that also manage to live from the acre. Thus:
+
+1 acre will support 1 adult or two pre-adolescent humans
+
+1 acre will support 2 sheep
+
+1 acre will support 4 goats
+
+1 acre will support 40 chickens, ducks, or rabbits
+
+1 acre will support 20 geese
+
+1 acre will support 10 turkeys
+
+1 acre will support 1 average pig
+
+4 acres will support 1 dairy cow or average horse
+
+5 acres will support 1 large (work) horse or 1 head of beef cattle
+
+If all land is not used to raise vegetable crops, and instead animals are raised from its produce, then assume that on average the human nutritional benefit from livestock raised for food is one-quarter that of vegetation, or 50 pounds per acre, including benefit from harvest of other substances-bones, feathers, fat, hides, skins, tallow, wool, etc. that have been considered in the one-quarter gold value. Milk cows, also yielding calves, are at one-half value.
+
+**ANCIENT & CURRENT LANGUAGES**
+
+Linguistics experts of the Yggsburgh College have noted the following extant dialects employed about the area of the East Mark. These are:
+
+**_Common_**: The Common Tongue of humanity is the most recognized and universally accepted and employed throughout the East Mark, the most sage of etymologists having traced its origins to a fusion of ancient languages stemming from various wars, migrations, trade and interbreeding between ancient kingdoms. 
+
+**_Cnobrii_**: There is little doubt that this most ancient language of the East Mark practically vanished when the last of the barbarian tribes that roamed the East Mark and its surrounding territories disappeared. Certain terms and phrases remain survive among rivermen and woodsmen, these often considered to be colloquial expressions by other speakers of the Common Tongue.
+
+**_Vedi_**: The gypsy tongue of Vedi is mostly indistinguishable from the Common tongue, except for its unique accent, inverted sentence structure, and use of idiomatic expressions of foreign origin. "True" Vedi is believed to be comprised of incongruous dialect admixtures, the gypsies having acquired bits and pieces of various languages throughout their various migrations.
+
+**_Sungkinese_**: A new language to the East Mark, yet likely ancient in derivation, this sing-song language is quite unintelligible to most all persons, save now a few of the language experts of Yggsburgh College, its origins placed in the Far East.
+
+**THE FREE TOWN of YGGSBURGH**
+
+**Mayor**: The current Lord Mayor of Yggsburgh, serving in his fifth year in office, is _His Lordship Lochinvar Beachwood, the Druid_
+
+**Escutcheon** **of the Current Lord Mayor**: A border of green with gold mistletoe leaves on it surrounding a gold field with a beach tree. 
+
+The Free Town of Yggsburgh is a heavily fortified community of some 25,000 residents, with another 10,000 or so persons dwelling on the lands it claims as its own. The town is constructed on the rock bluff where the River Nemo is joined by the Urt River. The area encompassed by the community’s walls is about one square mile. Because of the bluff Yggsburgh is built upon, its buildings climb from a street level of about 10 feet above the surrounding plain on the east edge to fully 40 feet above that plain at the western end of the town where its great citadel stands. Thus, one approaching from the east can see the place well, the incline of the bluff seeming to tilt the western end of Yggsburgh upwards for the viewer’s inspection. The walls are built atop the solid rock of the bluff, the sides of the natural formation shelved at the waters’ edges, then splayed to an upwards distance of about 10 feet, thereafter rising precipitously in near perpendicular face to the top. The town walls are set back an average of 20 feet from the edge of the bluff, but the many towers and bastions between them along its length are very near the rim, have only a narrow path of some three to four around their verge.
+
+As one comes nearer to the fortifications, it can be seen that there are war engines, scorpions and catapults, on gatehouse and tower roofs. A careful survey reveals a massive citadel at the west end of the town, it having two regular towers and a great one looming above the conjunction of the Nemo and Urt Rivers. The thick town walls sprout 36 defensive towers by your count, that not including each pair that flank the three gatehouses by which the place might be entered. The wall towers are set at about 500 feet distance between each. At the intervals between them are semi-circular wall bastions that thrust outwards from the walls as do the towers. On each of these 36 bastions you can see a pair of scorpions and a catapult. One thing is certain. If Yggsburgh has a strong military garrison, this town can be defended against a massive attacking force.
+
+_Townbridge_ (q.v.), the main approach to the walled community, is at its southeastern side. The bridge is something of an architectural achievement and thus remarkable, as is the canal that serves as a moat on its eastern side. The town is well-known as an active trading center. In addition to the salt, gold, and gems mined, besides jewelry, Yggsburgh’s industries export quantities of flour, dried and salt fish, fine wood, furs, cloth and clothing, metal ware such as tools and cooking ware, as well as much good pottery. Its most famous buildings are the Grand Temple, its Citadel, the college complex, and the Mayor’s Palace.
+
+The town is particularly proud of its water and sewer systems, its relatively straight, wide, and very clean streets. In the better districts, buildings have indoor plumbing and central heat, the streets lighted after dark. Yggsburgh also boasts two modest and two little parks as well as two large and three small plazas, the latter just inside the three town gates. Most visitors remark on the fact that all of the buildings in the town are constructed of stone block, bricks, or a combination of the two. The newer structures in the eastern half of the town are mostly of brick, not particularly lovely, but not prone to fire even in the crowded lower-class sections.
+
+The town is ruled by a lord mayor and a counsel of eight important men. The lord mayor appoints officials to see to the administration of the community. A fair number of knights are vassal to the lord mayor, and with the regular military force employed by Yggsburgh, it is considered a strong and safe haven for honest folks. Thus the territory immediately around the town is prosperous, relatively quiet and free of raiders and bandits, so river and road commerce is active. That said, not a lot of questions are asked of strangers, and as long as local law is obeyed, “foreigners” are welcome in Yggsburgh. It has a large suburban area to the east, across the Yggsburgh Canal, this being called “The Outs.” The population is modest, 4,000 or so, but all there are quite without the strictures of the town. The place isn’t lawless, for the town law applies, but there is no town authority there most of the time to see it is obeyed.
+
+With the recent construction of Rivergate Bridge, there is now another suburb to the north of Yggsburgh, Newtown. It and the three large farmsteads serving it add another c. 1,200 persons to the area population.
+
+**GEOGRAPHICAL FEATURES of the EAST MARK:** 
+
+What follows is a discussion of the geographical features of the East Mark, including, grasslands, hills, meadows, wetlands, rivers, valleys, water bodies, woodlands, and the various settlements found within. Also included are the various arteries and bridges used for travel. Descriptions herein are of a practical nature, though historical notes are interspersed throughout, as well as some legends and lore.
+
+_Traveling the Roads of the East Mark:_
+
+Road travel for a normal healthy person (unencumbered) is assumed to be about 15-20 miles per day afoot, weather permitting, and 25-30 miles per day afoot for the hardened walker. On horseback, 50-60 miles per day is typical, maybe 40 for a plug, or up to 70 with a superior breed and an excellent rider. Travelers by coach is usually 20-30 miles per day, though a six-horse team on a good road can push 35-40 miles per day..
+
+**Ashwood:**
+
+The Ashwood is itself about 36 square miles in area, nine miles long from northeast to southwest, some four miles wide northward. It consists of old growth hardwood trees in a great variety of kinds—ash, beech, chestnut, elm, hickory, maple, various oaks, and walnut predominating. Because of the nut trees the forest is teeming with game from large squirrels to deer and large wild swine. With plenty of food available, animals such as bears, big cats, and wolves hunt over the general region, hills and woods alike. The Ashwood is former the home of the current Lord Mayor of Yggsburgh, Druid Lochinvar.
+
+**Bald Hills:**
+
+A hilly area of some nine miles breadth in their lower part with their upper end to the north running for four miles as a ridge-like spine ending only about a mile below the beginning of the Menhir Hills. They cover about 36 square miles of the territory under the rule of Yggsburgh. Their southern portion of around 18 square miles extent is covered by the Ashwood, so the Bald Hills are really not aptly named, save for the northern portion. However as a line of treeless ones do separate the Wychwood Forest northwards from the Ashwood, one can understand why they are called such. The hills are generally wilderness with grass and low brush covering them where trees do not. The hills are fairly steep, average elevation being from 100 to 150 feet, so there are manysmall dales, dingles, and glens amongst them. As they have no known mineral wealth, and being off the beaten path see only occasional hunting parties.
+
+**Bigfish Lake:**
+
+A considerable body of water that is 16 miles long from the northeast to southwest, with a nine-mile greatest width, a narrowing near its upper end to five miles across from shore to shore, that has some 110 square miles of surface. Bigfish Lake is quite deep. Its eastern end is shallower than the part southwest of its narrow portion. Above that narrowing the water is 40 feet depth on average, 150 feet at its deepest part; below there the average depth of the lake 60 feet and its bottom goes to 500 feet a mile southwest of the lower end of Mound Island, a rocky isle of some one and a half miles length and a quarter of a mile across.
+
+The lake is cold and teems with all manner of eels and fish. Eels of incredible size, some over 12 feet long, are found herein and in both the river inlet and outlet of the lake, thus the name “Eel River.” The notable sorts of fish for which the lake is named include sturgeon and garfish of 20-foot and more length, catfish of near that size, monstrous pike of 10 or more feet length, huge bass and pickerel of five-foot and more length, and “panfish” such as the red sunfish, platter crappie, and golden perch of two-foot and more length that weigh six or more pounds. Lampreys as big as the eels in the lake are a menace, as are the huge leeches that inhabit its shallow portions where the bottom is of mud. Other lake inhabitants include snapping turtles of four-foot and more length, crawfish that are three-foot and more length, huge clams the size of wash tubs that produce fine freshwater pearls, and monstrous bullfrogs. The reedy margins of Bigfish Lake are home to many aquatic birds and very large muskrats. Its higher banks are the habitat of giant otters, creatures capable of taking all but the largest of the fish in the lake.
+
+_The Hamlet of Garham:_
+
+Garham is a small fishing hamlet located on the banks of Bigfish Lake, about 35 miles distant by road or water from Yggsburgh. It is a small fishing hamlet with a population of around 250 persons. Fishing is done my net, running line and hooks, and pole and line. Some of the inhabitants use baited traps to catch the giant crayfish, aiming mainly for the small, lobster-sized ones. Catches are sent downriver daily to Yggsburgh in one of three big barge owned by the town’s Fishmongers’ Guild, it having a hold that is magically enchanted to be nearly freezing cold. The run down the River Nemo takes only six hours, but return upstream takes three times as long.
+
+Most of the buildings in the community are set on fieldstone foundations and made of timber and plaster or boards. The traffic routes are dirt, although the Lakeham Lane one is crowned and has side ditches. The buildings on the east side of the river are part of the community, reached by ferry. 
+
+**Bowbridge:**
+
+The bowbridge is a single great arch supported by three columns that allows passage of the River Nemo on the River High Road. It is a very old but solidly constructed bridge that has no toll because it is on the frontier between the petty states of the region. There is an old toll keeper's cottage on the east side of the bridge. This dwelling is now inhabited by a family that earns a livelihood selling smoked fish and bread to passing travelers. The only other habitation around is a farm some distance southeast of the road.
+
+**Broadview Valley:**
+
+The valley begins about eight miles upstream where the Cold Springs Run joins the River Nemo. Broadview Valley varies from a bit under three to over six miles width, a part of it is bisected by the Nemo, it is bordered by various woods and hills, and the River High Road runs its entire length. That length is nearly 28 miles, ending finally in the east-northeast where the East Hills come close to the Great Leech Marsh. The total area of the vale is approximately 130 square miles. On the western quarter there are two thorps. Further east there are a few isolated farms in the place, some plowed fields, cowherds and shepherds with herds and flocks along the north side of the River High Road where the valley’s western end is nearest to the town, but the majority of it is wild, with game animals enjoying its pasturage, carnivores hunting them likewise benefiting from this natural plenty. That suits the local farmers well, as predation of their livestock is slight, and they hunt down and kill those animals that think domestic prey is easier to take than the wild sort.
+
+As the western half of the Broadview Valley acknowledges the overlordship of Yggsburgh, and as it is in an exposed position along the River Nemo with a main road traversing its length, this fertile valley poses a thorny problem for the Free Town’s rulers. Should they encourage settlers from Yggsburgh to move into the place by granting them land freeholds? Assist in building a community as far east as possible? That would allow the knighting of two or three eligible wealthy gentlemen, who with manors populated by prisoners released from confinement and made villeins, could build castles and help defend the valley and the town. Such a move would surely arouse the ire of the free miners of the Glittering Knobs, all the independent folk in and around the Broadview Valley for miles, that including Garham and its allies. As with the Lonely Valley and Norvale, eastwards encroachment on free borderland will bring angry reaction from those around. Civil strife will invite invasion, that being easily accomplished in this area…
+
+_Thorps of the Broadview Valley:_
+
+These are little communities with dwellings only. They are Fairbank (T4) and Berrydell (T5). Each of the two has a less than a score of houses with barns and outbuildings, and an average population of 120 persons. A small shrine with a cleric serving as spiritual guide for the folk of the thorp is the norm.
+
+**Buckswood Hills:**
+
+The Buckswood Hills lie east of the confluence of the Urt and River Nemo, beginning about two miles east of Yggsburgh and running northeast from there for 16 miles where they become known as the Lakepens Hills where the Lake Woods cover them. The Buckswood Hills extend nine miles north to the verge of the Greypools Mire, while further east they merge into the Greenridge where it is covered with the trees of the Longwood Forest. In all the Buckswood Hills proper cover an area of nearly 66 square miles, close to 60 of which are covered by the Deerwood. The hills are not steep and rise gently to tops ranging from 70 to 100 feet elevation. These elevations are not particularly rocky, so flora grows verdantly upon all. The surrounding meadows make for excellent grazing. So the fauna of the this area is plentiful and diverse.
+
+**Cold Springs Run:**
+
+A stream of 25 feet width where it joins the River Nemo, Cold Springs Run is navigable by small watercraft only about two miles eastwards from that junction. Not shown on the map is the tributary of this stream, Salamander Creek. The latter waterway winds south southwestwards through the Glittering Knobs, and as it is fed by many small brooks, the Salamander broadens to about 20 feet width a mile or so before it joins the Cold Springs Run. Nowhere is it of any depth, though, four feet being the average at its mouth. There is a fair amount of boat traffic on the short stretch of navigable water offered, however, these vessels bringing in supplies and carrying out gold, silver, copper, lead, and gem crystals from mining camps in the hills to the north. Mining has eliminated most sorts of aquatic life in both of these waterways, but bullheads, carp, and dogfish remain, and all but the latter are caught and eaten by hungry miners.
+
+The banks of the Cold Springs Run and Salamander Creek are moderate (3-6 feet) near its mouth, become steeper as one goes upstream into the hills. There the sides are 5 to 10 feet above the water surface. Most areas of the banks not being worked by miners are a tangle of bushy plants and shrubs, willows of various sorts. Many trees grow in copses and groves near to the water.
+
+**Cress Brook:**
+
+A small and lovely little stream that flows down from the heart of the East Uplands to join the River Nemo about seven miles from the spring that is its headwater. The brook is renowned for its watercress and for the trout that are caught there. Wood elves are drawn to it, and there is said to be a small band of such folk dwelling in the surrounding hills.
+
+The banks of this little streamlet are generally no more than a foot or two above the water’s surface. Because it flows through woodlands, plant growth is not heavy along the brook, with moss, low grasses, and trees being the most notable foliage other than low-growing herbs such as mint and thyme and flowering plants such as marsh marigold and shooting stars.
+
+**Deerwood:**
+
+Deerwood is named aptly, as the small forest is the habitat for two species of deer, fallow and red. All of the usual small animals native to such woodland are found within it, as are large creatures including wild swine, bears, large cats, and wolves. Its trees are mainly of the deciduous kinds and include ash, beech, chestnut, elm, hickory, locust, maple, oak of various sorts, sycamore, and walnut. Hunting parties, aristocratic and common, come here from the Yggsburgh area to hunt game, but despite that the animal population flourishes, for the hunters mainly winnow out the less fit specimens. There are very few woodsmen and wild elves that dwell within this place.
+
+**Dire Forest:**
+
+The Dire Wood covers a bit more than 80% of the northern East Uplands, the wood edge progressively retreating to the southeast as one goes east to the end of the hills. Thus the forest is of some 960 square miles extent, its eastern half being within the fief of Waldgraf Horst Reindmann, a dark and malign liegeman of the Marquis of Talworth.
+
+This holding forms the southwestern boundary of Talworth. As is implied by its name, the forest is a most dangerous place, especially in the western portion (shown on the map). The many great old hardwoods have made the interior of the woodland a dark place even in full daylight, for their interlaced canopy keeps sunlight from penetrating to the forest floor. Because of this not many normal plants and animals are to be found in the place. The waldgraf’s portion is scarcely more hospitable even though he maintains clearings, sends forth parties of woodcutters to cut trees in certain parts of the forest. This is a dangerous assignment, for fell creatures resist intrusion and play havoc with the axe-men and their armed guards. Also, some unnatural force seems to be at work, it causing undergrowth to spring up, and in a year saplings have grown to become thigh-thick trees. That and the fear of sentient trees and plants said to inhabit the woods makes the whole place one that is shunned by preference.
+
+**Dunfalcon Pike:**
+
+The Dunfalcon Pike is a reasonably well-maintained and patrolled highway leading west some 300 road miles to the city it is named for. It generally stays within sight of the River Nemo, save for a few places where terrain dictates the road’s course be more distant. Travelers, pilgrims, and all sorts of merchants use it as an artery. The pike passes through the lands of four independent nobles (from east to west: Barony of Redfort, County of Kallent, County of Herdley) and on into the territory of the Free City of Dunfalcon after leaving Yggsburgh, but the aristocrats depend on it sufficiently so as to not merely refrain from molesting travelers using it, or charging them toll, but to actually maintain the roadway and to send out occasional patrols to see that robbers do not make it too hazardous for commercial traffic.
+
+Although the countryside it passes through is rather wild, a mixture of grasslands and forests across plains and hills much as is the territory of Yggsburgh, there are sufficient settlements along the road to make travel through its considerable length possible without great hardship. There are five hamlets with coaching inns between Yggsburgh and Dunfalcon, the journey by such conveyance taking six days (c. 300 miles, c. 50 miles per day). These accommodations are also used by water travelers coming upriver. On average there are spotted only four farm thorps in the 50-mile distance between the hamlets. These near the former because of the uninhabited and wild nature of the land between town and city.
+
+**Settlement / Community Size**
+
+Free Town of Yggsburgh / Town
+
+Greenwell / Thorp
+
+Near Padstock / Thorp
+
+Whitsun / Thorp
+
+Farmsly / Thorp
+
+Drumming / Thorp
+
+Nearcliff* / Hamlet
+
+Wormwood / Thorp
+
+Endag Corners / Thorp 
+
+Mikkle / Thorp 
+
+Flowerbrook / Thorp
+
+Lone Heath** / Hamlet 
+
+Little Aimswick / Thorp
+
+Hortish / Thorp
+
+Midgrove*** / Hamlet 
+
+Hardswich / Thorp 
+
+Rastun / Thorp
+
+Thomcross / Thorp
+
+Waltingham**** / Hamlet
+
+Grovling on Tamit / Thorp 
+
+Shadeglen / Thorp 
+
+Hareboro / Thorp
+
+Earlshurst***** / Hamlet 
+
+Baldhill / Thorp 
+
+East Hawkin / Thorp 
+
+Oddwards / Thorp
+
+Fogdell / Thorp
+
+Makerly / Thorp
+
+Free City of Dunfalcon / City
+
+*c. 50 miles from Yggsburgh. Baron Redfort’s castle is here, as well as the _Sun & Moon Inn_.
+
+**c. 100 miles from Yggsburgh. Features the _Blue Torch Inn_.
+
+***c. 150 miles from Yggsburgh. Earl Kallent castle is here, as well as the _Basket of Pears Inn_.
+
+****c. 200 miles from Yggsburgh. Features the _Coach and Six Inn_.
+
+*****c. 250 miles from Yggsburgh. Earl Herdley castle is here, as well as the _Armed Woman Inn_.
+
+**East Hillway:**
+
+The East Hillway runs from the fork with Quarry Track for about 12 road miles before it crosses the North Eel River about two miles above Bigfish Lake at a place called _Fallsford_ where the water passes over bedrock and it thus very broad, no less than 350 feet wide but only two feet deep. There is a hamlet named _Scragwick_.
+
+_The Hamlet of Scragwick_: This is a place of around 300 rather unfriendly hillmen that is a bit more than five miles east of the ford, just off the edge of the map. Scragwick holds a tavern, smithy, and general store, the economy of the community being based on agriculture and herding. It is said that the hamlet’s residents also make some excellent hand-crafted items, such as leather armor and silver jewelry set with locally found moss agates. 
+
+Beyond Scragwick the East Hillway runs on for many leagues to the east northeast, passing through a few unnamed thorps and a hamlet or two before it enters a wilderness badland of scrub that is inhabited mainly by humanoids, monsters, and wild animals.
+
+**East Uplands, North:**
+
+The hills extend another 26 miles eastwards, so only 16 miles of their western end are shown on the map. The northern portion is that area generally covered by the Richwood Forest, not the Dire Wood, the latter being a mark of the southern East Uplands. These hills’ breadth extends on average 12 miles south. The area considered as the northern East Uplands is some 500 square miles in extent. The hills are rolling, some steep, others rising gradually to summits ranging from 100 to 250 feet, with an occasional great hill, what is nearly a mountain, of three to four times the usual height. Numerous small hollows, dingles, dales, and glens lie within this area. Many of the steeper hills are rocky, and these often have caves in them. Other than onyx stone, no valuable mineral has been found in these hills.
+
+**East Uplands, South:** 
+
+The southern portion of the East Uplands likewise extends some 26 miles eastwards, so only 16 miles of its western end, that a projection reaching out to the Serpent Ridge (q.v.), are shown on the map. The southern portion is generally covered by the Dire Wood (q.v.). The East Uplands hills runs from north to south on the map for some 10 miles, onwards to the south and not shown for another 13. The area considered as the northern East Uplands is some 1,200 square miles in extent. As is the case with the northern portion, the southern hills are rolling, some steep, others rising gradually to summits ranging from 100 to 250 feet, with an occasional great hill, what is nearly a mountain, of three to four times the usual height. Numerous small hollows, dingles, dales, and glens lie within this area. Many of the steeper hills are rocky, and these often have caves in them. Other than marble, mica, and onyx no valuable mineral has been found in these hills. 
+
+**Eelford:**
+
+As with the crossing of the Urt called Urtford, the Eelford is not a proper ford at all but a ferrying place. The barge that serves to convey persons, animals, and goods across the South Eel River at this point. The ferryman’s dwelling is on the east bank of the River Nemo, and across from it is the_Two Pikes_ _Tavern_, the sign depicting a huge pike leaping from water towards a road—thus “two pikes.” This establishment is near a prosperous farm from which much of the food served in the tavern comes.
+
+**Fallsford**:
+
+The East Hillway crosses the North Eel River about two miles above Bigfish Lake at a place where the water passes over bedrock and it thus very broad, no less than 350 feet wide but only two feet deep. There is a hamlet of rather unfriendly hillmen a bit more than five miles east of the ford.
+
+**False Urt River:**
+
+This waterway, quite substantial in breadth but shallow and sluggish in flow, can be mistaken rather easily for the Urt from north of the Greypools Mire, as its channel is nowhere more than about two miles distant from that of the Urt in this region, no more than five miles further north. At one time the two streams were thought to be one, but careful mapping has made the difference between them distinct. Although the upper reaches of the river are wild and dangerous, boats and barges can navigate the False Urt from some 75 miles northwards all the way downriver to the marsh, but in the mire only very shallow-draft watercraft can pass through to gain the (actual) Urt.
+
+As is the case with the Urt, the banks of the False Urt River are generally more thickly grown than those of the Nemo, long stretches of willow bushes and other shrubs thickly clustered along its shores. Many copses and groves of large willows or trees of other kinds will be found on or near the waterway’s generally high (7 to 10 feet average, greater where it cuts through hills) banks. Upstream the banks are more rocky and precipitous as the river cuts through hills.
+
+_Legends & Lore:_
+
+Old wives' tales claim that the False Urt River was created long ago by a potent witch so as to lure unsuspecting waterfarers into the Greypools Mire, there to be drowned or else killed by the witch and her vile servants. Although the original witch is said to be dead for decades, it is told that her daughter now roams the waterway, doing her mother’s fell work.
+
+**Four Tors, The:**
+
+This very visible geographical feature is comprised of a quartet of bald, rocky hills that rise abruptly to stand by themselves in an otherwise level area of about two square miles near the west bank of Urt River just north of Yggsburgh. The northernmost of the Four Tors is the highest, being about 600 feet above the surrounding plain. Each of the other three hills is successively lower, their upper elevation being 555 feet, 510 feet, and 465 feet respectively as one progresses southwards.
+
+_Legends & Lore_: More than one scholar has wondered at the strange round hills, noting that their height difference is progressively 45 less than the tallest one that is northernmost. Is it coincidence, or do four, north, and the height difference, their individual elevation and total height have some arcane meaning. In short, are these features some message from greater beings? Couple their noted qualities with the fact that lightning strikes them with inordinate frequency, and many seeking occult lore believe the Four Tors to be of special importance, a mystery awaiting to be solved, hidden knowledge revealed. 
+
+**Glittering Knobs:**
+
+All but the northernmost section of the Glittering Knobs is adorned by the trees of the Goldwood (q.v.). The hills stretch some eight miles east to west, with a northern hook that extends about two miles in that direction, the whole length paralleling the south bank of the River Nemo. As the breadth of the Glittering Knobs is only some three miles on average, the area covered by them is only 30 or so square miles. Their name comes from the northern portion that is not covered with trees, so that the rocks that are upon their surfaces in many places, both as boulders and faces, shine forth when the sun strikes them, for most contain much quartz and mica. These hills are substantial, relatively steep and with crests in the range of 330 to 450 feet in elevation. In the myriad of little dingles between them are a number of unnamed rivulets and brooks, all of them feeding Salamander Creek (see cold Springs Run hereafter). These hills are rich with valuable minerals, and panning and mining takes out gold, silver, copper, lead, garnet and quartz gem crystals. The oldest of the mines are in the northern, unforested portion, where such operations have been operating for several centuries, and most of the diggings there are played out and abandoned. Only a few are still worked by dwarf and gnome miners able to find and dig out small veins of ore and other minerals. 
+
+Elsewhere in the Glittering hills various miners are taking out reasonable amounts of gold (mining and panning the brooks), silver, copper, lead, and gem crystals. Gold dust and nuggets, uncut crystals, and raw ore are carted from hill locations to river barges that carry the minerals to Yggsburgh for refining, casting into ingots, coins, and other working such as cutting and setting for gem minerals.
+
+**Goldwood:**
+
+The Goldwood is a small forest that contains many aspen, beech, elm and poplar trees. In the autumn their leaves turn various shades of yellow and look like bright gold under the blazing sun, pale gold when the light is less intense. Once the woodland was full ofanimals, but the mining operations have pretty well driven or hunted out all but small mammals.
+
+**Great Hillwood:**
+
+The forest called the Great Hillwood stretches northwards 50 more miles to the upper end of the Menhir Hills. It is on average 45 miles broad east and west as it spreads widely to the north, so the total area of the Great Hillwood is 2,250 square miles. It is mighty forest indeed filled with great old hardwood trees and home to all manner of small and large animals. Game is plentiful because of frequent breaks in the tree canopy due to windstorm and fire as well as bedrock being close to the topsoil so as to prevent deep-rooted growth. In such meadow clearings there is fodder for herbivores, the prey of the woodland’s carnivores. All species of regional hardwoods and some conifers too grow in the Great Hillwood, ash and beech through yew, walnut, and willow along the westwards-flowing streams to the north, near the brooks not shown on the map. Large animals living in this habitat include aurochs, deer, elk, and wild swine as well as bears, large cats, gluttons, and wolves. There are within it some few communities of hardy woodsmen, demi-humans, and humanoids, the two former kinds often joining together to fight off the incursions of the latter.
+
+The sole transportation route way through it is the Menhir Hills Road, and where it passes through this forest there are frequent patrols of armed men so as to check banditry by humans and humanoids alike. _For further details of the land that this forest covers, see Menhir Hills (q.v.)_.
+
+The Menhir Hills Road enters the southern edge of this forest some 50 or more miles distance by road from Yggsburgh. Just at the verge of the vast woodland, perched atop a steep rock upthrust to the east of the road, there is the small fortress, **Castle Gaxhill**, the stronghold of an independent knight:
+
+_Sir Alec of Gaxhill:_
+
+**Escutcheon**: A field quartered green and gold, a white goose passant on the green quarters, and a green tower on the gold ones.
+
+**Number of manors**: 16. The knight dwells in Castle Gaxhill.
+
+**Number of villages**: 4. These are Axewood (V1), Greeley (V2), Gaxstede (V3), and Twinhill (V4). 
+
+This knight dwells in the castle with his family. In its courtyard are a smithy and carpentry shop, and 24 craftsmen and servants dwell inside the extensive fortification’s walls. Servants in waiting wear tabards quartered green and deep gold. When arrayed for battle, Sir Alec’s soldiers wear short surcoats quartered green and deep yellow.
+
+**_Stonewyck_**: 
+
+Outside the knight’s fortification are a collection of 18 regular stone buildings. These include two freehold farms at the southern edge of the community (one on the left and the other on the right of the road), one tavern with attached brewhouse on the right of the road opposite the lane leading up to the castle; a sawyer’s shop and a stone mason’s residence flanking the tavern. The other 13 the dwellings belong to hunters and woodsmen. These include two between the western farm and the and the sawyer’s place, one north of the stone mason’s building, and the other 10 divided equally, four south of the lane leading to the castle, four beyond it north along the road.
+
+Immediately across from Castle Lane is a stone hut. It is not a shrine for regular worship, because the inhabitants attend religious services in the castle chapel. However, it has a special sort of shrine, the stone hut, as explained hereafter. The name of the little community is Stonewyck, so named for the castle and the stone houses around it. It has some 160 residents.
+
+**_Manors and Villages held by Sir Alec:_**
+
+Sir Alec holds estates to the south, these amounting to 16 manors and four villages (average population 280 persons each), plus land in rent and freehold having on it 11 farms and a horse breeder, these folk living in three thorps (average population 120 persons). Each of the four villages, Axewood, Greeley, Gaxstede, and Twinhill is on a watercourse or else has a deep well and consists of about 40 buildings plus a religious structure, a large shrine or a fane. The average population each community is 250 to 300 persons. 
+
+**_Thorps held by Sir Alec:_**
+
+The three thorps Oakby, Barleyfield, and Edgewood are held by Sir Alec are little communities of freemen, generally farmers, with dwellings only, they being too small to support any commercial shop. Each of the two has a less than a score of houses with barns and outbuildings, and an average population of 120 persons. A small shrine with a cleric serving as spiritual guide for the folk of the thorp is the norm.
+
+Thus, Sir Alec is master of some 2,000 folk counting the woods-dwellers to the north who acknowledge him as their lord and serve him in return for his protection. This most able knight is well-to-do from the agricultural income of his manors and woodland produce of timber, furs, and game. He hunts in the Great Hillwood, so the manor woodlots are used more by villains than by their lord and master. This, and the fact that he does not demand heavy shares and frequent labor service, makes them most loyal to Sir Alec. 
+
+_Legends & Lore:_ Stonewyck’s _Shrine of the Unknown Paladin_. It was 112 years ago that a powerful demon lord was accidentally released from an imprisonment and was wreaking havoc on the lands around, engaging in acts of unspeakable cruelty as he pressed along. At this very site, a lone wandering paladin chose to stand against this vile fiend. Nobody knows who the hero was, as he didn’t give out his name nor did he wear or bear any coat of arms—perhaps he was on a secret mission, took some vow ofhumility, or was an outcast. This valiant warrior was able to destroy the demon lord’s material form but at the cost of his own life. The celestial forces intervened and destroyed his body, his soul ascending to heavenly peace. This noble sacrifice and subsequent intervention was noted by the populace, and the local clergy erected a small shrine of whitewashed field stone. The building is only 12 feet wide, 14 feet deep, and has a peaked timber roof that rises five feet above the 12-foot high walls. The interior is unfurnished save for a lone vigil light and a memorial to this venerable martyr. To the right of the entry there is a contribution box hung from the wall. Those who stop here generally leave a small coin or two towards the upkeep of the shrine.
+
+The shrine is maintained once a week by Roland d’Argent, Sir Alec’s chaplain. Otherwise, it is a place of quiet reflection, its exterior and grounds cared for by the local residents. Holy men and pilgrims tend to pay tribute here when traveling through the area.  
+
+**Great Leech Marsh:**
+
+Only the western verge of this wetland is shown on the area map. It widens in its north-south dimension to the east, extends another 15 miles that direction and is over eight miles wide at its greatest extent there. In all the Great Leech Marsh spreads over an area in excess of 75 square miles, including the three or so square miles shown on the map of the Yggsburgh region.
+
+In addition to the huge leeches for which it is named, the fauna found in it include the typical small sorts as well as deer, black bears, and giant marsh lynx. The larger mammals find the place suitable habitat because of the many low little “islands” of dry ground with trees that are scattered about in the marsh. The fringes of the marsh are a thicket of weeds such as thistle and burdock, and beyond that lower growth are many sorts of thorn trees.
+
+**Greenridge:** 
+
+The Greenridge is a ridge and hills series that extends southwest from the east central Menhir Hills for 22 miles where it merges into the Buckswood Hills. For all but its southernmost two miles, the Greenridge is wooded, covered by the Long Forest. The ridge proper is between one and three miles wide, the average being two miles breadth. It is relatively low, being between 50 and 80 feet above the surrounding plain, the hills along it being broad with usually gradual slopes and adding from 60 to 110 feet to the overall elevation. The highest point of the ridge is where it meets the Menhir Hills, the ridge elevation there being 80 feet and the hills on it in the 90 to 110 foot height. There are no known valuable mineral deposits in the Greenridge.
+
+**Greypools Mire:**
+
+This great bog is a marsh of some nine square miles in area. Fed by the False Urt River, the area is never anything but a morass during even the driest of summers. There are scores of pools in the marsh, these being anywhere from 10 feet in diameter to great ones of near 100 feet size. All are deep and have bottoms of soft mud, so that anyone unfortunate to fall in and sink to the bottom will be drawn down into that ooze and never be seen again. The smaller pools are the most dangerous, because detecting their presence in one’s path is difficult due to surrounding grasses, reeds, and like vegetation. A step on the bank of such a pool is certain to result in precipitation into the water.
+
+There are many winding streams of water that crisscross the Greypools Mire, so that it contains many islands of boggy sort. In this morass are found eels, fish of usual sort, and the great leeches common to the region. Many aquatic birds make the place their home, and mammals such as the giant otter and black bears are found within it. The fringes of the marsh are a thicket of weeds such as thistle and burdock, and beyond that lower growth are many sorts of thorn trees.
+
+**Hiddendale:**
+
+This small, remote valley in the Menhir Hills is some 35 miles overland north and a little east of the Free City of Yggsburgh. It is an oval of three miles length by two miles width. For some arcane reason it is very difficult to locate it, and even a ranger can miss it. It is the site of an ancient holy place. Long deserted by human folk, elves thought to make it theirs, but in only a few years abandoned the area as unwholesome. Thereafter, gnomes began burrowing into the steep and rocky hills embracing Hiddendale, but they too gave off their colonization efforts when their numbers began to dwindle mysteriously. The last inhabitants of the valley were a small clan of dwarves who discovered traces of gold in the hills where the gnomes had dug their burrows. These demi-humans knew the evil reputation of Hiddendale, but their avarice for precious metal clouded their judgment. They mined and began to bring forth large nuggets of pure gold. Soon something happened to disrupt the harmony of the clan, they began quarreling and fighting, amongst themselves. At the same time their numbers were shrinking from unexplained disappearances. A handful of survivors came into the town some three decades in the past, swearing the place was cursed, vowing never to go back despite the yellow ore there. Certainly there are strange things that slink through the valley at night…
+
+**Lake Woods:**
+
+Lake Woods is a small forest whose extent generally matches the hills over which it spreads. This woodland is the habitat for elk and two species of deer, fallow and red. All of the usual small animals native to such woodland are found within it, as are large creatures including wild swine, bears, large cats, and wolves. Its trees are old and mainly of the deciduous kinds including ash, beech, chestnut, elm, hickory, locust, maple, oak of various sorts, sycamore, walnut, and willow on the lower areas. Few hunters come to this place because of its remote location, those that do originating mainly from Garham or are travelers that stop to seek game for food. The woodland is seldom troubled by maraudinghumanoids, little timber is harvested from it, and in general it is undisturbed habitat for game. A few foresters and wild elves dwell within these woods.
+
+**Lakeham Lane:**
+
+This narrow dirt road runs north from the River High Road at a distance of about 25 miles east of Yggsburgh. Lakeham Lane winds through the Broadview Valley, passing the thorps of Fairbank (T4) and Berrydell (T5), up into the Lakepens Hills and the Lake Woods, following the South Eel River to its source, Bigfish Lake where the community of Garham is located. The lane becomes known by another name, Quarry Track, when it leaves Garham northwestwards, There is a fair bit of wheeled and other traffic on Lakeham Lane, although most goods movement is on the water of the nearby river.
+
+**Lakepens Hills:**
+
+The Lakepens Hills lie east of Bigfish Lake, beginning at the southwestern edge of the Great Leech Marsh and running southwest from there for nearly 15 miles where they become known as the Buckswood Hills where the Lake Woods no longer cover them. The Lakepens Hills are ridge line in that they are nowhere more than about two miles broad, save at their most northern portion. These hills cover an area of about 32 square miles, all of which are covered by the Lake Wood. The hills are somewhat steep and rise abruptly to tops ranging from 90 to 120 feet elevation. No valuable mineral deposits of any significance have been discovered here, although lead is found in small quantities on the surface near Garham. The hills seem to hold in the waters of the lake, but the derivation of their name, the “pens” portion, is actually from “hills.” With water, marsh, and meadows surrounding them, the flora and fauna of this place are both highly diverse and plentiful.
+
+**Little Hillwood:**
+
+This woodland lies along the southern portion of the middle Menhir Hills. Its southern verge begins near the Menhir Hills Road some 16 miles as the crow flies north of Yggsburgh. The forest is on average 20 miles long on its northeast-southwest axis, and with an average width of eight miles, its growth covers 160 square miles of land, the False Urt and Urt Rivers passing through its north and central regions. Along those waterways and where the woodland borders the Greypools Mire, the trees are mainly great willows with some aspen and birch. Elsewhere, its growth is of typical forest hardwoods, from ash to walnut.
+
+Where it borders the Menhir Hills Road to the west, the Little Hillwood serves as a lair and hiding place for human robbers and humanoid reavers alike. For this reason, and the fact that there is nothing but danger along its course, the Old Castle Track (q.v.) that enters the forest’s south central portion is shunned by all sensible persons. The overgrown lane wends its way 15 miles into the woodland to end at the ruins of Castle Zagyg on a bluff above the False Urt River.
+
+Its fauna includes the usual small and large animals, while west of the False Urt River will be found numbers of humanoids. West of the river demi-human folk have managed to keep out both bandits and raiding orcs and their ilk.
+
+**Lonely Valley:**
+
+This fertile valley lies over 20 miles north-northeast of the town of Yggsburgh in an area devoid of roads or tracks. It is some 10 miles long and two to three miles broad, so its area is somewhat greater than 25 square miles. Lying west of the Green Ridge, the Menhir Hills forming its northern and western limits, the Lonely Valley runs a bit west of a true north to south axis, and its southern end turns due west for a bit more than a mile. A handful of rivulets come from springs in the bordering hills, run generally southwards, one joining another to make little brooks, and eventually the two streams thus formed flow into the Urt River. No cultivation is in evidence in this place, only grasses, weeds, and clusters of low-growing shrubs are seen. This is fine with the fauna; wild horses and a small herd of aurochs roam the valley, the surrounding hills and woods, and deer from the forests come into the valley at night to enjoy its fine pastures as do bears and wild swine. The bears, along with great cats and wolves also hunt the herbivores grazing in the valley, but the ecological balance is maintained thus.
+
+The only folk that dwell in proximity to the Lonely Valley are (were) a clan of gnomes who have their burrows in the hills at the valley’s north central edge and a tribe of elves in the woods at the south end. Neither group welcomes humans, for if settlers come into the place everything will change drastically. The lord mayor of Yggsburgh would have it otherwise if he could. A road and villages, two or three knights, and the town becomes that much stronger and more wealthy.
+
+**Long Forest:**
+
+As for the Long Forest, it is a typical woodland of this region. Mainly composed of hardwood trees, some scattered clumps of evergreens, with little undergrowth save in clearings and occasional meadows within the forest where grasses, various small plants, and bushes are able to find sunlight to grow. Trees are mainly large and tall—ash, elm, maple, and oak predominating, with some chestnut, elm, hazel, hickory, sycamore, and walnut scattered widely. As is also typical, there is considerable fauna dwelling in the forest. This includes everything from shrews, moles, and mice on through squirrels and rabbits and various birds to large game such as wild swine, deer, and aurochs as well as predators—hawks, owls, bears, large cats, and wolves. A few woodsmen and wild elves dwell within its reaches.
+
+**Meadow Creek:**
+
+A clear waterway, only about five miles long as a notable stream of 20 or more feet width and four or more feet average depth, which feeds the River Nemo. The creek flows through the Bald Hills and comes from some 40 miles northwestwards as a narrow and shallow brook and stream. It has the usual small fish in it, including fine trout. The banksof this waterway are low, two or three feet on average, and have some areas where bushy plants or reeds grow replacing the marsh grass usually found all the way to the stream.
+
+**Menhir Hills:**
+
+A vast stretch of large and rolling hills that extends east and west of the map area about 30 miles in both directions, as well as continuing north for some 50 miles. The portion depicted on the Yggsburgh map extends over approximately 2,000 square miles. Average elevation in the lower southern portion is 80 to 120 feet, growing progressively greater northwards, where the hills average 180 to 350 feet elevation and attain heights of 600 hundred or more feet in a few locations. The greater elevations are steeper than the lesser ones to the south and at the verges of the area. They are wild and lonely highlands, populated sparsely by hill folk and demi-humans, troubled by raiding humanoids more dangerous than the beasts and strange creatures that inhabit the more desolate places there. See the following references for specific features within the Menhir Hills:
+
+_Great Hillwood_
+
+_Hiddendale_
+
+_Little Hillwood_
+
+_Long Forest_
+
+_Oldoaks Grove_
+
+_East Hillway_
+
+_Menhir Hills Road_
+
+_Old Castle Track_
+
+_Quarry Track_
+
+_False Urt River_
+
+_North Eel River_
+
+_Urt River_
+
+**Menhir Hills Road:**
+
+The Menhir Hills road begins at Yggsburgh stretches northwards over some 90 road miles to the point beyond where the map ends. After Urtford ferry, the next place with accommodations for travelers is Stonewyck, about 30 miles north of the ferry area. In between those two sites is but a single large thorp, Hawfair Green.
+
+_The Thorp of Hawfair Green_**:**
+
+This farming community of some 150 residents boasts a tavern, _Leaping Trout Tavern_, and a small general store. It has an active horse and large livestock fair in spring and fall when dealers and buyers come and camp there.
+
+**North Eel River:**
+
+This waterway is large and fast-flowing as it comes down from the eastern Menhir Hills to empty into Bigfish Lake. It is not navigable more than about two miles above it mouth because of rapids and falls. The upper portion of this river flows through most wild and dangerous territory. The volume of water it discharges into the lake is considerable, butevaporation and seepage quickly reduce the amount, so that the river’s continuance as the outlet of the lake, the South Eel River, is only about half the size of the upper channel that feeds the lake. The eels, fish, and other aquatic life forms found in the lower portion of this river are much the same to those inhabiting Bigfish Lake (q.v.). Above Fallsford, however, the river fauna change to the more common sort, save for the incidence of large eels.
+
+The banks of the North Eel River are low (2-4 feet) near its mouth, become steeper as one goes upstream into the Menhir Hills. There the sides are 5 to 10 feet above the water surface. Most areas of the banks are a tangle of bushy plants and shrubs, willows of various sorts. Many trees grow in copses and groves near to the water.
+
+**Norvale:**
+
+This long valley’s southern end wooded end lies at the edge of the Buckswood Hills about 10 miles northeast of the Town of Yggsburgh. From there it stretches northeast some 20 miles to the southern shore of Bigfish Lake. The little community of Garham is at its northeastern end. The vale is from two to four miles broad, and its total area is about 60 square miles. Its flora are typical of the area, thick growth of grasses interspersed with weedy patches, clumps of wild roses, berry bushes, and shrubs such as sumac. Here and there a lone tree of little copse of them will be seen. The larger fauna here are found more frequently in the central portion of the valley because of human hunters at the head and foot of the area. As with the plants, the animal life also typical—wild horses and a few aurochs, occasional bears and wild swine near the wooded verges, deer from the forests come at night to graze. The bears, along with great cats and wolves also hunt the herbivores grazing in the valley. In general such predators have the place to themselves at night, as humans are not active in it then.
+
+The free foresters and wild elves dwelling in the surrounding woodlands are determined to prevent the expansion of the town, knowing that knights and settlers will devastate the natural ecology, destroy it and their way of life. Thus they drive out surveyors and turn back wandering families seeking to settle in the valley.
+
+**Old Castle Track:**
+
+The entrance to this byway lies on the eastern side of the Menhir Hills Road after it has run about 20 miles northwards from Yggsburgh. The track enters the Little Hillwood at the forest’s western edge in the south central portion. The overgrown lane wends its way 15 miles into the woodland to end at the ruins of Castle Zagyg on a bluff above the False Urt River. This byway is both difficult and dangerous! With nothing but robbers, roving humanoids, savage beasts, and hungry monsters awaiting, all sensible folk shun the Old Castle Track.
+
+**Oldoaks Grove:**
+
+Hidden amongst some of the larger of the Menhir Hills in a bowl-shaped valley about a mile in diameter is a large stand of ancient oak trees known as the Oldoaks Grove. This place lies east of the Menhir Hills Road at around about five miles distance as the crow flies. Over the uneven terrain between the road and the trees, however, the actual distance is more like 10 miles, all of them difficult to traverse. These trees are massive in girth, none less than eight feet in diameter, most larger than that, and unlike normal oaks in their height, limb thickness and spread. It is obvious to anyone familiar with woodlands that this grove is unique.
+
+Oldoaks Grove is now the center for the Druidical faith, and four times a year the highest ranking Druid, Lochinvar Beachwood, the Lord Mayor of Yggsburgh, comes to this place to hold the sacred ceremonies of that faith for the worshippers of the region.
+
+**Purple Tower Road:**
+
+The Purple Tower Road runs from the Townbridge south of the Free Town of Yggsburgh some 12 miles east south east across the plain known as the South Pastures to a point where it leaves the map. Some 20 miles further along in an easterly direction to where it comes to the frontier stronghold of Uvoll, a sly wizard that is the chief henchman of Edgar, the current Marquis of Talworth.
+
+_Wizard Lord Uvoll Darktarn:_
+
+**Escutcheon**: On a field of white sprinkled with (semy) black mole-like creatures (voles) an in escutcheon of red with a white wolf’s head whose tongue and teeth are black, eyes red. 
+
+**Number of manors**: 24. 
+
+**Number of villages**: 6 (but at least half of his fief is wooded). These are Ashton, Coopersville, Fellton, Spitbrook, Stillwater, and Willowdale (all beyond the map).
+
+_The Purple Tower:_
+
+Perched atop Drab Hill, an elevation of 70 feet height with steep sides of solid rock save on the south where grassy ground lies in long and moderate incline leading to a hollow at its base, stands the castle stronghold of Lord Uvoll. This fortress is built of an ugly purple-hued granite, and thus its name.
+
+_Dradvil Town_:
+
+This small town of some 3,000 population lies in a hollow at the base of a tall hill upon which looms the Purple Tower, the castle stronghold of Lord Uvoll. The walls of Dradvil are low, but built on the surrounding rises, so they mask all but the spire of the town temple and the square turret of its central hall. There are some 20 square blocks within the walls of the town, most of them being of lower class, a few of middle-class craftsmen and tradesmen, with but two industrial sort. The town has streets that are narrow and crooked, and there is no city sanitation. In brief, it is not at all like Yggsburgh. The cityguards are oppressive, and punishment for infractions of Lord Uvoll’s laws is swift and harsh. The death penalty is exacted for most crimes that elsewhere bring no more than bond servitude or prison time.
+
+_Villages held in fief by Lord Uvoll_:
+
+There are six villages held by Lord Uvoll, totaling around 1,500 to 1,800 inhabitants. The reside in the villages of Ashton, Coopersville, Fellton, Spitbrook, Stillwater, and Willowdale. 
+
+As noted, however, Lord Uvoll’s castle, is adjacent to the small town community of Dradvil he also owns, that being detailed above. Each village is on a watercourse or else has a deep well and consists of 40 buildings plus a religious structure, a large shrine or a fane. The average population for such a community is 250 to 300 persons. The main part being two opposite rows of 16 stone cottages for the villeins, each row separated into half, so that eight families working a section of the manor are adjacent. There are separate and larger cottages for the reeve, cowherd, hayward, shepherd, swineherd, and woodward. Two buildings of somewhat larger size are rented by freemen, one an ale house or tavern the other a smith or general merchant. Each of the row houses has a tool shed and a garden behind it. Further back are four commonly used barns for large livestock and feed, as well as various wooden houses, sheds, and coups for farm equipment and smaller animals. At one end of the street between these structures will be the village fane in which the cleric dwells and holds services. The grounds around the fane are lawn and gardens of no great extent. Behind it is the local burial ground.
+
+_Thorps held in fief by Lord Uvoll_:
+
+There are only 10 thorps on the lands of Lord Uvoll. They are: Aldgrove, Badhill, Coldpond, Finger Oaks, Greenwell, Lower Crossditch, Redstones, Singers Corner, Weedfield, and Wolfskill. 
+
+These are little communities of freemen, generally farmers, with dwellings only, they being too small to support any commercial shop. Each has a less than a score of houses with barns and outbuildings, and an average population of 120 persons. A small shrine with an evil cleric serving as spiritual “guide” for the folk of the thorp is the norm.
+
+**Quarry Track:**
+
+This dirt road runs out of Garham to the northwest, then northwards following the shore of Bigfish Lake for several miles before it bends east northeasterly. After paralleling the lake’s shore for some four miles Quarry Track turns northeast and winds into the Menhir Hills. As it turns thus there is a side area of hard-packed clay and gravel running to the shore of Bigfish Lake where the stones around have been placed to form a jetty projecting about 50 feet into the water. This is where barges are loaded with rock taken from the quarries northeastwards. After going along about three miles in this direction the road forks.
+
+The left-hand fork retains the name, Quarry Track, and in about eight miles (just off the map by some two miles) reaches the actual areas where stone is quarried from the surrounding hills. At this point there is a thorp (Marblestead) housing quarrymen supported by four farms. Two miles further on is a similar community (Hewerton) also fed by four farms. The mining communities support a shrine and an ale house apiece, one has a smithy, the other a general merchant. The stone produced from the quarries is sent by wagon southwest along the Quarry Track to the nearest place on the lake’s shore where it can be loaded onto barges and sent off to other locations via the South Eel River and on along the River Nemo.
+
+**Richwood Forest:**
+
+The Richwood Forest covers approximately 90% of the northern East Uplands, so the woodland is of some 450 square miles extent, its eastern half being the private hunting preserve of the Marquis of Talworth, and forming the central western boundary of his domain. As is implied by its name, the forest is a most plentiful one in the way of flora and fauna. The many hardwoods include fruit trees growing on the verges, while within the forest’s heart, nut trees of all sorts provide much food for animals. The breaks in the tree cover abound with grasses, herbs, and berry bushes. Thus all manner of small and large animals are found in it, including the usual ones taken as game—large birds, deer, elk, bear, large cats, wild swine, and wolves. Occasionally parties of woodsmen will venture into the verges of the forest to fell choice hardwoods such as beech, hickory, white oak and walnut. They take few, though, because wild elves dwell within the Richwood and drive out those despoiling it. This has led to some minor clashes in the east where the marquis holds sway.
+
+**River High Road:**
+
+This highway is the eastern continuation of the Dunfalcon Pike, albeit on the right bank of the River Nemo and connected to the latter road only through the Free Town of Yggsburgh. Leaving the town via the Moatgate and Moatbridge, the journeyer can travel east and northeast over 50 miles before crossing the upper Nemo via the Bowbridge, passing the north shoulder of the East Uplands and the Great Leech Marsh and thus leaving behind the environs of Yggsburgh. The River High Road changes its name in a some 10 leagues’ distance eastward of that point, it becoming the March Road where it is very rough and passes through wilderness uninhabited by humans, and about four days of hard riding (200 miles) further on still it becomes known as the King’s Highway as it lies within the realm of a royal monarch at that point.
+
+**River Nemo:**
+
+This waterway is on average 400 feet wide in the area of Yggsburgh, over 600 feet broad below the town, and navigable by large ships from its mouth some 250 miles westwards at Dunfalcon to Yggsburgh. East of Yggsburgh its depth is such that only small ships and barges can navigate its channel to a point some 50 miles beyond the Great Leech Marsh where it becomes rocky and shallow at the town of Stoneford Meade. Below the junction of the Nemo and Urt, the river’s current flows at two knots, so passage downstream is quite speedy and effortless.
+
+The eels, fish, and other aquatic life forms found in the upper reaches of the River Nemo are much the same to those inhabiting Bigfish Lake (q.v.), although the really large sort are not often encountered in these waters as they do not generally enter the South Eel so as to reach the Nemo.
+
+The relatively low banks (average 4-6 feet, higher near Yggsburgh) of the river are generally open, with occasional long stretches of willow bushes and other shrubs thickly clustered along those portions where human traffic allows them to flourish. Now and then a copse of large willows or trees of other kinds will be found.
+
+**Rivergate Bridge:**
+
+This recent construction spans the Urt River, providing an alternative means of entrance and exit from the Free Town of Yggsburgh. As a result, another suburb has cropped up to the north of Yggsburgh, this being Newtown. It and the three large farmsteads serving it add another c. 1,200 persons to the area population.
+
+**Serpent Ridge:**
+
+A spine of high ground some 90 to 130 feet above the level land. It is about two miles wide with hills of from 70 to 90 feet high cresting it and hillocks of 30 to 50 feet height along it length. This ridge runs from east to west in serpentine curves beginning south of Cold Springs Run in the East Uplands and continuing 20 miles westwards to end about a mile southeast of Yggsburgh. It is generally grassy and treeless, with occasional clumps of shrubs and small copses of hardwood trees such as oak and beech. There are a few isolated farms along the ridge, but to the east if it wild and lonely, grazed only by wild animals.
+
+The first Lord Yggs, Franz, discovered salt here, at the west end of the ridge. He ordered digging to commence, and soon a whole stratum of the mineral was uncovered. The mine produced a fair quantity of pure sodium chloride, the income from this enabling Lord Yggs to become wealthy. Since the initial discovery, the mine has been enlarged and continues to produce excellent salt in large quantities. The operation is a monopoly of the Free Town of Yggsburgh. The salt mine now produces about 10 tons of salt each day, most of which is sent down the River Nemo for sale in Dunfalcon City or export from there to other urban centers, the salt mainly for use in preserving food.
+
+The mine is worked by convicted criminals sentenced to penal servitude. If they perform well in their labors, the time spent in mining is counted as double, so effectively their sentence is cut in half if they work hard.
+
+_Legends and Lore_: We have found mention of this place in an old text. That work claims that ancient peoples dwelling hereabouts worshipped a serpent deity, and thus held the ridge as sacred. This account mentions that their primitive shamans built a secret place of sacrifice somewhere along the ridge, and there killed many innocent people to honor the malign serpent. It is claimed that those spirits of sacrificial victims can not rest until the altar stone is broken.
+
+**South Eel River:**
+
+A relatively deep waterway, this river averages over 50 feet width from its head at Bigfish Lake to its conjunction with the Nemo about five miles from there. Barges and boats navigate it with ease. The main traffic on it are boats to and from Garham and barges bringing timber and stone from the hill country. The eels, fish, and other aquatic life forms found in this portion of the river are much the same as those inhabiting Bigfish Lake (q.v.), although the really large sort are not often encountered in the waters of the South Eel.
+
+The banks of the South Eel River are generally low (2-4 feet) along most of its course. Most areas of its banks are thickly grown bushy plants, shrubs, small varieties of willow. Many trees grow in copses and groves along the course of the river.
+
+**South Pastures:**
+
+This is the fertile plain on the south side of the River Nemo. It is some 30 miles long, running east from the south bend of the river (just off the map) to the beginning of the East Uplands. The river valley plain is on average 6 miles wide (the western area’s southern verge not shown on the map), ending in a very rocky and scrub-covered ridge line that extends from the East Uplands westwards to the south bend of the River Nemo. 
+
+The South Pastures covers 180 square miles and belongs to the Free Town of Yggsburgh. The west portion not shown on the map. As the name implies, this is an agricultural area, and there are within it many farms raising cattle, sheep, and horses as well as feed crops. Typically there are four freehold or socman farmers in a group with lands around covering one square mile, their buildings clustered together for intercourse and mutual aid. Each farm is about 160 acres in extent, 40 of which is a woodlot, and of the remaining 120 acres, 30 will be cultivated, 70 will be in meadow (hay) and pasture, and 20 are covered by buildings and pens, home garden, lanes, hedges and fences, water features, and non-arable land. Where there are manorial lands, farms are typically about half the extent of those of freeholders, and about eight families are found in a square mile. In such cases meadow, pasture, and woodland are in larger tracts, and the woodland is likely in a contiguous woods used by the lord for hunting.
+
+There are two knights dwelling in fortified manor houses in this area, each with such villages (clusters of houses for villeins) on their manors. 
+
+_Sir Anthony Belvoir_:
+
+**Escutcheon**: A blue field with the head of a white bull, and gold chief in the with three blue flowers (cinquefoils). 
+
+**Number of manors**: 10. The knight resides in his manor, Manse Belvoir (C5).  
+
+**Number of villages**: 2. These are Meadowspring (V15) and Belvoirton (V16)
+
+**Number of thorps**: 3. These are Babblebrook (T14), Fallowsfield (T15), and Stonefield (T16). 
+
+_Sir Wade Fulgent_:
+
+**Escutcheon**: On a field of purple and gold divided diagonally left to right (party per bend) a blazing sun counter colored (gold on the purple side, purple on the gold side). 
+
+**Number of manors**: 10. The knight resides in his manor, Castle Fulgent (C6)
+
+**Number of villages**: 2. These are Fulgentstead (V17) and Oldfield (V18).
+
+**Number of thorps**: 4. These are Bogberry (T17), Burrstead (T18), Heather (T19), and Lonelyoak (T20).
+
+These two knights have fiefs covering 20 square miles. In each holding, all of the manors (a square mile of 640 acres) are adjacent, not separated by non-manorial land.
+
+**_Villages of the South Pastures_**:
+
+There is a village for about every four manors held. The lord’s (in this case a knight) manor house is adjacent to one of the villages. Each village is on a watercourse or else has a deep well and consists of about 40 buildings plus a religious structure, a large shrine or a fane. The average population for these communities is 250 to 300 persons. So within the South Pastures area there are four villages totaling around 1,000 to 1,200 inhabitants.
+
+These villages are: Belvoirton, Fulgentstead, Meadowspring, and Oldfield.
+
+The main part of the villages consists of two opposite rows of 16 stone cottages for the villeins, each row separated into half, so that eight families working a section of the manor are adjacent. There are separate and larger cottages for the reeve, cowherd, hayward, shepherd, swineherd, and woodward. Two buildings of somewhat larger size are rented by freemen, one an ale house or tavern, the other a smith or general merchant. Each of the row houses have a tool shed and a garden behind it. Further back it has four commonly used barns for large livestock and feed, as well as various wooden houses, sheds, and coups for farm equipment and smaller animals. At one end of the street between these structures is the village fane in which the cleric dwells and holds services. The grounds around the fane are mostly lawn and gardens of no great extent, behind which is the local burial ground.
+
+**_Thorps_** **_of the South Pastures_**:
+
+These are little communities with dwellings only. Each has a less than a score of houses with barns and outbuildings, and an average population of 120 persons. A small shrine with a cleric serving as spiritual guide for the folk of the thorp is the norm. These are Babblebrook, Bogberry, Burrstead, Fallowsfield, Heather, Lonelyoak, and Stonefield.
+
+**Townbridge:**
+
+This is a high bridge of five spans with the road atop them some 40 feet above the waters of the River Nemo in its center. Thus the road entering Yggsburgh from the Townbridge is at the same level as the gate and street beyond (Crossgates Avenue). The central span is a drawbridge section to allow a tall-masted ship to pass through up or down the river. The roadway along the bridge top is 14 feet wide, and except where it is of wood there is a parapet of three-foot height along either side. The last 20 feet of the bridge is also a wooden drawbridge that is raised during hours of darkness.
+
+**Urt River:**
+
+The Urt is around 300 feet wide where it joins the River Nemo. Northeastwards it narrows somewhat, being about 200 feet broad where it passes the morass of Greypools Mire. From there it remains relatively broad, for some 50 miles, so that boats and barges can navigate northwards to that distance. Above 70 miles distance from Yggsburgh the Urt becomes very swift and has stretches of rapids that make it impassable to all but small vessels. This waterway is well-known for the giant otters that make its banks their home. The creatures found in this portion of the river are generally of usual sort, as the kinds of eels, fish, and other aquatic life forms inhabiting Bigfish Lake (q.v.) have not spread upstream in the Urt river.
+
+The banks of the Urt River are generally more thickly grown than those of the Nemo, long stretches of willow bushes and other shrubs thickly clustered along its shores. Many copses and groves of large willows or trees of other kinds will be found on or near the waterway’s generally high (7 to 10 feet average, greater where it cuts through hills) banks. The upper reaches of the river are wild and dangerous in the extreme, often have steep and rocky banks much grown with foliage.
+
+**Urtford**:
+
+Three and a half miles north of Yggsburgh the Menhir Hills Road crosses the Urt River at a place known as Urtford. It is not an actual ford, however, although daring horsemen can swim their mounts across at this calm and relatively narrow (150 feet width) stretch of water. The main means of crossing is a large raft that ferries vehicles, animals, and men from one side of the river to the other. The ferryman’s cottage is on the south bank of the river. 
+
+**Westfields:**
+
+This fertile plain on the north side of the River Nemo is about 60 square miles in extent, the west portion not shown on the map. As the name implies, this is an agricultural area, and there are within it many farms. Typically there are four freehold or socman farmers in a group with lands around covering one square mile, their buildings clustered together for intercourse and mutual aid. Each farm is about 160 acres in extent, 40 of which is a woodlot, and of the remaining 120 acres, 30 will be cultivated, 70 will be in meadow (hay) and pasture, and 20 is covered by buildings and pens, home garden, lanes, hedges and fences, water features and non-arable land. Where there are manorial lands, farms are about half the extent of those of freeholders, and about eight families will be found in a square mile. In such cases meadow, pasture, and woodland will be in larger tracts, and the woodland will likely be in a contiguous woods used by the lord for hunting.
+
+There are four knights dwelling in fortified manor houses in this area, each with such villages (clusters of houses for villains) on their manors. The number of manors and villages each possess are shown after the details of the lord of the estate.
+
+_Sir Donald Kark. KOC_, Councilman of Yggsburgh:
+
+**Escutcheon**: A field of seven silver (white) and blue pales. 
+
+**Number of manors**: 12. The knight resides in his manor, Castle Kark (C1).
+
+**Number of villages**: 3. These are Redmede (V5), Riverfield (V6), and Karkesteade (V7).
+
+**Number of thorps**: 2. These are Hammlet (T6) and Wheaton (T7).
+
+_Sir Charles Thornly,_ _KOC_, Councilman of Yggsburgh:
+
+**Escutcheon**: On a field of blue and gold parted per bend with a mullet (five pointed star) in fess countercharged (gold on the blue part of the shield, blue on the gold part). 
+
+**Number of manors**: 12. The knight resides in his manor, Thornly Manor (C2).
+
+**Number of villages**: 3. These are Thornlyton (V8), Flowerfarm (V9), and Goodspring (V10).
+
+**Number of thorps**: 2. These are Barnstead (T8) and Thorne (T9).
+
+_Sir Reynard_ _Montjoy, KOC_: 
+
+**Escutcheon**: A red field with a border of gold, and three gold balls (bezants) in fess (middle position) in the field.
+
+**Number of manors**: 8. The knight resides in his manor, Montjoy Manor (C3).
+
+**Number of villages**: 2. These are Orchardton (V11) and Montjoyville (V12).
+
+**Number of thorps**: 1. This is Trowford (T10).
+
+_Sir Bertram Trillingby:_
+
+**Escutcheon**: On a field of black a white saltier (X-shape) dividing four gold martlets (birds). 
+
+**Number of manors**: 8. The knight resides in his manor, Trillingby Castle (C4).
+
+**Number of villages**: 2. These are Trillington (V13) and Beeley (V14).
+
+**Number of thorps**: 3. These are Haverhill (T11), Waggonton (T12), and Weston (T13).
+
+Thus in all these four knights have fiefs covering 40 square miles. In each holding, all of the manors (a square mile of 640 acres) are adjacent, not separated by non-manorial land.
+
+**_Villages of the Westfields_:**
+
+There is a village for every four manors held. The lord’s (in this case a knight) manor house is adjacent to one of these villages. Each village is on a watercourse or else has a deep well and consists of about 40 buildings plus a religious structure, a large shrine or a fane. The average population for such a community is 250 to 300 persons. So, within the Westfields area there are 10 villages totaling around 2,750 to 3,000 inhabitants. These are Beeley, Flowerfarm, Goodspring, Karksteade, Montjoyville, Orchardton, Redmede, Riverfield, Thornlyton, and Trillington.
+
+The main part of each village consists of two opposite rows of 16 stone cottages for the villeins, each row separated into half, so that eight families working a section of the manor are adjacent. There are separate and larger cottages for the reeve, cowherd, hayward, shepherd, swineherd, and woodward. Two buildings of somewhat larger size are rented by freemen, one an ale house or tavern, the other a smith or general merchant. Each of the row houses will have a tool shed and a garden behind it. Further back will be four commonly used barns for large livestock and feed, as well as various wooden houses, sheds, and coups for farm equipment and smaller animals. At one end of the street between these structures will be the village fane in which the cleric dwells and holds services. The grounds around the fane are usually lawn and gardens of no great extent, behind which is the local burial ground. Each village has a tavern. Some of these include: _Blue Moon,_ _Drake & Ducks, Fox & Hare,_ _The Green Archer, The Plowman,_ _The Red Stag, and The Well._
+
+**_Thorps of the Westfields:_**
+
+These are little communities of freemen, generally farmers, with dwellings only, they being too small to support any commercial shop. Each of the two has a less than a score of houses with barns and outbuildings, and an average population of 120 persons. A small shrine with a cleric serving as spiritual guide for the folk of the thorp is the norm. The thorps of the Westfields are: Barnstead, Hammlet, Haverhill, Thorne, Trowford, Waggonton, Weston, and Wheaton.
+
+**Wild Mead:**
+
+A considerable meadowland lies some 20 miles to the east and south of the Free Town of Yggsburgh. This bowl-like meadowland is south and east of the Glittering Knobs, west of the East Uplands, and north of Serpent Ridge. Its extent is around 6 miles north and south, seven east and west, so the area of the shallow valley covers more than 40 square miles. The grasses in it predominate, but there are dotted about the Wild Mead copses of treed, breaks of tall shrubs, clumps of low-growing bushes. Although it appears relativelysmooth there are low ridges and hillocks in its basin, and many little gullies in which streamlets flow, small ponds too. The eastern verge is farmed by a community (hamlet) of halflings dwelling in the hills there, and in the south wild elves from the Dire Forest’s western edge occasionally roam in the chase of game. Otherwise, the whole of the grassland is quite wild. All manner of small and large animals roam the mead. The lesser creatures found here include small game and game birds, hares, foxes, and mink. Larger sorts are wild cattle and horses, deer, wolves, and some few bear, giant cats, and wild swine.
+
+_Coverdale_:
+
+This hamlet of halflings is hidden in the hills of the East Uplands. It has a population of a bit over 300 and is like a farm thorp, but the little community has more than dwellings only. Coverdale has a smithy, a general store, and a tavern in addition to a large shrine with a halfling cleric serving in it. All buildings are low-roofed, with a loft at about eight feet above ground and extending building height by six feet. All are built into a hillside, so that at least a third of each structure is underground. Each place has a stout oaken entry door and like shutters on its small windows.
+
+**Wychwood Forest:**
+
+First, be it known that this woodland is certainly an enchanted place! Beginning some dozen miles north by northwest of Yggsburgh, separated from the Ashwood south of it by a ridge of the Bald Hills, Wychwood is named for a tribe of ancient folk who dwelled in and around it long ago, the people calling themselves _Wycce_. This forest extends westwards another 30 miles, so its average breadth is 40 miles, its average north-south depth is 20 miles, so in all it covers the very considerable area of 800 square miles, with only about 50 of that extent shown on the map. The northern verge of the woodland covers a portion of the Menhir Hills, but otherwise it grows on plain and gently rolling land. The trees comprising the forest are mainly hardwoods, and in addition to oaks and the other sorts typical of the region there are apricot, bay laurel, cedar, cherry, fig, hornbeam, mulberry, myrtle, olive, orange, peach, pecan and witch hazel stands. Many grape vines are found around the clearings within the Wychwood. The climate within the woodland’s precincts is mild even in winter, frost never occurring and any chill penetrating the woodland quickly warming. Most of the forest is densely grown, but there are many small meadows and glens within it, and several pools and springs therein give rise to many rivulets and brooks that flow out of it to the west.
+
+Note that in cold weather the verges of the Wychwood are covered with fog, light at the forest’s fringe of low-growing vegetation, thickening to a very dense cloud where the large trees begin. As one enters the area of thick vapors from outside a perceptible warming is notable. Once through the heavy fog, about 100 feet into the woods, the air temperature is relatively mild, and the fog does not persist. The enchanted ground on which the forest grows maintains a climate within it that never becomes cold or truly hot.
+
+The Wychwood is best known for two widely differing aspects. First and foremost, its principal inhabitants are of sylvan sort such as satyrs, silini (human upper torso, pony lower torso), stacentaurs (deer-bodied centaurs), centaurs, and bucentaurs (bull-bodied centaurs); and the other creatures living in this forest are of the same unusual sort. Second, and of commercial note, are the fungus beds that grows underground within it. These are truffles, and are knows as “black silver” as their wholesale value is the same as silver, ounce for ounce. A number of daring freemen with trained swine venture into the Wychwood Forest’s verge to locate and root out the truffles, an average single find bringing forth about three pounds of the fungus. Few pickers or woodcutters dare to venture into the heart of the woodland where the exotic fruits and desirable species of timber to be felled grow.
+
+**Yggsburgh Canal:**
+
+Serving as a moat as well as a canal linking the Urt and River Nemo east of their confluence, this waterway is 100 feet wide in its entire length of one mile. Its bottom is dug down 40 feet to bedrock, and its banks are of worked stone so as to assure no erosion of them.
+
+Where the East Road comes to an end at the Yggsburgh Canal, 1,200 feet north of the River Nemo there is a partial causeway on the east side of the waterway. This stone structure is built on arched piers, the five openings between spans being 12 feet wide, with three-foot thick piers. This covers 78 feet of the canal’s width. On the western end of the causeway there is a long drawbridge, 20 feet length, set into a projecting stone plinth that juts out three feet from the outer face of the town’s Eastgate. This structure, causeway and drawbridge are called the Moatgate. In time of siege the drawbridge is raised, of course.
+
+There are numerous small watercraft, boats and barges, that allowed to moor along the eastern side of the Yggsburgh Canal. Some of these vessels are the private property of wealthy townsfolk, some commercial, but a large number are boats and barges in which common folk have their homes. No watercraft are allowed to tie up on the western side of the canal, so that at all times there is ample room for traffic in both directions on the waterway.
+
+**DEITIES of the EAST MARK**
+
+**Tenoric Pantheon Principal Deities of the Locale** _(Teutonic-Norse)_**:**
+
+History tells us that Lewis Edward Garmonde, Lord Yggs, personally saw to the construction of _The Grand Temple of Odin_, thus cementing the Tenoric Faith as the predominant religion of Yggsburgh and therefore the East Mark; though exceptions are noted such as the Wychwood, where the deities of wild faerie folk hold sway. The Tenoric Pantheon is comprised of a great many deities. Presented herein is an illustration of some of the most influential of these divine beings. As any further discussion is obviously the purview of the wise ecclesiastics, we humbly submit to those august priests of the Tenoric Faith.
+
+_Tenoric Pantheon Symbol:_ A raven with a thunderbolt in its claws.
+
+**Baldur**: Celestial deity of Law; light, the sun, and truth. He is depicted as a pale warrior with glowing golden hair who holds a sword in hand.
+
+**Frey**: Celestial deity of Law; fertility of the land, peace and wealth. The boar is sacred to him, and he is usually depicted as a warrior in a chariot drawn by a boar.
+
+**Freyja**: Celestial deity of Chaos; youth, beauty, and sexual love. She is usually depicted as a very beautiful woman riding in a chariot drawn by two huge cats.
+
+**Frigga**: Mundane deity of Law; marriage, faithfulness, and the underworld plane where
+
+spirits of deceased faithful married people dwell. She is depicted as a woman with garments 
+
+made of the feathers of raptors such as falcons, hawks, and eagles. 
+
+**Heimdall**: Celestial deity of Law; the senses, alertness, guarding. He is usually depicted as a handsome with large eyes and holding a horn.
+
+**Hel**: Nether deity of Chaos; death, the underworld dimensional matrices, misery. She is depicted as being divided vertically -- half black, half white, and evilly beautiful.
+
+**Jord**: Mundane deity of Chaos; nature, living things, the mundane world. She is depicted as a beautiful and buxom woman with long hair, in her hand a wand like a grain stalk.
+
+**Loki**_:_ Celestial deity of Chaos; fire, cunning, fraud, practical jokes, and mischief. He is often depicted as a dark man with cloak that has a fox-headed hood.
+
+**Odin**: Celestial deity of Chaos; chief of the gods, heroes, the afterlife. Odin is usually depicted as a tall, lean, and one-eyed man swathed in a concealing cloak and seated on a great throne with his raven servants and wolf guards flanking him. His symbol is the raven or sometimes the wolf or a spear.
+
+**Ran**: Mundane deity of Chaos; sea, its storms, the underworld plane of the dead so killed. She is depicted as a fierce woman with seaweed-like hair and a narwhale-horn staff.
+
+**Thor**: Celestial deity of Chaos; war, storms, thunder, and strength. He is usually depicted as a very muscular man wearing a bearskin cloak, girded by a vast belt, and holding a hammer in his right hand.
+
+**Tyr**: Mundane deity of Law; warriors, swordsmen, athletes, the sender of Vikings. His symbol is a sword with a crown above it.
+
+**Uller**: Celestial deity of Chaos; hunting, tracking the patron of archers. His symbol is a sword with a crown above it. 
+
+**NOBLE HIERARCHIES & HONORIFICS** (Appendix I):
+
+As has been made obvious by the preceding texts, the East Mark, particularly the Free Town of Yggsburgh, is teeming hierarchies and honorifics. It thus becomes prudent for the heraldic scholar or courtly traveler to be familiar with the various titles and forms of address standard to this region. Travelers would be wise to also familiarize themselves with the customs and laws of the Free Town of Yggsburgh so as not to find themselves depending from the gibbet or flogged at the cart.
+
+_Lord Mayor_: In this case the Lord Mayor of Yggsburgh is a sovereign prince, and in his city and on its lands, he is equal to any other sovereign, a king included. This is because he has not sworn vassalage to any greater noble. Even if he had so pledged to one, in his city and on his lands, he would be the peer of that monarch, coming second after him. In overall terms his precedence generally is akin to that of a sovereign prince of a small state, viz. below a duke but above a marquis or a great state.
+
+_Counselor_: A Counselor of Yggsburgh is as a nobleman when in the city and on its lands. Elsewhere, such status would place one in the lower tier of the upper class. In this area each Counselor is equal to the following in order of precedence in town functions:
+
+The Lord Mayor: _Sovereign Prince_
+
+The Steward of Yggsburgh (if one is appointed): _Duke_
+
+President of the Counsel (also a grand priest): _Marquis_
+
+Secretary: _Prince_
+
+Treasurer: _Prince_
+
+Counselor and Knight: _Count_
+
+Counselor: _Viscount_
+
+**Royal titles rank as follows:** 
+
+Emperor, king, sovereign prince (including archduke, grand duke, prince, etc. on down the noble titles’ ranks), crown prince, prince royal.
+
+**Form of Address:**
+
+Emperor/Empress – _Imperial Majesty_
+
+King/Queen – _Majesty_
+
+Sovereign Prince/Sovereign Princess – _Serene_ or _Sovereign Highness_
+
+Crown Prince/Crown Princess – _Imperial_ or _Royal Highness_
+
+Prince Royal/ Princess Royal – _Highness_
+
+Noble (non-royal) titles have the following rank, from highest to lowest: Duke, marquis, prince, count (earl), viscount, baron, lord, baronet, knight, gentleman. The wife of a knight is addressed formally as “madam.”
+
+**Form of Address:**
+
+Duke/Duchess – _Grace_
+
+Marquis/Marquise –_Lord/Lady_ 
+
+Prince/Princess –_Lord/Lady_
+
+Earl/Countess –_Lord/Lady_ 
+
+Viscount/Viscountess –_Lord/Lady_ 
+
+Baron/Baroness –_Lord/Lady_ 
+
+Berggraf/Berggraffin –_Lord/Lady_ 
+
+Waldgraf/Waldgraffin –_Lord/Lady_ 
+
+Lord/Lady (no other formal title) – _Lord/Lady_
+
+Baronet/Baroness – _Honorable Sir/Madam_
+
+Knight (male/female) – _Sir/Dame_ (wife _Madam_)
+
+Gentleman/Gentlewoman – _Master/Mistress_ 
+
+A gentleman (or gentlewoman, not styled “lady,” that being reserved for the wife of a lord) is a noble without title. As a nobleman born, or elevated, a gentleman is entitled to have armorial bearings. Gentle-born persons are styled “master” and “mistress,” while commoners of substance are “goodman” or “goodwoman.”
+
+_Clerics_: A grand priest ranks just below a duke, a high priest ranks just below a count (earl), a chief priest or abbot ranks just below a baron, a prior just below a lord, an officiant priest in charge of a fane, chantry, chapel, or grand shrine ranks just below a knight, an ordinary priest just below a gentleman (in the middle class).
+
+**Ecclesiastic Form of Address:**
+
+Grand Priest/Priestess: _Grace_
+
+High Priest/Priestess: (the) _Supernal_
+
+Chief Priest/Priestess: (the) _Venerable_
+
+Abbot/Abbess: (the) _Venerable_
+
+Prior: (the) _Venerable_
+
+Officiant Priest/Priestess: (the) _Pious_
+
+Priest/Priestess: (the) _Pious_
+
+Assistant Priest/Priestess: (the) _Dutiful_
+
+Dedicated Friar or Monk: _Dutiful Brother_
+
+Dedicated Nun: _Dutiful Sister_
+
+Lay Friar or Monk: _Brother_
+
+Lay Nun: _Sister_
+
+**HERALDRY of the EAST MARK** (Appendix II):
+
+Armorial bearings of the shields (escutcheons) of nobles and knights are found emblazoned or embroidered upon heraldic garments, flags, seals, etc. Only one aspect of heraldry will be addressed here, that is the tinctures used in blazoning.
+
+The standard _colors_ used are: blue (azure, light blue), green (vert), maroon (sanguine), navy (dark blue, not indigo), and pink (rose), red (gules), and purple (purpure).
+
+The standard _metals_ used are: gray (steel), orange (copper), yellow (or—gold), white (argent—silver), 
+
+The standard _furs_ used are: ermine (white with black tail marks), ermines (black with white tail marks), sable (black), seal (brown), and vair (alternating rows of pale blue and white bell-shapes resembling squirrel skins).
+
+_Armorial Bearings of the Free Town of Yggsburgh_: An escutcheon of gold with a blue chevron separating two blue pikes (or _luce_, fish) above and a blue mailed fist at the base. Above the escutcheon is a crest of a city gate in gray stone crowned by a coronet of gold with five acorn-topped points. To either side of the escutcheon, supporting it, are giant lynxes standing on their hind legs with paws touching the shield. The motto below the escutcheon reads:_None can deny us independence_.
+
+**KNIGHTHOOD** (Appendix III):
+
+_Armorial Bearings of the_ _Order of the_ _Knights of the Citadel_: This is the highest order of knighthood conferred by the Free Town of Yggsburgh, this being the right of the Lord Mayor to bestow upon any person of gentle-born status he chooses to thus honor. The emblem of the Order of Knights of the Citadel (abbreviated OC) is:
+
+**Knight Commander of the Knights of the Order of the Citadel** **_(KCOC)_**: 
+
+Depending from an iron neck chain an iron tower upon which is set a silver shield the escutcheon of which is bordered black and set with nine rubies, the remainder emblazoned with a red bear rampant, this being enameled upon the silver.
+
+**Knight of the Order of the Citadel, Grand Master** **_(KGMOC)_**: 
+
+Depending from an iron neck chain an iron tower upon which is set a silver shield the escutcheon of which is bordered black and set with nine diamonds, the remainder emblazoned with a red bear rampant, this being enameled upon the silver.
+
+**Knight of the Order of the Citadel** **_(KOC)_**: 
+
+Depending from an iron neck chain an iron tower upon which is set a silver shield the escutcheon of which is emblazoned with a red bear rampant, this being enameled upon the silver.
+
+When depicted on a banner, surcoats, shield, etc. the blazonry is: _Argent (white) a bear gules (red) rampant armed sable (black)._
+
+**The current members of the Order of the Citadel number eight and are**:
+
+Sir Reginald Dunstone KCOC, Right Honorable Marshal of Yggsburgh, Commander of the Military. 
+
+The Right Honorable Counselor of Yggsburgh, Sir Donald Kark, KOC. (See _Westfields_.)
+
+The Right Honorable Counselor of Yggsburgh, Sir Charles Thornly, KOC. (See _Westfields_.)
+
+Sir Reynard Montjoy, KOC. (See _Westfields_.)
+
+Sir Anthony Belvoir KOC. (See _Westfields_.)
+
+Sir Macronald Weyforth KOC, Honorable Constable of Yggsburgh, Lieutenant Commander of the Military and Captain of the Horse. 
+
+Sir Patrick Wainwright KOC, Worthy Porter of Yggsburgh, Captain of the Gate Guards of the Town.
+
+Sir Sylvester Prinzholm, KOC, Adjutant Captain of Horse.
+
+**Armorial Bearings of Current Hostile Local** **Palatine** **Nobles:**
+
+The East Mark region is by no means idyllic, as there are three palatine nobles within three or four day’s march of Yggsburgh, each of whom covets the town and its rich lands, would add them to his own demesne. Spies and agents provocateur are not uncommon in Yggsburgh and thick in The Outs. The outlying areas are generally wild frontier, with bandits and humanoid raiders a menace, and dangerous creatures prowling.
+
+_To the West:_
+
+Lyle Baron (of) Redfort 
+
+**Escutcheon**: On a field of ermines (black with white tail and spots) an embattled gold fess in which are four red towers.
+
+_To the Northeast:_
+
+Bertram Count (of) Easmoor 
+
+Escutcheon: On a field of green a gold boar’s head erased with tushes and eye of red.
+
+_To the East:_
+
+Edgar Marquis (of) Talworth 
+
+**Escutcheon**: On a field of silver (white) a giant clad in a bearskin with a spiked club, a chief purple with five gold acorns.
+
+Wizard Lord Uvoll Darktarn
+
+**Escutcheon**: On a field of white sprinkled with (semy) black mole-like creatures (voles) an in escutcheon (small shield within the larger one) of red with a white wolf’s head erased with tongue and teeth of black and eyes of red. This is the chief henchman of the Marquis Talworth.
+

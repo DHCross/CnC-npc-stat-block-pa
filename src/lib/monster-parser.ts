@@ -1,5 +1,6 @@
 import type { ParsedNPC } from './stat-block-types';
-import { normalizeDisposition } from './stat-block-helpers';
+import { normalizeDisposition, isRankedNamedEntity } from './stat-block-helpers';
+import { splitTitleAndBody } from './enhanced-parser';
 
 interface FieldAlias {
   field: string;
@@ -187,6 +188,30 @@ export function parseMonsterBlock(block: string): ParsedNPC {
     notes,
     original: block,
   };
+}
+
+// After parsing the raw block, attempt to suppress redundant HD values
+// for named creatures that already have an HP total.
+export function parseMonsterBlockWithHeuristics(block: string, title?: string): ParsedNPC {
+  const parsed = parseMonsterBlock(block);
+  // Allow caller-supplied title; fallback to splitting if not provided
+  const t = title ?? splitTitleAndBody(block).title;
+  suppressHdForNamed(t, parsed.fields);
+  return parsed;
+}
+
+// Suppress HD if the monster is a named/ranked entry and Hit Points are provided.
+// This follows Rule-of-Rank editorial decision to prefer flat HP for named
+// entities rather than HD notation in the canonical output.
+function suppressHdForNamed(block: string, fields: Record<string, string>) {
+  try {
+    const { title } = splitTitleAndBody(block);
+    if (fields['Hit Points (HP)'] && fields['HD'] && isRankedNamedEntity(title, { raceClass: fields['Race & Class'], significantAttributes: fields['Significant attributes'] })) {
+      delete fields['HD'];
+    }
+  } catch (e) {
+    // swallow errors - this is a best-effort heuristic
+  }
 }
 
 export function parseMonsterBlocks(input: string): ParsedNPC[] {

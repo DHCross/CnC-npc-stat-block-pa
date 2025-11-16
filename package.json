@@ -5,10 +5,16 @@
   "description": "CNC NPC Stat Block Parser and App (Next.js/React)",
   "scripts": {
     "dev": "next dev",
+    "dev:web": "next dev",
     "build": "NEXT_PUBLIC_COMMIT_HASH=\"$(git rev-parse --short HEAD)\" NEXT_PUBLIC_BUILD_DATE=\"$(date -u)\" next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "test": "vitest run"
+    "test": "vitest run",
+    "analyze:bestiary": "node scripts/analyze_bestiary.cjs",
+    "regen:mouths": "node scripts/extract_parentheticals.cjs && node scripts/parse_parentheticals.cjs && node scripts/build_candidates.cjs && npx tsx scripts/canonicalize_candidates.ts && node scripts/render_mouths_markdown.cjs && node scripts/analyze_bestiary.cjs",
+    "generate:mocks": "npx tsx scripts/generate-mouths-mock.ts",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
@@ -76,17 +82,30 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.2",
     "@eslint/js": "^9.21.0",
+    "@storybook/addon-a11y": "^10.0.7",
+    "@storybook/addon-docs": "^10.0.7",
+    "@storybook/addon-onboarding": "^10.0.7",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addon-vitest": "^10.0.7",
+    "@storybook/nextjs-vite": "^10.0.7",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^24.5.2",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "@vitest/browser": "3.2.4",
+    "@vitest/coverage-v8": "3.2.4",
     "eslint": "^9.28.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "eslint-plugin-storybook": "^10.0.7",
     "globals": "^16.0.0",
     "jsdom": "^27.0.0",
+    "playwright": "^1.56.1",
+    "storybook": "^10.0.7",
+    "tsx": "^4.20.6",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.38.0",
     "vitest": "^3.2.4"

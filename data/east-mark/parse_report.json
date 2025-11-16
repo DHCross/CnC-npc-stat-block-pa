@@ -1,0 +1,89 @@
+{
+  "total": 247,
+  "missingBothCount": 247,
+  "missingXPCount": 247,
+  "sampleMissingBoth": [
+    {
+      "startLine": 59,
+      "parenthetical": "Appendix I"
+    },
+    {
+      "startLine": 61,
+      "parenthetical": "Appendix II"
+    },
+    {
+      "startLine": 63,
+      "parenthetical": "Appendix III"
+    },
+    {
+      "startLine": 83,
+      "parenthetical": "The Dragon"
+    },
+    {
+      "startLine": 85,
+      "parenthetical": "The Great Sword"
+    },
+    {
+      "startLine": 87,
+      "parenthetical": "The Giant with Club"
+    },
+    {
+      "startLine": 89,
+      "parenthetical": "The Wandering Wizard"
+    },
+    {
+      "startLine": 91,
+      "parenthetical": "The Two Wolves"
+    },
+    {
+      "startLine": 93,
+      "parenthetical": "The Centaur"
+    },
+    {
+      "startLine": 95,
+      "parenthetical": "The Priest"
+    }
+  ],
+  "sampleMissingXP": [
+    {
+      "startLine": 59,
+      "parenthetical": "Appendix I"
+    },
+    {
+      "startLine": 61,
+      "parenthetical": "Appendix II"
+    },
+    {
+      "startLine": 63,
+      "parenthetical": "Appendix III"
+    },
+    {
+      "startLine": 83,
+      "parenthetical": "The Dragon"
+    },
+    {
+      "startLine": 85,
+      "parenthetical": "The Great Sword"
+    },
+    {
+      "startLine": 87,
+      "parenthetical": "The Giant with Club"
+    },
+    {
+      "startLine": 89,
+      "parenthetical": "The Wandering Wizard"
+    },
+    {
+      "startLine": 91,
+      "parenthetical": "The Two Wolves"
+    },
+    {
+      "startLine": 93,
+      "parenthetical": "The Centaur"
+    },
+    {
+      "startLine": 95,
+      "parenthetical": "The Priest"
+    }
+  ]
+}
