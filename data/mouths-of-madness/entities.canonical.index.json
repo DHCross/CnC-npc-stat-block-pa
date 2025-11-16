@@ -79,46 +79,6 @@
     "originalTitle": "\"Pinky\" the Owlbear"
   },
   {
-    "sourceIndex": 67390,
-    "title": "(fisherman/hunter/trapper/woodcutter)",
-    "labels": {
-      "inline": "(fisherman/hunter/trapper/woodcutter)",
-      "titleLine": "**Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2",
-      "start": 67390,
-      "end": 67685,
-      "startLine": 739,
-      "endLine": 739,
-      "titleLineNum": 737,
-      "titleLine": "**Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_",
-      "inlineLabel": "(fisherman/hunter/trapper/woodcutter)",
-      "inlineContext": "**Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _",
-      "lineText": "**Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _(They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2)_",
-      "snippet": "**Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_ **Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _(They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2)_",
-      "hp": 5,
-      "ac": 12,
-      "hd": null,
-      "xp": "3+1",
-      "level": 2,
-      "raceClass": "0th-2nd level, neutral, human fighters",
-      "notes": "They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2"
-    },
-    "canonicalData": {
-      "raw": "They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2",
-      "hp": "5",
-      "ac": "12",
-      "disposition": "neutral",
-      "attributes": "physical",
-      "coins": "6 sp",
-      "raceClass": "0th-2nd level, neutral, human fighters"
-    },
-    "canonicalParenthetical": "HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.",
-    "originalTitle": "(fisherman/hunter/trapper/woodcutter)"
-  },
-  {
     "sourceIndex": 58495,
     "title": "Ape, carnivorous",
     "labels": {
@@ -157,126 +117,6 @@
     },
     "canonicalParenthetical": "HP 23, AC 15, disposition neutral. Saves: P.",
     "originalTitle": "Ape, carnivorous"
-  },
-  {
-    "sourceIndex": 59104,
-    "title": "Bandit",
-    "labels": {
-      "inline": "Bandit",
-      "titleLine": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1",
-      "start": 59104,
-      "end": 59366,
-      "startLine": 693,
-      "endLine": 693,
-      "titleLineNum": 691,
-      "titleLine": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_",
-      "inlineLabel": "Bandit",
-      "inlineContext": "**Bandit:** _",
-      "lineText": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_",
-      "snippet": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_ **Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_",
-      "hp": 4,
-      "ac": 13,
-      "hd": null,
-      "xp": "5+1",
-      "level": 0,
-      "raceClass": "0th level, neutral evil, human fighters",
-      "notes": "They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1"
-    },
-    "canonicalData": {
-      "raw": "They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1",
-      "hp": "4",
-      "ac": "13",
-      "disposition": "neutral/evil",
-      "attributes": "physical",
-      "coins": "6 sp",
-      "raceClass": "0th level, neutral evil, human fighters"
-    },
-    "canonicalParenthetical": "HP 4, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.",
-    "originalTitle": "Bandit"
-  },
-  {
-    "sourceIndex": 116651,
-    "title": "Bandit (variant 52)",
-    "labels": {
-      "inline": "Bandit sentries x 8",
-      "titleLine": "If the PCs approach Castle Zagyg by way of the Old Castle Track they will at length approach the Outer Gatehouse (barbican) (_Ruins of the Castle Precincts_ **#**1). **Bandit sentries x 8**, however, are positioned along the last mile of the Old Castle Track. There are four teams, each comprised of two carefully hidden bandit sentries. These sentries will send a chain of warning arrows to alert their fellows at the barbican of approaching adventurers. They will not confront the PCs unless conflict erupts at the barbican."
-    },
-    "isUnit": true,
-    "parsed": {
-      "parenthetical": "They are 1st level, neutral evil, human fighters. Their vital statistics are HP 4, AC 12. Their primary attributes are physical. They have leather armor, longbow [+1 \"to hit\"; 1d6 damage], arrows x20, silver-tipped arrows x5, shortsword [+1 \"to hit\"; 1d6 damage], dagger, and 2d6 sp. XP: 5+1",
-      "start": 116651,
-      "end": 116943,
-      "startLine": 1070,
-      "endLine": 1070,
-      "titleLineNum": 1068,
-      "titleLine": "If the PCs approach Castle Zagyg by way of the Old Castle Track they will at length approach the Outer Gatehouse (barbican) (_Ruins of the Castle Precincts_ **#**1). **Bandit sentries x 8**, however, are positioned along the last mile of the Old Castle Track. There are four teams, each comprised of two carefully hidden bandit sentries. These sentries will send a chain of warning arrows to alert their fellows at the barbican of approaching adventurers. They will not confront the PCs unless conflict erupts at the barbican.",
-      "inlineLabel": "Bandit sentries x 8",
-      "inlineContext": "**Bandit sentries x 8:** _",
-      "lineText": "**Bandit sentries x 8:** _(They are 1st level, neutral evil, human fighters. Their vital statistics are HP 4, AC 12. Their primary attributes are physical. They have leather armor, longbow [+1 \"to hit\"; 1d6 damage], arrows x20, silver-tipped arrows x5, shortsword [+1 \"to hit\"; 1d6 damage], dagger, and 2d6 sp. XP: 5+1)_",
-      "snippet": "If the PCs approach Castle Zagyg by way of the Old Castle Track they will at length approach the Outer Gatehouse (barbican) (_Ruins of the Castle Precincts_ **#**1). **Bandit sentries x 8**, however, are positioned along the last mile of the Old Castle Track. There are four teams, each comprised of two carefully hidden bandit sentries. These sentries will send a chain of warning arrows to alert their fellows at the barbican of approaching adventurers. They will not confront the PCs unless conflict erupts at the barbican. **Bandit sentries x 8:** _(They are 1st level, neutral evil, human fighters. Their vital statistics are HP 4, AC 12. Their primary attributes are physical. They have leather armor, longbow [+1 \"to hit\"; 1d6 damage], arrows x20, silver-tipped arrows x5, shortsword [+1 \"to hit\"; 1d6 damage], dagger, and 2d6 sp. XP: 5+1)_",
-      "hp": 4,
-      "ac": 12,
-      "hd": null,
-      "xp": "5+1",
-      "level": 1,
-      "raceClass": "1st level, neutral evil, human fighters",
-      "notes": "They are 1st level, neutral evil, human fighters. Their vital statistics are HP 4, AC 12. Their primary attributes are physical. They have leather armor, longbow [+1 \"to hit\"; 1d6 damage], arrows x20, silver-tipped arrows x5, shortsword [+1 \"to hit\"; 1d6 damage], dagger, and 2d6 sp. XP: 5+1"
-    },
-    "canonicalData": {
-      "raw": "They are 1st level, neutral evil, human fighters. Their vital statistics are HP 4, AC 12. Their primary attributes are physical. They have leather armor, longbow [+1 \"to hit\"; 1d6 damage], arrows x20, silver-tipped arrows x5, shortsword [+1 \"to hit\"; 1d6 damage], dagger, and 2d6 sp. XP: 5+1",
-      "hp": "4",
-      "ac": "12",
-      "disposition": "neutral/evil",
-      "attributes": "physical",
-      "coins": "6 sp",
-      "raceClass": "1st level, neutral evil, human fighters"
-    },
-    "canonicalParenthetical": "HP 4, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.",
-    "originalTitle": "Bandit sentries x 8"
-  },
-  {
-    "sourceIndex": 59395,
-    "title": "Bandit, Lieutenant",
-    "labels": {
-      "inline": "Bandit, Lieutenant",
-      "titleLine": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2",
-      "start": 59395,
-      "end": 59668,
-      "startLine": 695,
-      "endLine": 695,
-      "titleLineNum": 693,
-      "titleLine": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_",
-      "inlineLabel": "Bandit, Lieutenant",
-      "inlineContext": "**Bandit, Lieutenant:** _",
-      "lineText": "**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_ ",
-      "snippet": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_ **Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_",
-      "hp": 14,
-      "ac": 14,
-      "hd": null,
-      "xp": "10+2",
-      "level": 2,
-      "raceClass": "2nd level, neutral evil, human fighters",
-      "notes": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2"
-    },
-    "canonicalData": {
-      "raw": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2",
-      "hp": "14",
-      "ac": "14",
-      "disposition": "neutral/evil",
-      "attributes": "physical",
-      "coins": "6 gp",
-      "raceClass": "2nd level, neutral evil, human fighters"
-    },
-    "canonicalParenthetical": "HP 14, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.",
-    "originalTitle": "Bandit, Lieutenant"
   },
   {
     "sourceIndex": 127925,
@@ -597,126 +437,6 @@
     "originalTitle": "Boar, wild"
   },
   {
-    "sourceIndex": 61749,
-    "title": "Brigand,",
-    "labels": {
-      "inline": "Brigand, Serjeant",
-      "titleLine": "**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2",
-      "start": 61749,
-      "end": 62037,
-      "startLine": 709,
-      "endLine": 709,
-      "titleLineNum": 707,
-      "titleLine": "**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_",
-      "inlineLabel": "Brigand, Serjeant",
-      "inlineContext": "**Brigand, Serjeant:** _",
-      "lineText": "**Brigand, Serjeant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2)_",
-      "snippet": "**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_ **Brigand, Serjeant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2)_",
-      "hp": 14,
-      "ac": 15,
-      "hd": null,
-      "xp": "10+2",
-      "level": 2,
-      "raceClass": "2nd level, neutral evil, human fighters",
-      "notes": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2"
-    },
-    "canonicalData": {
-      "raw": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2",
-      "hp": "14",
-      "ac": "15",
-      "disposition": "neutral/evil",
-      "attributes": "physical",
-      "coins": "8 gp",
-      "raceClass": "2nd level, neutral evil, human fighters"
-    },
-    "canonicalParenthetical": "HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 8 gold in coin.",
-    "originalTitle": "Brigand, Serjeant"
-  },
-  {
-    "sourceIndex": 61144,
-    "title": "Brigand, crossbowmen",
-    "labels": {
-      "inline": "Brigand, crossbowmen",
-      "titleLine": "**Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1",
-      "start": 61144,
-      "end": 61455,
-      "startLine": 705,
-      "endLine": 705,
-      "titleLineNum": 703,
-      "titleLine": "**Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_",
-      "inlineLabel": "Brigand, crossbowmen",
-      "inlineContext": "**Brigand, crossbowmen:** _",
-      "lineText": "**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_",
-      "snippet": "**Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_ **Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_",
-      "hp": 5,
-      "ac": 13,
-      "hd": null,
-      "xp": "7+1",
-      "level": 1,
-      "raceClass": "1st level, neutral evil, human fighters",
-      "notes": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1"
-    },
-    "canonicalData": {
-      "raw": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1",
-      "hp": "5",
-      "ac": "13",
-      "disposition": "neutral/evil",
-      "attributes": "physical",
-      "coins": "6 gp",
-      "raceClass": "1st level, neutral evil, human fighters"
-    },
-    "canonicalParenthetical": "HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.",
-    "originalTitle": "Brigand, crossbowmen"
-  },
-  {
-    "sourceIndex": 61483,
-    "title": "Brigand, flailmen",
-    "labels": {
-      "inline": "Brigand, flailmen",
-      "titleLine": "**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1",
-      "start": 61483,
-      "end": 61721,
-      "startLine": 707,
-      "endLine": 707,
-      "titleLineNum": 705,
-      "titleLine": "**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_",
-      "inlineLabel": "Brigand, flailmen",
-      "inlineContext": "**Brigand, flailmen:** _",
-      "lineText": "**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_",
-      "snippet": "**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_ **Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_",
-      "hp": 5,
-      "ac": 14,
-      "hd": null,
-      "xp": "7+1",
-      "level": 1,
-      "raceClass": "1st level, neutral evil, human fighters",
-      "notes": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1"
-    },
-    "canonicalData": {
-      "raw": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1",
-      "hp": "5",
-      "ac": "14",
-      "disposition": "neutral/evil",
-      "attributes": "physical",
-      "coins": "6 sp",
-      "raceClass": "1st level, neutral evil, human fighters"
-    },
-    "canonicalParenthetical": "HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.",
-    "originalTitle": "Brigand, flailmen"
-  },
-  {
     "sourceIndex": 62055,
     "title": "Bugbear",
     "labels": {
@@ -834,210 +554,6 @@
     },
     "canonicalParenthetical": "HP 3, AC 18, disposition neutral. Saves: P.",
     "originalTitle": "Centipedes, Black, Giant"
-  },
-  {
-    "sourceIndex": 97199,
-    "title": "Children",
-    "labels": {
-      "inline": "Children x 3-6",
-      "titleLine": "**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_"
-    },
-    "isUnit": true,
-    "parsed": {
-      "parenthetical": "They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10.",
-      "start": 97199,
-      "end": 97271,
-      "startLine": 927,
-      "endLine": 927,
-      "titleLineNum": 925,
-      "titleLine": "**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_",
-      "inlineLabel": "Children x 3-6",
-      "inlineContext": "**Children x 3-6:** _",
-      "lineText": "**Children x 3-6:** _(They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10.)_  ",
-      "snippet": "**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_ **Children x 3-6:** _(They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10.)_",
-      "hp": 2,
-      "ac": 10,
-      "hd": "1d2",
-      "xp": null,
-      "level": null,
-      "raceClass": "neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10",
-      "notes": "They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10."
-    },
-    "canonicalData": {
-      "raw": "They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10.",
-      "hd": "1d2",
-      "hp": "2",
-      "ac": "10",
-      "disposition": "neutral",
-      "raceClass": "neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10"
-    },
-    "canonicalParenthetical": "HP 2, AC 10, disposition neutral. Saves: P.",
-    "originalTitle": "Children x 3-6"
-  },
-  {
-    "sourceIndex": 62393,
-    "title": "Elf, Wood, bowman",
-    "labels": {
-      "inline": "Elf, Wood, bowman",
-      "titleLine": "**Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1",
-      "start": 62393,
-      "end": 62799,
-      "startLine": 713,
-      "endLine": 713,
-      "titleLineNum": 711,
-      "titleLine": "**Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_",
-      "inlineLabel": "Elf, Wood, bowman",
-      "inlineContext": "**Elf, Wood, bowman:** _",
-      "lineText": "**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_ ",
-      "snippet": "**Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_ **Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_",
-      "hp": 8,
-      "ac": 12,
-      "hd": "1d10",
-      "xp": "13+1",
-      "level": 1,
-      "raceClass": "1st level, chaotic neutral fighters",
-      "notes": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1"
-    },
-    "canonicalData": {
-      "raw": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1",
-      "hd": "1d10",
-      "hp": "8",
-      "ac": "12",
-      "disposition": "chaos/neutral",
-      "attributes": "physical",
-      "coins": "18 sp",
-      "raceClass": "1st level, chaotic neutral fighters"
-    },
-    "canonicalParenthetical": "HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin.",
-    "originalTitle": "Elf, Wood, bowman"
-  },
-  {
-    "sourceIndex": 62830,
-    "title": "Elf, Wood, spearman",
-    "labels": {
-      "inline": "Elf, Wood, spearman",
-      "titleLine": "**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1",
-      "start": 62830,
-      "end": 63236,
-      "startLine": 715,
-      "endLine": 715,
-      "titleLineNum": 713,
-      "titleLine": "**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_",
-      "inlineLabel": "Elf, Wood, spearman",
-      "inlineContext": "**Elf, Wood, spearman:** _",
-      "lineText": "**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_",
-      "snippet": "**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_ **Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_",
-      "hp": 8,
-      "ac": 13,
-      "hd": "1d10",
-      "xp": "13+1",
-      "level": 1,
-      "raceClass": "1st level, chaotic neutral fighters",
-      "notes": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1"
-    },
-    "canonicalData": {
-      "raw": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1",
-      "hd": "1d10",
-      "hp": "8",
-      "ac": "13",
-      "disposition": "chaos/neutral",
-      "attributes": "physical",
-      "coins": "12 sp",
-      "raceClass": "1st level, chaotic neutral fighters"
-    },
-    "canonicalParenthetical": "HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin.",
-    "originalTitle": "Elf, Wood, spearman"
-  },
-  {
-    "sourceIndex": 63267,
-    "title": "Elf, Wood, swordsman",
-    "labels": {
-      "inline": "Elf, Wood, swordsman",
-      "titleLine": "**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3",
-      "start": 63267,
-      "end": 63689,
-      "startLine": 717,
-      "endLine": 717,
-      "titleLineNum": 715,
-      "titleLine": "**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_",
-      "inlineLabel": "Elf, Wood, swordsman",
-      "inlineContext": "**Elf, Wood, swordsman:** _",
-      "lineText": "**Elf, Wood, swordsman:** _(They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3)_",
-      "snippet": "**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_ **Elf, Wood, swordsman:** _(They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3)_",
-      "hp": 5,
-      "ac": 14,
-      "hd": "1d10",
-      "xp": "13+1",
-      "level": 3,
-      "raceClass": "1st - 3rd level, chaotic neutral fighters",
-      "notes": "They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3"
-    },
-    "canonicalData": {
-      "raw": "They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3",
-      "hd": "1d10",
-      "hp": "5",
-      "ac": "14",
-      "disposition": "chaos/neutral",
-      "attributes": "physical",
-      "coins": "2–12 gp",
-      "raceClass": "1st - 3rd level, chaotic neutral fighters"
-    },
-    "canonicalParenthetical": "HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin.",
-    "originalTitle": "Elf, Wood, swordsman"
-  },
-  {
-    "sourceIndex": 112303,
-    "title": "Ember Raventree (wood elf leader)",
-    "labels": {
-      "inline": "Ember Raventree (wood elf leader)",
-      "titleLine": "**Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166",
-      "start": 112303,
-      "end": 112848,
-      "startLine": 1037,
-      "endLine": 1037,
-      "titleLineNum": 1035,
-      "titleLine": "**Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_",
-      "inlineLabel": "Ember Raventree (wood elf leader)",
-      "inlineContext": "**Ember Raventree (wood elf leader):** _",
-      "lineText": "**Ember Raventree (wood elf leader):** _(He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166)_",
-      "snippet": "**Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_ **Ember Raventree (wood elf leader):** _(He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166)_",
-      "hp": 22,
-      "ac": 16,
-      "hd": "4d10",
-      "xp": "166",
-      "level": 4,
-      "raceClass": "He is a 4th level, chaotic neutral fighter whose",
-      "notes": "He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166"
-    },
-    "canonicalData": {
-      "raw": "He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166",
-      "hd": "4d10",
-      "hp": "22",
-      "ac": "16",
-      "disposition": "chaos/neutral",
-      "attributes": "physical",
-      "significantAttributes": "strength 17 and dexterity 17",
-      "coins": "35 sp, 100 gp",
-      "raceClass": "He is a 4th level, chaotic neutral fighter whose"
-    },
-    "canonicalParenthetical": "HP 22, AC 16, disposition chaos/neutral. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has 35 sp, 100 gp.",
-    "originalTitle": "Ember Raventree (wood elf leader)"
   },
   {
     "sourceIndex": 141713,
@@ -1201,7 +717,7 @@
   },
   {
     "sourceIndex": 259645,
-    "title": "Gnoll (variant 93)",
+    "title": "Gnoll",
     "labels": {
       "inline": "Gnoll females x 5",
       "titleLine": "**Gnoll males x 4:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2)_"
@@ -1280,35 +796,35 @@
     "originalTitle": "Goblin prisoner"
   },
   {
-    "sourceIndex": 162165,
-    "title": "Goblin (variant 67)",
+    "sourceIndex": 184824,
+    "title": "Goblin",
     "labels": {
-      "inline": "Goblin females x 13",
-      "titleLine": "**Goblin males x 8:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1)_"
+      "inline": "Goblin females x 6",
+      "titleLine": "**Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_"
     },
     "isUnit": true,
     "parsed": {
-      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 6-inch knives. XP: 3+1",
-      "start": 162165,
-      "end": 162290,
-      "startLine": 1493,
-      "endLine": 1493,
-      "titleLineNum": 1491,
-      "titleLine": "**Goblin males x 8:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1)_",
-      "inlineLabel": "Goblin females x 13",
-      "inlineContext": "**Goblin females x 13:** _",
-      "lineText": "**Goblin females x 13:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 6-inch knives. XP: 3+1)_",
-      "snippet": "**Goblin males x 8:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1)_ **Goblin females x 13:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 6-inch knives. XP: 3+1)_",
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1",
+      "start": 184824,
+      "end": 184949,
+      "startLine": 1676,
+      "endLine": 1676,
+      "titleLineNum": 1674,
+      "titleLine": "**Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_",
+      "inlineLabel": "Goblin females x 6",
+      "inlineContext": "**Goblin females x 6:** _",
+      "lineText": "**Goblin females x 6:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1)_",
+      "snippet": "**Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_ **Goblin females x 6:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1)_",
       "hp": 2,
       "ac": 12,
       "hd": "1d6",
       "xp": "3+1",
       "level": null,
       "raceClass": "These lawful evil humanoids'",
-      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 6-inch knives. XP: 3+1"
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1"
     },
     "canonicalData": {
-      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 6-inch knives. XP: 3+1",
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1",
       "hd": "1d6",
       "hp": "2",
       "ac": "12",
@@ -1316,11 +832,11 @@
       "raceClass": "humanoid"
     },
     "canonicalParenthetical": "HP 2, AC 12, disposition law/evil. Saves: P.",
-    "originalTitle": "Goblin females x 13"
+    "originalTitle": "Goblin females x 6"
   },
   {
     "sourceIndex": 168929,
-    "title": "Goblin (variant 68)",
+    "title": "Goblin",
     "labels": {
       "inline": "Goblin serjeant",
       "titleLine": "**Goblin warriors x 3:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, light crossbow, 6 bolts, and 1d6 sp. XP: 5+1)_"
@@ -1359,45 +875,6 @@
     },
     "canonicalParenthetical": "HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp.",
     "originalTitle": "Goblin serjeant"
-  },
-  {
-    "sourceIndex": 184824,
-    "title": "Goblin (variant 72)",
-    "labels": {
-      "inline": "Goblin females x 6",
-      "titleLine": "**Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_"
-    },
-    "isUnit": true,
-    "parsed": {
-      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1",
-      "start": 184824,
-      "end": 184949,
-      "startLine": 1676,
-      "endLine": 1676,
-      "titleLineNum": 1674,
-      "titleLine": "**Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_",
-      "inlineLabel": "Goblin females x 6",
-      "inlineContext": "**Goblin females x 6:** _",
-      "lineText": "**Goblin females x 6:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1)_",
-      "snippet": "**Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_ **Goblin females x 6:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1)_",
-      "hp": 2,
-      "ac": 12,
-      "hd": "1d6",
-      "xp": "3+1",
-      "level": null,
-      "raceClass": "These lawful evil humanoids'",
-      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1"
-    },
-    "canonicalData": {
-      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1",
-      "hd": "1d6",
-      "hp": "2",
-      "ac": "12",
-      "disposition": "law/evil",
-      "raceClass": "humanoid"
-    },
-    "canonicalParenthetical": "HP 2, AC 12, disposition law/evil. Saves: P.",
-    "originalTitle": "Goblin females x 6"
   },
   {
     "sourceIndex": 177449,
@@ -1807,47 +1284,8 @@
     "originalTitle": "Hobgoblin"
   },
   {
-    "sourceIndex": 250292,
-    "title": "Hobgoblin (variant 90)",
-    "labels": {
-      "inline": "Hobgoblin females x 9",
-      "titleLine": "**Hobgoblin males x 2 or 4:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1)_"
-    },
-    "isUnit": true,
-    "parsed": {
-      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have heavy knives. XP: 5+1",
-      "start": 250292,
-      "end": 250469,
-      "startLine": 2361,
-      "endLine": 2361,
-      "titleLineNum": 2359,
-      "titleLine": "**Hobgoblin males x 2 or 4:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1)_",
-      "inlineLabel": "Hobgoblin females x 9",
-      "inlineContext": "**Hobgoblin females x 9:** _",
-      "lineText": "**Hobgoblin females x 9:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have heavy knives. XP: 5+1)_",
-      "snippet": "**Hobgoblin males x 2 or 4:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1)_ **Hobgoblin females x 9:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have heavy knives. XP: 5+1)_",
-      "hp": 3,
-      "ac": 12,
-      "hd": "1d6",
-      "xp": "5+1",
-      "level": null,
-      "raceClass": "These lawful evil humanoids'",
-      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have heavy knives. XP: 5+1"
-    },
-    "canonicalData": {
-      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have heavy knives. XP: 5+1",
-      "hd": "1d6",
-      "hp": "3",
-      "ac": "12",
-      "disposition": "law/evil",
-      "raceClass": "humanoid"
-    },
-    "canonicalParenthetical": "HP 3, AC 12, disposition law/evil. Saves: P.",
-    "originalTitle": "Hobgoblin females x 9"
-  },
-  {
     "sourceIndex": 254900,
-    "title": "Hobgoblin (variant 92)",
+    "title": "Hobgoblin",
     "labels": {
       "inline": "Hobgoblin females x 3",
       "titleLine": "**Hub-Gub the Bloody (Hobgoblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 3d10, HP 18, AC 16, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. Due to its strength and brutality, all melee damage is at +2. It wears full chain mail armor and wields a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows. In a pouch it carries 12 gp and an iron key to #55. XP: 84)_"
@@ -2133,48 +1571,8 @@
     "originalTitle": "Kobold"
   },
   {
-    "sourceIndex": 142809,
-    "title": "Kobold (variant 62)",
-    "labels": {
-      "inline": "Kobold serjeant x 1",
-      "titleLine": "**Kobold warrior x 6:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_"
-    },
-    "isUnit": true,
-    "parsed": {
-      "parenthetical": "This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, keys to room #5 and #6, and 1d6 sp. XP: 22",
-      "start": 142809,
-      "end": 143101,
-      "startLine": 1314,
-      "endLine": 1314,
-      "titleLineNum": 1312,
-      "titleLine": "**Kobold warrior x 6:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_",
-      "inlineLabel": "Kobold serjeant x 1",
-      "inlineContext": "**Kobold serjeant x 1:** _",
-      "lineText": "**Kobold serjeant x 1:** _(This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, keys to room #5 and #6, and 1d6 sp. XP: 22)_",
-      "snippet": "**Kobold warrior x 6:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_ **Kobold serjeant x 1:** _(This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, keys to room #5 and #6, and 1d6 sp. XP: 22)_",
-      "hp": 6,
-      "ac": 15,
-      "hd": "2d4",
-      "xp": "22",
-      "level": null,
-      "raceClass": "This lawful evil humanoid",
-      "notes": "This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, keys to room #5 and #6, and 1d6 sp. XP: 22"
-    },
-    "canonicalData": {
-      "raw": "This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, keys to room #5 and #6, and 1d6 sp. XP: 22",
-      "hd": "2d4",
-      "hp": "6",
-      "ac": "15",
-      "disposition": "law/evil",
-      "raceClass": "humanoid",
-      "coins": "6 sp"
-    },
-    "canonicalParenthetical": "HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.",
-    "originalTitle": "Kobold serjeant x 1"
-  },
-  {
     "sourceIndex": 147108,
-    "title": "Kobold (variant 64)",
+    "title": "Kobold",
     "labels": {
       "inline": "Kobold Bodyguards x 2",
       "titleLine": "**King Griggle-gruk (Kobold Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d4, HP 14, AC 17, MV 30 ft. Its saves are physical. Its attacks are at +2 damage due to its strength and ferocity. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber. In a pouch it carries 18 gp. XP: 72)_"
@@ -2332,7 +1730,7 @@
   },
   {
     "sourceIndex": 89896,
-    "title": "Losel (variant 42)",
+    "title": "Losel",
     "labels": {
       "inline": "Losel sub-chiefs x 10",
       "titleLine": "**Ji'gun-tima (Losel Shaman):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260)_"
@@ -2372,7 +1770,7 @@
   },
   {
     "sourceIndex": 91060,
-    "title": "Losel (variant 43)",
+    "title": "Losel",
     "labels": {
       "inline": "Losel females x 35",
       "titleLine": "**Losel warriors x 30:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_"
@@ -2612,125 +2010,8 @@
     "originalTitle": "Orc"
   },
   {
-    "sourceIndex": 201602,
-    "title": "Orc (variant 77)",
-    "labels": {
-      "inline": "Orcs x 3",
-      "titleLine": "**Area #g:** There are **3 orc guards** stationed at the end of this 40-foot-long hall. An iron bell with a chain pull that threads into the stonework is set on the wall here, it tolling when the **pit trap [X]** above is triggered. If alerted by the bell, 2 of these orcs will rush to jab their spears at the pit trap victims while the third will alert the guards at #30."
-    },
-    "isUnit": true,
-    "parsed": {
-      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d6 ep. XP: 5+1",
-      "start": 201602,
-      "end": 201879,
-      "startLine": 1834,
-      "endLine": 1834,
-      "titleLineNum": 1832,
-      "titleLine": "**Area #g:** There are **3 orc guards** stationed at the end of this 40-foot-long hall. An iron bell with a chain pull that threads into the stonework is set on the wall here, it tolling when the **pit trap [X]** above is triggered. If alerted by the bell, 2 of these orcs will rush to jab their spears at the pit trap victims while the third will alert the guards at #30.",
-      "inlineLabel": "Orcs x 3",
-      "inlineContext": "**Orcs x 3:** _",
-      "lineText": "**Orcs x 3:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d6 ep. XP: 5+1)_",
-      "snippet": "**Area #g:** There are **3 orc guards** stationed at the end of this 40-foot-long hall. An iron bell with a chain pull that threads into the stonework is set on the wall here, it tolling when the **pit trap [X]** above is triggered. If alerted by the bell, 2 of these orcs will rush to jab their spears at the pit trap victims while the third will alert the guards at #30. **Orcs x 3:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d6 ep. XP: 5+1)_",
-      "hp": 5,
-      "ac": 14,
-      "hd": "1d8",
-      "xp": "5+1",
-      "level": null,
-      "raceClass": "These lawful evil humanoids'",
-      "notes": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d6 ep. XP: 5+1"
-    },
-    "canonicalData": {
-      "raw": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d6 ep. XP: 5+1",
-      "hd": "1d8",
-      "hp": "5",
-      "ac": "14",
-      "disposition": "law/evil",
-      "raceClass": "humanoid"
-    },
-    "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P.",
-    "originalTitle": "Orcs x 3"
-  },
-  {
-    "sourceIndex": 202054,
-    "title": "Orc (variant 78)",
-    "labels": {
-      "inline": "Orcs x 4",
-      "titleLine": "The door is unlocked. There are **4 orcs guards** here. They will rush to the hue and cry of battle should intruders present."
-    },
-    "isUnit": true,
-    "parsed": {
-      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d8 ep. XP: 5+1",
-      "start": 202054,
-      "end": 202331,
-      "startLine": 1840,
-      "endLine": 1840,
-      "titleLineNum": 1838,
-      "titleLine": "The door is unlocked. There are **4 orcs guards** here. They will rush to the hue and cry of battle should intruders present.",
-      "inlineLabel": "Orcs x 4",
-      "inlineContext": "**Orcs x 4:** _",
-      "lineText": "**Orcs x 4:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d8 ep. XP: 5+1)_",
-      "snippet": "The door is unlocked. There are **4 orcs guards** here. They will rush to the hue and cry of battle should intruders present. **Orcs x 4:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d8 ep. XP: 5+1)_",
-      "hp": 5,
-      "ac": 14,
-      "hd": "1d8",
-      "xp": "5+1",
-      "level": null,
-      "raceClass": "These lawful evil humanoids'",
-      "notes": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d8 ep. XP: 5+1"
-    },
-    "canonicalData": {
-      "raw": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d8 ep. XP: 5+1",
-      "hd": "1d8",
-      "hp": "5",
-      "ac": "14",
-      "disposition": "law/evil",
-      "raceClass": "humanoid"
-    },
-    "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P.",
-    "originalTitle": "Orcs x 4"
-  },
-  {
-    "sourceIndex": 204714,
-    "title": "Orc (variant 79)",
-    "labels": {
-      "inline": "Orcs x 6",
-      "titleLine": "The males will rise to arms upon intrusion, issuing their hue and cry, and possibly (1-in-4 chance) summoning forth the chieftain, **King Krusher** (#35)."
-    },
-    "isUnit": true,
-    "parsed": {
-      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, mace, and 1d8 ep. XP: 5+1",
-      "start": 204714,
-      "end": 204985,
-      "startLine": 1870,
-      "endLine": 1870,
-      "titleLineNum": 1868,
-      "titleLine": "The males will rise to arms upon intrusion, issuing their hue and cry, and possibly (1-in-4 chance) summoning forth the chieftain, **King Krusher** (#35).",
-      "inlineLabel": "Orcs x 6",
-      "inlineContext": "**Orcs x 6:** _",
-      "lineText": "**Orcs x 6:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, mace, and 1d8 ep. XP: 5+1)_",
-      "snippet": "The males will rise to arms upon intrusion, issuing their hue and cry, and possibly (1-in-4 chance) summoning forth the chieftain, **King Krusher** (#35). **Orcs x 6:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, mace, and 1d8 ep. XP: 5+1)_",
-      "hp": 5,
-      "ac": 14,
-      "hd": "1d8",
-      "xp": "5+1",
-      "level": null,
-      "raceClass": "These lawful evil humanoids'",
-      "notes": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, mace, and 1d8 ep. XP: 5+1"
-    },
-    "canonicalData": {
-      "raw": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, mace, and 1d8 ep. XP: 5+1",
-      "hd": "1d8",
-      "hp": "5",
-      "ac": "14",
-      "disposition": "law/evil",
-      "raceClass": "humanoid"
-    },
-    "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P.",
-    "originalTitle": "Orcs x 6"
-  },
-  {
     "sourceIndex": 205532,
-    "title": "Orc (variant 80)",
+    "title": "Orc",
     "labels": {
       "inline": "Orc Guards x 2",
       "titleLine": "This is where general meetings are held and gatherings prior to a religious ceremony. There are **2 orc guards** stationed here. They stand in the 10-foot-long passage at the north side, thus protecting the door to the chieftain's chamber (#35). They will not be immediately observed if the PCs enter this chamber, potentially surprising the party. Unless silenced before they are aware of the PCs, they will have let loose their battle cries and thus alert the chieftain of intrusion"
@@ -2769,7 +2050,7 @@
   },
   {
     "sourceIndex": 209707,
-    "title": "Orc (variant 82)",
+    "title": "Orc",
     "labels": {
       "inline": "Orc chieftain's mate",
       "titleLine": "The **chieftain's mate** is usually lying under the sheets of the four-poster. She is a round, voluptuous creature with a protruding lower jaw from which large fangs jut. She wears an obscene white silk dress, torn and stained. She cowers in the face of danger, begging for mercy."
@@ -3086,47 +2367,6 @@
     "originalTitle": "River Rats, giant x 40"
   },
   {
-    "sourceIndex": 70331,
-    "title": "Rivermen",
-    "labels": {
-      "inline": "Rivermen",
-      "titleLine": "**Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1",
-      "start": 70331,
-      "end": 70650,
-      "startLine": 753,
-      "endLine": 753,
-      "titleLineNum": 751,
-      "titleLine": "**Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_",
-      "inlineLabel": "Rivermen",
-      "inlineContext": "**Rivermen:** _",
-      "lineText": "**Rivermen:** _(They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1)_",
-      "snippet": "**Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_ **Rivermen:** _(They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1)_",
-      "hp": 5,
-      "ac": 11,
-      "hd": "1d8",
-      "xp": "5+1",
-      "level": 0,
-      "raceClass": "0th level, chaotic neutral, human fighters",
-      "notes": "They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1"
-    },
-    "canonicalData": {
-      "raw": "They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1",
-      "hd": "1d8",
-      "hp": "5",
-      "ac": "11",
-      "disposition": "chaos/neutral",
-      "attributes": "physical",
-      "secondarySkills": "Nautical Ability",
-      "raceClass": "0th level, chaotic neutral, human fighters"
-    },
-    "canonicalParenthetical": "HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability.",
-    "originalTitle": "Rivermen"
-  },
-  {
     "sourceIndex": 218587,
     "title": "Skeleton",
     "labels": {
@@ -3362,86 +2602,6 @@
     },
     "canonicalParenthetical": "HP 25, AC 15, disposition chaos/evil. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.",
     "originalTitle": "The Little Hillwood Werewolf"
-  },
-  {
-    "sourceIndex": 96795,
-    "title": "The Ogre",
-    "labels": {
-      "inline": "The Ogre",
-      "titleLine": "This cottage is owned by a 9.5-foot tall, hairy, pot-bellied **ogre** of nasty disposition. The ogre is here 85% of the time, cracking the whip on the **3-6 human children** whom he has enslaved; otherwise he is out on a raiding mission for loot or more slaves."
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178",
-      "start": 96795,
-      "end": 97174,
-      "startLine": 925,
-      "endLine": 925,
-      "titleLineNum": 923,
-      "titleLine": "This cottage is owned by a 9.5-foot tall, hairy, pot-bellied **ogre** of nasty disposition. The ogre is here 85% of the time, cracking the whip on the **3-6 human children** whom he has enslaved; otherwise he is out on a raiding mission for loot or more slaves.",
-      "inlineLabel": "The Ogre",
-      "inlineContext": "**The Ogre:** _",
-      "lineText": "**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_",
-      "snippet": "This cottage is owned by a 9.5-foot tall, hairy, pot-bellied **ogre** of nasty disposition. The ogre is here 85% of the time, cracking the whip on the **3-6 human children** whom he has enslaved; otherwise he is out on a raiding mission for loot or more slaves. **The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_",
-      "hp": 27,
-      "ac": 16,
-      "hd": "4d12",
-      "xp": "178",
-      "level": null,
-      "raceClass": "This chaotic evil humanoid",
-      "notes": "This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178"
-    },
-    "canonicalData": {
-      "raw": "This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178",
-      "hd": "4d12",
-      "hp": "27",
-      "ac": "16",
-      "disposition": "chaos/evil",
-      "raceClass": "humanoid",
-      "attributes": "dlock"
-    },
-    "canonicalParenthetical": "HP 27, AC 16, disposition chaos/evil. Saves: P.",
-    "originalTitle": "The Ogre"
-  },
-  {
-    "sourceIndex": 71967,
-    "title": "Thieves",
-    "labels": {
-      "inline": "Thieves",
-      "titleLine": "**Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_"
-    },
-    "isUnit": false,
-    "parsed": {
-      "parenthetical": "They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.",
-      "start": 71967,
-      "end": 72440,
-      "startLine": 763,
-      "endLine": 763,
-      "titleLineNum": 761,
-      "titleLine": "**Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_",
-      "inlineLabel": "Thieves",
-      "inlineContext": "**Thieves**:** _",
-      "lineText": "**Thieves**:** _(They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.)_ ",
-      "snippet": "**Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_ **Thieves**:** _(They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.)_",
-      "hp": 4,
-      "ac": 14,
-      "hd": null,
-      "xp": "50+3",
-      "level": 4,
-      "raceClass": "3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves",
-      "notes": "They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4."
-    },
-    "canonicalData": {
-      "raw": "They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.",
-      "hp": "4",
-      "ac": "14",
-      "disposition": "variable",
-      "attributes": "physical",
-      "coins": "6 gp",
-      "raceClass": "3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves"
-    },
-    "canonicalParenthetical": "HP 4, AC 14, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.",
-    "originalTitle": "Thieves"
   },
   {
     "sourceIndex": 108895,

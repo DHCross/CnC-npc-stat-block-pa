@@ -39,10 +39,13 @@ const POPULATION_DESCRIPTORS = [
 
 // NPC name patterns (proper names without creature descriptors)
 const NPC_PATTERNS = [
-  /^[A-Z][a-z]+\s+[A-Z][a-z]+$/, // "Robert Cooper"
-  /^"[^"]+"$/,                    // "Charlie"
-  /^Prisoner\s+#?\d+/i,           // "Prisoner #2"
-  /^Children\s+x/i,               // "Children x 3-6"
+  /^[A-Z][a-z]+\s+[A-Z][a-z]+$/,              // "Robert Cooper"
+  /^Prisoner\s+#?\d+/i,                        // "Prisoner #2"
+  /^Children$/i,                               // "Children"
+  /^\([^)]+\)$/,                               // "(fisherman/hunter/...)"
+  /^Elf,\s+Wood,\s+(bowman|spearman|swordsman)$/i, // Classed NPCs
+  /^(Bandit|Brigand|Rivermen|Thieves)$/i,     // Generic human NPCs
+  /^(Bandit|Brigand),?\s*(Lieutenant|Serjeant|crossbowmen|flailmen)?$/i, // Classed bandits
 ];
 
 // Quantity patterns to strip
@@ -56,33 +59,35 @@ const QUANTITY_PATTERNS = [
  * Check if entry is an NPC (not a monster)
  */
 function isNPC(title, entry) {
-  // Keep named unique creatures/bosses FIRST
-  if (/\((Chieftain|King|Leader|Shaman)\)|Giant of the|Ogre|Werewolf/i.test(title)) {
+  // Keep named unique creatures/bosses FIRST (these are special monsters)
+  if (/\((Chieftain|King|Leader|Shaman)\)|Giant of the/i.test(title)) {
     return false;
   }
   
-  // Keep creature types even if they have "The" prefix
-  if (/^The\s+(Ogre|Werewolf|Harpy)/i.test(title)) {
+  // Keep unique named monsters with quotes (special encounters)
+  if (/^"[^"]+".*?(Ogre|Owlbear|Werewolf)$/i.test(title)) {
     return false;
   }
   
-  // Check NPC patterns
+  // Keep "The [Monster]" patterns
+  if (/^The\s+(Little\s+Hillwood\s+)?Werewolf$/i.test(title)) {
+    return false;
+  }
+  
+  // Filter NPC patterns
   if (NPC_PATTERNS.some(p => p.test(title))) {
     return true;
   }
   
-  // Check for level indicators (NPCs typically have class levels)
+  // Filter entries with class levels that aren't boss monsters
   const hasClassLevel = entry.parsed?.level || 
                        /\d+(st|nd|rd|th)\s+level/i.test(entry.parsed?.parenthetical || '');
   
-  // Proper names with class levels are NPCs (but not if they're leaders)
-  if (hasClassLevel && /^[A-Z][a-z]+(\s+[A-Z][a-z]+)+/.test(title) && !/leader|chieftain/i.test(title)) {
-    return true;
-  }
-  
-  // "Wood Elf" patterns with class levels are NPCs
-  if (/^Wood Elf\s+(bowman|spearman|swordsman)/i.test(title)) {
-    return true;
+  if (hasClassLevel && !/\((Chieftain|King|Leader|Shaman)\)/i.test(title)) {
+    // Proper names with class levels are NPCs
+    if (/^[A-Z][a-z]+(\s+[A-Z][a-z]+)+/.test(title)) {
+      return true;
+    }
   }
   
   return false;
@@ -103,6 +108,7 @@ function normalizeCreatureName(title) {
   
   // Strip population descriptors ONLY if they're generic roles
   // Keep creature-defining descriptors like "poisonous", "giant", "deadly"
+  // Keep rank/type descriptors when they appear with comma (", serjeant")
   const genericRoles = [
     /\s+males?\s*$/i,
     /\s+females?\s*$/i,
@@ -112,13 +118,17 @@ function normalizeCreatureName(title) {
     /\s+warriors?\s*$/i,
     /\s+scouts?\s*$/i,
     /\s+bodyguards?\s*$/i,
-    /\s+serjeants?\s*$/i,
-    /\s+patrol\s+warriors?\s*$/i,
     /\s+sub-chiefs?\s*$/i,
     /\s+chieftain'?s?\s+mate\s*$/i,
     /\s+prisoner$/i,              // "Goblin prisoner" → "Goblin"
     /\s+patrol$/i,                // "Goblin patrol" → "Goblin"
   ];
+  
+  // Do NOT strip serjeant/lieutenant if they appear after comma (those are types)
+  // Only strip them if they're standalone (like "serjeant x 1")
+  if (!/,\s*(serjeant|lieutenant)/i.test(normalized)) {
+    genericRoles.push(/\s+serjeants?\s*$/i);
+  }
   
   genericRoles.forEach(pattern => {
     normalized = normalized.replace(pattern, '');
@@ -155,22 +165,20 @@ function getComparisonKey(title) {
 
 /**
  * Check if two entries have mechanically different stats
- * HP variation alone is not enough - must have different HD, AC, or abilities
+ * Only HD and AC define different stat blocks (not HP rolls)
  */
 function haveDifferentStats(entry1, entry2) {
   const data1 = entry1.canonicalData || {};
   const data2 = entry2.canonicalData || {};
   
-  // Compare structural stats (not HP, which varies per instance)
-  if (data1.ac !== data2.ac) return true;
+  // Primary mechanical differences
   if (data1.hd !== data2.hd) return true;
+  if (data1.ac !== data2.ac) return true;
   
-  // Compare disposition
+  // Secondary: disposition changes are meaningful
   if (data1.disposition !== data2.disposition) return true;
   
-  // Compare race/class (indicates different variant)
-  if (data1.raceClass !== data2.raceClass) return true;
-  
+  // HP differences alone don't matter (same HD = same stat block)
   return false;
 }
 
@@ -225,19 +233,36 @@ function buildIndex(cleanEntries) {
     if (indexMap.has(key)) {
       const existing = indexMap.get(key);
       
-      // Check if mechanically different
+      // Check if mechanically different (HD/AC based, not HP)
       if (haveDifferentStats(entry, existing)) {
         console.log(`  ⚠️  Mechanical variant detected:`);
-        console.log(`      "${existing.title}" vs "${entry.title}"`);
-        console.log(`      HP: ${existing.canonicalData?.hp} vs ${entry.canonicalData?.hp}`);
-        console.log(`      Keeping both as separate entries`);
+        console.log(`      Existing: "${existing.title}"`);
+        console.log(`        HD: ${existing.canonicalData?.hd}, AC: ${existing.canonicalData?.ac}`);
+        console.log(`      New: "${entry.title}"`);
+        console.log(`        HD: ${entry.canonicalData?.hd}, AC: ${entry.canonicalData?.ac}`);
+        console.log(`      → Keeping as separate entry\n`);
         
-        // Add suffix to distinguish variants
-        const variantTitle = `${entry.title} (variant ${indexMap.size + 1})`;
-        indexMap.set(`${key}_variant_${idx}`, { ...entry, title: variantTitle });
+        // Keep the more descriptive title (longer = more specific)
+        if (entry.title.length > existing.title.length) {
+          // Replace existing with more specific variant
+          indexMap.set(key, entry);
+          console.log(`      Replaced less specific entry with more descriptive one`);
+        } else {
+          // Add as new variant with unique key
+          const variantKey = `${key}_${entry.canonicalData?.hd}_${entry.canonicalData?.ac}`.replace(/\s+/g, '_');
+          indexMap.set(variantKey, entry);
+        }
       } else {
-        console.log(`  Duplicate: "${entry.title}" (same as existing "${existing.title}")`);
+        console.log(`  Duplicate: "${entry.title}" (same HD/AC as "${existing.title}")`);
         stats.filtered_duplicates++;
+        
+        // Keep the more descriptive title if it's longer
+        if (entry.title.length > existing.title.length && 
+            !entry.title.includes('variant') &&
+            (entry.title.includes(',') || entry.title.includes('('))) {
+          console.log(`    → Replacing with more descriptive title: "${entry.title}"`);
+          indexMap.set(key, entry);
+        }
       }
     } else {
       indexMap.set(key, entry);
