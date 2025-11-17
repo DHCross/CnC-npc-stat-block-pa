@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import { extractParentheticalData, buildCanonicalParenthetical, isUnitHeading, expandShorthandForClassed, normalizePrimaryAttributesForMonsters, canonicalizeShields, repositionMagicItemBonuses, normalizeEquipmentVerbs, deduplicateEquipment } from '../src/lib/enhanced-parser.ts';
-import { classifyCreature, extractPreCheckData, getFormattingRules } from '../src/lib/classification-rules.ts';
+import { classifyCreature, classifyEntityV3, extractPreCheckData, getFormattingRules } from '../src/lib/classification-rules.ts';
 import type { CanonicalData } from '../src/lib/canonical-data-mapper.ts';
 
 const DATA_SCOPE = process.env.DATA_SCOPE || 'mouths-of-madness';
@@ -41,6 +41,29 @@ function buildCanonicalDataFromParenthetical(title: string, data: any): Canonica
   };
 }
 
+// If a monster is missing canonical HD, fall back to a user-provided mapping
+// of canonical hit-dice values (M&T canonical defaults). This keeps monsters
+// in the HD path so they show "Level X(dY), HP Z" instead of plain HP.
+function applyHdFallbacks(title: string, obj: any) {
+  try {
+    const mapPath = path.join(process.cwd(), 'data', 'hd-canonical.json');
+    if (!fs.existsSync(mapPath)) return obj;
+    const hdMap: Record<string, string> = JSON.parse(fs.readFileSync(mapPath, 'utf8'));
+    const lowered = String(title || '').toLowerCase();
+    for (const key of Object.keys(hdMap)) {
+      if (lowered.includes(key)) {
+        if (!obj.hd) {
+          obj.hd = hdMap[key];
+        }
+        break;
+      }
+    }
+  } catch (err) {
+    // ignore mapping errors
+  }
+  return obj;
+}
+
 function analyzeAndCanonicalize() {
   const candidates = safeReadJson(CANDIDATES);
   const canonical: any[] = [];
@@ -74,9 +97,44 @@ function analyzeAndCanonicalize() {
       }
 
       const canonicalData = buildCanonicalDataFromParenthetical(title, data);
+      // Apply canonical HD defaults for monsters lacking HD; ensure the
+      // raw parsed 'data' also reflects any canonical HD so the canonical
+      // HTML generation shows the HD value.
+      applyHdFallbacks(title, canonicalData);
+      if (canonicalData.hd && !data.hd) {
+        data.hd = canonicalData.hd;
+      }
       const preCheck = extractPreCheckData(title, canonicalData);
-      const classification = classifyCreature(title, canonicalData);
-      const formattingRules = classification ? getFormattingRules(classification, preCheck) : undefined;
+      // Prefer the Version 3 classifier for most formatting decisions; fallback
+      // to legacy classifier for compatibility only when needed.
+      const v3Classification = classifyEntityV3(title, canonicalData, { spells: data.spells, raceClass: data.raceClass, description: data.raw });
+      // For monsters/units, ensure canonicalData.primaryAttributes defaults to 'physical'
+      // unless the parenthetical explicitly states 'mental'. This keeps the JSON
+      // canonical records consistent with the published shorthand for monsters.
+      if (v3Classification.format !== 'A') {
+        const attr = String(canonicalData.primaryAttributes || '').toLowerCase();
+        if (!attr || !/\bmental\b/.test(attr)) {
+          canonicalData.primaryAttributes = 'physical';
+          if (!data.attributes || /\b(strength|dexterity|constitution|str|dex|con)\b/i.test(String(data.attributes || ''))) {
+            data.attributes = 'physical';
+          }
+        }
+        // Also override single-attribute tokens (strength/dex/constitution) to 'physical'
+        if (/\b(strength|dexterity|constitution|str|dex|con)\b/i.test(String(canonicalData.primaryAttributes || ''))) {
+          canonicalData.primaryAttributes = 'physical';
+          if (!data.attributes || /\b(strength|dexterity|constitution|str|dex|con)\b/i.test(String(data.attributes || ''))) {
+            data.attributes = 'physical';
+          }
+        }
+      }
+      const classification: any = {
+        type: v3Classification.type,
+        subtype: v3Classification.subtype,
+        confidence: v3Classification.confidence,
+        reasoning: v3Classification.reasoning,
+        warnings: v3Classification.warnings
+      };
+      const formattingRules = getFormattingRules(classification, preCheck);
 
       let canonicalParenthetical = buildCanonicalParenthetical(
         data,

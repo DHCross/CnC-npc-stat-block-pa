@@ -163,10 +163,7 @@ function getComparisonKey(title) {
     .trim();
 }
 
-/**
- * Check if two entries have mechanically different stats
- * Only HD and AC define different stat blocks (not HP rolls)
- */
+/**\n * Check if two entries have mechanically different stats\n * Per OGL: Only Level (die type, stored in 'hd' field) and AC define different stat blocks\n * HP rolls don't create variants - same Level = same creature\n */
 function haveDifferentStats(entry1, entry2) {
   const data1 = entry1.canonicalData || {};
   const data2 = entry2.canonicalData || {};
@@ -178,7 +175,7 @@ function haveDifferentStats(entry1, entry2) {
   // Secondary: disposition changes are meaningful
   if (data1.disposition !== data2.disposition) return true;
   
-  // HP differences alone don't matter (same HD = same stat block)
+  // HP differences alone don't matter (same Level = same stat block)
   return false;
 }
 
@@ -233,13 +230,9 @@ function buildIndex(cleanEntries) {
     if (indexMap.has(key)) {
       const existing = indexMap.get(key);
       
-      // Check if mechanically different (HD/AC based, not HP)
+      // Check if mechanically different (Level/AC based, not HP)
       if (haveDifferentStats(entry, existing)) {
-        console.log(`  ⚠️  Mechanical variant detected:`);
-        console.log(`      Existing: "${existing.title}"`);
-        console.log(`        HD: ${existing.canonicalData?.hd}, AC: ${existing.canonicalData?.ac}`);
-        console.log(`      New: "${entry.title}"`);
-        console.log(`        HD: ${entry.canonicalData?.hd}, AC: ${entry.canonicalData?.ac}`);
+        console.log(`  ⚠️  Mechanical variant detected:`);\n        console.log(`      Existing: \"${existing.title}\"`);\n        console.log(`        Level: ${existing.canonicalData?.hd}, AC: ${existing.canonicalData?.ac}`);\n        console.log(`      New: \"${entry.title}\"`);\n        console.log(`        Level: ${entry.canonicalData?.hd}, AC: ${entry.canonicalData?.ac}`);
         console.log(`      → Keeping as separate entry\n`);
         
         // Keep the more descriptive title (longer = more specific)
@@ -253,7 +246,7 @@ function buildIndex(cleanEntries) {
           indexMap.set(variantKey, entry);
         }
       } else {
-        console.log(`  Duplicate: "${entry.title}" (same HD/AC as "${existing.title}")`);
+        console.log(`  Duplicate: "${entry.title}" (same Level/AC as "${existing.title}")`);
         stats.filtered_duplicates++;
         
         // Keep the more descriptive title if it's longer

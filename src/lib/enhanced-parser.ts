@@ -30,6 +30,7 @@ export function sanitizeCanonicalText(text: string): string {
   result = result.replace(/\barmors\b/gi, 'armor');
   result = result.replace(/\barmour\b/gi, 'armor');
   result = result.replace(/\bhams\b/gi, 'ham');
+  result = result.replace(/\bscrolls\b/gi, 'scroll');
   result = result.replace(/\btrashs\b/gi, 'trash');
   result = result.replace(/\beachs\b/gi, 'each');
   // Normalize odd pluralization with trailing 's' artifacts
@@ -137,8 +138,9 @@ export interface ParsedTitleAndBody {
 }
 
 import { addMagicItemMechanics, applyNameMappings, MAGIC_ITEM_MAPPINGS, canonicalizeMagicItemName } from './name-mappings';
-import { estimateHpFromHd, isRankedNamedEntity } from './stat-block-helpers';
+import { estimateHpFromHd, isRankedNamedEntity, formatHdAsLevel } from './stat-block-helpers';
 import type { FormattingRules } from './classification-rules';
+import { classifyEntityV3, type SignalExtractionContext } from './classification-rules';
 
 function wrapItalic(text: string): string {
   // If already italicized, keep it
@@ -782,19 +784,19 @@ export function isUnitHeading(title: string): boolean {
 export function normalizeDisposition(disposition: string): string {
   const trimmed = disposition.trim().toLowerCase();
   const mapping: Record<string, string> = {
-    'lawful good': 'law/good',
-    'lawful neutral': 'law/neutral',
-    'lawful evil': 'law/evil',
-    'neutral good': 'neutral/good',
-    'true neutral': 'neutral',
-    'neutral': 'neutral',
-    'neutral/neutral': 'neutral',
-    'neutral evil': 'neutral/evil',
-    'chaotic good': 'chaos/good',
-    'chaotic neutral': 'chaos/neutral',
-    'chaotic evil': 'chaos/evil',
-    'lawful': 'law/neutral',
-    'chaotic': 'chaos/neutral'
+    'lawful good': 'lawful good',
+    'lawful neutral': 'lawful neutral',
+    'lawful evil': 'lawful evil',
+    'neutral good': 'neutral good',
+    'true neutral': 'neutrality',
+    'neutral': 'neutrality',
+    'neutral/neutral': 'neutrality',
+    'neutral evil': 'neutral evil',
+    'chaotic good': 'chaotic good',
+    'chaotic neutral': 'chaotic neutral',
+    'chaotic evil': 'chaotic evil',
+    'lawful': 'lawful neutral',
+    'chaotic': 'chaotic neutral'
   };
   return mapping[trimmed] ?? disposition.trim();
 }
@@ -914,9 +916,13 @@ export function extractClassInfo(raceClassText?: string, levelText?: string): { 
   }
 
   if (levelText && level === undefined) {
-    const parsed = parseInt(levelText, 10);
-    if (!Number.isNaN(parsed)) {
-      level = parsed;
+    const normalizedLevel = levelText.trim();
+    const numericLevelMatch = normalizedLevel.match(/^(\d+)(?:st|nd|rd|th)?$/i);
+    if (numericLevelMatch) {
+      const parsed = parseInt(numericLevelMatch[1], 10);
+      if (!Number.isNaN(parsed)) {
+        level = parsed;
+      }
     }
   }
 
@@ -1462,43 +1468,64 @@ export function buildCanonicalParenthetical(
   const jewelryText = data.jewelry ? formatJewelryForTreasure(data.jewelry) : undefined;
   let coinsIncludedInWeapons = false;
   let jewelryIncludedInEquipment = false;
+  
+  // VERSION 3.0: Use V3 classifier to determine format
+  const v3Context: SignalExtractionContext = {
+    spells: data.spells,
+    raceClass: data.raceClass,
+    description: data.raw
+  };
+  const v3Classification = classifyEntityV3(title, {
+    name: data.name || title,
+    level: data.level,
+    hd: data.hd,
+    hp: data.hp ? parseInt(String(data.hp), 10) : null,
+    ac: data.ac ? parseInt(String(data.ac), 10) : null,
+    disposition: data.disposition,
+    primaryAttributes: data.attributes,
+    equipment: data.equipment,
+    coins: data.coins
+  }, v3Context);
+  
+  // Legacy compatibility
   const classInfo = extractClassInfo(data.raceClass, data.level);
-  const hasClassLevels = classInfo.hasClassLevels;
+  const hasClassLevels = classInfo.hasClassLevels || v3Classification.format === 'A';
   const isNamedRanked = isRankedNamedEntity(title, data);
 
 
   // Build vital stats
   const vitalParts: string[] = [];
 
-  // Determine if this is a non-classed creature (for Level field)
-  const shouldShowHd = Boolean(data.hd && (!hasClassLevels || isUnit));
-
-  // Add Level for non-classed creatures
-  if (data.level && !hasClassLevels && /\d/.test(data.level)) {
-    vitalParts.push(`Level ${data.level}`);
-  }
-
-  if (shouldShowHd && data.hd) {
-    // Apply Rule-of-Rank: named or ranked entities should show flat HP rather
-    // than rolling HD. Detection heuristics: presence of raceClass, significant
-    // attributes, or a title that looks like a named creature.
-    // If an HP total is present for a named/ranked NPC, prefer HP and suppress HD.
-    if (isNamedRanked && data.hp) {
-      // Named and HP provided: only show HP
+  // VERSION 3.0 CRITICAL FIX: HD/HP Logic Based on Format
+  // Format A (Classed NPCs): Show ONLY flat HP (no HD)
+  // Format B (Monsters): Show HD as "Level X(dY)" + HP
+  // Format C (Units): Show HD as "Level X(dY)" + HP
+  
+  if (v3Classification.format === 'A') {
+    // Format A: Classed NPCs - flat HP only (no HD)
+    if (data.hp) {
       vitalParts.push(`HP ${data.hp}`);
-    } else if (isNamedRanked || data.raceClass || data.significantAttributes) {
-      const hpToShow = data.hp ?? estimateHpFromHd(data.hd);
-      if (hpToShow) {
-        vitalParts.push(`HP ${hpToShow}`);
-      } else {
-        vitalParts.push(`HD ${data.hd}`);
+    }
+  } else {
+    // Format B/C: Monsters/Units - MUST show HD as "Level X(dY)"
+    if (data.hd) {
+      const levelFormat = formatHdAsLevel(data.hd);
+      vitalParts.push(`Level ${levelFormat}`);
+      // Also show HP if available
+      if (data.hp) {
+        vitalParts.push(`HP ${data.hp}`);
       }
-    } else {
-      vitalParts.push(`HD ${data.hd}`);
+    } else if (data.level && /\d/.test(data.level)) {
+      // Fallback: use level field if no HD
+      vitalParts.push(`Level ${data.level}`);
+      if (data.hp) {
+        vitalParts.push(`HP ${data.hp}`);
+      }
+    } else if (data.hp) {
+      // Last resort: just show HP
+      vitalParts.push(`HP ${data.hp}`);
     }
   }
-
-  if (data.hp && !vitalParts.some(p => p.startsWith('HP '))) vitalParts.push(`HP ${data.hp}`);
   if (data.ac) vitalParts.push(`AC ${data.ac}`);
   if (data.disposition) {
     const normalizedDisposition = normalizeDisposition(data.disposition);
@@ -1543,66 +1570,49 @@ export function buildCanonicalParenthetical(
     parts.push(`${vitalParts.join(', ')}`);
   }
 
-  // Add primary attributes
-  let forcePhysicalAttributes = isUnit || !hasClassLevels;
-  // Do not force physical attribute shorthand for named/ranked entities that
-  // explicitly provide attribute tokens or have class levels (Rule-of-Rank)
-  if (isNamedRanked && (classInfo.hasClassLevels || Boolean(data.significantAttributes))) {
-    forcePhysicalAttributes = false;
-  }
+  // VERSION 3.0 CRITICAL FIX: Attribute Formatting Based on Format
+  // Format A (Classed NPCs): Long-form attribute list
+  // Format B (Monsters): Shorthand "physical" or "mental"
+  // Format C (Units): Shorthand with plural pronouns
   let normalizedAttrs: NormalizedAttributesResult | undefined;
 
-  // IMPORTANT: We'll determine a final override for named, classed NPCs after
-  // the normalization step below so it can't be replaced by normal attr logic.
-
-  if (!normalizedAttrs && isNamedRanked && data.significantAttributes) {
-    // Rule-of-Rank: if a named/ranked entity has significant attributes listed,
-    // prefer inserting the full long-form attribute list rather than the short
-    // 'significant attributes' phrase. This ensures named NPCs like Ember
-    // Raventree show the canonical six-attribute list.
+  if (v3Classification.format === 'A') {
+    // Format A: Classed NPCs always get long-form attribute list
     normalizedAttrs = { type: 'list', value: formatOxfordList(PHB_ATTRIBUTE_ORDER) };
-  }
-
-  if (forcePhysicalAttributes) {
-    normalizedAttrs = { type: 'prime', value: 'physical' };
-  } else if (data.attributes) {
-    normalizedAttrs = normalizeAttributes(data.attributes, {
-      isUnit,
-      raceClassText: data.raceClass,
-      levelText: data.level
-    });
-  }
-
-  // Re-apply Rule-of-Rank override AFTER attribute normalization so it cannot
-  // be overwritten by standard normalization logic. This forces the long-form
-  // attribute list for named/ranked entities that either have explicit class levels
-  // or show significant attributes in the parenthetical (like Ember Raventree).
-  if (isNamedRanked && (classInfo.hasClassLevels || Boolean(data.significantAttributes))) {
-    // If any explicit attributes are provided in the parenthetical, force
-    // the full long-form attribute list per Rule-of-Rank.
-    const hasExplicitAttributes = Boolean((data.attributes && data.attributes.trim()) || (data.significantAttributes && data.significantAttributes.trim()));
-    if (hasExplicitAttributes) {
-      normalizedAttrs = { type: 'list', value: formatOxfordList(PHB_ATTRIBUTE_ORDER) };
+  } else {
+    // Format B/C: Monsters and Units get shorthand
+    if (data.attributes) {
+      normalizedAttrs = normalizeAttributes(data.attributes, {
+        isUnit,
+        raceClassText: data.raceClass,
+        levelText: data.level
+      });
+    }
+    // Default to physical for B/C if no attributes specified
+    if (!normalizedAttrs) {
+      normalizedAttrs = { type: 'prime', value: 'physical' };
+    }
+    // For monsters/units, prefer shorthand prime attributes even if a
+    // specific attribute token was extracted (e.g., 'strength' from 'strength save').
+    // The canonical mandate is to use 'physical'/'mental' for non-classed entities
+    // unless the source explicitly states 'mental'.
+    if (normalizedAttrs && normalizedAttrs.type === 'list') {
+      const lowered = (data.attributes || '').toLowerCase();
+      const prime = /\bmental\b/.test(lowered) ? 'mental' : 'physical';
+      normalizedAttrs = { type: 'prime', value: prime };
     }
   }
-
-    // Final enforcement: if this is a named/ranked entity we prefer the full
-    // PHB long-form attribute list even if normalization produced a shorter list.
-    if (isNamedRanked && normalizedAttrs && normalizedAttrs.type === 'list') {
-      normalizedAttrs.value = formatOxfordList(PHB_ATTRIBUTE_ORDER);
-    }
 
   if (normalizedAttrs && normalizedAttrs.value) {
-    if (forcePhysicalAttributes) {
-      parts.push(`${resolvedPossessive} primary attributes are physical`);
-    } else if (normalizedAttrs.type === 'list') {
-      let possessive = resolvedPossessive;
-      if (isNamedRanked && possessive === 'Their' && pronounTrack === 'singular') {
-        possessive = fallbackBase;
-      }
+    if (normalizedAttrs.type === 'list') {
+      // Format A: Long-form with singular possessive
+      let possessive = fallbackBase;
       parts.push(`${possessive} primary attributes are ${normalizedAttrs.value}`);
     } else if (normalizedAttrs.type === 'prime') {
-      parts.push(`${resolvedPossessive} primary attributes are ${normalizedAttrs.value}`);
+      // Format B/C: Shorthand
+      // Format C uses plural pronouns, Format B uses singular
+      const possessive = v3Classification.format === 'C' ? 'Their' : resolvedPossessive;
+      parts.push(`${possessive} primary attributes are ${normalizedAttrs.value}`);
     }
   }
 
@@ -1994,7 +2004,10 @@ export function formatMountBlock(mountBlock: MountBlock): string {
   const canonicalMount = canonicalizeMountBlock(mountBlock);
   const vitalParts: string[] = [];
   if (canonicalMount.level) vitalParts.push(`Level ${canonicalMount.level}`);
-  if (canonicalMount.hd) vitalParts.push(`HD ${canonicalMount.hd}`);
+  if (canonicalMount.hd) {
+    const levelFormat = formatHdAsLevel(canonicalMount.hd);
+    vitalParts.push(`Level ${levelFormat}`);
+  }
   if (canonicalMount.hp) vitalParts.push(`HP ${canonicalMount.hp}`);
   if (canonicalMount.ac) vitalParts.push(`AC ${canonicalMount.ac}`);
   if (canonicalMount.disposition) {

@@ -80,11 +80,11 @@
         "hd": "4d10",
         "hp": "23",
         "ac": "15",
-        "disposition": "neutral",
+        "disposition": "neutrality",
         "raceClass": "animal",
-        "attributes": "strength"
+        "attributes": "physical"
       },
-      "canonicalParenthetical": "HP 23, AC 15, disposition neutral. Saves: P."
+      "canonicalParenthetical": "Level 4(d10), HP 23, AC 15, disposition neutrality. Saves: P."
     },
     {
       "sourceIndex": 59104,
@@ -118,12 +118,13 @@
         "raw": "They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1",
         "hp": "4",
         "ac": "13",
-        "disposition": "neutral/evil",
+        "disposition": "neutral evil",
         "attributes": "physical",
         "coins": "6 sp",
-        "raceClass": "0th level, neutral evil, human fighters"
+        "raceClass": "0th level, neutral evil, human fighters",
+        "hd": "1d6"
       },
-      "canonicalParenthetical": "HP 4, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
+      "canonicalParenthetical": "Level 1(d6), HP 4, AC 13, disposition neutral evil. Saves: P. It has 6 silver in coin."
     },
     {
       "sourceIndex": 59395,
@@ -157,12 +158,13 @@
         "raw": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2",
         "hp": "14",
         "ac": "14",
-        "disposition": "neutral/evil",
+        "disposition": "neutral evil",
         "attributes": "physical",
         "coins": "6 gp",
-        "raceClass": "2nd level, neutral evil, human fighters"
+        "raceClass": "2nd level, neutral evil, human fighters",
+        "hd": "1d6"
       },
-      "canonicalParenthetical": "HP 14, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin."
+      "canonicalParenthetical": "HP 14, AC 14, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 gold in coin."
     },
     {
       "sourceIndex": 59695,
@@ -197,10 +199,11 @@
         "hd": "1d2",
         "hp": "1",
         "ac": "12",
-        "disposition": "neutral",
-        "raceClass": "creature"
+        "disposition": "neutrality",
+        "raceClass": "creature",
+        "attributes": "physical"
       },
-      "canonicalParenthetical": "HP 1, AC 12, disposition neutral. Saves: P."
+      "canonicalParenthetical": "Level 1(d2), HP 1, AC 12, disposition neutrality. Saves: P."
     },
     {
       "sourceIndex": 60136,
@@ -235,11 +238,11 @@
         "hd": "1d8",
         "hp": "5",
         "ac": "14",
-        "disposition": "chaos/evil",
+        "disposition": "chaotic evil",
         "raceClass": "humanoid",
         "coins": "6 cp"
       },
-      "canonicalParenthetical": "HP 5, AC 14, disposition chaos/evil. Saves: P. It has 6 copper in coin."
+      "canonicalParenthetical": "HP 5, AC 14, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 copper in coin."
     }
   ]
 }

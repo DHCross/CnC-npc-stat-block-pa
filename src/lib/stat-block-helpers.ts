@@ -1,5 +1,6 @@
+export { formatHdAsLevel } from './format-hd-as-level';
+
 export function normalizeDisposition(value: string): string {
-  const trimmed = value.trim().toLowerCase();
   const mapping: Record<string, string> = {
     'lawful good': 'law/good',
     'lawful neutral': 'law/neutral',

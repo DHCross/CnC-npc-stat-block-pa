@@ -3,14 +3,45 @@
  * 
  * Implements the deterministic classification system for C&C Reforged creatures.
  * This module resolves whether an entity is:
- * - Classed NPC (has class levels, uses flat HP)
- * - Monster (unclassed, uses HD)
- * - Ambiguous (needs manual review)
+ * - Classed NPC (Format A - uses long-form attributes)
+ * - Monster (Format B - uses shorthand physical/mental)
+ * - Unit (Format C - uses shorthand with plural grammar)
  * 
- * Based on the complete rule-tree specification provided by GPT analysis.
+ * Based on Version 3.0 Rule-Tree specification with 5-step priority hierarchy.
  */
 
 import type { CanonicalData } from './canonical-data-mapper';
+
+/**
+ * SECTION 0: PRE-CHECK - SIGNAL EXTRACTION
+ * 
+ * These six signals form the mechanical substrate for classification.
+ * They must be extracted BEFORE any classification logic runs.
+ */
+
+export interface ClassificationSignals {
+  // Core signals (per Version 3.0)
+  HasSpells: boolean;          // Spell lists or spell slots present
+  HasClassKeyword: boolean;    // fighter, wizard, cleric, etc.
+  HasRankTitle: boolean;       // chieftain, captain, lieutenant, sergeant, shaman, etc.
+  IsNamed: boolean;            // Proper noun (capitalized name not in dictionary)
+  IsUnit: boolean;             // Numeration in header (x4, 2-12, etc.)
+  IsHumanoid: boolean;         // PC-like races (human, elf, dwarf, halfling, gnome)
+  
+  // Additional context (for debugging/reporting)
+  detectedClassName?: string;   // Extracted class name (if any)
+  detectedRankTitle?: string;   // Extracted rank title (if any)
+  detectedRace?: string;        // Extracted race (if any)
+}
+
+/**
+ * Additional data needed for signal extraction beyond CanonicalData
+ */
+export interface SignalExtractionContext {
+  spells?: string;              // From ParentheticalData
+  raceClass?: string;           // From ParentheticalData
+  description?: string;         // Full description text if available
+}
 
 /**
  * EXPANDED MONSTER-TYPE DICTIONARY
@@ -149,25 +180,26 @@ function isMonsterType(creatureName: string): boolean {
   return false;
 }
 
-// Humanoid PC races
+// Humanoid PC races (per Version 3.0 Section 0)
 const HUMANOID_RACES = new Set([
   'human', 'elf', 'dwarf', 'halfling', 'gnome', 'half-elf', 'half-orc'
 ]);
 
-// Leadership/rank titles that indicate potential class levels
-const LEADERSHIP_TITLES = new Set([
+// Leadership/rank titles (per Version 3.0 Section 0)
+// These indicate potential class levels when combined with other signals
+const RANK_TITLES = new Set([
   'chief', 'chieftain', 'captain', 'leader', 'sergeant', 'serjeant',
-  'priest', 'shaman', 'acolyte', 'adept', 'champion',
-  'matron', 'elder', 'herald', 'warlord', 'commander',
-  'lieutenant', 'corporal', 'king', 'queen', 'prince', 'princess',
-  'lord', 'lady', 'baron', 'duke', 'count'
+  'lieutenant', 'corporal', 'shaman', 'priest', 'acolyte', 'adept',
+  'champion', 'matron', 'elder', 'herald', 'warlord', 'commander',
+  'king', 'queen', 'prince', 'princess', 'lord', 'lady', 
+  'baron', 'duke', 'count', 'baroness', 'duchess', 'countess'
 ]);
 
-// Character classes (explicit mentions)
-const CHARACTER_CLASSES = new Set([
+// Character classes (per Version 3.0 Section 0)
+const CLASS_KEYWORDS = new Set([
   'fighter', 'cleric', 'wizard', 'rogue', 'thief',
   'paladin', 'ranger', 'bard', 'druid', 'monk',
-  'barbarian', 'assassin', 'illusionist', 'knight'
+  'barbarian', 'assassin', 'illusionist', 'knight', 'magic-user'
 ]);
 
 // Generic hireling/proxy types (default to fighter if classed)
@@ -177,6 +209,346 @@ const HIRELING_TYPES = new Set([
   'thief', 'thieves', 'cutpurse', 'pickpocket',
   'fisherman', 'hunter', 'trapper', 'woodcutter', 'miner', 'woodsman'
 ]);
+
+/**
+ * SECTION 0: SIGNAL EXTRACTION (Version 3.0)
+ * 
+ * Extracts the six core signals required for classification hierarchy.
+ * This must run BEFORE any classification logic.
+ * 
+ * Signal Definitions:
+ * - HasSpells: Spell lists or spell slots present in parenthetical
+ * - HasClassKeyword: Explicit class names (fighter, wizard, cleric, etc.)
+ * - HasRankTitle: Leadership/rank titles (chieftain, captain, sergeant, etc.)
+ * - IsNamed: Proper noun detection (capitalized name not in dictionary)
+ * - IsUnit: Numeration in header (x4, 2-12, etc.)
+ * - IsHumanoid: PC-like races (human, elf, dwarf, halfling, gnome)
+ */
+export function extractSignals(
+  creatureName: string,
+  canonicalData: CanonicalData,
+  context: SignalExtractionContext = {}
+): ClassificationSignals {
+  const nameLower = creatureName.toLowerCase();
+  const levelText = canonicalData.level || '';
+  const raceClassText = context.raceClass || (levelText.includes('level') ? levelText : canonicalData.name) || '';
+  const raceClassLower = raceClassText.toLowerCase();
+  
+  // Signal 1: HasSpells
+  // Check for spell lists, spell slots, or "can cast" phrases
+  // Avoid false positives from spell references in descriptions (e.g., "destroyed by a spell")
+  const HasSpells = Boolean(
+    context.spells ||
+    /(?:spellcaster|spellcasting)/i.test(raceClassText) ||
+    /(?:can\s+cast|casts?\s+\d+|spells?\s+per\s+day|spell\s+slots?)/i.test(context.description || '')
+  );
+  
+  // Signal 2: HasClassKeyword
+  // Check for explicit class names
+  let HasClassKeyword = false;
+  let detectedClassName: string | undefined;
+  for (const className of CLASS_KEYWORDS) {
+    if (raceClassLower.includes(className)) {
+      HasClassKeyword = true;
+      detectedClassName = className;
+      break;
+    }
+  }
+  
+  // Signal 3: HasRankTitle
+  // Check for leadership/rank titles (separate from class keywords)
+  let HasRankTitle = false;
+  let detectedRankTitle: string | undefined;
+  for (const title of RANK_TITLES) {
+    if (nameLower.includes(title)) {
+      HasRankTitle = true;
+      detectedRankTitle = title;
+      break;
+    }
+  }
+  
+  // Signal 4: IsNamed
+  // Proper noun detection: Capitalized name that's not a common word
+  // Examples: "Ember Raventree", "Wily Wil", "Pinky the Owlbear"
+  // Non-examples: "Goblin Captain", "Orc Chieftain"
+  const IsNamed = detectProperNoun(creatureName);
+  
+  // Signal 5: IsUnit
+  // Numeration in header (x4, x 4, 2-12, (3), etc.)
+  const IsUnit = /\b(?:x\s*\d+|\d+\s*x|\(\d+\)|\d+-\d+)\b/i.test(creatureName) ||
+                 /\b(?:bandits|goblins|orcs|guards|soldiers|kobolds|zombies|skeletons)\s+x\s*\d+\b/i.test(nameLower);
+  
+  // Signal 6: IsHumanoid
+  // PC-like races (human, elf, dwarf, halfling, gnome)
+  // Check in: 1) context.raceClass, 2) canonical level field, 3) creature name itself
+  let IsHumanoid = false;
+  let detectedRace: string | undefined;
+  
+  // Check raceClass and level fields
+  for (const race of HUMANOID_RACES) {
+    if (raceClassLower.includes(race)) {
+      IsHumanoid = true;
+      detectedRace = race;
+      break;
+    }
+  }
+  
+  // If not found, also check the creature name itself (for parentheticals like "wood elf leader")
+  if (!IsHumanoid) {
+    for (const race of HUMANOID_RACES) {
+      if (nameLower.includes(race)) {
+        IsHumanoid = true;
+        detectedRace = race;
+        break;
+      }
+    }
+  }
+  
+  // Special check for elf variants (wood elf, high elf, etc.)
+  if (!IsHumanoid && (/\b(?:wood|high|dark|wild|sea)\s+elf\b/i.test(raceClassLower) || /\b(?:wood|high|dark|wild|sea)\s+elf\b/i.test(nameLower))) {
+    IsHumanoid = true;
+    detectedRace = 'elf';
+  }
+  
+  return {
+    HasSpells,
+    HasClassKeyword,
+    HasRankTitle,
+    IsNamed,
+    IsUnit,
+    IsHumanoid,
+    detectedClassName,
+    detectedRankTitle,
+    detectedRace
+  };
+}
+
+/**
+ * Detect if a creature name contains a proper noun.
+ * 
+ * Proper nouns are capitalized names that aren't:
+ * - Common monster types (Goblin, Orc, Troll)
+ * - Rank titles (Captain, Chieftain, Sergeant)
+ * - Generic descriptors (Giant, Elder, Ancient)
+ * - Hireling types (Bandit, Guard, Soldier)
+ * 
+ * Examples:
+ * - "Ember Raventree" → true (proper name)
+ * - "Wily Wil, Giant of the Hill" → true (proper name with title)
+ * - "Goblin Captain" → false (rank title, not proper noun)
+ * - "Pinky the Owlbear" → true (named creature)
+ */
+function detectProperNoun(creatureName: string): boolean {
+  // Common exclusions: generic descriptors and titles
+  const genericWords = new Set([
+    'the', 'a', 'an', 'of', 'and', 'giant', 'elder', 'ancient',
+    'young', 'old', 'great', 'lesser', 'greater', 'dire',
+    'green', 'red', 'blue', 'black', 'white', 'gray', 'grey',
+    'huge', 'large', 'small', 'tiny', 'massive'
+  ]);
+  
+  // Split name into words and check for capitalized proper nouns
+  const words = creatureName.split(/[\s,]+/);
+  
+  for (const word of words) {
+    // Skip if empty or starts with lowercase
+    if (!word || word[0] !== word[0].toUpperCase()) continue;
+    
+    const wordLower = word.toLowerCase();
+    
+    // Skip generic words
+    if (genericWords.has(wordLower)) continue;
+    
+    // Skip rank titles
+    if (RANK_TITLES.has(wordLower)) continue;
+    
+    // Skip hireling types (Bandit, Guard, Soldier, etc.)
+    // Also check plural forms (Bandits, Guards, Soldiers)
+    const singularForm = wordLower.replace(/s$/, '');
+    if (HIRELING_TYPES.has(wordLower) || HIRELING_TYPES.has(singularForm)) continue;
+    
+    // Skip monster types (including plurals)
+    if (MONSTER_TYPE_FLAT_SET.has(wordLower) || MONSTER_TYPE_FLAT_SET.has(singularForm)) continue;
+    
+    // Skip numbers in parentheses or x notation
+    if (/^[(\d]/.test(word)) continue;
+    
+    // If we found a capitalized word that's not in our exclusion lists,
+    // it's likely a proper noun
+    return true;
+  }
+  
+  return false;
+}
+
+/**
+ * SECTION 1: VERSION 3.0 CLASSIFICATION FORMATS
+ * 
+ * Three-way classification system:
+ * - Format A: Classed NPCs (long-form attributes)
+ * - Format B: Monsters (shorthand physical/mental)
+ * - Format C: Units (shorthand with plural grammar)
+ */
+export type ClassificationFormat = 'A' | 'B' | 'C';
+
+export interface Version3ClassificationResult {
+  format: ClassificationFormat;
+  signals: ClassificationSignals;
+  reasoning: string;
+  step: 1 | 2 | 3 | 4 | 5; // Which step of the hierarchy triggered
+  // Legacy fields for compatibility with existing code
+  type: CreatureType;
+  subtype?: string;
+  confidence: 'high' | 'medium' | 'low';
+  warnings: string[];
+}
+
+/**
+ * VERSION 3.0: 5-STEP CLASSIFICATION HIERARCHY
+ * 
+ * Classify entity using Version 3.0 5-step priority hierarchy.
+ * 
+ * Priority (highest to lowest):
+ * 1. HasSpells → Format A (Classed NPC - Spellcaster)
+ * 2. HasClassKeyword OR HasRankTitle → Format A (Classed NPC)
+ * 3. IsNamed AND IsHumanoid → Format A (Classed NPC - Named Humanoid)
+ * 4. IsUnit → Format C (Unit)
+ * 5. Default → Format B (Monster)
+ * 
+ * Override Rules:
+ * - Spellcasters always Format A (highest priority)
+ * - Bandits default to Format B unless they have rank (Bandit Lieutenant → Format A)
+ * - Named non-humanoids remain Format B (e.g., Pinky the Owlbear)
+ */
+export function classifyEntityV3(
+  creatureName: string,
+  canonicalData: CanonicalData,
+  context: SignalExtractionContext = {}
+): Version3ClassificationResult {
+  const signals = extractSignals(creatureName, canonicalData, context);
+  const warnings: string[] = [];
+  let format: ClassificationFormat;
+  let reasoning: string;
+  let legacyType: CreatureType;
+  let subtype: string | undefined;
+  const confidence: 'high' | 'medium' | 'low' = 'high';
+  let step: 1 | 2 | 3 | 4 | 5;
+  const lowerName = creatureName.toLowerCase();
+  // Pre-check data is useful for disambiguation when HD/level tokens are present
+  const preCheck = extractPreCheckData(creatureName, canonicalData);
+  
+  
+
+  // STEP 1: HasSpells (Highest Priority - Spellcasters)
+  if (signals.HasSpells) {
+    format = 'A';
+    step = 1;
+    reasoning = 'Classed NPC (Spellcaster - highest priority override)';
+    legacyType = 'classed';
+    subtype = 'spellcaster';
+    if (signals.detectedClassName) {
+      reasoning += ` - ${signals.detectedClassName}`;
+    }
+  }
+  // SPECIAL CASE: Bandit groups default to Format C (unit) even if a class keyword
+  // appears in their race/class string. Bandits without rank are treated as
+  // monsters/units (HD) per the user's canonical rules.
+  else if (signals.IsUnit && /\bbandit(s|\b|\s)/i.test(lowerName) && !signals.HasRankTitle) {
+    format = 'C';
+    step = 4;
+    reasoning = 'Unit (bandit group override)';
+    legacyType = 'monster';
+    subtype = 'monster-unit';
+  }
+  // SPECIAL CASE: Solo 'Bandit' entries default to Monster (HD) even if they
+  // contain class-like wording. This matches the canonical M&T behavior.
+  else if (/\bbandit\b/i.test(lowerName) && !signals.HasRankTitle && !signals.HasSpells && !signals.IsUnit) {
+    format = 'B';
+    step = 5;
+    reasoning = 'Monster (bandit override)';
+    legacyType = 'monster';
+    subtype = 'monster';
+  }
+
+  // DISAMBIGUATION: If the entry includes HD (or explicit level token) and the
+  // pre-check suggests a monster race, group unit, or a numeric "Xth level"
+  // notation, then treat as Monster/Unit even if a class keyword appears in
+  // the race/class text. This avoids misclassifying generic monster entries
+  // like "Elf, Wood, bowman" or "1st level human fighters" as Format A.
+  // Preserve named humanoid with rank exceptions (they remain Format A).
+  else if (preCheck.hasHD) {
+    const levelLike = Boolean(preCheck.hasLevel) || /\b\d+(?:st|nd|rd|th)\s+level\b/i.test(String(canonicalData.level || context.raceClass || ''));
+    const looksLikeMonsterEntry = preCheck.isMonsterRace || preCheck.isGroupUnit || levelLike;
+    if (looksLikeMonsterEntry && !signals.IsNamed) {
+      if (preCheck.isGroupUnit) {
+        format = 'C';
+        step = 4;
+        reasoning = 'Unit (HD present + group formation detected)';
+        legacyType = 'monster';
+        subtype = 'monster-unit';
+      } else {
+        format = 'B';
+        step = 5;
+        reasoning = 'Monster (HD present and entry appears to be a monster/level line)';
+        legacyType = 'monster';
+        subtype = 'monster';
+      }
+    }
+  }
+  // STEP 2: HasClassKeyword OR HasRankTitle
+  else if (signals.HasClassKeyword || signals.HasRankTitle) {
+    format = 'A';
+    step = 2;
+    if (signals.HasClassKeyword) {
+      reasoning = `Classed NPC (Class: ${signals.detectedClassName})`;
+      subtype = 'named-class';
+    } else {
+      reasoning = `Classed NPC (Rank: ${signals.detectedRankTitle})`;
+      subtype = 'rank-inferred';
+    }
+    legacyType = 'classed';
+  }
+  // STEP 3: IsNamed AND IsHumanoid
+  else if (signals.IsNamed && signals.IsHumanoid) {
+    format = 'A';
+    step = 3;
+    reasoning = `Classed NPC (Named Humanoid: ${signals.detectedRace})`;
+    legacyType = 'classed';
+    subtype = 'named-humanoid';
+  }
+  // STEP 4: IsUnit
+  else if (signals.IsUnit) {
+    format = 'C';
+    step = 4;
+    reasoning = 'Unit (group with numeration)';
+    legacyType = 'monster';
+    subtype = 'monster-unit';
+  }
+  // STEP 5: Default (Monster)
+  else {
+    format = 'B';
+    step = 5;
+    reasoning = 'Monster (default - no class/rank/humanoid signals)';
+    legacyType = 'monster';
+    
+    // Add context for named non-humanoids
+    if (signals.IsNamed) {
+      reasoning += ' - Named creature';
+      warnings.push('Named non-humanoid creature remains Monster format (correct per V3.0)');
+    }
+  }
+  
+  return {
+    format,
+    signals,
+    reasoning,
+    step,
+    type: legacyType,
+    subtype,
+    confidence,
+    warnings
+  };
+}
 
 export type CreatureType = 'classed' | 'monster' | 'ambiguous';
 
@@ -214,7 +586,7 @@ export function extractPreCheckData(
   // Check for leadership/rank title in name
   const nameLower = creatureName.toLowerCase();
   let titleRank: string | undefined;
-  for (const title of LEADERSHIP_TITLES) {
+  for (const title of RANK_TITLES) {
     if (nameLower.includes(title)) {
       titleRank = title;
       break;
@@ -242,7 +614,7 @@ export function extractPreCheckData(
   
   // Check for explicit class mention
   let hasExplicitClass = false;
-  for (const className of CHARACTER_CLASSES) {
+  for (const className of CLASS_KEYWORDS) {
     if (raceClassLower.includes(className)) {
       hasExplicitClass = true;
       break;
