@@ -137,8 +137,8 @@ export interface ParsedTitleAndBody {
   parentheticals: string[];
 }
 
-import { addMagicItemMechanics, applyNameMappings, MAGIC_ITEM_MAPPINGS, canonicalizeMagicItemName } from './name-mappings';
-import { estimateHpFromHd, isRankedNamedEntity, formatHdAsLevel } from './stat-block-helpers';
+import { addMagicItemMechanics, applyNameMappings, canonicalizeMagicItemName } from './name-mappings';
+import { isRankedNamedEntity, formatHdAsLevel } from './stat-block-helpers';
 import type { FormattingRules } from './classification-rules';
 import { classifyEntityV3, type SignalExtractionContext } from './classification-rules';
 
@@ -1093,7 +1093,7 @@ export function repositionMagicItemBonuses(equipment: string): string {
 }
 
 export function deduplicateEquipment(equipment: string): string {
-  const items = equipment.split(/,\s*/).map(item => item.trim().replace(/[\.]+$/g, ''));
+  const items = equipment.split(/,\s*/).map(item => item.trim().replace(/[.]+$/g, ''));
   const unique = [...new Set(items)];
   return unique.join(', ');
 }
@@ -1564,8 +1564,6 @@ export function buildCanonicalParenthetical(
       descriptorData = { ...descriptorData, raceClass: raceClassText };
     }
 
-    const descriptor = buildDescriptorFromData(descriptorData, isUnit, title);
-    const possessive = formatPossessiveDescriptor(descriptor, isUnit);
     // Per Canonicalizer mandate: omit "vital stats are" and begin directly with stat content
     parts.push(`${vitalParts.join(', ')}`);
   }
@@ -1606,7 +1604,7 @@ export function buildCanonicalParenthetical(
   if (normalizedAttrs && normalizedAttrs.value) {
     if (normalizedAttrs.type === 'list') {
       // Format A: Long-form with singular possessive
-      let possessive = fallbackBase;
+      const possessive = fallbackBase;
       parts.push(`${possessive} primary attributes are ${normalizedAttrs.value}`);
     } else if (normalizedAttrs.type === 'prime') {
       // Format B/C: Shorthand
@@ -2037,7 +2035,7 @@ export function formatMountBlock(mountBlock: MountBlock): string {
 }
 
 export function findEquipment(equipment: string): string {
-  let processed = applyNameMappings(equipment);
+  const processed = applyNameMappings(equipment);
 
   // Shield normalization: split by comma, process each part individually
   const parts = processed.split(',').map(part => part.trim());

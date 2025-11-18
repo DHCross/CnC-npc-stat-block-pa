@@ -1,5 +1,3 @@
-/// <reference types="vitest/config" />
-/// <reference types="vitest" />
 import { defineConfig } from 'vitest/config';
 import path from 'path';
 import { fileURLToPath } from 'node:url';

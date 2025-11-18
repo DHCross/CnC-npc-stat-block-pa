@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { FullDocumentPipeline } from './FullDocumentPipeline';
 import { mouthsOfMadnessAnalysis } from './mocks/mouths-of-madness.mock';

@@ -649,19 +649,21 @@ export function FullDocumentPipeline({ initialAnalysis = null, isProcessing: isP
 }
 
 // Storybook/mock-safe helpers: some mocks convert Map -> plain object during JSON.stringify.
-function getCreatureTypeEntries(mapLike: any): Array<[string, number]> {
+type CreatureTypeCounts = Map<string, number> | Record<string, number> | undefined | null;
+
+function getCreatureTypeEntries(mapLike: CreatureTypeCounts): Array<[string, number]> {
   if (!mapLike) return [];
-  if (typeof mapLike.entries === 'function') {
-    return Array.from(mapLike.entries());
+  if (typeof (mapLike as Map<string, number>).entries === 'function') {
+    return Array.from((mapLike as Map<string, number>).entries());
   }
   // assume plain object
-  return Object.entries(mapLike);
+  return Object.entries(mapLike as Record<string, number>);
 }
 
-function getCreatureTypeCount(mapLike: any): number {
+function getCreatureTypeCount(mapLike: CreatureTypeCounts): number {
   if (!mapLike) return 0;
-  if (typeof mapLike.size === 'number') return mapLike.size;
-  if (typeof mapLike.entries === 'function') return Array.from(mapLike.entries()).length;
+  if (typeof (mapLike as Map<string, number>).size === 'number') return (mapLike as Map<string, number>).size;
+  if (typeof (mapLike as Map<string, number>).entries === 'function') return Array.from((mapLike as Map<string, number>).entries()).length;
   // plain object
-  return Object.keys(mapLike).length;
+  return Object.keys(mapLike as Record<string, number>).length;
 }
