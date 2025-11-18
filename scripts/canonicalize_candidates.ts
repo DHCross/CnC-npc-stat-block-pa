@@ -129,6 +129,7 @@ function analyzeAndCanonicalize() {
       }
       const classification: any = {
         type: v3Classification.type,
+        format: v3Classification.format,
         subtype: v3Classification.subtype,
         confidence: v3Classification.confidence,
         reasoning: v3Classification.reasoning,
@@ -165,6 +166,7 @@ function analyzeAndCanonicalize() {
       const out = {
         sourceIndex: item.start ?? null,
         title: title || null,
+        classification,
         labels: {
           inline: item.inlineLabel || null,
           titleLine: item.titleLine || null

@@ -3904,7 +3904,7 @@ export const mouthsOfMadnessAnalysis = {
   "metadata": {
     "documentName": "Mouths of Madness",
     "totalEntries": 129,
-    "processingDate": "2025-11-17T04:58:43.651Z",
+    "processingDate": "2025-11-18T03:36:52.408Z",
     "successRate": 100
   }
 } as const;

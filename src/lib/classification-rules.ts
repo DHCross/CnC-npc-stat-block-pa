@@ -339,6 +339,14 @@ export function extractSignals(
  * - "Pinky the Owlbear" → true (named creature)
  */
 function detectProperNoun(creatureName: string): boolean {
+  // Early-out: names that include commas are inverted/common-noun forms,
+  // e.g., "Elf, Wood, Bowman" or "Ape, carnivorous", and should NOT be
+  // treated as proper nouns.
+  if (creatureName.includes(',')) return false;
+
+  // If the creature name matches a known monster type, it's not a proper
+  // name (they are common nouns in the bestiary).
+  if (isMonsterType(creatureName)) return false;
   // Common exclusions: generic descriptors and titles
   const genericWords = new Set([
     'the', 'a', 'an', 'of', 'and', 'giant', 'elder', 'ancient',
@@ -427,12 +435,15 @@ export function classifyEntityV3(
 ): Version3ClassificationResult {
   const signals = extractSignals(creatureName, canonicalData, context);
   const warnings: string[] = [];
-  let format: ClassificationFormat;
-  let reasoning: string;
-  let legacyType: CreatureType;
+  // Defaults: assume Monster (Format B) unless other rules fire. Setting
+  // defaults prevents TypeScript "used before assignment" errors and
+  // provides a safe fallback for unusual code paths.
+  let format: ClassificationFormat = 'B';
+  let reasoning: string = 'Default to Monster';
+  let legacyType: CreatureType = 'monster';
   let subtype: string | undefined;
   const confidence: 'high' | 'medium' | 'low' = 'high';
-  let step: 1 | 2 | 3 | 4 | 5;
+  let step: 1 | 2 | 3 | 4 | 5 = 5;
   const lowerName = creatureName.toLowerCase();
   // Pre-check data is useful for disambiguation when HD/level tokens are present
   const preCheck = extractPreCheckData(creatureName, canonicalData);
@@ -470,15 +481,19 @@ export function classifyEntityV3(
     subtype = 'monster';
   }
 
-  // DISAMBIGUATION: If the entry includes HD (or explicit level token) and the
-  // pre-check suggests a monster race, group unit, or a numeric "Xth level"
+  // DISAMBIGUATION: If the entry includes HD or an explicit level token and
+  // the pre-check suggests a monster race, group unit, or a numeric "Xth level"
   // notation, then treat as Monster/Unit even if a class keyword appears in
   // the race/class text. This avoids misclassifying generic monster entries
   // like "Elf, Wood, bowman" or "1st level human fighters" as Format A.
   // Preserve named humanoid with rank exceptions (they remain Format A).
-  else if (preCheck.hasHD) {
+  // NOTE: This now triggers if either HD or an explicit level token exists.
+  else if (preCheck.hasHD || preCheck.hasLevel) {
     const levelLike = Boolean(preCheck.hasLevel) || /\b\d+(?:st|nd|rd|th)\s+level\b/i.test(String(canonicalData.level || context.raceClass || ''));
     const looksLikeMonsterEntry = preCheck.isMonsterRace || preCheck.isGroupUnit || levelLike;
+    // Require that the entry is non-named (not a proper noun) before forcing
+    // monster/unit formatting. This preserves named humanoid NPCs which may
+    // legitimately contain level or class tokens (e.g., "Marcus 3rd level").
     if (looksLikeMonsterEntry && !signals.IsNamed) {
       if (preCheck.isGroupUnit) {
         format = 'C';
