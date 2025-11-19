@@ -1,6 +1,8 @@
 export { formatHdAsLevel } from './format-hd-as-level';
 
 export function normalizeDisposition(value: string): string {
+  if (!value) return '';
+
   const mapping: Record<string, string> = {
     'lawful good': 'law/good',
     'lawful neutral': 'law/neutral',
@@ -14,6 +16,26 @@ export function normalizeDisposition(value: string): string {
     'chaotic neutral': 'chaos/neutral',
     'chaotic evil': 'chaos/evil',
   };
+
+  // Normalize whitespace/punctuation and lowercase for lookup
+  const trimmed = value.trim().toLowerCase().replace(/[\-\/\\]/g, ' ').replace(/\.+$/, '');
+
+  // Support common one- or two-letter abbreviations (LG, CN, etc.)
+  const abbr = trimmed.replace(/[^a-z]/g, '');
+  const abbrMap: Record<string, string> = {
+    lg: 'law/good',
+    ln: 'law/neutral',
+    le: 'law/evil',
+    ng: 'neutral/good',
+    nn: 'neutral',
+    ne: 'neutral/evil',
+    cg: 'chaos/good',
+    cn: 'chaos/neutral',
+    ce: 'chaos/evil',
+  };
+
+  if (abbrMap[abbr]) return abbrMap[abbr];
+
   return mapping[trimmed] ?? value.trim();
 }
 
