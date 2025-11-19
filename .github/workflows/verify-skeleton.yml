@@ -1,0 +1,27 @@
+name: Verify Skeleton Clean
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  verify-skeleton:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Make scripts executable
+        run: chmod +x scripts/*.sh || true
+
+      - name: Run skeleton verification
+        run: |
+          set -euo pipefail
+          ./scripts/generate-notebooklm.sh --skeleton --no-docs --no-code --verify-skeleton
