@@ -1,0 +1,5108 @@
+# Chunk 36
+
+### data/mouths-of-madness/entities.canonical.json
+
+```json
+[
+  {
+    "sourceIndex": 58495,
+    "title": "Ape, carnivorous",
+    "labels": {
+      "inline": "Ape, carnivorous",
+      "titleLine": "The Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4",
+      "start": 58495,
+      "end": 59086,
+      "startLine": 691,
+      "endLine": 691,
+      "titleLineNum": 689,
+      "titleLine": "The Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification.",
+      "inlineLabel": "Ape, carnivorous",
+      "inlineContext": "**Ape, carnivorous:** _",
+      "lineText": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_ ",
+      "snippet": "The Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification. **Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_",
+      "hp": 23,
+      "ac": 15,
+      "hd": "4d10",
+      "xp": "80+4",
+      "level": null,
+      "raceClass": "This neutral animal",
+      "notes": "This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4"
+    },
+    "canonicalData": {
+      "raw": "This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4",
+      "hd": "4d10",
+      "hp": "23",
+      "ac": "15",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 4(d10), HP 23, AC 15, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 59104,
+    "title": "Bandit",
+    "labels": {
+      "inline": "Bandit",
+      "titleLine": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1",
+      "start": 59104,
+      "end": 59366,
+      "startLine": 693,
+      "endLine": 693,
+      "titleLineNum": 691,
+      "titleLine": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_",
+      "inlineLabel": "Bandit",
+      "inlineContext": "**Bandit:** _",
+      "lineText": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_",
+      "snippet": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_ **Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_",
+      "hp": 4,
+      "ac": 13,
+      "hd": null,
+      "xp": "5+1",
+      "level": 0,
+      "raceClass": "0th level, neutral evil, human fighters",
+      "notes": "They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1",
+      "hp": "4",
+      "ac": "13",
+      "disposition": "neutral evil",
+      "attributes": "physical",
+      "coins": "6 sp",
+      "raceClass": "0th level, neutral evil, human fighters",
+      "hd": "1d6"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 4, AC 13, disposition neutral evil. Saves: P. It has 6 silver in coin."
+  },
+  {
+    "sourceIndex": 59395,
+    "title": "Bandit, Lieutenant",
+    "labels": {
+      "inline": "Bandit, Lieutenant",
+      "titleLine": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2",
+      "start": 59395,
+      "end": 59668,
+      "startLine": 695,
+      "endLine": 695,
+      "titleLineNum": 693,
+      "titleLine": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_",
+      "inlineLabel": "Bandit, Lieutenant",
+      "inlineContext": "**Bandit, Lieutenant:** _",
+      "lineText": "**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_ ",
+      "snippet": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_ **Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_",
+      "hp": 14,
+      "ac": 14,
+      "hd": null,
+      "xp": "10+2",
+      "level": 2,
+      "raceClass": "2nd level, neutral evil, human fighters",
+      "notes": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2"
+    },
+    "canonicalData": {
+      "raw": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2",
+      "hp": "14",
+      "ac": "14",
+      "disposition": "neutral evil",
+      "attributes": "physical",
+      "coins": "6 gp",
+      "raceClass": "2nd level, neutral evil, human fighters",
+      "hd": "1d6"
+    },
+    "canonicalParenthetical": "HP 14, AC 14, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 gold in coin."
+  },
+  {
+    "sourceIndex": 59695,
+    "title": "Bat, giant cave",
+    "labels": {
+      "inline": "Bat, giant cave",
+      "titleLine": "**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1",
+      "start": 59695,
+      "end": 60110,
+      "startLine": 697,
+      "endLine": 697,
+      "titleLineNum": 695,
+      "titleLine": "**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_",
+      "inlineLabel": "Bat, giant cave",
+      "inlineContext": "**Bat, giant cave:** _",
+      "lineText": "**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_ ",
+      "snippet": "**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_ **Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_",
+      "hp": 1,
+      "ac": 12,
+      "hd": "1d2",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1",
+      "hd": "1d2",
+      "hp": "1",
+      "ac": "12",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d2), HP 1, AC 12, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 60136,
+    "title": "**Batrachianoid*:** _",
+    "labels": {
+      "inline": "**Batrachianoid*:** _",
+      "titleLine": "**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1",
+      "start": 60136,
+      "end": 60524,
+      "startLine": 699,
+      "endLine": 699,
+      "titleLineNum": 697,
+      "titleLine": "**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_",
+      "inlineLabel": "**Batrachianoid*:** _",
+      "inlineContext": "**Batrachianoid*:** _",
+      "lineText": "**Batrachianoid*:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1)_ ",
+      "snippet": "**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_ **Batrachianoid*:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1)_",
+      "hp": 5,
+      "ac": 14,
+      "hd": "1d8",
+      "xp": "11+1",
+      "level": null,
+      "raceClass": "These chaotic evil humanoids'",
+      "notes": "These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1"
+    },
+    "canonicalData": {
+      "raw": "These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1",
+      "hd": "1d8",
+      "hp": "5",
+      "ac": "14",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "coins": "6 cp"
+    },
+    "canonicalParenthetical": "HP 5, AC 14, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 copper in coin."
+  },
+  {
+    "sourceIndex": 60547,
+    "title": "Bear, black",
+    "labels": {
+      "inline": "Bear, black",
+      "titleLine": "**Batrachianoid*:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3",
+      "start": 60547,
+      "end": 60878,
+      "startLine": 701,
+      "endLine": 701,
+      "titleLineNum": 699,
+      "titleLine": "**Batrachianoid*:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1)_",
+      "inlineLabel": "Bear, black",
+      "inlineContext": "**Bear, black:** _",
+      "lineText": "**Bear, black:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3)_",
+      "snippet": "**Batrachianoid*:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1)_ **Bear, black:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3)_",
+      "hp": 15,
+      "ac": 13,
+      "hd": "3d8",
+      "xp": "40+3",
+      "level": null,
+      "raceClass": "This neutral animal",
+      "notes": "This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3"
+    },
+    "canonicalData": {
+      "raw": "This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3",
+      "hd": "3d8",
+      "hp": "15",
+      "ac": "13",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "ws for 1d4+1 damage and a bite for 1d6+1 damage"
+    },
+    "canonicalParenthetical": "Level 3(d8), HP 15, AC 13, disposition neutrality."
+  },
+  {
+    "sourceIndex": 60899,
+    "title": "Boar, wild",
+    "labels": {
+      "inline": "Boar, wild",
+      "titleLine": "**Bear, black:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2",
+      "start": 60899,
+      "end": 61113,
+      "startLine": 703,
+      "endLine": 703,
+      "titleLineNum": 701,
+      "titleLine": "**Bear, black:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3)_",
+      "inlineLabel": "Boar, wild",
+      "inlineContext": "**Boar, wild:** _",
+      "lineText": "**Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_",
+      "snippet": "**Bear, black:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3)_ **Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_",
+      "hp": 8,
+      "ac": 16,
+      "hd": "2d8",
+      "xp": "15+2",
+      "level": null,
+      "raceClass": "5 HD creatures",
+      "notes": "This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2"
+    },
+    "canonicalData": {
+      "raw": "This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2",
+      "hd": "2d8",
+      "hp": "8",
+      "ac": "16",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 2(d8), HP 8, AC 16, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 61144,
+    "title": "Brigand, crossbowmen",
+    "labels": {
+      "inline": "Brigand, crossbowmen",
+      "titleLine": "**Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1",
+      "start": 61144,
+      "end": 61455,
+      "startLine": 705,
+      "endLine": 705,
+      "titleLineNum": 703,
+      "titleLine": "**Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_",
+      "inlineLabel": "Brigand, crossbowmen",
+      "inlineContext": "**Brigand, crossbowmen:** _",
+      "lineText": "**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_",
+      "snippet": "**Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_ **Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_",
+      "hp": 5,
+      "ac": 13,
+      "hd": null,
+      "xp": "7+1",
+      "level": 1,
+      "raceClass": "1st level, neutral evil, human fighters",
+      "notes": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1"
+    },
+    "canonicalData": {
+      "raw": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1",
+      "hp": "5",
+      "ac": "13",
+      "disposition": "neutral evil",
+      "attributes": "physical",
+      "coins": "6 gp",
+      "raceClass": "1st level, neutral evil, human fighters"
+    },
+    "canonicalParenthetical": "HP 5, AC 13, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 gold in coin."
+  },
+  {
+    "sourceIndex": 61483,
+    "title": "Brigand, flailmen",
+    "labels": {
+      "inline": "Brigand, flailmen",
+      "titleLine": "**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1",
+      "start": 61483,
+      "end": 61721,
+      "startLine": 707,
+      "endLine": 707,
+      "titleLineNum": 705,
+      "titleLine": "**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_",
+      "inlineLabel": "Brigand, flailmen",
+      "inlineContext": "**Brigand, flailmen:** _",
+      "lineText": "**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_",
+      "snippet": "**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_ **Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_",
+      "hp": 5,
+      "ac": 14,
+      "hd": null,
+      "xp": "7+1",
+      "level": 1,
+      "raceClass": "1st level, neutral evil, human fighters",
+      "notes": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1"
+    },
+    "canonicalData": {
+      "raw": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1",
+      "hp": "5",
+      "ac": "14",
+      "disposition": "neutral evil",
+      "attributes": "physical",
+      "coins": "6 sp",
+      "raceClass": "1st level, neutral evil, human fighters"
+    },
+    "canonicalParenthetical": "HP 5, AC 14, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin."
+  },
+  {
+    "sourceIndex": 61749,
+    "title": "Brigand, Serjeant",
+    "labels": {
+      "inline": "Brigand, Serjeant",
+      "titleLine": "**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2",
+      "start": 61749,
+      "end": 62037,
+      "startLine": 709,
+      "endLine": 709,
+      "titleLineNum": 707,
+      "titleLine": "**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_",
+      "inlineLabel": "Brigand, Serjeant",
+      "inlineContext": "**Brigand, Serjeant:** _",
+      "lineText": "**Brigand, Serjeant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2)_",
+      "snippet": "**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_ **Brigand, Serjeant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2)_",
+      "hp": 14,
+      "ac": 15,
+      "hd": null,
+      "xp": "10+2",
+      "level": 2,
+      "raceClass": "2nd level, neutral evil, human fighters",
+      "notes": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2"
+    },
+    "canonicalData": {
+      "raw": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2",
+      "hp": "14",
+      "ac": "15",
+      "disposition": "neutral evil",
+      "attributes": "physical",
+      "coins": "8 gp",
+      "raceClass": "2nd level, neutral evil, human fighters"
+    },
+    "canonicalParenthetical": "HP 14, AC 15, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 8 gold in coin."
+  },
+  {
+    "sourceIndex": 62055,
+    "title": "Bugbear",
+    "labels": {
+      "inline": "Bugbear",
+      "titleLine": "**Brigand, Serjeant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3",
+      "start": 62055,
+      "end": 62365,
+      "startLine": 711,
+      "endLine": 711,
+      "titleLineNum": 709,
+      "titleLine": "**Brigand, Serjeant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2)_",
+      "inlineLabel": "Bugbear",
+      "inlineContext": "**Bugbear:** _",
+      "lineText": "**Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_",
+      "snippet": "**Brigand, Serjeant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2)_ **Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_",
+      "hp": 16,
+      "ac": 16,
+      "hd": "3d10",
+      "xp": "30+3",
+      "level": null,
+      "raceClass": "These chaotic evil humanoids'",
+      "notes": "These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3"
+    },
+    "canonicalData": {
+      "raw": "These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3",
+      "hd": "3d10",
+      "hp": "16",
+      "ac": "16",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "attributes": "physical",
+      "coins": "4 gp"
+    },
+    "canonicalParenthetical": "Level 3(d10), HP 16, AC 16, disposition chaotic evil. Saves: P. It has 4 gold in coin."
+  },
+  {
+    "sourceIndex": 62393,
+    "title": "Elf, Wood, bowman",
+    "labels": {
+      "inline": "Elf, Wood, bowman",
+      "titleLine": "**Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1",
+      "start": 62393,
+      "end": 62799,
+      "startLine": 713,
+      "endLine": 713,
+      "titleLineNum": 711,
+      "titleLine": "**Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_",
+      "inlineLabel": "Elf, Wood, bowman",
+      "inlineContext": "**Elf, Wood, bowman:** _",
+      "lineText": "**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_ ",
+      "snippet": "**Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_ **Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_",
+      "hp": 8,
+      "ac": 12,
+      "hd": "1d10",
+      "xp": "13+1",
+      "level": 1,
+      "raceClass": "1st level, chaotic neutral fighters",
+      "notes": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1"
+    },
+    "canonicalData": {
+      "raw": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1",
+      "hd": "1d10",
+      "hp": "8",
+      "ac": "12",
+      "disposition": "chaotic neutral",
+      "attributes": "physical",
+      "coins": "18 sp",
+      "raceClass": "1st level, chaotic neutral fighters"
+    },
+    "canonicalParenthetical": "HP 8, AC 12, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 18 silver in coin."
+  },
+  {
+    "sourceIndex": 62830,
+    "title": "Elf, Wood, spearman",
+    "labels": {
+      "inline": "Elf, Wood, spearman",
+      "titleLine": "**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1",
+      "start": 62830,
+      "end": 63236,
+      "startLine": 715,
+      "endLine": 715,
+      "titleLineNum": 713,
+      "titleLine": "**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_",
+      "inlineLabel": "Elf, Wood, spearman",
+      "inlineContext": "**Elf, Wood, spearman:** _",
+      "lineText": "**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_",
+      "snippet": "**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_ **Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_",
+      "hp": 8,
+      "ac": 13,
+      "hd": "1d10",
+      "xp": "13+1",
+      "level": 1,
+      "raceClass": "1st level, chaotic neutral fighters",
+      "notes": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1"
+    },
+    "canonicalData": {
+      "raw": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1",
+      "hd": "1d10",
+      "hp": "8",
+      "ac": "13",
+      "disposition": "chaotic neutral",
+      "attributes": "physical",
+      "coins": "12 sp",
+      "raceClass": "1st level, chaotic neutral fighters"
+    },
+    "canonicalParenthetical": "HP 8, AC 13, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 12 silver in coin."
+  },
+  {
+    "sourceIndex": 63267,
+    "title": "Elf, Wood, swordsman",
+    "labels": {
+      "inline": "Elf, Wood, swordsman",
+      "titleLine": "**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3",
+      "start": 63267,
+      "end": 63689,
+      "startLine": 717,
+      "endLine": 717,
+      "titleLineNum": 715,
+      "titleLine": "**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_",
+      "inlineLabel": "Elf, Wood, swordsman",
+      "inlineContext": "**Elf, Wood, swordsman:** _",
+      "lineText": "**Elf, Wood, swordsman:** _(They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3)_",
+      "snippet": "**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_ **Elf, Wood, swordsman:** _(They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3)_",
+      "hp": 5,
+      "ac": 14,
+      "hd": "1d10",
+      "xp": "13+1",
+      "level": 3,
+      "raceClass": "1st - 3rd level, chaotic neutral fighters",
+      "notes": "They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3"
+    },
+    "canonicalData": {
+      "raw": "They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3",
+      "hd": "1d10",
+      "hp": "5",
+      "ac": "14",
+      "disposition": "chaotic neutral",
+      "attributes": "physical",
+      "coins": "2–12 gp",
+      "raceClass": "1st - 3rd level, chaotic neutral fighters"
+    },
+    "canonicalParenthetical": "HP 5, AC 14, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 2–12 gold in coin."
+  },
+  {
+    "sourceIndex": 63705,
+    "title": "Ghoul",
+    "labels": {
+      "inline": "Ghoul",
+      "titleLine": "**Elf, Wood, swordsman:** _(They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2",
+      "start": 63705,
+      "end": 64364,
+      "startLine": 719,
+      "endLine": 719,
+      "titleLineNum": 717,
+      "titleLine": "**Elf, Wood, swordsman:** _(They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3)_",
+      "inlineLabel": "Ghoul",
+      "inlineContext": "**Ghoul:** _",
+      "lineText": "**Ghoul:** _(These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2)_",
+      "snippet": "**Elf, Wood, swordsman:** _(They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3)_ **Ghoul:** _(These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2)_",
+      "hp": 10,
+      "ac": 14,
+      "hd": "2d8",
+      "xp": "30+2",
+      "level": null,
+      "raceClass": "immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]",
+      "notes": "These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2"
+    },
+    "canonicalData": {
+      "raw": "These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2",
+      "hd": "2d8",
+      "hp": "10",
+      "ac": "14",
+      "disposition": "chaotic evil",
+      "raceClass": "undead",
+      "attributes": "ralysis or become rigid [paralyzed]"
+    },
+    "canonicalParenthetical": "Level 2(d8), HP 10, AC 14, disposition chaotic evil."
+  },
+  {
+    "sourceIndex": 64380,
+    "title": "Gnoll",
+    "labels": {
+      "inline": "Gnoll",
+      "titleLine": "**Ghoul:** _(These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2",
+      "start": 64380,
+      "end": 64673,
+      "startLine": 721,
+      "endLine": 721,
+      "titleLineNum": 719,
+      "titleLine": "**Ghoul:** _(These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2)_",
+      "inlineLabel": "Gnoll",
+      "inlineContext": "**Gnoll:** _",
+      "lineText": "**Gnoll:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2)_ ",
+      "snippet": "**Ghoul:** _(These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2)_ **Gnoll:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2)_",
+      "hp": 13,
+      "ac": 15,
+      "hd": "2d10",
+      "xp": "12+2",
+      "level": null,
+      "raceClass": "These chaotic evil humanoids'",
+      "notes": "These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2"
+    },
+    "canonicalData": {
+      "raw": "These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2",
+      "hd": "2d10",
+      "hp": "13",
+      "ac": "15",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "attributes": "tchwork leather armor, shield, throwing club, morning star, and 2d4 gp",
+      "coins": "4 gp"
+    },
+    "canonicalParenthetical": "Level 2(d10), HP 13, AC 15, disposition chaotic evil. It has 4 gold in coin."
+  },
+  {
+    "sourceIndex": 64699,
+    "title": "Goblin, raider",
+    "labels": {
+      "inline": "Goblin, raider",
+      "titleLine": "**Gnoll:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1",
+      "start": 64699,
+      "end": 64968,
+      "startLine": 723,
+      "endLine": 723,
+      "titleLineNum": 721,
+      "titleLine": "**Gnoll:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2)_",
+      "inlineLabel": "Goblin, raider",
+      "inlineContext": "**Goblin, raider:** _",
+      "lineText": "**Goblin, raider:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1)_ ",
+      "snippet": "**Gnoll:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2)_ **Goblin, raider:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1)_",
+      "hp": 4,
+      "ac": 14,
+      "hd": "1d6",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1",
+      "hd": "1d6",
+      "hp": "4",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 sp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. It has 6 silver in coin."
+  },
+  {
+    "sourceIndex": 65005,
+    "title": "Goblin, leader (corporal)",
+    "labels": {
+      "inline": "Goblin, leader (corporal)",
+      "titleLine": "**Goblin, raider:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3",
+      "start": 65005,
+      "end": 65351,
+      "startLine": 725,
+      "endLine": 725,
+      "titleLineNum": 723,
+      "titleLine": "**Goblin, raider:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1)_",
+      "inlineLabel": "Goblin, leader (corporal)",
+      "inlineContext": "**Goblin, leader (corporal):** _",
+      "lineText": "**Goblin, leader (corporal):** _(These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3)_",
+      "snippet": "**Goblin, raider:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1)_ **Goblin, leader (corporal):** _(These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3)_",
+      "hp": 15,
+      "ac": 16,
+      "hd": "3d6+2",
+      "xp": "20+3",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3",
+      "hd": "3d6+2",
+      "hp": "15",
+      "ac": "16",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "strength",
+      "coins": "4 gp"
+    },
+    "canonicalParenthetical": "HP 15, AC 16, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 4 gold in coin."
+  },
+  {
+    "sourceIndex": 65369,
+    "title": "Griffon",
+    "labels": {
+      "inline": "Griffon",
+      "titleLine": "**Goblin, leader (corporal):** _(These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7",
+      "start": 65369,
+      "end": 65640,
+      "startLine": 727,
+      "endLine": 727,
+      "titleLineNum": 725,
+      "titleLine": "**Goblin, leader (corporal):** _(These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3)_",
+      "inlineLabel": "Griffon",
+      "inlineContext": "**Griffon:** _",
+      "lineText": "**Griffon:** _(This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7)_",
+      "snippet": "**Goblin, leader (corporal):** _(These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3)_ **Griffon:** _(This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7)_",
+      "hp": 45,
+      "ac": 17,
+      "hd": "7d10",
+      "xp": "270+7",
+      "level": null,
+      "raceClass": "This neutral creature",
+      "notes": "This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7"
+    },
+    "canonicalData": {
+      "raw": "This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7",
+      "hd": "7d10",
+      "hp": "45",
+      "ac": "17",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 7(d10), HP 45, AC 17, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 65660,
+    "title": "Hobgoblin",
+    "labels": {
+      "inline": "Hobgoblin",
+      "titleLine": "**Griffon:** _(This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1",
+      "start": 65660,
+      "end": 65954,
+      "startLine": 729,
+      "endLine": 729,
+      "titleLineNum": 727,
+      "titleLine": "**Griffon:** _(This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7)_",
+      "inlineLabel": "Hobgoblin",
+      "inlineContext": "**Hobgoblin:** _",
+      "lineText": "**Hobgoblin:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1)_",
+      "snippet": "**Griffon:** _(This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7)_ **Hobgoblin:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1)_",
+      "hp": 8,
+      "ac": 15,
+      "hd": "1d10",
+      "xp": "7+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1",
+      "hd": "1d10",
+      "hp": "8",
+      "ac": "15",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical",
+      "coins": "4 sp"
+    },
+    "canonicalParenthetical": "Level 1(d10), HP 8, AC 15, disposition lawful evil. Saves: P. It has 4 silver in coin."
+  },
+  {
+    "sourceIndex": 65971,
+    "title": "Kobold",
+    "labels": {
+      "inline": "Kobold",
+      "titleLine": "**Hobgoblin:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1",
+      "start": 65971,
+      "end": 66247,
+      "startLine": 731,
+      "endLine": 731,
+      "titleLineNum": 729,
+      "titleLine": "**Hobgoblin:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1)_",
+      "inlineLabel": "Kobold",
+      "inlineContext": "**Kobold:** _",
+      "lineText": "**Kobold:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1)_",
+      "snippet": "**Hobgoblin:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1)_ **Kobold:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1)_",
+      "hp": 3,
+      "ac": 15,
+      "hd": "1d4",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1",
+      "hd": "1d4",
+      "hp": "3",
+      "ac": "15",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 sp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d4), HP 3, AC 15, disposition lawful evil. Saves: P. It has 6 silver in coin."
+  },
+  {
+    "sourceIndex": 66281,
+    "title": "Lion (mountain, forest)",
+    "labels": {
+      "inline": "Lion (mountain, forest)",
+      "titleLine": "**Kobold:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4",
+      "start": 66281,
+      "end": 66576,
+      "startLine": 733,
+      "endLine": 733,
+      "titleLineNum": 731,
+      "titleLine": "**Kobold:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1)_",
+      "inlineLabel": "Lion (mountain, forest)",
+      "inlineContext": "**Lion (mountain, forest):** _",
+      "lineText": "**Lion (mountain, forest):** _(These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4)_    ",
+      "snippet": "**Kobold:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1)_ **Lion (mountain, forest):** _(These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4)_",
+      "hp": 20,
+      "ac": 16,
+      "hd": "4d8",
+      "xp": "60+4",
+      "level": null,
+      "raceClass": "These neutral animals'",
+      "notes": "These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4"
+    },
+    "canonicalData": {
+      "raw": "These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4",
+      "hd": "4d8",
+      "hp": "20",
+      "ac": "16",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 4(d8), HP 20, AC 16, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 66601,
+    "title": "Lizardfolk",
+    "labels": {
+      "inline": "Lizardfolk",
+      "titleLine": "**Lion (mountain, forest):** _(These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2",
+      "start": 66601,
+      "end": 66804,
+      "startLine": 735,
+      "endLine": 735,
+      "titleLineNum": 733,
+      "titleLine": "**Lion (mountain, forest):** _(These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4)_",
+      "inlineLabel": "Lizardfolk",
+      "inlineContext": "**Lizardfolk:** _",
+      "lineText": "**Lizardfolk:** _(These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2)_  ",
+      "snippet": "**Lion (mountain, forest):** _(These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4)_ **Lizardfolk:** _(These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2)_",
+      "hp": 10,
+      "ac": 15,
+      "hd": "2d8",
+      "xp": "10+2",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2",
+      "hd": "2d8",
+      "hp": "10",
+      "ac": "15",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 2(d8), HP 10, AC 15, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 66823,
+    "title": "**Losel*:** _",
+    "labels": {
+      "inline": "**Losel*:** _",
+      "titleLine": "**Lizardfolk:** _(These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1",
+      "start": 66823,
+      "end": 67321,
+      "startLine": 737,
+      "endLine": 737,
+      "titleLineNum": 735,
+      "titleLine": "**Lizardfolk:** _(These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2)_",
+      "inlineLabel": "**Losel*:** _",
+      "inlineContext": "**Losel*:** _",
+      "lineText": "**Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_   ",
+      "snippet": "**Lizardfolk:** _(These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2)_ **Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_",
+      "hp": 10,
+      "ac": 14,
+      "hd": "1d8+4",
+      "xp": "18+1",
+      "level": null,
+      "raceClass": "These neutral evil humanoids'",
+      "notes": "These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1",
+      "hd": "1d8+4",
+      "hp": "10",
+      "ac": "14",
+      "disposition": "neutral evil",
+      "raceClass": "humanoid",
+      "attributes": "strength"
+    },
+    "canonicalParenthetical": "HP 10, AC 14, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
+  },
+  {
+    "sourceIndex": 67390,
+    "title": "(fisherman/hunter/trapper/woodcutter)",
+    "labels": {
+      "inline": "(fisherman/hunter/trapper/woodcutter)",
+      "titleLine": "**Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2",
+      "start": 67390,
+      "end": 67685,
+      "startLine": 739,
+      "endLine": 739,
+      "titleLineNum": 737,
+      "titleLine": "**Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_",
+      "inlineLabel": "(fisherman/hunter/trapper/woodcutter)",
+      "inlineContext": "**Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _",
+      "lineText": "**Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _(They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2)_",
+      "snippet": "**Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_ **Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _(They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2)_",
+      "hp": 5,
+      "ac": 12,
+      "hd": null,
+      "xp": "3+1",
+      "level": 2,
+      "raceClass": "0th-2nd level, neutral, human fighters",
+      "notes": "They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2"
+    },
+    "canonicalData": {
+      "raw": "They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2",
+      "hp": "5",
+      "ac": "12",
+      "disposition": "neutrality",
+      "attributes": "physical",
+      "coins": "6 sp",
+      "raceClass": "0th-2nd level, neutral, human fighters"
+    },
+    "canonicalParenthetical": "HP 5, AC 12, disposition neutrality. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin."
+  },
+  {
+    "sourceIndex": 67707,
+    "title": "Naga, Water",
+    "labels": {
+      "inline": "Naga, Water",
+      "titleLine": "**Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _(They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7",
+      "start": 67707,
+      "end": 68561,
+      "startLine": 741,
+      "endLine": 741,
+      "titleLineNum": 739,
+      "titleLine": "**Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _(They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2)_",
+      "inlineLabel": "Naga, Water",
+      "inlineContext": "**Naga, Water:** _",
+      "lineText": "**Naga, Water:** _(This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7)_  ",
+      "snippet": "**Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _(They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2)_ **Naga, Water:** _(This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7)_",
+      "hp": 35,
+      "ac": 15,
+      "hd": "7d8",
+      "xp": "540+7",
+      "level": 7,
+      "raceClass": "This neutral creature",
+      "notes": "This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7"
+    },
+    "canonicalData": {
+      "raw": "This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7",
+      "hd": "7d8",
+      "hp": "35",
+      "ac": "15",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical",
+      "equipment": "spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, medium steel shield, teleport, etc"
+    },
+    "canonicalParenthetical": "Level 7(d8), HP 35, AC 15, disposition neutrality. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc."
+  },
+  {
+    "sourceIndex": 68589,
+    "title": "Nixies (sprite)",
+    "labels": {
+      "inline": "Nixies (sprite)",
+      "titleLine": "**Naga, Water:** _(This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1",
+      "start": 68589,
+      "end": 68916,
+      "startLine": 743,
+      "endLine": 743,
+      "titleLineNum": 741,
+      "titleLine": "**Naga, Water:** _(This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7)_",
+      "inlineLabel": "Nixies (sprite)",
+      "inlineContext": "**Nixies (sprite):** _",
+      "lineText": "**Nixies (sprite):** _(These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1)_ ",
+      "snippet": "**Naga, Water:** _(This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7)_ **Nixies (sprite):** _(These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1)_",
+      "hp": 3,
+      "ac": 14,
+      "hd": "1d4",
+      "xp": "15+1",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1",
+      "hd": "1d4",
+      "hp": "3",
+      "ac": "14",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "spells": "water breathing at will and cast a powerful charm person spell that lasts for one year"
+    },
+    "canonicalParenthetical": "HP 3, AC 14, disposition neutrality. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
+  },
+  {
+    "sourceIndex": 68931,
+    "title": "Orc",
+    "labels": {
+      "inline": "Orc",
+      "titleLine": "**Nixies (sprite):** _(These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1",
+      "start": 68931,
+      "end": 69226,
+      "startLine": 745,
+      "endLine": 745,
+      "titleLineNum": 743,
+      "titleLine": "**Nixies (sprite):** _(These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1)_",
+      "inlineLabel": "Orc",
+      "inlineContext": "**Orc:** _",
+      "lineText": "**Orc:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1)_",
+      "snippet": "**Nixies (sprite):** _(These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1)_ **Orc:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1)_",
+      "hp": 5,
+      "ac": 13,
+      "hd": "1d8",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1",
+      "hd": "1d8",
+      "hp": "5",
+      "ac": "13",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 gp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d8), HP 5, AC 13, disposition lawful evil. Saves: P. It has 6 gold in coin."
+  },
+  {
+    "sourceIndex": 69249,
+    "title": "Otter, giant",
+    "labels": {
+      "inline": "Otter, giant",
+      "titleLine": "**Orc:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4.",
+      "start": 69249,
+      "end": 69420,
+      "startLine": 747,
+      "endLine": 747,
+      "titleLineNum": 745,
+      "titleLine": "**Orc:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1)_",
+      "inlineLabel": "Otter, giant",
+      "inlineContext": "**Otter, giant:** _",
+      "lineText": "**Otter, giant:** _(This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4.)_  ",
+      "snippet": "**Orc:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1)_ **Otter, giant:** _(This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4.)_",
+      "hp": 21,
+      "ac": 15,
+      "hd": "4d8",
+      "xp": "40+4",
+      "level": null,
+      "raceClass": "This neutral creature",
+      "notes": "This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4."
+    },
+    "canonicalData": {
+      "raw": "This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4.",
+      "hd": "4d8",
+      "hp": "21",
+      "ac": "15",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 4(d8), HP 21, AC 15, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 69448,
+    "title": "Owlbear (small)",
+    "labels": {
+      "inline": "Owlbear (small)",
+      "titleLine": "**Otter, giant:** _(This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4.)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3",
+      "start": 69448,
+      "end": 69969,
+      "startLine": 749,
+      "endLine": 749,
+      "titleLineNum": 747,
+      "titleLine": "**Otter, giant:** _(This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4.)_",
+      "inlineLabel": "Owlbear (small)",
+      "inlineContext": "**Owlbear (small):** _",
+      "lineText": "**Owlbear (small):** _(These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3)_ ",
+      "snippet": "**Otter, giant:** _(This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4.)_ **Owlbear (small):** _(These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3)_",
+      "hp": 19,
+      "ac": 15,
+      "hd": "3d10",
+      "xp": "40+3",
+      "level": null,
+      "raceClass": "These neutral monsters'",
+      "notes": "These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3"
+    },
+    "canonicalData": {
+      "raw": "These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3",
+      "hd": "3d10",
+      "hp": "19",
+      "ac": "15",
+      "disposition": "neutrality",
+      "raceClass": "monster",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 3(d10), HP 19, AC 15, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 70000,
+    "title": "Rats, River (giant)",
+    "labels": {
+      "inline": "Rats, River (giant)",
+      "titleLine": "**Owlbear (small):** _(These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1",
+      "start": 70000,
+      "end": 70312,
+      "startLine": 751,
+      "endLine": 751,
+      "titleLineNum": 749,
+      "titleLine": "**Owlbear (small):** _(These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3)_",
+      "inlineLabel": "Rats, River (giant)",
+      "inlineContext": "**Rats, River (giant):** _",
+      "lineText": "**Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_",
+      "snippet": "**Owlbear (small):** _(These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3)_ **Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_",
+      "hp": 2,
+      "ac": 13,
+      "hd": "1d4",
+      "xp": "1+1",
+      "level": null,
+      "raceClass": "These neutral animals'",
+      "notes": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1",
+      "hd": "1d4",
+      "hp": "2",
+      "ac": "13",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d4), HP 2, AC 13, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 70331,
+    "title": "Rivermen",
+    "labels": {
+      "inline": "Rivermen",
+      "titleLine": "**Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1",
+      "start": 70331,
+      "end": 70650,
+      "startLine": 753,
+      "endLine": 753,
+      "titleLineNum": 751,
+      "titleLine": "**Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_",
+      "inlineLabel": "Rivermen",
+      "inlineContext": "**Rivermen:** _",
+      "lineText": "**Rivermen:** _(They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1)_",
+      "snippet": "**Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_ **Rivermen:** _(They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1)_",
+      "hp": 5,
+      "ac": 11,
+      "hd": "1d8",
+      "xp": "5+1",
+      "level": 0,
+      "raceClass": "0th level, chaotic neutral, human fighters",
+      "notes": "They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1",
+      "hd": "1d8",
+      "hp": "5",
+      "ac": "11",
+      "disposition": "chaotic neutral",
+      "attributes": "physical",
+      "secondarySkills": "Nautical Ability",
+      "raceClass": "0th level, chaotic neutral, human fighters"
+    },
+    "canonicalParenthetical": "HP 5, AC 11, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. His secondary skill is Nautical Ability."
+  },
+  {
+    "sourceIndex": 70677,
+    "title": "Snake, poisonous",
+    "labels": {
+      "inline": "Snake, poisonous",
+      "titleLine": "**Rivermen:** _(They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1",
+      "start": 70677,
+      "end": 70914,
+      "startLine": 755,
+      "endLine": 755,
+      "titleLineNum": 753,
+      "titleLine": "**Rivermen:** _(They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1)_",
+      "inlineLabel": "Snake, poisonous",
+      "inlineContext": "**Snake, poisonous:** _",
+      "lineText": "**Snake, poisonous:** _(This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1)_",
+      "snippet": "**Rivermen:** _(They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1)_ **Snake, poisonous:** _(This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1)_",
+      "hp": 4,
+      "ac": 14,
+      "hd": "1d6",
+      "xp": "9+1",
+      "level": null,
+      "raceClass": "This neutral animal",
+      "notes": "This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1"
+    },
+    "canonicalData": {
+      "raw": "This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1",
+      "hd": "1d6",
+      "hp": "4",
+      "ac": "14",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 70950,
+    "title": "Snake, poisonous (deadly)",
+    "labels": {
+      "inline": "Snake, poisonous (deadly)",
+      "titleLine": "**Snake, poisonous:** _(This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2",
+      "start": 70950,
+      "end": 71230,
+      "startLine": 757,
+      "endLine": 757,
+      "titleLineNum": 755,
+      "titleLine": "**Snake, poisonous:** _(This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1)_",
+      "inlineLabel": "Snake, poisonous (deadly)",
+      "inlineContext": "**Snake, poisonous (deadly):** _",
+      "lineText": "**Snake, poisonous (deadly):** _(This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2)_",
+      "snippet": "**Snake, poisonous:** _(This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1)_ **Snake, poisonous (deadly):** _(This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2)_",
+      "hp": 7,
+      "ac": 14,
+      "hd": "2d6",
+      "xp": "20+2",
+      "level": null,
+      "raceClass": "This neutral animal",
+      "notes": "This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2"
+    },
+    "canonicalData": {
+      "raw": "This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2",
+      "hd": "2d6",
+      "hp": "7",
+      "ac": "14",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 2(d6), HP 7, AC 14, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 71269,
+    "title": "Spider, Giant (medium-sized)",
+    "labels": {
+      "inline": "Spider, Giant (medium-sized)",
+      "titleLine": "**Snake, poisonous (deadly):** _(This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3",
+      "start": 71269,
+      "end": 71666,
+      "startLine": 759,
+      "endLine": 759,
+      "titleLineNum": 757,
+      "titleLine": "**Snake, poisonous (deadly):** _(This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2)_",
+      "inlineLabel": "Spider, Giant (medium-sized)",
+      "inlineContext": "**Spider, Giant (medium-sized):** _",
+      "lineText": "**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3)_",
+      "snippet": "**Snake, poisonous (deadly):** _(This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2)_ **Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3)_",
+      "hp": 15,
+      "ac": 15,
+      "hd": "3d8",
+      "xp": "52+3",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3",
+      "hd": "3d8",
+      "hp": "15",
+      "ac": "15",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "ralyzation for 1d6 hours"
+    },
+    "canonicalParenthetical": "Level 3(d8), HP 15, AC 15, disposition neutrality."
+  },
+  {
+    "sourceIndex": 71684,
+    "title": "Stirges",
+    "labels": {
+      "inline": "Stirges",
+      "titleLine": "**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1",
+      "start": 71684,
+      "end": 71947,
+      "startLine": 761,
+      "endLine": 761,
+      "titleLineNum": 759,
+      "titleLine": "**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3)_",
+      "inlineLabel": "Stirges",
+      "inlineContext": "**Stirges:** _",
+      "lineText": "**Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_",
+      "snippet": "**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3)_ **Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_",
+      "hp": 3,
+      "ac": 16,
+      "hd": "1d6",
+      "xp": "15+1",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1",
+      "hd": "1d6",
+      "hp": "3",
+      "ac": "16",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 3, AC 16, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 71967,
+    "title": "Thieves",
+    "labels": {
+      "inline": "Thieves",
+      "titleLine": "**Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.",
+      "start": 71967,
+      "end": 72440,
+      "startLine": 763,
+      "endLine": 763,
+      "titleLineNum": 761,
+      "titleLine": "**Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_",
+      "inlineLabel": "Thieves",
+      "inlineContext": "**Thieves**:** _",
+      "lineText": "**Thieves**:** _(They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.)_ ",
+      "snippet": "**Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_ **Thieves**:** _(They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.)_",
+      "hp": 4,
+      "ac": 14,
+      "hd": null,
+      "xp": "50+3",
+      "level": 4,
+      "raceClass": "3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves",
+      "notes": "They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4."
+    },
+    "canonicalData": {
+      "raw": "They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.",
+      "hp": "4",
+      "ac": "14",
+      "disposition": "variable",
+      "attributes": "physical",
+      "coins": "6 gp",
+      "raceClass": "3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves"
+    },
+    "canonicalParenthetical": "HP 4, AC 14, disposition variable. Saves: P. It has 6 gold in coin."
+  },
+  {
+    "sourceIndex": 72473,
+    "title": "Turtle, Huge Snapping",
+    "labels": {
+      "inline": "Turtle, Huge Snapping",
+      "titleLine": "**Thieves**:** _(They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5",
+      "start": 72473,
+      "end": 73103,
+      "startLine": 765,
+      "endLine": 765,
+      "titleLineNum": 763,
+      "titleLine": "**Thieves**:** _(They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.)_",
+      "inlineLabel": "Turtle, Huge Snapping",
+      "inlineContext": "**Turtle, Huge Snapping:** _",
+      "lineText": "**Turtle, Huge Snapping:** _(These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5)_",
+      "snippet": "**Thieves**:** _(They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.)_ **Turtle, Huge Snapping:** _(These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5)_",
+      "hp": 20,
+      "ac": 19,
+      "hd": "5d8",
+      "xp": "100+5",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5",
+      "hd": "5d8",
+      "hp": "20",
+      "ac": "19",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 5(d8), HP 20, AC 19, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 73124,
+    "title": "Wolf, Grey",
+    "labels": {
+      "inline": "Wolf, Grey",
+      "titleLine": "**Turtle, Huge Snapping:** _(These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2",
+      "start": 73124,
+      "end": 73364,
+      "startLine": 767,
+      "endLine": 767,
+      "titleLineNum": 765,
+      "titleLine": "**Turtle, Huge Snapping:** _(These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5)_",
+      "inlineLabel": "Wolf, Grey",
+      "inlineContext": "**Wolf, Grey:** _",
+      "lineText": "**Wolf, Grey:** _(These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2)_",
+      "snippet": "**Turtle, Huge Snapping:** _(These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5)_ **Wolf, Grey:** _(These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2)_",
+      "hp": 9,
+      "ac": 13,
+      "hd": "2d8",
+      "xp": "10+2",
+      "level": null,
+      "raceClass": "These neutral animals'",
+      "notes": "These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2"
+    },
+    "canonicalData": {
+      "raw": "These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2",
+      "hd": "2d8",
+      "hp": "9",
+      "ac": "13",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 2(d8), HP 9, AC 13, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 73400,
+    "title": "Wolverine (small, normal)",
+    "labels": {
+      "inline": "Wolverine (small, normal)",
+      "titleLine": "**Wolf, Grey:** _(These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral creature's vital stats are HD 3d8, HP 16, AC 15, MV 20 ft. Its saves are physical, and all attacks are made as though it were 3HD higher than it is. It attacks with two claws for 1d4 points of damage and one bite for 1d4+1 damage._ _It can release a musk spray 10' wide by 30' long, saving throw versus breath weapon or victim is blinded for 1-2 hours; regardless of save, any creature in the spray's area of effect is sickened and suffers -2 strength, dexterity, and constitution for 2-8 turns. XP: 50+3",
+      "start": 73400,
+      "end": 73918,
+      "startLine": 769,
+      "endLine": 769,
+      "titleLineNum": 767,
+      "titleLine": "**Wolf, Grey:** _(These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2)_",
+      "inlineLabel": "Wolverine (small, normal)",
+      "inlineContext": "**Wolverine (small, normal):** _",
+      "lineText": "**Wolverine (small, normal):** _(This neutral creature's vital stats are HD 3d8, HP 16, AC 15, MV 20 ft. Its saves are physical, and all attacks are made as though it were 3HD higher than it is. It attacks with two claws for 1d4 points of damage and one bite for 1d4+1 damage._ _It can release a musk spray 10' wide by 30' long, saving throw versus breath weapon or victim is blinded for 1-2 hours; regardless of save, any creature in the spray's area of effect is sickened and suffers -2 strength, dexterity, and constitution for 2-8 turns. XP: 50+3)_",
+      "snippet": "**Wolf, Grey:** _(These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2)_ **Wolverine (small, normal):** _(This neutral creature's vital stats are HD 3d8, HP 16, AC 15, MV 20 ft. Its saves are physical, and all attacks are made as though it were 3HD higher than it is. It attacks with two claws for 1d4 points of damage and one bite for 1d4+1 damage._ _It can release a musk spray 10' wide by 30' long, saving throw versus breath weapon or victim is blinded for 1-2 hours; regardless of save, any creature in the spray's area of effect is sickened and suffers -2 strength, dexterity, and constitution for 2-8 turns. XP: 50+3)_",
+      "hp": 16,
+      "ac": 15,
+      "hd": "3d8",
+      "xp": "50+3",
+      "level": null,
+      "raceClass": "This neutral creature",
+      "notes": "This neutral creature's vital stats are HD 3d8, HP 16, AC 15, MV 20 ft. Its saves are physical, and all attacks are made as though it were 3HD higher than it is. It attacks with two claws for 1d4 points of damage and one bite for 1d4+1 damage._ _It can release a musk spray 10' wide by 30' long, saving throw versus breath weapon or victim is blinded for 1-2 hours; regardless of save, any creature in the spray's area of effect is sickened and suffers -2 strength, dexterity, and constitution for 2-8 turns. XP: 50+3"
+    },
+    "canonicalData": {
+      "raw": "This neutral creature's vital stats are HD 3d8, HP 16, AC 15, MV 20 ft. Its saves are physical, and all attacks are made as though it were 3HD higher than it is. It attacks with two claws for 1d4 points of damage and one bite for 1d4+1 damage._ _It can release a musk spray 10' wide by 30' long, saving throw versus breath weapon or victim is blinded for 1-2 hours; regardless of save, any creature in the spray's area of effect is sickened and suffers -2 strength, dexterity, and constitution for 2-8 turns. XP: 50+3",
+      "hd": "3d8",
+      "hp": "16",
+      "ac": "15",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 3(d8), HP 16, AC 15, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 88639,
+    "title": "Grimlock Manface (Losel Chieftain)",
+    "labels": {
+      "inline": "Grimlock Manface (Losel Chieftain)",
+      "titleLine": "There are smaller tribes scattered about the Little Hillwood Forest, and when an adolescent male is ostracized by the tribe (usually after losing a fight over mating rights), he may join one of these or likely perish alone; otherwise, outside tribes are treated with hostility. The Castle Keeper must choose where these are located, though it is possible that they are migratory."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268",
+      "start": 88639,
+      "end": 89226,
+      "startLine": 879,
+      "endLine": 879,
+      "titleLineNum": 877,
+      "titleLine": "There are smaller tribes scattered about the Little Hillwood Forest, and when an adolescent male is ostracized by the tribe (usually after losing a fight over mating rights), he may join one of these or likely perish alone; otherwise, outside tribes are treated with hostility. The Castle Keeper must choose where these are located, though it is possible that they are migratory.",
+      "inlineLabel": "Grimlock Manface (Losel Chieftain)",
+      "inlineContext": "**Grimlock Manface (Losel Chieftain):** _",
+      "lineText": "**Grimlock Manface (Losel Chieftain):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268)_",
+      "snippet": "There are smaller tribes scattered about the Little Hillwood Forest, and when an adolescent male is ostracized by the tribe (usually after losing a fight over mating rights), he may join one of these or likely perish alone; otherwise, outside tribes are treated with hostility. The Castle Keeper must choose where these are located, though it is possible that they are migratory. **Grimlock Manface (Losel Chieftain):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268)_",
+      "hp": 32,
+      "ac": 16,
+      "hd": "4d8+4",
+      "xp": "268",
+      "level": null,
+      "raceClass": "This neutral evil humanoid",
+      "notes": "This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268"
+    },
+    "canonicalData": {
+      "raw": "This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268",
+      "hd": "4d8+4",
+      "hp": "32",
+      "ac": "16",
+      "disposition": "neutral evil",
+      "raceClass": "humanoid",
+      "attributes": "strength",
+      "equipment": "splint mail armor and carry a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger",
+      "coins": "125 gp"
+    },
+    "canonicalParenthetical": "HP 32, AC 16, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries splint mail armor, a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], a lasso*, a belt axe, a dagger, and 125 gold in coin."
+  },
+  {
+    "sourceIndex": 89263,
+    "title": "Ji'gun-tima (Losel Shaman)",
+    "labels": {
+      "inline": "Ji'gun-tima (Losel Shaman)",
+      "titleLine": "**Grimlock Manface (Losel Chieftain):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260",
+      "start": 89263,
+      "end": 89864,
+      "startLine": 881,
+      "endLine": 881,
+      "titleLineNum": 879,
+      "titleLine": "**Grimlock Manface (Losel Chieftain):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268)_",
+      "inlineLabel": "Ji'gun-tima (Losel Shaman)",
+      "inlineContext": "**Ji'gun-tima (Losel Shaman):** _",
+      "lineText": "**Ji'gun-tima (Losel Shaman):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260)_",
+      "snippet": "**Grimlock Manface (Losel Chieftain):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268)_ **Ji'gun-tima (Losel Shaman):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260)_",
+      "hp": 25,
+      "ac": 12,
+      "hd": "4d8+4",
+      "xp": "260",
+      "level": 5,
+      "raceClass": "This neutral evil humanoid",
+      "notes": "This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260"
+    },
+    "canonicalData": {
+      "raw": "This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260",
+      "hd": "4d8+4",
+      "hp": "25",
+      "ac": "12",
+      "disposition": "neutral evil",
+      "raceClass": "humanoid",
+      "attributes": "strength",
+      "spells": "a mixture of cleric and wizard spells at a 5th level ability"
+    },
+    "canonicalParenthetical": "HP 25, AC 12, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. She can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*."
+  },
+  {
+    "sourceIndex": 89896,
+    "title": "Losel sub-chiefs x 10",
+    "labels": {
+      "inline": "Losel sub-chiefs x 10",
+      "titleLine": "**Ji'gun-tima (Losel Shaman):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2",
+      "start": 89896,
+      "end": 90428,
+      "startLine": 883,
+      "endLine": 883,
+      "titleLineNum": 881,
+      "titleLine": "**Ji'gun-tima (Losel Shaman):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260)_",
+      "inlineLabel": "Losel sub-chiefs x 10",
+      "inlineContext": "**Losel sub-chiefs x 10:** _",
+      "lineText": "**Losel sub-chiefs x 10:** _(These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2)_",
+      "snippet": "**Ji'gun-tima (Losel Shaman):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260)_ **Losel sub-chiefs x 10:** _(These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2)_",
+      "hp": 16,
+      "ac": 14,
+      "hd": "2d8+4",
+      "xp": "40+2",
+      "level": null,
+      "raceClass": "These neutral evil humanoids'",
+      "notes": "These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2"
+    },
+    "canonicalData": {
+      "raw": "These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2",
+      "hd": "2d8+4",
+      "hp": "16",
+      "ac": "14",
+      "disposition": "neutral evil",
+      "raceClass": "humanoid",
+      "attributes": "strength"
+    },
+    "canonicalParenthetical": "HP 16, AC 14, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
+  },
+  {
+    "sourceIndex": 90458,
+    "title": "Losel warriors x 30",
+    "labels": {
+      "inline": "Losel warriors x 30",
+      "titleLine": "**Losel sub-chiefs x 10:** _(These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1",
+      "start": 90458,
+      "end": 91031,
+      "startLine": 885,
+      "endLine": 885,
+      "titleLineNum": 883,
+      "titleLine": "**Losel sub-chiefs x 10:** _(These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2)_",
+      "inlineLabel": "Losel warriors x 30",
+      "inlineContext": "**Losel warriors x 30:** _",
+      "lineText": "**Losel warriors x 30:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_",
+      "snippet": "**Losel sub-chiefs x 10:** _(These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2)_ **Losel warriors x 30:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_",
+      "hp": 10,
+      "ac": 14,
+      "hd": "1d8+4",
+      "xp": "18+1",
+      "level": null,
+      "raceClass": "These neutral evil humanoids'",
+      "notes": "These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1",
+      "hd": "1d8+4",
+      "hp": "10",
+      "ac": "14",
+      "disposition": "neutral evil",
+      "raceClass": "humanoid",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d8+4), HP 10, AC 14, disposition neutral evil. Saves: P."
+  },
+  {
+    "sourceIndex": 91060,
+    "title": "Losel females x 35",
+    "labels": {
+      "inline": "Losel females x 35",
+      "titleLine": "**Losel warriors x 30:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral evil humanoids' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +1 damage due to strength. They have the conceal ability as per the PHB ranger class. They wield clubs [+1 \"to hit\"; 1d6+1 damage]. XP: 9+1",
+      "start": 91060,
+      "end": 91390,
+      "startLine": 887,
+      "endLine": 887,
+      "titleLineNum": 885,
+      "titleLine": "**Losel warriors x 30:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_",
+      "inlineLabel": "Losel females x 35",
+      "inlineContext": "**Losel females x 35:** _",
+      "lineText": "**Losel females x 35:** _(These neutral evil humanoids' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +1 damage due to strength. They have the conceal ability as per the PHB ranger class. They wield clubs [+1 \"to hit\"; 1d6+1 damage]. XP: 9+1)_",
+      "snippet": "**Losel warriors x 30:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_ **Losel females x 35:** _(These neutral evil humanoids' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +1 damage due to strength. They have the conceal ability as per the PHB ranger class. They wield clubs [+1 \"to hit\"; 1d6+1 damage]. XP: 9+1)_",
+      "hp": 6,
+      "ac": 12,
+      "hd": "1d8",
+      "xp": "9+1",
+      "level": null,
+      "raceClass": "These neutral evil humanoids'",
+      "notes": "These neutral evil humanoids' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +1 damage due to strength. They have the conceal ability as per the PHB ranger class. They wield clubs [+1 \"to hit\"; 1d6+1 damage]. XP: 9+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral evil humanoids' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +1 damage due to strength. They have the conceal ability as per the PHB ranger class. They wield clubs [+1 \"to hit\"; 1d6+1 damage]. XP: 9+1",
+      "hd": "1d8",
+      "hp": "6",
+      "ac": "12",
+      "disposition": "neutral evil",
+      "raceClass": "humanoid",
+      "attributes": "physical",
+      "equipment": "clubs [+1 \"to hit\"; 1d6+1 damage]"
+    },
+    "canonicalParenthetical": "Level 1(d8), HP 6, AC 12, disposition neutral evil. Saves: P. They have *clubs [+1 \"to hit\"; 1d6+1 damage]*."
+  },
+  {
+    "sourceIndex": 92960,
+    "title": "**Iggy the Mad*:** _",
+    "labels": {
+      "inline": "**Iggy the Mad*:** _",
+      "titleLine": "See **Player Handout #2** _(Upper Works Map & Illustration Booklet)_ for an illustration of Iggy the Mad."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "He is a 3rd level, chaotic neutral, half-orc ranger whose vital stats are HP 22, AC 13, MV 30 ft. His primary attributes are strength and wisdom. His significant attribute is strength 18. His special ability is a permanent protection from normal missiles enchantment that, when invoked, causes a golden halo to surround him_ _and also_ _provides a +2 AC bonus to his allies vs., normal missiles if they are within 20'. He also has darkvision 60 ft. He has studded leather armor, +1 trident [+6 \"to hit\"; 1d8+4 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, 12-inch hunting knife, 12 cp, and a rabbit's foot dyed green. XP: 122",
+      "start": 92960,
+      "end": 93598,
+      "startLine": 905,
+      "endLine": 905,
+      "titleLineNum": 903,
+      "titleLine": "See **Player Handout #2** _(Upper Works Map & Illustration Booklet)_ for an illustration of Iggy the Mad.",
+      "inlineLabel": "**Iggy the Mad*:** _",
+      "inlineContext": "**Iggy the Mad*:** _",
+      "lineText": "**Iggy the Mad*:** _(He is a 3rd level, chaotic neutral, half-orc ranger whose vital stats are HP 22, AC 13, MV 30 ft. His primary attributes are strength and wisdom. His significant attribute is strength 18. His special ability is a permanent protection from normal missiles enchantment that, when invoked, causes a golden halo to surround him_ _and also_ _provides a +2 AC bonus to his allies vs., normal missiles if they are within 20'. He also has darkvision 60 ft. He has studded leather armor, +1 trident [+6 \"to hit\"; 1d8+4 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, 12-inch hunting knife, 12 cp, and a rabbit's foot dyed green. XP: 122)_",
+      "snippet": "See **Player Handout #2** _(Upper Works Map & Illustration Booklet)_ for an illustration of Iggy the Mad. **Iggy the Mad*:** _(He is a 3rd level, chaotic neutral, half-orc ranger whose vital stats are HP 22, AC 13, MV 30 ft. His primary attributes are strength and wisdom. His significant attribute is strength 18. His special ability is a permanent protection from normal missiles enchantment that, when invoked, causes a golden halo to surround him_ _and also_ _provides a +2 AC bonus to his allies vs., normal missiles if they are within 20'. He also has darkvision 60 ft. He has studded leather armor, +1 trident [+6 \"to hit\"; 1d8+4 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, 12-inch hunting knife, 12 cp, and a rabbit's foot dyed green. XP: 122)_",
+      "hp": 22,
+      "ac": 13,
+      "hd": null,
+      "xp": "122",
+      "level": 3,
+      "raceClass": "within 20'",
+      "notes": "He is a 3rd level, chaotic neutral, half-orc ranger whose vital stats are HP 22, AC 13, MV 30 ft. His primary attributes are strength and wisdom. His significant attribute is strength 18. His special ability is a permanent protection from normal missiles enchantment that, when invoked, causes a golden halo to surround him_ _and also_ _provides a +2 AC bonus to his allies vs., normal missiles if they are within 20'. He also has darkvision 60 ft. He has studded leather armor, +1 trident [+6 \"to hit\"; 1d8+4 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, 12-inch hunting knife, 12 cp, and a rabbit's foot dyed green. XP: 122"
+    },
+    "canonicalData": {
+      "raw": "He is a 3rd level, chaotic neutral, half-orc ranger whose vital stats are HP 22, AC 13, MV 30 ft. His primary attributes are strength and wisdom. His significant attribute is strength 18. His special ability is a permanent protection from normal missiles enchantment that, when invoked, causes a golden halo to surround him_ _and also_ _provides a +2 AC bonus to his allies vs., normal missiles if they are within 20'. He also has darkvision 60 ft. He has studded leather armor, +1 trident [+6 \"to hit\"; 1d8+4 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, 12-inch hunting knife, 12 cp, and a rabbit's foot dyed green. XP: 122",
+      "hp": "22",
+      "ac": "13",
+      "disposition": "chaotic neutral",
+      "attributes": "physical",
+      "coins": "12 cp",
+      "raceClass": "within 20'"
+    },
+    "canonicalParenthetical": "HP 22, AC 13, disposition chaotic neutral. Saves: P. It has 12 copper in coin."
+  },
+  {
+    "sourceIndex": 96795,
+    "title": "The Ogre",
+    "labels": {
+      "inline": "The Ogre",
+      "titleLine": "This cottage is owned by a 9.5-foot tall, hairy, pot-bellied **ogre** of nasty disposition. The ogre is here 85% of the time, cracking the whip on the **3-6 human children** whom he has enslaved; otherwise he is out on a raiding mission for loot or more slaves."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178",
+      "start": 96795,
+      "end": 97174,
+      "startLine": 925,
+      "endLine": 925,
+      "titleLineNum": 923,
+      "titleLine": "This cottage is owned by a 9.5-foot tall, hairy, pot-bellied **ogre** of nasty disposition. The ogre is here 85% of the time, cracking the whip on the **3-6 human children** whom he has enslaved; otherwise he is out on a raiding mission for loot or more slaves.",
+      "inlineLabel": "The Ogre",
+      "inlineContext": "**The Ogre:** _",
+      "lineText": "**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_",
+      "snippet": "This cottage is owned by a 9.5-foot tall, hairy, pot-bellied **ogre** of nasty disposition. The ogre is here 85% of the time, cracking the whip on the **3-6 human children** whom he has enslaved; otherwise he is out on a raiding mission for loot or more slaves. **The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_",
+      "hp": 27,
+      "ac": 16,
+      "hd": "4d12",
+      "xp": "178",
+      "level": null,
+      "raceClass": "This chaotic evil humanoid",
+      "notes": "This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178"
+    },
+    "canonicalData": {
+      "raw": "This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178",
+      "hd": "4d12",
+      "hp": "27",
+      "ac": "16",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "attributes": "dlock"
+    },
+    "canonicalParenthetical": "Level 4(d12), HP 27, AC 16, disposition chaotic evil."
+  },
+  {
+    "sourceIndex": 97199,
+    "title": "Children x 3-6",
+    "labels": {
+      "inline": "Children x 3-6",
+      "titleLine": "**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10.",
+      "start": 97199,
+      "end": 97271,
+      "startLine": 927,
+      "endLine": 927,
+      "titleLineNum": 925,
+      "titleLine": "**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_",
+      "inlineLabel": "Children x 3-6",
+      "inlineContext": "**Children x 3-6:** _",
+      "lineText": "**Children x 3-6:** _(They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10.)_  ",
+      "snippet": "**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_ **Children x 3-6:** _(They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10.)_",
+      "hp": 2,
+      "ac": 10,
+      "hd": "1d2",
+      "xp": null,
+      "level": null,
+      "raceClass": "neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10",
+      "notes": "They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10."
+    },
+    "canonicalData": {
+      "raw": "They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10.",
+      "hd": "1d2",
+      "hp": "2",
+      "ac": "10",
+      "disposition": "neutrality",
+      "raceClass": "neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10"
+    },
+    "canonicalParenthetical": "HP 2, AC 10, disposition neutrality. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
+  },
+  {
+    "sourceIndex": 103505,
+    "title": "**Batrachianoids* x 6:** _",
+    "labels": {
+      "inline": "**Batrachianoids* x 6:** _",
+      "titleLine": "Under the moss-gripped mound is a maze of muddy burrows (tunnels of c. two feet in diameter) and two dens (hemispherical earth caves of c. 12 and 16 feet in diameter and six and eight feet in height). If disturbed, 6 boggiwog warriors will slither up from the muck using their _hide_ and _chameleon_ abilities. They will the spring forth to assail the intruders while the remainder of the tribe hides in the lair."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack with javelins and spears. Their special abilities include a hopping attack for double damage [though -4 to their AC] and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. XP: 11+1",
+      "start": 103505,
+      "end": 103858,
+      "startLine": 961,
+      "endLine": 961,
+      "titleLineNum": 959,
+      "titleLine": "Under the moss-gripped mound is a maze of muddy burrows (tunnels of c. two feet in diameter) and two dens (hemispherical earth caves of c. 12 and 16 feet in diameter and six and eight feet in height). If disturbed, 6 boggiwog warriors will slither up from the muck using their _hide_ and _chameleon_ abilities. They will the spring forth to assail the intruders while the remainder of the tribe hides in the lair.",
+      "inlineLabel": "**Batrachianoids* x 6:** _",
+      "inlineContext": "**Batrachianoids* x 6:** _",
+      "lineText": "**Batrachianoids* x 6:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack with javelins and spears. Their special abilities include a hopping attack for double damage [though -4 to their AC] and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. XP: 11+1)_",
+      "snippet": "Under the moss-gripped mound is a maze of muddy burrows (tunnels of c. two feet in diameter) and two dens (hemispherical earth caves of c. 12 and 16 feet in diameter and six and eight feet in height). If disturbed, 6 boggiwog warriors will slither up from the muck using their _hide_ and _chameleon_ abilities. They will the spring forth to assail the intruders while the remainder of the tribe hides in the lair. **Batrachianoids* x 6:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack with javelins and spears. Their special abilities include a hopping attack for double damage [though -4 to their AC] and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. XP: 11+1)_",
+      "hp": 5,
+      "ac": 14,
+      "hd": "1d8",
+      "xp": "11+1",
+      "level": null,
+      "raceClass": "These chaotic evil humanoids'",
+      "notes": "These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack with javelins and spears. Their special abilities include a hopping attack for double damage [though -4 to their AC] and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. XP: 11+1"
+    },
+    "canonicalData": {
+      "raw": "These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack with javelins and spears. Their special abilities include a hopping attack for double damage [though -4 to their AC] and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. XP: 11+1",
+      "hd": "1d8",
+      "hp": "5",
+      "ac": "14",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid"
+    },
+    "canonicalParenthetical": "HP 5, AC 14, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
+  },
+  {
+    "sourceIndex": 104261,
+    "title": "Blook-glook (Batrachianoid Chieftain)",
+    "labels": {
+      "inline": "Blook-glook (Batrachianoid Chieftain)",
+      "titleLine": "In the larger of the two lairs there are **2 more boggiwog warriors** (as above), **3 females** (equal to the males, except of 4 HP each), **8 young** (non-combatant, 1 HP each), and **1 chieftain, Blook-glook**. The two warriors and chieftain win initiative versus any opponent that crawls into the fen mound of these batrachianoids."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This chaotic evil humanoid's vital stats are HD 3d10+4, HP 20, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Its saves are physical. It attacks by weapon type at +2 damage due to strength. Its special abilities include a hopping attack for double damage, though -4 to his AC, and a chameleon ability that gives him +5 to hide checks and +10 to surprise checks. It has a +1 spear [+4 \"to hit\"; 1d6+3 damage]. It also wears a diamond-studded gold necklace worth 1,000 gp. XP: 95",
+      "start": 104261,
+      "end": 104735,
+      "startLine": 967,
+      "endLine": 967,
+      "titleLineNum": 965,
+      "titleLine": "In the larger of the two lairs there are **2 more boggiwog warriors** (as above), **3 females** (equal to the males, except of 4 HP each), **8 young** (non-combatant, 1 HP each), and **1 chieftain, Blook-glook**. The two warriors and chieftain win initiative versus any opponent that crawls into the fen mound of these batrachianoids.",
+      "inlineLabel": "Blook-glook (Batrachianoid Chieftain)",
+      "inlineContext": "**Blook-glook (Batrachianoid Chieftain):** _",
+      "lineText": "**Blook-glook (Batrachianoid Chieftain):** _(This chaotic evil humanoid's vital stats are HD 3d10+4, HP 20, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Its saves are physical. It attacks by weapon type at +2 damage due to strength. Its special abilities include a hopping attack for double damage, though -4 to his AC, and a chameleon ability that gives him +5 to hide checks and +10 to surprise checks. It has a +1 spear [+4 \"to hit\"; 1d6+3 damage]. It also wears a diamond-studded gold necklace worth 1,000 gp. XP: 95)_      ",
+      "snippet": "In the larger of the two lairs there are **2 more boggiwog warriors** (as above), **3 females** (equal to the males, except of 4 HP each), **8 young** (non-combatant, 1 HP each), and **1 chieftain, Blook-glook**. The two warriors and chieftain win initiative versus any opponent that crawls into the fen mound of these batrachianoids. **Blook-glook (Batrachianoid Chieftain):** _(This chaotic evil humanoid's vital stats are HD 3d10+4, HP 20, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Its saves are physical. It attacks by weapon type at +2 damage due to strength. Its special abilities include a hopping attack for double damage, though -4 to his AC, and a chameleon ability that gives him +5 to hide checks and +10 to surprise checks. It has a +1 spear [+4 \"to hit\"; 1d6+3 damage]. It also wears a diamond-studded gold necklace worth 1,000 gp. XP: 95)_",
+      "hp": 20,
+      "ac": 14,
+      "hd": "3d10+4",
+      "xp": "95",
+      "level": null,
+      "raceClass": "This chaotic evil humanoid",
+      "notes": "This chaotic evil humanoid's vital stats are HD 3d10+4, HP 20, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Its saves are physical. It attacks by weapon type at +2 damage due to strength. Its special abilities include a hopping attack for double damage, though -4 to his AC, and a chameleon ability that gives him +5 to hide checks and +10 to surprise checks. It has a +1 spear [+4 \"to hit\"; 1d6+3 damage]. It also wears a diamond-studded gold necklace worth 1,000 gp. XP: 95"
+    },
+    "canonicalData": {
+      "raw": "This chaotic evil humanoid's vital stats are HD 3d10+4, HP 20, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Its saves are physical. It attacks by weapon type at +2 damage due to strength. Its special abilities include a hopping attack for double damage, though -4 to his AC, and a chameleon ability that gives him +5 to hide checks and +10 to surprise checks. It has a +1 spear [+4 \"to hit\"; 1d6+3 damage]. It also wears a diamond-studded gold necklace worth 1,000 gp. XP: 95",
+      "hd": "3d10+4",
+      "hp": "20",
+      "ac": "14",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "attributes": "strength",
+      "equipment": "a diamond-studded gold necklace worth 1, 000 gp",
+      "jewelry": "1000 gold worth of jewelry",
+      "coins": "000 gp"
+    },
+    "canonicalParenthetical": "HP 20, AC 14, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry."
+  },
+  {
+    "sourceIndex": 105936,
+    "title": "Spider, Giant (medium-sized) x 2",
+    "labels": {
+      "inline": "Spider, Giant (medium-sized) x 2",
+      "titleLine": "**2 giant spiders** have spun a nest of webs between the trees and underbrush here, occupying an area of 120 square feet. On the ground, under dead leaves and conifer needles, lies a pile of parched bones and scraps of metal. Among these is a **+1 warhammer of lesser undead detection**. This _intelligent weapon_ glows with an indigo-blue light in the presence (50-ft. radius) of lesser undead (zombies, skeletons, ghouls -- anything HD 2 or less). The hammer will urge its wielder to destroy such foul vermin, \"...in the name of Thor!\" Other items include a rusted suit of chain mail, a cracked kite shield emblazoned with a green dragon, and the buckles and clasps of garments long since rotted."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell*. XP: 52+3",
+      "start": 105936,
+      "end": 106431,
+      "startLine": 981,
+      "endLine": 981,
+      "titleLineNum": 979,
+      "titleLine": "**2 giant spiders** have spun a nest of webs between the trees and underbrush here, occupying an area of 120 square feet. On the ground, under dead leaves and conifer needles, lies a pile of parched bones and scraps of metal. Among these is a **+1 warhammer of lesser undead detection**. This _intelligent weapon_ glows with an indigo-blue light in the presence (50-ft. radius) of lesser undead (zombies, skeletons, ghouls -- anything HD 2 or less). The hammer will urge its wielder to destroy such foul vermin, \"...in the name of Thor!\" Other items include a rusted suit of chain mail, a cracked kite shield emblazoned with a green dragon, and the buckles and clasps of garments long since rotted.",
+      "inlineLabel": "Spider, Giant (medium-sized) x 2",
+      "inlineContext": "**Spider, Giant (medium-sized) x 2:** _",
+      "lineText": "**Spider, Giant (medium-sized) x 2:** _(These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell*. XP: 52+3)_",
+      "snippet": "**2 giant spiders** have spun a nest of webs between the trees and underbrush here, occupying an area of 120 square feet. On the ground, under dead leaves and conifer needles, lies a pile of parched bones and scraps of metal. Among these is a **+1 warhammer of lesser undead detection**. This _intelligent weapon_ glows with an indigo-blue light in the presence (50-ft. radius) of lesser undead (zombies, skeletons, ghouls -- anything HD 2 or less). The hammer will urge its wielder to destroy such foul vermin, \"...in the name of Thor!\" Other items include a rusted suit of chain mail, a cracked kite shield emblazoned with a green dragon, and the buckles and clasps of garments long since rotted. **Spider, Giant (medium-sized) x 2:** _(These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell*. XP: 52+3)_",
+      "hp": 13,
+      "ac": 15,
+      "hd": "3d8",
+      "xp": "52+3",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell*. XP: 52+3"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell*. XP: 52+3",
+      "hd": "3d8",
+      "hp": "13",
+      "ac": "15",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "ralyzation for 1d6 hours"
+    },
+    "canonicalParenthetical": "Level 3(d8), HP 13, AC 15, disposition neutrality."
+  },
+  {
+    "sourceIndex": 107407,
+    "title": "**Harpy*:** _",
+    "labels": {
+      "inline": "**Harpy*:** _",
+      "titleLine": "Nested high in the boughs dwells a **harpy**. She has a strangely attractive appearance when viewed from afar (100+ feet), though is hideous upon closer inspection. Once she spots a potential victim(s), such as those who veer off from the Old Castle Track (perhaps to camp, etc.), she will position herself at a slightly visible distance and then sing her lamenting, _captivating song_. She will lure her victims close, then take one back to her nest to be tortured and devoured. She is not of mind to fight a party of adventurers, preferring to steal one away, though she will defend her nest if the blackjack oak is ascended, for she places a great value on her treasures."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "This chaotic evil humanoid's vital stats are HD 3d8, HP 13, AC 13, MV 20 ft., 50 ft. fly. Its saves are physical. It attacks with 2 claws for 1d3 damage each. Its special ability is its 300-foot range captivating song, charisma save negates. Captivated victims will walk toward the harpy. The victim will stand motionless 5 feet before her, offering no resistance to her attack. XP: 79",
+      "start": 107407,
+      "end": 107793,
+      "startLine": 995,
+      "endLine": 995,
+      "titleLineNum": 993,
+      "titleLine": "Nested high in the boughs dwells a **harpy**. She has a strangely attractive appearance when viewed from afar (100+ feet), though is hideous upon closer inspection. Once she spots a potential victim(s), such as those who veer off from the Old Castle Track (perhaps to camp, etc.), she will position herself at a slightly visible distance and then sing her lamenting, _captivating song_. She will lure her victims close, then take one back to her nest to be tortured and devoured. She is not of mind to fight a party of adventurers, preferring to steal one away, though she will defend her nest if the blackjack oak is ascended, for she places a great value on her treasures.",
+      "inlineLabel": "**Harpy*:** _",
+      "inlineContext": "**Harpy*:** _",
+      "lineText": "**Harpy*:** _(This chaotic evil humanoid's vital stats are HD 3d8, HP 13, AC 13, MV 20 ft., 50 ft. fly. Its saves are physical. It attacks with 2 claws for 1d3 damage each. Its special ability is its 300-foot range captivating song, charisma save negates. Captivated victims will walk toward the harpy. The victim will stand motionless 5 feet before her, offering no resistance to her attack. XP: 79)_    ",
+      "snippet": "Nested high in the boughs dwells a **harpy**. She has a strangely attractive appearance when viewed from afar (100+ feet), though is hideous upon closer inspection. Once she spots a potential victim(s), such as those who veer off from the Old Castle Track (perhaps to camp, etc.), she will position herself at a slightly visible distance and then sing her lamenting, _captivating song_. She will lure her victims close, then take one back to her nest to be tortured and devoured. She is not of mind to fight a party of adventurers, preferring to steal one away, though she will defend her nest if the blackjack oak is ascended, for she places a great value on her treasures. **Harpy*:** _(This chaotic evil humanoid's vital stats are HD 3d8, HP 13, AC 13, MV 20 ft., 50 ft. fly. Its saves are physical. It attacks with 2 claws for 1d3 damage each. Its special ability is its 300-foot range captivating song, charisma save negates. Captivated victims will walk toward the harpy. The victim will stand motionless 5 feet before her, offering no resistance to her attack. XP: 79)_",
+      "hp": 13,
+      "ac": 13,
+      "hd": "3d8",
+      "xp": "79",
+      "level": null,
+      "raceClass": "This chaotic evil humanoid",
+      "notes": "This chaotic evil humanoid's vital stats are HD 3d8, HP 13, AC 13, MV 20 ft., 50 ft. fly. Its saves are physical. It attacks with 2 claws for 1d3 damage each. Its special ability is its 300-foot range captivating song, charisma save negates. Captivated victims will walk toward the harpy. The victim will stand motionless 5 feet before her, offering no resistance to her attack. XP: 79"
+    },
+    "canonicalData": {
+      "raw": "This chaotic evil humanoid's vital stats are HD 3d8, HP 13, AC 13, MV 20 ft., 50 ft. fly. Its saves are physical. It attacks with 2 claws for 1d3 damage each. Its special ability is its 300-foot range captivating song, charisma save negates. Captivated victims will walk toward the harpy. The victim will stand motionless 5 feet before her, offering no resistance to her attack. XP: 79",
+      "hd": "3d8",
+      "hp": "13",
+      "ac": "13",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "attributes": "charisma"
+    },
+    "canonicalParenthetical": "HP 13, AC 13, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
+  },
+  {
+    "sourceIndex": 108895,
+    "title": "Tick, Giant x 3",
+    "labels": {
+      "inline": "Tick, Giant x 3",
+      "titleLine": "Hidden in the alders is a nest of three giant ticks of 2.5-foot length. These mega-insects will bide their time, crawling under leaves, between stones, preying on creatures that drink of the sparkling water."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "_These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half speed with a -3 AC penalty. XP: 20+2",
+      "start": 108895,
+      "end": 109362,
+      "startLine": 1011,
+      "endLine": 1011,
+      "titleLineNum": 1009,
+      "titleLine": "Hidden in the alders is a nest of three giant ticks of 2.5-foot length. These mega-insects will bide their time, crawling under leaves, between stones, preying on creatures that drink of the sparkling water.",
+      "inlineLabel": "Tick, Giant x 3",
+      "inlineContext": "**Tick, Giant x 3:**",
+      "lineText": "**Tick, Giant x 3:** (_These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half speed with a -3 AC penalty. XP: 20+2)_",
+      "snippet": "Hidden in the alders is a nest of three giant ticks of 2.5-foot length. These mega-insects will bide their time, crawling under leaves, between stones, preying on creatures that drink of the sparkling water. **Tick, Giant x 3:** (_These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half speed with a -3 AC penalty. XP: 20+2)_",
+      "hp": 11,
+      "ac": 15,
+      "hd": "2d8",
+      "xp": "20+2",
+      "level": null,
+      "raceClass": "_These neutral creatures'",
+      "notes": "_These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half speed with a -3 AC penalty. XP: 20+2"
+    },
+    "canonicalData": {
+      "raw": "_These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half speed with a -3 AC penalty. XP: 20+2",
+      "hd": "2d8",
+      "hp": "11",
+      "ac": "15",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 2(d8), HP 11, AC 15, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 111852,
+    "title": "Wood Elf Scouts x 11",
+    "labels": {
+      "inline": "Wood Elf Scouts x 11",
+      "titleLine": "There are **12 wood elves** stationed here. Every day they send out a team of 4 to patrol the east bank of the False Urt River, and wear armor laced with leaves and twigs, their faces painted green and brown, whilst doing so. So, if it is daytime, there is a 75% chance only 8 of the 12 elves will be present here. Of those present, 4 will be spread about the verge of the tamarack stand. By night, all are here. The wood elves are led by one **Ember Raventree**, who answers directly to **Aldion Ashgrove** _(CZY environs #26)_."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1",
+      "start": 111852,
+      "end": 112258,
+      "startLine": 1035,
+      "endLine": 1035,
+      "titleLineNum": 1033,
+      "titleLine": "There are **12 wood elves** stationed here. Every day they send out a team of 4 to patrol the east bank of the False Urt River, and wear armor laced with leaves and twigs, their faces painted green and brown, whilst doing so. So, if it is daytime, there is a 75% chance only 8 of the 12 elves will be present here. Of those present, 4 will be spread about the verge of the tamarack stand. By night, all are here. The wood elves are led by one **Ember Raventree**, who answers directly to **Aldion Ashgrove** _(CZY environs #26)_.",
+      "inlineLabel": "Wood Elf Scouts x 11",
+      "inlineContext": "**Wood Elf Scouts x 11:** _",
+      "lineText": "**Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_ ",
+      "snippet": "There are **12 wood elves** stationed here. Every day they send out a team of 4 to patrol the east bank of the False Urt River, and wear armor laced with leaves and twigs, their faces painted green and brown, whilst doing so. So, if it is daytime, there is a 75% chance only 8 of the 12 elves will be present here. Of those present, 4 will be spread about the verge of the tamarack stand. By night, all are here. The wood elves are led by one **Ember Raventree**, who answers directly to **Aldion Ashgrove** _(CZY environs #26)_. **Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_",
+      "hp": 8,
+      "ac": 12,
+      "hd": "1d10",
+      "xp": "13+1",
+      "level": 1,
+      "raceClass": "1st level, chaotic neutral fighters",
+      "notes": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1"
+    },
+    "canonicalData": {
+      "raw": "They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1",
+      "hd": "1d10",
+      "hp": "8",
+      "ac": "12",
+      "disposition": "chaotic neutral",
+      "attributes": "physical",
+      "coins": "18 sp",
+      "raceClass": "1st level, chaotic neutral fighters"
+    },
+    "canonicalParenthetical": "HP 8, AC 12, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 18 silver in coin."
+  },
+  {
+    "sourceIndex": 112303,
+    "title": "Ember Raventree (wood elf leader)",
+    "labels": {
+      "inline": "Ember Raventree (wood elf leader)",
+      "titleLine": "**Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166",
+      "start": 112303,
+      "end": 112848,
+      "startLine": 1037,
+      "endLine": 1037,
+      "titleLineNum": 1035,
+      "titleLine": "**Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_",
+      "inlineLabel": "Ember Raventree (wood elf leader)",
+      "inlineContext": "**Ember Raventree (wood elf leader):** _",
+      "lineText": "**Ember Raventree (wood elf leader):** _(He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166)_",
+      "snippet": "**Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_ **Ember Raventree (wood elf leader):** _(He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166)_",
+      "hp": 22,
+      "ac": 16,
+      "hd": "4d10",
+      "xp": "166",
+      "level": 4,
+      "raceClass": "He is a 4th level, chaotic neutral fighter whose",
+      "notes": "He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166"
+    },
+    "canonicalData": {
+      "raw": "He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166",
+      "hd": "4d10",
+      "hp": "22",
+      "ac": "16",
+      "disposition": "chaotic neutral",
+      "attributes": "physical",
+      "significantAttributes": "strength 17 and dexterity 17",
+      "coins": "35 sp, 100 gp",
+      "raceClass": "He is a 4th level, chaotic neutral fighter whose"
+    },
+    "canonicalParenthetical": "HP 22, AC 16, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 35 sp, 100 gp."
+  },
+  {
+    "sourceIndex": 55432,
+    "title": "86-90",
+    "labels": {
+      "inline": "86-90",
+      "titleLine": "**81-85** Dying (40% chance from poison, 30% from injury, 30% from disease); -1 to -2 on attack \"to hit\", and damage scored."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "pit, snare, or other trap; injured (-10% to -80% HPs)\n\n**91-95** Rabid (+1 to +3 on attack chance \"to hit\" and damage scored); rabies transmitted to anyone bitten.\n\n**96-00** Starving or dehydrated (-10% to -40% HPs; -1 to -2 on attack chance and damage scored)\n\n**>>>END TABLE<<<**\n\n**>>>BEGIN TABLE<<<**\n\nSub-table 2. Animal or Monster Activity:\n\n**D100 / Activity**\n\n**01-08** Fighting with or running away from another animal or monster*\n\n**09-20** Hiding from or observing/stalking the characters  \n\n**21-24** Dozing or asleep\n\n**25-27** Entering or settling into a den, lair, or like resting place\n\n**28-30** Grooming itself or another like creature\n\n**31-35** Engaged in mating display or else play activity\n\n**36-45** Roaming about at a walk or faster pace\n\n**46-55** Drinking water or at a salt lick\n\n**56-00** Eating or seeking to eat (browsing, grazing, foraging, hunting, fishing)\n\n**>>>END TABLE<<<**\n\n* If a normally non-aggressive creature, it is 90% likely that it will be encountered in flight from a predator. If this is a predator or aggressive animal, there is a (0-50%) chance it is fighting with another predator, or equal (51-00%) chance running away from another predator.\n\n**>>>BEGIN TABLE<<<**\n\nSub-table 3. Weather Activity:\n\nThe CK is encouraged to use common sense when utilizing the chart below; i.e. a storm can indeed take a party by surprise, but in other cases a druid or ranger may likely detect the subtle signs of a shift in progress.\n\n**D100 / Weather**\n\n**01-30** Cold or heat (90% movement rate for the duration of the effect, d4 for days unless new problem replaces it)\n\n**31-35** Hail storm or downpour (no movement for duration, d3 for hours it lasts, and 50% movement for one hour after it ends)\n\n**36-50** Thick Fog (10% normal movement for duration of effect, d6 for hours it lasts)\n\n**51-70** Light persisting rain or sleet (75% movement rate for twice duration, 4d6 hours it lasts) \n\n**71-85** Rain or snow (50% movement rate for twice duration, 3d6 for hours it lasts)\n\n**86-90** Strong winds (25% movement rate for duration, d3 for hours it lasts)\n\n**91-00** Severe thunderstorm or blizzard (no movement for the duration, d3 for hours it lasts, 50% movement remainder of the day and the following day)\n\n**>>>END TABLE<<<**\n\n**_N.B._** Wet weather affects bow and crossbow strings. Archery ranges are reduced by 20% in such conditions. Cold snow does not have such an adverse effect.\n\nMen and Monsters Randomly Encountered:\n\nThe following men and monsters are among those randomly encountered. Most monsters are fully described in _Monsters & Treasure_, though notable exceptions are indicated below. Also, you might note that many monster stat blocks throughout the Upper Works are slightly modified from the M&T source material to reflect the author's original vision of the various critters. \n\nThe Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification.\n\n**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_ \n\n**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_\n\n**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_ \n\n**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_ \n\n**Batrachianoid*:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1)_ \n\n**Bear, black:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3)_\n\n**Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_\n\n**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_\n\n**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_\n\n**Brigand, Serjeant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2)_\n\n**Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_\n\n**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_ \n\n**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_\n\n**Elf, Wood, swordsman:** _(They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3)_\n\n**Ghoul:** _(These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2)_\n\n**Gnoll:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2)_ \n\n**Goblin, raider:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1)_ \n\n**Goblin, leader (corporal):** _(These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3)_\n\n**Griffon:** _(This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7)_\n\n**Hobgoblin:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1)_\n\n**Kobold:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1)_\n\n**Lion (mountain, forest):** _(These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4)_    \n\n**Lizardfolk:** _(These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2)_  \n\n**Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_   \n\n**Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _(They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2)_\n\n**Naga, Water:** _(This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7)_  \n\n**Nixies (sprite):** _(These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1)_ \n\n**Orc:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1)_\n\n**Otter, giant:** _(This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4.)_  \n\n**Owlbear (small):** _(These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3)_ \n\n**Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_\n\n**Rivermen:** _(They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1)_\n\n**Snake, poisonous:** _(This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1)_\n\n**Snake, poisonous (deadly):** _(This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2)_\n\n**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3)_\n\n**Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_\n\n**Thieves**:** _(They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.)_ \n\n**Turtle, Huge Snapping:** _(These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5)_\n\n**Wolf, Grey:** _(These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2)_\n\n**Wolverine (small, normal):** _(This neutral creature's vital stats are HD 3d8, HP 16, AC 15, MV 20 ft. Its saves are physical, and all attacks are made as though it were 3HD higher than it is. It attacks with two claws for 1d4 points of damage and one bite for 1d4+1 damage._ _It can release a musk spray 10' wide by 30' long, saving throw versus breath weapon or victim is blinded for 1-2 hours; regardless of save, any creature in the spray's area of effect is sickened and suffers -2 strength, dexterity, and constitution for 2-8 turns. XP: 50+3)_\n\n* see **Appendix C.**  \n\n** refer to PHB \"rogue\" for various class abilities.\n\nPART III: THE WILDERNESS\n\nCastle Zagyg is accessed via the _Old Castle Track_, which cuts through the _Little Hillwood_ and is located on a rocky bluff overlooking the _False Urt River._ Despite the surrounding wilderness being relatively small and already populated with its share of malign and monstrous inhabitants, the domain of the Mad Archmage has an allure about it, hence attracting substantial activity.  \n\nOLD CASTLE TRACK:\n\nRefer to **Table 1.** (LAYOUT NOTE: INSERT PAGE #) for random encounters on the Old Castle Track.\n\nThe Old Castle Track wends east-west through the Little Hillwood. This old cart path is _cursed_, however, and those who traverse its length must make a series of _nerve checks_ (see below) or suffer the consequences. When the characters reach the end of the Old Castle Track, refer to **Part IV.** **Approaching Castle Zagyg**.\n\n**>>[begin boxed** **text]<<**\n\nThis winding, rutted track is narrow and spotted with weedy overgrowth. Tangles of small trees and underbrush encroach upon its verge, nigh-impenetrable because of briars, thorn bushes, and heavy vines. The looming trees are large and heavy-limbed, and their foliage makes the way dim and shadowy. Their boughs creak and groan—even when there is not but a breath of air—and the leaves rustle faintly. Traversing the ancient path, you begin to suffer a distinct pang of unease, a quickness of the heart. You have a sneaking suspicion that the trees have eyes . . .\n\n**>>[end boxed** **text]<<**\n\nOf course such a setting makes it nearly impossible to note dangers lurking in the murky woods around the pathway, and it seems to those venturing along it that something fell is watching them always, some unseen foe that is poised to strike. This omnipresent anxiety and disquiet is inescapable; thus the way is generally shunned by all save the heartiest adventurer . . . or malign predator.    \n\n**_Nerve Check_:** The first time the route is taken, travelers are required to make a _nerve check_ (fear save, see below) at every mile to proceed unruffled. This is the result of a potent _aversion_ spell engendered by the Mad Archmage.  \n\n_First Nerve Check_: is a _fear_ save _(CL 0)_. If a failure results, the character may proceed (albeit nervously) but is affected with -1 \"to hit\" and damage, and -3 on all surprise checks. This effect lasts until a successful \"nerve check\" is made. \n\n_Subsequent Nerve Checks_: these are also _fear_ saves. If the previous check resulted in a failed save, the CL for subsequent saves increases in difficulty by 1 _(thus, CL 1, CL 2, etc.)_; otherwise it reverts to CL 0.  \n\n_If the saving throw is failed three consecutive times_: the character loses nerve and flees back to the Menhir Hills Road (or whichever direction they had approached from). The only way such an individual will set foot on the pathway again is if a _remove curse_ spell is cast upon him or her.  \n\nOnce a player character has succeeded in traversing the Old Castle Track from the Menhir Hills Road to Castle Zagyg, no further _nerve check_ is required; that person is thenceforth inured to the effects of the curse.\n\n**Movement on the Old Castle Track**: Traversing the Old Castle Track progresses at a rate of about 2 miles per hour walking afoot, unencumbered. Moving off the beaten track is at one-tenth the normal movement rate (one-quarter if a druid or ranger), and that speed assumes cutting away foliage with a heavy blade.\n\nTHE LITTLE HILLWOOD:\n\nRefer to **Table 2.** (LAYOUT NOTE INSERT PAGE #) for random encounters within the Little Hillwood.\n\nThis woodland lies along the southern portion and towards the middle of the Menhir Hills. Its southern verge begins near the Menhir Hills Road, about 16 miles north of Yggsburgh as the crow flies. Both the Urt River and the False Urt Rivers pass through its north and central regions. Along those waterways, and where the woodland borders the Greypools Mire, the trees are mainly great willows with some aspen, birch, and tamarack. Elsewhere, its growth is of typical forest hardwoods—primarily ash, chestnut, elm, hickory, maple, oak, and walnut. The understory is choked with small trees, underbrush, briars, thorn bushes, poison ivy and poison oak (CK’s option as to effect of touching, but a 10% penalty to performance is a good rule of thumb), and heavy vines. Its fauna includes everything from shrews, moles, and mice, on through squirrels and rabbits and various birds, to large game such as wild swine, deer, elk, and aurochs. As well, there are predators such as eagles, giant owls, bears, big cats, wolves, and wolverines (gluttons) to be found within its precincts.  \n\nWest of the False Urt River (Castle Zagyg's side of the waterway) the hilly woodland is populated by large numbers of humanoids, bandits, and monsters. Demi-humans (predominantly wood elves) have established a foothold east of the river and thus repel bandits, raiding orcs and their ilk. These elves are chaotic in nature and will treat any intruders—good or evil—with hostility. This may include imprisonment, followed by blindfolding and being marched eastwards out of the forest. \n\n**Movement in the Little Hillwood:** Moving across this tangled woodland is at one-tenth normal rate (one-quarter if a druid or ranger), and that speed assumes cutting away foliage with a heavy blade. That means unencumbered characters moving afoot will progress 0.2 miles per hour, with occasional breaks in the foliage that allow double this compromised movement rate; off-track movement being impossible for most horses.  \n\nTHE FALSE URT RIVER (and Castle Pier):\n\nRefer to **Table 3.** (LAYOUT NOTE INSERT PAGE #) for random encounters on or in the False Urt River.\n\nThe False Urt River lies at the foot of the rocky bluff upon which is built Castle Zagyg. This river is substantial in breadth but shallow and sluggish in flow (except during spring flood season). Its channel is no more than two miles distant from that of the Urt in this region, and no more than five miles further north. At one time the two rivers were thought to be one, but careful mapping has made the difference between them distinct.  \n\nAlthough the upper reaches of the river are wild and dangerous, boats and barges can navigate the False Urt, from some 75 miles northwards all the way downriver to the marsh known as the Grey Pools Mire. In the Mire, only very shallow-draft watercraft can pass through to gain the actual Urt River. The banks of the False Urt River, like the Urt, are lush with long stretches of willow bushes and other shrubs thickly clustered along its shores. Many copses and groves of large willows, or trees of other kinds, are found on or near the waterway's banks. These verges are generally seven to ten feet high, though greater where the river cuts through the more rocky and precipitous hills. \n\nAs noted, the False Urt River feeds the Greypools Mire, a marsh of some 42 square miles. It is from this vast swampland that raiding parties of batrachianoids and lizardmen originate, attracted to Castle Zagyg as many other humanoids are, though they usually cling to the west side of the waterway, avoiding the wood elves of the eastern portions of the Little Hillwood. The Grey Pools Mire is also where the rivermen known as the **Swamp Rats*** keep camp.\n\nIf the characters approach Castle Zagyg by way of watercraft on the False River Urt:\n\n**>>[begin boxed** **text]<<**\n\nFrom your craft you note a rocky bluff looming some 80 feet above the False Urt River. Atop it you glimpse ruins—walls, towers, gatehouses. The castle fortress stands above said ruins, it being flanked by an enormous pair of towers, one round, the other hexagonal. A hazy mist clutches the fortress and through this you catch glimpse of a turret here, gallery of windows there, and extending to the sky above—two ominous spires of stone.\n\n**>>[end boxed** **text]<<**\n\n**_Castle Pier_:** If the PCs study the banks they may spot a pier to which they can moor their vessel. This pier is periodically (about weekly) utilized by the **Swamp Rats***, rough rivermen who trade with the bandits that occupy the postern gate _(Ruins of the Castle Precincts #36)_ and thus the band that occupies the castle fortress. These bandits are inured to the effects of the cursed fog that once bound this place.      \n\n* see Appendix D.\n\n>>[begin boxed text]<<\n\nYou see a wooden pier supported by heavy posts. The pier is T-shaped, about 30 feet wide along the bank, extending another 20 feet long by 10 feet wide into the sluggish water. Inland, about 90 feet northwest of the structure, you note the ruins of an old watch tower, but a pile of debris being all that remains of it. The ruined tower lies at the foot of a switchback stair carved into the side of the bluff on which Castle Zagyg is built. The stairs climb 30 feet to a landing, then another 30 feet to a second landing. The stairs, however, have also suffered significant ruin and thus present a difficult negotiation. At the top lies the postern gate of Castle Zagyg.\n\n>>[end boxed text]<<\n\n**_CK's Note_**: If the PCs elect to approach the ruined watch tower, the switchback stairs carved into the bluff face, or the postern gate, please turn to _Ruins of the Castle Precincts_, encounter area #36.\n\n**_WILDERNESS SET ENCOUNTERS:_**\n\nThe wilderness surrounding Castle Zagyg is populated by monsters, humanoids, and dangerous beasts—many of which will be randomly encounters as noted in the above encounter tables. Here follows a list of set encounters in the wilderness. Creative Castle Keepers are encouraged to expand upon these selections as suits the individual campaign, whether through preparation or some good old-fashioned seat-of-the-pants improvisation.\n\n# WD-1. Dark Chateau:\n\nThis is the location of the former manse of the Mad Archmage, located at the end of an overgrown cart path. _Castle Zagyg: Dark Chateau_ is an adventure written by Rob Kuntz and available from Troll Lord Games. \n\n# WD-2. Losels of the Forest:  \n\nTwo miles southwest of Castle Zagyg, among the tallest oaks dwell green-skinned, ape-like humanoids called losels, a degenerate crossbreed of gorilla and orc. Their leaders are abominations even more despicable—crossbreeds of gorilla, orc, and human.  \n\n**>>[begin boxed** **text]<<**\n\nThe hoots and chirping shrieks of simians resound from high above within the upper boughs of massive oaks and ash. Looking up you see a cluster of arboreal huts, these built some 60 to 80 feet above the forest floor. The vague shapes of simians can be seen swinging from branches and vines high above. \n\n**>>[end boxed** **text]<<**\n\nThe losels of this arboreal village will range far from their tribal community; however, an enchantment prevents the humanoids from setting foot on the Old Castle Track (an annoyed Mad Archmage once cursed them thus for destroying his shipment of wine and spirits). These humanoids will brachiate high above the Old Castle Track where the tallest of trees form a canopy; otherwise they shun the path entirely. Should the party draw attention to themselves, the losels will flank and follow, swinging limb to limb. They bide their time, waiting (hoping) for the characters to step off the rutted, overgrown path by 100 feet minimum. They will then attempt to capture the party using lassos and bring them back to the community to be boiled alive and eaten, or sacrificed to the demon they worship. The losels will stop about a half-mile before the Old Castle Track meets Castle Zagyg's precincts, utterly fearful of that place.\n\nThe arboreal village is comprised of **110 losels**: 40 male warriors, 35 females, 15 elderly, and 20 young. If under attack, both males and females will protect the village, it being a cluster of about 10 huts woven of sticks and vines and perched among the sturdiest limbs. The huts, being 60 to 80 feet off the forest floor, are joined by suspended bridges of spliced vines, though remote huts must be brachiated to and from. Each hut is presided over by a sub-chief.\n\n**_CK's Note:_** As this is a large number of adverse creatures, it is urged that you keep track of their losses. When the male population is below half (at 19 or fewer) you might wish to increase it by having new losels move in, 4-6d6 males, 2-4d6 females, but replacing lost old and young members of the tribe only over time.\n\nThe **chieftain** of the tribe is **Grimlock Manface**, a heavily scarred, ape-man who wears a splint mail, great helm, and wields a magical heavy flail. Depending from his neck is a string holding no less than a hundred fingers, these being the digits of those he's slain in combat.  \n\nGrimlock's **shaman** (and advisor) is **Ji'gun-tima**, an elderly female of potent sort. Ji'gun-tima is a blonde-haired simian woman with a blue-green, wrinkled visage and ice-blue eyes. She wears a string of shrunken human heads around her neck that clatter as she moves about, and she carries a gnarled staff of oak topped with a bronze skull, the skull embedded with a faceted sapphire in the center of its brow ridge. Ji'gun-tima is treated with complete deference by all—even her chieftain. She is a worshiper of **Mandrillagon**, a monstrous, blue-faced demon with massive yellow-gray fangs. This denizen of the Abyss is said to be served by an army of flying demon-monkeys. The shaman makes live sacrifices (human, demi-human, or humanoid) to her demon lord at every full moon as the tribe, painted and ecstatic, beats goblinskin drums and caper about feverishly. Grimlock, the chieftain, observes the spectacle from his wooden throne, drinking blood wine from a bronzed kobold skull, his females sprawled before him. \n\nSee **Player Handout #1** _(Upper Works Map & Illustration Booklet)_ for an illustration of the losel chieftain and his shaman.\n\nFurther development of this tribe, its customs, and its holdings are the responsibility of the Castle Keeper. The chieftain hoards a treasure of perhaps 2,000 gp worth of gold, gems, and jewelry; likewise, his shaman may have a few scrolls such as _cause fear_, _magic missile_, and _mirror image_, amongst other bizarre and frightening curiosities (shrunken heads, human face-masks, jellied organs, pickled elf ears, etc). \n\nThere are smaller tribes scattered about the Little Hillwood Forest, and when an adolescent male is ostracized by the tribe (usually after losing a fight over mating rights), he may join one of these or likely perish alone; otherwise, outside tribes are treated with hostility. The Castle Keeper must choose where these are located, though it is possible that they are migratory.\n\n**Grimlock Manface (Losel Chieftain):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268)_\n\n**Ji'gun-tima (Losel Shaman):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260)_\n\n**Losel sub-chiefs x 10:** _(These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2)_\n\n**Losel warriors x 30:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_\n\n**Losel females x 35:** _(These neutral evil humanoids' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +1 damage due to strength. They have the conceal ability as per the PHB ranger class. They wield clubs [+1 \"to hit\"; 1d6+1 damage]. XP: 9+1)_\n\n_*Lasso:_ Experienced losels are adept in the use of lassos made out of strips of leather and vines. These weapons deal no damage but the victim is immobilized as follows: if used against a small or medium-sized opponent, the user must strike an AC 15 or better (AC modified by strength and dexterity), size modifiers not applicable. A lassoed victim is prone (+5 \"to hit\") and cannot act except to break the hold. To break the hold, a strength check is required, the challenge level equal to the HD of the lasso user. Otherwise, the lasso has HP 3 with an AC 10 plus the wielder's dexterity bonus (if applicable).       \n\n** see **Appendix C**.\n\n# WD-3. Rocky Outcrop (Iggy the Mad): \n\n**>>[begin boxed** **text]<<**\n\nA light footpath in the forest leads you to an outcrop of rock upon which stunted trees and brush grow. At the base of the outcrop a cleft opens to what appears to be a cave.\n\n>>[end boxed text]<<\n\nA ranger will note the cleft opens to a cave. The cave is a 30-foot-diameter interior with variable (8 to 12 feet) ceiling height. This is the lair of Iggy the Mad, a half-orc hermit who lives here alone. Iggy is a hunchbacked, one-eyed half-orc with skinny legs and bulging forearms. He often roams about the area spear fishing (with his trident), bow hunting, or traipsing the ruins of Castle Zagyg's precincts, so he is scarcely about by day (20%) but almost always by nightfall (95%—he's a bit afraid of the dark).  \n\nSee **Player Handout #2** _(Upper Works Map & Illustration Booklet)_ for an illustration of Iggy the Mad.\n\n**Iggy the Mad*:** _(He is a 3rd level, chaotic neutral, half-orc ranger whose vital stats are HP 22, AC 13, MV 30 ft. His primary attributes are strength and wisdom. His significant attribute is strength 18. His special ability is a permanent protection from normal missiles enchantment that, when invoked, causes a golden halo to surround him_ _and also_ _provides a +2 AC bonus to his allies vs., normal missiles if they are within 20'. He also has darkvision 60 ft. He has studded leather armor, +1 trident [+6 \"to hit\"; 1d8+4 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, 12-inch hunting knife, 12 cp, and a rabbit's foot dyed green. XP: 122)_\n\n* see PHB for full list of ranger abilities.\n\nIggy's lair consists of a pallet of straw, a flat rock he uses as a table (wooden bowl and spoons atop), a high-back oak chair with a broken leg, and a central fire pit that vents out through cracks in the ceiling. In the corner he keeps a 10-gallon keg of brandy, a bucket of water, and an old broom. On his pallet he keeps a braided tress of blonde hair, this once given to him by a maiden he rescued from the ogre of **WD-4**. He sleeps with the braid at night, it being his most treasured possession—any harm done to this thing will send him into a fit of rage _(+2 attacks \"to hit\" and damage)_.  \n\nUnder Iggy's pallet is a child's doll (missing an arm) with pearl eyes (worth 5 gp each) and a cracked leather purse containing 22 sp, 12 cp and a silver necklace with opal charm worth 25 gp. Iggy the Mad is a devout follower of Zagyg (though knows not his name— _\"Big Magic Man!\"_) and so enjoys the boon of his deity. \n\n**_Concealed Tunnel:_** In the back of Iggy's cave there is a 220-pound boulder that conceals a crawl space cave of 3.5-foot width and 2.5–3-foot height. The crawlspace meanders south for 110 feet before there is enough room for one to stand. It opens up to a vast network of passages, one of which leads to the dungeons of Castle Zagyg one mile to the south. These dank underground passages were partially bored out by evil gnomes many years ago. There are several collapses within, and fungal growth is widespread— particularly **_glowlichen_**— which provides lambent illumination. Giant snails and slugs are many—so populous as to preclude even the most determined of adventurers from utilizing many of these passages. In addition, thousands upon thousands of cave bats lurk here, as well as giant rats, giant toads and giant snakes. These places are also populated by black puddings, gray oozes, green slimes, ochre jellies, and violet fungi. The caverns gradually descend in depth, some becoming more wet as one descends. One such passage leads to a rune-engraved stone archway whose ancient dwarvish script indicates, **The Catacombs,** which will be presented in a future volume of this series. There is also a connection to the **Watery Caverns** as alluded to in _Dark Chateau_. For now, the Castle Keeper is advised to avoid the discovery of the concealed tunnel, but if you are determined to develop such lengthy caverns, you can simply reconcile your developments with the forthcoming work.\n\n# WD-4. Stone Cottage, 30' x 30' x 20' and barn, 25' x 30' x 20':   \n\n**>>[begin boxed** **text]<<**\n\nA beaten footpath leads to this 20-foot-tall structure located within a shallow vale nestled between thickly wooded hills. The structure is built of boulders and fieldstones with a thatch roof, a fenced-in yard and a crudely-built barn of timber logs beside it. The fenced in area is planted with crops.\n\n**>>[end boxed** **text]<<**\n\nThis cottage is owned by a 9.5-foot tall, hairy, pot-bellied **ogre** of nasty disposition. The ogre is here 85% of the time, cracking the whip on the **3-6 human children** whom he has enslaved; otherwise he is out on a raiding mission for loot or more slaves. \n\n**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_\n\n**Children x 3-6:** _(They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10.)_  \n\nThe cottage has a large front door (10-feet) and a similar side door. A single window, shuttered, stands 6.5 feet from the ground, left of the front door. Inside the cottage there are two rooms (kitchen/pantry and living area) and a quarter loft under the thatch. \n\n- _Kitchen/Pantry_: The single window of this structure provides light to the kitchen/pantry area. Here the ogre keeps a large table. There is a stone fireplace, a green copper boiler of 3 feet diameter, a shelf, a cupboard, a 30-gallon keg, and a 5-gallon bucket of water. The shelf is stacked with a variety of wooden and iron utensils, earthenware, a silver goblet (12 gp), and a tin mug. Among these is an **enchanted ladle**, dweomered to float in the air, perfectly still wherever it is placed. The cupboard holds 20 bottles of wine, these being of various vintages (worth 2-40 gp each). The keg rests upon a stone pedestal, is broached and filled with cheap ale.  \n\n- _Living Area_: The living area contains a big chair, a small round table, and a bear-pelt rug spread across the floor. \n\n- _Loft_: The quarter-loft is under the thatch, tight for an ogre, and overlooking the living area. It is accessed via a stepladder. The loft is infested with fleas and smells like . . . an ogre. The ogre's pallet is but a pile of straw loosely strung together. Underneath the pallet the ogre keeps a sack of 211 sp, 65 ep, 47 gp, and an 8-ounce silver flask (worth 25 gp) filled with fine whiskey.  \n\n- _Barn_: In the log barn, which is a bit smaller than the stone cottage, there are 7 swine (1 boar and 6 sows) and two large troughs. Crude implements of stone are kept within, including a hand plough for turning over the garden (the ogre grows cabbage and carrots). The children sleep in the loft of the barn. They are locked in every night, the doors chained and **padlocked** _(CL 12 to break, CL 5 to pick)._ Notwithstanding, escapees almost never survive this hostile wilderness, and thus the orphans are hopelessly bound to this monster.\n\nThe ogre usually sits at his table, drinking wine and yelling out the window for the children to work harder. Sometimes he comes out to whip them. He always has a girl ready to refill his flagon. When he is out and about, he travels the **Old Castle Track** (q.v.). He ignores the humanoids and bandits, and they likewise avoid him due to his size and brutal nature. He travels as far as the Menhir Hills Road to raid merchant wagons and pilgrims—not just for spoils, but to enslave more children. He wears a large wicker basket on his back, within which he will cram his spoils (including the children, having made orphans of them). These latter he will bring back to his cottage to serve as slaves. Boys will care for the swine, turn over the soil, repair the thatch, gather water from the well and perform other physical labor; the girls will clean the cottage, serve him his wine, and cook. The ogre scarcely eats the imprisoned children, but does mistreat them terribly.\n\n**_Old Stone Well behind Ogre's Cottage, 6' dia._:** Fifty feet southeast of the ogre's cottage, concealed by briar bushes, an old rosebush, and grape vines, there is a covered stone well. The well predates the ogre, the ogre having chosen this location because the ruins of an old foundation were already in place. \n\nThe well is of 6 feet diameter, 4 feet interior diameter. If the iron lid is pried open _(pry bar required, one is hidden in the brush)_, a winch is revealed, it having a large hook at the looped end to which one may affix a bucket. Iron rungs are bolted into the inner wall, these beginning at 20 feet down the shaft and descending into darkness. This well sinks 120 feet into the ground and taps an underground river flowing northeasterly. A hundred feet down, however, there is small iron door set in the shaft, it being 2 feet wide by 4.5 feet tall. This door is rusted shut _(**stuck_,** _CL 2 to shoulder open)_. The door opens to a **limestone cavern**. \n\n**_Limestone Cavern (40' x 30' x 15'h)_:** This is a toothy maw of stalactites and stalagmites overlooking the subterranean river. Iron cressets are spaced along the walls the cavern, but these are rusted and lack fuel. There is an old rowboat down here, its wood wet and rotted, though its oak frame remains sound. It can be repaired, though one must bring down the lumber one piece at a time. A ranger will find no recent tracks here; seemingly this secret launching point has not been utilized in decades.\n\nThe wending subterranean river ultimately feeds the **Black Reservoir** of Castle Zagyg. The river ranges from 20–45 feet in width, but the headspace is low. In fact, during spring flood seasons there is no headroom whatsoever. It will take a skilled boatman to negotiate the river's ebb and flow so as not to get sucked into a portion of which there is no headroom. These can lead to a quick death for the foolhardy, so caution should be exercised. Using this underground river to access the Black Reservoir should be avoided by the Castle Keeper until the next volume of this series is published. Simply eliminating headspace in the tunnel will likely avert even the boldest of expeditioners.\n\n# WD-5. Fen Mound, 45' diameter x 20' high:\n\n>>[begin boxed text]<<\n\nYou note a broad fen, thick with reeds, cattails, and moss. The fen is about 90,000 square feet in area, a place of pools and hummocks. In the center of the fen rises a mound of 20-foot height and roughly 45 feet in diameter, it being gripped with green, spongy moss.\n\n>>[end boxed text]<<\n\nHere dwells a tribe of 20 batrachianoids or “_boggiwogs_” as they are more commonly called. They are largely nocturnal in nature and will not trouble with individuals moving about the fen by daylight—unless such individuals approach their mound.    \n\nUnder the moss-gripped mound is a maze of muddy burrows (tunnels of c. two feet in diameter) and two dens (hemispherical earth caves of c. 12 and 16 feet in diameter and six and eight feet in height). If disturbed, 6 boggiwog warriors will slither up from the muck using their _hide_ and _chameleon_ abilities. They will the spring forth to assail the intruders while the remainder of the tribe hides in the lair.  \n\n**Batrachianoids* x 6:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack with javelins and spears. Their special abilities include a hopping attack for double damage [though -4 to their AC] and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. XP: 11+1)_\n\n* see Appendix C.\n\nIn the larger of the two lairs there are **2 more boggiwog warriors** (as above), **3 females** (equal to the males, except of 4 HP each), **8 young** (non-combatant, 1 HP each), and **1 chieftain, Blook-glook**. The two warriors and chieftain win initiative versus any opponent that crawls into the fen mound of these batrachianoids.\n\n**Blook-glook (Batrachianoid Chieftain):** _(This chaotic evil humanoid's vital stats are HD 3d10+4, HP 20, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Its saves are physical. It attacks by weapon type at +2 damage due to strength. Its special abilities include a hopping attack for double damage, though -4 to his AC, and a chameleon ability that gives him +5 to hide checks and +10 to surprise checks. It has a +1 spear [+4 \"to hit\"; 1d6+3 damage]. It also wears a diamond-studded gold necklace worth 1,000 gp. XP: 95)_      \n\nHidden in this larger den, under a slab of stone lies the chieftain's treasure in a wooden barrel: including 111 cp, 185 sp, a gold ingot worth 100 gp, a potion of cure critical wounds, potion of cure poison, and a ring of water walking. \n\n# WD-6. Cobwebbed Area:  \n\n>>[begin boxed text]<<\n\nThe trees of this area are strung with thick layers of cobwebs. Perhaps these are from the nests of tent caterpillars infesting the area.\n\n>>[end boxed text]<<\n\n**2 giant spiders** have spun a nest of webs between the trees and underbrush here, occupying an area of 120 square feet. On the ground, under dead leaves and conifer needles, lies a pile of parched bones and scraps of metal. Among these is a **+1 warhammer of lesser undead detection**. This _intelligent weapon_ glows with an indigo-blue light in the presence (50-ft. radius) of lesser undead (zombies, skeletons, ghouls -- anything HD 2 or less). The hammer will urge its wielder to destroy such foul vermin, \"...in the name of Thor!\" Other items include a rusted suit of chain mail, a cracked kite shield emblazoned with a green dragon, and the buckles and clasps of garments long since rotted.\n\n**Spider, Giant (medium-sized) x 2:** _(These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell*. XP: 52+3)_\n\n* see PHB for more information.\n\n# WD-7. The Old Blackjack Oak:  \n\n**>>[begin boxed** **text]<<**\n\nYou note a massive, gnarled blackjack oak tree has massive roots, a 7.5-foot diameter bole, and pear-shaped leaves with golden hairs on the underside.  \n\n**>>[end boxed** **text]<<**\n\nNested high in the boughs dwells a **harpy**. She has a strangely attractive appearance when viewed from afar (100+ feet), though is hideous upon closer inspection. Once she spots a potential victim(s), such as those who veer off from the Old Castle Track (perhaps to camp, etc.), she will position herself at a slightly visible distance and then sing her lamenting, _captivating song_. She will lure her victims close, then take one back to her nest to be tortured and devoured. She is not of mind to fight a party of adventurers, preferring to steal one away, though she will defend her nest if the blackjack oak is ascended, for she places a great value on her treasures.\n\n**Harpy*:** _(This chaotic evil humanoid's vital stats are HD 3d8, HP 13, AC 13, MV 20 ft., 50 ft. fly. Its saves are physical. It attacks with 2 claws for 1d3 damage each. Its special ability is its 300-foot range captivating song, charisma save negates. Captivated victims will walk toward the harpy. The victim will stand motionless 5 feet before her, offering no resistance to her attack. XP: 79)_    \n\n* see M&T for more information.\n\nHer nest, 55 feet high in the limbs of the old blackjack oak, is built of thorny briars and vines. Within she has collected various baubles including a **+1 poniard** in an amethyst-studded scabbard (scabbard worth 200 gp), 3 rubies (100, 250, 750 gp), a sapphire (500 gp), a huge tiger-eye stone (worth 50 gp), and a diamond-studded bracelet worth 500 gp. All these valuables are carefully layered in the vines and briars, and thus concealed, it will take 15-30 minutes of careful sifting and unraveling to reveal them.\n\n# WD-8. Sparkling Stream:  \n\n>>[begin boxed text]<<\n\nHere dappled sunlight illuminates a tree-lined stream of clear and gentle flow. Lush green moss grips stones, and tree roots are thick with beefy fungi. A copse of alder saplings encroaches the brook’s bank, and all seems pleasant. \n\n>>[end boxed text]<<\n\nHidden in the alders is a nest of three giant ticks of 2.5-foot length. These mega-insects will bide their time, crawling under leaves, between stones, preying on creatures that drink of the sparkling water.\n\n**Tick, Giant x 3:** (_These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half speed with a -3 AC penalty. XP: 20+2)_\n\nA careful search of the area will reveal a pair of goblin skeletons under the leaves of the alder trees. One wears a waterproof leather backpack containing a corked bottle of weapon oil, 13 gp, a moonstone (worth 20 gp), a fine set of thieves' tools, and a **potion of healing** (2d4+2).\n\n# WD-9. Red Bill Farmer's Camp: \n\nHere is located the encampment of the **brigands** led by **Red Bill Farmer** (see _CZY environs #26_).\n\n# WD-10. Tamarack Stand: \n\n>>[begin boxed text]<<\n\nThis portion of the Little Hillwood is notable for its large stand of tamaracks, pine trees of reddish brown bark and crowded, spiral clusters of blue-green needles. Woodpeckers drill at the trees, this apparent by their tell-tale hammering.\n\n>>[end boxed text]<<\n\nThe sound is not of woodpeckers; rather it is wood elf scouts alerting one another of the trespassers. A ranger or druid (perhaps even a thief) may note this if they listen carefully to the sound _(successful listen check)_. Deep within the tamarack stand lies a camp of wood elves. \n\nThe wood elves that control the eastern half of the Little Hillwood consider this their danger zone, for their domain between the Urt River and False Urt River is constantly being challenged by humanoids, monsters, and other fell things. The camp consists of a log cabin with thatch roof, it being well camouflaged (concealed, _CL 5_) by the surounding trees and rocky outcrops. The timbers of the cabin are laced with vines and leaves and moss and so it is impossible to locate via casual observation unless specifically sought.\n\nThere are 7 traps _(CL 5 each)_ laid about the area of the log cabin. None are deadly. They consist of snares that will hoist one by the feet/legs to hang from the limbs of trees, and nets that do the same. The traps range from 10–60 feet away from the cabin, spread about as the CK desires, all of them being moderately difficult to search for and/or escape from. \n\nThere are **12 wood elves** stationed here. Every day they send out a team of 4 to patrol the east bank of the False Urt River, and wear armor laced with leaves and twigs, their faces painted green and brown, whilst doing so. So, if it is daytime, there is a 75% chance only 8 of the 12 elves will be present here. Of those present, 4 will be spread about the verge of the tamarack stand. By night, all are here. The wood elves are led by one **Ember Raventree**, who answers directly to **Aldion Ashgrove** _(CZY environs #26)_. \n\n**Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_ \n\n**Ember Raventree (wood elf leader):** _(He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166)_\n\nEmber is a pale-skinned wood elf with coppery-hair, hazel eyes, and corded muscles. He has a quiet resolve about him and is equally capable of kindness as he is brutality. His function is two-fold: 1.",
+      "start": 55432,
+      "end": 113052,
+      "startLine": 623,
+      "endLine": 1039,
+      "titleLineNum": 621,
+      "titleLine": "**81-85** Dying (40% chance from poison, 30% from injury, 30% from disease); -1 to -2 on attack \"to hit\", and damage scored.",
+      "inlineLabel": "86-90",
+      "inlineContext": "**86-90** Trapped",
+      "lineText": "**86-90** Trapped (pit, snare, or other trap; injured (-10% to -80% HPs)",
+      "snippet": "**81-85** Dying (40% chance from poison, 30% from injury, 30% from disease); -1 to -2 on attack \"to hit\", and damage scored. **86-90** Trapped (pit, snare, or other trap; injured (-10% to -80% HPs)",
+      "hp": 23,
+      "ac": 15,
+      "hd": "4d10",
+      "xp": "80+4",
+      "level": 0,
+      "raceClass": "0th level, neutral evil, human fighters",
+      "notes": "pit, snare, or other trap; injured (-10% to -80% HPs)\n\n**91-95** Rabid (+1 to +3 on attack chance \"to hit\" and damage scored); rabies transmitted to anyone bitten.\n\n**96-00** Starving or dehydrated (-10% to -40% HPs; -1 to -2 on attack chance and damage scored)\n\n**>>>END TABLE<<<**\n\n**>>>BEGIN TABLE<<<**\n\nSub-table 2. Animal or Monster Activity:\n\n**D100 / Activity**\n\n**01-08** Fighting with or running away from another animal or monster*\n\n**09-20** Hiding from or observing/stalking the characters  \n\n**21-24** Dozing or asleep\n\n**25-27** Entering or settling into a den, lair, or like resting place\n\n**28-30** Grooming itself or another like creature\n\n**31-35** Engaged in mating display or else play activity\n\n**36-45** Roaming about at a walk or faster pace\n\n**46-55** Drinking water or at a salt lick\n\n**56-00** Eating or seeking to eat (browsing, grazing, foraging, hunting, fishing)\n\n**>>>END TABLE<<<**\n\n* If a normally non-aggressive creature, it is 90% likely that it will be encountered in flight from a predator. If this is a predator or aggressive animal, there is a (0-50%) chance it is fighting with another predator, or equal (51-00%) chance running away from another predator.\n\n**>>>BEGIN TABLE<<<**\n\nSub-table 3. Weather Activity:\n\nThe CK is encouraged to use common sense when utilizing the chart below; i.e. a storm can indeed take a party by surprise, but in other cases a druid or ranger may likely detect the subtle signs of a shift in progress.\n\n**D100 / Weather**\n\n**01-30** Cold or heat (90% movement rate for the duration of the effect, d4 for days unless new problem replaces it)\n\n**31-35** Hail storm or downpour (no movement for duration, d3 for hours it lasts, and 50% movement for one hour after it ends)\n\n**36-50** Thick Fog (10% normal movement for duration of effect, d6 for hours it lasts)\n\n**51-70** Light persisting rain or sleet (75% movement rate for twice duration, 4d6 hours it lasts) \n\n**71-85** Rain or snow (50% movement rate for twice duration, 3d6 for hours it lasts)\n\n**86-90** Strong winds (25% movement rate for duration, d3 for hours it lasts)\n\n**91-00** Severe thunderstorm or blizzard (no movement for the duration, d3 for hours it lasts, 50% movement remainder of the day and the following day)\n\n**>>>END TABLE<<<**\n\n**_N.B._** Wet weather affects bow and crossbow strings. Archery ranges are reduced by 20% in such conditions. Cold snow does not have such an adverse effect.\n\nMen and Monsters Randomly Encountered:\n\nThe following men and monsters are among those randomly encountered. Most monsters are fully described in _Monsters & Treasure_, though notable exceptions are indicated below. Also, you might note that many monster stat blocks throughout the Upper Works are slightly modified from the M&T source material to reflect the author's original vision of the various critters. \n\nThe Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification.\n\n**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_ \n\n**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_\n\n**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_ \n\n**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_ \n\n**Batrachianoid*:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1)_ \n\n**Bear, black:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3)_\n\n**Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_\n\n**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_\n\n**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_\n\n**Brigand, Serjeant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2)_\n\n**Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_\n\n**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_ \n\n**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_\n\n**Elf, Wood, swordsman:** _(They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3)_\n\n**Ghoul:** _(These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2)_\n\n**Gnoll:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2)_ \n\n**Goblin, raider:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1)_ \n\n**Goblin, leader (corporal):** _(These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3)_\n\n**Griffon:** _(This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7)_\n\n**Hobgoblin:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1)_\n\n**Kobold:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1)_\n\n**Lion (mountain, forest):** _(These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4)_    \n\n**Lizardfolk:** _(These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2)_  \n\n**Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_   \n\n**Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _(They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2)_\n\n**Naga, Water:** _(This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7)_  \n\n**Nixies (sprite):** _(These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1)_ \n\n**Orc:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1)_\n\n**Otter, giant:** _(This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4.)_  \n\n**Owlbear (small):** _(These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3)_ \n\n**Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_\n\n**Rivermen:** _(They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1)_\n\n**Snake, poisonous:** _(This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1)_\n\n**Snake, poisonous (deadly):** _(This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2)_\n\n**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3)_\n\n**Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_\n\n**Thieves**:** _(They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.)_ \n\n**Turtle, Huge Snapping:** _(These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5)_\n\n**Wolf, Grey:** _(These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2)_\n\n**Wolverine (small, normal):** _(This neutral creature's vital stats are HD 3d8, HP 16, AC 15, MV 20 ft. Its saves are physical, and all attacks are made as though it were 3HD higher than it is. It attacks with two claws for 1d4 points of damage and one bite for 1d4+1 damage._ _It can release a musk spray 10' wide by 30' long, saving throw versus breath weapon or victim is blinded for 1-2 hours; regardless of save, any creature in the spray's area of effect is sickened and suffers -2 strength, dexterity, and constitution for 2-8 turns. XP: 50+3)_\n\n* see **Appendix C.**  \n\n** refer to PHB \"rogue\" for various class abilities.\n\nPART III: THE WILDERNESS\n\nCastle Zagyg is accessed via the _Old Castle Track_, which cuts through the _Little Hillwood_ and is located on a rocky bluff overlooking the _False Urt River._ Despite the surrounding wilderness being relatively small and already populated with its share of malign and monstrous inhabitants, the domain of the Mad Archmage has an allure about it, hence attracting substantial activity.  \n\nOLD CASTLE TRACK:\n\nRefer to **Table 1.** (LAYOUT NOTE: INSERT PAGE #) for random encounters on the Old Castle Track.\n\nThe Old Castle Track wends east-west through the Little Hillwood. This old cart path is _cursed_, however, and those who traverse its length must make a series of _nerve checks_ (see below) or suffer the consequences. When the characters reach the end of the Old Castle Track, refer to **Part IV.** **Approaching Castle Zagyg**.\n\n**>>[begin boxed** **text]<<**\n\nThis winding, rutted track is narrow and spotted with weedy overgrowth. Tangles of small trees and underbrush encroach upon its verge, nigh-impenetrable because of briars, thorn bushes, and heavy vines. The looming trees are large and heavy-limbed, and their foliage makes the way dim and shadowy. Their boughs creak and groan—even when there is not but a breath of air—and the leaves rustle faintly. Traversing the ancient path, you begin to suffer a distinct pang of unease, a quickness of the heart. You have a sneaking suspicion that the trees have eyes . . .\n\n**>>[end boxed** **text]<<**\n\nOf course such a setting makes it nearly impossible to note dangers lurking in the murky woods around the pathway, and it seems to those venturing along it that something fell is watching them always, some unseen foe that is poised to strike. This omnipresent anxiety and disquiet is inescapable; thus the way is generally shunned by all save the heartiest adventurer . . . or malign predator.    \n\n**_Nerve Check_:** The first time the route is taken, travelers are required to make a _nerve check_ (fear save, see below) at every mile to proceed unruffled. This is the result of a potent _aversion_ spell engendered by the Mad Archmage.  \n\n_First Nerve Check_: is a _fear_ save _(CL 0)_. If a failure results, the character may proceed (albeit nervously) but is affected with -1 \"to hit\" and damage, and -3 on all surprise checks. This effect lasts until a successful \"nerve check\" is made. \n\n_Subsequent Nerve Checks_: these are also _fear_ saves. If the previous check resulted in a failed save, the CL for subsequent saves increases in difficulty by 1 _(thus, CL 1, CL 2, etc.)_; otherwise it reverts to CL 0.  \n\n_If the saving throw is failed three consecutive times_: the character loses nerve and flees back to the Menhir Hills Road (or whichever direction they had approached from). The only way such an individual will set foot on the pathway again is if a _remove curse_ spell is cast upon him or her.  \n\nOnce a player character has succeeded in traversing the Old Castle Track from the Menhir Hills Road to Castle Zagyg, no further _nerve check_ is required; that person is thenceforth inured to the effects of the curse.\n\n**Movement on the Old Castle Track**: Traversing the Old Castle Track progresses at a rate of about 2 miles per hour walking afoot, unencumbered. Moving off the beaten track is at one-tenth the normal movement rate (one-quarter if a druid or ranger), and that speed assumes cutting away foliage with a heavy blade.\n\nTHE LITTLE HILLWOOD:\n\nRefer to **Table 2.** (LAYOUT NOTE INSERT PAGE #) for random encounters within the Little Hillwood.\n\nThis woodland lies along the southern portion and towards the middle of the Menhir Hills. Its southern verge begins near the Menhir Hills Road, about 16 miles north of Yggsburgh as the crow flies. Both the Urt River and the False Urt Rivers pass through its north and central regions. Along those waterways, and where the woodland borders the Greypools Mire, the trees are mainly great willows with some aspen, birch, and tamarack. Elsewhere, its growth is of typical forest hardwoods—primarily ash, chestnut, elm, hickory, maple, oak, and walnut. The understory is choked with small trees, underbrush, briars, thorn bushes, poison ivy and poison oak (CK’s option as to effect of touching, but a 10% penalty to performance is a good rule of thumb), and heavy vines. Its fauna includes everything from shrews, moles, and mice, on through squirrels and rabbits and various birds, to large game such as wild swine, deer, elk, and aurochs. As well, there are predators such as eagles, giant owls, bears, big cats, wolves, and wolverines (gluttons) to be found within its precincts.  \n\nWest of the False Urt River (Castle Zagyg's side of the waterway) the hilly woodland is populated by large numbers of humanoids, bandits, and monsters. Demi-humans (predominantly wood elves) have established a foothold east of the river and thus repel bandits, raiding orcs and their ilk. These elves are chaotic in nature and will treat any intruders—good or evil—with hostility. This may include imprisonment, followed by blindfolding and being marched eastwards out of the forest. \n\n**Movement in the Little Hillwood:** Moving across this tangled woodland is at one-tenth normal rate (one-quarter if a druid or ranger), and that speed assumes cutting away foliage with a heavy blade. That means unencumbered characters moving afoot will progress 0.2 miles per hour, with occasional breaks in the foliage that allow double this compromised movement rate; off-track movement being impossible for most horses.  \n\nTHE FALSE URT RIVER (and Castle Pier):\n\nRefer to **Table 3.** (LAYOUT NOTE INSERT PAGE #) for random encounters on or in the False Urt River.\n\nThe False Urt River lies at the foot of the rocky bluff upon which is built Castle Zagyg. This river is substantial in breadth but shallow and sluggish in flow (except during spring flood season). Its channel is no more than two miles distant from that of the Urt in this region, and no more than five miles further north. At one time the two rivers were thought to be one, but careful mapping has made the difference between them distinct.  \n\nAlthough the upper reaches of the river are wild and dangerous, boats and barges can navigate the False Urt, from some 75 miles northwards all the way downriver to the marsh known as the Grey Pools Mire. In the Mire, only very shallow-draft watercraft can pass through to gain the actual Urt River. The banks of the False Urt River, like the Urt, are lush with long stretches of willow bushes and other shrubs thickly clustered along its shores. Many copses and groves of large willows, or trees of other kinds, are found on or near the waterway's banks. These verges are generally seven to ten feet high, though greater where the river cuts through the more rocky and precipitous hills. \n\nAs noted, the False Urt River feeds the Greypools Mire, a marsh of some 42 square miles. It is from this vast swampland that raiding parties of batrachianoids and lizardmen originate, attracted to Castle Zagyg as many other humanoids are, though they usually cling to the west side of the waterway, avoiding the wood elves of the eastern portions of the Little Hillwood. The Grey Pools Mire is also where the rivermen known as the **Swamp Rats*** keep camp.\n\nIf the characters approach Castle Zagyg by way of watercraft on the False River Urt:\n\n**>>[begin boxed** **text]<<**\n\nFrom your craft you note a rocky bluff looming some 80 feet above the False Urt River. Atop it you glimpse ruins—walls, towers, gatehouses. The castle fortress stands above said ruins, it being flanked by an enormous pair of towers, one round, the other hexagonal. A hazy mist clutches the fortress and through this you catch glimpse of a turret here, gallery of windows there, and extending to the sky above—two ominous spires of stone.\n\n**>>[end boxed** **text]<<**\n\n**_Castle Pier_:** If the PCs study the banks they may spot a pier to which they can moor their vessel. This pier is periodically (about weekly) utilized by the **Swamp Rats***, rough rivermen who trade with the bandits that occupy the postern gate _(Ruins of the Castle Precincts #36)_ and thus the band that occupies the castle fortress. These bandits are inured to the effects of the cursed fog that once bound this place.      \n\n* see Appendix D.\n\n>>[begin boxed text]<<\n\nYou see a wooden pier supported by heavy posts. The pier is T-shaped, about 30 feet wide along the bank, extending another 20 feet long by 10 feet wide into the sluggish water. Inland, about 90 feet northwest of the structure, you note the ruins of an old watch tower, but a pile of debris being all that remains of it. The ruined tower lies at the foot of a switchback stair carved into the side of the bluff on which Castle Zagyg is built. The stairs climb 30 feet to a landing, then another 30 feet to a second landing. The stairs, however, have also suffered significant ruin and thus present a difficult negotiation. At the top lies the postern gate of Castle Zagyg.\n\n>>[end boxed text]<<\n\n**_CK's Note_**: If the PCs elect to approach the ruined watch tower, the switchback stairs carved into the bluff face, or the postern gate, please turn to _Ruins of the Castle Precincts_, encounter area #36.\n\n**_WILDERNESS SET ENCOUNTERS:_**\n\nThe wilderness surrounding Castle Zagyg is populated by monsters, humanoids, and dangerous beasts—many of which will be randomly encounters as noted in the above encounter tables. Here follows a list of set encounters in the wilderness. Creative Castle Keepers are encouraged to expand upon these selections as suits the individual campaign, whether through preparation or some good old-fashioned seat-of-the-pants improvisation.\n\n# WD-1. Dark Chateau:\n\nThis is the location of the former manse of the Mad Archmage, located at the end of an overgrown cart path. _Castle Zagyg: Dark Chateau_ is an adventure written by Rob Kuntz and available from Troll Lord Games. \n\n# WD-2. Losels of the Forest:  \n\nTwo miles southwest of Castle Zagyg, among the tallest oaks dwell green-skinned, ape-like humanoids called losels, a degenerate crossbreed of gorilla and orc. Their leaders are abominations even more despicable—crossbreeds of gorilla, orc, and human.  \n\n**>>[begin boxed** **text]<<**\n\nThe hoots and chirping shrieks of simians resound from high above within the upper boughs of massive oaks and ash. Looking up you see a cluster of arboreal huts, these built some 60 to 80 feet above the forest floor. The vague shapes of simians can be seen swinging from branches and vines high above. \n\n**>>[end boxed** **text]<<**\n\nThe losels of this arboreal village will range far from their tribal community; however, an enchantment prevents the humanoids from setting foot on the Old Castle Track (an annoyed Mad Archmage once cursed them thus for destroying his shipment of wine and spirits). These humanoids will brachiate high above the Old Castle Track where the tallest of trees form a canopy; otherwise they shun the path entirely. Should the party draw attention to themselves, the losels will flank and follow, swinging limb to limb. They bide their time, waiting (hoping) for the characters to step off the rutted, overgrown path by 100 feet minimum. They will then attempt to capture the party using lassos and bring them back to the community to be boiled alive and eaten, or sacrificed to the demon they worship. The losels will stop about a half-mile before the Old Castle Track meets Castle Zagyg's precincts, utterly fearful of that place.\n\nThe arboreal village is comprised of **110 losels**: 40 male warriors, 35 females, 15 elderly, and 20 young. If under attack, both males and females will protect the village, it being a cluster of about 10 huts woven of sticks and vines and perched among the sturdiest limbs. The huts, being 60 to 80 feet off the forest floor, are joined by suspended bridges of spliced vines, though remote huts must be brachiated to and from. Each hut is presided over by a sub-chief.\n\n**_CK's Note:_** As this is a large number of adverse creatures, it is urged that you keep track of their losses. When the male population is below half (at 19 or fewer) you might wish to increase it by having new losels move in, 4-6d6 males, 2-4d6 females, but replacing lost old and young members of the tribe only over time.\n\nThe **chieftain** of the tribe is **Grimlock Manface**, a heavily scarred, ape-man who wears a splint mail, great helm, and wields a magical heavy flail. Depending from his neck is a string holding no less than a hundred fingers, these being the digits of those he's slain in combat.  \n\nGrimlock's **shaman** (and advisor) is **Ji'gun-tima**, an elderly female of potent sort. Ji'gun-tima is a blonde-haired simian woman with a blue-green, wrinkled visage and ice-blue eyes. She wears a string of shrunken human heads around her neck that clatter as she moves about, and she carries a gnarled staff of oak topped with a bronze skull, the skull embedded with a faceted sapphire in the center of its brow ridge. Ji'gun-tima is treated with complete deference by all—even her chieftain. She is a worshiper of **Mandrillagon**, a monstrous, blue-faced demon with massive yellow-gray fangs. This denizen of the Abyss is said to be served by an army of flying demon-monkeys. The shaman makes live sacrifices (human, demi-human, or humanoid) to her demon lord at every full moon as the tribe, painted and ecstatic, beats goblinskin drums and caper about feverishly. Grimlock, the chieftain, observes the spectacle from his wooden throne, drinking blood wine from a bronzed kobold skull, his females sprawled before him. \n\nSee **Player Handout #1** _(Upper Works Map & Illustration Booklet)_ for an illustration of the losel chieftain and his shaman.\n\nFurther development of this tribe, its customs, and its holdings are the responsibility of the Castle Keeper. The chieftain hoards a treasure of perhaps 2,000 gp worth of gold, gems, and jewelry; likewise, his shaman may have a few scrolls such as _cause fear_, _magic missile_, and _mirror image_, amongst other bizarre and frightening curiosities (shrunken heads, human face-masks, jellied organs, pickled elf ears, etc). \n\nThere are smaller tribes scattered about the Little Hillwood Forest, and when an adolescent male is ostracized by the tribe (usually after losing a fight over mating rights), he may join one of these or likely perish alone; otherwise, outside tribes are treated with hostility. The Castle Keeper must choose where these are located, though it is possible that they are migratory.\n\n**Grimlock Manface (Losel Chieftain):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268)_\n\n**Ji'gun-tima (Losel Shaman):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260)_\n\n**Losel sub-chiefs x 10:** _(These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2)_\n\n**Losel warriors x 30:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_\n\n**Losel females x 35:** _(These neutral evil humanoids' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +1 damage due to strength. They have the conceal ability as per the PHB ranger class. They wield clubs [+1 \"to hit\"; 1d6+1 damage]. XP: 9+1)_\n\n_*Lasso:_ Experienced losels are adept in the use of lassos made out of strips of leather and vines. These weapons deal no damage but the victim is immobilized as follows: if used against a small or medium-sized opponent, the user must strike an AC 15 or better (AC modified by strength and dexterity), size modifiers not applicable. A lassoed victim is prone (+5 \"to hit\") and cannot act except to break the hold. To break the hold, a strength check is required, the challenge level equal to the HD of the lasso user. Otherwise, the lasso has HP 3 with an AC 10 plus the wielder's dexterity bonus (if applicable).       \n\n** see **Appendix C**.\n\n# WD-3. Rocky Outcrop (Iggy the Mad): \n\n**>>[begin boxed** **text]<<**\n\nA light footpath in the forest leads you to an outcrop of rock upon which stunted trees and brush grow. At the base of the outcrop a cleft opens to what appears to be a cave.\n\n>>[end boxed text]<<\n\nA ranger will note the cleft opens to a cave. The cave is a 30-foot-diameter interior with variable (8 to 12 feet) ceiling height. This is the lair of Iggy the Mad, a half-orc hermit who lives here alone. Iggy is a hunchbacked, one-eyed half-orc with skinny legs and bulging forearms. He often roams about the area spear fishing (with his trident), bow hunting, or traipsing the ruins of Castle Zagyg's precincts, so he is scarcely about by day (20%) but almost always by nightfall (95%—he's a bit afraid of the dark).  \n\nSee **Player Handout #2** _(Upper Works Map & Illustration Booklet)_ for an illustration of Iggy the Mad.\n\n**Iggy the Mad*:** _(He is a 3rd level, chaotic neutral, half-orc ranger whose vital stats are HP 22, AC 13, MV 30 ft. His primary attributes are strength and wisdom. His significant attribute is strength 18. His special ability is a permanent protection from normal missiles enchantment that, when invoked, causes a golden halo to surround him_ _and also_ _provides a +2 AC bonus to his allies vs., normal missiles if they are within 20'. He also has darkvision 60 ft. He has studded leather armor, +1 trident [+6 \"to hit\"; 1d8+4 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, 12-inch hunting knife, 12 cp, and a rabbit's foot dyed green. XP: 122)_\n\n* see PHB for full list of ranger abilities.\n\nIggy's lair consists of a pallet of straw, a flat rock he uses as a table (wooden bowl and spoons atop), a high-back oak chair with a broken leg, and a central fire pit that vents out through cracks in the ceiling. In the corner he keeps a 10-gallon keg of brandy, a bucket of water, and an old broom. On his pallet he keeps a braided tress of blonde hair, this once given to him by a maiden he rescued from the ogre of **WD-4**. He sleeps with the braid at night, it being his most treasured possession—any harm done to this thing will send him into a fit of rage _(+2 attacks \"to hit\" and damage)_.  \n\nUnder Iggy's pallet is a child's doll (missing an arm) with pearl eyes (worth 5 gp each) and a cracked leather purse containing 22 sp, 12 cp and a silver necklace with opal charm worth 25 gp. Iggy the Mad is a devout follower of Zagyg (though knows not his name— _\"Big Magic Man!\"_) and so enjoys the boon of his deity. \n\n**_Concealed Tunnel:_** In the back of Iggy's cave there is a 220-pound boulder that conceals a crawl space cave of 3.5-foot width and 2.5–3-foot height. The crawlspace meanders south for 110 feet before there is enough room for one to stand. It opens up to a vast network of passages, one of which leads to the dungeons of Castle Zagyg one mile to the south. These dank underground passages were partially bored out by evil gnomes many years ago. There are several collapses within, and fungal growth is widespread— particularly **_glowlichen_**— which provides lambent illumination. Giant snails and slugs are many—so populous as to preclude even the most determined of adventurers from utilizing many of these passages. In addition, thousands upon thousands of cave bats lurk here, as well as giant rats, giant toads and giant snakes. These places are also populated by black puddings, gray oozes, green slimes, ochre jellies, and violet fungi. The caverns gradually descend in depth, some becoming more wet as one descends. One such passage leads to a rune-engraved stone archway whose ancient dwarvish script indicates, **The Catacombs,** which will be presented in a future volume of this series. There is also a connection to the **Watery Caverns** as alluded to in _Dark Chateau_. For now, the Castle Keeper is advised to avoid the discovery of the concealed tunnel, but if you are determined to develop such lengthy caverns, you can simply reconcile your developments with the forthcoming work.\n\n# WD-4. Stone Cottage, 30' x 30' x 20' and barn, 25' x 30' x 20':   \n\n**>>[begin boxed** **text]<<**\n\nA beaten footpath leads to this 20-foot-tall structure located within a shallow vale nestled between thickly wooded hills. The structure is built of boulders and fieldstones with a thatch roof, a fenced-in yard and a crudely-built barn of timber logs beside it. The fenced in area is planted with crops.\n\n**>>[end boxed** **text]<<**\n\nThis cottage is owned by a 9.5-foot tall, hairy, pot-bellied **ogre** of nasty disposition. The ogre is here 85% of the time, cracking the whip on the **3-6 human children** whom he has enslaved; otherwise he is out on a raiding mission for loot or more slaves. \n\n**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_\n\n**Children x 3-6:** _(They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10.)_  \n\nThe cottage has a large front door (10-feet) and a similar side door. A single window, shuttered, stands 6.5 feet from the ground, left of the front door. Inside the cottage there are two rooms (kitchen/pantry and living area) and a quarter loft under the thatch. \n\n- _Kitchen/Pantry_: The single window of this structure provides light to the kitchen/pantry area. Here the ogre keeps a large table. There is a stone fireplace, a green copper boiler of 3 feet diameter, a shelf, a cupboard, a 30-gallon keg, and a 5-gallon bucket of water. The shelf is stacked with a variety of wooden and iron utensils, earthenware, a silver goblet (12 gp), and a tin mug. Among these is an **enchanted ladle**, dweomered to float in the air, perfectly still wherever it is placed. The cupboard holds 20 bottles of wine, these being of various vintages (worth 2-40 gp each). The keg rests upon a stone pedestal, is broached and filled with cheap ale.  \n\n- _Living Area_: The living area contains a big chair, a small round table, and a bear-pelt rug spread across the floor. \n\n- _Loft_: The quarter-loft is under the thatch, tight for an ogre, and overlooking the living area. It is accessed via a stepladder. The loft is infested with fleas and smells like . . . an ogre. The ogre's pallet is but a pile of straw loosely strung together. Underneath the pallet the ogre keeps a sack of 211 sp, 65 ep, 47 gp, and an 8-ounce silver flask (worth 25 gp) filled with fine whiskey.  \n\n- _Barn_: In the log barn, which is a bit smaller than the stone cottage, there are 7 swine (1 boar and 6 sows) and two large troughs. Crude implements of stone are kept within, including a hand plough for turning over the garden (the ogre grows cabbage and carrots). The children sleep in the loft of the barn. They are locked in every night, the doors chained and **padlocked** _(CL 12 to break, CL 5 to pick)._ Notwithstanding, escapees almost never survive this hostile wilderness, and thus the orphans are hopelessly bound to this monster.\n\nThe ogre usually sits at his table, drinking wine and yelling out the window for the children to work harder. Sometimes he comes out to whip them. He always has a girl ready to refill his flagon. When he is out and about, he travels the **Old Castle Track** (q.v.). He ignores the humanoids and bandits, and they likewise avoid him due to his size and brutal nature. He travels as far as the Menhir Hills Road to raid merchant wagons and pilgrims—not just for spoils, but to enslave more children. He wears a large wicker basket on his back, within which he will cram his spoils (including the children, having made orphans of them). These latter he will bring back to his cottage to serve as slaves. Boys will care for the swine, turn over the soil, repair the thatch, gather water from the well and perform other physical labor; the girls will clean the cottage, serve him his wine, and cook. The ogre scarcely eats the imprisoned children, but does mistreat them terribly.\n\n**_Old Stone Well behind Ogre's Cottage, 6' dia._:** Fifty feet southeast of the ogre's cottage, concealed by briar bushes, an old rosebush, and grape vines, there is a covered stone well. The well predates the ogre, the ogre having chosen this location because the ruins of an old foundation were already in place. \n\nThe well is of 6 feet diameter, 4 feet interior diameter. If the iron lid is pried open _(pry bar required, one is hidden in the brush)_, a winch is revealed, it having a large hook at the looped end to which one may affix a bucket. Iron rungs are bolted into the inner wall, these beginning at 20 feet down the shaft and descending into darkness. This well sinks 120 feet into the ground and taps an underground river flowing northeasterly. A hundred feet down, however, there is small iron door set in the shaft, it being 2 feet wide by 4.5 feet tall. This door is rusted shut _(**stuck_,** _CL 2 to shoulder open)_. The door opens to a **limestone cavern**. \n\n**_Limestone Cavern (40' x 30' x 15'h)_:** This is a toothy maw of stalactites and stalagmites overlooking the subterranean river. Iron cressets are spaced along the walls the cavern, but these are rusted and lack fuel. There is an old rowboat down here, its wood wet and rotted, though its oak frame remains sound. It can be repaired, though one must bring down the lumber one piece at a time. A ranger will find no recent tracks here; seemingly this secret launching point has not been utilized in decades.\n\nThe wending subterranean river ultimately feeds the **Black Reservoir** of Castle Zagyg. The river ranges from 20–45 feet in width, but the headspace is low. In fact, during spring flood seasons there is no headroom whatsoever. It will take a skilled boatman to negotiate the river's ebb and flow so as not to get sucked into a portion of which there is no headroom. These can lead to a quick death for the foolhardy, so caution should be exercised. Using this underground river to access the Black Reservoir should be avoided by the Castle Keeper until the next volume of this series is published. Simply eliminating headspace in the tunnel will likely avert even the boldest of expeditioners.\n\n# WD-5. Fen Mound, 45' diameter x 20' high:\n\n>>[begin boxed text]<<\n\nYou note a broad fen, thick with reeds, cattails, and moss. The fen is about 90,000 square feet in area, a place of pools and hummocks. In the center of the fen rises a mound of 20-foot height and roughly 45 feet in diameter, it being gripped with green, spongy moss.\n\n>>[end boxed text]<<\n\nHere dwells a tribe of 20 batrachianoids or “_boggiwogs_” as they are more commonly called. They are largely nocturnal in nature and will not trouble with individuals moving about the fen by daylight—unless such individuals approach their mound.    \n\nUnder the moss-gripped mound is a maze of muddy burrows (tunnels of c. two feet in diameter) and two dens (hemispherical earth caves of c. 12 and 16 feet in diameter and six and eight feet in height). If disturbed, 6 boggiwog warriors will slither up from the muck using their _hide_ and _chameleon_ abilities. They will the spring forth to assail the intruders while the remainder of the tribe hides in the lair.  \n\n**Batrachianoids* x 6:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack with javelins and spears. Their special abilities include a hopping attack for double damage [though -4 to their AC] and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. XP: 11+1)_\n\n* see Appendix C.\n\nIn the larger of the two lairs there are **2 more boggiwog warriors** (as above), **3 females** (equal to the males, except of 4 HP each), **8 young** (non-combatant, 1 HP each), and **1 chieftain, Blook-glook**. The two warriors and chieftain win initiative versus any opponent that crawls into the fen mound of these batrachianoids.\n\n**Blook-glook (Batrachianoid Chieftain):** _(This chaotic evil humanoid's vital stats are HD 3d10+4, HP 20, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Its saves are physical. It attacks by weapon type at +2 damage due to strength. Its special abilities include a hopping attack for double damage, though -4 to his AC, and a chameleon ability that gives him +5 to hide checks and +10 to surprise checks. It has a +1 spear [+4 \"to hit\"; 1d6+3 damage]. It also wears a diamond-studded gold necklace worth 1,000 gp. XP: 95)_      \n\nHidden in this larger den, under a slab of stone lies the chieftain's treasure in a wooden barrel: including 111 cp, 185 sp, a gold ingot worth 100 gp, a potion of cure critical wounds, potion of cure poison, and a ring of water walking. \n\n# WD-6. Cobwebbed Area:  \n\n>>[begin boxed text]<<\n\nThe trees of this area are strung with thick layers of cobwebs. Perhaps these are from the nests of tent caterpillars infesting the area.\n\n>>[end boxed text]<<\n\n**2 giant spiders** have spun a nest of webs between the trees and underbrush here, occupying an area of 120 square feet. On the ground, under dead leaves and conifer needles, lies a pile of parched bones and scraps of metal. Among these is a **+1 warhammer of lesser undead detection**. This _intelligent weapon_ glows with an indigo-blue light in the presence (50-ft. radius) of lesser undead (zombies, skeletons, ghouls -- anything HD 2 or less). The hammer will urge its wielder to destroy such foul vermin, \"...in the name of Thor!\" Other items include a rusted suit of chain mail, a cracked kite shield emblazoned with a green dragon, and the buckles and clasps of garments long since rotted.\n\n**Spider, Giant (medium-sized) x 2:** _(These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell*. XP: 52+3)_\n\n* see PHB for more information.\n\n# WD-7. The Old Blackjack Oak:  \n\n**>>[begin boxed** **text]<<**\n\nYou note a massive, gnarled blackjack oak tree has massive roots, a 7.5-foot diameter bole, and pear-shaped leaves with golden hairs on the underside.  \n\n**>>[end boxed** **text]<<**\n\nNested high in the boughs dwells a **harpy**. She has a strangely attractive appearance when viewed from afar (100+ feet), though is hideous upon closer inspection. Once she spots a potential victim(s), such as those who veer off from the Old Castle Track (perhaps to camp, etc.), she will position herself at a slightly visible distance and then sing her lamenting, _captivating song_. She will lure her victims close, then take one back to her nest to be tortured and devoured. She is not of mind to fight a party of adventurers, preferring to steal one away, though she will defend her nest if the blackjack oak is ascended, for she places a great value on her treasures.\n\n**Harpy*:** _(This chaotic evil humanoid's vital stats are HD 3d8, HP 13, AC 13, MV 20 ft., 50 ft. fly. Its saves are physical. It attacks with 2 claws for 1d3 damage each. Its special ability is its 300-foot range captivating song, charisma save negates. Captivated victims will walk toward the harpy. The victim will stand motionless 5 feet before her, offering no resistance to her attack. XP: 79)_    \n\n* see M&T for more information.\n\nHer nest, 55 feet high in the limbs of the old blackjack oak, is built of thorny briars and vines. Within she has collected various baubles including a **+1 poniard** in an amethyst-studded scabbard (scabbard worth 200 gp), 3 rubies (100, 250, 750 gp), a sapphire (500 gp), a huge tiger-eye stone (worth 50 gp), and a diamond-studded bracelet worth 500 gp. All these valuables are carefully layered in the vines and briars, and thus concealed, it will take 15-30 minutes of careful sifting and unraveling to reveal them.\n\n# WD-8. Sparkling Stream:  \n\n>>[begin boxed text]<<\n\nHere dappled sunlight illuminates a tree-lined stream of clear and gentle flow. Lush green moss grips stones, and tree roots are thick with beefy fungi. A copse of alder saplings encroaches the brook’s bank, and all seems pleasant. \n\n>>[end boxed text]<<\n\nHidden in the alders is a nest of three giant ticks of 2.5-foot length. These mega-insects will bide their time, crawling under leaves, between stones, preying on creatures that drink of the sparkling water.\n\n**Tick, Giant x 3:** (_These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half speed with a -3 AC penalty. XP: 20+2)_\n\nA careful search of the area will reveal a pair of goblin skeletons under the leaves of the alder trees. One wears a waterproof leather backpack containing a corked bottle of weapon oil, 13 gp, a moonstone (worth 20 gp), a fine set of thieves' tools, and a **potion of healing** (2d4+2).\n\n# WD-9. Red Bill Farmer's Camp: \n\nHere is located the encampment of the **brigands** led by **Red Bill Farmer** (see _CZY environs #26_).\n\n# WD-10. Tamarack Stand: \n\n>>[begin boxed text]<<\n\nThis portion of the Little Hillwood is notable for its large stand of tamaracks, pine trees of reddish brown bark and crowded, spiral clusters of blue-green needles. Woodpeckers drill at the trees, this apparent by their tell-tale hammering.\n\n>>[end boxed text]<<\n\nThe sound is not of woodpeckers; rather it is wood elf scouts alerting one another of the trespassers. A ranger or druid (perhaps even a thief) may note this if they listen carefully to the sound _(successful listen check)_. Deep within the tamarack stand lies a camp of wood elves. \n\nThe wood elves that control the eastern half of the Little Hillwood consider this their danger zone, for their domain between the Urt River and False Urt River is constantly being challenged by humanoids, monsters, and other fell things. The camp consists of a log cabin with thatch roof, it being well camouflaged (concealed, _CL 5_) by the surounding trees and rocky outcrops. The timbers of the cabin are laced with vines and leaves and moss and so it is impossible to locate via casual observation unless specifically sought.\n\nThere are 7 traps _(CL 5 each)_ laid about the area of the log cabin. None are deadly. They consist of snares that will hoist one by the feet/legs to hang from the limbs of trees, and nets that do the same. The traps range from 10–60 feet away from the cabin, spread about as the CK desires, all of them being moderately difficult to search for and/or escape from. \n\nThere are **12 wood elves** stationed here. Every day they send out a team of 4 to patrol the east bank of the False Urt River, and wear armor laced with leaves and twigs, their faces painted green and brown, whilst doing so. So, if it is daytime, there is a 75% chance only 8 of the 12 elves will be present here. Of those present, 4 will be spread about the verge of the tamarack stand. By night, all are here. The wood elves are led by one **Ember Raventree**, who answers directly to **Aldion Ashgrove** _(CZY environs #26)_. \n\n**Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_ \n\n**Ember Raventree (wood elf leader):** _(He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166)_\n\nEmber is a pale-skinned wood elf with coppery-hair, hazel eyes, and corded muscles. He has a quiet resolve about him and is equally capable of kindness as he is brutality. His function is two-fold: 1."
+    },
+    "canonicalData": {
+      "raw": "pit, snare, or other trap; injured (-10% to -80% HPs)\n\n**91-95** Rabid (+1 to +3 on attack chance \"to hit\" and damage scored); rabies transmitted to anyone bitten.\n\n**96-00** Starving or dehydrated (-10% to -40% HPs; -1 to -2 on attack chance and damage scored)\n\n**>>>END TABLE<<<**\n\n**>>>BEGIN TABLE<<<**\n\nSub-table 2. Animal or Monster Activity:\n\n**D100 / Activity**\n\n**01-08** Fighting with or running away from another animal or monster*\n\n**09-20** Hiding from or observing/stalking the characters  \n\n**21-24** Dozing or asleep\n\n**25-27** Entering or settling into a den, lair, or like resting place\n\n**28-30** Grooming itself or another like creature\n\n**31-35** Engaged in mating display or else play activity\n\n**36-45** Roaming about at a walk or faster pace\n\n**46-55** Drinking water or at a salt lick\n\n**56-00** Eating or seeking to eat (browsing, grazing, foraging, hunting, fishing)\n\n**>>>END TABLE<<<**\n\n* If a normally non-aggressive creature, it is 90% likely that it will be encountered in flight from a predator. If this is a predator or aggressive animal, there is a (0-50%) chance it is fighting with another predator, or equal (51-00%) chance running away from another predator.\n\n**>>>BEGIN TABLE<<<**\n\nSub-table 3. Weather Activity:\n\nThe CK is encouraged to use common sense when utilizing the chart below; i.e. a storm can indeed take a party by surprise, but in other cases a druid or ranger may likely detect the subtle signs of a shift in progress.\n\n**D100 / Weather**\n\n**01-30** Cold or heat (90% movement rate for the duration of the effect, d4 for days unless new problem replaces it)\n\n**31-35** Hail storm or downpour (no movement for duration, d3 for hours it lasts, and 50% movement for one hour after it ends)\n\n**36-50** Thick Fog (10% normal movement for duration of effect, d6 for hours it lasts)\n\n**51-70** Light persisting rain or sleet (75% movement rate for twice duration, 4d6 hours it lasts) \n\n**71-85** Rain or snow (50% movement rate for twice duration, 3d6 for hours it lasts)\n\n**86-90** Strong winds (25% movement rate for duration, d3 for hours it lasts)\n\n**91-00** Severe thunderstorm or blizzard (no movement for the duration, d3 for hours it lasts, 50% movement remainder of the day and the following day)\n\n**>>>END TABLE<<<**\n\n**_N.B._** Wet weather affects bow and crossbow strings. Archery ranges are reduced by 20% in such conditions. Cold snow does not have such an adverse effect.\n\nMen and Monsters Randomly Encountered:\n\nThe following men and monsters are among those randomly encountered. Most monsters are fully described in _Monsters & Treasure_, though notable exceptions are indicated below. Also, you might note that many monster stat blocks throughout the Upper Works are slightly modified from the M&T source material to reflect the author's original vision of the various critters. \n\nThe Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification.\n\n**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_ \n\n**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_\n\n**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_ \n\n**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_ \n\n**Batrachianoid*:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1)_ \n\n**Bear, black:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3)_\n\n**Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_\n\n**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_\n\n**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_\n\n**Brigand, Serjeant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2)_\n\n**Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_\n\n**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_ \n\n**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_\n\n**Elf, Wood, swordsman:** _(They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3)_\n\n**Ghoul:** _(These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2)_\n\n**Gnoll:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2)_ \n\n**Goblin, raider:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1)_ \n\n**Goblin, leader (corporal):** _(These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3)_\n\n**Griffon:** _(This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7)_\n\n**Hobgoblin:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1)_\n\n**Kobold:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1)_\n\n**Lion (mountain, forest):** _(These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4)_    \n\n**Lizardfolk:** _(These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2)_  \n\n**Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_   \n\n**Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _(They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2)_\n\n**Naga, Water:** _(This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7)_  \n\n**Nixies (sprite):** _(These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1)_ \n\n**Orc:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1)_\n\n**Otter, giant:** _(This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4.)_  \n\n**Owlbear (small):** _(These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3)_ \n\n**Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_\n\n**Rivermen:** _(They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1)_\n\n**Snake, poisonous:** _(This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1)_\n\n**Snake, poisonous (deadly):** _(This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2)_\n\n**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3)_\n\n**Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_\n\n**Thieves**:** _(They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.)_ \n\n**Turtle, Huge Snapping:** _(These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5)_\n\n**Wolf, Grey:** _(These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2)_\n\n**Wolverine (small, normal):** _(This neutral creature's vital stats are HD 3d8, HP 16, AC 15, MV 20 ft. Its saves are physical, and all attacks are made as though it were 3HD higher than it is. It attacks with two claws for 1d4 points of damage and one bite for 1d4+1 damage._ _It can release a musk spray 10' wide by 30' long, saving throw versus breath weapon or victim is blinded for 1-2 hours; regardless of save, any creature in the spray's area of effect is sickened and suffers -2 strength, dexterity, and constitution for 2-8 turns. XP: 50+3)_\n\n* see **Appendix C.**  \n\n** refer to PHB \"rogue\" for various class abilities.\n\nPART III: THE WILDERNESS\n\nCastle Zagyg is accessed via the _Old Castle Track_, which cuts through the _Little Hillwood_ and is located on a rocky bluff overlooking the _False Urt River._ Despite the surrounding wilderness being relatively small and already populated with its share of malign and monstrous inhabitants, the domain of the Mad Archmage has an allure about it, hence attracting substantial activity.  \n\nOLD CASTLE TRACK:\n\nRefer to **Table 1.** (LAYOUT NOTE: INSERT PAGE #) for random encounters on the Old Castle Track.\n\nThe Old Castle Track wends east-west through the Little Hillwood. This old cart path is _cursed_, however, and those who traverse its length must make a series of _nerve checks_ (see below) or suffer the consequences. When the characters reach the end of the Old Castle Track, refer to **Part IV.** **Approaching Castle Zagyg**.\n\n**>>[begin boxed** **text]<<**\n\nThis winding, rutted track is narrow and spotted with weedy overgrowth. Tangles of small trees and underbrush encroach upon its verge, nigh-impenetrable because of briars, thorn bushes, and heavy vines. The looming trees are large and heavy-limbed, and their foliage makes the way dim and shadowy. Their boughs creak and groan—even when there is not but a breath of air—and the leaves rustle faintly. Traversing the ancient path, you begin to suffer a distinct pang of unease, a quickness of the heart. You have a sneaking suspicion that the trees have eyes . . .\n\n**>>[end boxed** **text]<<**\n\nOf course such a setting makes it nearly impossible to note dangers lurking in the murky woods around the pathway, and it seems to those venturing along it that something fell is watching them always, some unseen foe that is poised to strike. This omnipresent anxiety and disquiet is inescapable; thus the way is generally shunned by all save the heartiest adventurer . . . or malign predator.    \n\n**_Nerve Check_:** The first time the route is taken, travelers are required to make a _nerve check_ (fear save, see below) at every mile to proceed unruffled. This is the result of a potent _aversion_ spell engendered by the Mad Archmage.  \n\n_First Nerve Check_: is a _fear_ save _(CL 0)_. If a failure results, the character may proceed (albeit nervously) but is affected with -1 \"to hit\" and damage, and -3 on all surprise checks. This effect lasts until a successful \"nerve check\" is made. \n\n_Subsequent Nerve Checks_: these are also _fear_ saves. If the previous check resulted in a failed save, the CL for subsequent saves increases in difficulty by 1 _(thus, CL 1, CL 2, etc.)_; otherwise it reverts to CL 0.  \n\n_If the saving throw is failed three consecutive times_: the character loses nerve and flees back to the Menhir Hills Road (or whichever direction they had approached from). The only way such an individual will set foot on the pathway again is if a _remove curse_ spell is cast upon him or her.  \n\nOnce a player character has succeeded in traversing the Old Castle Track from the Menhir Hills Road to Castle Zagyg, no further _nerve check_ is required; that person is thenceforth inured to the effects of the curse.\n\n**Movement on the Old Castle Track**: Traversing the Old Castle Track progresses at a rate of about 2 miles per hour walking afoot, unencumbered. Moving off the beaten track is at one-tenth the normal movement rate (one-quarter if a druid or ranger), and that speed assumes cutting away foliage with a heavy blade.\n\nTHE LITTLE HILLWOOD:\n\nRefer to **Table 2.** (LAYOUT NOTE INSERT PAGE #) for random encounters within the Little Hillwood.\n\nThis woodland lies along the southern portion and towards the middle of the Menhir Hills. Its southern verge begins near the Menhir Hills Road, about 16 miles north of Yggsburgh as the crow flies. Both the Urt River and the False Urt Rivers pass through its north and central regions. Along those waterways, and where the woodland borders the Greypools Mire, the trees are mainly great willows with some aspen, birch, and tamarack. Elsewhere, its growth is of typical forest hardwoods—primarily ash, chestnut, elm, hickory, maple, oak, and walnut. The understory is choked with small trees, underbrush, briars, thorn bushes, poison ivy and poison oak (CK’s option as to effect of touching, but a 10% penalty to performance is a good rule of thumb), and heavy vines. Its fauna includes everything from shrews, moles, and mice, on through squirrels and rabbits and various birds, to large game such as wild swine, deer, elk, and aurochs. As well, there are predators such as eagles, giant owls, bears, big cats, wolves, and wolverines (gluttons) to be found within its precincts.  \n\nWest of the False Urt River (Castle Zagyg's side of the waterway) the hilly woodland is populated by large numbers of humanoids, bandits, and monsters. Demi-humans (predominantly wood elves) have established a foothold east of the river and thus repel bandits, raiding orcs and their ilk. These elves are chaotic in nature and will treat any intruders—good or evil—with hostility. This may include imprisonment, followed by blindfolding and being marched eastwards out of the forest. \n\n**Movement in the Little Hillwood:** Moving across this tangled woodland is at one-tenth normal rate (one-quarter if a druid or ranger), and that speed assumes cutting away foliage with a heavy blade. That means unencumbered characters moving afoot will progress 0.2 miles per hour, with occasional breaks in the foliage that allow double this compromised movement rate; off-track movement being impossible for most horses.  \n\nTHE FALSE URT RIVER (and Castle Pier):\n\nRefer to **Table 3.** (LAYOUT NOTE INSERT PAGE #) for random encounters on or in the False Urt River.\n\nThe False Urt River lies at the foot of the rocky bluff upon which is built Castle Zagyg. This river is substantial in breadth but shallow and sluggish in flow (except during spring flood season). Its channel is no more than two miles distant from that of the Urt in this region, and no more than five miles further north. At one time the two rivers were thought to be one, but careful mapping has made the difference between them distinct.  \n\nAlthough the upper reaches of the river are wild and dangerous, boats and barges can navigate the False Urt, from some 75 miles northwards all the way downriver to the marsh known as the Grey Pools Mire. In the Mire, only very shallow-draft watercraft can pass through to gain the actual Urt River. The banks of the False Urt River, like the Urt, are lush with long stretches of willow bushes and other shrubs thickly clustered along its shores. Many copses and groves of large willows, or trees of other kinds, are found on or near the waterway's banks. These verges are generally seven to ten feet high, though greater where the river cuts through the more rocky and precipitous hills. \n\nAs noted, the False Urt River feeds the Greypools Mire, a marsh of some 42 square miles. It is from this vast swampland that raiding parties of batrachianoids and lizardmen originate, attracted to Castle Zagyg as many other humanoids are, though they usually cling to the west side of the waterway, avoiding the wood elves of the eastern portions of the Little Hillwood. The Grey Pools Mire is also where the rivermen known as the **Swamp Rats*** keep camp.\n\nIf the characters approach Castle Zagyg by way of watercraft on the False River Urt:\n\n**>>[begin boxed** **text]<<**\n\nFrom your craft you note a rocky bluff looming some 80 feet above the False Urt River. Atop it you glimpse ruins—walls, towers, gatehouses. The castle fortress stands above said ruins, it being flanked by an enormous pair of towers, one round, the other hexagonal. A hazy mist clutches the fortress and through this you catch glimpse of a turret here, gallery of windows there, and extending to the sky above—two ominous spires of stone.\n\n**>>[end boxed** **text]<<**\n\n**_Castle Pier_:** If the PCs study the banks they may spot a pier to which they can moor their vessel. This pier is periodically (about weekly) utilized by the **Swamp Rats***, rough rivermen who trade with the bandits that occupy the postern gate _(Ruins of the Castle Precincts #36)_ and thus the band that occupies the castle fortress. These bandits are inured to the effects of the cursed fog that once bound this place.      \n\n* see Appendix D.\n\n>>[begin boxed text]<<\n\nYou see a wooden pier supported by heavy posts. The pier is T-shaped, about 30 feet wide along the bank, extending another 20 feet long by 10 feet wide into the sluggish water. Inland, about 90 feet northwest of the structure, you note the ruins of an old watch tower, but a pile of debris being all that remains of it. The ruined tower lies at the foot of a switchback stair carved into the side of the bluff on which Castle Zagyg is built. The stairs climb 30 feet to a landing, then another 30 feet to a second landing. The stairs, however, have also suffered significant ruin and thus present a difficult negotiation. At the top lies the postern gate of Castle Zagyg.\n\n>>[end boxed text]<<\n\n**_CK's Note_**: If the PCs elect to approach the ruined watch tower, the switchback stairs carved into the bluff face, or the postern gate, please turn to _Ruins of the Castle Precincts_, encounter area #36.\n\n**_WILDERNESS SET ENCOUNTERS:_**\n\nThe wilderness surrounding Castle Zagyg is populated by monsters, humanoids, and dangerous beasts—many of which will be randomly encounters as noted in the above encounter tables. Here follows a list of set encounters in the wilderness. Creative Castle Keepers are encouraged to expand upon these selections as suits the individual campaign, whether through preparation or some good old-fashioned seat-of-the-pants improvisation.\n\n# WD-1. Dark Chateau:\n\nThis is the location of the former manse of the Mad Archmage, located at the end of an overgrown cart path. _Castle Zagyg: Dark Chateau_ is an adventure written by Rob Kuntz and available from Troll Lord Games. \n\n# WD-2. Losels of the Forest:  \n\nTwo miles southwest of Castle Zagyg, among the tallest oaks dwell green-skinned, ape-like humanoids called losels, a degenerate crossbreed of gorilla and orc. Their leaders are abominations even more despicable—crossbreeds of gorilla, orc, and human.  \n\n**>>[begin boxed** **text]<<**\n\nThe hoots and chirping shrieks of simians resound from high above within the upper boughs of massive oaks and ash. Looking up you see a cluster of arboreal huts, these built some 60 to 80 feet above the forest floor. The vague shapes of simians can be seen swinging from branches and vines high above. \n\n**>>[end boxed** **text]<<**\n\nThe losels of this arboreal village will range far from their tribal community; however, an enchantment prevents the humanoids from setting foot on the Old Castle Track (an annoyed Mad Archmage once cursed them thus for destroying his shipment of wine and spirits). These humanoids will brachiate high above the Old Castle Track where the tallest of trees form a canopy; otherwise they shun the path entirely. Should the party draw attention to themselves, the losels will flank and follow, swinging limb to limb. They bide their time, waiting (hoping) for the characters to step off the rutted, overgrown path by 100 feet minimum. They will then attempt to capture the party using lassos and bring them back to the community to be boiled alive and eaten, or sacrificed to the demon they worship. The losels will stop about a half-mile before the Old Castle Track meets Castle Zagyg's precincts, utterly fearful of that place.\n\nThe arboreal village is comprised of **110 losels**: 40 male warriors, 35 females, 15 elderly, and 20 young. If under attack, both males and females will protect the village, it being a cluster of about 10 huts woven of sticks and vines and perched among the sturdiest limbs. The huts, being 60 to 80 feet off the forest floor, are joined by suspended bridges of spliced vines, though remote huts must be brachiated to and from. Each hut is presided over by a sub-chief.\n\n**_CK's Note:_** As this is a large number of adverse creatures, it is urged that you keep track of their losses. When the male population is below half (at 19 or fewer) you might wish to increase it by having new losels move in, 4-6d6 males, 2-4d6 females, but replacing lost old and young members of the tribe only over time.\n\nThe **chieftain** of the tribe is **Grimlock Manface**, a heavily scarred, ape-man who wears a splint mail, great helm, and wields a magical heavy flail. Depending from his neck is a string holding no less than a hundred fingers, these being the digits of those he's slain in combat.  \n\nGrimlock's **shaman** (and advisor) is **Ji'gun-tima**, an elderly female of potent sort. Ji'gun-tima is a blonde-haired simian woman with a blue-green, wrinkled visage and ice-blue eyes. She wears a string of shrunken human heads around her neck that clatter as she moves about, and she carries a gnarled staff of oak topped with a bronze skull, the skull embedded with a faceted sapphire in the center of its brow ridge. Ji'gun-tima is treated with complete deference by all—even her chieftain. She is a worshiper of **Mandrillagon**, a monstrous, blue-faced demon with massive yellow-gray fangs. This denizen of the Abyss is said to be served by an army of flying demon-monkeys. The shaman makes live sacrifices (human, demi-human, or humanoid) to her demon lord at every full moon as the tribe, painted and ecstatic, beats goblinskin drums and caper about feverishly. Grimlock, the chieftain, observes the spectacle from his wooden throne, drinking blood wine from a bronzed kobold skull, his females sprawled before him. \n\nSee **Player Handout #1** _(Upper Works Map & Illustration Booklet)_ for an illustration of the losel chieftain and his shaman.\n\nFurther development of this tribe, its customs, and its holdings are the responsibility of the Castle Keeper. The chieftain hoards a treasure of perhaps 2,000 gp worth of gold, gems, and jewelry; likewise, his shaman may have a few scrolls such as _cause fear_, _magic missile_, and _mirror image_, amongst other bizarre and frightening curiosities (shrunken heads, human face-masks, jellied organs, pickled elf ears, etc). \n\nThere are smaller tribes scattered about the Little Hillwood Forest, and when an adolescent male is ostracized by the tribe (usually after losing a fight over mating rights), he may join one of these or likely perish alone; otherwise, outside tribes are treated with hostility. The Castle Keeper must choose where these are located, though it is possible that they are migratory.\n\n**Grimlock Manface (Losel Chieftain):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268)_\n\n**Ji'gun-tima (Losel Shaman):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260)_\n\n**Losel sub-chiefs x 10:** _(These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2)_\n\n**Losel warriors x 30:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_\n\n**Losel females x 35:** _(These neutral evil humanoids' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +1 damage due to strength. They have the conceal ability as per the PHB ranger class. They wield clubs [+1 \"to hit\"; 1d6+1 damage]. XP: 9+1)_\n\n_*Lasso:_ Experienced losels are adept in the use of lassos made out of strips of leather and vines. These weapons deal no damage but the victim is immobilized as follows: if used against a small or medium-sized opponent, the user must strike an AC 15 or better (AC modified by strength and dexterity), size modifiers not applicable. A lassoed victim is prone (+5 \"to hit\") and cannot act except to break the hold. To break the hold, a strength check is required, the challenge level equal to the HD of the lasso user. Otherwise, the lasso has HP 3 with an AC 10 plus the wielder's dexterity bonus (if applicable).       \n\n** see **Appendix C**.\n\n# WD-3. Rocky Outcrop (Iggy the Mad): \n\n**>>[begin boxed** **text]<<**\n\nA light footpath in the forest leads you to an outcrop of rock upon which stunted trees and brush grow. At the base of the outcrop a cleft opens to what appears to be a cave.\n\n>>[end boxed text]<<\n\nA ranger will note the cleft opens to a cave. The cave is a 30-foot-diameter interior with variable (8 to 12 feet) ceiling height. This is the lair of Iggy the Mad, a half-orc hermit who lives here alone. Iggy is a hunchbacked, one-eyed half-orc with skinny legs and bulging forearms. He often roams about the area spear fishing (with his trident), bow hunting, or traipsing the ruins of Castle Zagyg's precincts, so he is scarcely about by day (20%) but almost always by nightfall (95%—he's a bit afraid of the dark).  \n\nSee **Player Handout #2** _(Upper Works Map & Illustration Booklet)_ for an illustration of Iggy the Mad.\n\n**Iggy the Mad*:** _(He is a 3rd level, chaotic neutral, half-orc ranger whose vital stats are HP 22, AC 13, MV 30 ft. His primary attributes are strength and wisdom. His significant attribute is strength 18. His special ability is a permanent protection from normal missiles enchantment that, when invoked, causes a golden halo to surround him_ _and also_ _provides a +2 AC bonus to his allies vs., normal missiles if they are within 20'. He also has darkvision 60 ft. He has studded leather armor, +1 trident [+6 \"to hit\"; 1d8+4 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, 12-inch hunting knife, 12 cp, and a rabbit's foot dyed green. XP: 122)_\n\n* see PHB for full list of ranger abilities.\n\nIggy's lair consists of a pallet of straw, a flat rock he uses as a table (wooden bowl and spoons atop), a high-back oak chair with a broken leg, and a central fire pit that vents out through cracks in the ceiling. In the corner he keeps a 10-gallon keg of brandy, a bucket of water, and an old broom. On his pallet he keeps a braided tress of blonde hair, this once given to him by a maiden he rescued from the ogre of **WD-4**. He sleeps with the braid at night, it being his most treasured possession—any harm done to this thing will send him into a fit of rage _(+2 attacks \"to hit\" and damage)_.  \n\nUnder Iggy's pallet is a child's doll (missing an arm) with pearl eyes (worth 5 gp each) and a cracked leather purse containing 22 sp, 12 cp and a silver necklace with opal charm worth 25 gp. Iggy the Mad is a devout follower of Zagyg (though knows not his name— _\"Big Magic Man!\"_) and so enjoys the boon of his deity. \n\n**_Concealed Tunnel:_** In the back of Iggy's cave there is a 220-pound boulder that conceals a crawl space cave of 3.5-foot width and 2.5–3-foot height. The crawlspace meanders south for 110 feet before there is enough room for one to stand. It opens up to a vast network of passages, one of which leads to the dungeons of Castle Zagyg one mile to the south. These dank underground passages were partially bored out by evil gnomes many years ago. There are several collapses within, and fungal growth is widespread— particularly **_glowlichen_**— which provides lambent illumination. Giant snails and slugs are many—so populous as to preclude even the most determined of adventurers from utilizing many of these passages. In addition, thousands upon thousands of cave bats lurk here, as well as giant rats, giant toads and giant snakes. These places are also populated by black puddings, gray oozes, green slimes, ochre jellies, and violet fungi. The caverns gradually descend in depth, some becoming more wet as one descends. One such passage leads to a rune-engraved stone archway whose ancient dwarvish script indicates, **The Catacombs,** which will be presented in a future volume of this series. There is also a connection to the **Watery Caverns** as alluded to in _Dark Chateau_. For now, the Castle Keeper is advised to avoid the discovery of the concealed tunnel, but if you are determined to develop such lengthy caverns, you can simply reconcile your developments with the forthcoming work.\n\n# WD-4. Stone Cottage, 30' x 30' x 20' and barn, 25' x 30' x 20':   \n\n**>>[begin boxed** **text]<<**\n\nA beaten footpath leads to this 20-foot-tall structure located within a shallow vale nestled between thickly wooded hills. The structure is built of boulders and fieldstones with a thatch roof, a fenced-in yard and a crudely-built barn of timber logs beside it. The fenced in area is planted with crops.\n\n**>>[end boxed** **text]<<**\n\nThis cottage is owned by a 9.5-foot tall, hairy, pot-bellied **ogre** of nasty disposition. The ogre is here 85% of the time, cracking the whip on the **3-6 human children** whom he has enslaved; otherwise he is out on a raiding mission for loot or more slaves. \n\n**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_\n\n**Children x 3-6:** _(They are neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10.)_  \n\nThe cottage has a large front door (10-feet) and a similar side door. A single window, shuttered, stands 6.5 feet from the ground, left of the front door. Inside the cottage there are two rooms (kitchen/pantry and living area) and a quarter loft under the thatch. \n\n- _Kitchen/Pantry_: The single window of this structure provides light to the kitchen/pantry area. Here the ogre keeps a large table. There is a stone fireplace, a green copper boiler of 3 feet diameter, a shelf, a cupboard, a 30-gallon keg, and a 5-gallon bucket of water. The shelf is stacked with a variety of wooden and iron utensils, earthenware, a silver goblet (12 gp), and a tin mug. Among these is an **enchanted ladle**, dweomered to float in the air, perfectly still wherever it is placed. The cupboard holds 20 bottles of wine, these being of various vintages (worth 2-40 gp each). The keg rests upon a stone pedestal, is broached and filled with cheap ale.  \n\n- _Living Area_: The living area contains a big chair, a small round table, and a bear-pelt rug spread across the floor. \n\n- _Loft_: The quarter-loft is under the thatch, tight for an ogre, and overlooking the living area. It is accessed via a stepladder. The loft is infested with fleas and smells like . . . an ogre. The ogre's pallet is but a pile of straw loosely strung together. Underneath the pallet the ogre keeps a sack of 211 sp, 65 ep, 47 gp, and an 8-ounce silver flask (worth 25 gp) filled with fine whiskey.  \n\n- _Barn_: In the log barn, which is a bit smaller than the stone cottage, there are 7 swine (1 boar and 6 sows) and two large troughs. Crude implements of stone are kept within, including a hand plough for turning over the garden (the ogre grows cabbage and carrots). The children sleep in the loft of the barn. They are locked in every night, the doors chained and **padlocked** _(CL 12 to break, CL 5 to pick)._ Notwithstanding, escapees almost never survive this hostile wilderness, and thus the orphans are hopelessly bound to this monster.\n\nThe ogre usually sits at his table, drinking wine and yelling out the window for the children to work harder. Sometimes he comes out to whip them. He always has a girl ready to refill his flagon. When he is out and about, he travels the **Old Castle Track** (q.v.). He ignores the humanoids and bandits, and they likewise avoid him due to his size and brutal nature. He travels as far as the Menhir Hills Road to raid merchant wagons and pilgrims—not just for spoils, but to enslave more children. He wears a large wicker basket on his back, within which he will cram his spoils (including the children, having made orphans of them). These latter he will bring back to his cottage to serve as slaves. Boys will care for the swine, turn over the soil, repair the thatch, gather water from the well and perform other physical labor; the girls will clean the cottage, serve him his wine, and cook. The ogre scarcely eats the imprisoned children, but does mistreat them terribly.\n\n**_Old Stone Well behind Ogre's Cottage, 6' dia._:** Fifty feet southeast of the ogre's cottage, concealed by briar bushes, an old rosebush, and grape vines, there is a covered stone well. The well predates the ogre, the ogre having chosen this location because the ruins of an old foundation were already in place. \n\nThe well is of 6 feet diameter, 4 feet interior diameter. If the iron lid is pried open _(pry bar required, one is hidden in the brush)_, a winch is revealed, it having a large hook at the looped end to which one may affix a bucket. Iron rungs are bolted into the inner wall, these beginning at 20 feet down the shaft and descending into darkness. This well sinks 120 feet into the ground and taps an underground river flowing northeasterly. A hundred feet down, however, there is small iron door set in the shaft, it being 2 feet wide by 4.5 feet tall. This door is rusted shut _(**stuck_,** _CL 2 to shoulder open)_. The door opens to a **limestone cavern**. \n\n**_Limestone Cavern (40' x 30' x 15'h)_:** This is a toothy maw of stalactites and stalagmites overlooking the subterranean river. Iron cressets are spaced along the walls the cavern, but these are rusted and lack fuel. There is an old rowboat down here, its wood wet and rotted, though its oak frame remains sound. It can be repaired, though one must bring down the lumber one piece at a time. A ranger will find no recent tracks here; seemingly this secret launching point has not been utilized in decades.\n\nThe wending subterranean river ultimately feeds the **Black Reservoir** of Castle Zagyg. The river ranges from 20–45 feet in width, but the headspace is low. In fact, during spring flood seasons there is no headroom whatsoever. It will take a skilled boatman to negotiate the river's ebb and flow so as not to get sucked into a portion of which there is no headroom. These can lead to a quick death for the foolhardy, so caution should be exercised. Using this underground river to access the Black Reservoir should be avoided by the Castle Keeper until the next volume of this series is published. Simply eliminating headspace in the tunnel will likely avert even the boldest of expeditioners.\n\n# WD-5. Fen Mound, 45' diameter x 20' high:\n\n>>[begin boxed text]<<\n\nYou note a broad fen, thick with reeds, cattails, and moss. The fen is about 90,000 square feet in area, a place of pools and hummocks. In the center of the fen rises a mound of 20-foot height and roughly 45 feet in diameter, it being gripped with green, spongy moss.\n\n>>[end boxed text]<<\n\nHere dwells a tribe of 20 batrachianoids or “_boggiwogs_” as they are more commonly called. They are largely nocturnal in nature and will not trouble with individuals moving about the fen by daylight—unless such individuals approach their mound.    \n\nUnder the moss-gripped mound is a maze of muddy burrows (tunnels of c. two feet in diameter) and two dens (hemispherical earth caves of c. 12 and 16 feet in diameter and six and eight feet in height). If disturbed, 6 boggiwog warriors will slither up from the muck using their _hide_ and _chameleon_ abilities. They will the spring forth to assail the intruders while the remainder of the tribe hides in the lair.  \n\n**Batrachianoids* x 6:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack with javelins and spears. Their special abilities include a hopping attack for double damage [though -4 to their AC] and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. XP: 11+1)_\n\n* see Appendix C.\n\nIn the larger of the two lairs there are **2 more boggiwog warriors** (as above), **3 females** (equal to the males, except of 4 HP each), **8 young** (non-combatant, 1 HP each), and **1 chieftain, Blook-glook**. The two warriors and chieftain win initiative versus any opponent that crawls into the fen mound of these batrachianoids.\n\n**Blook-glook (Batrachianoid Chieftain):** _(This chaotic evil humanoid's vital stats are HD 3d10+4, HP 20, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Its saves are physical. It attacks by weapon type at +2 damage due to strength. Its special abilities include a hopping attack for double damage, though -4 to his AC, and a chameleon ability that gives him +5 to hide checks and +10 to surprise checks. It has a +1 spear [+4 \"to hit\"; 1d6+3 damage]. It also wears a diamond-studded gold necklace worth 1,000 gp. XP: 95)_      \n\nHidden in this larger den, under a slab of stone lies the chieftain's treasure in a wooden barrel: including 111 cp, 185 sp, a gold ingot worth 100 gp, a potion of cure critical wounds, potion of cure poison, and a ring of water walking. \n\n# WD-6. Cobwebbed Area:  \n\n>>[begin boxed text]<<\n\nThe trees of this area are strung with thick layers of cobwebs. Perhaps these are from the nests of tent caterpillars infesting the area.\n\n>>[end boxed text]<<\n\n**2 giant spiders** have spun a nest of webs between the trees and underbrush here, occupying an area of 120 square feet. On the ground, under dead leaves and conifer needles, lies a pile of parched bones and scraps of metal. Among these is a **+1 warhammer of lesser undead detection**. This _intelligent weapon_ glows with an indigo-blue light in the presence (50-ft. radius) of lesser undead (zombies, skeletons, ghouls -- anything HD 2 or less). The hammer will urge its wielder to destroy such foul vermin, \"...in the name of Thor!\" Other items include a rusted suit of chain mail, a cracked kite shield emblazoned with a green dragon, and the buckles and clasps of garments long since rotted.\n\n**Spider, Giant (medium-sized) x 2:** _(These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell*. XP: 52+3)_\n\n* see PHB for more information.\n\n# WD-7. The Old Blackjack Oak:  \n\n**>>[begin boxed** **text]<<**\n\nYou note a massive, gnarled blackjack oak tree has massive roots, a 7.5-foot diameter bole, and pear-shaped leaves with golden hairs on the underside.  \n\n**>>[end boxed** **text]<<**\n\nNested high in the boughs dwells a **harpy**. She has a strangely attractive appearance when viewed from afar (100+ feet), though is hideous upon closer inspection. Once she spots a potential victim(s), such as those who veer off from the Old Castle Track (perhaps to camp, etc.), she will position herself at a slightly visible distance and then sing her lamenting, _captivating song_. She will lure her victims close, then take one back to her nest to be tortured and devoured. She is not of mind to fight a party of adventurers, preferring to steal one away, though she will defend her nest if the blackjack oak is ascended, for she places a great value on her treasures.\n\n**Harpy*:** _(This chaotic evil humanoid's vital stats are HD 3d8, HP 13, AC 13, MV 20 ft., 50 ft. fly. Its saves are physical. It attacks with 2 claws for 1d3 damage each. Its special ability is its 300-foot range captivating song, charisma save negates. Captivated victims will walk toward the harpy. The victim will stand motionless 5 feet before her, offering no resistance to her attack. XP: 79)_    \n\n* see M&T for more information.\n\nHer nest, 55 feet high in the limbs of the old blackjack oak, is built of thorny briars and vines. Within she has collected various baubles including a **+1 poniard** in an amethyst-studded scabbard (scabbard worth 200 gp), 3 rubies (100, 250, 750 gp), a sapphire (500 gp), a huge tiger-eye stone (worth 50 gp), and a diamond-studded bracelet worth 500 gp. All these valuables are carefully layered in the vines and briars, and thus concealed, it will take 15-30 minutes of careful sifting and unraveling to reveal them.\n\n# WD-8. Sparkling Stream:  \n\n>>[begin boxed text]<<\n\nHere dappled sunlight illuminates a tree-lined stream of clear and gentle flow. Lush green moss grips stones, and tree roots are thick with beefy fungi. A copse of alder saplings encroaches the brook’s bank, and all seems pleasant. \n\n>>[end boxed text]<<\n\nHidden in the alders is a nest of three giant ticks of 2.5-foot length. These mega-insects will bide their time, crawling under leaves, between stones, preying on creatures that drink of the sparkling water.\n\n**Tick, Giant x 3:** (_These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half speed with a -3 AC penalty. XP: 20+2)_\n\nA careful search of the area will reveal a pair of goblin skeletons under the leaves of the alder trees. One wears a waterproof leather backpack containing a corked bottle of weapon oil, 13 gp, a moonstone (worth 20 gp), a fine set of thieves' tools, and a **potion of healing** (2d4+2).\n\n# WD-9. Red Bill Farmer's Camp: \n\nHere is located the encampment of the **brigands** led by **Red Bill Farmer** (see _CZY environs #26_).\n\n# WD-10. Tamarack Stand: \n\n>>[begin boxed text]<<\n\nThis portion of the Little Hillwood is notable for its large stand of tamaracks, pine trees of reddish brown bark and crowded, spiral clusters of blue-green needles. Woodpeckers drill at the trees, this apparent by their tell-tale hammering.\n\n>>[end boxed text]<<\n\nThe sound is not of woodpeckers; rather it is wood elf scouts alerting one another of the trespassers. A ranger or druid (perhaps even a thief) may note this if they listen carefully to the sound _(successful listen check)_. Deep within the tamarack stand lies a camp of wood elves. \n\nThe wood elves that control the eastern half of the Little Hillwood consider this their danger zone, for their domain between the Urt River and False Urt River is constantly being challenged by humanoids, monsters, and other fell things. The camp consists of a log cabin with thatch roof, it being well camouflaged (concealed, _CL 5_) by the surounding trees and rocky outcrops. The timbers of the cabin are laced with vines and leaves and moss and so it is impossible to locate via casual observation unless specifically sought.\n\nThere are 7 traps _(CL 5 each)_ laid about the area of the log cabin. None are deadly. They consist of snares that will hoist one by the feet/legs to hang from the limbs of trees, and nets that do the same. The traps range from 10–60 feet away from the cabin, spread about as the CK desires, all of them being moderately difficult to search for and/or escape from. \n\nThere are **12 wood elves** stationed here. Every day they send out a team of 4 to patrol the east bank of the False Urt River, and wear armor laced with leaves and twigs, their faces painted green and brown, whilst doing so. So, if it is daytime, there is a 75% chance only 8 of the 12 elves will be present here. Of those present, 4 will be spread about the verge of the tamarack stand. By night, all are here. The wood elves are led by one **Ember Raventree**, who answers directly to **Aldion Ashgrove** _(CZY environs #26)_. \n\n**Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_ \n\n**Ember Raventree (wood elf leader):** _(He is a 4th level, chaotic neutral fighter whose vital stats are HD 4d10, HP 22, AC 16, MV 30 ft. His primary attributes are physical. His significant attributes are strength 17 and dexterity 17. His special abilities include hide, move silent, pass without trace, longsword training. He is equipped with an elven cloak, +1 leather armor, shield, longsword [specialized, +8 \"to hit\"; 1d8+3 damage], dagger, composite longbow [built for strength; +6 \"to hit\"; 1d8+2 damage], 12 arrows, 35 sp, and a golden armlet with agate worth 100 gp. XP: 166)_\n\nEmber is a pale-skinned wood elf with coppery-hair, hazel eyes, and corded muscles. He has a quiet resolve about him and is equally capable of kindness as he is brutality. His function is two-fold: 1.",
+      "hd": "4d10",
+      "hp": "23",
+      "ac": "15",
+      "disposition": "variable",
+      "raceClass": "animal",
+      "attributes": "physical",
+      "equipment": "a splint mail, great helm, and carry a magical heavy flail",
+      "coins": "2–12 gp",
+      "significantAttributes": "strength 17 and dexterity 17",
+      "secondarySkills": "Nautical Ability",
+      "spells": "water breathing at will and cast a powerful charm person spell that lasts for one year",
+      "jewelry": "25 gold worth of jewelry"
+    },
+    "canonicalParenthetical": "HP 23, AC 15, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He wears a splint mail and great helms and carries a magical heavy flails, and 2–12 gold in coin. His secondary skill is Nautical Ability. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*. He carries twenty-five in jewelry."
+  },
+  {
+    "sourceIndex": 115657,
+    "title": "Raven \"One-Eye\"",
+    "labels": {
+      "inline": "Raven \"One-Eye\"",
+      "titleLine": "Outside the cabin, hidden under a tarpaulin of waterproofed leather (covered with leaves and twigs), there are 3 canoes of birch that will each hold up to four men and their usual gear. Also, in the northern portion of the tamarack stand, there resides an old one-eyed **raven**, quite ornery, though wise and intelligent. It conveys messages between Ember Raventree and Aldion Ashgrove (both of whom understand its tongue)."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral animal's vital statistics are HD 1d2, HP 2, AC 14. Its saves are physical. It has twilight vision and is incapable of combat, fleeing from danger. It possesses rudimentary language skill, an odd pidgin of various elvish dialects. XP: 7",
+      "start": 115657,
+      "end": 115906,
+      "startLine": 1060,
+      "endLine": 1060,
+      "titleLineNum": 1058,
+      "titleLine": "Outside the cabin, hidden under a tarpaulin of waterproofed leather (covered with leaves and twigs), there are 3 canoes of birch that will each hold up to four men and their usual gear. Also, in the northern portion of the tamarack stand, there resides an old one-eyed **raven**, quite ornery, though wise and intelligent. It conveys messages between Ember Raventree and Aldion Ashgrove (both of whom understand its tongue).",
+      "inlineLabel": "Raven \"One-Eye\"",
+      "inlineContext": "**Raven \"One-Eye\":** _",
+      "lineText": "**Raven \"One-Eye\":** _(This neutral animal's vital statistics are HD 1d2, HP 2, AC 14. Its saves are physical. It has twilight vision and is incapable of combat, fleeing from danger. It possesses rudimentary language skill, an odd pidgin of various elvish dialects. XP: 7)_ ",
+      "snippet": "Outside the cabin, hidden under a tarpaulin of waterproofed leather (covered with leaves and twigs), there are 3 canoes of birch that will each hold up to four men and their usual gear. Also, in the northern portion of the tamarack stand, there resides an old one-eyed **raven**, quite ornery, though wise and intelligent. It conveys messages between Ember Raventree and Aldion Ashgrove (both of whom understand its tongue). **Raven \"One-Eye\":** _(This neutral animal's vital statistics are HD 1d2, HP 2, AC 14. Its saves are physical. It has twilight vision and is incapable of combat, fleeing from danger. It possesses rudimentary language skill, an odd pidgin of various elvish dialects. XP: 7)_",
+      "hp": 2,
+      "ac": 14,
+      "hd": "1d2",
+      "xp": "7",
+      "level": null,
+      "raceClass": "bat",
+      "notes": "This neutral animal's vital statistics are HD 1d2, HP 2, AC 14. Its saves are physical. It has twilight vision and is incapable of combat, fleeing from danger. It possesses rudimentary language skill, an odd pidgin of various elvish dialects. XP: 7"
+    },
+    "canonicalData": {
+      "raw": "This neutral animal's vital statistics are HD 1d2, HP 2, AC 14. Its saves are physical. It has twilight vision and is incapable of combat, fleeing from danger. It possesses rudimentary language skill, an odd pidgin of various elvish dialects. XP: 7",
+      "hd": "1d2",
+      "hp": "2",
+      "ac": "14",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "ble of combat, fleeing from danger"
+    },
+    "canonicalParenthetical": "Level 1(d2), HP 2, AC 14, disposition neutrality."
+  },
+  {
+    "sourceIndex": 116651,
+    "title": "Bandit sentries x 8",
+    "labels": {
+      "inline": "Bandit sentries x 8",
+      "titleLine": "If the PCs approach Castle Zagyg by way of the Old Castle Track they will at length approach the Outer Gatehouse (barbican) (_Ruins of the Castle Precincts_ **#**1). **Bandit sentries x 8**, however, are positioned along the last mile of the Old Castle Track. There are four teams, each comprised of two carefully hidden bandit sentries. These sentries will send a chain of warning arrows to alert their fellows at the barbican of approaching adventurers. They will not confront the PCs unless conflict erupts at the barbican."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "They are 1st level, neutral evil, human fighters. Their vital statistics are HP 4, AC 12. Their primary attributes are physical. They have leather armor, longbow [+1 \"to hit\"; 1d6 damage], arrows x20, silver-tipped arrows x5, shortsword [+1 \"to hit\"; 1d6 damage], dagger, and 2d6 sp. XP: 5+1",
+      "start": 116651,
+      "end": 116943,
+      "startLine": 1070,
+      "endLine": 1070,
+      "titleLineNum": 1068,
+      "titleLine": "If the PCs approach Castle Zagyg by way of the Old Castle Track they will at length approach the Outer Gatehouse (barbican) (_Ruins of the Castle Precincts_ **#**1). **Bandit sentries x 8**, however, are positioned along the last mile of the Old Castle Track. There are four teams, each comprised of two carefully hidden bandit sentries. These sentries will send a chain of warning arrows to alert their fellows at the barbican of approaching adventurers. They will not confront the PCs unless conflict erupts at the barbican.",
+      "inlineLabel": "Bandit sentries x 8",
+      "inlineContext": "**Bandit sentries x 8:** _",
+      "lineText": "**Bandit sentries x 8:** _(They are 1st level, neutral evil, human fighters. Their vital statistics are HP 4, AC 12. Their primary attributes are physical. They have leather armor, longbow [+1 \"to hit\"; 1d6 damage], arrows x20, silver-tipped arrows x5, shortsword [+1 \"to hit\"; 1d6 damage], dagger, and 2d6 sp. XP: 5+1)_",
+      "snippet": "If the PCs approach Castle Zagyg by way of the Old Castle Track they will at length approach the Outer Gatehouse (barbican) (_Ruins of the Castle Precincts_ **#**1). **Bandit sentries x 8**, however, are positioned along the last mile of the Old Castle Track. There are four teams, each comprised of two carefully hidden bandit sentries. These sentries will send a chain of warning arrows to alert their fellows at the barbican of approaching adventurers. They will not confront the PCs unless conflict erupts at the barbican. **Bandit sentries x 8:** _(They are 1st level, neutral evil, human fighters. Their vital statistics are HP 4, AC 12. Their primary attributes are physical. They have leather armor, longbow [+1 \"to hit\"; 1d6 damage], arrows x20, silver-tipped arrows x5, shortsword [+1 \"to hit\"; 1d6 damage], dagger, and 2d6 sp. XP: 5+1)_",
+      "hp": 4,
+      "ac": 12,
+      "hd": null,
+      "xp": "5+1",
+      "level": 1,
+      "raceClass": "1st level, neutral evil, human fighters",
+      "notes": "They are 1st level, neutral evil, human fighters. Their vital statistics are HP 4, AC 12. Their primary attributes are physical. They have leather armor, longbow [+1 \"to hit\"; 1d6 damage], arrows x20, silver-tipped arrows x5, shortsword [+1 \"to hit\"; 1d6 damage], dagger, and 2d6 sp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "They are 1st level, neutral evil, human fighters. Their vital statistics are HP 4, AC 12. Their primary attributes are physical. They have leather armor, longbow [+1 \"to hit\"; 1d6 damage], arrows x20, silver-tipped arrows x5, shortsword [+1 \"to hit\"; 1d6 damage], dagger, and 2d6 sp. XP: 5+1",
+      "hp": "4",
+      "ac": "12",
+      "disposition": "neutral evil",
+      "attributes": "physical",
+      "coins": "6 sp",
+      "raceClass": "1st level, neutral evil, human fighters",
+      "hd": "1d6"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 4, AC 12, disposition neutral evil. Saves: P. They have 6 silver in coin."
+  },
+  {
+    "sourceIndex": 127925,
+    "title": "Bat, Cave",
+    "labels": {
+      "inline": "Bat, Cave",
+      "titleLine": "The following creatures are among those randomly encountered inside the _Mouths of Madness_. Most are fully described in _Monsters & Treasure_, though notable exceptions are indicated below, including some slight modifications to the _M&T_ critters. The Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of four, and they make 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1",
+      "start": 127925,
+      "end": 128338,
+      "startLine": 1165,
+      "endLine": 1165,
+      "titleLineNum": 1163,
+      "titleLine": "The following creatures are among those randomly encountered inside the _Mouths of Madness_. Most are fully described in _Monsters & Treasure_, though notable exceptions are indicated below, including some slight modifications to the _M&T_ critters. The Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification.",
+      "inlineLabel": "Bat, Cave",
+      "inlineContext": "**Bat, Cave:** _",
+      "lineText": "**Bat, Cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of four, and they make 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_ ",
+      "snippet": "The following creatures are among those randomly encountered inside the _Mouths of Madness_. Most are fully described in _Monsters & Treasure_, though notable exceptions are indicated below, including some slight modifications to the _M&T_ critters. The Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification. **Bat, Cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of four, and they make 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_",
+      "hp": 1,
+      "ac": 12,
+      "hd": "1d2",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of four, and they make 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of four, and they make 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1",
+      "hd": "1d2",
+      "hp": "1",
+      "ac": "12",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d2), HP 1, AC 12, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 128374,
+    "title": "Centipedes, Black, Giant",
+    "labels": {
+      "inline": "Centipedes, Black, Giant",
+      "titleLine": "**Bat, Cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of four, and they make 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 2d3, HP 3, AC 18, MV 25 ft. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is successful, the victim must save vs. poison or take another 2d6 points of damage. XP: 7+1",
+      "start": 128374,
+      "end": 128634,
+      "startLine": 1167,
+      "endLine": 1167,
+      "titleLineNum": 1165,
+      "titleLine": "**Bat, Cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of four, and they make 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_",
+      "inlineLabel": "Centipedes, Black, Giant",
+      "inlineContext": "**Centipedes, Black, Giant:** _",
+      "lineText": "**Centipedes, Black, Giant:** _(These neutral creatures' vital stats are HD 2d3, HP 3, AC 18, MV 25 ft. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is successful, the victim must save vs. poison or take another 2d6 points of damage. XP: 7+1)_",
+      "snippet": "**Bat, Cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of four, and they make 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_ **Centipedes, Black, Giant:** _(These neutral creatures' vital stats are HD 2d3, HP 3, AC 18, MV 25 ft. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is successful, the victim must save vs. poison or take another 2d6 points of damage. XP: 7+1)_",
+      "hp": 3,
+      "ac": 18,
+      "hd": "2d3",
+      "xp": "7+1",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 2d3, HP 3, AC 18, MV 25 ft. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is successful, the victim must save vs. poison or take another 2d6 points of damage. XP: 7+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 2d3, HP 3, AC 18, MV 25 ft. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is successful, the victim must save vs. poison or take another 2d6 points of damage. XP: 7+1",
+      "hd": "2d3",
+      "hp": "3",
+      "ac": "18",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 2(d3), HP 3, AC 18, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 128665,
+    "title": "**Fire Beetles*, Giant:** _",
+    "labels": {
+      "inline": "**Fire Beetles*, Giant:** _",
+      "titleLine": "**Centipedes, Black, Giant:** _(These neutral creatures' vital stats are HD 2d3, HP 3, AC 18, MV 25 ft. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is successful, the victim must save vs. poison or take another 2d6 points of damage. XP: 7+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral insects' vital stats are HD 1d10, HP 6, AC 16, MV 30 ft. Their saves are physical. They attack with a bite for 2d4 damage. Their special ability is darkvision 60'. They glow red in a 10-foot radius. XP: 7+1",
+      "start": 128665,
+      "end": 128886,
+      "startLine": 1169,
+      "endLine": 1169,
+      "titleLineNum": 1167,
+      "titleLine": "**Centipedes, Black, Giant:** _(These neutral creatures' vital stats are HD 2d3, HP 3, AC 18, MV 25 ft. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is successful, the victim must save vs. poison or take another 2d6 points of damage. XP: 7+1)_",
+      "inlineLabel": "**Fire Beetles*, Giant:** _",
+      "inlineContext": "**Fire Beetles*, Giant:** _",
+      "lineText": "**Fire Beetles*, Giant:** _(These neutral insects' vital stats are HD 1d10, HP 6, AC 16, MV 30 ft. Their saves are physical. They attack with a bite for 2d4 damage. Their special ability is darkvision 60'. They glow red in a 10-foot radius. XP: 7+1)_",
+      "snippet": "**Centipedes, Black, Giant:** _(These neutral creatures' vital stats are HD 2d3, HP 3, AC 18, MV 25 ft. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is successful, the victim must save vs. poison or take another 2d6 points of damage. XP: 7+1)_ **Fire Beetles*, Giant:** _(These neutral insects' vital stats are HD 1d10, HP 6, AC 16, MV 30 ft. Their saves are physical. They attack with a bite for 2d4 damage. Their special ability is darkvision 60'. They glow red in a 10-foot radius. XP: 7+1)_",
+      "hp": 6,
+      "ac": 16,
+      "hd": "1d10",
+      "xp": "7+1",
+      "level": null,
+      "raceClass": "These neutral insects'",
+      "notes": "These neutral insects' vital stats are HD 1d10, HP 6, AC 16, MV 30 ft. Their saves are physical. They attack with a bite for 2d4 damage. Their special ability is darkvision 60'. They glow red in a 10-foot radius. XP: 7+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral insects' vital stats are HD 1d10, HP 6, AC 16, MV 30 ft. Their saves are physical. They attack with a bite for 2d4 damage. Their special ability is darkvision 60'. They glow red in a 10-foot radius. XP: 7+1",
+      "hd": "1d10",
+      "hp": "6",
+      "ac": "16",
+      "disposition": "neutrality",
+      "raceClass": "These neutral insects'",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d10), HP 6, AC 16, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 128908,
+    "title": "Rats, Giant",
+    "labels": {
+      "inline": "Rats, Giant",
+      "titleLine": "**Fire Beetles*, Giant:** _(These neutral insects' vital stats are HD 1d10, HP 6, AC 16, MV 30 ft. Their saves are physical. They attack with a bite for 2d4 damage. Their special ability is darkvision 60'. They glow red in a 10-foot radius. XP: 7+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1",
+      "start": 128908,
+      "end": 129220,
+      "startLine": 1171,
+      "endLine": 1171,
+      "titleLineNum": 1169,
+      "titleLine": "**Fire Beetles*, Giant:** _(These neutral insects' vital stats are HD 1d10, HP 6, AC 16, MV 30 ft. Their saves are physical. They attack with a bite for 2d4 damage. Their special ability is darkvision 60'. They glow red in a 10-foot radius. XP: 7+1)_",
+      "inlineLabel": "Rats, Giant",
+      "inlineContext": "**Rats, Giant:** _",
+      "lineText": "**Rats, Giant:** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_",
+      "snippet": "**Fire Beetles*, Giant:** _(These neutral insects' vital stats are HD 1d10, HP 6, AC 16, MV 30 ft. Their saves are physical. They attack with a bite for 2d4 damage. Their special ability is darkvision 60'. They glow red in a 10-foot radius. XP: 7+1)_ **Rats, Giant:** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_",
+      "hp": 2,
+      "ac": 13,
+      "hd": "1d4",
+      "xp": "1+1",
+      "level": null,
+      "raceClass": "These neutral animals'",
+      "notes": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1",
+      "hd": "1d4",
+      "hp": "2",
+      "ac": "13",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d4), HP 2, AC 13, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 129247,
+    "title": "Snake, Poisonous",
+    "labels": {
+      "inline": "Snake, Poisonous",
+      "titleLine": "**Rats, Giant:** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save vs. poison reduces damage to one-half [1d3]. XP: 9+1",
+      "start": 129247,
+      "end": 129512,
+      "startLine": 1173,
+      "endLine": 1173,
+      "titleLineNum": 1171,
+      "titleLine": "**Rats, Giant:** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_",
+      "inlineLabel": "Snake, Poisonous",
+      "inlineContext": "**Snake, Poisonous:** _",
+      "lineText": "**Snake, Poisonous:** _(These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save vs. poison reduces damage to one-half [1d3]. XP: 9+1)_",
+      "snippet": "**Rats, Giant:** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_ **Snake, Poisonous:** _(These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save vs. poison reduces damage to one-half [1d3]. XP: 9+1)_",
+      "hp": 4,
+      "ac": 14,
+      "hd": "1d6",
+      "xp": "9+1",
+      "level": null,
+      "raceClass": "These neutral animals'",
+      "notes": "These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save vs. poison reduces damage to one-half [1d3]. XP: 9+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save vs. poison reduces damage to one-half [1d3]. XP: 9+1",
+      "hd": "1d6",
+      "hp": "4",
+      "ac": "14",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 129551,
+    "title": "Spider, Giant (medium-sized)",
+    "labels": {
+      "inline": "Spider, Giant (medium-sized)",
+      "titleLine": "**Snake, Poisonous:** _(These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save vs. poison reduces damage to one-half [1d3]. XP: 9+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell [as found in the PHB]. XP: 52+3",
+      "start": 129551,
+      "end": 130067,
+      "startLine": 1175,
+      "endLine": 1175,
+      "titleLineNum": 1173,
+      "titleLine": "**Snake, Poisonous:** _(These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save vs. poison reduces damage to one-half [1d3]. XP: 9+1)_",
+      "inlineLabel": "Spider, Giant (medium-sized)",
+      "inlineContext": "**Spider, Giant (medium-sized):** _",
+      "lineText": "**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell [as found in the PHB]. XP: 52+3)_",
+      "snippet": "**Snake, Poisonous:** _(These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save vs. poison reduces damage to one-half [1d3]. XP: 9+1)_ **Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell [as found in the PHB]. XP: 52+3)_",
+      "hp": 13,
+      "ac": 15,
+      "hd": "3d8",
+      "xp": "52+3",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell [as found in the PHB]. XP: 52+3"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell [as found in the PHB]. XP: 52+3",
+      "hd": "3d8",
+      "hp": "13",
+      "ac": "15",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "ralyzation for 1d6 hours"
+    },
+    "canonicalParenthetical": "Level 3(d8), HP 13, AC 15, disposition neutrality."
+  },
+  {
+    "sourceIndex": 130089,
+    "title": "Tick, Giant",
+    "labels": {
+      "inline": "Tick, Giant",
+      "titleLine": "**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell [as found in the PHB]. XP: 52+3)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half-speed with a -3 AC penalty. XP: 20+2",
+      "start": 130089,
+      "end": 130555,
+      "startLine": 1177,
+      "endLine": 1177,
+      "titleLineNum": 1175,
+      "titleLine": "**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell [as found in the PHB]. XP: 52+3)_",
+      "inlineLabel": "Tick, Giant",
+      "inlineContext": "**Tick, Giant:** _",
+      "lineText": "**Tick, Giant:** _(These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half-speed with a -3 AC penalty. XP: 20+2)_",
+      "snippet": "**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell [as found in the PHB]. XP: 52+3)_ **Tick, Giant:** _(These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half-speed with a -3 AC penalty. XP: 20+2)_",
+      "hp": 11,
+      "ac": 15,
+      "hd": "2d8",
+      "xp": "20+2",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half-speed with a -3 AC penalty. XP: 20+2"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 2d8, HP 11, AC 15, MV 10 ft. They attack with a bite for 1d4 points of damage. Their saves are physical. Their special ability is blood drain for 1d4 damage per round, each point of blood drain also healing the creature if it is damaged. Once the tick drains the victim of hit points equal to its own hit point total, it will release the victim and crawl away, bloated and moving half-speed with a -3 AC penalty. XP: 20+2",
+      "hd": "2d8",
+      "hp": "11",
+      "ac": "15",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 2(d8), HP 11, AC 15, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 131969,
+    "title": "Wolves x 5",
+    "labels": {
+      "inline": "Wolves x 5",
+      "titleLine": "The **Little Hillwood Werewolf**, a diabolical creature that terrorizes local humans and humanoids alike, has taken to lairing here (20% chance of being about), and nary an alpha male or female contests his presence."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+2 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2",
+      "start": 131969,
+      "end": 132209,
+      "startLine": 1197,
+      "endLine": 1197,
+      "titleLineNum": 1195,
+      "titleLine": "The **Little Hillwood Werewolf**, a diabolical creature that terrorizes local humans and humanoids alike, has taken to lairing here (20% chance of being about), and nary an alpha male or female contests his presence.",
+      "inlineLabel": "Wolves x 5",
+      "inlineContext": "**Wolves x 5:** _",
+      "lineText": "**Wolves x 5:** _(These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+2 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2)_",
+      "snippet": "The **Little Hillwood Werewolf**, a diabolical creature that terrorizes local humans and humanoids alike, has taken to lairing here (20% chance of being about), and nary an alpha male or female contests his presence. **Wolves x 5:** _(These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+2 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2)_",
+      "hp": 9,
+      "ac": 13,
+      "hd": "2d8",
+      "xp": "10+2",
+      "level": null,
+      "raceClass": "These neutral animals'",
+      "notes": "These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+2 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2"
+    },
+    "canonicalData": {
+      "raw": "These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+2 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2",
+      "hd": "2d8",
+      "hp": "9",
+      "ac": "13",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 2(d8), HP 9, AC 13, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 133978,
+    "title": "**The Little Hillwood Werewolf*:** _",
+    "labels": {
+      "inline": "**The Little Hillwood Werewolf*:** _",
+      "titleLine": "**>>[end boxed** **text]<<**"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This chaotic evil shapechanger's vital stats are HD 4d8, HP 25, AC 15, MV 30 ft., 50 ft. as wolf. Its saves are physical. It attacks with a bite for 2d4 points of damage. It can only be harmed by magical weapons of +1 or greater, silver weapons, or spells. It gains a +3 bonus to surprise rolls. If a human is bitten by and reduced to 50% total hit points or less, and not killed, that one is affected with lycanthropy. If belladonna [wolvesbane] is ingested within 1 hour of the attack, there is a 1 in 4 chance of curing the affliction, but either way this will incapacitate the person for 1d4 days. Otherwise, a cure disease spell cast by a 12th level cleric or druid must be placed on the afflicted person or that one becomes a werewolf within 1d6+8 days. It can assume a wolf form or hybrid form and can telepathically communicate with any wolf within 1 mile. It is also able to summon 1-6 wolves to its location, the wolves arriving 2d6 turns later. It can also assume human form once per day and is immune to all polymorph attacks or effects unless wishing to be affected. XP: 250",
+      "start": 133978,
+      "end": 135066,
+      "startLine": 1217,
+      "endLine": 1217,
+      "titleLineNum": 1215,
+      "titleLine": "**>>[end boxed** **text]<<**",
+      "inlineLabel": "**The Little Hillwood Werewolf*:** _",
+      "inlineContext": "**The Little Hillwood Werewolf*:** _",
+      "lineText": "**The Little Hillwood Werewolf*:** _(This chaotic evil shapechanger's vital stats are HD 4d8, HP 25, AC 15, MV 30 ft., 50 ft. as wolf. Its saves are physical. It attacks with a bite for 2d4 points of damage. It can only be harmed by magical weapons of +1 or greater, silver weapons, or spells. It gains a +3 bonus to surprise rolls. If a human is bitten by and reduced to 50% total hit points or less, and not killed, that one is affected with lycanthropy. If belladonna [wolvesbane] is ingested within 1 hour of the attack, there is a 1 in 4 chance of curing the affliction, but either way this will incapacitate the person for 1d4 days. Otherwise, a cure disease spell cast by a 12th level cleric or druid must be placed on the afflicted person or that one becomes a werewolf within 1d6+8 days. It can assume a wolf form or hybrid form and can telepathically communicate with any wolf within 1 mile. It is also able to summon 1-6 wolves to its location, the wolves arriving 2d6 turns later. It can also assume human form once per day and is immune to all polymorph attacks or effects unless wishing to be affected. XP: 250)_",
+      "snippet": "**>>[end boxed** **text]<<** **The Little Hillwood Werewolf*:** _(This chaotic evil shapechanger's vital stats are HD 4d8, HP 25, AC 15, MV 30 ft., 50 ft. as wolf. Its saves are physical. It attacks with a bite for 2d4 points of damage. It can only be harmed by magical weapons of +1 or greater, silver weapons, or spells. It gains a +3 bonus to surprise rolls. If a human is bitten by and reduced to 50% total hit points or less, and not killed, that one is affected with lycanthropy. If belladonna [wolvesbane] is ingested within 1 hour of the attack, there is a 1 in 4 chance of curing the affliction, but either way this will incapacitate the person for 1d4 days. Otherwise, a cure disease spell cast by a 12th level cleric or druid must be placed on the afflicted person or that one becomes a werewolf within 1d6+8 days. It can assume a wolf form or hybrid form and can telepathically communicate with any wolf within 1 mile. It is also able to summon 1-6 wolves to its location, the wolves arriving 2d6 turns later. It can also assume human form once per day and is immune to all polymorph attacks or effects unless wishing to be affected. XP: 250)_",
+      "hp": 25,
+      "ac": 15,
+      "hd": "4d8",
+      "xp": "250",
+      "level": 12,
+      "raceClass": "This chaotic evil shapechanger",
+      "notes": "This chaotic evil shapechanger's vital stats are HD 4d8, HP 25, AC 15, MV 30 ft., 50 ft. as wolf. Its saves are physical. It attacks with a bite for 2d4 points of damage. It can only be harmed by magical weapons of +1 or greater, silver weapons, or spells. It gains a +3 bonus to surprise rolls. If a human is bitten by and reduced to 50% total hit points or less, and not killed, that one is affected with lycanthropy. If belladonna [wolvesbane] is ingested within 1 hour of the attack, there is a 1 in 4 chance of curing the affliction, but either way this will incapacitate the person for 1d4 days. Otherwise, a cure disease spell cast by a 12th level cleric or druid must be placed on the afflicted person or that one becomes a werewolf within 1d6+8 days. It can assume a wolf form or hybrid form and can telepathically communicate with any wolf within 1 mile. It is also able to summon 1-6 wolves to its location, the wolves arriving 2d6 turns later. It can also assume human form once per day and is immune to all polymorph attacks or effects unless wishing to be affected. XP: 250"
+    },
+    "canonicalData": {
+      "raw": "This chaotic evil shapechanger's vital stats are HD 4d8, HP 25, AC 15, MV 30 ft., 50 ft. as wolf. Its saves are physical. It attacks with a bite for 2d4 points of damage. It can only be harmed by magical weapons of +1 or greater, silver weapons, or spells. It gains a +3 bonus to surprise rolls. If a human is bitten by and reduced to 50% total hit points or less, and not killed, that one is affected with lycanthropy. If belladonna [wolvesbane] is ingested within 1 hour of the attack, there is a 1 in 4 chance of curing the affliction, but either way this will incapacitate the person for 1d4 days. Otherwise, a cure disease spell cast by a 12th level cleric or druid must be placed on the afflicted person or that one becomes a werewolf within 1d6+8 days. It can assume a wolf form or hybrid form and can telepathically communicate with any wolf within 1 mile. It is also able to summon 1-6 wolves to its location, the wolves arriving 2d6 turns later. It can also assume human form once per day and is immune to all polymorph attacks or effects unless wishing to be affected. XP: 250",
+      "hd": "4d8",
+      "hp": "25",
+      "ac": "15",
+      "disposition": "chaotic evil",
+      "raceClass": "cleric, 12ᵗʰ level or",
+      "level": "12",
+      "attributes": "citate the person for 1d4 days"
+    },
+    "canonicalParenthetical": "HP 25, AC 15, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
+  },
+  {
+    "sourceIndex": 138174,
+    "title": "Kobold Guards x 2",
+    "labels": {
+      "inline": "Kobold Guards x 2",
+      "titleLine": "**Tactics**: Any intrusion will result in the kobold youngster running to alert the kobolds of rooms #7, 8, and 9. First it will traverse a board that spans the **pit** **[X]**, then pull the board with him, thus effecting the trap. Meantime, the two kobold guards will use blowguns to attack intruders, then javelins. These darts are laced with a _sleep_ toxin. If an intruder gets by, the kobolds will unleash the guard dog on them. The kobolds will attempt to take prisoners whom they will then ransom for 10 gp each, such prisoners being sequestered in the chieftain's chamber (#9)."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light_ _sensitivity[-1 to attacks in bright light]. They have leather armor, javelins x3, dagger, blowguns, 2 needles, and 1d6 sp. The blowgun needles hold a sleep toxin, save versus poison [CL 3] or fall into a slumber for 4d4 rounds. XP: 9+1",
+      "start": 138174,
+      "end": 138567,
+      "startLine": 1249,
+      "endLine": 1249,
+      "titleLineNum": 1247,
+      "titleLine": "**Tactics**: Any intrusion will result in the kobold youngster running to alert the kobolds of rooms #7, 8, and 9. First it will traverse a board that spans the **pit** **[X]**, then pull the board with him, thus effecting the trap. Meantime, the two kobold guards will use blowguns to attack intruders, then javelins. These darts are laced with a _sleep_ toxin. If an intruder gets by, the kobolds will unleash the guard dog on them. The kobolds will attempt to take prisoners whom they will then ransom for 10 gp each, such prisoners being sequestered in the chieftain's chamber (#9).",
+      "inlineLabel": "Kobold Guards x 2",
+      "inlineContext": "**Kobold Guards x 2:** _",
+      "lineText": "**Kobold Guards x 2:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light_ _sensitivity[-1 to attacks in bright light]. They have leather armor, javelins x3, dagger, blowguns, 2 needles, and 1d6 sp. The blowgun needles hold a sleep toxin, save versus poison [CL 3] or fall into a slumber for 4d4 rounds. XP: 9+1)_",
+      "snippet": "**Tactics**: Any intrusion will result in the kobold youngster running to alert the kobolds of rooms #7, 8, and 9. First it will traverse a board that spans the **pit** **[X]**, then pull the board with him, thus effecting the trap. Meantime, the two kobold guards will use blowguns to attack intruders, then javelins. These darts are laced with a _sleep_ toxin. If an intruder gets by, the kobolds will unleash the guard dog on them. The kobolds will attempt to take prisoners whom they will then ransom for 10 gp each, such prisoners being sequestered in the chieftain's chamber (#9). **Kobold Guards x 2:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light_ _sensitivity[-1 to attacks in bright light]. They have leather armor, javelins x3, dagger, blowguns, 2 needles, and 1d6 sp. The blowgun needles hold a sleep toxin, save versus poison [CL 3] or fall into a slumber for 4d4 rounds. XP: 9+1)_",
+      "hp": 3,
+      "ac": 15,
+      "hd": "1d4",
+      "xp": "9+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light_ _sensitivity[-1 to attacks in bright light]. They have leather armor, javelins x3, dagger, blowguns, 2 needles, and 1d6 sp. The blowgun needles hold a sleep toxin, save versus poison [CL 3] or fall into a slumber for 4d4 rounds. XP: 9+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light_ _sensitivity[-1 to attacks in bright light]. They have leather armor, javelins x3, dagger, blowguns, 2 needles, and 1d6 sp. The blowgun needles hold a sleep toxin, save versus poison [CL 3] or fall into a slumber for 4d4 rounds. XP: 9+1",
+      "hd": "1d4",
+      "hp": "3",
+      "ac": "15",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 sp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d4), HP 3, AC 15, disposition lawful evil. Saves: P. They have 6 silver in coin."
+  },
+  {
+    "sourceIndex": 138585,
+    "title": "Mastiff",
+    "labels": {
+      "inline": "Mastiff",
+      "titleLine": "**Kobold Guards x 2:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light_ _sensitivity[-1 to attacks in bright light]. They have leather armor, javelins x3, dagger, blowguns, 2 needles, and 1d6 sp. The blowgun needles hold a sleep toxin, save versus poison [CL 3] or fall into a slumber for 4d4 rounds. XP: 9+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral creature's vital stats are HD 3d8, HP 15, AC 14, MV 35 ft. Its saves are physical. It attacks with a bite for 2-8 points of damage. XP: 75",
+      "start": 138585,
+      "end": 138737,
+      "startLine": 1251,
+      "endLine": 1251,
+      "titleLineNum": 1249,
+      "titleLine": "**Kobold Guards x 2:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light_ _sensitivity[-1 to attacks in bright light]. They have leather armor, javelins x3, dagger, blowguns, 2 needles, and 1d6 sp. The blowgun needles hold a sleep toxin, save versus poison [CL 3] or fall into a slumber for 4d4 rounds. XP: 9+1)_",
+      "inlineLabel": "Mastiff",
+      "inlineContext": "**Mastiff:** _",
+      "lineText": "**Mastiff:** _(This neutral creature's vital stats are HD 3d8, HP 15, AC 14, MV 35 ft. Its saves are physical. It attacks with a bite for 2-8 points of damage. XP: 75)_",
+      "snippet": "**Kobold Guards x 2:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light_ _sensitivity[-1 to attacks in bright light]. They have leather armor, javelins x3, dagger, blowguns, 2 needles, and 1d6 sp. The blowgun needles hold a sleep toxin, save versus poison [CL 3] or fall into a slumber for 4d4 rounds. XP: 9+1)_ **Mastiff:** _(This neutral creature's vital stats are HD 3d8, HP 15, AC 14, MV 35 ft. Its saves are physical. It attacks with a bite for 2-8 points of damage. XP: 75)_",
+      "hp": 15,
+      "ac": 14,
+      "hd": "3d8",
+      "xp": "75",
+      "level": null,
+      "raceClass": "This neutral creature",
+      "notes": "This neutral creature's vital stats are HD 3d8, HP 15, AC 14, MV 35 ft. Its saves are physical. It attacks with a bite for 2-8 points of damage. XP: 75"
+    },
+    "canonicalData": {
+      "raw": "This neutral creature's vital stats are HD 3d8, HP 15, AC 14, MV 35 ft. Its saves are physical. It attacks with a bite for 2-8 points of damage. XP: 75",
+      "hd": "3d8",
+      "hp": "15",
+      "ac": "14",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 3(d8), HP 15, AC 14, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 141713,
+    "title": "Fekk",
+    "labels": {
+      "inline": "Fekk",
+      "titleLine": "**_CK's Note_**: If the PCs use flaming missiles against the kobolds, the humanoids will remember what the wood alcohol and bottles are for and retaliate with like “grenades.” It is suggested that damage from a direct hit be d6 per round for 3 rounds or until the fire is extinguished, splash damage causing d4 for 1 round only."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This lawful evil kobold is non-combatant, HP 2, AC 10, saves physical. It wears a silver armlet worth 5 gp, has a key to the door of this room, and 3 cp. XP: 3",
+      "start": 141713,
+      "end": 141873,
+      "startLine": 1300,
+      "endLine": 1300,
+      "titleLineNum": 1298,
+      "titleLine": "**_CK's Note_**: If the PCs use flaming missiles against the kobolds, the humanoids will remember what the wood alcohol and bottles are for and retaliate with like “grenades.” It is suggested that damage from a direct hit be d6 per round for 3 rounds or until the fire is extinguished, splash damage causing d4 for 1 round only.",
+      "inlineLabel": "Fekk",
+      "inlineContext": "**Fekk:** _",
+      "lineText": "**Fekk:** _(This lawful evil kobold is non-combatant, HP 2, AC 10, saves physical. It wears a silver armlet worth 5 gp, has a key to the door of this room, and 3 cp. XP: 3)_ ",
+      "snippet": "**_CK's Note_**: If the PCs use flaming missiles against the kobolds, the humanoids will remember what the wood alcohol and bottles are for and retaliate with like “grenades.” It is suggested that damage from a direct hit be d6 per round for 3 rounds or until the fire is extinguished, splash damage causing d4 for 1 round only. **Fekk:** _(This lawful evil kobold is non-combatant, HP 2, AC 10, saves physical. It wears a silver armlet worth 5 gp, has a key to the door of this room, and 3 cp. XP: 3)_",
+      "hp": 2,
+      "ac": 10,
+      "hd": null,
+      "xp": "3",
+      "level": null,
+      "raceClass": "kobold",
+      "notes": "This lawful evil kobold is non-combatant, HP 2, AC 10, saves physical. It wears a silver armlet worth 5 gp, has a key to the door of this room, and 3 cp. XP: 3"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil kobold is non-combatant, HP 2, AC 10, saves physical. It wears a silver armlet worth 5 gp, has a key to the door of this room, and 3 cp. XP: 3",
+      "hp": "2",
+      "ac": "10",
+      "disposition": "lawful evil",
+      "equipment": "a silver armlet worth 5 gp, carry key to the door of this room, and 3 cp",
+      "coins": "5 gp, 3 cp",
+      "raceClass": "kobold",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "HP 2, AC 10, disposition lawful evil. Saves: P. It has a has a key to the door of this room and 5 gp, 3 cp."
+  },
+  {
+    "sourceIndex": 142512,
+    "title": "Kobold warrior x 6",
+    "labels": {
+      "inline": "Kobold warrior x 6",
+      "titleLine": "**>>[end boxed** **text]<<**"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1",
+      "start": 142512,
+      "end": 142779,
+      "startLine": 1312,
+      "endLine": 1312,
+      "titleLineNum": 1310,
+      "titleLine": "**>>[end boxed** **text]<<**",
+      "inlineLabel": "Kobold warrior x 6",
+      "inlineContext": "**Kobold warrior x 6:** _",
+      "lineText": "**Kobold warrior x 6:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_",
+      "snippet": "**>>[end boxed** **text]<<** **Kobold warrior x 6:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_",
+      "hp": 3,
+      "ac": 15,
+      "hd": "1d4",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1",
+      "hd": "1d4",
+      "hp": "3",
+      "ac": "15",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 sp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d4), HP 3, AC 15, disposition lawful evil. Saves: P. They have 6 silver in coin."
+  },
+  {
+    "sourceIndex": 142809,
+    "title": "Kobold serjeant x 1",
+    "labels": {
+      "inline": "Kobold serjeant x 1",
+      "titleLine": "**Kobold warrior x 6:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, keys to room #5 and #6, and 1d6 sp. XP: 22",
+      "start": 142809,
+      "end": 143101,
+      "startLine": 1314,
+      "endLine": 1314,
+      "titleLineNum": 1312,
+      "titleLine": "**Kobold warrior x 6:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_",
+      "inlineLabel": "Kobold serjeant x 1",
+      "inlineContext": "**Kobold serjeant x 1:** _",
+      "lineText": "**Kobold serjeant x 1:** _(This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, keys to room #5 and #6, and 1d6 sp. XP: 22)_",
+      "snippet": "**Kobold warrior x 6:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_ **Kobold serjeant x 1:** _(This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, keys to room #5 and #6, and 1d6 sp. XP: 22)_",
+      "hp": 6,
+      "ac": 15,
+      "hd": "2d4",
+      "xp": "22",
+      "level": null,
+      "raceClass": "This lawful evil humanoid",
+      "notes": "This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, keys to room #5 and #6, and 1d6 sp. XP: 22"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, keys to room #5 and #6, and 1d6 sp. XP: 22",
+      "hd": "2d4",
+      "hp": "6",
+      "ac": "15",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 sp"
+    },
+    "canonicalParenthetical": "HP 6, AC 15, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin."
+  },
+  {
+    "sourceIndex": 144008,
+    "title": "Kobold warrior x",
+    "labels": {
+      "inline": "Kobold warrior x",
+      "titleLine": "**>>[end boxed** **text]<<**"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1",
+      "start": 144008,
+      "end": 144275,
+      "startLine": 1328,
+      "endLine": 1328,
+      "titleLineNum": 1326,
+      "titleLine": "**>>[end boxed** **text]<<**",
+      "inlineLabel": "Kobold warrior x",
+      "inlineContext": "**Kobold warrior x **5:** _",
+      "lineText": "**Kobold warrior x **5:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_",
+      "snippet": "**>>[end boxed** **text]<<** **Kobold warrior x **5:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_",
+      "hp": 3,
+      "ac": 15,
+      "hd": "1d4",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1",
+      "hd": "1d4",
+      "hp": "3",
+      "ac": "15",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 sp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d4), HP 3, AC 15, disposition lawful evil. Saves: P. It has 6 silver in coin."
+  },
+  {
+    "sourceIndex": 144305,
+    "title": "Kobold serjeant x 1",
+    "labels": {
+      "inline": "Kobold serjeant x 1",
+      "titleLine": "**Kobold warrior x **5:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, a key to room #5, and 1d6 sp. XP: 22",
+      "start": 144305,
+      "end": 144591,
+      "startLine": 1330,
+      "endLine": 1330,
+      "titleLineNum": 1328,
+      "titleLine": "**Kobold warrior x **5:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_",
+      "inlineLabel": "Kobold serjeant x 1",
+      "inlineContext": "**Kobold serjeant x 1:** _",
+      "lineText": "**Kobold serjeant x 1:** _(This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, a key to room #5, and 1d6 sp. XP: 22)_",
+      "snippet": "**Kobold warrior x **5:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_ **Kobold serjeant x 1:** _(This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, a key to room #5, and 1d6 sp. XP: 22)_",
+      "hp": 6,
+      "ac": 15,
+      "hd": "2d4",
+      "xp": "22",
+      "level": null,
+      "raceClass": "This lawful evil humanoid",
+      "notes": "This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, a key to room #5, and 1d6 sp. XP: 22"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil humanoid's vital stats are HD 2d4, HP 6, AC 15, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has chain hauberk armor, javelins x 3, shortsword, a key to room #5, and 1d6 sp. XP: 22",
+      "hd": "2d4",
+      "hp": "6",
+      "ac": "15",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 sp"
+    },
+    "canonicalParenthetical": "HP 6, AC 15, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin."
+  },
+  {
+    "sourceIndex": 146654,
+    "title": "King Griggle-gruk (Kobold Chieftain)",
+    "labels": {
+      "inline": "King Griggle-gruk (Kobold Chieftain)",
+      "titleLine": "**>>[end boxed** **text]<<**"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This lawful evil humanoid's vital stats are HD 4d4, HP 14, AC 17, MV 30 ft. Its saves are physical. Its attacks are at +2 damage due to its strength and ferocity. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber. In a pouch it carries 18 gp. XP: 72",
+      "start": 146654,
+      "end": 147076,
+      "startLine": 1350,
+      "endLine": 1350,
+      "titleLineNum": 1348,
+      "titleLine": "**>>[end boxed** **text]<<**",
+      "inlineLabel": "King Griggle-gruk (Kobold Chieftain)",
+      "inlineContext": "**King Griggle-gruk (Kobold Chieftain):** _",
+      "lineText": "**King Griggle-gruk (Kobold Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d4, HP 14, AC 17, MV 30 ft. Its saves are physical. Its attacks are at +2 damage due to its strength and ferocity. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber. In a pouch it carries 18 gp. XP: 72)_",
+      "snippet": "**>>[end boxed** **text]<<** **King Griggle-gruk (Kobold Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d4, HP 14, AC 17, MV 30 ft. Its saves are physical. Its attacks are at +2 damage due to its strength and ferocity. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber. In a pouch it carries 18 gp. XP: 72)_",
+      "hp": 14,
+      "ac": 17,
+      "hd": "4d4",
+      "xp": "72",
+      "level": null,
+      "raceClass": "This lawful evil humanoid",
+      "notes": "This lawful evil humanoid's vital stats are HD 4d4, HP 14, AC 17, MV 30 ft. Its saves are physical. Its attacks are at +2 damage due to its strength and ferocity. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber. In a pouch it carries 18 gp. XP: 72"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil humanoid's vital stats are HD 4d4, HP 14, AC 17, MV 30 ft. Its saves are physical. Its attacks are at +2 damage due to its strength and ferocity. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber. In a pouch it carries 18 gp. XP: 72",
+      "hd": "4d4",
+      "hp": "14",
+      "ac": "17",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "strength",
+      "equipment": "plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber",
+      "coins": "18 gp"
+    },
+    "canonicalParenthetical": "HP 14, AC 17, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries plate mail armor, a has javelins x 3, a +1 shortsword, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin."
+  },
+  {
+    "sourceIndex": 147108,
+    "title": "Kobold Bodyguards x 2",
+    "labels": {
+      "inline": "Kobold Bodyguards x 2",
+      "titleLine": "**King Griggle-gruk (Kobold Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d4, HP 14, AC 17, MV 30 ft. Its saves are physical. Its attacks are at +2 damage due to its strength and ferocity. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber. In a pouch it carries 18 gp. XP: 72)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 2d4, HP 7, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk, javelins x 3, dagger, and 1d6 sp. XP: 9+1",
+      "start": 147108,
+      "end": 147375,
+      "startLine": 1352,
+      "endLine": 1352,
+      "titleLineNum": 1350,
+      "titleLine": "**King Griggle-gruk (Kobold Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d4, HP 14, AC 17, MV 30 ft. Its saves are physical. Its attacks are at +2 damage due to its strength and ferocity. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber. In a pouch it carries 18 gp. XP: 72)_",
+      "inlineLabel": "Kobold Bodyguards x 2",
+      "inlineContext": "**Kobold Bodyguards x 2:** _",
+      "lineText": "**Kobold Bodyguards x 2:** _(These lawful evil humanoids' vital stats are HD 2d4, HP 7, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk, javelins x 3, dagger, and 1d6 sp. XP: 9+1)_",
+      "snippet": "**King Griggle-gruk (Kobold Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d4, HP 14, AC 17, MV 30 ft. Its saves are physical. Its attacks are at +2 damage due to its strength and ferocity. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber. In a pouch it carries 18 gp. XP: 72)_ **Kobold Bodyguards x 2:** _(These lawful evil humanoids' vital stats are HD 2d4, HP 7, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk, javelins x 3, dagger, and 1d6 sp. XP: 9+1)_",
+      "hp": 7,
+      "ac": 15,
+      "hd": "2d4",
+      "xp": "9+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 2d4, HP 7, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk, javelins x 3, dagger, and 1d6 sp. XP: 9+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 2d4, HP 7, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk, javelins x 3, dagger, and 1d6 sp. XP: 9+1",
+      "hd": "2d4",
+      "hp": "7",
+      "ac": "15",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 sp"
+    },
+    "canonicalParenthetical": "HP 7, AC 15, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin."
+  },
+  {
+    "sourceIndex": 148467,
+    "title": "Goblin prisoner",
+    "labels": {
+      "inline": "Goblin prisoner",
+      "titleLine": "The **goblin prisoner** is a spy from #D who was captured when he snuck in between a shift change and fell in the pit trap. He is being ransomed for 10 gp but the goblins have not paid the price. Soon he is likely to become dinner for the kobolds."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This lawful evil humanoid's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears a loin cloth. XP: 5+1",
+      "start": 148467,
+      "end": 148696,
+      "startLine": 1362,
+      "endLine": 1362,
+      "titleLineNum": 1360,
+      "titleLine": "The **goblin prisoner** is a spy from #D who was captured when he snuck in between a shift change and fell in the pit trap. He is being ransomed for 10 gp but the goblins have not paid the price. Soon he is likely to become dinner for the kobolds.",
+      "inlineLabel": "Goblin prisoner",
+      "inlineContext": "**Goblin prisoner:** _",
+      "lineText": "**Goblin prisoner:** _(This lawful evil humanoid's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears a loin cloth. XP: 5+1)_",
+      "snippet": "The **goblin prisoner** is a spy from #D who was captured when he snuck in between a shift change and fell in the pit trap. He is being ransomed for 10 gp but the goblins have not paid the price. Soon he is likely to become dinner for the kobolds. **Goblin prisoner:** _(This lawful evil humanoid's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears a loin cloth. XP: 5+1)_",
+      "hp": 4,
+      "ac": 14,
+      "hd": "1d6",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "This lawful evil humanoid",
+      "notes": "This lawful evil humanoid's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears a loin cloth. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil humanoid's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears a loin cloth. XP: 5+1",
+      "hd": "1d6",
+      "hp": "4",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "equipment": "a loin cloth",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. It has a loin cloth."
+  },
+  {
+    "sourceIndex": 151141,
+    "title": "\"Charlie\" the Ogre",
+    "labels": {
+      "inline": "\"Charlie\" the Ogre",
+      "titleLine": "He has no wisdom to impart, save his like for his _\"little buddy\"_ kobolds. He doesn't like most others here, especially the **owlbear** (#J) which once bit him (he will show the scar on his forearm):_“See what dat big, feathered bear do? Nasty thing needs killin’!”_ He will, however, lose his temper should anyone laugh at him or refer to him as “stupid” or “dumb”—and he might attack (25% chance per insult)."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This chaotic neutral humanoid's vital statistics are HD 4d12, HP 20, AC 16, MV 30 ft. Its saves are physical. It_ _attack_ _by weapon at +3 damage due to its size and strength. It attacks with a giant, spiked club [+4 \"to hit\"; 1d10 +3 damage]. XP: 112",
+      "start": 151141,
+      "end": 151394,
+      "startLine": 1382,
+      "endLine": 1382,
+      "titleLineNum": 1380,
+      "titleLine": "He has no wisdom to impart, save his like for his _\"little buddy\"_ kobolds. He doesn't like most others here, especially the **owlbear** (#J) which once bit him (he will show the scar on his forearm):_“See what dat big, feathered bear do? Nasty thing needs killin’!”_ He will, however, lose his temper should anyone laugh at him or refer to him as “stupid” or “dumb”—and he might attack (25% chance per insult).",
+      "inlineLabel": "\"Charlie\" the Ogre",
+      "inlineContext": "**\"Charlie\" the Ogre:** _",
+      "lineText": "**\"Charlie\" the Ogre:** _(This chaotic neutral humanoid's vital statistics are HD 4d12, HP 20, AC 16, MV 30 ft. Its saves are physical. It_ _attack_ _by weapon at +3 damage due to its size and strength. It attacks with a giant, spiked club [+4 \"to hit\"; 1d10 +3 damage]. XP: 112)_  ",
+      "snippet": "He has no wisdom to impart, save his like for his _\"little buddy\"_ kobolds. He doesn't like most others here, especially the **owlbear** (#J) which once bit him (he will show the scar on his forearm):_“See what dat big, feathered bear do? Nasty thing needs killin’!”_ He will, however, lose his temper should anyone laugh at him or refer to him as “stupid” or “dumb”—and he might attack (25% chance per insult). **\"Charlie\" the Ogre:** _(This chaotic neutral humanoid's vital statistics are HD 4d12, HP 20, AC 16, MV 30 ft. Its saves are physical. It_ _attack_ _by weapon at +3 damage due to its size and strength. It attacks with a giant, spiked club [+4 \"to hit\"; 1d10 +3 damage]. XP: 112)_",
+      "hp": 20,
+      "ac": 16,
+      "hd": "4d12",
+      "xp": "112",
+      "level": null,
+      "raceClass": null,
+      "notes": "This chaotic neutral humanoid's vital statistics are HD 4d12, HP 20, AC 16, MV 30 ft. Its saves are physical. It_ _attack_ _by weapon at +3 damage due to its size and strength. It attacks with a giant, spiked club [+4 \"to hit\"; 1d10 +3 damage]. XP: 112"
+    },
+    "canonicalData": {
+      "raw": "This chaotic neutral humanoid's vital statistics are HD 4d12, HP 20, AC 16, MV 30 ft. Its saves are physical. It_ _attack_ _by weapon at +3 damage due to its size and strength. It attacks with a giant, spiked club [+4 \"to hit\"; 1d10 +3 damage]. XP: 112",
+      "hd": "4d12",
+      "hp": "20",
+      "ac": "16",
+      "disposition": "chaotic neutral",
+      "raceClass": "humanoid",
+      "attributes": "strength"
+    },
+    "canonicalParenthetical": "HP 20, AC 16, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
+  },
+  {
+    "sourceIndex": 155973,
+    "title": "Goblin patrol warriors x 5",
+    "labels": {
+      "inline": "Goblin patrol warriors x 5",
+      "titleLine": "**Goblin Patrol:** The halls of this lair are patrolled by units of **5 goblin warriors**, these goblins also functioning as conveyors of various goods. It takes this patrol 10 minutes to do a complete circuit of the lair, so the Castle Keeper should roll a 1d6 for every 20 feet traveled in this lair, a 6 indicating an encounter with the patrol. These humanoids, if encountered, will attack any intruders, letting loose their battle cry, _“KREE-AHK!”_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelin, dagger, and 3d6 cp. XP: 5+1",
+      "start": 155973,
+      "end": 156238,
+      "startLine": 1424,
+      "endLine": 1424,
+      "titleLineNum": 1422,
+      "titleLine": "**Goblin Patrol:** The halls of this lair are patrolled by units of **5 goblin warriors**, these goblins also functioning as conveyors of various goods. It takes this patrol 10 minutes to do a complete circuit of the lair, so the Castle Keeper should roll a 1d6 for every 20 feet traveled in this lair, a 6 indicating an encounter with the patrol. These humanoids, if encountered, will attack any intruders, letting loose their battle cry, _“KREE-AHK!”_",
+      "inlineLabel": "Goblin patrol warriors x 5",
+      "inlineContext": "**Goblin patrol warriors x 5:** _",
+      "lineText": "**Goblin patrol warriors x 5:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelin, dagger, and 3d6 cp. XP: 5+1)_",
+      "snippet": "**Goblin Patrol:** The halls of this lair are patrolled by units of **5 goblin warriors**, these goblins also functioning as conveyors of various goods. It takes this patrol 10 minutes to do a complete circuit of the lair, so the Castle Keeper should roll a 1d6 for every 20 feet traveled in this lair, a 6 indicating an encounter with the patrol. These humanoids, if encountered, will attack any intruders, letting loose their battle cry, _“KREE-AHK!”_ **Goblin patrol warriors x 5:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelin, dagger, and 3d6 cp. XP: 5+1)_",
+      "hp": 4,
+      "ac": 14,
+      "hd": "1d6",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelin, dagger, and 3d6 cp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelin, dagger, and 3d6 cp. XP: 5+1",
+      "hd": "1d6",
+      "hp": "4",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 cp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. They have 6 copper in coin."
+  },
+  {
+    "sourceIndex": 157044,
+    "title": "Goblin guards x 4",
+    "labels": {
+      "inline": "Goblin guards x 4",
+      "titleLine": "There is a 3-in-4 chance the goblins from #13 will respond to the hue and cry of these guards. As 1d4 of the goblins at #13 will be sleeping, the CK should stagger their arrival."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, throwing axe, short sword, and 3d6 cp. XP: 5+1",
+      "start": 157044,
+      "end": 157319,
+      "startLine": 1434,
+      "endLine": 1434,
+      "titleLineNum": 1432,
+      "titleLine": "There is a 3-in-4 chance the goblins from #13 will respond to the hue and cry of these guards. As 1d4 of the goblins at #13 will be sleeping, the CK should stagger their arrival.",
+      "inlineLabel": "Goblin guards x 4",
+      "inlineContext": "**Goblin guards x 4:** _",
+      "lineText": "**Goblin guards x 4:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, throwing axe, short sword, and 3d6 cp. XP: 5+1)_",
+      "snippet": "There is a 3-in-4 chance the goblins from #13 will respond to the hue and cry of these guards. As 1d4 of the goblins at #13 will be sleeping, the CK should stagger their arrival. **Goblin guards x 4:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, throwing axe, short sword, and 3d6 cp. XP: 5+1)_",
+      "hp": 4,
+      "ac": 14,
+      "hd": "1d6",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, throwing axe, short sword, and 3d6 cp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, throwing axe, short sword, and 3d6 cp. XP: 5+1",
+      "hd": "1d6",
+      "hp": "4",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 cp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. They have 6 copper in coin."
+  },
+  {
+    "sourceIndex": 158677,
+    "title": "Goblin patrol warriors x 6",
+    "labels": {
+      "inline": "Goblin patrol warriors x 6",
+      "titleLine": "The goblins will be gathered around a table, eating fish and talking, on break from patrolling. 1d4 of them will be sleeping on one of the six pallets of straw that line the east wall. These goblins will relieve patrol group (above) every four hours."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelin, dagger and 3d6 cp. XP: 5+1",
+      "start": 158677,
+      "end": 158941,
+      "startLine": 1456,
+      "endLine": 1456,
+      "titleLineNum": 1454,
+      "titleLine": "The goblins will be gathered around a table, eating fish and talking, on break from patrolling. 1d4 of them will be sleeping on one of the six pallets of straw that line the east wall. These goblins will relieve patrol group (above) every four hours.",
+      "inlineLabel": "Goblin patrol warriors x 6",
+      "inlineContext": "**Goblin patrol warriors x 6:** _",
+      "lineText": "**Goblin patrol warriors x 6:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelin, dagger and 3d6 cp. XP: 5+1)_",
+      "snippet": "The goblins will be gathered around a table, eating fish and talking, on break from patrolling. 1d4 of them will be sleeping on one of the six pallets of straw that line the east wall. These goblins will relieve patrol group (above) every four hours. **Goblin patrol warriors x 6:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelin, dagger and 3d6 cp. XP: 5+1)_",
+      "hp": 4,
+      "ac": 14,
+      "hd": "1d6",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelin, dagger and 3d6 cp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelin, dagger and 3d6 cp. XP: 5+1",
+      "hd": "1d6",
+      "hp": "4",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 cp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. They have 6 copper in coin."
+  },
+  {
+    "sourceIndex": 161831,
+    "title": "Goblin males x 8",
+    "labels": {
+      "inline": "Goblin males x 8",
+      "titleLine": "**_CK's Note:_** for more on the double doors of the west side, see #14."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1",
+      "start": 161831,
+      "end": 162135,
+      "startLine": 1491,
+      "endLine": 1491,
+      "titleLineNum": 1489,
+      "titleLine": "**_CK's Note:_** for more on the double doors of the west side, see #14.",
+      "inlineLabel": "Goblin males x 8",
+      "inlineContext": "**Goblin males x 8:** _",
+      "lineText": "**Goblin males x 8:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1)_",
+      "snippet": "**_CK's Note:_** for more on the double doors of the west side, see #14. **Goblin males x 8:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1)_",
+      "hp": 3,
+      "ac": 14,
+      "hd": "1d6",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1",
+      "hd": "1d6",
+      "hp": "3",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "equipment": "a gold chain worth 50 gp",
+      "coins": "6 cp, 50 gp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 3, AC 14, disposition lawful evil. Saves: P. They have 6 cp, 50 gp."
+  },
+  {
+    "sourceIndex": 162165,
+    "title": "Goblin females x 13",
+    "labels": {
+      "inline": "Goblin females x 13",
+      "titleLine": "**Goblin males x 8:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 6-inch knives. XP: 3+1",
+      "start": 162165,
+      "end": 162290,
+      "startLine": 1493,
+      "endLine": 1493,
+      "titleLineNum": 1491,
+      "titleLine": "**Goblin males x 8:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1)_",
+      "inlineLabel": "Goblin females x 13",
+      "inlineContext": "**Goblin females x 13:** _",
+      "lineText": "**Goblin females x 13:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 6-inch knives. XP: 3+1)_",
+      "snippet": "**Goblin males x 8:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1)_ **Goblin females x 13:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 6-inch knives. XP: 3+1)_",
+      "hp": 2,
+      "ac": 12,
+      "hd": "1d6",
+      "xp": "3+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 6-inch knives. XP: 3+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 6-inch knives. XP: 3+1",
+      "hd": "1d6",
+      "hp": "2",
+      "ac": "12",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 2, AC 12, disposition lawful evil. Saves: P."
+  },
+  {
+    "sourceIndex": 168595,
+    "title": "Goblin warriors x 3",
+    "labels": {
+      "inline": "Goblin warriors x 3",
+      "titleLine": "**Area #g:** There are **3 goblin warriors** that keep watch on the prison (#20) and the storage room #18. If trouble presents they will shout their battle cry (“KREE-AHK!”) thus alerting the **shaman** (#21) and possibly a **goblin patrol** _(see introductory material of this lair, #D)_. Their serjeant holds both the key to the prison and the key to the storage room (#18) on a brass belt ring."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, light crossbow, 6 bolts, and 1d6 sp. XP: 5+1",
+      "start": 168595,
+      "end": 168903,
+      "startLine": 1554,
+      "endLine": 1554,
+      "titleLineNum": 1552,
+      "titleLine": "**Area #g:** There are **3 goblin warriors** that keep watch on the prison (#20) and the storage room #18. If trouble presents they will shout their battle cry (“KREE-AHK!”) thus alerting the **shaman** (#21) and possibly a **goblin patrol** _(see introductory material of this lair, #D)_. Their serjeant holds both the key to the prison and the key to the storage room (#18) on a brass belt ring.",
+      "inlineLabel": "Goblin warriors x 3",
+      "inlineContext": "**Goblin warriors x 3:** _",
+      "lineText": "**Goblin warriors x 3:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, light crossbow, 6 bolts, and 1d6 sp. XP: 5+1)_",
+      "snippet": "**Area #g:** There are **3 goblin warriors** that keep watch on the prison (#20) and the storage room #18. If trouble presents they will shout their battle cry (“KREE-AHK!”) thus alerting the **shaman** (#21) and possibly a **goblin patrol** _(see introductory material of this lair, #D)_. Their serjeant holds both the key to the prison and the key to the storage room (#18) on a brass belt ring. **Goblin warriors x 3:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, light crossbow, 6 bolts, and 1d6 sp. XP: 5+1)_",
+      "hp": 4,
+      "ac": 14,
+      "hd": "1d6",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "equipped with leather armor, belt axe, shortsword, light crossbow, 6 bolts, and 1d6 sp",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, light crossbow, 6 bolts, and 1d6 sp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, light crossbow, 6 bolts, and 1d6 sp. XP: 5+1",
+      "hd": "1d6",
+      "hp": "4",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 sp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. They have 6 silver in coin."
+  },
+  {
+    "sourceIndex": 168929,
+    "title": "Goblin serjeant",
+    "labels": {
+      "inline": "Goblin serjeant",
+      "titleLine": "**Goblin warriors x 3:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, light crossbow, 6 bolts, and 1d6 sp. XP: 5+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This lawful evil humanoid's vital stats are HD 2d6, HP 11, AC 16, MV 20 ft. His saves are physical. His special ability is darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 damage on attacks due to high strength. He wears a breastplate and is equipped with a shield, morning star, shortsword, whip, a brass belt ring with keys to #18 and #20. He also wears a silver armlet [worth 5 gp] and has 3d6 sp. XP: 32",
+      "start": 168929,
+      "end": 169365,
+      "startLine": 1556,
+      "endLine": 1556,
+      "titleLineNum": 1554,
+      "titleLine": "**Goblin warriors x 3:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, light crossbow, 6 bolts, and 1d6 sp. XP: 5+1)_",
+      "inlineLabel": "Goblin serjeant",
+      "inlineContext": "**Goblin serjeant:** _",
+      "lineText": "**Goblin serjeant:** _(This lawful evil humanoid's vital stats are HD 2d6, HP 11, AC 16, MV 20 ft. His saves are physical. His special ability is darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 damage on attacks due to high strength. He wears a breastplate and is equipped with a shield, morning star, shortsword, whip, a brass belt ring with keys to #18 and #20. He also wears a silver armlet [worth 5 gp] and has 3d6 sp. XP: 32)_",
+      "snippet": "**Goblin warriors x 3:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, light crossbow, 6 bolts, and 1d6 sp. XP: 5+1)_ **Goblin serjeant:** _(This lawful evil humanoid's vital stats are HD 2d6, HP 11, AC 16, MV 20 ft. His saves are physical. His special ability is darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 damage on attacks due to high strength. He wears a breastplate and is equipped with a shield, morning star, shortsword, whip, a brass belt ring with keys to #18 and #20. He also wears a silver armlet [worth 5 gp] and has 3d6 sp. XP: 32)_",
+      "hp": 11,
+      "ac": 16,
+      "hd": "2d6",
+      "xp": "32",
+      "level": null,
+      "raceClass": "This lawful evil humanoid",
+      "notes": "This lawful evil humanoid's vital stats are HD 2d6, HP 11, AC 16, MV 20 ft. His saves are physical. His special ability is darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 damage on attacks due to high strength. He wears a breastplate and is equipped with a shield, morning star, shortsword, whip, a brass belt ring with keys to #18 and #20. He also wears a silver armlet [worth 5 gp] and has 3d6 sp. XP: 32"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil humanoid's vital stats are HD 2d6, HP 11, AC 16, MV 20 ft. His saves are physical. His special ability is darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 damage on attacks due to high strength. He wears a breastplate and is equipped with a shield, morning star, shortsword, whip, a brass belt ring with keys to #18 and #20. He also wears a silver armlet [worth 5 gp] and has 3d6 sp. XP: 32",
+      "hd": "2d6",
+      "hp": "11",
+      "ac": "16",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "strength",
+      "equipment": "a breastplate and carry medium steel shield, morning star, shortsword, whip, a brass belt ring with keys to #18 and #20",
+      "coins": "5 gp, 6 sp"
+    },
+    "canonicalParenthetical": "HP 11, AC 16, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp."
+  },
+  {
+    "sourceIndex": 171131,
+    "title": "Prisoner #2: An elderly orc",
+    "labels": {
+      "inline": "Prisoner #2: An elderly orc",
+      "titleLine": "- **Prisoner #1: Goblin female**. During a recent (and secretive) raiding mission, this female of the Gublinish Tribe _(Ruins of the Castle Precincts #15)_ was pulled from her cottage, abducted for information. She has been able to give no information about the military prowess of her tribe, but does state that their chieftain is the descendant of a god, and that he has visited her with affection in the past. She is scheduled to be sacrificed to Gubeezablu in the chapel #17."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "weak and non-combatant, HP 2, AC 10",
+      "start": 171131,
+      "end": 171167,
+      "startLine": 1576,
+      "endLine": 1576,
+      "titleLineNum": 1575,
+      "titleLine": "- **Prisoner #1: Goblin female**. During a recent (and secretive) raiding mission, this female of the Gublinish Tribe _(Ruins of the Castle Precincts #15)_ was pulled from her cottage, abducted for information. She has been able to give no information about the military prowess of her tribe, but does state that their chieftain is the descendant of a god, and that he has visited her with affection in the past. She is scheduled to be sacrificed to Gubeezablu in the chapel #17.",
+      "inlineLabel": "Prisoner #2: An elderly orc",
+      "inlineContext": "- **Prisoner #2: An elderly orc**. This wizened orcish engineer _",
+      "lineText": "- **Prisoner #2: An elderly orc**. This wizened orcish engineer _(weak and non-combatant, HP 2, AC 10)_ is from the orc tribe at #H. Several moons ago, he walked in on goblins stealing raw silver ore at the orc mine (#36) and so they knocked him out and abducted him. Weak and easily bullied, the goblins have learned much of the tactical prowess and routines of their orcish enemies, the **Skull Krushers** (#H). This old orc (if he survives much longer) is scheduled to be sacrificed to Gubeezablu in the chapel #17.",
+      "snippet": "- **Prisoner #1: Goblin female**. During a recent (and secretive) raiding mission, this female of the Gublinish Tribe _(Ruins of the Castle Precincts #15)_ was pulled from her cottage, abducted for information. She has been able to give no information about the military prowess of her tribe, but does state that their chieftain is the descendant of a god, and that he has visited her with affection in the past. She is scheduled to be sacrificed to Gubeezablu in the chapel #17. - **Prisoner #2: An elderly orc**. This wizened orcish engineer _(weak and non-combatant, HP 2, AC 10)_ is from the orc tribe at #H. Several moons ago, he walked in on goblins stealing raw silver ore at the orc mine (#36) and so they knocked him out and abducted him. Weak and easily bullied, the goblins have learned much of the tactical prowess and routines of their orcish enemies, the **Skull Krushers** (#H). This old orc (if he survives much longer) is scheduled to be sacrificed to Gubeezablu in the chapel #17.",
+      "hp": 2,
+      "ac": 10,
+      "hd": null,
+      "xp": null,
+      "level": null,
+      "raceClass": "bat",
+      "notes": "weak and non-combatant, HP 2, AC 10"
+    },
+    "canonicalData": {
+      "raw": "weak and non-combatant, HP 2, AC 10",
+      "hp": "2",
+      "ac": "10",
+      "raceClass": "bat",
+      "hd": "1d8"
+    },
+    "canonicalParenthetical": "HP 2, AC 10. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
+  },
+  {
+    "sourceIndex": 172453,
+    "title": "Robert Cooper",
+    "labels": {
+      "inline": "Robert Cooper",
+      "titleLine": "- **Prisoner #3: Human boy**. This boy, **Robert Cooper**, was abducted a fortnight ago while tending a pair of fine stallions in the forest nearby. The boy serves a knight to whom he is esquired, and thus comports himself with the precepts of gallantry. Although Robert is but 14 summers, he possesses the heart of a champion and has revealed nothing to these evil goblins. To a good party, if rescued, he will present himself as horseman to **Sir Galvinde**, a knight who came to investigate Castle Zagyg with his staunch and rugged ally, **Morgan**, a barbarian of the northern woodlands. Robert fears the worst for those two men, because they'd assured him of their return within 24 hours and by the time he was captured by the goblins, a sennight already had passed. This boy is scheduled to be boiled and eaten during a coming goblin feast."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This lawful good, 0th level, human knight's vital stats are HP 2, AC 11. His prime attributes are_ _as yet_ _undeveloped.",
+      "start": 172453,
+      "end": 172575,
+      "startLine": 1579,
+      "endLine": 1579,
+      "titleLineNum": 1577,
+      "titleLine": "- **Prisoner #3: Human boy**. This boy, **Robert Cooper**, was abducted a fortnight ago while tending a pair of fine stallions in the forest nearby. The boy serves a knight to whom he is esquired, and thus comports himself with the precepts of gallantry. Although Robert is but 14 summers, he possesses the heart of a champion and has revealed nothing to these evil goblins. To a good party, if rescued, he will present himself as horseman to **Sir Galvinde**, a knight who came to investigate Castle Zagyg with his staunch and rugged ally, **Morgan**, a barbarian of the northern woodlands. Robert fears the worst for those two men, because they'd assured him of their return within 24 hours and by the time he was captured by the goblins, a sennight already had passed. This boy is scheduled to be boiled and eaten during a coming goblin feast.",
+      "inlineLabel": "Robert Cooper",
+      "inlineContext": "**Robert Cooper:** _",
+      "lineText": "**Robert Cooper:** _(This lawful good, 0th level, human knight's vital stats are HP 2, AC 11. His prime attributes are_ _as yet_ _undeveloped.)_",
+      "snippet": "- **Prisoner #3: Human boy**. This boy, **Robert Cooper**, was abducted a fortnight ago while tending a pair of fine stallions in the forest nearby. The boy serves a knight to whom he is esquired, and thus comports himself with the precepts of gallantry. Although Robert is but 14 summers, he possesses the heart of a champion and has revealed nothing to these evil goblins. To a good party, if rescued, he will present himself as horseman to **Sir Galvinde**, a knight who came to investigate Castle Zagyg with his staunch and rugged ally, **Morgan**, a barbarian of the northern woodlands. Robert fears the worst for those two men, because they'd assured him of their return within 24 hours and by the time he was captured by the goblins, a sennight already had passed. This boy is scheduled to be boiled and eaten during a coming goblin feast. **Robert Cooper:** _(This lawful good, 0th level, human knight's vital stats are HP 2, AC 11. His prime attributes are_ _as yet_ _undeveloped.)_",
+      "hp": 2,
+      "ac": 11,
+      "hd": null,
+      "xp": null,
+      "level": 0,
+      "raceClass": "This lawful good, 0th level, human knight",
+      "notes": "This lawful good, 0th level, human knight's vital stats are HP 2, AC 11. His prime attributes are_ _as yet_ _undeveloped."
+    },
+    "canonicalData": {
+      "raw": "This lawful good, 0th level, human knight's vital stats are HP 2, AC 11. His prime attributes are_ _as yet_ _undeveloped.",
+      "hp": "2",
+      "ac": "11",
+      "disposition": "lawful good",
+      "attributes": "_ _as yet_ _undeveloped",
+      "raceClass": "This lawful good, 0th level, human knight"
+    },
+    "canonicalParenthetical": "HP 2, AC 11, disposition lawful good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
+  },
+  {
+    "sourceIndex": 173642,
+    "title": "Oni Blackbeard (Dwarf Crossbowman)",
+    "labels": {
+      "inline": "Oni Blackbeard (Dwarf Crossbowman)",
+      "titleLine": "- **Prisoner #4: The Dwarf.** This doughty dwarf formerly served as a mercenary crossbowman for a group of gnomish prospectors seeking iron ore deposits in the region. The contingent became lost, then subsequently attacked by humanoid ape-men (losels), suffering terrible losses. The survivors later stumbled upon Castle Zagyg. “_We saw the fog lifting right before our very eyes! Yar!”_ In the ravine outside the castle bluff, they were attacked by goblins, and this dwarf, **Oni Blackbeard**, is the last of that group. Oni will take service with his rescuers for one year, requiring room and board alone—if provided with armor and weapons. Oni sees no redeeming qualities in his fellow prisoners, except the boy, whom he will request be rescued first and foremost, even shedding a tear about that one: “_They burned him with a hot poker, yar. And the boy, he never gave them the satisfaction of a whimper. The heart of a lion, that one, yar.”_ This dwarf is scheduled to be sacrificed to Gubeezablu in the chapel #17."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This chaotic good, 2nd_ _level, dwarf fighter's vital stats are HP 18, AC 10, MV 20 ft. His prime attributes are strength and dexterity. His significant attribute is dexterity 16. He is specialized in the crossbow [+5 \"to hit]. He wears a loin cloth.",
+      "start": 173642,
+      "end": 173893,
+      "startLine": 1583,
+      "endLine": 1583,
+      "titleLineNum": 1581,
+      "titleLine": "- **Prisoner #4: The Dwarf.** This doughty dwarf formerly served as a mercenary crossbowman for a group of gnomish prospectors seeking iron ore deposits in the region. The contingent became lost, then subsequently attacked by humanoid ape-men (losels), suffering terrible losses. The survivors later stumbled upon Castle Zagyg. “_We saw the fog lifting right before our very eyes! Yar!”_ In the ravine outside the castle bluff, they were attacked by goblins, and this dwarf, **Oni Blackbeard**, is the last of that group. Oni will take service with his rescuers for one year, requiring room and board alone—if provided with armor and weapons. Oni sees no redeeming qualities in his fellow prisoners, except the boy, whom he will request be rescued first and foremost, even shedding a tear about that one: “_They burned him with a hot poker, yar. And the boy, he never gave them the satisfaction of a whimper. The heart of a lion, that one, yar.”_ This dwarf is scheduled to be sacrificed to Gubeezablu in the chapel #17.",
+      "inlineLabel": "Oni Blackbeard (Dwarf Crossbowman)",
+      "inlineContext": "**Oni Blackbeard (Dwarf Crossbowman):** _",
+      "lineText": "**Oni Blackbeard (Dwarf Crossbowman):** _(This chaotic good, 2nd_ _level, dwarf fighter's vital stats are HP 18, AC 10, MV 20 ft. His prime attributes are strength and dexterity. His significant attribute is dexterity 16. He is specialized in the crossbow [+5 \"to hit]. He wears a loin cloth.)_  ",
+      "snippet": "- **Prisoner #4: The Dwarf.** This doughty dwarf formerly served as a mercenary crossbowman for a group of gnomish prospectors seeking iron ore deposits in the region. The contingent became lost, then subsequently attacked by humanoid ape-men (losels), suffering terrible losses. The survivors later stumbled upon Castle Zagyg. “_We saw the fog lifting right before our very eyes! Yar!”_ In the ravine outside the castle bluff, they were attacked by goblins, and this dwarf, **Oni Blackbeard**, is the last of that group. Oni will take service with his rescuers for one year, requiring room and board alone—if provided with armor and weapons. Oni sees no redeeming qualities in his fellow prisoners, except the boy, whom he will request be rescued first and foremost, even shedding a tear about that one: “_They burned him with a hot poker, yar. And the boy, he never gave them the satisfaction of a whimper. The heart of a lion, that one, yar.”_ This dwarf is scheduled to be sacrificed to Gubeezablu in the chapel #17. **Oni Blackbeard (Dwarf Crossbowman):** _(This chaotic good, 2nd_ _level, dwarf fighter's vital stats are HP 18, AC 10, MV 20 ft. His prime attributes are strength and dexterity. His significant attribute is dexterity 16. He is specialized in the crossbow [+5 \"to hit]. He wears a loin cloth.)_",
+      "hp": 18,
+      "ac": 10,
+      "hd": null,
+      "xp": null,
+      "level": null,
+      "raceClass": "This chaotic good, 2nd_ _level, dwarf fighter",
+      "notes": "This chaotic good, 2nd_ _level, dwarf fighter's vital stats are HP 18, AC 10, MV 20 ft. His prime attributes are strength and dexterity. His significant attribute is dexterity 16. He is specialized in the crossbow [+5 \"to hit]. He wears a loin cloth."
+    },
+    "canonicalData": {
+      "raw": "This chaotic good, 2nd_ _level, dwarf fighter's vital stats are HP 18, AC 10, MV 20 ft. His prime attributes are strength and dexterity. His significant attribute is dexterity 16. He is specialized in the crossbow [+5 \"to hit]. He wears a loin cloth.",
+      "hp": "18",
+      "ac": "10",
+      "disposition": "chaotic good",
+      "attributes": "strength and dexterity",
+      "equipment": "a loin cloth",
+      "raceClass": "This chaotic good, 2nd_ _level, dwarf fighter",
+      "hd": "3d8"
+    },
+    "canonicalParenthetical": "HP 18, AC 10, disposition chaotic good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries a loin cloth."
+  },
+  {
+    "sourceIndex": 174887,
+    "title": "Wilbur Hornblower",
+    "labels": {
+      "inline": "Wilbur Hornblower",
+      "titleLine": "- **Prisoner #5: Fat spice merchant.** This is Wilbur Hornblower. This man's wagon was assaulted by the _Little Hillwood Werewolf_ _(#A)_ ten miles away on the Menhir Hills Road. His guards were killed, their throats torn, and his plump wife, who was wearing her finest red silk dress, was carried off by the shapechanger while the fat man cowered under a blanket. In the aftermath, he found the courage to take up the sword of one of his guards and venture down the Old Castle Track. There he avoided a ravenous owlbear, was hounded by ape-men (losels), and eventually was captured by goblin raiders of this tribe. Wilbur is a fat, bald man with rosy cheeks and fleshy jowls. He demands to be rescued first, citing himself as a nobleman of great wealth (a lie). He will offer 100 gp for his rescue and return to Yggsburgh, another 100 gp for the rescue of his wife, Gertrude (she is dead). This man is scheduled to be sacrificed to Gubeezablu in the chapel #17."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral, 0th level, human commoner's vital stats are HP 2, AC 8. His prime attributes are mental. He has Business Ability at Level 3.",
+      "start": 174887,
+      "end": 175026,
+      "startLine": 1587,
+      "endLine": 1587,
+      "titleLineNum": 1585,
+      "titleLine": "- **Prisoner #5: Fat spice merchant.** This is Wilbur Hornblower. This man's wagon was assaulted by the _Little Hillwood Werewolf_ _(#A)_ ten miles away on the Menhir Hills Road. His guards were killed, their throats torn, and his plump wife, who was wearing her finest red silk dress, was carried off by the shapechanger while the fat man cowered under a blanket. In the aftermath, he found the courage to take up the sword of one of his guards and venture down the Old Castle Track. There he avoided a ravenous owlbear, was hounded by ape-men (losels), and eventually was captured by goblin raiders of this tribe. Wilbur is a fat, bald man with rosy cheeks and fleshy jowls. He demands to be rescued first, citing himself as a nobleman of great wealth (a lie). He will offer 100 gp for his rescue and return to Yggsburgh, another 100 gp for the rescue of his wife, Gertrude (she is dead). This man is scheduled to be sacrificed to Gubeezablu in the chapel #17.",
+      "inlineLabel": "Wilbur Hornblower",
+      "inlineContext": "**Wilbur Hornblower:** _",
+      "lineText": "**Wilbur Hornblower:** _(This neutral, 0th level, human commoner's vital stats are HP 2, AC 8. His prime attributes are mental. He has Business Ability at Level 3.)_",
+      "snippet": "- **Prisoner #5: Fat spice merchant.** This is Wilbur Hornblower. This man's wagon was assaulted by the _Little Hillwood Werewolf_ _(#A)_ ten miles away on the Menhir Hills Road. His guards were killed, their throats torn, and his plump wife, who was wearing her finest red silk dress, was carried off by the shapechanger while the fat man cowered under a blanket. In the aftermath, he found the courage to take up the sword of one of his guards and venture down the Old Castle Track. There he avoided a ravenous owlbear, was hounded by ape-men (losels), and eventually was captured by goblin raiders of this tribe. Wilbur is a fat, bald man with rosy cheeks and fleshy jowls. He demands to be rescued first, citing himself as a nobleman of great wealth (a lie). He will offer 100 gp for his rescue and return to Yggsburgh, another 100 gp for the rescue of his wife, Gertrude (she is dead). This man is scheduled to be sacrificed to Gubeezablu in the chapel #17. **Wilbur Hornblower:** _(This neutral, 0th level, human commoner's vital stats are HP 2, AC 8. His prime attributes are mental. He has Business Ability at Level 3.)_",
+      "hp": 2,
+      "ac": 8,
+      "hd": null,
+      "xp": null,
+      "level": 0,
+      "raceClass": "This neutral, 0th level, human commoner",
+      "notes": "This neutral, 0th level, human commoner's vital stats are HP 2, AC 8. His prime attributes are mental. He has Business Ability at Level 3."
+    },
+    "canonicalData": {
+      "raw": "This neutral, 0th level, human commoner's vital stats are HP 2, AC 8. His prime attributes are mental. He has Business Ability at Level 3.",
+      "hp": "2",
+      "ac": "8",
+      "disposition": "neutrality",
+      "attributes": "mental",
+      "raceClass": "This neutral, 0th level, human commoner"
+    },
+    "canonicalParenthetical": "HP 2, AC 8, disposition neutrality. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
+  },
+  {
+    "sourceIndex": 177449,
+    "title": "Goblin shaman",
+    "labels": {
+      "inline": "Goblin shaman",
+      "titleLine": "If the PCs enter the room, the **4 goblin skeletons** emerge from shallow alcoves (2 in each alcove) on either side of the door, dry bones springing to animated state, grabbing their spears and attacking. The skeletons will surprise the unwary_._ If the shaman is here when intruders present, he will cast _protection from good_, then burst out from the silk beddings and cry “KREE-AHK!” thus summoning any surrounding goblins to assist."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "This lawful evil humanoid's vital stats are HD 4d6, HP 15, AC 10, MV 20 ft. Its saves are mental and physical. Its significant attribute is wisdom 18. It has darkvision 60' and light sensitivity [-1 to attacks in bright light]. It carries a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21. The shaman typically has the following spells prepared: detect good x 2, detect magic x 2, protection from good x 2, cause fear, cause paralysis, hold person. XP: 200",
+      "start": 177449,
+      "end": 178097,
+      "startLine": 1611,
+      "endLine": 1611,
+      "titleLineNum": 1609,
+      "titleLine": "If the PCs enter the room, the **4 goblin skeletons** emerge from shallow alcoves (2 in each alcove) on either side of the door, dry bones springing to animated state, grabbing their spears and attacking. The skeletons will surprise the unwary_._ If the shaman is here when intruders present, he will cast _protection from good_, then burst out from the silk beddings and cry “KREE-AHK!” thus summoning any surrounding goblins to assist.",
+      "inlineLabel": "Goblin shaman",
+      "inlineContext": "**Goblin shaman:** _",
+      "lineText": "**Goblin shaman:** _(This lawful evil humanoid's vital stats are HD 4d6, HP 15, AC 10, MV 20 ft. Its saves are mental and physical. Its significant attribute is wisdom 18. It has darkvision 60' and light sensitivity [-1 to attacks in bright light]. It carries a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21. The shaman typically has the following spells prepared: detect good x 2, detect magic x 2, protection from good x 2, cause fear, cause paralysis, hold person. XP: 200)_",
+      "snippet": "If the PCs enter the room, the **4 goblin skeletons** emerge from shallow alcoves (2 in each alcove) on either side of the door, dry bones springing to animated state, grabbing their spears and attacking. The skeletons will surprise the unwary_._ If the shaman is here when intruders present, he will cast _protection from good_, then burst out from the silk beddings and cry “KREE-AHK!” thus summoning any surrounding goblins to assist. **Goblin shaman:** _(This lawful evil humanoid's vital stats are HD 4d6, HP 15, AC 10, MV 20 ft. Its saves are mental and physical. Its significant attribute is wisdom 18. It has darkvision 60' and light sensitivity [-1 to attacks in bright light]. It carries a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21. The shaman typically has the following spells prepared: detect good x 2, detect magic x 2, protection from good x 2, cause fear, cause paralysis, hold person. XP: 200)_",
+      "hp": 15,
+      "ac": 10,
+      "hd": "4d6",
+      "xp": "200",
+      "level": null,
+      "raceClass": "This lawful evil humanoid",
+      "notes": "This lawful evil humanoid's vital stats are HD 4d6, HP 15, AC 10, MV 20 ft. Its saves are mental and physical. Its significant attribute is wisdom 18. It has darkvision 60' and light sensitivity [-1 to attacks in bright light]. It carries a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21. The shaman typically has the following spells prepared: detect good x 2, detect magic x 2, protection from good x 2, cause fear, cause paralysis, hold person. XP: 200"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil humanoid's vital stats are HD 4d6, HP 15, AC 10, MV 20 ft. Its saves are mental and physical. Its significant attribute is wisdom 18. It has darkvision 60' and light sensitivity [-1 to attacks in bright light]. It carries a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21. The shaman typically has the following spells prepared: detect good x 2, detect magic x 2, protection from good x 2, cause fear, cause paralysis, hold person. XP: 200",
+      "hd": "4d6",
+      "hp": "15",
+      "ac": "10",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "ralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21",
+      "equipment": "a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21",
+      "jewelry": "250 gold worth of jewelry",
+      "coins": "30 gp, 250 gp"
+    },
+    "canonicalParenthetical": "HP 15, AC 10, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, and a key to door #21, and 30 gp, 250 gp. He carries two hundred fifty in jewelry."
+  },
+  {
+    "sourceIndex": 178128,
+    "title": "Goblin Skeletons x 4",
+    "labels": {
+      "inline": "Goblin Skeletons x 4",
+      "titleLine": "**Goblin shaman:** _(This lawful evil humanoid's vital stats are HD 4d6, HP 15, AC 10, MV 20 ft. Its saves are mental and physical. Its significant attribute is wisdom 18. It has darkvision 60' and light sensitivity [-1 to attacks in bright light]. It carries a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21. The shaman typically has the following spells prepared: detect good x 2, detect magic x 2, protection from good x 2, cause fear, cause paralysis, hold person. XP: 200)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral undeads' vital stats are HD 1d12, HP 8, AC 13, MV 30 ft. Their saves are physical. They attack with spears for 1d6 damage. Their special ability is they take half damage when attacked with slashing or piercing weapons, while blunt weapons do normal damage. XP: 10+1",
+      "start": 178128,
+      "end": 178408,
+      "startLine": 1613,
+      "endLine": 1613,
+      "titleLineNum": 1611,
+      "titleLine": "**Goblin shaman:** _(This lawful evil humanoid's vital stats are HD 4d6, HP 15, AC 10, MV 20 ft. Its saves are mental and physical. Its significant attribute is wisdom 18. It has darkvision 60' and light sensitivity [-1 to attacks in bright light]. It carries a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21. The shaman typically has the following spells prepared: detect good x 2, detect magic x 2, protection from good x 2, cause fear, cause paralysis, hold person. XP: 200)_",
+      "inlineLabel": "Goblin Skeletons x 4",
+      "inlineContext": "**Goblin Skeletons x 4:** _",
+      "lineText": "**Goblin Skeletons x 4:** _(These neutral undeads' vital stats are HD 1d12, HP 8, AC 13, MV 30 ft. Their saves are physical. They attack with spears for 1d6 damage. Their special ability is they take half damage when attacked with slashing or piercing weapons, while blunt weapons do normal damage. XP: 10+1)_ ",
+      "snippet": "**Goblin shaman:** _(This lawful evil humanoid's vital stats are HD 4d6, HP 15, AC 10, MV 20 ft. Its saves are mental and physical. Its significant attribute is wisdom 18. It has darkvision 60' and light sensitivity [-1 to attacks in bright light]. It carries a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21. The shaman typically has the following spells prepared: detect good x 2, detect magic x 2, protection from good x 2, cause fear, cause paralysis, hold person. XP: 200)_ **Goblin Skeletons x 4:** _(These neutral undeads' vital stats are HD 1d12, HP 8, AC 13, MV 30 ft. Their saves are physical. They attack with spears for 1d6 damage. Their special ability is they take half damage when attacked with slashing or piercing weapons, while blunt weapons do normal damage. XP: 10+1)_",
+      "hp": 8,
+      "ac": 13,
+      "hd": "1d12",
+      "xp": "10+1",
+      "level": null,
+      "raceClass": "These neutral undeads'",
+      "notes": "These neutral undeads' vital stats are HD 1d12, HP 8, AC 13, MV 30 ft. Their saves are physical. They attack with spears for 1d6 damage. Their special ability is they take half damage when attacked with slashing or piercing weapons, while blunt weapons do normal damage. XP: 10+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral undeads' vital stats are HD 1d12, HP 8, AC 13, MV 30 ft. Their saves are physical. They attack with spears for 1d6 damage. Their special ability is they take half damage when attacked with slashing or piercing weapons, while blunt weapons do normal damage. XP: 10+1",
+      "hd": "1d12",
+      "hp": "8",
+      "ac": "13",
+      "disposition": "neutrality",
+      "raceClass": "undead",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d12), HP 8, AC 13, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 181975,
+    "title": "Goblin warriors x 2",
+    "labels": {
+      "inline": "Goblin warriors x 2",
+      "titleLine": "There are **2 goblin guards** stationed at the top of the 8 stairs (a 7-foot rise total) to this room. They will throw javelins down at intruders from their high vantage point _(+1 \"to hit\" from above)_ and shout, _“KREE-AHK!”_ During the evening hours (say 7 to 10 pm) the chieftain is often (75%) attended by his **shaman** (see #21 for stats)."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 6, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, javelin x 2, and 1d6 sp. XP: 5+1",
+      "start": 181975,
+      "end": 182271,
+      "startLine": 1646,
+      "endLine": 1646,
+      "titleLineNum": 1644,
+      "titleLine": "There are **2 goblin guards** stationed at the top of the 8 stairs (a 7-foot rise total) to this room. They will throw javelins down at intruders from their high vantage point _(+1 \"to hit\" from above)_ and shout, _“KREE-AHK!”_ During the evening hours (say 7 to 10 pm) the chieftain is often (75%) attended by his **shaman** (see #21 for stats).",
+      "inlineLabel": "Goblin warriors x 2",
+      "inlineContext": "**Goblin warriors x 2:** _",
+      "lineText": "**Goblin warriors x 2:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 6, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, javelin x 2, and 1d6 sp. XP: 5+1)_",
+      "snippet": "There are **2 goblin guards** stationed at the top of the 8 stairs (a 7-foot rise total) to this room. They will throw javelins down at intruders from their high vantage point _(+1 \"to hit\" from above)_ and shout, _“KREE-AHK!”_ During the evening hours (say 7 to 10 pm) the chieftain is often (75%) attended by his **shaman** (see #21 for stats). **Goblin warriors x 2:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 6, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, javelin x 2, and 1d6 sp. XP: 5+1)_",
+      "hp": 6,
+      "ac": 14,
+      "hd": "1d6",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "equipped with leather armor, belt axe, shortsword, javelin x 2, and 1d6 sp",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 6, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, javelin x 2, and 1d6 sp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 6, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, javelin x 2, and 1d6 sp. XP: 5+1",
+      "hd": "1d6",
+      "hp": "6",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "coins": "6 sp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 6, AC 14, disposition lawful evil. Saves: P. They have 6 silver in coin."
+  },
+  {
+    "sourceIndex": 184388,
+    "title": "Gruzz Kree (Goblin Chieftain)",
+    "labels": {
+      "inline": "Gruzz Kree (Goblin Chieftain)",
+      "titleLine": "Of course the chieftain will attack any intruders, his concubines cowering in fear and attacking only if cornered thus."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132",
+      "start": 184388,
+      "end": 184795,
+      "startLine": 1674,
+      "endLine": 1674,
+      "titleLineNum": 1672,
+      "titleLine": "Of course the chieftain will attack any intruders, his concubines cowering in fear and attacking only if cornered thus.",
+      "inlineLabel": "Gruzz Kree (Goblin Chieftain)",
+      "inlineContext": "**Gruzz Kree (Goblin Chieftain):** _",
+      "lineText": "**Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_",
+      "snippet": "Of course the chieftain will attack any intruders, his concubines cowering in fear and attacking only if cornered thus. **Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_",
+      "hp": 18,
+      "ac": 18,
+      "hd": "4d6",
+      "xp": "132",
+      "level": null,
+      "raceClass": "This lawful evil humanoid",
+      "notes": "This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132",
+      "hd": "4d6",
+      "hp": "18",
+      "ac": "18",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "strength",
+      "jewelry": "50 gold worth of jewelry",
+      "coins": "12 gp, 50 gp"
+    },
+    "canonicalParenthetical": "HP 18, AC 18, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 12 gp, 50 gp and fifty in jewelry."
+  },
+  {
+    "sourceIndex": 184824,
+    "title": "Goblin females x 6",
+    "labels": {
+      "inline": "Goblin females x 6",
+      "titleLine": "**Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1",
+      "start": 184824,
+      "end": 184949,
+      "startLine": 1676,
+      "endLine": 1676,
+      "titleLineNum": 1674,
+      "titleLine": "**Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_",
+      "inlineLabel": "Goblin females x 6",
+      "inlineContext": "**Goblin females x 6:** _",
+      "lineText": "**Goblin females x 6:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1)_",
+      "snippet": "**Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_ **Goblin females x 6:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1)_",
+      "hp": 2,
+      "ac": 12,
+      "hd": "1d6",
+      "xp": "3+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 2, AC 12. Their saves are physical. They have 5-inch knives, XP: 3+1",
+      "hd": "1d6",
+      "hp": "2",
+      "ac": "12",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 2, AC 12, disposition lawful evil. Saves: P."
+  },
+  {
+    "sourceIndex": 186327,
+    "title": "Cave bats x 80",
+    "labels": {
+      "inline": "Cave bats x 80",
+      "titleLine": "The passage is narrow, opening to a cave measuring around 35 by 40 feet with a 20–foot high ceiling that is filled with bats. The description below is intended for daytime exploration; at night the bats are out. Encountering the bats is not very likely unless the characters light a large fire or otherwise attempt to disturb them. Another possibility is probing about this cave at dawn or dusk when the bats migrate to and from their roost."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1",
+      "start": 186327,
+      "end": 186742,
+      "startLine": 1698,
+      "endLine": 1698,
+      "titleLineNum": 1696,
+      "titleLine": "The passage is narrow, opening to a cave measuring around 35 by 40 feet with a 20–foot high ceiling that is filled with bats. The description below is intended for daytime exploration; at night the bats are out. Encountering the bats is not very likely unless the characters light a large fire or otherwise attempt to disturb them. Another possibility is probing about this cave at dawn or dusk when the bats migrate to and from their roost.",
+      "inlineLabel": "Cave bats x 80",
+      "inlineContext": "**Cave bats x 80:** _",
+      "lineText": "**Cave bats x 80:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_",
+      "snippet": "The passage is narrow, opening to a cave measuring around 35 by 40 feet with a 20–foot high ceiling that is filled with bats. The description below is intended for daytime exploration; at night the bats are out. Encountering the bats is not very likely unless the characters light a large fire or otherwise attempt to disturb them. Another possibility is probing about this cave at dawn or dusk when the bats migrate to and from their roost. **Cave bats x 80:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_",
+      "hp": 1,
+      "ac": 12,
+      "hd": "1d2",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1",
+      "hd": "1d2",
+      "hp": "1",
+      "ac": "12",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d2), HP 1, AC 12, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 188927,
+    "title": ")** _",
+    "labels": {
+      "inline": ")** _",
+      "titleLine": "Any PC passed out or otherwise crawling on the guano will suffer d6 damage per round so doing (nibbling **flesh beetles**), as well as having a 25% chance per round of contracting a fatal disease that will have an onset in 2d8 days and cause the loss of 1 HP per day thereafter until the character dies or a _cure disease_ spell is successfully cast upon him."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral insects' vital stats are HD 1d2, HP 1, AC 11, MV 10 ft. Their saves are none. They bite for 0-1 points of damage, eating 6 points of flesh damage until sated. XP: 1+1",
+      "start": 188927,
+      "end": 189108,
+      "startLine": 1714,
+      "endLine": 1714,
+      "titleLineNum": 1712,
+      "titleLine": "Any PC passed out or otherwise crawling on the guano will suffer d6 damage per round so doing (nibbling **flesh beetles**), as well as having a 25% chance per round of contracting a fatal disease that will have an onset in 2d8 days and cause the loss of 1 HP per day thereafter until the character dies or a _cure disease_ spell is successfully cast upon him.",
+      "inlineLabel": ")** _",
+      "inlineContext": "**Flesh Beetles* x 100 (c.)** _",
+      "lineText": "**Flesh Beetles* x 100 (c.)** _(These neutral insects' vital stats are HD 1d2, HP 1, AC 11, MV 10 ft. Their saves are none. They bite for 0-1 points of damage, eating 6 points of flesh damage until sated. XP: 1+1)_ ",
+      "snippet": "Any PC passed out or otherwise crawling on the guano will suffer d6 damage per round so doing (nibbling **flesh beetles**), as well as having a 25% chance per round of contracting a fatal disease that will have an onset in 2d8 days and cause the loss of 1 HP per day thereafter until the character dies or a _cure disease_ spell is successfully cast upon him. **Flesh Beetles* x 100 (c.)** _(These neutral insects' vital stats are HD 1d2, HP 1, AC 11, MV 10 ft. Their saves are none. They bite for 0-1 points of damage, eating 6 points of flesh damage until sated. XP: 1+1)_",
+      "hp": 1,
+      "ac": 11,
+      "hd": "1d2",
+      "xp": "1+1",
+      "level": null,
+      "raceClass": "These neutral insects'",
+      "notes": "These neutral insects' vital stats are HD 1d2, HP 1, AC 11, MV 10 ft. Their saves are none. They bite for 0-1 points of damage, eating 6 points of flesh damage until sated. XP: 1+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral insects' vital stats are HD 1d2, HP 1, AC 11, MV 10 ft. Their saves are none. They bite for 0-1 points of damage, eating 6 points of flesh damage until sated. XP: 1+1",
+      "hd": "1d2",
+      "hp": "1",
+      "ac": "11",
+      "disposition": "neutrality",
+      "raceClass": "These neutral insects'",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d2), HP 1, AC 11, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 190284,
+    "title": "Snakes, poisonous",
+    "labels": {
+      "inline": "Snakes, poisonous",
+      "titleLine": "One minute here, and **1d6+2 snakes** will slither out from the holes. They are 3.5 to 4.5 feet long and of black coloration, with yellow underbellies and orange markings along their vertebrae. They seek prey (mice, voles, etc.) While the snakes only consume small mammals, they are aggressive toward intruders."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save versus poison reduces damage to one-half [1d3]. XP: 9+1",
+      "start": 190284,
+      "end": 190552,
+      "startLine": 1732,
+      "endLine": 1732,
+      "titleLineNum": 1730,
+      "titleLine": "One minute here, and **1d6+2 snakes** will slither out from the holes. They are 3.5 to 4.5 feet long and of black coloration, with yellow underbellies and orange markings along their vertebrae. They seek prey (mice, voles, etc.) While the snakes only consume small mammals, they are aggressive toward intruders.",
+      "inlineLabel": "Snakes, poisonous",
+      "inlineContext": "**Snakes, poisonous:** _",
+      "lineText": "**Snakes, poisonous:** _(These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save versus poison reduces damage to one-half [1d3]. XP: 9+1)_",
+      "snippet": "One minute here, and **1d6+2 snakes** will slither out from the holes. They are 3.5 to 4.5 feet long and of black coloration, with yellow underbellies and orange markings along their vertebrae. They seek prey (mice, voles, etc.) While the snakes only consume small mammals, they are aggressive toward intruders. **Snakes, poisonous:** _(These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save versus poison reduces damage to one-half [1d3]. XP: 9+1)_",
+      "hp": 4,
+      "ac": 14,
+      "hd": "1d6",
+      "xp": "9+1",
+      "level": null,
+      "raceClass": "These neutral animals'",
+      "notes": "These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save versus poison reduces damage to one-half [1d3]. XP: 9+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save versus poison reduces damage to one-half [1d3]. XP: 9+1",
+      "hd": "1d6",
+      "hp": "4",
+      "ac": "14",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 192531,
+    "title": "Green slime",
+    "labels": {
+      "inline": "Green slime",
+      "titleLine": "A **green slime** colony infests the body of the gnoll, the humanoid having been tossed here by rival orcs. Its eyes have been chewed out by rats. There is nothing of value here."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral creature's vital stats are HD 4d8, HP 16, AC 10. Its saves are none. It has no attack; rather it reacts when its colony is touched, converting organic or metallic matter to slime, or it drops down from above, sensing the vibrations of its victim. When a slime adheres to its victim, it causes 2d6 constitution damage per turn until at 0 con it turns its victim into green slime. If done quickly, it can_ _scraped_ _off [the item used must be discarded], extracted, burned off or frozen. Otherwise, it can only be destroyed_ _by the use of_ _a remove disease spell. No other attacks--including weapons, spells, and magic effects not described above--will harm the creature. XP: 184",
+      "start": 192531,
+      "end": 193225,
+      "startLine": 1758,
+      "endLine": 1758,
+      "titleLineNum": 1756,
+      "titleLine": "A **green slime** colony infests the body of the gnoll, the humanoid having been tossed here by rival orcs. Its eyes have been chewed out by rats. There is nothing of value here.",
+      "inlineLabel": "Green slime",
+      "inlineContext": "**Green slime:** _",
+      "lineText": "**Green slime:** _(This neutral creature's vital stats are HD 4d8, HP 16, AC 10. Its saves are none. It has no attack; rather it reacts when its colony is touched, converting organic or metallic matter to slime, or it drops down from above, sensing the vibrations of its victim. When a slime adheres to its victim, it causes 2d6 constitution damage per turn until at 0 con it turns its victim into green slime. If done quickly, it can_ _scraped_ _off [the item used must be discarded], extracted, burned off or frozen. Otherwise, it can only be destroyed_ _by the use of_ _a remove disease spell. No other attacks--including weapons, spells, and magic effects not described above--will harm the creature. XP: 184)_ ",
+      "snippet": "A **green slime** colony infests the body of the gnoll, the humanoid having been tossed here by rival orcs. Its eyes have been chewed out by rats. There is nothing of value here. **Green slime:** _(This neutral creature's vital stats are HD 4d8, HP 16, AC 10. Its saves are none. It has no attack; rather it reacts when its colony is touched, converting organic or metallic matter to slime, or it drops down from above, sensing the vibrations of its victim. When a slime adheres to its victim, it causes 2d6 constitution damage per turn until at 0 con it turns its victim into green slime. If done quickly, it can_ _scraped_ _off [the item used must be discarded], extracted, burned off or frozen. Otherwise, it can only be destroyed_ _by the use of_ _a remove disease spell. No other attacks--including weapons, spells, and magic effects not described above--will harm the creature. XP: 184)_",
+      "hp": 16,
+      "ac": 10,
+      "hd": "4d8",
+      "xp": "184",
+      "level": null,
+      "raceClass": "This neutral creature",
+      "notes": "This neutral creature's vital stats are HD 4d8, HP 16, AC 10. Its saves are none. It has no attack; rather it reacts when its colony is touched, converting organic or metallic matter to slime, or it drops down from above, sensing the vibrations of its victim. When a slime adheres to its victim, it causes 2d6 constitution damage per turn until at 0 con it turns its victim into green slime. If done quickly, it can_ _scraped_ _off [the item used must be discarded], extracted, burned off or frozen. Otherwise, it can only be destroyed_ _by the use of_ _a remove disease spell. No other attacks--including weapons, spells, and magic effects not described above--will harm the creature. XP: 184"
+    },
+    "canonicalData": {
+      "raw": "This neutral creature's vital stats are HD 4d8, HP 16, AC 10. Its saves are none. It has no attack; rather it reacts when its colony is touched, converting organic or metallic matter to slime, or it drops down from above, sensing the vibrations of its victim. When a slime adheres to its victim, it causes 2d6 constitution damage per turn until at 0 con it turns its victim into green slime. If done quickly, it can_ _scraped_ _off [the item used must be discarded], extracted, burned off or frozen. Otherwise, it can only be destroyed_ _by the use of_ _a remove disease spell. No other attacks--including weapons, spells, and magic effects not described above--will harm the creature. XP: 184",
+      "hd": "4d8",
+      "hp": "16",
+      "ac": "10",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 4(d8), HP 16, AC 10, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 194494,
+    "title": "Rats, giant x 3-12",
+    "labels": {
+      "inline": "Rats, giant x 3-12",
+      "titleLine": "The pool is of 2.5 feet in depth. Its water is stagnant, the walls a sheen of rust-brown mold. **Giant rats** (variable in number, as they scavenge outside as well) nest here in the various cubbyholes, these rodents conditioned to avoid the resident green slime of #26. They thus enjoy the \"clean\" parts of bodies tossed into this cave. The rats, however, will sometimes chew on the mushrooms, these being **_sunset mushrooms_***, which have a sopoforic effect."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1",
+      "start": 194494,
+      "end": 194806,
+      "startLine": 1772,
+      "endLine": 1772,
+      "titleLineNum": 1770,
+      "titleLine": "The pool is of 2.5 feet in depth. Its water is stagnant, the walls a sheen of rust-brown mold. **Giant rats** (variable in number, as they scavenge outside as well) nest here in the various cubbyholes, these rodents conditioned to avoid the resident green slime of #26. They thus enjoy the \"clean\" parts of bodies tossed into this cave. The rats, however, will sometimes chew on the mushrooms, these being **_sunset mushrooms_***, which have a sopoforic effect.",
+      "inlineLabel": "Rats, giant x 3-12",
+      "inlineContext": "**Rats, giant x 3-12:** _",
+      "lineText": "**Rats, giant x 3-12:** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_",
+      "snippet": "The pool is of 2.5 feet in depth. Its water is stagnant, the walls a sheen of rust-brown mold. **Giant rats** (variable in number, as they scavenge outside as well) nest here in the various cubbyholes, these rodents conditioned to avoid the resident green slime of #26. They thus enjoy the \"clean\" parts of bodies tossed into this cave. The rats, however, will sometimes chew on the mushrooms, these being **_sunset mushrooms_***, which have a sopoforic effect. **Rats, giant x 3-12:** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_",
+      "hp": 2,
+      "ac": 13,
+      "hd": "1d4",
+      "xp": "1+1",
+      "level": null,
+      "raceClass": "These neutral animals'",
+      "notes": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1",
+      "hd": "1d4",
+      "hp": "2",
+      "ac": "13",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d4), HP 2, AC 13, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 196194,
+    "title": "Gray Ooze (small)",
+    "labels": {
+      "inline": "Gray Ooze (small)",
+      "titleLine": "This large cavern is home to a **small gray ooze** that lurks just inside the pool by the tunnel leading north via a narrow flight of steps to the goblin chapel #17. It blends with its surroundings, waiting for some hapless creature to come within its striking range. It strikes like a serpent."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "This neutral creature's vital stats are HD 2d10, HP 15, AC 12, MV 10 ft. Its saves are physical. It attacks with an acid slam for 1d8 points of damage. This acid corrodes metal at a rate of 1 round for chain mail, 2 rounds for plate mail. If the armor is magical, each +1 adds another round before the armor is corroded. Its acid does not harm stone or wood. It is not harmed by spells, cold effects, or fire/heat effects. Electrical attacks do full damage. Weapons do normal damage but may corrode or break if metal. Corrosion is per the CK's discretion -- a sword might corrode in 1 round, a battle axe in 2, a warhammer in 3; every magical +1 adds an extra round to the weapon's survival. XP: 95",
+      "start": 196194,
+      "end": 196893,
+      "startLine": 1790,
+      "endLine": 1790,
+      "titleLineNum": 1788,
+      "titleLine": "This large cavern is home to a **small gray ooze** that lurks just inside the pool by the tunnel leading north via a narrow flight of steps to the goblin chapel #17. It blends with its surroundings, waiting for some hapless creature to come within its striking range. It strikes like a serpent.",
+      "inlineLabel": "Gray Ooze (small)",
+      "inlineContext": "**Gray Ooze (small):** _",
+      "lineText": "**Gray Ooze (small):** _(This neutral creature's vital stats are HD 2d10, HP 15, AC 12, MV 10 ft. Its saves are physical. It attacks with an acid slam for 1d8 points of damage. This acid corrodes metal at a rate of 1 round for chain mail, 2 rounds for plate mail. If the armor is magical, each +1 adds another round before the armor is corroded. Its acid does not harm stone or wood. It is not harmed by spells, cold effects, or fire/heat effects. Electrical attacks do full damage. Weapons do normal damage but may corrode or break if metal. Corrosion is per the CK's discretion -- a sword might corrode in 1 round, a battle axe in 2, a warhammer in 3; every magical +1 adds an extra round to the weapon's survival. XP: 95)_",
+      "snippet": "This large cavern is home to a **small gray ooze** that lurks just inside the pool by the tunnel leading north via a narrow flight of steps to the goblin chapel #17. It blends with its surroundings, waiting for some hapless creature to come within its striking range. It strikes like a serpent. **Gray Ooze (small):** _(This neutral creature's vital stats are HD 2d10, HP 15, AC 12, MV 10 ft. Its saves are physical. It attacks with an acid slam for 1d8 points of damage. This acid corrodes metal at a rate of 1 round for chain mail, 2 rounds for plate mail. If the armor is magical, each +1 adds another round before the armor is corroded. Its acid does not harm stone or wood. It is not harmed by spells, cold effects, or fire/heat effects. Electrical attacks do full damage. Weapons do normal damage but may corrode or break if metal. Corrosion is per the CK's discretion -- a sword might corrode in 1 round, a battle axe in 2, a warhammer in 3; every magical +1 adds an extra round to the weapon's survival. XP: 95)_",
+      "hp": 15,
+      "ac": 12,
+      "hd": "2d10",
+      "xp": "95",
+      "level": null,
+      "raceClass": "This neutral creature",
+      "notes": "This neutral creature's vital stats are HD 2d10, HP 15, AC 12, MV 10 ft. Its saves are physical. It attacks with an acid slam for 1d8 points of damage. This acid corrodes metal at a rate of 1 round for chain mail, 2 rounds for plate mail. If the armor is magical, each +1 adds another round before the armor is corroded. Its acid does not harm stone or wood. It is not harmed by spells, cold effects, or fire/heat effects. Electrical attacks do full damage. Weapons do normal damage but may corrode or break if metal. Corrosion is per the CK's discretion -- a sword might corrode in 1 round, a battle axe in 2, a warhammer in 3; every magical +1 adds an extra round to the weapon's survival. XP: 95"
+    },
+    "canonicalData": {
+      "raw": "This neutral creature's vital stats are HD 2d10, HP 15, AC 12, MV 10 ft. Its saves are physical. It attacks with an acid slam for 1d8 points of damage. This acid corrodes metal at a rate of 1 round for chain mail, 2 rounds for plate mail. If the armor is magical, each +1 adds another round before the armor is corroded. Its acid does not harm stone or wood. It is not harmed by spells, cold effects, or fire/heat effects. Electrical attacks do full damage. Weapons do normal damage but may corrode or break if metal. Corrosion is per the CK's discretion -- a sword might corrode in 1 round, a battle axe in 2, a warhammer in 3; every magical +1 adds an extra round to the weapon's survival. XP: 95",
+      "hd": "2d10",
+      "hp": "15",
+      "ac": "12",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 2(d10), HP 15, AC 12, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 199320,
+    "title": "Black Centipedes, giant x 5",
+    "labels": {
+      "inline": "Black Centipedes, giant x 5",
+      "titleLine": "Wet and vulnerable, such victims will at once be attacked by the resident centipedes. The huge centipedes have a nest located at a position of the Castle Keeper's choosing. These creatures are black with orange spots, of 1.5 feet in length, and have gnashing pincers. There are about **20 young centipedes** here, these of 3-inch length and harmless . . . for now."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 1d4, HP 2, AC 18, Move 25 feet. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is_ _successful_ _the victim must save versus poison or take another 2d6 points of damage. XP: 7+1",
+      "start": 199320,
+      "end": 199590,
+      "startLine": 1812,
+      "endLine": 1812,
+      "titleLineNum": 1810,
+      "titleLine": "Wet and vulnerable, such victims will at once be attacked by the resident centipedes. The huge centipedes have a nest located at a position of the Castle Keeper's choosing. These creatures are black with orange spots, of 1.5 feet in length, and have gnashing pincers. There are about **20 young centipedes** here, these of 3-inch length and harmless . . . for now.",
+      "inlineLabel": "Black Centipedes, giant x 5",
+      "inlineContext": "**Black Centipedes, giant x 5:** _",
+      "lineText": "**Black Centipedes, giant x 5:** _(These neutral creatures' vital stats are HD 1d4, HP 2, AC 18, Move 25 feet. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is_ _successful_ _the victim must save versus poison or take another 2d6 points of damage. XP: 7+1)_",
+      "snippet": "Wet and vulnerable, such victims will at once be attacked by the resident centipedes. The huge centipedes have a nest located at a position of the Castle Keeper's choosing. These creatures are black with orange spots, of 1.5 feet in length, and have gnashing pincers. There are about **20 young centipedes** here, these of 3-inch length and harmless . . . for now. **Black Centipedes, giant x 5:** _(These neutral creatures' vital stats are HD 1d4, HP 2, AC 18, Move 25 feet. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is_ _successful_ _the victim must save versus poison or take another 2d6 points of damage. XP: 7+1)_",
+      "hp": 2,
+      "ac": 18,
+      "hd": "1d4",
+      "xp": "7+1",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 1d4, HP 2, AC 18, Move 25 feet. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is_ _successful_ _the victim must save versus poison or take another 2d6 points of damage. XP: 7+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 1d4, HP 2, AC 18, Move 25 feet. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is_ _successful_ _the victim must save versus poison or take another 2d6 points of damage. XP: 7+1",
+      "hd": "1d4",
+      "hp": "2",
+      "ac": "18",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d4), HP 2, AC 18, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 201602,
+    "title": "Orcs x 3",
+    "labels": {
+      "inline": "Orcs x 3",
+      "titleLine": "**Area #g:** There are **3 orc guards** stationed at the end of this 40-foot-long hall. An iron bell with a chain pull that threads into the stonework is set on the wall here, it tolling when the **pit trap [X]** above is triggered. If alerted by the bell, 2 of these orcs will rush to jab their spears at the pit trap victims while the third will alert the guards at #30."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d6 ep. XP: 5+1",
+      "start": 201602,
+      "end": 201879,
+      "startLine": 1834,
+      "endLine": 1834,
+      "titleLineNum": 1832,
+      "titleLine": "**Area #g:** There are **3 orc guards** stationed at the end of this 40-foot-long hall. An iron bell with a chain pull that threads into the stonework is set on the wall here, it tolling when the **pit trap [X]** above is triggered. If alerted by the bell, 2 of these orcs will rush to jab their spears at the pit trap victims while the third will alert the guards at #30.",
+      "inlineLabel": "Orcs x 3",
+      "inlineContext": "**Orcs x 3:** _",
+      "lineText": "**Orcs x 3:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d6 ep. XP: 5+1)_",
+      "snippet": "**Area #g:** There are **3 orc guards** stationed at the end of this 40-foot-long hall. An iron bell with a chain pull that threads into the stonework is set on the wall here, it tolling when the **pit trap [X]** above is triggered. If alerted by the bell, 2 of these orcs will rush to jab their spears at the pit trap victims while the third will alert the guards at #30. **Orcs x 3:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d6 ep. XP: 5+1)_",
+      "hp": 5,
+      "ac": 14,
+      "hd": "1d8",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d6 ep. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d6 ep. XP: 5+1",
+      "hd": "1d8",
+      "hp": "5",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d8), HP 5, AC 14, disposition lawful evil. Saves: P."
+  },
+  {
+    "sourceIndex": 202054,
+    "title": "Orcs x 4",
+    "labels": {
+      "inline": "Orcs x 4",
+      "titleLine": "The door is unlocked. There are **4 orcs guards** here. They will rush to the hue and cry of battle should intruders present."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d8 ep. XP: 5+1",
+      "start": 202054,
+      "end": 202331,
+      "startLine": 1840,
+      "endLine": 1840,
+      "titleLineNum": 1838,
+      "titleLine": "The door is unlocked. There are **4 orcs guards** here. They will rush to the hue and cry of battle should intruders present.",
+      "inlineLabel": "Orcs x 4",
+      "inlineContext": "**Orcs x 4:** _",
+      "lineText": "**Orcs x 4:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d8 ep. XP: 5+1)_",
+      "snippet": "The door is unlocked. There are **4 orcs guards** here. They will rush to the hue and cry of battle should intruders present. **Orcs x 4:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d8 ep. XP: 5+1)_",
+      "hp": 5,
+      "ac": 14,
+      "hd": "1d8",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d8 ep. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, war hammer, and 1d8 ep. XP: 5+1",
+      "hd": "1d8",
+      "hp": "5",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d8), HP 5, AC 14, disposition lawful evil. Saves: P."
+  },
+  {
+    "sourceIndex": 204714,
+    "title": "Orcs x 6",
+    "labels": {
+      "inline": "Orcs x 6",
+      "titleLine": "The males will rise to arms upon intrusion, issuing their hue and cry, and possibly (1-in-4 chance) summoning forth the chieftain, **King Krusher** (#35)."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, mace, and 1d8 ep. XP: 5+1",
+      "start": 204714,
+      "end": 204985,
+      "startLine": 1870,
+      "endLine": 1870,
+      "titleLineNum": 1868,
+      "titleLine": "The males will rise to arms upon intrusion, issuing their hue and cry, and possibly (1-in-4 chance) summoning forth the chieftain, **King Krusher** (#35).",
+      "inlineLabel": "Orcs x 6",
+      "inlineContext": "**Orcs x 6:** _",
+      "lineText": "**Orcs x 6:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, mace, and 1d8 ep. XP: 5+1)_",
+      "snippet": "The males will rise to arms upon intrusion, issuing their hue and cry, and possibly (1-in-4 chance) summoning forth the chieftain, **King Krusher** (#35). **Orcs x 6:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, mace, and 1d8 ep. XP: 5+1)_",
+      "hp": 5,
+      "ac": 14,
+      "hd": "1d8",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, mace, and 1d8 ep. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, spear, mace, and 1d8 ep. XP: 5+1",
+      "hd": "1d8",
+      "hp": "5",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d8), HP 5, AC 14, disposition lawful evil. Saves: P."
+  },
+  {
+    "sourceIndex": 205532,
+    "title": "Orc Guards x 2",
+    "labels": {
+      "inline": "Orc Guards x 2",
+      "titleLine": "This is where general meetings are held and gatherings prior to a religious ceremony. There are **2 orc guards** stationed here. They stand in the 10-foot-long passage at the north side, thus protecting the door to the chieftain's chamber (#35). They will not be immediately observed if the PCs enter this chamber, potentially surprising the party. Unless silenced before they are aware of the PCs, they will have let loose their battle cries and thus alert the chieftain of intrusion"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d8, HP 7, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1",
+      "start": 205532,
+      "end": 205825,
+      "startLine": 1876,
+      "endLine": 1876,
+      "titleLineNum": 1874,
+      "titleLine": "This is where general meetings are held and gatherings prior to a religious ceremony. There are **2 orc guards** stationed here. They stand in the 10-foot-long passage at the north side, thus protecting the door to the chieftain's chamber (#35). They will not be immediately observed if the PCs enter this chamber, potentially surprising the party. Unless silenced before they are aware of the PCs, they will have let loose their battle cries and thus alert the chieftain of intrusion",
+      "inlineLabel": "Orc Guards x 2",
+      "inlineContext": "**Orc Guards x 2:** _",
+      "lineText": "**Orc Guards x 2:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 7, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1)_",
+      "snippet": "This is where general meetings are held and gatherings prior to a religious ceremony. There are **2 orc guards** stationed here. They stand in the 10-foot-long passage at the north side, thus protecting the door to the chieftain's chamber (#35). They will not be immediately observed if the PCs enter this chamber, potentially surprising the party. Unless silenced before they are aware of the PCs, they will have let loose their battle cries and thus alert the chieftain of intrusion **Orc Guards x 2:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 7, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1)_",
+      "hp": 7,
+      "ac": 14,
+      "hd": "1d8",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d8, HP 7, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d8, HP 7, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1",
+      "hd": "1d8",
+      "hp": "7",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d8), HP 7, AC 14, disposition lawful evil. Saves: P."
+  },
+  {
+    "sourceIndex": 208684,
+    "title": "King Krusher (Orc Leader)",
+    "labels": {
+      "inline": "King Krusher (Orc Leader)",
+      "titleLine": "The door of this room **locked** _(CL 3 to pick, CL 8 to break down)_. It is guarded by the **2 orc guards** of room #33. This is where the orc leader, **King Krusher** resides, a massive orc who earned his leadership by way of combat and murder. Krusher is cruel and sadistic. His tribe is small, but he is quite ambitious, believing he will build a greater force and soon conquer his humanoid rivals, such as the goblins (#D) and the kobolds (#B). He has a mind for expansion above as well, to claim a tower of the Castle Precincts."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This lawful evil humanoid's vital stats are HD 3d8, HP 20, AC 18, MV 30 ft. His saves are physical. He does +2 damage on all attacks due to high strength and ferocity. His special abilities are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. He is equipped with plate mail armor, shield, +1 war hammer [+4 \"to hit\"; 1d8+3 damage], dagger, key to #35, key to #36, and 30 gp. XP: 100",
+      "start": 208684,
+      "end": 209093,
+      "startLine": 1904,
+      "endLine": 1904,
+      "titleLineNum": 1902,
+      "titleLine": "The door of this room **locked** _(CL 3 to pick, CL 8 to break down)_. It is guarded by the **2 orc guards** of room #33. This is where the orc leader, **King Krusher** resides, a massive orc who earned his leadership by way of combat and murder. Krusher is cruel and sadistic. His tribe is small, but he is quite ambitious, believing he will build a greater force and soon conquer his humanoid rivals, such as the goblins (#D) and the kobolds (#B). He has a mind for expansion above as well, to claim a tower of the Castle Precincts.",
+      "inlineLabel": "King Krusher (Orc Leader)",
+      "inlineContext": "**King Krusher (Orc Leader):** _",
+      "lineText": "**King Krusher (Orc Leader):** _(This lawful evil humanoid's vital stats are HD 3d8, HP 20, AC 18, MV 30 ft. His saves are physical. He does +2 damage on all attacks due to high strength and ferocity. His special abilities are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. He is equipped with plate mail armor, shield, +1 war hammer [+4 \"to hit\"; 1d8+3 damage], dagger, key to #35, key to #36, and 30 gp. XP: 100)_",
+      "snippet": "The door of this room **locked** _(CL 3 to pick, CL 8 to break down)_. It is guarded by the **2 orc guards** of room #33. This is where the orc leader, **King Krusher** resides, a massive orc who earned his leadership by way of combat and murder. Krusher is cruel and sadistic. His tribe is small, but he is quite ambitious, believing he will build a greater force and soon conquer his humanoid rivals, such as the goblins (#D) and the kobolds (#B). He has a mind for expansion above as well, to claim a tower of the Castle Precincts. **King Krusher (Orc Leader):** _(This lawful evil humanoid's vital stats are HD 3d8, HP 20, AC 18, MV 30 ft. His saves are physical. He does +2 damage on all attacks due to high strength and ferocity. His special abilities are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. He is equipped with plate mail armor, shield, +1 war hammer [+4 \"to hit\"; 1d8+3 damage], dagger, key to #35, key to #36, and 30 gp. XP: 100)_",
+      "hp": 20,
+      "ac": 18,
+      "hd": "3d8",
+      "xp": "100",
+      "level": null,
+      "raceClass": "This lawful evil humanoid",
+      "notes": "This lawful evil humanoid's vital stats are HD 3d8, HP 20, AC 18, MV 30 ft. His saves are physical. He does +2 damage on all attacks due to high strength and ferocity. His special abilities are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. He is equipped with plate mail armor, shield, +1 war hammer [+4 \"to hit\"; 1d8+3 damage], dagger, key to #35, key to #36, and 30 gp. XP: 100"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil humanoid's vital stats are HD 3d8, HP 20, AC 18, MV 30 ft. His saves are physical. He does +2 damage on all attacks due to high strength and ferocity. His special abilities are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. He is equipped with plate mail armor, shield, +1 war hammer [+4 \"to hit\"; 1d8+3 damage], dagger, key to #35, key to #36, and 30 gp. XP: 100",
+      "hd": "3d8",
+      "hp": "20",
+      "ac": "18",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "strength",
+      "coins": "30 gp"
+    },
+    "canonicalParenthetical": "HP 20, AC 18, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 30 gold in coin."
+  },
+  {
+    "sourceIndex": 209707,
+    "title": "Orc chieftain's mate",
+    "labels": {
+      "inline": "Orc chieftain's mate",
+      "titleLine": "The **chieftain's mate** is usually lying under the sheets of the four-poster. She is a round, voluptuous creature with a protruding lower jaw from which large fangs jut. She wears an obscene white silk dress, torn and stained. She cowers in the face of danger, begging for mercy."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This lawful evil humanoid's vital stats are HD 1d8, HP 4, AC 12, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. It carries a 4-inch knife, and 100 gp worth of gold jewelry. XP: 9",
+      "start": 209707,
+      "end": 209914,
+      "startLine": 1914,
+      "endLine": 1914,
+      "titleLineNum": 1912,
+      "titleLine": "The **chieftain's mate** is usually lying under the sheets of the four-poster. She is a round, voluptuous creature with a protruding lower jaw from which large fangs jut. She wears an obscene white silk dress, torn and stained. She cowers in the face of danger, begging for mercy.",
+      "inlineLabel": "Orc chieftain's mate",
+      "inlineContext": "**Orc chieftain's mate:** _",
+      "lineText": "**Orc chieftain's mate:** _(This lawful evil humanoid's vital stats are HD 1d8, HP 4, AC 12, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. It carries a 4-inch knife, and 100 gp worth of gold jewelry. XP: 9)_",
+      "snippet": "The **chieftain's mate** is usually lying under the sheets of the four-poster. She is a round, voluptuous creature with a protruding lower jaw from which large fangs jut. She wears an obscene white silk dress, torn and stained. She cowers in the face of danger, begging for mercy. **Orc chieftain's mate:** _(This lawful evil humanoid's vital stats are HD 1d8, HP 4, AC 12, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. It carries a 4-inch knife, and 100 gp worth of gold jewelry. XP: 9)_",
+      "hp": 4,
+      "ac": 12,
+      "hd": "1d8",
+      "xp": "9",
+      "level": null,
+      "raceClass": "This lawful evil humanoid",
+      "notes": "This lawful evil humanoid's vital stats are HD 1d8, HP 4, AC 12, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. It carries a 4-inch knife, and 100 gp worth of gold jewelry. XP: 9"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil humanoid's vital stats are HD 1d8, HP 4, AC 12, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. It carries a 4-inch knife, and 100 gp worth of gold jewelry. XP: 9",
+      "hd": "1d8",
+      "hp": "4",
+      "ac": "12",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "equipment": "a 4-inch knife, and 100 gp worth of gold jewelry",
+      "coins": "100 gp"
+    },
+    "canonicalParenthetical": "HP 4, AC 12, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries a 4-inch knife and 100 gold in coin."
+  },
+  {
+    "sourceIndex": 211369,
+    "title": "Orcs x 4",
+    "labels": {
+      "inline": "Orcs x 4",
+      "titleLine": "Recently, the orcs' only skilled engineer mysteriously disappeared (see #20), so the orcs have doubled their guards here. Thus there are **4 orc warriors** and **1 lieutenant** here at all times."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1",
+      "start": 211369,
+      "end": 211662,
+      "startLine": 1928,
+      "endLine": 1928,
+      "titleLineNum": 1926,
+      "titleLine": "Recently, the orcs' only skilled engineer mysteriously disappeared (see #20), so the orcs have doubled their guards here. Thus there are **4 orc warriors** and **1 lieutenant** here at all times.",
+      "inlineLabel": "Orcs x 4",
+      "inlineContext": "**Orcs x 4:** _",
+      "lineText": "**Orcs x 4:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1)_",
+      "snippet": "Recently, the orcs' only skilled engineer mysteriously disappeared (see #20), so the orcs have doubled their guards here. Thus there are **4 orc warriors** and **1 lieutenant** here at all times. **Orcs x 4:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1)_",
+      "hp": 5,
+      "ac": 14,
+      "hd": "1d8",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1",
+      "hd": "1d8",
+      "hp": "5",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d8), HP 5, AC 14, disposition lawful evil. Saves: P."
+  },
+  {
+    "sourceIndex": 211687,
+    "title": "Orc lieutenant",
+    "labels": {
+      "inline": "Orc lieutenant",
+      "titleLine": "**Orcs x 4:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This lawful evil humanoid's vital stats are HD 2d8, HP 12, AC 14, MV 30 ft. Its saves are physical. It does +1 damage due to strength. Its special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has piecemeal armor, shield, war hammer, whip. dagger, key to #36, and 30 gp. XP: 34",
+      "start": 211687,
+      "end": 212009,
+      "startLine": 1930,
+      "endLine": 1930,
+      "titleLineNum": 1928,
+      "titleLine": "**Orcs x 4:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1)_",
+      "inlineLabel": "Orc lieutenant",
+      "inlineContext": "**Orc lieutenant:** _",
+      "lineText": "**Orc lieutenant:** _(This lawful evil humanoid's vital stats are HD 2d8, HP 12, AC 14, MV 30 ft. Its saves are physical. It does +1 damage due to strength. Its special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has piecemeal armor, shield, war hammer, whip. dagger, key to #36, and 30 gp. XP: 34)_",
+      "snippet": "**Orcs x 4:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1)_ **Orc lieutenant:** _(This lawful evil humanoid's vital stats are HD 2d8, HP 12, AC 14, MV 30 ft. Its saves are physical. It does +1 damage due to strength. Its special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has piecemeal armor, shield, war hammer, whip. dagger, key to #36, and 30 gp. XP: 34)_",
+      "hp": 12,
+      "ac": 14,
+      "hd": "2d8",
+      "xp": "34",
+      "level": null,
+      "raceClass": "This lawful evil humanoid",
+      "notes": "This lawful evil humanoid's vital stats are HD 2d8, HP 12, AC 14, MV 30 ft. Its saves are physical. It does +1 damage due to strength. Its special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has piecemeal armor, shield, war hammer, whip. dagger, key to #36, and 30 gp. XP: 34"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil humanoid's vital stats are HD 2d8, HP 12, AC 14, MV 30 ft. Its saves are physical. It does +1 damage due to strength. Its special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It has piecemeal armor, shield, war hammer, whip. dagger, key to #36, and 30 gp. XP: 34",
+      "hd": "2d8",
+      "hp": "12",
+      "ac": "14",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "strength",
+      "coins": "30 gp"
+    },
+    "canonicalParenthetical": "HP 12, AC 14, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 30 gold in coin."
+  },
+  {
+    "sourceIndex": 216535,
+    "title": "Zombies x 6",
+    "labels": {
+      "inline": "Zombies x 6",
+      "titleLine": "See **Player Handout #6** _(Upper Works Map & Illustration Booklet)_ for an illustration of these **zombies**."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral evil undeads' vital stats are HD 2d12, HP 12, AC 12, MV 20 ft. Their saves are physical. They attack with a slam for 1d8 damage. These undead never gain initiative and always act last in any given round. XP: 15+1",
+      "start": 216535,
+      "end": 216762,
+      "startLine": 1976,
+      "endLine": 1976,
+      "titleLineNum": 1974,
+      "titleLine": "See **Player Handout #6** _(Upper Works Map & Illustration Booklet)_ for an illustration of these **zombies**.",
+      "inlineLabel": "Zombies x 6",
+      "inlineContext": "**Zombies x 6:** _",
+      "lineText": "**Zombies x 6:** _(These neutral evil undeads' vital stats are HD 2d12, HP 12, AC 12, MV 20 ft. Their saves are physical. They attack with a slam for 1d8 damage. These undead never gain initiative and always act last in any given round. XP: 15+1)_ ",
+      "snippet": "See **Player Handout #6** _(Upper Works Map & Illustration Booklet)_ for an illustration of these **zombies**. **Zombies x 6:** _(These neutral evil undeads' vital stats are HD 2d12, HP 12, AC 12, MV 20 ft. Their saves are physical. They attack with a slam for 1d8 damage. These undead never gain initiative and always act last in any given round. XP: 15+1)_",
+      "hp": 12,
+      "ac": 12,
+      "hd": "2d12",
+      "xp": "15+1",
+      "level": null,
+      "raceClass": "These neutral evil undeads'",
+      "notes": "These neutral evil undeads' vital stats are HD 2d12, HP 12, AC 12, MV 20 ft. Their saves are physical. They attack with a slam for 1d8 damage. These undead never gain initiative and always act last in any given round. XP: 15+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral evil undeads' vital stats are HD 2d12, HP 12, AC 12, MV 20 ft. Their saves are physical. They attack with a slam for 1d8 damage. These undead never gain initiative and always act last in any given round. XP: 15+1",
+      "hd": "2d12",
+      "hp": "12",
+      "ac": "12",
+      "disposition": "neutral evil",
+      "raceClass": "undead",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 2(d12), HP 12, AC 12, disposition neutral evil. Saves: P."
+  },
+  {
+    "sourceIndex": 218587,
+    "title": "Skeletons x 8",
+    "labels": {
+      "inline": "Skeletons x 8",
+      "titleLine": "There are **8 skeletons** haunting here, and they bear rusty shortswords. They will emerge from the dirt, debris, and various surrounding alcoves in 1d4 rounds if the PCs enter from area #41. Otherwise they will file down the narrow tunnel to #39 if the characters begin a search of that place, or to #38 or #37 if the characters linger very long there. There is nothing of value to be found here, except for the skull of each of these 8 skeletons, these being inset in the center of the brow ridge with a small red garnet (worth 20 gp each)."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral undeads' vital stats are HD 1d12, HP 8, AC 13, MV 30 ft. Their saves are physical. They attack with shortswords. Their special ability is they take half damage when attacked with slashing or piercing weapons, while blunt weapons do normal damage. XP: 10+1",
+      "start": 218587,
+      "end": 218857,
+      "startLine": 2004,
+      "endLine": 2004,
+      "titleLineNum": 2002,
+      "titleLine": "There are **8 skeletons** haunting here, and they bear rusty shortswords. They will emerge from the dirt, debris, and various surrounding alcoves in 1d4 rounds if the PCs enter from area #41. Otherwise they will file down the narrow tunnel to #39 if the characters begin a search of that place, or to #38 or #37 if the characters linger very long there. There is nothing of value to be found here, except for the skull of each of these 8 skeletons, these being inset in the center of the brow ridge with a small red garnet (worth 20 gp each).",
+      "inlineLabel": "Skeletons x 8",
+      "inlineContext": "**Skeletons x 8:** _",
+      "lineText": "**Skeletons x 8:** _(These neutral undeads' vital stats are HD 1d12, HP 8, AC 13, MV 30 ft. Their saves are physical. They attack with shortswords. Their special ability is they take half damage when attacked with slashing or piercing weapons, while blunt weapons do normal damage. XP: 10+1)_",
+      "snippet": "There are **8 skeletons** haunting here, and they bear rusty shortswords. They will emerge from the dirt, debris, and various surrounding alcoves in 1d4 rounds if the PCs enter from area #41. Otherwise they will file down the narrow tunnel to #39 if the characters begin a search of that place, or to #38 or #37 if the characters linger very long there. There is nothing of value to be found here, except for the skull of each of these 8 skeletons, these being inset in the center of the brow ridge with a small red garnet (worth 20 gp each). **Skeletons x 8:** _(These neutral undeads' vital stats are HD 1d12, HP 8, AC 13, MV 30 ft. Their saves are physical. They attack with shortswords. Their special ability is they take half damage when attacked with slashing or piercing weapons, while blunt weapons do normal damage. XP: 10+1)_",
+      "hp": 8,
+      "ac": 13,
+      "hd": "1d12",
+      "xp": "10+1",
+      "level": null,
+      "raceClass": "These neutral undeads'",
+      "notes": "These neutral undeads' vital stats are HD 1d12, HP 8, AC 13, MV 30 ft. Their saves are physical. They attack with shortswords. Their special ability is they take half damage when attacked with slashing or piercing weapons, while blunt weapons do normal damage. XP: 10+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral undeads' vital stats are HD 1d12, HP 8, AC 13, MV 30 ft. Their saves are physical. They attack with shortswords. Their special ability is they take half damage when attacked with slashing or piercing weapons, while blunt weapons do normal damage. XP: 10+1",
+      "hd": "1d12",
+      "hp": "8",
+      "ac": "13",
+      "disposition": "neutrality",
+      "raceClass": "undead",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d12), HP 8, AC 13, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 222850,
+    "title": "Wily Wil, Giant of the Hill",
+    "labels": {
+      "inline": "Wily Wil, Giant of the Hill",
+      "titleLine": "If you, the CK, wish to have the PC party encounter this giant, his stat block is presented here as well as at his lair. Do take the time to review his encounter information in _The Storerooms_ before doing so."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "This chaotic neutral humanoid's vital stats are HD 9d12, HP 63, AC 17, MV 40 ft. His saves are physical. He attacks with 2 fists for 1d8+8 points of damage each, a giant club for 2d8+8 points of damage, or he can hurl a boulder up to 330 feet for 2d8+8 damage. Note that all his attacks are at +8 damage due to vast strength. He wears hide armor and carries a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash. XP: 1,113",
+      "start": 222850,
+      "end": 223379,
+      "startLine": 2046,
+      "endLine": 2046,
+      "titleLineNum": 2044,
+      "titleLine": "If you, the CK, wish to have the PC party encounter this giant, his stat block is presented here as well as at his lair. Do take the time to review his encounter information in _The Storerooms_ before doing so.",
+      "inlineLabel": "Wily Wil, Giant of the Hill",
+      "inlineContext": "**Wily Wil, Giant of the Hill:** _",
+      "lineText": "**Wily Wil, Giant of the Hill:** _(This chaotic neutral humanoid's vital stats are HD 9d12, HP 63, AC 17, MV 40 ft. His saves are physical. He attacks with 2 fists for 1d8+8 points of damage each, a giant club for 2d8+8 points of damage, or he can hurl a boulder up to 330 feet for 2d8+8 damage. Note that all his attacks are at +8 damage due to vast strength. He wears hide armor and carries a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash. XP: 1,113)_",
+      "snippet": "If you, the CK, wish to have the PC party encounter this giant, his stat block is presented here as well as at his lair. Do take the time to review his encounter information in _The Storerooms_ before doing so. **Wily Wil, Giant of the Hill:** _(This chaotic neutral humanoid's vital stats are HD 9d12, HP 63, AC 17, MV 40 ft. His saves are physical. He attacks with 2 fists for 1d8+8 points of damage each, a giant club for 2d8+8 points of damage, or he can hurl a boulder up to 330 feet for 2d8+8 damage. Note that all his attacks are at +8 damage due to vast strength. He wears hide armor and carries a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash. XP: 1,113)_",
+      "hp": 63,
+      "ac": 17,
+      "hd": "9d12",
+      "xp": "1",
+      "level": null,
+      "raceClass": "This chaotic neutral humanoid",
+      "notes": "This chaotic neutral humanoid's vital stats are HD 9d12, HP 63, AC 17, MV 40 ft. His saves are physical. He attacks with 2 fists for 1d8+8 points of damage each, a giant club for 2d8+8 points of damage, or he can hurl a boulder up to 330 feet for 2d8+8 damage. Note that all his attacks are at +8 damage due to vast strength. He wears hide armor and carries a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash. XP: 1,113"
+    },
+    "canonicalData": {
+      "raw": "This chaotic neutral humanoid's vital stats are HD 9d12, HP 63, AC 17, MV 40 ft. His saves are physical. He attacks with 2 fists for 1d8+8 points of damage each, a giant club for 2d8+8 points of damage, or he can hurl a boulder up to 330 feet for 2d8+8 damage. Note that all his attacks are at +8 damage due to vast strength. He wears hide armor and carries a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash. XP: 1,113",
+      "hd": "9d12",
+      "hp": "63",
+      "ac": "17",
+      "disposition": "chaotic neutral",
+      "raceClass": "humanoid",
+      "attributes": "ir of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash",
+      "equipment": "hide armor and carry a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash"
+    },
+    "canonicalParenthetical": "HP 63, AC 17, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He wears hide armor and a large leather sack that contains two boulders and carries a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash."
+  },
+  {
+    "sourceIndex": 225293,
+    "title": "\"Pinky\" the Owlbear",
+    "labels": {
+      "inline": "\"Pinky\" the Owlbear",
+      "titleLine": "See **Player Handout #7** _(Upper Works Map & Illustration Booklet)_ for an illustration of this deranged **owlbear**."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral monster's vital stats are HD 4d10, HP 27, AC 13, MV 40 ft. Its saves are physical. It attacks with one claw for 1d6 points of damage and one bite for 2d6 points of damage. Pinky cannot perform any hug attacks as normal owlbears do, but as she is quite frothing mad, she attacks at +2 \"to hit\" on all attacks, though this comes at her obvious AC penalty. XP: 168",
+      "start": 225293,
+      "end": 225668,
+      "startLine": 2074,
+      "endLine": 2074,
+      "titleLineNum": 2072,
+      "titleLine": "See **Player Handout #7** _(Upper Works Map & Illustration Booklet)_ for an illustration of this deranged **owlbear**.",
+      "inlineLabel": "\"Pinky\" the Owlbear",
+      "inlineContext": "**\"Pinky\" the Owlbear:** _",
+      "lineText": "**\"Pinky\" the Owlbear:** _(This neutral monster's vital stats are HD 4d10, HP 27, AC 13, MV 40 ft. Its saves are physical. It attacks with one claw for 1d6 points of damage and one bite for 2d6 points of damage. Pinky cannot perform any hug attacks as normal owlbears do, but as she is quite frothing mad, she attacks at +2 \"to hit\" on all attacks, though this comes at her obvious AC penalty. XP: 168)_ ",
+      "snippet": "See **Player Handout #7** _(Upper Works Map & Illustration Booklet)_ for an illustration of this deranged **owlbear**. **\"Pinky\" the Owlbear:** _(This neutral monster's vital stats are HD 4d10, HP 27, AC 13, MV 40 ft. Its saves are physical. It attacks with one claw for 1d6 points of damage and one bite for 2d6 points of damage. Pinky cannot perform any hug attacks as normal owlbears do, but as she is quite frothing mad, she attacks at +2 \"to hit\" on all attacks, though this comes at her obvious AC penalty. XP: 168)_",
+      "hp": 27,
+      "ac": 13,
+      "hd": "4d10",
+      "xp": "168",
+      "level": null,
+      "raceClass": "This neutral monster",
+      "notes": "This neutral monster's vital stats are HD 4d10, HP 27, AC 13, MV 40 ft. Its saves are physical. It attacks with one claw for 1d6 points of damage and one bite for 2d6 points of damage. Pinky cannot perform any hug attacks as normal owlbears do, but as she is quite frothing mad, she attacks at +2 \"to hit\" on all attacks, though this comes at her obvious AC penalty. XP: 168"
+    },
+    "canonicalData": {
+      "raw": "This neutral monster's vital stats are HD 4d10, HP 27, AC 13, MV 40 ft. Its saves are physical. It attacks with one claw for 1d6 points of damage and one bite for 2d6 points of damage. Pinky cannot perform any hug attacks as normal owlbears do, but as she is quite frothing mad, she attacks at +2 \"to hit\" on all attacks, though this comes at her obvious AC penalty. XP: 168",
+      "hd": "4d10",
+      "hp": "27",
+      "ac": "13",
+      "disposition": "neutrality",
+      "raceClass": "monster",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 4(d10), HP 27, AC 13, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 229920,
+    "title": "Black Bear",
+    "labels": {
+      "inline": "Black Bear",
+      "titleLine": "A large female **black bear** and her **2 cubs** dwell in this cave. There is a 70% chance the bears are out foraging by the river, as the cubs are a year old and learning how to hunt for food—squirrels, beaver, fish, tender grass, pine nuts, honey, etc. The mother bear has learned her lesson with her neighbors, the **rats** of cave **#M**, and no longer hunts them, unless particularly desperate."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the victim is caught in a crushing hug for 2d4+1 points of damage. As she is protecting her young, she is very aggressive and attacks at a +2 “to hit.” XP: 95",
+      "start": 229920,
+      "end": 230299,
+      "startLine": 2126,
+      "endLine": 2126,
+      "titleLineNum": 2124,
+      "titleLine": "A large female **black bear** and her **2 cubs** dwell in this cave. There is a 70% chance the bears are out foraging by the river, as the cubs are a year old and learning how to hunt for food—squirrels, beaver, fish, tender grass, pine nuts, honey, etc. The mother bear has learned her lesson with her neighbors, the **rats** of cave **#M**, and no longer hunts them, unless particularly desperate.",
+      "inlineLabel": "Black Bear",
+      "inlineContext": "**Black Bear:** _",
+      "lineText": "**Black Bear:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the victim is caught in a crushing hug for 2d4+1 points of damage. As she is protecting her young, she is very aggressive and attacks at a +2 “to hit.” XP: 95)_",
+      "snippet": "A large female **black bear** and her **2 cubs** dwell in this cave. There is a 70% chance the bears are out foraging by the river, as the cubs are a year old and learning how to hunt for food—squirrels, beaver, fish, tender grass, pine nuts, honey, etc. The mother bear has learned her lesson with her neighbors, the **rats** of cave **#M**, and no longer hunts them, unless particularly desperate. **Black Bear:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the victim is caught in a crushing hug for 2d4+1 points of damage. As she is protecting her young, she is very aggressive and attacks at a +2 “to hit.” XP: 95)_",
+      "hp": 15,
+      "ac": 13,
+      "hd": "3d8",
+      "xp": "95",
+      "level": null,
+      "raceClass": "This neutral animal",
+      "notes": "This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the victim is caught in a crushing hug for 2d4+1 points of damage. As she is protecting her young, she is very aggressive and attacks at a +2 “to hit.” XP: 95"
+    },
+    "canonicalData": {
+      "raw": "This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the victim is caught in a crushing hug for 2d4+1 points of damage. As she is protecting her young, she is very aggressive and attacks at a +2 “to hit.” XP: 95",
+      "hd": "3d8",
+      "hp": "15",
+      "ac": "13",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "ws for 1d4+1 damage and a bite for 1d6+1 damage"
+    },
+    "canonicalParenthetical": "Level 3(d8), HP 15, AC 13, disposition neutrality."
+  },
+  {
+    "sourceIndex": 230329,
+    "title": "Black Bear cubs x 2",
+    "labels": {
+      "inline": "Black Bear cubs x 2",
+      "titleLine": "**Black Bear:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the victim is caught in a crushing hug for 2d4+1 points of damage. As she is protecting her young, she is very aggressive and attacks at a +2 “to hit.” XP: 95)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral animals' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft. Their saves are physical. They attack with a bite for 1d4 damage. XP: 5+1",
+      "start": 230329,
+      "end": 230473,
+      "startLine": 2128,
+      "endLine": 2128,
+      "titleLineNum": 2126,
+      "titleLine": "**Black Bear:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the victim is caught in a crushing hug for 2d4+1 points of damage. As she is protecting her young, she is very aggressive and attacks at a +2 “to hit.” XP: 95)_",
+      "inlineLabel": "Black Bear cubs x 2",
+      "inlineContext": "**Black Bear cubs x 2:** _",
+      "lineText": "**Black Bear cubs x 2:** _(These neutral animals' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft. Their saves are physical. They attack with a bite for 1d4 damage. XP: 5+1)_",
+      "snippet": "**Black Bear:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the victim is caught in a crushing hug for 2d4+1 points of damage. As she is protecting her young, she is very aggressive and attacks at a +2 “to hit.” XP: 95)_ **Black Bear cubs x 2:** _(These neutral animals' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft. Their saves are physical. They attack with a bite for 1d4 damage. XP: 5+1)_",
+      "hp": 6,
+      "ac": 12,
+      "hd": "1d8",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These neutral animals'",
+      "notes": "These neutral animals' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft. Their saves are physical. They attack with a bite for 1d4 damage. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral animals' vital stats are HD 1d8, HP 6, AC 12, MV 30 ft. Their saves are physical. They attack with a bite for 1d4 damage. XP: 5+1",
+      "hd": "1d8",
+      "hp": "6",
+      "ac": "12",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d8), HP 6, AC 12, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 231908,
+    "title": "River Rats, giant x 40",
+    "labels": {
+      "inline": "River Rats, giant x 40",
+      "titleLine": "There are a large number of river rats dwelling within, c. 40 in total, though it is the purview of the Castle Keeper to determine how many of these will be both present and/or agitated by the actions of the PCs. The CK should assign an appropriate number of rats to challenge the party, starting easy, perhaps 1 rat for every PC, but more rats joining the fray. Never will all 40 rats of this lair be present at once."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 5+1 inside cave, 1+1 outside.",
+      "start": 231908,
+      "end": 232246,
+      "startLine": 2152,
+      "endLine": 2152,
+      "titleLineNum": 2150,
+      "titleLine": "There are a large number of river rats dwelling within, c. 40 in total, though it is the purview of the Castle Keeper to determine how many of these will be both present and/or agitated by the actions of the PCs. The CK should assign an appropriate number of rats to challenge the party, starting easy, perhaps 1 rat for every PC, but more rats joining the fray. Never will all 40 rats of this lair be present at once.",
+      "inlineLabel": "River Rats, giant x 40",
+      "inlineContext": "**River Rats, giant x 40:** _",
+      "lineText": "**River Rats, giant x 40:** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 5+1 inside cave, 1+1 outside.)_",
+      "snippet": "There are a large number of river rats dwelling within, c. 40 in total, though it is the purview of the Castle Keeper to determine how many of these will be both present and/or agitated by the actions of the PCs. The CK should assign an appropriate number of rats to challenge the party, starting easy, perhaps 1 rat for every PC, but more rats joining the fray. Never will all 40 rats of this lair be present at once. **River Rats, giant x 40:** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 5+1 inside cave, 1+1 outside.)_",
+      "hp": 2,
+      "ac": 13,
+      "hd": "1d4",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These neutral animals'",
+      "notes": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 5+1 inside cave, 1+1 outside."
+    },
+    "canonicalData": {
+      "raw": "These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 5+1 inside cave, 1+1 outside.",
+      "hd": "1d4",
+      "hp": "2",
+      "ac": "13",
+      "disposition": "neutrality",
+      "raceClass": "animal",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d4), HP 2, AC 13, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 240182,
+    "title": "Stirges x 8",
+    "labels": {
+      "inline": "Stirges x 8",
+      "titleLine": "A stirge nest lay within. In mere seconds, warm-blooded creatures will be attacked by the swarm, these small monsters driven to a frenzy by the sweet smell of mammal sweat and blood."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1",
+      "start": 240182,
+      "end": 240445,
+      "startLine": 2256,
+      "endLine": 2256,
+      "titleLineNum": 2254,
+      "titleLine": "A stirge nest lay within. In mere seconds, warm-blooded creatures will be attacked by the swarm, these small monsters driven to a frenzy by the sweet smell of mammal sweat and blood.",
+      "inlineLabel": "Stirges x 8",
+      "inlineContext": "**Stirges x 8:** _",
+      "lineText": "**Stirges x 8:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_",
+      "snippet": "A stirge nest lay within. In mere seconds, warm-blooded creatures will be attacked by the swarm, these small monsters driven to a frenzy by the sweet smell of mammal sweat and blood. **Stirges x 8:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_",
+      "hp": 3,
+      "ac": 16,
+      "hd": "1d6",
+      "xp": "15+1",
+      "level": null,
+      "raceClass": "These neutral creatures'",
+      "notes": "These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1"
+    },
+    "canonicalData": {
+      "raw": "These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1",
+      "hd": "1d6",
+      "hp": "3",
+      "ac": "16",
+      "disposition": "neutrality",
+      "raceClass": "creature",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 3, AC 16, disposition neutrality. Saves: P."
+  },
+  {
+    "sourceIndex": 241850,
+    "title": "Bugbears x 3",
+    "labels": {
+      "inline": "Bugbears x 3",
+      "titleLine": "**3 bugbears** dwell here. They are in their lair 35% of the time. If a noisy party arrives, they will lie in wait. Should the party discover the rope ladder (see below) the bugbears will cut the rope once they are about 20 feet up."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These chaotic evil humanoids' vital stats are HD 3d10, HP 17, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They attack by weapon at +2 damage due to strength. They have patchwork ring mail, buckler, bastard sword, light throwing hammers x 2. They also carry 3d6 gp each. XP: 20+3",
+      "start": 241850,
+      "end": 242171,
+      "startLine": 2266,
+      "endLine": 2266,
+      "titleLineNum": 2264,
+      "titleLine": "**3 bugbears** dwell here. They are in their lair 35% of the time. If a noisy party arrives, they will lie in wait. Should the party discover the rope ladder (see below) the bugbears will cut the rope once they are about 20 feet up.",
+      "inlineLabel": "Bugbears x 3",
+      "inlineContext": "**Bugbears x 3:** _",
+      "lineText": "**Bugbears x 3:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 17, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They attack by weapon at +2 damage due to strength. They have patchwork ring mail, buckler, bastard sword, light throwing hammers x 2. They also carry 3d6 gp each. XP: 20+3)_",
+      "snippet": "**3 bugbears** dwell here. They are in their lair 35% of the time. If a noisy party arrives, they will lie in wait. Should the party discover the rope ladder (see below) the bugbears will cut the rope once they are about 20 feet up. **Bugbears x 3:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 17, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They attack by weapon at +2 damage due to strength. They have patchwork ring mail, buckler, bastard sword, light throwing hammers x 2. They also carry 3d6 gp each. XP: 20+3)_",
+      "hp": 17,
+      "ac": 16,
+      "hd": "3d10",
+      "xp": "20+3",
+      "level": null,
+      "raceClass": "These chaotic evil humanoids'",
+      "notes": "These chaotic evil humanoids' vital stats are HD 3d10, HP 17, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They attack by weapon at +2 damage due to strength. They have patchwork ring mail, buckler, bastard sword, light throwing hammers x 2. They also carry 3d6 gp each. XP: 20+3"
+    },
+    "canonicalData": {
+      "raw": "These chaotic evil humanoids' vital stats are HD 3d10, HP 17, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They attack by weapon at +2 damage due to strength. They have patchwork ring mail, buckler, bastard sword, light throwing hammers x 2. They also carry 3d6 gp each. XP: 20+3",
+      "hd": "3d10",
+      "hp": "17",
+      "ac": "16",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "attributes": "tchwork ring mail, buckler, bastard sword, light throwing hammers x 2",
+      "coins": "6 gp"
+    },
+    "canonicalParenthetical": "Level 3(d10), HP 17, AC 16, disposition chaotic evil. They have 6 gold in coin."
+  },
+  {
+    "sourceIndex": 248459,
+    "title": "Hobgoblin sentries x 2",
+    "labels": {
+      "inline": "Hobgoblin sentries x 2",
+      "titleLine": "**Area #g**: There are **2 hobgoblin sentries** posted here at all times, alert and prepared for a gnoll invasion. They will ring the bell violently should anyone arrive, friend or enemy. This does not necessitate combat, as these hobgoblins might well seek to negotiate in their present, vulnerable position, calling for parley*."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear chain mail armor and wield composite short bows, x12 arrows, battle-axes, and 2d4 gp each.",
+      "start": 248459,
+      "end": 248762,
+      "startLine": 2343,
+      "endLine": 2343,
+      "titleLineNum": 2341,
+      "titleLine": "**Area #g**: There are **2 hobgoblin sentries** posted here at all times, alert and prepared for a gnoll invasion. They will ring the bell violently should anyone arrive, friend or enemy. This does not necessitate combat, as these hobgoblins might well seek to negotiate in their present, vulnerable position, calling for parley*.",
+      "inlineLabel": "Hobgoblin sentries x 2",
+      "inlineContext": "**Hobgoblin sentries x 2:** _",
+      "lineText": "**Hobgoblin sentries x 2:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear chain mail armor and wield composite short bows, x12 arrows, battle-axes, and 2d4 gp each.)_",
+      "snippet": "**Area #g**: There are **2 hobgoblin sentries** posted here at all times, alert and prepared for a gnoll invasion. They will ring the bell violently should anyone arrive, friend or enemy. This does not necessitate combat, as these hobgoblins might well seek to negotiate in their present, vulnerable position, calling for parley*. **Hobgoblin sentries x 2:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear chain mail armor and wield composite short bows, x12 arrows, battle-axes, and 2d4 gp each.)_",
+      "hp": 8,
+      "ac": 15,
+      "hd": "1d10",
+      "xp": null,
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear chain mail armor and wield composite short bows, x12 arrows, battle-axes, and 2d4 gp each."
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear chain mail armor and wield composite short bows, x12 arrows, battle-axes, and 2d4 gp each.",
+      "hd": "1d10",
+      "hp": "8",
+      "ac": "15",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical",
+      "equipment": "chain mail armor and carry composite short bows, x12 arrows, battle-axes, and 2d4 gp each",
+      "coins": "4 gp"
+    },
+    "canonicalParenthetical": "Level 1(d10), HP 8, AC 15, disposition lawful evil. Saves: P. They have chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin."
+  },
+  {
+    "sourceIndex": 249977,
+    "title": "Hobgoblin males x 2 or 4",
+    "labels": {
+      "inline": "Hobgoblin males x 2 or 4",
+      "titleLine": "This is where the bulk of the tribe dwells, including **2 or 4 male warriors** (see above note on hunters), **9 females**, and all **6 young** (non-combatant). The youngsters are all the offspring of the chieftain, **Hub-Gub the Bloody** (#56)."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1",
+      "start": 249977,
+      "end": 250260,
+      "startLine": 2359,
+      "endLine": 2359,
+      "titleLineNum": 2357,
+      "titleLine": "This is where the bulk of the tribe dwells, including **2 or 4 male warriors** (see above note on hunters), **9 females**, and all **6 young** (non-combatant). The youngsters are all the offspring of the chieftain, **Hub-Gub the Bloody** (#56).",
+      "inlineLabel": "Hobgoblin males x 2 or 4",
+      "inlineContext": "**Hobgoblin males x 2 or 4:** _",
+      "lineText": "**Hobgoblin males x 2 or 4:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1)_",
+      "snippet": "This is where the bulk of the tribe dwells, including **2 or 4 male warriors** (see above note on hunters), **9 females**, and all **6 young** (non-combatant). The youngsters are all the offspring of the chieftain, **Hub-Gub the Bloody** (#56). **Hobgoblin males x 2 or 4:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1)_",
+      "hp": 6,
+      "ac": 15,
+      "hd": "1d10",
+      "xp": "7+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1",
+      "hd": "1d10",
+      "hp": "6",
+      "ac": "15",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical",
+      "equipment": "crude chain mail armor, carry halberds, and carry 2d4 gp each",
+      "coins": "4 gp"
+    },
+    "canonicalParenthetical": "Level 1(d10), HP 6, AC 15, disposition lawful evil. Saves: P. They have crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin."
+  },
+  {
+    "sourceIndex": 250292,
+    "title": "Hobgoblin females x 9",
+    "labels": {
+      "inline": "Hobgoblin females x 9",
+      "titleLine": "**Hobgoblin males x 2 or 4:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have heavy knives. XP: 5+1",
+      "start": 250292,
+      "end": 250469,
+      "startLine": 2361,
+      "endLine": 2361,
+      "titleLineNum": 2359,
+      "titleLine": "**Hobgoblin males x 2 or 4:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1)_",
+      "inlineLabel": "Hobgoblin females x 9",
+      "inlineContext": "**Hobgoblin females x 9:** _",
+      "lineText": "**Hobgoblin females x 9:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have heavy knives. XP: 5+1)_",
+      "snippet": "**Hobgoblin males x 2 or 4:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1)_ **Hobgoblin females x 9:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have heavy knives. XP: 5+1)_",
+      "hp": 3,
+      "ac": 12,
+      "hd": "1d6",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have heavy knives. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have heavy knives. XP: 5+1",
+      "hd": "1d6",
+      "hp": "3",
+      "ac": "12",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 3, AC 12, disposition lawful evil. Saves: P."
+  },
+  {
+    "sourceIndex": 252899,
+    "title": "Hobgoblin warriors x 2",
+    "labels": {
+      "inline": "Hobgoblin warriors x 2",
+      "titleLine": "**2 hobgoblin guards**, **1 hobgoblin leader**, and **3 hobgoblin females** here. The door to this chamber is **locked** _(CL 5 to break down, CL 1 to pick)_ via a simple oak bar on the inside. The 2 guards stand by the door, answering all calls. Each, however, is quite consumed by the leader's concubines, and thus spends more time ogling than being vigilant."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have crude chain mail armor, halberd, broadsword, and 2d4 gp. XP: 7+1",
+      "start": 252899,
+      "end": 253176,
+      "startLine": 2402,
+      "endLine": 2402,
+      "titleLineNum": 2400,
+      "titleLine": "**2 hobgoblin guards**, **1 hobgoblin leader**, and **3 hobgoblin females** here. The door to this chamber is **locked** _(CL 5 to break down, CL 1 to pick)_ via a simple oak bar on the inside. The 2 guards stand by the door, answering all calls. Each, however, is quite consumed by the leader's concubines, and thus spends more time ogling than being vigilant.",
+      "inlineLabel": "Hobgoblin warriors x 2",
+      "inlineContext": "**Hobgoblin warriors x 2:** _",
+      "lineText": "**Hobgoblin warriors x 2:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have crude chain mail armor, halberd, broadsword, and 2d4 gp. XP: 7+1)_",
+      "snippet": "**2 hobgoblin guards**, **1 hobgoblin leader**, and **3 hobgoblin females** here. The door to this chamber is **locked** _(CL 5 to break down, CL 1 to pick)_ via a simple oak bar on the inside. The 2 guards stand by the door, answering all calls. Each, however, is quite consumed by the leader's concubines, and thus spends more time ogling than being vigilant. **Hobgoblin warriors x 2:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have crude chain mail armor, halberd, broadsword, and 2d4 gp. XP: 7+1)_",
+      "hp": 8,
+      "ac": 15,
+      "hd": "1d10",
+      "xp": "7+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have crude chain mail armor, halberd, broadsword, and 2d4 gp. XP: 7+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have crude chain mail armor, halberd, broadsword, and 2d4 gp. XP: 7+1",
+      "hd": "1d10",
+      "hp": "8",
+      "ac": "15",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "physical",
+      "coins": "4 gp"
+    },
+    "canonicalParenthetical": "Level 1(d10), HP 8, AC 15, disposition lawful evil. Saves: P. They have 4 gold in coin."
+  },
+  {
+    "sourceIndex": 254444,
+    "title": "Hub-Gub the Bloody (Hobgoblin Chieftain)",
+    "labels": {
+      "inline": "Hub-Gub the Bloody (Hobgoblin Chieftain)",
+      "titleLine": "These are the quarters of the hobgoblin leader. His two finest (surviving) warriors guard the door, quick to alert the chieftain should the bell be rung by the guards at **area g**."
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This lawful evil humanoid's vital stats are HD 3d10, HP 18, AC 16, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. Due to its strength and brutality, all melee damage is at +2. It wears full chain mail armor and wields a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows. In a pouch it carries 12 gp and an iron key to #55. XP: 84",
+      "start": 254444,
+      "end": 254868,
+      "startLine": 2424,
+      "endLine": 2424,
+      "titleLineNum": 2422,
+      "titleLine": "These are the quarters of the hobgoblin leader. His two finest (surviving) warriors guard the door, quick to alert the chieftain should the bell be rung by the guards at **area g**.",
+      "inlineLabel": "Hub-Gub the Bloody (Hobgoblin Chieftain)",
+      "inlineContext": "**Hub-Gub the Bloody (Hobgoblin Chieftain):** _",
+      "lineText": "**Hub-Gub the Bloody (Hobgoblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 3d10, HP 18, AC 16, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. Due to its strength and brutality, all melee damage is at +2. It wears full chain mail armor and wields a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows. In a pouch it carries 12 gp and an iron key to #55. XP: 84)_",
+      "snippet": "These are the quarters of the hobgoblin leader. His two finest (surviving) warriors guard the door, quick to alert the chieftain should the bell be rung by the guards at **area g**. **Hub-Gub the Bloody (Hobgoblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 3d10, HP 18, AC 16, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. Due to its strength and brutality, all melee damage is at +2. It wears full chain mail armor and wields a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows. In a pouch it carries 12 gp and an iron key to #55. XP: 84)_",
+      "hp": 18,
+      "ac": 16,
+      "hd": "3d10",
+      "xp": "84",
+      "level": null,
+      "raceClass": "This lawful evil humanoid",
+      "notes": "This lawful evil humanoid's vital stats are HD 3d10, HP 18, AC 16, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. Due to its strength and brutality, all melee damage is at +2. It wears full chain mail armor and wields a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows. In a pouch it carries 12 gp and an iron key to #55. XP: 84"
+    },
+    "canonicalData": {
+      "raw": "This lawful evil humanoid's vital stats are HD 3d10, HP 18, AC 16, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. Due to its strength and brutality, all melee damage is at +2. It wears full chain mail armor and wields a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows. In a pouch it carries 12 gp and an iron key to #55. XP: 84",
+      "hd": "3d10",
+      "hp": "18",
+      "ac": "16",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "attributes": "strength",
+      "equipment": "full chain mail armor and carry a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows",
+      "coins": "12 gp"
+    },
+    "canonicalParenthetical": "HP 18, AC 16, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries full chain mail armor, a +1 halberd [+4 \"to hit\"; 1d10+3 damage], a broadsword [+3 \"to hit\"; 2d4+2 damage], a composite short bow, 12 arrows, and 12 gold in coin."
+  },
+  {
+    "sourceIndex": 254900,
+    "title": "Hobgoblin females x 3",
+    "labels": {
+      "inline": "Hobgoblin females x 3",
+      "titleLine": "**Hub-Gub the Bloody (Hobgoblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 3d10, HP 18, AC 16, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. Due to its strength and brutality, all melee damage is at +2. It wears full chain mail armor and wields a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows. In a pouch it carries 12 gp and an iron key to #55. XP: 84)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They carry daggers. Each wears an engraved silver armband worth 2 gp. XP: 5+1",
+      "start": 254900,
+      "end": 255123,
+      "startLine": 2426,
+      "endLine": 2426,
+      "titleLineNum": 2424,
+      "titleLine": "**Hub-Gub the Bloody (Hobgoblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 3d10, HP 18, AC 16, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. Due to its strength and brutality, all melee damage is at +2. It wears full chain mail armor and wields a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows. In a pouch it carries 12 gp and an iron key to #55. XP: 84)_",
+      "inlineLabel": "Hobgoblin females x 3",
+      "inlineContext": "**Hobgoblin females x 3:** _",
+      "lineText": "**Hobgoblin females x 3:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They carry daggers. Each wears an engraved silver armband worth 2 gp. XP: 5+1)_",
+      "snippet": "**Hub-Gub the Bloody (Hobgoblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 3d10, HP 18, AC 16, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. Due to its strength and brutality, all melee damage is at +2. It wears full chain mail armor and wields a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows. In a pouch it carries 12 gp and an iron key to #55. XP: 84)_ **Hobgoblin females x 3:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They carry daggers. Each wears an engraved silver armband worth 2 gp. XP: 5+1)_",
+      "hp": 3,
+      "ac": 12,
+      "hd": "1d6",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These lawful evil humanoids'",
+      "notes": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They carry daggers. Each wears an engraved silver armband worth 2 gp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They carry daggers. Each wears an engraved silver armband worth 2 gp. XP: 5+1",
+      "hd": "1d6",
+      "hp": "3",
+      "ac": "12",
+      "disposition": "lawful evil",
+      "raceClass": "humanoid",
+      "equipment": "an engraved silver armband worth 2 gp",
+      "coins": "2 gp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d6), HP 3, AC 12, disposition lawful evil. Saves: P. They have 2 gold in coin."
+  },
+  {
+    "sourceIndex": 257035,
+    "title": "Gnoll sentries x 2",
+    "labels": {
+      "inline": "Gnoll sentries x 2",
+      "titleLine": "**Area #g**: There are **2 gnoll sentries** posted here, both of which hide themselves in the nooks and alcoves near to where the natural part of this cave terminates. When a creature approaches the mouth of the cave, they begin to yip, bark, and howl terribly. This is usually enough to drive most potential intruders away, particularly their kobold neighbors (cave #B). It also keeps the wolves (cave #A) at bay, and frightens the hobgoblins (cave #R) as well, the latter having recently suffered terrible losses at the hands of these gnolls. 30 feet south of their position is a **stuck** _(CL 2 to force open)_ oaken door, iron-bound."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical._ _They attack_ _by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2",
+      "start": 257035,
+      "end": 257341,
+      "startLine": 2444,
+      "endLine": 2444,
+      "titleLineNum": 2442,
+      "titleLine": "**Area #g**: There are **2 gnoll sentries** posted here, both of which hide themselves in the nooks and alcoves near to where the natural part of this cave terminates. When a creature approaches the mouth of the cave, they begin to yip, bark, and howl terribly. This is usually enough to drive most potential intruders away, particularly their kobold neighbors (cave #B). It also keeps the wolves (cave #A) at bay, and frightens the hobgoblins (cave #R) as well, the latter having recently suffered terrible losses at the hands of these gnolls. 30 feet south of their position is a **stuck** _(CL 2 to force open)_ oaken door, iron-bound.",
+      "inlineLabel": "Gnoll sentries x 2",
+      "inlineContext": "**Gnoll sentries x 2:** _",
+      "lineText": "**Gnoll sentries x 2:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical._ _They attack_ _by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2)_",
+      "snippet": "**Area #g**: There are **2 gnoll sentries** posted here, both of which hide themselves in the nooks and alcoves near to where the natural part of this cave terminates. When a creature approaches the mouth of the cave, they begin to yip, bark, and howl terribly. This is usually enough to drive most potential intruders away, particularly their kobold neighbors (cave #B). It also keeps the wolves (cave #A) at bay, and frightens the hobgoblins (cave #R) as well, the latter having recently suffered terrible losses at the hands of these gnolls. 30 feet south of their position is a **stuck** _(CL 2 to force open)_ oaken door, iron-bound. **Gnoll sentries x 2:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical._ _They attack_ _by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2)_",
+      "hp": 12,
+      "ac": 15,
+      "hd": "2d10",
+      "xp": "12+2",
+      "level": null,
+      "raceClass": "These chaotic evil humanoids'",
+      "notes": "These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical._ _They attack_ _by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2"
+    },
+    "canonicalData": {
+      "raw": "These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical._ _They attack_ _by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2",
+      "hd": "2d10",
+      "hp": "12",
+      "ac": "15",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "attributes": "tchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp",
+      "coins": "4 gp"
+    },
+    "canonicalParenthetical": "Level 2(d10), HP 12, AC 15, disposition chaotic evil. They have 4 gold in coin."
+  },
+  {
+    "sourceIndex": 259311,
+    "title": "Gnoll males x 4",
+    "labels": {
+      "inline": "Gnoll males x 4",
+      "titleLine": "**>>[end boxed** **text]<<**"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2",
+      "start": 259311,
+      "end": 259617,
+      "startLine": 2469,
+      "endLine": 2469,
+      "titleLineNum": 2467,
+      "titleLine": "**>>[end boxed** **text]<<**",
+      "inlineLabel": "Gnoll males x 4",
+      "inlineContext": "**Gnoll males x 4:** _",
+      "lineText": "**Gnoll males x 4:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2)_",
+      "snippet": "**>>[end boxed** **text]<<** **Gnoll males x 4:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2)_",
+      "hp": 12,
+      "ac": 15,
+      "hd": "2d10",
+      "xp": "12+2",
+      "level": null,
+      "raceClass": "These chaotic evil humanoids'",
+      "notes": "These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2"
+    },
+    "canonicalData": {
+      "raw": "These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2",
+      "hd": "2d10",
+      "hp": "12",
+      "ac": "15",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "attributes": "tchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp",
+      "coins": "4 gp"
+    },
+    "canonicalParenthetical": "Level 2(d10), HP 12, AC 15, disposition chaotic evil. They have 4 gold in coin."
+  },
+  {
+    "sourceIndex": 259645,
+    "title": "Gnoll females x 5",
+    "labels": {
+      "inline": "Gnoll females x 5",
+      "titleLine": "**Gnoll males x 4:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2)_"
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These chaotic evil humanoids' vital stats are HD 1d10, HP 5, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have clubs, heavy knives, and 2d4 sp. XP: 5+1",
+      "start": 259645,
+      "end": 259843,
+      "startLine": 2471,
+      "endLine": 2471,
+      "titleLineNum": 2469,
+      "titleLine": "**Gnoll males x 4:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2)_",
+      "inlineLabel": "Gnoll females x 5",
+      "inlineContext": "**Gnoll females x 5:** _",
+      "lineText": "**Gnoll females x 5:** _(These chaotic evil humanoids' vital stats are HD 1d10, HP 5, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have clubs, heavy knives, and 2d4 sp. XP: 5+1)_",
+      "snippet": "**Gnoll males x 4:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2)_ **Gnoll females x 5:** _(These chaotic evil humanoids' vital stats are HD 1d10, HP 5, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have clubs, heavy knives, and 2d4 sp. XP: 5+1)_",
+      "hp": 5,
+      "ac": 12,
+      "hd": "1d10",
+      "xp": "5+1",
+      "level": null,
+      "raceClass": "These chaotic evil humanoids'",
+      "notes": "These chaotic evil humanoids' vital stats are HD 1d10, HP 5, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have clubs, heavy knives, and 2d4 sp. XP: 5+1"
+    },
+    "canonicalData": {
+      "raw": "These chaotic evil humanoids' vital stats are HD 1d10, HP 5, AC 12, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have clubs, heavy knives, and 2d4 sp. XP: 5+1",
+      "hd": "1d10",
+      "hp": "5",
+      "ac": "12",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "coins": "4 sp",
+      "attributes": "physical"
+    },
+    "canonicalParenthetical": "Level 1(d10), HP 5, AC 12, disposition chaotic evil. Saves: P. They have 4 silver in coin."
+  },
+  {
+    "sourceIndex": 260733,
+    "title": "Gnoll guards x 2",
+    "labels": {
+      "inline": "Gnoll guards x 2",
+      "titleLine": "Yeexuul is a terrible warrior with plans for expansion, beginning with the hobgoblins (cave #R) and eventually the bugbears (cave #Q). Once he has secured this significant portion of the _Mouths of Madness_, he intends to take on the more tactically-minded **kobolds** (#B). He will be here only if taken by surprise; otherwise he will have joined his tribesman to meet intruders. He has two guards that stand vigilant in the 20' passage that leads to his chamber."
+    },
+    "isUnit": true,
+    "parsed": {
+      "parenthetical": "These chaotic evil humanoids' vital stats are HD 2d10, HP 14, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have chain hauberk armor, halberd, morning star, and 2d4 gp. XP: 10+2",
+      "start": 260733,
+      "end": 261012,
+      "startLine": 2483,
+      "endLine": 2483,
+      "titleLineNum": 2481,
+      "titleLine": "Yeexuul is a terrible warrior with plans for expansion, beginning with the hobgoblins (cave #R) and eventually the bugbears (cave #Q). Once he has secured this significant portion of the _Mouths of Madness_, he intends to take on the more tactically-minded **kobolds** (#B). He will be here only if taken by surprise; otherwise he will have joined his tribesman to meet intruders. He has two guards that stand vigilant in the 20' passage that leads to his chamber.",
+      "inlineLabel": "Gnoll guards x 2",
+      "inlineContext": "**Gnoll guards x 2:** _",
+      "lineText": "**Gnoll guards x 2:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 14, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have chain hauberk armor, halberd, morning star, and 2d4 gp. XP: 10+2)_",
+      "snippet": "Yeexuul is a terrible warrior with plans for expansion, beginning with the hobgoblins (cave #R) and eventually the bugbears (cave #Q). Once he has secured this significant portion of the _Mouths of Madness_, he intends to take on the more tactically-minded **kobolds** (#B). He will be here only if taken by surprise; otherwise he will have joined his tribesman to meet intruders. He has two guards that stand vigilant in the 20' passage that leads to his chamber. **Gnoll guards x 2:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 14, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have chain hauberk armor, halberd, morning star, and 2d4 gp. XP: 10+2)_",
+      "hp": 14,
+      "ac": 15,
+      "hd": "2d10",
+      "xp": "10+2",
+      "level": null,
+      "raceClass": "These chaotic evil humanoids'",
+      "notes": "These chaotic evil humanoids' vital stats are HD 2d10, HP 14, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have chain hauberk armor, halberd, morning star, and 2d4 gp. XP: 10+2"
+    },
+    "canonicalData": {
+      "raw": "These chaotic evil humanoids' vital stats are HD 2d10, HP 14, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have chain hauberk armor, halberd, morning star, and 2d4 gp. XP: 10+2",
+      "hd": "2d10",
+      "hp": "14",
+      "ac": "15",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "attributes": "physical",
+      "coins": "4 gp"
+    },
+    "canonicalParenthetical": "Level 2(d10), HP 14, AC 15, disposition chaotic evil. Saves: P. They have 4 gold in coin."
+  },
+  {
+    "sourceIndex": 261048,
+    "title": "Yeexuul (Gnoll Chieftain)",
+    "labels": {
+      "inline": "Yeexuul (Gnoll Chieftain)",
+      "titleLine": "**Gnoll guards x 2:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 14, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have chain hauberk armor, halberd, morning star, and 2d4 gp. XP: 10+2)_"
+    },
+    "isUnit": false,
+    "parsed": {
+      "parenthetical": "This chaotic evil humanoid's vital stats are HD 3d10, HP 20, AC 17, MV 30 ft. His saves are physical._ _They attack_ _by weapon at +1 damage due to strength. His special ability is darkvision 60 ft. He wears plate mail armor, and wields a throwing club, morning star, and 10-inch knife. In a pouch he holds 2 keys [to rooms #57 + #59] and 24 gp. XP: 100",
+      "start": 261048,
+      "end": 261402,
+      "startLine": 2485,
+      "endLine": 2485,
+      "titleLineNum": 2483,
+      "titleLine": "**Gnoll guards x 2:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 14, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have chain hauberk armor, halberd, morning star, and 2d4 gp. XP: 10+2)_",
+      "inlineLabel": "Yeexuul (Gnoll Chieftain)",
+      "inlineContext": "**Yeexuul (Gnoll Chieftain):** _",
+      "lineText": "**Yeexuul (Gnoll Chieftain):** _(This chaotic evil humanoid's vital stats are HD 3d10, HP 20, AC 17, MV 30 ft. His saves are physical._ _They attack_ _by weapon at +1 damage due to strength. His special ability is darkvision 60 ft. He wears plate mail armor, and wields a throwing club, morning star, and 10-inch knife. In a pouch he holds 2 keys [to rooms #57 + #59] and 24 gp. XP: 100)_",
+      "snippet": "**Gnoll guards x 2:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 14, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have chain hauberk armor, halberd, morning star, and 2d4 gp. XP: 10+2)_ **Yeexuul (Gnoll Chieftain):** _(This chaotic evil humanoid's vital stats are HD 3d10, HP 20, AC 17, MV 30 ft. His saves are physical._ _They attack_ _by weapon at +1 damage due to strength. His special ability is darkvision 60 ft. He wears plate mail armor, and wields a throwing club, morning star, and 10-inch knife. In a pouch he holds 2 keys [to rooms #57 + #59] and 24 gp. XP: 100)_",
+      "hp": 20,
+      "ac": 17,
+      "hd": "3d10",
+      "xp": "100",
+      "level": null,
+      "raceClass": "This chaotic evil humanoid",
+      "notes": "This chaotic evil humanoid's vital stats are HD 3d10, HP 20, AC 17, MV 30 ft. His saves are physical._ _They attack_ _by weapon at +1 damage due to strength. His special ability is darkvision 60 ft. He wears plate mail armor, and wields a throwing club, morning star, and 10-inch knife. In a pouch he holds 2 keys [to rooms #57 + #59] and 24 gp. XP: 100"
+    },
+    "canonicalData": {
+      "raw": "This chaotic evil humanoid's vital stats are HD 3d10, HP 20, AC 17, MV 30 ft. His saves are physical._ _They attack_ _by weapon at +1 damage due to strength. His special ability is darkvision 60 ft. He wears plate mail armor, and wields a throwing club, morning star, and 10-inch knife. In a pouch he holds 2 keys [to rooms #57 + #59] and 24 gp. XP: 100",
+      "hd": "3d10",
+      "hp": "20",
+      "ac": "17",
+      "disposition": "chaotic evil",
+      "raceClass": "humanoid",
+      "attributes": "strength",
+      "equipment": "plate mail armor, and carry a throwing club, morning star, and 10-inch knife",
+      "coins": "24 gp"
+    },
+    "canonicalParenthetical": "HP 20, AC 17, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin."
+  }
+]
+```
+

@@ -1,0 +1,14 @@
+repo_path: .
+output_dir: tmp/pyragify_out
+max_words: 3000
+max_file_size: 2000000
+skip_dirs:
+  - node_modules
+  - .venv
+  - __pycache__
+skip_patterns:
+  - '*.png'
+  - '*.jpg'
+  - '*.jpeg'
+  - 'tmp/*'
+  - 'node_modules/*'

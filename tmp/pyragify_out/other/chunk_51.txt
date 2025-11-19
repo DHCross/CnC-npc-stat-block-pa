@@ -1,0 +1,459 @@
+File: exclude
+Content:
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+
+
+File: refs
+Content:
+a9511e32876361c36b3d125ce5151af92547860c	refs/heads/main
+
+
+File: HEAD
+Content:
+0000000000000000000000000000000000000000 a9511e32876361c36b3d125ce5151af92547860c DHCross <45954119+DHCross@users.noreply.github.com> 1758652647 -0500	commit (initial): Convert from Electron to Next.js/React app for Vercel deployment
+a9511e32876361c36b3d125ce5151af92547860c 0000000000000000000000000000000000000000 DHCross <45954119+DHCross@users.noreply.github.com> 1758652667 -0500	Branch: renamed refs/heads/main to refs/heads/main
+a9511e32876361c36b3d125ce5151af92547860c a9511e32876361c36b3d125ce5151af92547860c DHCross <45954119+DHCross@users.noreply.github.com> 1758652667 -0500	Branch: renamed refs/heads/main to refs/heads/main
+a9511e32876361c36b3d125ce5151af92547860c 6b492027fc3f251e7467f5a24abd0602934de4ca DHCross <45954119+DHCross@users.noreply.github.com> 1758654227 -0500	commit: update
+6b492027fc3f251e7467f5a24abd0602934de4ca 885ebe70a72ef1a8b06bb4ac08a6a74cdd44a495 DHCross <45954119+DHCross@users.noreply.github.com> 1758664847 -0500	commit: update for vercel
+885ebe70a72ef1a8b06bb4ac08a6a74cdd44a495 4c8452c56b0e58ca1be552307f1770f5af18fcb4 DHCross <45954119+DHCross@users.noreply.github.com> 1758665144 -0500	commit: Fix Vercel build issues and resolve module dependencies
+4c8452c56b0e58ca1be552307f1770f5af18fcb4 f8c7d7b3741a17ae62ae0eba885cf7fb46f0dd78 DHCross <45954119+DHCross@users.noreply.github.com> 1758666155 -0500	commit: Fix CSS and Tailwind configuration for proper styling
+f8c7d7b3741a17ae62ae0eba885cf7fb46f0dd78 4866e09bd330ad93cde457587389e7e7043715e8 DHCross <45954119+DHCross@users.noreply.github.com> 1758667871 -0500	commit: Downgrade to Tailwind CSS v3 for better compatibility
+4866e09bd330ad93cde457587389e7e7043715e8 771709e211fd799e0078ca183d535f217e123c0f DHCross <45954119+DHCross@users.noreply.github.com> 1758671830 -0500	pull --tags origin main: Fast-forward
+771709e211fd799e0078ca183d535f217e123c0f e88de6a027e21aaa0af8208139f1a1e9b8fd64d2 DHCross <45954119+DHCross@users.noreply.github.com> 1758673864 -0500	commit: updated parser
+e88de6a027e21aaa0af8208139f1a1e9b8fd64d2 432f7a8aec3a84602339362b162c5ad83464ea59 DHCross <45954119+DHCross@users.noreply.github.com> 1758674085 -0500	pull origin main: Merge made by the 'ort' strategy.
+432f7a8aec3a84602339362b162c5ad83464ea59 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 DHCross <45954119+DHCross@users.noreply.github.com> 1758697407 -0500	commit: update styling
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 d89400c2beaec6b397b32f4556d63471eb88f3b5 DHCross <45954119+DHCross@users.noreply.github.com> 1758755196 -0500	commit: update sytles
+d89400c2beaec6b397b32f4556d63471eb88f3b5 a3514e312a4358c9a9b7ffae34d267c61ca87f7b DHCross <45954119+DHCross@users.noreply.github.com> 1758755300 -0500	commit (merge): Merge remote changes and fix font configuration
+a3514e312a4358c9a9b7ffae34d267c61ca87f7b ea567dc522899a5a6fdd971aa267608fda52dcc5 DHCross <45954119+DHCross@users.noreply.github.com> 1758756075 -0500	commit: update formatting
+ea567dc522899a5a6fdd971aa267608fda52dcc5 516b7fdab56c166148135f4d7104212023e41610 DHCross <45954119+DHCross@users.noreply.github.com> 1758761299 -0500	commit: update
+516b7fdab56c166148135f4d7104212023e41610 0b19ef18d3e54de05005f84bb00cb93009a325f5 DHCross <45954119+DHCross@users.noreply.github.com> 1758762958 -0500	pull --tags origin main: Fast-forward
+0b19ef18d3e54de05005f84bb00cb93009a325f5 7cf6758d0e2a23d663f14f779194320aaf871aa3 DHCross <45954119+DHCross@users.noreply.github.com> 1758776320 -0500	commit: update
+7cf6758d0e2a23d663f14f779194320aaf871aa3 8b4e95f5d8405be4f219cd8ba4f7ec0415e3cc02 DHCross <45954119+DHCross@users.noreply.github.com> 1758787014 -0500	commit: update
+8b4e95f5d8405be4f219cd8ba4f7ec0415e3cc02 29bb33e92ddef114b9644dd2dc62e87eca9c665c DHCross <45954119+DHCross@users.noreply.github.com> 1758918840 -0500	commit: review doc update
+29bb33e92ddef114b9644dd2dc62e87eca9c665c c80f0855c1b5689390694b15b05942ad2018a827 DHCross <45954119+DHCross@users.noreply.github.com> 1758919157 -0500	commit: Implement enhanced NPC parser with Jeremy's specifications
+c80f0855c1b5689390694b15b05942ad2018a827 2bb923e204e650c50053c3c3722f7f30dd82cf3a DHCross <45954119+DHCross@users.noreply.github.com> 1758926335 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+2bb923e204e650c50053c3c3722f7f30dd82cf3a ada5a9ab6c89f83e482d7bff9ca846a1a56dfd2e DHCross <45954119+DHCross@users.noreply.github.com> 1758929902 -0500	commit: update for correct parsing
+ada5a9ab6c89f83e482d7bff9ca846a1a56dfd2e 80fcdc7986d9af3c7da9735fe20a493c77124572 DHCross <45954119+DHCross@users.noreply.github.com> 1758929906 -0500	pull --tags origin main: Merge made by the 'ort' strategy.
+80fcdc7986d9af3c7da9735fe20a493c77124572 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 DHCross <45954119+DHCross@users.noreply.github.com> 1758931229 -0500	commit: update
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 77ccbeddadd0cd58509e4495c003ab548b35fc82 DHCross <45954119+DHCross@users.noreply.github.com> 1758996194 -0500	commit: fix parser 9.27.25
+77ccbeddadd0cd58509e4495c003ab548b35fc82 06162afcd237275e545b0215637409bd1006c2be DHCross <45954119+DHCross@users.noreply.github.com> 1758996475 -0500	commit: Add version information display to front page
+06162afcd237275e545b0215637409bd1006c2be 7886f113e5d518664ccb83490c41e22b85dc1487 DHCross <45954119+DHCross@users.noreply.github.com> 1758997147 -0500	commit: Comprehensive Jeremy editorial compliance sweep
+7886f113e5d518664ccb83490c41e22b85dc1487 855143867e97ee2da0a965be9fb058ddace6a17a DHCross <45954119+DHCross@users.noreply.github.com> 1758997577 -0500	commit: update 9.27.25 1.08pm part 1
+855143867e97ee2da0a965be9fb058ddace6a17a 9712b393b2b716356410777712e8a8d764170cca DHCross <45954119+DHCross@users.noreply.github.com> 1758997579 -0500	pull --tags origin main: Merge made by the 'ort' strategy.
+9712b393b2b716356410777712e8a8d764170cca 349c4cb9d5135a1038d4a14ea546ba34f00d2296 DHCross <45954119+DHCross@users.noreply.github.com> 1759011150 -0500	commit: update 9.27.25 5.12 pm
+349c4cb9d5135a1038d4a14ea546ba34f00d2296 9e863c5cf404c6a345df076de5dfe8978875f297 DHCross <45954119+DHCross@users.noreply.github.com> 1759011814 -0500	pull --tags origin main: Merge made by the 'ort' strategy.
+9e863c5cf404c6a345df076de5dfe8978875f297 87c5004e956c4cb8adff9f45d868e113749b1f67 DHCross <45954119+DHCross@users.noreply.github.com> 1759013206 -0500	commit: update 9.27.25 5.46pm
+87c5004e956c4cb8adff9f45d868e113749b1f67 3c20d955a416096e9a339fe0e6782a939dfeed2e DHCross <45954119+DHCross@users.noreply.github.com> 1759013207 -0500	pull --tags origin main: Merge made by the 'ort' strategy.
+3c20d955a416096e9a339fe0e6782a939dfeed2e 698c123cfcc8b69b8c588ba08ced596d0b35a1ee DHCross <45954119+DHCross@users.noreply.github.com> 1759014236 -0500	commit: update 9.27.25 6.03pm
+698c123cfcc8b69b8c588ba08ced596d0b35a1ee 0a07c7fbb032fc5ae188dace1d5fd3730b9adb4a DHCross <45954119+DHCross@users.noreply.github.com> 1759014640 -0500	commit: 9.27.25 6.10pm
+0a07c7fbb032fc5ae188dace1d5fd3730b9adb4a 243d3fcebbda266d1698b3e10ba7f8dfb8bbbd9c DHCross <45954119+DHCross@users.noreply.github.com> 1759016098 -0500	commit: 9.27.25 6.34pm
+243d3fcebbda266d1698b3e10ba7f8dfb8bbbd9c b09e965af0de5bf2bbf3d56cb724e5bb64aa52aa DHCross <45954119+DHCross@users.noreply.github.com> 1759016447 -0500	commit: update 9.27.25
+b09e965af0de5bf2bbf3d56cb724e5bb64aa52aa 7f26b9874eb85ed69354fc4a7a6ac8c4c4d43e3c DHCross <45954119+DHCross@users.noreply.github.com> 1759017236 -0500	commit: update 9.27.25
+7f26b9874eb85ed69354fc4a7a6ac8c4c4d43e3c b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 DHCross <45954119+DHCross@users.noreply.github.com> 1759017524 -0500	commit: 9.27.25 6.68pm
+b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 dce462a8e323e5ba9b42dd32af2206f87c05da5b DHCross <45954119+DHCross@users.noreply.github.com> 1759026622 -0500	commit: fix deploy issue 9.27.25 9.30pm
+dce462a8e323e5ba9b42dd32af2206f87c05da5b 0492d102d246c9b553363128e143258bbda6c88b DHCross <45954119+DHCross@users.noreply.github.com> 1759032064 -0500	commit: update reports
+0492d102d246c9b553363128e143258bbda6c88b 986eae984aa13f9ed46691778c2ed7ebd0d4974c DHCross <45954119+DHCross@users.noreply.github.com> 1759039053 -0500	commit: update sep 28 12.57 am
+986eae984aa13f9ed46691778c2ed7ebd0d4974c 19d7e66ebbf0b13c1cdcc02c423fedd2bc1053a9 DHCross <45954119+DHCross@users.noreply.github.com> 1759039054 -0500	pull --tags origin main: Merge made by the 'ort' strategy.
+19d7e66ebbf0b13c1cdcc02c423fedd2bc1053a9 e3b1699ab0779569870a0cb29d5dc5348da55d5b DHCross <45954119+DHCross@users.noreply.github.com> 1759039815 -0500	commit: update 9.28.25 1.10 am
+e3b1699ab0779569870a0cb29d5dc5348da55d5b e07be76f41d177e71cf45866c5851bbd61119629 DHCross <45954119+DHCross@users.noreply.github.com> 1759040209 -0500	commit: update 9.28 1.16 am
+e07be76f41d177e71cf45866c5851bbd61119629 563bf17cb4c1ef546df1d0aff003674a24aed225 DHCross <45954119+DHCross@users.noreply.github.com> 1759082405 -0500	pull --tags origin main: Fast-forward
+563bf17cb4c1ef546df1d0aff003674a24aed225 827758a958088e6b9e3a35e0583e189d0e8d040a DHCross <45954119+DHCross@users.noreply.github.com> 1759083233 -0500	commit: update
+827758a958088e6b9e3a35e0583e189d0e8d040a 941f5bd5c51e71cf63011898a6ddb14d6bfeed5c DHCross <45954119+DHCross@users.noreply.github.com> 1759084186 -0500	commit: fix bugs
+941f5bd5c51e71cf63011898a6ddb14d6bfeed5c 6a6b68ec394233aeb83f48c65066a119e866c3da DHCross <45954119+DHCross@users.noreply.github.com> 1759100361 -0500	commit: fix deploy 9.28.25 5.59pm
+6a6b68ec394233aeb83f48c65066a119e866c3da 998f65153fb91af2be67b6dc2ea2895ee5d1e310 DHCross <45954119+DHCross@users.noreply.github.com> 1759100884 -0500	commit: update punctuation 9.28.25 6.07 pm
+998f65153fb91af2be67b6dc2ea2895ee5d1e310 87ce9040eaf88dc0f233e9d35817344214c2356e DHCross <45954119+DHCross@users.noreply.github.com> 1759106030 -0500	commit: fix punctuation
+87ce9040eaf88dc0f233e9d35817344214c2356e a8d9a1a67bada8359e3136fcfa395ab9877301d9 DHCross <45954119+DHCross@users.noreply.github.com> 1759106495 -0500	commit: fix punctuation
+a8d9a1a67bada8359e3136fcfa395ab9877301d9 ce4b7ea42d34f1ab8071d30984e090868ea5797b DHCross <45954119+DHCross@users.noreply.github.com> 1759108001 -0500	commit: update
+ce4b7ea42d34f1ab8071d30984e090868ea5797b 8247dde4e4dca407c77871c63d759a6f3fe3696d DHCross <45954119+DHCross@users.noreply.github.com> 1759108954 -0500	commit: fix parser
+8247dde4e4dca407c77871c63d759a6f3fe3696d 8af67520f0cbb99571fd21c5c674810e53340ae1 DHCross <45954119+DHCross@users.noreply.github.com> 1759112563 -0500	commit: update
+8af67520f0cbb99571fd21c5c674810e53340ae1 fe6a364513878f35c1445df606a52767cd4c3164 DHCross <45954119+DHCross@users.noreply.github.com> 1759127690 -0500	commit: update
+fe6a364513878f35c1445df606a52767cd4c3164 ad9d29936ef289b15e9daab806d3d51c03e340dd DHCross <45954119+DHCross@users.noreply.github.com> 1759273591 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+ad9d29936ef289b15e9daab806d3d51c03e340dd 80175159852b7d9e0a82473e393f760b089d4ed3 DHCross <45954119+DHCross@users.noreply.github.com> 1759283008 -0500	commit: fix
+80175159852b7d9e0a82473e393f760b089d4ed3 54344f5424f65ff015258b1531f6c603414489e1 DHCross <45954119+DHCross@users.noreply.github.com> 1759283084 -0500	commit (merge): Merge remote-tracking branch 'origin/main' into main
+54344f5424f65ff015258b1531f6c603414489e1 2a94786b12b920f5dfae944ab1ca549b05776a95 DHCross <45954119+DHCross@users.noreply.github.com> 1759289226 -0500	commit: updates
+2a94786b12b920f5dfae944ab1ca549b05776a95 6a5f69ce353490e9feae8d3ac0b1d3e7700a37c4 DHCross <45954119+DHCross@users.noreply.github.com> 1759310787 -0500	commit: update
+6a5f69ce353490e9feae8d3ac0b1d3e7700a37c4 5a86f0ae905031911017024cee4a492360a81de3 DHCross <45954119+DHCross@users.noreply.github.com> 1759360798 -0500	commit: Fix parser bugs for non-classed creature units
+5a86f0ae905031911017024cee4a492360a81de3 e52bab5822f85058029b39b1e32dbcfbb426a41b DHCross <45954119+DHCross@users.noreply.github.com> 1759361605 -0500	commit: Add formatter mode selector to UI with dedicated monster option
+e52bab5822f85058029b39b1e32dbcfbb426a41b a5f62ee890b87653761cb9f632225db5c077a7d5 DHCross <45954119+DHCross@users.noreply.github.com> 1759362325 -0500	commit: update
+a5f62ee890b87653761cb9f632225db5c077a7d5 9886493ae7a84ad9a1133d70d987908e954ae887 DHCross <45954119+DHCross@users.noreply.github.com> 1759362701 -0500	commit: Fix multiple parser issues for complex NPCs
+9886493ae7a84ad9a1133d70d987908e954ae887 daef89cfcf0cef8f7bac425b820d93b909e0a511 DHCross <45954119+DHCross@users.noreply.github.com> 1759363158 -0500	commit: update to fix deploy
+daef89cfcf0cef8f7bac425b820d93b909e0a511 f16557fd22b61332adaff39f822dfabf07e30554 DHCross <45954119+DHCross@users.noreply.github.com> 1759789335 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+f16557fd22b61332adaff39f822dfabf07e30554 e2944e3f80a14c2e3776a39ea7398f00c74dd401 DHCross <45954119+DHCross@users.noreply.github.com> 1759789802 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+e2944e3f80a14c2e3776a39ea7398f00c74dd401 e66a64e5f6d887ea310e18e6f6301acdf16625a9 DHCross <45954119+DHCross@users.noreply.github.com> 1759795279 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+e66a64e5f6d887ea310e18e6f6301acdf16625a9 73ac6f006513191603c730b32ecfc76f725fd695 DHCross <45954119+DHCross@users.noreply.github.com> 1759805173 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+73ac6f006513191603c730b32ecfc76f725fd695 fbc81e4696213686922197ca48d6477f8796b95d DHCross <45954119+DHCross@users.noreply.github.com> 1759969981 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+fbc81e4696213686922197ca48d6477f8796b95d 3f5e7255e7f034d78b0ba9aefb5af07f80124d2a DHCross <45954119+DHCross@users.noreply.github.com> 1759993927 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+3f5e7255e7f034d78b0ba9aefb5af07f80124d2a ff48a213b9a246fa58a29b4a726fa8dbdbaf442f DHCross <45954119+DHCross@users.noreply.github.com> 1760062843 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+ff48a213b9a246fa58a29b4a726fa8dbdbaf442f 98f407209c8ea6b5b065de0ffa0035e333e41727 DHCross <45954119+DHCross@users.noreply.github.com> 1760137615 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+98f407209c8ea6b5b065de0ffa0035e333e41727 14bfcafb91e2bc4e17a4be3a64364055416a1479 DHCross <45954119+DHCross@users.noreply.github.com> 1760505629 -0500	commit: update with fixes
+14bfcafb91e2bc4e17a4be3a64364055416a1479 925a08dd856806027529eb18ba40c7e378c4a732 DHCross <45954119+DHCross@users.noreply.github.com> 1761781532 -0500	commit: fix deploy
+925a08dd856806027529eb18ba40c7e378c4a732 21813a06e43c2eeef28e439e9fba5d7537ef7031 DHCross <45954119+DHCross@users.noreply.github.com> 1761782154 -0500	commit: remove the other git distraction and redeploy
+21813a06e43c2eeef28e439e9fba5d7537ef7031 e0a4638a93ec32d9be06097484b4d75759041d56 DHCross <45954119+DHCross@users.noreply.github.com> 1763272814 -0600	commit: Complete canonicalizer iteration: pronouns, attributes, equipment verbs, treasure normalization
+e0a4638a93ec32d9be06097484b4d75759041d56 9a5cf8ba744d9d5c47ce52a43b605edaacc1db63 DHCross <45954119+DHCross@users.noreply.github.com> 1763272835 -0600	commit: Final validation complete: canonicalizer working correctly
+9a5cf8ba744d9d5c47ce52a43b605edaacc1db63 5e32d157ba23a27cc2e8818c157ed18bbf4961e1 DHCross <45954119+DHCross@users.noreply.github.com> 1763275839 -0600	commit: full doc pipeline
+5e32d157ba23a27cc2e8818c157ed18bbf4961e1 d62506a6cca25238e234ac27566dd8823b0e2f19 DHCross <45954119+DHCross@users.noreply.github.com> 1763276768 -0600	commit: update full doc pipeline
+d62506a6cca25238e234ac27566dd8823b0e2f19 c38983f40c35d73a269bc7075e35976d94fc6ecb DHCross <45954119+DHCross@users.noreply.github.com> 1763277721 -0600	commit: feat: add Canonical Monster Index Builder script
+c38983f40c35d73a269bc7075e35976d94fc6ecb 275f2605a0e0b6e4d3439712d839b216b7bd6254 DHCross <45954119+DHCross@users.noreply.github.com> 1763332260 -0600	commit: Refactor NPC detection and index building logic in build_canonical_index.cjs
+275f2605a0e0b6e4d3439712d839b216b7bd6254 b7af491e31f82c3f2d6d43c3a65b9f122c3b3533 DHCross <45954119+DHCross@users.noreply.github.com> 1763374425 -0600	commit: feat(signal-extraction): Complete Phase 1 implementation of signal extraction module with comprehensive tests
+b7af491e31f82c3f2d6d43c3a65b9f122c3b3533 210a8ed33a70a14dd48023111a3ec2bf420b834e DHCross <45954119+DHCross@users.noreply.github.com> 1763463920 -0600	commit: Add pipeline-friendly headers for Essential Places, generate Essential Places mock and Storybook story for UI validation
+
+
+File: commit-msg.sample
+Content:
+#!/bin/sh
+#
+# An example hook script to check the commit log message.
+# Called by "git commit" with one argument, the name of the file
+# that has the commit message.  The hook should exit with non-zero
+# status after issuing an appropriate message if it wants to stop the
+# commit.  The hook is allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "commit-msg".
+
+# Uncomment the below to add a Signed-off-by line to the message.
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+# hook is more suited to it.
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# This example catches duplicate Signed-off-by lines.
+
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
+	echo >&2 Duplicate Signed-off-by lines.
+	exit 1
+}
+
+
+File: pre-rebase.sample
+Content:
+#!/bin/sh
+#
+# Copyright (c) 2006, 2008 Junio C Hamano
+#
+# The "pre-rebase" hook is run just before "git rebase" starts doing
+# its job, and can prevent the command from running by exiting with
+# non-zero status.
+#
+# The hook is called with the following parameters:
+#
+# $1 -- the upstream the series was forked from.
+# $2 -- the branch being rebased (or empty when rebasing the current branch).
+#
+# This sample shows how to prevent topic branches that are already
+# merged to 'next' branch from getting rebased, because allowing it
+# would result in rebasing already published history.
+
+publish=next
+basebranch="$1"
+if test "$#" = 2
+then
+	topic="refs/heads/$2"
+else
+	topic=`git symbolic-ref HEAD` ||
+	exit 0 ;# we do not interrupt rebasing detached HEAD
+fi
+
+case "$topic" in
+refs/heads/??/*)
+	;;
+*)
+	exit 0 ;# we do not interrupt others.
+	;;
+esac
+
+# Now we are dealing with a topic branch being rebased
+# on top of master.  Is it OK to rebase it?
+
+# Does the topic really exist?
+git show-ref -q "$topic" || {
+	echo >&2 "No such branch $topic"
+	exit 1
+}
+
+# Is topic fully merged to master?
+not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
+if test -z "$not_in_master"
+then
+	echo >&2 "$topic is fully merged to master; better remove it."
+	exit 1 ;# we could allow it, but there is no point.
+fi
+
+# Is topic ever merged to next?  If so you should not be rebasing it.
+only_next_1=`git rev-list ^master "^$topic" ${publish} | sort`
+only_next_2=`git rev-list ^master           ${publish} | sort`
+if test "$only_next_1" = "$only_next_2"
+then
+	not_in_topic=`git rev-list "^$topic" master`
+	if test -z "$not_in_topic"
+	then
+		echo >&2 "$topic is already up to date with master"
+		exit 1 ;# we could allow it, but there is no point.
+	else
+		exit 0
+	fi
+else
+	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`
+	/usr/bin/perl -e '
+		my $topic = $ARGV[0];
+		my $msg = "* $topic has commits already merged to public branch:\n";
+		my (%not_in_next) = map {
+			/^([0-9a-f]+) /;
+			($1 => 1);
+		} split(/\n/, $ARGV[1]);
+		for my $elem (map {
+				/^([0-9a-f]+) (.*)$/;
+				[$1 => $2];
+			} split(/\n/, $ARGV[2])) {
+			if (!exists $not_in_next{$elem->[0]}) {
+				if ($msg) {
+					print STDERR $msg;
+					undef $msg;
+				}
+				print STDERR " $elem->[1]\n";
+			}
+		}
+	' "$topic" "$not_in_next" "$not_in_master"
+	exit 1
+fi
+
+<<\DOC_END
+
+This sample hook safeguards topic branches that have been
+published from being rewound.
+
+The workflow assumed here is:
+
+ * Once a topic branch forks from "master", "master" is never
+   merged into it again (either directly or indirectly).
+
+ * Once a topic branch is fully cooked and merged into "master",
+   it is deleted.  If you need to build on top of it to correct
+   earlier mistakes, a new topic branch is created by forking at
+   the tip of the "master".  This is not strictly necessary, but
+   it makes it easier to keep your history simple.
+
+ * Whenever you need to test or publish your changes to topic
+   branches, merge them into "next" branch.
+
+The script, being an example, hardcodes the publish branch name
+to be "next", but it is trivial to make it configurable via
+$GIT_DIR/config mechanism.
+
+With this workflow, you would want to know:
+
+(1) ... if a topic branch has ever been merged to "next".  Young
+    topic branches can have stupid mistakes you would rather
+    clean up before publishing, and things that have not been
+    merged into other branches can be easily rebased without
+    affecting other people.  But once it is published, you would
+    not want to rewind it.
+
+(2) ... if a topic branch has been fully merged to "master".
+    Then you can delete it.  More importantly, you should not
+    build on top of it -- other people may already want to
+    change things related to the topic as patches against your
+    "master", so if you need further changes, it is better to
+    fork the topic (perhaps with the same name) afresh from the
+    tip of "master".
+
+Let's look at this example:
+
+		   o---o---o---o---o---o---o---o---o---o "next"
+		  /       /           /           /
+		 /   a---a---b A     /           /
+		/   /               /           /
+	       /   /   c---c---c---c B         /
+	      /   /   /             \         /
+	     /   /   /   b---b C     \       /
+	    /   /   /   /             \     /
+    ---o---o---o---o---o---o---o---o---o---o---o "master"
+
+
+A, B and C are topic branches.
+
+ * A has one fix since it was merged up to "next".
+
+ * B has finished.  It has been fully merged up to "master" and "next",
+   and is ready to be deleted.
+
+ * C has not merged to "next" at all.
+
+We would want to allow C to be rebased, refuse A, and encourage
+B to be deleted.
+
+To compute (1):
+
+	git rev-list ^master ^topic next
+	git rev-list ^master        next
+
+	if these match, topic has not merged in next at all.
+
+To compute (2):
+
+	git rev-list master..topic
+
+	if this is empty, it is fully merged to "master".
+
+DOC_END
+
+
+File: sendemail-validate.sample
+Content:
+#!/bin/sh
+
+# An example hook script to validate a patch (and/or patch series) before
+# sending it via email.
+#
+# The hook should exit with non-zero status after issuing an appropriate
+# message if it wants to prevent the email(s) from being sent.
+#
+# To enable this hook, rename this file to "sendemail-validate".
+#
+# By default, it will only check that the patch(es) can be applied on top of
+# the default upstream branch without conflicts in a secondary worktree. After
+# validation (successful or not) of the last patch of a series, the worktree
+# will be deleted.
+#
+# The following config variables can be set to change the default remote and
+# remote ref that are used to apply the patches against:
+#
+#   sendemail.validateRemote (default: origin)
+#   sendemail.validateRemoteRef (default: HEAD)
+#
+# Replace the TODO placeholders with appropriate checks according to your
+# needs.
+
+validate_cover_letter () {
+	file="$1"
+	# TODO: Replace with appropriate checks (e.g. spell checking).
+	true
+}
+
+validate_patch () {
+	file="$1"
+	# Ensure that the patch applies without conflicts.
+	git am -3 "$file" || return
+	# TODO: Replace with appropriate checks for this patch
+	# (e.g. checkpatch.pl).
+	true
+}
+
+validate_series () {
+	# TODO: Replace with appropriate checks for the whole series
+	# (e.g. quick build, coding style checks, etc.).
+	true
+}
+
+# main -------------------------------------------------------------------------
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = 1
+then
+	remote=$(git config --default origin --get sendemail.validateRemote) &&
+	ref=$(git config --default HEAD --get sendemail.validateRemoteRef) &&
+	worktree=$(mktemp --tmpdir -d sendemail-validate.XXXXXXX) &&
+	git worktree add -fd --checkout "$worktree" "refs/remotes/$remote/$ref" &&
+	git config --replace-all sendemail.validateWorktree "$worktree"
+else
+	worktree=$(git config --get sendemail.validateWorktree)
+fi || {
+	echo "sendemail-validate: error: failed to prepare worktree" >&2
+	exit 1
+}
+
+unset GIT_DIR GIT_WORK_TREE
+cd "$worktree" &&
+
+if grep -q "^diff --git " "$1"
+then
+	validate_patch "$1"
+else
+	validate_cover_letter "$1"
+fi &&
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = "$GIT_SENDEMAIL_FILE_TOTAL"
+then
+	git config --unset-all sendemail.validateWorktree &&
+	trap 'git worktree remove -ff "$worktree"' EXIT &&
+	validate_series
+fi
+
+
+File: pre-commit.sample
+Content:
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=$(git hash-object -t tree /dev/null)
+fi
+
+# If you want to allow non-ASCII filenames set this variable to true.
+allownonascii=$(git config --type=bool hooks.allownonascii)
+
+# Redirect output to stderr.
+exec 1>&2
+
+# Cross platform projects tend to avoid non-ASCII filenames; prevent
+# them from being added to the repository. We exploit the fact that the
+# printable range starts at the space character and ends with tilde.
+if [ "$allownonascii" != "true" ] &&
+	# Note that the use of brackets around a tr range is ok here, (it's
+	# even required, for portability to Solaris 10's /usr/bin/tr), since
+	# the square bracket bytes happen to fall in the designated range.
+	test $(git diff-index --cached --name-only --diff-filter=A -z $against |
+	  LC_ALL=C tr -d '[ -~]\0' | wc -c) != 0
+then
+	cat <<\EOF
+Error: Attempt to add a non-ASCII file name.
+
+This can cause problems if you want to work with people on other platforms.
+
+To be portable it is advisable to rename the file.
+
+If you know what you are doing you can disable this check using:
+
+  git config hooks.allownonascii true
+EOF
+	exit 1
+fi
+
+# If there are whitespace errors, print the offending file names and fail.
+exec git diff-index --check --cached $against --
+
+
+File: applypatch-msg.sample
+Content:
+#!/bin/sh
+#
+# An example hook script to check the commit log message taken by
+# applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.  The hook is
+# allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "applypatch-msg".
+
+. git-sh-setup
+commitmsg="$(git rev-parse --git-path hooks/commit-msg)"
+test -x "$commitmsg" && exec "$commitmsg" ${1+"$@"}
+:
+
+

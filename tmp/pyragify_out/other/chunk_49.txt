@@ -1,0 +1,2862 @@
+File: creature-classifications.json
+Content:
+[
+  {
+    "entryNumber": 1,
+    "creatureName": "Ape, carnivorous",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 1. Ape, carnivorous"
+    }
+  },
+  {
+    "entryNumber": 2,
+    "creatureName": "Bandit",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "medium",
+    "reasoning": "Generic hireling type 'bandit' with flat HP (implicit fighter)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 2. Bandit"
+    }
+  },
+  {
+    "entryNumber": 3,
+    "creatureName": "Bandit, Lieutenant",
+    "type": "classed",
+    "subtype": "rank-inferred",
+    "confidence": "medium",
+    "reasoning": "Has flat HP and leadership title 'lieutenant' (suggests fighter)",
+    "warnings": [
+      "Inferred class 'fighter' from title 'lieutenant'"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 3. Bandit, Lieutenant"
+    }
+  },
+  {
+    "entryNumber": 4,
+    "creatureName": "Bat, giant cave",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 4. Bat, giant cave"
+    }
+  },
+  {
+    "entryNumber": 5,
+    "creatureName": "Batrachianoid",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 5. **Batrachianoid*:** _"
+    }
+  },
+  {
+    "entryNumber": 6,
+    "creatureName": "Bear, black",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 6. Bear, black"
+    }
+  },
+  {
+    "entryNumber": 7,
+    "creatureName": "Boar, wild",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 7. Boar, wild"
+    }
+  },
+  {
+    "entryNumber": 8,
+    "creatureName": "Brigand, crossbowmen",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "medium",
+    "reasoning": "Generic hireling type 'brigand' with flat HP (implicit fighter)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 8. Brigand, crossbowmen"
+    }
+  },
+  {
+    "entryNumber": 9,
+    "creatureName": "Brigand, flailmen",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "medium",
+    "reasoning": "Generic hireling type 'brigand' with flat HP (implicit fighter)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 9. Brigand, flailmen"
+    }
+  },
+  {
+    "entryNumber": 10,
+    "creatureName": "Brigand, Serjeant",
+    "type": "classed",
+    "subtype": "rank-inferred",
+    "confidence": "medium",
+    "reasoning": "Has flat HP and leadership title 'serjeant' (suggests fighter)",
+    "warnings": [
+      "Inferred class 'fighter' from title 'serjeant'"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 10. Brigand, Serjeant"
+    }
+  },
+  {
+    "entryNumber": 11,
+    "creatureName": "Bugbear",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 11. Bugbear"
+    }
+  },
+  {
+    "entryNumber": 12,
+    "creatureName": "Elf, Wood, bowman",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 12. Elf, Wood, bowman"
+    }
+  },
+  {
+    "entryNumber": 13,
+    "creatureName": "Elf, Wood, spearman",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 13. Elf, Wood, spearman"
+    }
+  },
+  {
+    "entryNumber": 14,
+    "creatureName": "Elf, Wood, swordsman",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 14. Elf, Wood, swordsman"
+    }
+  },
+  {
+    "entryNumber": 15,
+    "creatureName": "Ghoul",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 15. Ghoul"
+    }
+  },
+  {
+    "entryNumber": 16,
+    "creatureName": "Gnoll",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 16. Gnoll"
+    }
+  },
+  {
+    "entryNumber": 17,
+    "creatureName": "Goblin, raider",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 17. Goblin, raider"
+    }
+  },
+  {
+    "entryNumber": 18,
+    "creatureName": "Goblin, leader (corporal)",
+    "type": "classed",
+    "subtype": "rank-inferred",
+    "confidence": "medium",
+    "reasoning": "Has flat HP and leadership title 'leader' (suggests fighter)",
+    "warnings": [
+      "Inferred class 'fighter' from title 'leader'"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 18. Goblin, leader (corporal)"
+    }
+  },
+  {
+    "entryNumber": 19,
+    "creatureName": "Griffon",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 19. Griffon"
+    }
+  },
+  {
+    "entryNumber": 20,
+    "creatureName": "Hobgoblin",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 20. Hobgoblin"
+    }
+  },
+  {
+    "entryNumber": 21,
+    "creatureName": "Kobold",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 21. Kobold"
+    }
+  },
+  {
+    "entryNumber": 22,
+    "creatureName": "Lion (mountain, forest)",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 22. Lion (mountain, forest)"
+    }
+  },
+  {
+    "entryNumber": 23,
+    "creatureName": "Lizardfolk",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 23. Lizardfolk"
+    }
+  },
+  {
+    "entryNumber": 24,
+    "creatureName": "Losel",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 24. **Losel*:** _"
+    }
+  },
+  {
+    "entryNumber": 25,
+    "creatureName": "(fisherman/hunter/trapper/woodcutter)",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "medium",
+    "reasoning": "Generic hireling type 'fisherman' with flat HP (implicit fighter)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 25. (fisherman/hunter/trapper/woodcutter)"
+    }
+  },
+  {
+    "entryNumber": 26,
+    "creatureName": "Naga, Water",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": true,
+      "raceClass": "### 26. Naga, Water"
+    }
+  },
+  {
+    "entryNumber": 27,
+    "creatureName": "Nixies (sprite)",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 27. Nixies (sprite)"
+    }
+  },
+  {
+    "entryNumber": 28,
+    "creatureName": "Orc",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 28. Orc"
+    }
+  },
+  {
+    "entryNumber": 29,
+    "creatureName": "Otter, giant",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 29. Otter, giant"
+    }
+  },
+  {
+    "entryNumber": 30,
+    "creatureName": "Owlbear (small)",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 30. Owlbear (small)"
+    }
+  },
+  {
+    "entryNumber": 31,
+    "creatureName": "Rats, River (giant)",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 31. Rats, River (giant)"
+    }
+  },
+  {
+    "entryNumber": 32,
+    "creatureName": "Rivermen",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Named unique monster with HD (proper name does not grant class levels)",
+    "warnings": [
+      "Named entity but uses HD - remains monster per rule 5.2"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 32. Rivermen"
+    }
+  },
+  {
+    "entryNumber": 33,
+    "creatureName": "Snake, poisonous",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 33. Snake, poisonous"
+    }
+  },
+  {
+    "entryNumber": 34,
+    "creatureName": "Snake, poisonous (deadly)",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 34. Snake, poisonous (deadly)"
+    }
+  },
+  {
+    "entryNumber": 35,
+    "creatureName": "Spider, Giant (medium-sized)",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 35. Spider, Giant (medium-sized)"
+    }
+  },
+  {
+    "entryNumber": 36,
+    "creatureName": "Stirges",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 36. Stirges"
+    }
+  },
+  {
+    "entryNumber": 37,
+    "creatureName": "Thieves",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "medium",
+    "reasoning": "Generic hireling type 'thieves' with flat HP (implicit fighter)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 37. Thieves"
+    }
+  },
+  {
+    "entryNumber": 38,
+    "creatureName": "Turtle, Huge Snapping",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 38. Turtle, Huge Snapping"
+    }
+  },
+  {
+    "entryNumber": 39,
+    "creatureName": "Wolf, Grey",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 39. Wolf, Grey"
+    }
+  },
+  {
+    "entryNumber": 40,
+    "creatureName": "Wolverine (small, normal)",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 40. Wolverine (small, normal)"
+    }
+  },
+  {
+    "entryNumber": 41,
+    "creatureName": "Grimlock Manface (Losel Chieftain)",
+    "type": "classed",
+    "subtype": "rank-inferred",
+    "confidence": "medium",
+    "reasoning": "Has flat HP and leadership title 'chief' (suggests fighter)",
+    "warnings": [
+      "Inferred class 'fighter' from title 'chief'"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 41. Grimlock Manface (Losel Chieftain)"
+    }
+  },
+  {
+    "entryNumber": 42,
+    "creatureName": "Ji'gun-tima (Losel Shaman)",
+    "type": "monster",
+    "subtype": "monster-leader",
+    "confidence": "high",
+    "reasoning": "Monster race with HD and leadership title 'shaman'",
+    "warnings": [
+      "Title 'shaman' indicates leader role but remains monster (M&T chiefs use HD)"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": true,
+      "raceClass": "### 42. Ji'gun-tima (Losel Shaman)"
+    }
+  },
+  {
+    "entryNumber": 43,
+    "creatureName": "Losel sub-chiefs x 10",
+    "type": "monster",
+    "subtype": "monster-leader",
+    "confidence": "high",
+    "reasoning": "Monster race with HD and leadership title 'chief'",
+    "warnings": [
+      "Title 'chief' indicates leader role but remains monster (M&T chiefs use HD)"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 43. Losel sub-chiefs x 10"
+    }
+  },
+  {
+    "entryNumber": 44,
+    "creatureName": "Losel warriors x 30",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 44. Losel warriors x 30"
+    }
+  },
+  {
+    "entryNumber": 45,
+    "creatureName": "Losel females x 35",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 45. Losel females x 35"
+    }
+  },
+  {
+    "entryNumber": 46,
+    "creatureName": "Iggy the Mad",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 46. **Iggy the Mad*:** _"
+    }
+  },
+  {
+    "entryNumber": 47,
+    "creatureName": "The Ogre",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 47. The Ogre"
+    }
+  },
+  {
+    "entryNumber": 48,
+    "creatureName": "Children x 3-6",
+    "type": "monster",
+    "confidence": "low",
+    "reasoning": "Has HD without clear classification indicators (default to monster)",
+    "warnings": [
+      "Has HD but unclear race/type - defaulting to monster"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 48. Children x 3-6"
+    }
+  },
+  {
+    "entryNumber": 49,
+    "creatureName": "Batrachianoids* x 6:",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 49. **Batrachianoids* x 6:** _"
+    }
+  },
+  {
+    "entryNumber": 50,
+    "creatureName": "Blook-glook (Batrachianoid Chieftain)",
+    "type": "monster",
+    "subtype": "monster-leader",
+    "confidence": "high",
+    "reasoning": "Monster race with HD and leadership title 'chief'",
+    "warnings": [
+      "Title 'chief' indicates leader role but remains monster (M&T chiefs use HD)"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 50. Blook-glook (Batrachianoid Chieftain)"
+    }
+  },
+  {
+    "entryNumber": 51,
+    "creatureName": "Spider, Giant (medium-sized) x 2",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 51. Spider, Giant (medium-sized) x 2"
+    }
+  },
+  {
+    "entryNumber": 52,
+    "creatureName": "Harpy",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Named unique monster with HD (proper name does not grant class levels)",
+    "warnings": [
+      "Named entity but uses HD - remains monster per rule 5.2"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 52. **Harpy*:** _"
+    }
+  },
+  {
+    "entryNumber": 53,
+    "creatureName": "Tick, Giant x 3",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 53. Tick, Giant x 3"
+    }
+  },
+  {
+    "entryNumber": 54,
+    "creatureName": "Wood Elf Scouts x 11",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 54. Wood Elf Scouts x 11"
+    }
+  },
+  {
+    "entryNumber": 55,
+    "creatureName": "Ember Raventree (wood elf leader)",
+    "type": "classed",
+    "subtype": "rank-inferred",
+    "confidence": "medium",
+    "reasoning": "Has flat HP and leadership title 'leader' (suggests fighter)",
+    "warnings": [
+      "Inferred class 'fighter' from title 'leader'"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 55. Ember Raventree (wood Elf leader)"
+    }
+  },
+  {
+    "entryNumber": 56,
+    "creatureName": "86-90",
+    "type": "monster",
+    "confidence": "low",
+    "reasoning": "Has HD without clear classification indicators (default to monster)",
+    "warnings": [
+      "Has HD but unclear race/type - defaulting to monster"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 56. 86-90"
+    }
+  },
+  {
+    "entryNumber": 57,
+    "creatureName": "Raven \"One-Eye\"",
+    "type": "monster",
+    "confidence": "low",
+    "reasoning": "Has HD without clear classification indicators (default to monster)",
+    "warnings": [
+      "Has HD but unclear race/type - defaulting to monster"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 57. Raven \"One-Eye\""
+    }
+  },
+  {
+    "entryNumber": 58,
+    "creatureName": "Bandit sentries x 8",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "medium",
+    "reasoning": "Generic hireling type 'bandit' with flat HP (implicit fighter)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 58. Bandit sentries x 8"
+    }
+  },
+  {
+    "entryNumber": 59,
+    "creatureName": "Bat, Cave",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 59. Bat, Cave"
+    }
+  },
+  {
+    "entryNumber": 60,
+    "creatureName": "Centipedes, Black, Giant",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 60. Centipedes, Black, Giant"
+    }
+  },
+  {
+    "entryNumber": 61,
+    "creatureName": "Fire Beetles*, Giant:",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 61. **Fire Beetles*, Giant:** _"
+    }
+  },
+  {
+    "entryNumber": 62,
+    "creatureName": "Rats, Giant",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 62. Rats, Giant"
+    }
+  },
+  {
+    "entryNumber": 63,
+    "creatureName": "Snake, Poisonous",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 63. Snake, Poisonous"
+    }
+  },
+  {
+    "entryNumber": 64,
+    "creatureName": "Spider, Giant (medium-sized)",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 64. Spider, Giant (medium-sized)"
+    }
+  },
+  {
+    "entryNumber": 65,
+    "creatureName": "Tick, Giant",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 65. Tick, Giant"
+    }
+  },
+  {
+    "entryNumber": 66,
+    "creatureName": "Wolves x 5",
+    "type": "monster",
+    "confidence": "low",
+    "reasoning": "Has HD without clear classification indicators (default to monster)",
+    "warnings": [
+      "Has HD but unclear race/type - defaulting to monster"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 66. Wolves x 5"
+    }
+  },
+  {
+    "entryNumber": 67,
+    "creatureName": "The Little Hillwood Werewolf",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": true,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": true,
+      "raceClass": "### 67. **The Little Hillwood Werewolf*:** _"
+    }
+  },
+  {
+    "entryNumber": 68,
+    "creatureName": "Kobold Guards x 2",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "medium",
+    "reasoning": "Generic hireling type 'guard' with flat HP (implicit fighter)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 68. Kobold Guards x 2"
+    }
+  },
+  {
+    "entryNumber": 69,
+    "creatureName": "Mastiff",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Named unique monster with HD (proper name does not grant class levels)",
+    "warnings": [
+      "Named entity but uses HD - remains monster per rule 5.2"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 69. Mastiff"
+    }
+  },
+  {
+    "entryNumber": 70,
+    "creatureName": "Fekk",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 70. Fekk"
+    }
+  },
+  {
+    "entryNumber": 71,
+    "creatureName": "Kobold warrior x 6",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 71. Kobold warrior x 6"
+    }
+  },
+  {
+    "entryNumber": 72,
+    "creatureName": "Kobold serjeant x 1",
+    "type": "monster",
+    "subtype": "monster-leader",
+    "confidence": "high",
+    "reasoning": "Monster race with HD and leadership title 'serjeant'",
+    "warnings": [
+      "Title 'serjeant' indicates leader role but remains monster (M&T chiefs use HD)"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 72. Kobold serjeant x 1"
+    }
+  },
+  {
+    "entryNumber": 73,
+    "creatureName": "Kobold warrior x",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 73. Kobold warrior x"
+    }
+  },
+  {
+    "entryNumber": 74,
+    "creatureName": "Kobold serjeant x 1",
+    "type": "monster",
+    "subtype": "monster-leader",
+    "confidence": "high",
+    "reasoning": "Monster race with HD and leadership title 'serjeant'",
+    "warnings": [
+      "Title 'serjeant' indicates leader role but remains monster (M&T chiefs use HD)"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 74. Kobold serjeant x 1"
+    }
+  },
+  {
+    "entryNumber": 75,
+    "creatureName": "King Griggle-gruk (Kobold Chieftain)",
+    "type": "classed",
+    "subtype": "rank-inferred",
+    "confidence": "medium",
+    "reasoning": "Has flat HP and leadership title 'chief' (suggests fighter)",
+    "warnings": [
+      "Inferred class 'fighter' from title 'chief'"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 75. King Griggle-gruk (Kobold Chieftain)"
+    }
+  },
+  {
+    "entryNumber": 76,
+    "creatureName": "Kobold Bodyguards x 2",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "medium",
+    "reasoning": "Generic hireling type 'guard' with flat HP (implicit fighter)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 76. Kobold Bodyguards x 2"
+    }
+  },
+  {
+    "entryNumber": 77,
+    "creatureName": "Goblin prisoner",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 77. Goblin prisoner"
+    }
+  },
+  {
+    "entryNumber": 78,
+    "creatureName": "\"Charlie\" the Ogre",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 78. \"Charlie\" the Ogre"
+    }
+  },
+  {
+    "entryNumber": 79,
+    "creatureName": "Goblin patrol warriors x 5",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 79. Goblin patrol warriors x 5"
+    }
+  },
+  {
+    "entryNumber": 80,
+    "creatureName": "Goblin guards x 4",
+    "type": "monster",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Monster race in group formation (plural track)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "plural",
+      "pronounThis": "These",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 80. Goblin guards x 4"
+    }
+  },
+  {
+    "entryNumber": 81,
+    "creatureName": "Goblin patrol warriors x 6",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 81. Goblin patrol warriors x 6"
+    }
+  },
+  {
+    "entryNumber": 82,
+    "creatureName": "Goblin males x 8",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 82. Goblin males x 8"
+    }
+  },
+  {
+    "entryNumber": 83,
+    "creatureName": "Goblin females x 13",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 83. Goblin females x 13"
+    }
+  },
+  {
+    "entryNumber": 84,
+    "creatureName": "Goblin warriors x 3",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 84. Goblin warriors x 3"
+    }
+  },
+  {
+    "entryNumber": 85,
+    "creatureName": "Goblin serjeant",
+    "type": "monster",
+    "subtype": "monster-leader",
+    "confidence": "high",
+    "reasoning": "Monster race with HD and leadership title 'serjeant'",
+    "warnings": [
+      "Title 'serjeant' indicates leader role but remains monster (M&T chiefs use HD)"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 85. Goblin serjeant"
+    }
+  },
+  {
+    "entryNumber": 86,
+    "creatureName": "Prisoner #2: An elderly orc",
+    "type": "classed",
+    "subtype": "rank-inferred",
+    "confidence": "medium",
+    "reasoning": "Has flat HP and leadership title 'elder' (suggests cleric)",
+    "warnings": [
+      "Inferred class 'cleric' from title 'elder'"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 86. Prisoner #2: An elderly Orc"
+    }
+  },
+  {
+    "entryNumber": 87,
+    "creatureName": "Robert Cooper",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 87. Robert Cooper"
+    }
+  },
+  {
+    "entryNumber": 88,
+    "creatureName": "Oni Blackbeard (Dwarf Crossbowman)",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 88. Oni Blackbeard (Dwarf Crossbowman)"
+    }
+  },
+  {
+    "entryNumber": 89,
+    "creatureName": "Wilbur Hornblower",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 89. Wilbur Hornblower"
+    }
+  },
+  {
+    "entryNumber": 90,
+    "creatureName": "Goblin shaman",
+    "type": "monster",
+    "subtype": "monster-leader",
+    "confidence": "high",
+    "reasoning": "Monster race with HD and leadership title 'shaman'",
+    "warnings": [
+      "Title 'shaman' indicates leader role but remains monster (M&T chiefs use HD)"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 90. Goblin shaman"
+    }
+  },
+  {
+    "entryNumber": 91,
+    "creatureName": "Goblin Skeletons x 4",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 91. Goblin Skeletons x 4"
+    }
+  },
+  {
+    "entryNumber": 92,
+    "creatureName": "Goblin warriors x 2",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 92. Goblin warriors x 2"
+    }
+  },
+  {
+    "entryNumber": 93,
+    "creatureName": "Gruzz Kree (Goblin Chieftain)",
+    "type": "classed",
+    "subtype": "rank-inferred",
+    "confidence": "medium",
+    "reasoning": "Has flat HP and leadership title 'chief' (suggests fighter)",
+    "warnings": [
+      "Inferred class 'fighter' from title 'chief'"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 93. Gruzz Kree (Goblin Chieftain)"
+    }
+  },
+  {
+    "entryNumber": 94,
+    "creatureName": "Goblin females x 6",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 94. Goblin females x 6"
+    }
+  },
+  {
+    "entryNumber": 95,
+    "creatureName": "Cave bats x 80",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 95. Cave bats x 80"
+    }
+  },
+  {
+    "entryNumber": 96,
+    "creatureName": ")",
+    "type": "monster",
+    "confidence": "low",
+    "reasoning": "Has HD without clear classification indicators (default to monster)",
+    "warnings": [
+      "Has HD but unclear race/type - defaulting to monster"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 96. )** _"
+    }
+  },
+  {
+    "entryNumber": 97,
+    "creatureName": "Snakes, poisonous",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 97. Snakes, poisonous"
+    }
+  },
+  {
+    "entryNumber": 98,
+    "creatureName": "Green slime",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 98. Green Slime"
+    }
+  },
+  {
+    "entryNumber": 99,
+    "creatureName": "Rats, giant x 3-12",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 99. Rats, giant x 3-12"
+    }
+  },
+  {
+    "entryNumber": 100,
+    "creatureName": "Gray Ooze (small)",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 100. Gray Ooze (small)"
+    }
+  },
+  {
+    "entryNumber": 101,
+    "creatureName": "Black Centipedes, giant x 5",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 101. Black Centipedes, giant x 5"
+    }
+  },
+  {
+    "entryNumber": 102,
+    "creatureName": "Orcs x 3",
+    "type": "monster",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Monster race in group formation (plural track)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "plural",
+      "pronounThis": "These",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 102. Orcs x 3"
+    }
+  },
+  {
+    "entryNumber": 103,
+    "creatureName": "Orcs x 4",
+    "type": "monster",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Monster race in group formation (plural track)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "plural",
+      "pronounThis": "These",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 103. Orcs x 4"
+    }
+  },
+  {
+    "entryNumber": 104,
+    "creatureName": "Orcs x 6",
+    "type": "monster",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Monster race in group formation (plural track)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "plural",
+      "pronounThis": "These",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 104. Orcs x 6"
+    }
+  },
+  {
+    "entryNumber": 105,
+    "creatureName": "Orc Guards x 2",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "medium",
+    "reasoning": "Generic hireling type 'guard' with flat HP (implicit fighter)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 105. Orc Guards x 2"
+    }
+  },
+  {
+    "entryNumber": 106,
+    "creatureName": "King Krusher (Orc Leader)",
+    "type": "classed",
+    "subtype": "rank-inferred",
+    "confidence": "medium",
+    "reasoning": "Has flat HP and leadership title 'leader' (suggests fighter)",
+    "warnings": [
+      "Inferred class 'fighter' from title 'leader'"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 106. King Krusher (Orc Leader)"
+    }
+  },
+  {
+    "entryNumber": 107,
+    "creatureName": "Orc chieftain's mate",
+    "type": "classed",
+    "subtype": "rank-inferred",
+    "confidence": "medium",
+    "reasoning": "Has flat HP and leadership title 'chief' (suggests fighter)",
+    "warnings": [
+      "Inferred class 'fighter' from title 'chief'"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 107. Orc chieftain's mate"
+    }
+  },
+  {
+    "entryNumber": 108,
+    "creatureName": "Orcs x 4",
+    "type": "monster",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Monster race in group formation (plural track)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "plural",
+      "pronounThis": "These",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 108. Orcs x 4"
+    }
+  },
+  {
+    "entryNumber": 109,
+    "creatureName": "Orc lieutenant",
+    "type": "monster",
+    "subtype": "monster-leader",
+    "confidence": "high",
+    "reasoning": "Monster race with HD and leadership title 'lieutenant'",
+    "warnings": [
+      "Title 'lieutenant' indicates leader role but remains monster (M&T chiefs use HD)"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 109. Orc lieutenant"
+    }
+  },
+  {
+    "entryNumber": 110,
+    "creatureName": "Zombies x 6",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 110. Zombies x 6"
+    }
+  },
+  {
+    "entryNumber": 111,
+    "creatureName": "Skeletons x 8",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 111. Skeletons x 8"
+    }
+  },
+  {
+    "entryNumber": 112,
+    "creatureName": "Wily Wil, Giant of the Hill",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 112. Wily Wil, Giant of the Hill"
+    }
+  },
+  {
+    "entryNumber": 113,
+    "creatureName": "\"Pinky\" the Owlbear",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 113. \"Pinky\" the Owlbear"
+    }
+  },
+  {
+    "entryNumber": 114,
+    "creatureName": "Black Bear",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 114. Black Bear"
+    }
+  },
+  {
+    "entryNumber": 115,
+    "creatureName": "Black Bear cubs x 2",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 115. Black Bear cubs x 2"
+    }
+  },
+  {
+    "entryNumber": 116,
+    "creatureName": "River Rats, giant x 40",
+    "type": "classed",
+    "subtype": "implicit-fighter",
+    "confidence": "low",
+    "reasoning": "Has flat HP without clear class/role indicators (default to fighter)",
+    "warnings": [
+      "Has flat HP but no clear class indicators - assuming classed NPC"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 116. River Rats, giant x 40"
+    }
+  },
+  {
+    "entryNumber": 117,
+    "creatureName": "Stirges x 8",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 117. Stirges x 8"
+    }
+  },
+  {
+    "entryNumber": 118,
+    "creatureName": "Bugbears x 3",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 118. Bugbears x 3"
+    }
+  },
+  {
+    "entryNumber": 119,
+    "creatureName": "Hobgoblin sentries x 2",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 119. Hobgoblin sentries x 2"
+    }
+  },
+  {
+    "entryNumber": 120,
+    "creatureName": "Hobgoblin males x 2 or 4",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 120. Hobgoblin males x 2 or 4"
+    }
+  },
+  {
+    "entryNumber": 121,
+    "creatureName": "Hobgoblin females x 9",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 121. Hobgoblin females x 9"
+    }
+  },
+  {
+    "entryNumber": 122,
+    "creatureName": "Hobgoblin warriors x 2",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 122. Hobgoblin warriors x 2"
+    }
+  },
+  {
+    "entryNumber": 123,
+    "creatureName": "Hub-Gub the Bloody (Hobgoblin Chieftain)",
+    "type": "classed",
+    "subtype": "rank-inferred",
+    "confidence": "medium",
+    "reasoning": "Has flat HP and leadership title 'chief' (suggests fighter)",
+    "warnings": [
+      "Inferred class 'fighter' from title 'chief'"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "full-phb",
+      "showLevel": false,
+      "showHD": false
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": false,
+      "hasLevel": false,
+      "raceClass": "### 123. Hub-Gub the Bloody (Hobgoblin Chieftain)"
+    }
+  },
+  {
+    "entryNumber": 124,
+    "creatureName": "Hobgoblin females x 3",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 124. Hobgoblin females x 3"
+    }
+  },
+  {
+    "entryNumber": 125,
+    "creatureName": "Gnoll sentries x 2",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 125. Gnoll sentries x 2"
+    }
+  },
+  {
+    "entryNumber": 126,
+    "creatureName": "Gnoll males x 4",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 126. Gnoll males x 4"
+    }
+  },
+  {
+    "entryNumber": 127,
+    "creatureName": "Gnoll females x 5",
+    "type": "monster",
+    "confidence": "high",
+    "reasoning": "Monster race from M&T using HD",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 127. Gnoll females x 5"
+    }
+  },
+  {
+    "entryNumber": 128,
+    "creatureName": "Gnoll guards x 2",
+    "type": "monster",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Monster race in group formation (plural track)",
+    "warnings": [],
+    "formattingRules": {
+      "pronounTrack": "plural",
+      "pronounThis": "These",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 128. Gnoll guards x 2"
+    }
+  },
+  {
+    "entryNumber": 129,
+    "creatureName": "Yeexuul (Gnoll Chieftain)",
+    "type": "monster",
+    "subtype": "monster-leader",
+    "confidence": "high",
+    "reasoning": "Monster race with HD and leadership title 'chief'",
+    "warnings": [
+      "Title 'chief' indicates leader role but remains monster (M&T chiefs use HD)"
+    ],
+    "formattingRules": {
+      "pronounTrack": "singular",
+      "pronounThis": "This",
+      "attributePhrasing": "saves-notation",
+      "showLevel": false,
+      "showHD": true
+    },
+    "rawData": {
+      "hasHP": true,
+      "hasHD": true,
+      "hasLevel": false,
+      "raceClass": "### 129. Yeexuul (Gnoll Chieftain)"
+    }
+  }
+]
+

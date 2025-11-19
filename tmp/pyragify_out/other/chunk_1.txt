@@ -1,0 +1,326 @@
+Unknown chunk type:
+{'header': '### 5. Context-Dependent Qualifiers - REQUIRES AUDIT', 'content': '**Severity**: Low-Medium - May lose Yggsburgh-specific distinctions\n\n**Candidates for Review**:\n- "Batrachianoid" - Yggsburgh-specific creature\n- "Losel" - Zagyg-specific (ape-men variant)\n- Named NPCs: "Iggy the Mad", "Charlie the Ogre", "Pinky the Owlbear"\n\n**Status**: These appear to preserve their unique descriptors in stat blocks\n**Fix Required**: Verify named NPCs retain full context in notes field\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 6. Alphabetization Gaps ✓ CONFIRMED', 'content': '**Severity**: Low - Sorting includes markdown artifacts\n\n**Evidence**: When sorted alphabetically, entries show:\n```\n"Charlie" the Ogre\n"Pinky" the Owlbear\n(fisherman/hunter/trapper/woodcutter)\n)** _\n**Batrachianoid*:** _\n**Batrachianoids* x 6:** _\n**Fire Beetles*, Giant:** _\n```\n\n**Root Cause**: Titles with special characters sort before letters\n**Impact**: Index appears disorganized, gaps in alphabetical flow\n**Fix Required**: Normalize titles before sorting (remove quotes, bold, punctuation)\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 7. Over-Normalized Duplicates - REQUIRES AUDIT', 'content': '**Severity**: Medium - May lose legitimate variants\n\n**Suspicious Patterns**:\n- "Bat, Cave" + "Bat, giant cave" + "Cave bats x 80"\n- "Spider, Giant (medium-sized)" appears 3 times\n- "Snake, poisonous" + "Snake, Poisonous" + "Snake, poisonous (deadly)" + "Snakes, poisonous"\n- "Black Bear" + "Bear, black" (case variation)\n\n**Next Action**: Verify each is a distinct entry in source vs. duplicate extraction\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 8. Multi-Column/Multi-Page Continuation - NOT DETECTED', 'content': '**Severity**: Unknown - Cannot verify without layout\n\n**Status**: Markdown source is single-column\n**User Assumption**: Incorrect - assumed PDF layout issues, but source is markdown\n**Fix Required**: None for this module\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Statistics', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Entry Type Breakdown', 'content': '| Type | Count | Notes |\n|------|-------|-------|\n| Valid stat blocks | ~120 | Estimated after removing invalid entries |\n| Named NPCs | 15+ | "Charlie", "Iggy", "Wily Wil", etc. |\n| Quantity groups | 30+ | "x 3", "x 6", "x 30", etc. |\n| Invalid/Fragment | 4 | Parse errors, table refs |\n| Bold formatting | 7 | Need title cleanup |\n\n'}
+
+Unknown chunk type:
+{'header': '### Disposition Distribution', 'content': 'From canonical_report.json: 0 missing (100% coverage)\n\n'}
+
+Unknown chunk type:
+{'header': '### Race/Class Distribution', 'content': 'From canonical_report.json: 0 missing (100% coverage after fallback fix)\n\n'}
+
+Unknown chunk type:
+{'header': '## Recommended Fixes', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### High Priority', 'content': '1. **Strip bold/emphasis from titles**: 7 entries need cleaning\n2. **Filter non-stat-blocks**: Remove 4+ invalid entries based on validation\n3. **Deduplicate case variations**: "Bear, black" vs "Black Bear"\n\n'}
+
+Unknown chunk type:
+{'header': '### Medium Priority', 'content': '4. **Audit truncated names**: Verify "Kobold warrior x" completeness\n5. **Standardize variant naming**: Ensure consistent patterns for groups\n6. **Verify named NPC context**: Check notes field preservation\n\n'}
+
+Unknown chunk type:
+{'header': '### Low Priority', 'content': '7. **Normalize sorting**: Create displayTitle field for clean alphabetization\n8. **Document Yggsburgh-specific creatures**: Add metadata for campaign-specific content\n\n'}
+
+Unknown chunk type:
+{'header': '## Next Steps', 'content': '\n1. **Create validation script** to identify:\n   - Entries missing required fields (HP, AC, HD, XP)\n   - Duplicate titles with case variations\n   - Truncated or incomplete names\n\n2. **Enhance parser** to:\n   - Strip markdown formatting from inline labels\n   - Reject entries without minimum stat block structure\n   - Flag suspicious patterns for review\n\n3. **Generate clean index** with:\n   - Normalized titles (no markdown artifacts)\n   - Deduplicated entries\n   - Proper alphabetization\n\n'}
+
+Unknown chunk type:
+{'header': '## Files for Reference', 'content': '- Source: `CnC Docs/02 CZ Ruins Mouths of Madness.md` (125 stat blocks)\n- Candidates: `data/mouths-of-madness/entities.candidates.json` (initial parse)\n- Canonical: `data/mouths-of-madness/entities.canonical.json` (129 entries)\n- Report: `data/mouths-of-madness/canonical_report.json` (compliance metrics)\n'}
+
+File: test-signal-extraction.ts
+Content:
+/**
+ * Test script for Version 3.0 Signal Extraction
+ * 
+ * Validates the six core signals against sample entities:
+ * - HasSpells
+ * - HasClassKeyword
+ * - HasRankTitle
+ * - IsNamed
+ * - IsUnit
+ * - IsHumanoid
+ */
+
+import { extractSignals, type SignalExtractionContext } from './src/lib/classification-rules';
+import type { CanonicalData } from './src/lib/canonical-data-mapper';
+
+// Test cases covering various signal combinations
+const testCases = [
+  {
+    name: 'Ember Raventree',
+    canonical: {
+      name: 'Ember Raventree',
+      level: '4th level human fighter',
+      hd: null,
+      hp: 22,
+      ac: 16,
+      disposition: 'chaotic neutral',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {
+      raceClass: '4th level human fighter',
+      spells: undefined
+    },
+    expected: {
+      HasSpells: false,
+      HasClassKeyword: true,  // fighter
+      HasRankTitle: false,
+      IsNamed: true,          // Ember Raventree
+      IsUnit: false,
+      IsHumanoid: true        // human
+    }
+  },
+  {
+    name: 'Goblin Shaman',
+    canonical: {
+      name: 'Goblin Shaman',
+      level: null,
+      hd: '3d8',
+      hp: 15,
+      ac: 14,
+      disposition: 'chaotic evil',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {
+      raceClass: 'Goblin Shaman',
+      spells: '1st level: cure light wounds, protection from evil'
+    },
+    expected: {
+      HasSpells: true,        // has spell list
+      HasClassKeyword: false,
+      HasRankTitle: true,     // shaman
+      IsNamed: false,
+      IsUnit: false,
+      IsHumanoid: false       // goblin is monster race
+    }
+  },
+  {
+    name: 'Bandits (x4)',
+    canonical: {
+      name: 'Bandits (x4)',
+      level: null,
+      hd: '1d8',
+      hp: 4,
+      ac: 12,
+      disposition: 'chaotic neutral',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {
+      raceClass: 'Bandits',
+      spells: undefined
+    },
+    expected: {
+      HasSpells: false,
+      HasClassKeyword: false,
+      HasRankTitle: false,
+      IsNamed: false,
+      IsUnit: true,           // (x4)
+      IsHumanoid: false
+    }
+  },
+  {
+    name: 'Bandit Captain',
+    canonical: {
+      name: 'Bandit Captain',
+      level: '3rd level fighter',
+      hd: null,
+      hp: 18,
+      ac: 15,
+      disposition: 'chaotic neutral',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {
+      raceClass: '3rd level fighter',
+      spells: undefined
+    },
+    expected: {
+      HasSpells: false,
+      HasClassKeyword: true,  // fighter
+      HasRankTitle: true,     // captain
+      IsNamed: false,
+      IsUnit: false,
+      IsHumanoid: false
+    }
+  },
+  {
+    name: 'Wily Wil, Giant of the Hill',
+    canonical: {
+      name: 'Wily Wil, Giant of the Hill',
+      level: null,
+      hd: '9d12',
+      hp: 63,
+      ac: 17,
+      disposition: 'chaotic neutral',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {
+      raceClass: 'Wily Wil',
+      spells: undefined
+    },
+    expected: {
+      HasSpells: false,
+      HasClassKeyword: false,
+      HasRankTitle: false,
+      IsNamed: true,          // Wily Wil
+      IsUnit: false,
+      IsHumanoid: false       // giant, not PC race
+    }
+  },
+  {
+    name: 'Pinky the Owlbear',
+    canonical: {
+      name: 'Pinky the Owlbear',
+      level: null,
+      hd: '5d10',
+      hp: 30,
+      ac: 15,
+      disposition: 'neutral',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {
+      raceClass: 'Owlbear',
+      spells: undefined
+    },
+    expected: {
+      HasSpells: false,
+      HasClassKeyword: false,
+      HasRankTitle: false,
+      IsNamed: true,          // Pinky
+      IsUnit: false,
+      IsHumanoid: false       // owlbear is monster
+    }
+  },
+  {
+    name: 'Orc Captain',
+    canonical: {
+      name: 'Orc Captain',
+      level: null,
+      hd: '3d8',
+      hp: 15,
+      ac: 16,
+      disposition: 'chaotic evil',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {
+      raceClass: 'Orc Captain',
+      spells: undefined
+    },
+    expected: {
+      HasSpells: false,
+      HasClassKeyword: false,
+      HasRankTitle: true,     // captain
+      IsNamed: false,
+      IsUnit: false,
+      IsHumanoid: false       // orc is monster race
+    }
+  },
+  {
+    name: 'Marcus the Wizard',
+    canonical: {
+      name: 'Marcus the Wizard',
+      level: '5th level wizard',
+      hd: null,
+      hp: 20,
+      ac: 13,
+      disposition: 'lawful good',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {
+      raceClass: '5th level wizard',
+      spells: '1st: magic missile, shield; 2nd: web, invisibility; 3rd: fireball'
+    },
+    expected: {
+      HasSpells: true,        // has spell list
+      HasClassKeyword: true,  // wizard
+      HasRankTitle: false,
+      IsNamed: true,          // Marcus
+      IsUnit: false,
+      IsHumanoid: false       // no explicit race mentioned
+    }
+  }
+];
+
+console.log('=== Version 3.0 Signal Extraction Test ===\n');
+
+let passed = 0;
+let failed = 0;
+
+testCases.forEach(testCase => {
+  console.log(`Testing: ${testCase.name}`);
+  
+  const signals = extractSignals(
+    testCase.name,
+    testCase.canonical as CanonicalData,
+    testCase.context
+  );
+  
+  const errors: string[] = [];
+  
+  // Check each signal
+  Object.keys(testCase.expected).forEach(signalKey => {
+    const expected = (testCase.expected as any)[signalKey];
+    const actual = (signals as any)[signalKey];
+    
+    if (expected !== actual) {
+      errors.push(`  ✗ ${signalKey}: expected ${expected}, got ${actual}`);
+    }
+  });
+  
+  if (errors.length === 0) {
+    console.log('  ✓ All signals correct');
+    passed++;
+  } else {
+    console.log(errors.join('\n'));
+    failed++;
+  }
+  
+  // Show detected context
+  if (signals.detectedClassName || signals.detectedRankTitle || signals.detectedRace) {
+    const context: string[] = [];
+    if (signals.detectedClassName) context.push(`class: ${signals.detectedClassName}`);
+    if (signals.detectedRankTitle) context.push(`rank: ${signals.detectedRankTitle}`);
+    if (signals.detectedRace) context.push(`race: ${signals.detectedRace}`);
+    console.log(`  Context: ${context.join(', ')}`);
+  }
+  
+  console.log('');
+});
+
+console.log('=== Results ===');
+console.log(`Passed: ${passed}/${testCases.length}`);
+console.log(`Failed: ${failed}/${testCases.length}`);
+
+if (failed > 0) {
+  process.exit(1);
+}
+
+

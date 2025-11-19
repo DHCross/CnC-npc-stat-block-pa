@@ -1,0 +1,858 @@
+File: detect-ambiguous-entries.ts
+Content:
+#!/usr/bin/env tsx
+import fs from 'fs';
+import path from 'path';
+import { extractCreatureEntries } from '../src/lib/full-document-pipeline';
+import { processDumpWithValidation, type ProcessedNPC } from '../src/lib/npc-parser';
+
+const DOC = path.join(process.cwd(), 'CnC Docs', 'mouths-of-madness-canonical-clean.md');
+const OUT = path.join(process.cwd(), 'data', 'mouths-of-madness', 'ambiguous-entries.json');
+
+interface AmbiguousResult {
+  entryNumber: number;
+  creatureName: string;
+  probableType: 'monster' | 'classed' | 'ambiguous';
+  flags: string[];
+  rawMarkdownSnippet: string;
+}
+
+function heuristicProbableType(parsed: ProcessedNPC) {
+  // parsed: ProcessedNPC
+  const cd = parsed.canonicalData ?? {};
+  const hasHP = Boolean(cd.hp);
+  const hasHD = Boolean(cd.hd);
+  const hasLevel = Boolean(cd.level);
+
+  if (hasHP && !hasHD && hasLevel) return 'classed';
+  if (hasHD && !hasHP && !hasLevel) return 'monster';
+  if (hasHP && !hasHD && !hasLevel) return 'classed';
+  return 'ambiguous';
+}
+
+function detectFlags(processed: ProcessedNPC, title: string, raw: string) {
+  const flags: string[] = [];
+  const cd = processed.canonicalData ?? {};
+
+  if (cd.hp && cd.hd) flags.push('HP+HD');
+  if (cd.level && !/\d+\s*level/i.test(cd.level)) flags.push('weird-level-format');
+  if (!cd.level && /level/i.test(title)) flags.push('title-includes-level-bare');
+  if (cd.primaryAttributes && /physical/i.test(cd.primaryAttributes)) flags.push('primary-attributes-physical');
+  
+  // Pronoun checks
+  if (/These creatures|These creatures\s+/.test(raw) && /\b(He|She)\b/i.test(raw)) flags.push('plural-title-but-singular-body');
+  if (/This creature|This creature\s+/.test(raw) && /\b(They)\b/i.test(raw)) flags.push('singular-title-but-plural-body');
+
+  // HP/HD in raw text
+  if (/\bHD\b/i.test(raw) && /\bHP\b/i.test(raw)) flags.push('raw-hd-and-hp');
+
+  // Money sanity checks
+  if (/\b\d+[–-]\d+\s*(?:gp|sp|cp)\b/i.test(raw) || /\d+\s*(sp|gp|cp)\s*,\s*\d+\s*(sp|gp|cp)/i.test(raw)) flags.push('ambiguous-coins');
+
+  // presence of 'primary attributes are physical' phrase - can be monster rule override
+  if (/primary attributes are physical/i.test(raw)) flags.push('attributes-physical-phrase');
+
+  // Title has explicit named role (possible named/ranked entity)
+  if (/\b(king|queen|chieftain|prince|captain)\b/i.test(title)) flags.push('named-ranked-title');
+
+  return flags;
+}
+
+function main() {
+  if (!fs.existsSync(DOC)) {
+    console.error(`Missing source doc at ${DOC}. You can also run this on the mouths-of-madness mock by editing this script.`);
+    process.exit(1);
+  }
+
+  const md = fs.readFileSync(DOC, 'utf8');
+  const entries = extractCreatureEntries(md);
+  const results: AmbiguousResult[] = [];
+
+  for (const e of entries) {
+    const parsedArr = processDumpWithValidation(e.rawMarkdown, true, 'monster');
+    if (!parsedArr || parsedArr.length === 0) continue;
+    const p = parsedArr[0];
+    const flags = detectFlags(p, e.creatureName, e.rawMarkdown);
+    const probableType = heuristicProbableType(p);
+
+    if (flags.length > 0 || probableType === 'ambiguous') {
+      results.push({
+        entryNumber: e.entryNumber,
+        creatureName: e.creatureName,
+        probableType,
+        flags,
+        rawMarkdownSnippet: e.rawMarkdown.split('\n').slice(0,6).join('\n')
+      });
+    }
+  }
+
+  fs.writeFileSync(OUT, JSON.stringify(results, null, 2));
+  console.log(`Detected ${results.length} ambiguous or flagged entries. Wrote to ${OUT}`);
+  // Print top 25 for quick scan
+  results.slice(0, 25).forEach((r) => {
+    console.log(`${r.entryNumber}. ${r.creatureName}
+  probable: ${r.probableType}
+  flags: ${r.flags.join(', ')}`);
+  });
+}
+
+main();
+
+
+File: export-ambiguous-to-csv.ts
+Content:
+#!/usr/bin/env tsx
+import fs from 'fs';
+import path from 'path';
+
+const IN = path.join(process.cwd(), 'data', 'mouths-of-madness', 'ambiguous-entries.json');
+const OUT = path.join(process.cwd(), 'data', 'mouths-of-madness', 'ambiguous-entries.csv');
+
+if (!fs.existsSync(IN)) {
+  console.error('Missing ambiguous-entries.json. Run detect-ambiguous-entries.ts first.');
+  process.exit(2);
+}
+
+const data = JSON.parse(fs.readFileSync(IN, 'utf8'));
+const lines = ['entryNumber,creatureName,probableType,flags,rawSnippet'];
+for (const r of data) {
+  const safeName = '"' + (r.creatureName || '').replace(/"/g, '""') + '"';
+  const safeFlags = '"' + (r.flags?.join(';') || '').replace(/"/g, '""') + '"';
+  const safeRaw = '"' + (r.rawMarkdownSnippet || '').replace(/"/g, '""') + '"';
+  lines.push(`${r.entryNumber},${safeName},${r.probableType},${safeFlags},${safeRaw}`);
+}
+
+fs.writeFileSync(OUT, lines.join('\n'));
+console.log(`Wrote ${OUT} with ${data.length} rows`);
+
+
+File: build_candidates.cjs
+Content:
+#!/usr/bin/env node
+const fs = require('fs');
+const path = require('path');
+
+const DATA_SCOPE = process.env.DATA_SCOPE || 'mouths-of-madness';
+const dataDir = path.join(__dirname, '..', 'data', DATA_SCOPE);
+const parsedPath = path.join(dataDir, 'entities.parsed.json');
+const outPath = path.join(dataDir, 'entities.candidates.json');
+
+if (!fs.existsSync(parsedPath)) {
+  console.error('Missing parsed data:', parsedPath);
+  process.exit(2);
+}
+
+const parsed = JSON.parse(fs.readFileSync(parsedPath, 'utf8'));
+const candidates = parsed.filter(entry => typeof entry.hp === 'number' && typeof entry.ac === 'number');
+
+fs.writeFileSync(outPath, JSON.stringify(candidates, null, 2));
+console.log(`Wrote ${outPath} with ${candidates.length} candidates (from ${parsed.length} parsed entries).`);
+
+
+File: canonicalize_candidates.ts
+Content:
+#!/usr/bin/env tsx
+import fs from 'fs';
+import path from 'path';
+import { extractParentheticalData, buildCanonicalParenthetical, isUnitHeading, expandShorthandForClassed, normalizePrimaryAttributesForMonsters, canonicalizeShields, repositionMagicItemBonuses, normalizeEquipmentVerbs, deduplicateEquipment } from '../src/lib/enhanced-parser.ts';
+import { classifyCreature, classifyEntityV3, extractPreCheckData, getFormattingRules } from '../src/lib/classification-rules.ts';
+import type { CanonicalData } from '../src/lib/canonical-data-mapper.ts';
+
+const DATA_SCOPE = process.env.DATA_SCOPE || 'mouths-of-madness';
+const DATA_DIR = path.join(process.cwd(), 'data', DATA_SCOPE);
+const CANDIDATES = path.join(DATA_DIR, 'entities.candidates.json');
+const OUT_CANON = path.join(DATA_DIR, 'entities.canonical.json');
+const OUT_REPORT = path.join(DATA_DIR, 'canonical_report.json');
+
+function safeReadJson(file: string) {
+  if (!fs.existsSync(file)) throw new Error(`Missing file: ${file}`);
+  return JSON.parse(fs.readFileSync(file, 'utf8')) as any[];
+}
+
+function safeWriteJson(file: string, obj: any) {
+  fs.writeFileSync(file, JSON.stringify(obj, null, 2));
+}
+
+const parseFirstNumber = (value?: string | null): number | null => {
+  if (!value) return null;
+  const match = String(value).match(/-?\d+/);
+  return match ? Number(match[0]) : null;
+};
+
+function buildCanonicalDataFromParenthetical(title: string, data: any): CanonicalData {
+  return {
+    name: title,
+    level: data.level ?? null,
+    hd: data.hd ?? null,
+    hp: parseFirstNumber(data.hp),
+    ac: parseFirstNumber(data.ac),
+    disposition: data.disposition ?? null,
+    primaryAttributes: data.attributes ?? data.significantAttributes ?? null,
+    equipment: data.equipment ?? null,
+    coins: data.coins ?? null,
+    notes: data.significantAttributes ? [data.significantAttributes] : undefined,
+  };
+}
+
+// If a monster is missing canonical HD, fall back to a user-provided mapping
+// of canonical hit-dice values (M&T canonical defaults). This keeps monsters
+// in the HD path so they show "Level X(dY), HP Z" instead of plain HP.
+function applyHdFallbacks(title: string, obj: any) {
+  try {
+    const mapPath = path.join(process.cwd(), 'data', 'hd-canonical.json');
+    if (!fs.existsSync(mapPath)) return obj;
+    const hdMap: Record<string, string> = JSON.parse(fs.readFileSync(mapPath, 'utf8'));
+    const lowered = String(title || '').toLowerCase();
+    for (const key of Object.keys(hdMap)) {
+      if (lowered.includes(key)) {
+        if (!obj.hd) {
+          obj.hd = hdMap[key];
+        }
+        break;
+      }
+    }
+  } catch (err) {
+    // ignore mapping errors
+  }
+  return obj;
+}
+
+function analyzeAndCanonicalize() {
+  const candidates = safeReadJson(CANDIDATES);
+  const canonical: any[] = [];
+  const report: any = {
+    total: candidates.length,
+    processed: 0,
+    canonicalBuilt: 0,
+    flagged: [],
+    sample: []
+  };
+
+  for (const item of candidates) {
+    try {
+      const label =
+        (item.inlineLabel && String(item.inlineLabel).trim()) ||
+        (item.titleLine && String(item.titleLine).trim()) ||
+        (item.title && String(item.title).trim()) ||
+        '';
+      const title = label || `Entry@${item.start ?? 'unknown'}`;
+      const isUnit = isUnitHeading(title) || /\bx\s*\d+/i.test(title) || /\b(each|each of)\b/i.test(item.parenthetical || '');
+
+      // Use authoritative extractor
+      const data = extractParentheticalData(item.parenthetical || '', isUnit, title);
+
+      // Ensure raw points back
+      data.raw = item.parenthetical;
+
+      // Fall back to parsed raceClass if extractor didn't find it
+      if (!data.raceClass && item.raceClass) {
+        data.raceClass = item.raceClass;
+      }
+
+      const canonicalData = buildCanonicalDataFromParenthetical(title, data);
+      // Apply canonical HD defaults for monsters lacking HD; ensure the
+      // raw parsed 'data' also reflects any canonical HD so the canonical
+      // HTML generation shows the HD value.
+      applyHdFallbacks(title, canonicalData);
+      if (canonicalData.hd && !data.hd) {
+        data.hd = canonicalData.hd;
+      }
+      const preCheck = extractPreCheckData(title, canonicalData);
+      // Prefer the Version 3 classifier for most formatting decisions; fallback
+      // to legacy classifier for compatibility only when needed.
+      const v3Classification = classifyEntityV3(title, canonicalData, { spells: data.spells, raceClass: data.raceClass, description: data.raw });
+      // For monsters/units, ensure canonicalData.primaryAttributes defaults to 'physical'
+      // unless the parenthetical explicitly states 'mental'. This keeps the JSON
+      // canonical records consistent with the published shorthand for monsters.
+      if (v3Classification.format !== 'A') {
+        const attr = String(canonicalData.primaryAttributes || '').toLowerCase();
+        if (!attr || !/\bmental\b/.test(attr)) {
+          canonicalData.primaryAttributes = 'physical';
+          if (!data.attributes || /\b(strength|dexterity|constitution|str|dex|con)\b/i.test(String(data.attributes || ''))) {
+            data.attributes = 'physical';
+          }
+        }
+        // Also override single-attribute tokens (strength/dex/constitution) to 'physical'
+        if (/\b(strength|dexterity|constitution|str|dex|con)\b/i.test(String(canonicalData.primaryAttributes || ''))) {
+          canonicalData.primaryAttributes = 'physical';
+          if (!data.attributes || /\b(strength|dexterity|constitution|str|dex|con)\b/i.test(String(data.attributes || ''))) {
+            data.attributes = 'physical';
+          }
+        }
+      }
+      const classification: any = {
+        type: v3Classification.type,
+        format: v3Classification.format,
+        subtype: v3Classification.subtype,
+        confidence: v3Classification.confidence,
+        reasoning: v3Classification.reasoning,
+        warnings: v3Classification.warnings
+      };
+      const formattingRules = getFormattingRules(classification, preCheck);
+
+      let canonicalParenthetical = buildCanonicalParenthetical(
+        data,
+        isUnit,
+        false,
+        true,
+        title,
+        formattingRules,
+      );
+
+      // Ensure equipment fields are normalized before canonical build so the
+      // canonical outputs match the behavior in `npc-parser` and Storybook.
+      if (data.equipment) {
+        let equipment = data.equipment;
+        equipment = canonicalizeShields(equipment);
+        equipment = repositionMagicItemBonuses(equipment);
+        equipment = normalizeEquipmentVerbs(equipment);
+        equipment = deduplicateEquipment(equipment);
+        data.equipment = equipment;
+      }
+
+      if (classification?.type === 'classed') {
+        canonicalParenthetical = expandShorthandForClassed(canonicalParenthetical);
+      } else if (classification?.type === 'monster') {
+        canonicalParenthetical = normalizePrimaryAttributesForMonsters(canonicalParenthetical, false);
+      }
+
+      const out = {
+        sourceIndex: item.start ?? null,
+        title: title || null,
+        classification,
+        labels: {
+          inline: item.inlineLabel || null,
+          titleLine: item.titleLine || null
+        },
+        isUnit,
+        parsed: item,
+        canonicalData: data,
+        canonicalParenthetical
+      };
+
+      canonical.push(out);
+      report.processed += 1;
+      if (canonicalParenthetical && canonicalParenthetical.length > 0) report.canonicalBuilt += 1;
+
+      // Flag common issues
+      const flags: string[] = [];
+      if (!data.hp && !data.ac) flags.push('missing HP and AC');
+      if (!data.hp && data.ac) flags.push('missing HP');
+      if (!data.ac && data.hp) flags.push('missing AC');
+      if (!data.raceClass) flags.push('missing raceClass');
+      if (!data.xp && !/XP[:\s]/i.test(item.parenthetical || '')) flags.push('missing XP');
+
+      if (flags.length > 0) {
+        report.flagged.push({ title: title || item.snippet || '', start: item.start, flags });
+      }
+
+      if (report.sample.length < 5) report.sample.push(out);
+    } catch (err: any) {
+      report.flagged.push({ title: item.titleLine || '', start: item.start, error: err.message });
+    }
+  }
+
+  safeWriteJson(OUT_CANON, canonical);
+  safeWriteJson(OUT_REPORT, report);
+
+  console.log(`Processed ${report.processed} candidates. Built ${report.canonicalBuilt} canonical parentheticals.`);
+  console.log(`Wrote ${OUT_CANON}`);
+  console.log(`Wrote ${OUT_REPORT}`);
+}
+
+// Run
+try {
+  analyzeAndCanonicalize();
+} catch (err: any) {
+  console.error('Error:', err?.message || err);
+  process.exit(2);
+}
+
+
+File: classify-all-creatures.ts
+Content:
+#!/usr/bin/env tsx
+/**
+ * Classify all 129 creatures using the deterministic rule-tree
+ * Outputs classification decisions to JSON and CSV
+ */
+
+import fs from 'fs';
+import path from 'path';
+import { extractCreatureEntries } from '../src/lib/full-document-pipeline';
+import { processDumpWithValidation } from '../src/lib/npc-parser';
+import { classifyCreature, getFormattingRules, extractPreCheckData } from '../src/lib/classification-rules';
+
+const DOC = path.join(process.cwd(), 'CnC Docs', 'mouths-of-madness-canonical-clean.md');
+const OUT_JSON = path.join(process.cwd(), 'data', 'mouths-of-madness', 'creature-classifications.json');
+const OUT_CSV = path.join(process.cwd(), 'data', 'mouths-of-madness', 'creature-classifications.csv');
+
+interface ClassificationRecord {
+  entryNumber: number;
+  creatureName: string;
+  type: string;
+  subtype?: string;
+  confidence: string;
+  reasoning: string;
+  warnings: string[];
+  formattingRules: {
+    pronounTrack: string;
+    pronounThis: string;
+    attributePhrasing: string;
+    showLevel: boolean;
+    showHD: boolean;
+  };
+  rawData: {
+    hasHP: boolean;
+    hasHD: boolean;
+    hasLevel: boolean;
+    raceClass?: string;
+  };
+}
+
+function main() {
+  if (!fs.existsSync(DOC)) {
+    console.error(`Missing source doc at ${DOC}`);
+    process.exit(1);
+  }
+
+  const md = fs.readFileSync(DOC, 'utf8');
+  const entries = extractCreatureEntries(md);
+  const records: ClassificationRecord[] = [];
+
+  console.log(`\n${'='.repeat(80)}`);
+  console.log('CANONICAL CLASSIFICATION SYSTEM - RULE-TREE EXECUTION');
+  console.log(`${'='.repeat(80)}\n`);
+
+  for (const entry of entries) {
+    const parsedArr = processDumpWithValidation(entry.rawMarkdown, true, 'monster');
+    if (!parsedArr || parsedArr.length === 0) {
+      console.log(`⚠️  ${entry.entryNumber}. ${entry.creatureName} - PARSE FAILED`);
+      continue;
+    }
+
+    const parsed = parsedArr[0];
+    const canonicalData = parsed.canonicalData;
+    
+    if (!canonicalData) {
+      console.log(`⚠️  ${entry.entryNumber}. ${entry.creatureName} - NO CANONICAL DATA`);
+      continue;
+    }
+
+    // Run classification
+    const classification = classifyCreature(entry.creatureName, canonicalData);
+    const preCheck = extractPreCheckData(entry.creatureName, canonicalData);
+    const formatting = getFormattingRules(classification, preCheck);
+
+    // Build record
+    const record: ClassificationRecord = {
+      entryNumber: entry.entryNumber,
+      creatureName: entry.creatureName,
+      type: classification.type,
+      subtype: classification.subtype,
+      confidence: classification.confidence,
+      reasoning: classification.reasoning,
+      warnings: classification.warnings,
+      formattingRules: {
+        pronounTrack: formatting.pronounTrack,
+        pronounThis: formatting.pronounThis,
+        attributePhrasing: formatting.attributePhrasing,
+        showLevel: formatting.showLevel,
+        showHD: formatting.showHD
+      },
+      rawData: {
+        hasHP: Boolean(canonicalData.hp),
+        hasHD: Boolean(canonicalData.hd),
+        hasLevel: Boolean(canonicalData.level),
+        raceClass: preCheck.raceClass
+      }
+    };
+
+    records.push(record);
+
+    // Print to console
+    const icon = classification.type === 'classed' ? '👤' : 
+                 classification.type === 'monster' ? '👹' : '❓';
+    const confidenceBadge = classification.confidence === 'high' ? '✓' :
+                           classification.confidence === 'medium' ? '~' : '?';
+    
+    console.log(`${icon} ${confidenceBadge} ${entry.entryNumber}. ${entry.creatureName}`);
+    console.log(`   Type: ${classification.type.toUpperCase()}${classification.subtype ? ` (${classification.subtype})` : ''}`);
+    console.log(`   Confidence: ${classification.confidence}`);
+    console.log(`   Reasoning: ${classification.reasoning}`);
+    if (classification.warnings.length > 0) {
+      classification.warnings.forEach(w => console.log(`   ⚠️  ${w}`));
+    }
+    console.log();
+  }
+
+  // Write JSON
+  fs.writeFileSync(OUT_JSON, JSON.stringify(records, null, 2));
+  console.log(`\n✅ Wrote ${records.length} classifications to ${OUT_JSON}`);
+
+  // Write CSV
+  const csvLines = [
+    'Entry,Creature Name,Type,Subtype,Confidence,Has HP,Has HD,Has Level,Pronoun Track,Attribute Phrasing,Reasoning,Warnings'
+  ];
+
+  for (const r of records) {
+    const escapeCsv = (s: string) => {
+      if (s.includes(',') || s.includes('"') || s.includes('\n')) {
+        return `"${s.replace(/"/g, '""')}"`;
+      }
+      return s;
+    };
+
+    csvLines.push([
+      r.entryNumber,
+      escapeCsv(r.creatureName),
+      r.type,
+      r.subtype || '',
+      r.confidence,
+      r.rawData.hasHP ? 'YES' : 'NO',
+      r.rawData.hasHD ? 'YES' : 'NO',
+      r.rawData.hasLevel ? 'YES' : 'NO',
+      r.formattingRules.pronounTrack,
+      r.formattingRules.attributePhrasing,
+      escapeCsv(r.reasoning),
+      escapeCsv(r.warnings.join('; '))
+    ].join(','));
+  }
+
+  fs.writeFileSync(OUT_CSV, csvLines.join('\n'));
+  console.log(`✅ Wrote CSV to ${OUT_CSV}`);
+
+  // Summary statistics
+  const stats = {
+    total: records.length,
+    classed: records.filter(r => r.type === 'classed').length,
+    monster: records.filter(r => r.type === 'monster').length,
+    ambiguous: records.filter(r => r.type === 'ambiguous').length,
+    highConfidence: records.filter(r => r.confidence === 'high').length,
+    mediumConfidence: records.filter(r => r.confidence === 'medium').length,
+    lowConfidence: records.filter(r => r.confidence === 'low').length,
+    withWarnings: records.filter(r => r.warnings.length > 0).length
+  };
+
+  console.log(`\n${'='.repeat(80)}`);
+  console.log('CLASSIFICATION SUMMARY');
+  console.log(`${'='.repeat(80)}`);
+  console.log(`Total creatures: ${stats.total}`);
+  console.log(`  Classed NPCs: ${stats.classed} (${((stats.classed/stats.total)*100).toFixed(1)}%)`);
+  console.log(`  Monsters: ${stats.monster} (${((stats.monster/stats.total)*100).toFixed(1)}%)`);
+  console.log(`  Ambiguous: ${stats.ambiguous} (${((stats.ambiguous/stats.total)*100).toFixed(1)}%)`);
+  console.log();
+  console.log(`Confidence distribution:`);
+  console.log(`  High: ${stats.highConfidence} (${((stats.highConfidence/stats.total)*100).toFixed(1)}%)`);
+  console.log(`  Medium: ${stats.mediumConfidence} (${((stats.mediumConfidence/stats.total)*100).toFixed(1)}%)`);
+  console.log(`  Low: ${stats.lowConfidence} (${((stats.lowConfidence/stats.total)*100).toFixed(1)}%)`);
+  console.log();
+  console.log(`Entries with warnings: ${stats.withWarnings} (${((stats.withWarnings/stats.total)*100).toFixed(1)}%)`);
+  console.log(`${'='.repeat(80)}\n`);
+}
+
+main();
+
+
+File: audit_parser_quality.cjs
+Content:
+#!/usr/bin/env node
+
+/**
+ * Parser Quality Audit Script
+ * 
+ * Analyzes canonical.json for data quality issues:
+ * - Bold/emphasis formatting in titles
+ * - Non-stat-block entries (missing required fields)
+ * - Duplicate titles with case variations
+ * - Truncated or suspicious names
+ * - Entries without valid parentheticals
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+// Configuration
+const CANONICAL_FILE = path.join(__dirname, '../data/mouths-of-madness/entities.canonical.json');
+const OUTPUT_FILE = path.join(__dirname, '../data/mouths-of-madness/parser_audit_report.json');
+
+// Required fields for valid stat block
+const REQUIRED_FIELDS = ['hp', 'ac'];
+const RECOMMENDED_FIELDS = ['hd', 'xp', 'raceClass'];
+
+/**
+ * Load canonical data
+ */
+function loadCanonical() {
+  if (!fs.existsSync(CANONICAL_FILE)) {
+    console.error(`❌ Canonical file not found: ${CANONICAL_FILE}`);
+    process.exit(1);
+  }
+  
+  const data = JSON.parse(fs.readFileSync(CANONICAL_FILE, 'utf8'));
+  console.log(`✅ Loaded ${data.length} entries from canonical.json`);
+  return data;
+}
+
+/**
+ * Check if title has markdown formatting
+ */
+function hasMarkdownFormatting(title) {
+  const patterns = [
+    /\*\*.*\*\*/,           // Bold: **text**
+    /\*[^*]+\*/,            // Emphasis: *text*
+    /_[^_]+_/,              // Underscore emphasis: _text_
+    /^\*\*.*:\*\*\s*_?$/,   // Bold label ending: **Label:** _
+  ];
+  
+  return patterns.some(p => p.test(title));
+}
+
+/**
+ * Check if entry is a valid stat block
+ */
+function validateStatBlock(entry) {
+  const issues = [];
+  
+  // Check for required fields in canonicalData
+  const data = entry.canonicalData || {};
+  REQUIRED_FIELDS.forEach(field => {
+    if (!data[field] || data[field] === '') {
+      issues.push(`missing_${field}`);
+    }
+  });
+  
+  // Check for recommended fields
+  RECOMMENDED_FIELDS.forEach(field => {
+    if (!data[field] || data[field] === '') {
+      issues.push(`missing_${field}_recommended`);
+    }
+  });
+  
+  // Check for suspiciously short titles
+  if (entry.title.length < 3) {
+    issues.push('title_too_short');
+  }
+  
+  // Check for fragment patterns
+  const fragmentPatterns = [
+    /^\d+-\d+$/,              // "86-90" (table reference)
+    /^\).*_$/,                 // ")** _" (parse error)
+    /^\(.*\)$/,                // "(text)" (descriptor only)
+  ];
+  
+  if (fragmentPatterns.some(p => p.test(entry.title))) {
+    issues.push('likely_fragment');
+  }
+  
+  return issues;
+}
+
+/**
+ * Find duplicate titles (case-insensitive)
+ */
+function findDuplicates(entries) {
+  const titleMap = new Map();
+  const duplicates = [];
+  
+  entries.forEach((entry, idx) => {
+    const normalized = entry.title.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+    
+    if (titleMap.has(normalized)) {
+      duplicates.push({
+        normalized,
+        entries: [
+          { index: titleMap.get(normalized), title: entries[titleMap.get(normalized)].title },
+          { index: idx, title: entry.title }
+        ]
+      });
+    } else {
+      titleMap.set(normalized, idx);
+    }
+  });
+  
+  return duplicates;
+}
+
+/**
+ * Check for truncated names
+ */
+function checkTruncation(title) {
+  const suspiciousPatterns = [
+    /\sx\s*$/,                     // Ends with " x" (missing count)
+    /\s+$/,                         // Trailing whitespace
+    /,\s*$/,                        // Ends with comma
+    /^\s*$/,                        // Empty/whitespace only
+  ];
+  
+  return suspiciousPatterns.some(p => p.test(title));
+}
+
+/**
+ * Analyze entry quality
+ */
+function analyzeEntry(entry, index) {
+  const analysis = {
+    index,
+    title: entry.title,
+    sourceIndex: entry.sourceIndex,
+    issues: []
+  };
+  
+  // Check markdown formatting
+  if (hasMarkdownFormatting(entry.title)) {
+    analysis.issues.push({
+      type: 'markdown_formatting',
+      severity: 'critical',
+      message: 'Title contains markdown formatting'
+    });
+  }
+  
+  // Validate stat block
+  const statBlockIssues = validateStatBlock(entry);
+  statBlockIssues.forEach(issue => {
+    const severity = issue.includes('recommended') ? 'medium' : 
+                     issue === 'likely_fragment' ? 'critical' : 'high';
+    analysis.issues.push({
+      type: issue,
+      severity,
+      message: `Validation issue: ${issue}`
+    });
+  });
+  
+  // Check truncation
+  if (checkTruncation(entry.title)) {
+    analysis.issues.push({
+      type: 'possible_truncation',
+      severity: 'medium',
+      message: 'Title may be truncated or malformed'
+    });
+  }
+  
+  // Check for empty canonical parenthetical
+  if (!entry.canonicalParenthetical || entry.canonicalParenthetical.trim() === '') {
+    analysis.issues.push({
+      type: 'empty_canonical',
+      severity: 'high',
+      message: 'Canonical parenthetical is empty'
+    });
+  }
+  
+  return analysis;
+}
+
+/**
+ * Generate summary statistics
+ */
+function generateSummary(entries, analyses, duplicates) {
+  const summary = {
+    total_entries: entries.length,
+    entries_with_issues: analyses.filter(a => a.issues.length > 0).length,
+    issues_by_severity: {
+      critical: 0,
+      high: 0,
+      medium: 0,
+      low: 0
+    },
+    issues_by_type: {},
+    duplicates_found: duplicates.length
+  };
+  
+  // Count issues
+  analyses.forEach(analysis => {
+    analysis.issues.forEach(issue => {
+      summary.issues_by_severity[issue.severity]++;
+      summary.issues_by_type[issue.type] = (summary.issues_by_type[issue.type] || 0) + 1;
+    });
+  });
+  
+  return summary;
+}
+
+/**
+ * Main execution
+ */
+function main() {
+  console.log('🔍 Starting Parser Quality Audit\n');
+  
+  // Load data
+  const entries = loadCanonical();
+  
+  // Analyze each entry
+  console.log('📊 Analyzing entries...');
+  const analyses = entries.map((entry, idx) => analyzeEntry(entry, idx));
+  
+  // Find duplicates
+  console.log('🔎 Checking for duplicates...');
+  const duplicates = findDuplicates(entries);
+  
+  // Generate summary
+  const summary = generateSummary(entries, analyses, duplicates);
+  
+  // Filter to only problematic entries
+  const problematicEntries = analyses.filter(a => a.issues.length > 0);
+  
+  // Build report
+  const report = {
+    generated: new Date().toISOString(),
+    summary,
+    duplicates,
+    problematic_entries: problematicEntries
+  };
+  
+  // Write report
+  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(report, null, 2));
+  console.log(`\n✅ Audit report written to: ${OUTPUT_FILE}`);
+  
+  // Print summary to console
+  console.log('\n📈 SUMMARY');
+  console.log('═'.repeat(60));
+  console.log(`Total entries: ${summary.total_entries}`);
+  console.log(`Entries with issues: ${summary.entries_with_issues}`);
+  console.log(`\nIssues by severity:`);
+  console.log(`  Critical: ${summary.issues_by_severity.critical}`);
+  console.log(`  High: ${summary.issues_by_severity.high}`);
+  console.log(`  Medium: ${summary.issues_by_severity.medium}`);
+  console.log(`  Low: ${summary.issues_by_severity.low}`);
+  console.log(`\nDuplicates found: ${summary.duplicates_found}`);
+  
+  if (Object.keys(summary.issues_by_type).length > 0) {
+    console.log(`\nTop issues by type:`);
+    const sortedIssues = Object.entries(summary.issues_by_type)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10);
+    sortedIssues.forEach(([type, count]) => {
+      console.log(`  ${type}: ${count}`);
+    });
+  }
+  
+  if (duplicates.length > 0) {
+    console.log(`\n⚠️  Duplicate title groups:`);
+    duplicates.forEach(dup => {
+      console.log(`  "${dup.entries[0].title}" ≈ "${dup.entries[1].title}"`);
+    });
+  }
+  
+  console.log('\n' + '═'.repeat(60));
+  
+  // Return exit code based on critical issues
+  if (summary.issues_by_severity.critical > 0) {
+    console.log(`\n❌ ${summary.issues_by_severity.critical} critical issues found`);
+    process.exit(1);
+  } else if (summary.issues_by_severity.high > 0) {
+    console.log(`\n⚠️  ${summary.issues_by_severity.high} high-priority issues found`);
+    process.exit(0);
+  } else {
+    console.log('\n✅ No critical issues found');
+    process.exit(0);
+  }
+}
+
+// Run if called directly
+if (require.main === module) {
+  main();
+}
+
+module.exports = { analyzeEntry, validateStatBlock, findDuplicates };
+
+

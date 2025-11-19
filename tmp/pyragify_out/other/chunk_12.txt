@@ -1,0 +1,703 @@
+File: document-pipeline.ts
+Content:
+import type { ProcessedNPC, ValidationWarning } from '@/lib/npc-parser';
+
+/**
+ * Represents a raw creature entry extracted from the document
+ */
+export interface CreatureEntry {
+  rawMarkdown: string;
+  entryNumber: number;
+  creatureName: string;
+  position: {
+    start: number;
+    end: number;
+  };
+}
+
+/**
+ * Extends ProcessedNPC with document-specific metadata
+ */
+export interface ParsedCreature extends ProcessedNPC {
+  entryNumber: number;
+  creatureType: string; // e.g., "Goblin", "Orc", "Ape"
+  rawMarkdown: string;
+  // Classification result is optional — added for Storybook/QA display
+  classification?: {
+    type: 'classed' | 'monster' | 'ambiguous';
+    subtype?: string;
+    confidence?: 'high' | 'medium' | 'low';
+    reasoning?: string;
+    warnings?: string[];
+  } | null;
+}
+
+/**
+ * Statistical summary of the entire document
+ */
+export interface DocumentStats {
+  totalCreatures: number;
+  creatureTypeFrequency: Map<string, number>;
+  dispositionFrequency: Map<string, number>;
+  acRange: {
+    min: number;
+    max: number;
+    mean: number;
+    median: number;
+  };
+  hpRange: {
+    min: number;
+    max: number;
+    mean: number;
+    median: number;
+  };
+  equipmentFrequency: Map<string, number>;
+  spellFrequency: Map<string, number>;
+  encounterBalance: {
+    totalEstimatedXP: number;
+    avgCREstimate: number;
+  };
+}
+
+/**
+ * Flags statistical anomalies for review
+ */
+export interface AnomalyFlag {
+  type: 'outlier' | 'inconsistency' | 'missing';
+  severity: 'high' | 'medium' | 'low';
+  message: string;
+  affectedEntries: number[];
+}
+
+/**
+ * Batch validation report for entire document
+ */
+export interface BatchValidationReport {
+  totalValidationScore: number;
+  perCreatureScores: number[];
+  crossEntryIssues: ValidationWarning[];
+  statisticalAnomalies: AnomalyFlag[];
+  recommendations: string[];
+  totalIssues: number;
+  criticalIssues: number;
+}
+
+/**
+ * Complete document analysis result
+ */
+export interface DocumentAnalysisResult {
+  creatures: ParsedCreature[];
+  stats: DocumentStats;
+  validationReport: BatchValidationReport;
+  metadata: {
+    documentName: string;
+    totalEntries: number;
+    processingDate: string;
+    successRate: number; // percentage of successfully parsed entries
+  };
+}
+
+/**
+ * Export format options
+ */
+export type ExportFormat = 'markdown' | 'csv' | 'json' | 'html';
+
+/**
+ * Export configuration
+ */
+export interface ExportConfig {
+  format: ExportFormat;
+  includeValidation: boolean;
+  includeStatistics: boolean;
+  fileName?: string;
+}
+
+
+File: external.d.ts
+Content:
+declare module 'mammoth/mammoth.browser' {
+  interface MammothResult {
+    value: string;
+  }
+
+  const mammoth: {
+    convertToMarkdown: (input: { arrayBuffer: ArrayBuffer }) => Promise<MammothResult>;
+  };
+
+  export default mammoth;
+}
+
+declare module 'pdfjs-dist/legacy/build/pdf.mjs' {
+  export * from 'pdfjs-dist';
+}
+
+
+File: layout.tsx
+Content:
+import type { ReactNode } from "react";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+
+import "./globals.css";
+
+// Font loading with comprehensive fallbacks for offline environments
+// eslint-disable-next-line react-refresh/only-export-components
+export const metadata = {
+  title: "C&C NPC and Monster Parser",
+  description: "Comprehensive stat block validator for Castles & Crusades NPCs and monsters",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body
+        className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
+      >
+        {children}
+      </body>
+    </html>
+  );
+}
+
+
+File: page.tsx
+Content:
+'use client';
+
+import App from '@/App';
+
+export default function HomePage() {
+  return <App />;
+}
+
+File: globals.css
+Content:
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Font fallbacks for offline environments */
+  :root {
+    --font-geist-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --background: 228 56% 8%;
+    --foreground: 210 40% 96%;
+    --card: 229 45% 14%;
+    --card-foreground: 210 40% 96%;
+    --popover: 229 45% 14%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 267 83% 70%;
+    --primary-foreground: 220 40% 98%;
+    --secondary: 222 42% 20%;
+    --secondary-foreground: 214 32% 88%;
+    --muted: 225 36% 16%;
+    --muted-foreground: 215 20% 72%;
+    --accent: 192 85% 65%;
+    --accent-foreground: 221 63% 18%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 226 38% 22%;
+    --input: 226 38% 22%;
+    --ring: 267 83% 70%;
+    --radius: 0.75rem;
+    --chart-1: 267 83% 70%;
+    --chart-2: 192 85% 60%;
+    --chart-3: 342 82% 65%;
+    --chart-4: 43 96% 66%;
+    --chart-5: 164 73% 45%;
+  }
+
+  .dark {
+    --background: 228 56% 8%;
+    --foreground: 210 40% 96%;
+    --card: 229 45% 14%;
+    --card-foreground: 210 40% 96%;
+    --popover: 229 45% 14%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 267 83% 70%;
+    --primary-foreground: 220 40% 98%;
+    --secondary: 222 42% 20%;
+    --secondary-foreground: 214 32% 88%;
+    --muted: 225 36% 16%;
+    --muted-foreground: 215 20% 72%;
+    --accent: 192 85% 65%;
+    --accent-foreground: 221 63% 18%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 226 38% 22%;
+    --input: 226 38% 22%;
+    --ring: 267 83% 70%;
+    --radius: 0.75rem;
+    --chart-1: 267 83% 70%;
+    --chart-2: 192 85% 60%;
+    --chart-3: 342 82% 65%;
+    --chart-4: 43 96% 66%;
+    --chart-5: 164 73% 45%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100vh;
+    background-color: #020617;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.35), transparent 55%),
+      radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.28), transparent 50%),
+      radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.22), transparent 55%),
+      linear-gradient(180deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background-color: hsla(var(--primary), 0.35);
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+
+File: unit-detection.test.ts
+Content:
+import { describe, it, expect } from 'vitest';
+import { isUnitHeading } from '../lib/enhanced-parser';
+import { processDumpEnhanced } from '../lib/npc-parser';
+
+describe('Unit Detection', () => {
+  it('should detect x1 as a unit', () => {
+    expect(isUnitHeading('Warrior x1')).toBe(true);
+  });
+
+  it('should detect x12 as a unit', () => {
+    expect(isUnitHeading('Warrior x12')).toBe(true);
+  });
+
+  it('should detect x8 as a unit', () => {
+    expect(isUnitHeading('Warrior x8')).toBe(true);
+  });
+
+  it('should output plural forms for x1 unit', () => {
+    const input = "Warrior x1 (these 3rd level halfling fighters' vital stats are HP 12, AC 13, disposition chaos/neutral. their primary attributes are strength, dexterity, intelligence. they wear leather armor and carry slings and daggers.)";
+
+    const result = processDumpEnhanced(input);
+
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe('Warrior x1');
+
+    const converted = result[0].converted;
+
+    // Should use "These" not "This" in parenthetical
+    expect(converted).toContain('(These');
+
+    // Should use plural class name
+    expect(converted).toContain('fighters');
+    expect(converted).not.toContain("fighter’s");
+
+    // Should use possessive plural (U+2019 right single quotation mark)
+    expect(converted).toContain("fighters’");
+
+    // Should use "Their" not "His"
+    expect(converted).toContain('Their');
+    expect(converted).not.toContain('His');
+
+    // Should use "They" not "He"
+    expect(converted).toContain('They');
+    expect(converted).not.toContain(/\bHe\b/);
+
+    // Should use plural verbs
+    expect(converted).toContain('wear');
+    expect(converted).toContain('carry');
+    expect(converted).not.toContain('wears');
+    expect(converted).not.toContain('carries');
+  });
+
+  it('should output plural forms for x12 unit', () => {
+    const input = "Warrior x12 (these 3rd level human fighters' vital stats are HP 14, AC 15, disposition law/good. their primary attributes are strength, dexterity. they wear chain mail and carry longswords.)";
+
+    const result = processDumpEnhanced(input);
+
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe('Warrior x12');
+
+    const converted = result[0].converted;
+
+    expect(converted).toContain('(These');
+    expect(converted).toContain('fighters');
+    expect(converted).toContain("fighters’");
+    expect(converted).toContain('Their');
+    expect(converted).toContain('They');
+    expect(converted).toContain('wear');
+    expect(converted).toContain('carry');
+  });
+
+  it('should output singular forms for individual NPC', () => {
+    const input = "Sir Galahad (this 5th level human fighter's vital stats are HP 32, AC 17, disposition law/good. his primary attributes are strength, constitution. he wears plate mail and carries a longsword.)";
+
+    const result = processDumpEnhanced(input);
+
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe('Sir Galahad');
+
+    const converted = result[0].converted;
+
+    // Should use "This" not "These" in parenthetical
+    expect(converted).toContain('(This');
+
+    // Should use singular class name
+    expect(converted).toContain("fighter’s");
+    expect(converted).not.toContain("fighters'");
+
+    // Should use "He" not "They"
+    expect(converted).toContain('He');
+    expect(converted).not.toContain(/\bThey\b/);
+    expect(converted).not.toContain('Their');
+
+    // Should use singular verbs
+    expect(converted).toContain('He carries');
+    expect(converted).not.toContain('He wears');
+  });
+});
+
+
+File: full-document-pipeline-canon.test.ts
+Content:
+import { describe, it, expect } from 'vitest';
+import { analyzeFullDocument } from '@/lib/full-document-pipeline';
+import { mouthsOfMadnessAnalysis } from '@/components/mocks/mouths-of-madness.mock';
+
+describe('FullDocumentPipeline canonicalization tests (automated)', () => {
+  const doc = mouthsOfMadnessAnalysis.creatures.map((c: any) => c.rawMarkdown).join('\n\n');
+  const result = analyzeFullDocument(doc, 'mock');
+
+  it('Ember Raventree uses full long-form PHB attributes', () => {
+    const ember = result.creatures.find((c) => c.entryNumber === 55);
+    expect(ember).toBeDefined();
+    expect(ember?.converted).toContain('His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma');
+  });
+
+  it('Bandit (#2) uses physical shorthand pronoun His', () => {
+    const bandit = result.creatures.find((c) => c.entryNumber === 2);
+    expect(bandit).toBeDefined();
+    expect(bandit?.converted).toContain('His primary attributes are physical');
+  });
+
+  it('Hub-Gub the Bloody shows HP 18 not HD 3d10', () => {
+    const hub = result.creatures.find((c) => c.creatureType?.includes('Hub-Gub'));
+    expect(hub).toBeDefined();
+    expect(hub?.converted).toContain('HP 18');
+    expect(hub?.converted).not.toContain('HD 3d10');
+  });
+
+  it('The Little Hillwood Werewolf shows plain Level 12', () => {
+    const werewolf = result.creatures.find((c) => c.creatureType?.includes('Little Hillwood Werewolf'));
+    expect(werewolf).toBeDefined();
+    expect(werewolf?.converted).toContain('12 level');
+    expect(werewolf?.converted).not.toContain('12ᵗʰ');
+  });
+
+  it('Naga spells canonicalize to Dimension Door and Teleport', () => {
+    const naga = result.creatures.find((c) => c.entryNumber === 26);
+    expect(naga).toBeDefined();
+    expect(naga?.converted).toMatch(/Dimension Door|Teleport/);
+    // Should not refer to medium steel shield in spells text
+    expect(naga?.converted).not.toContain('medium steel shield');
+  });
+
+  it('Goblin shaman => scroll of cause paralysis and potion text', () => {
+    const shaman = result.creatures.find((c) => c.entryNumber === 90);
+    expect(shaman).toBeDefined();
+    expect(shaman?.converted).toContain('scroll of *cause paralysis*');
+    expect(shaman?.converted).toMatch(/potion of extra healing/i);
+    expect(shaman?.converted).toMatch(/heals.*2d8\+2/i);
+  });
+
+  it('Wily Wil grammar fixes armor/trash', () => {
+    const wil = result.creatures.find((c) => c.creatureType?.includes('Wily Wil'));
+    expect(wil).toBeDefined();
+    expect(wil?.converted).not.toMatch(/armors|trashs/);
+    expect(wil?.converted).toMatch(/armor/);
+    expect(wil?.converted).toMatch(/trash/);
+  });
+
+  it('Artifact message removed from canonical preview and moved to validation', () => {
+    // Pick an entry that in original mocks may have the artifact
+    const ape = result.creatures.find((c) => c.entryNumber === 1);
+    expect(ape).toBeDefined();
+    expect(ape?.converted).not.toContain('vital stats are unavailable');
+    // Archived artifact should be in validation warnings rather than converted
+    expect(ape?.validation.warnings.some((w) => /Vital stats are unavailable/i.test(w.message))).toBe(false);
+  });
+});
+
+
+File: full-document-pipeline-ui.test.tsx
+Content:
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { FullDocumentPipeline } from '@/components/FullDocumentPipeline';
+import { mouthsOfMadnessAnalysis } from '@/components/mocks/mouths-of-madness.mock';
+import type { DocumentAnalysisResult } from '@/types/document-pipeline';
+
+describe('FullDocumentPipeline UI - Collapse Toggle', () => {
+  it('toggles left panel using the collapse button', () => {
+    render(<FullDocumentPipeline initialAnalysis={mouthsOfMadnessAnalysis as unknown as DocumentAnalysisResult} />);
+
+    const grid = screen.getByTestId('full-document-pipeline-grid');
+    const toggle = screen.getByTestId('toggle-left-panel-right');
+
+    // Initially system is not collapsed
+    expect(grid.className).not.toContain('lg:grid-cols-1');
+
+    // Click to collapse
+    fireEvent.click(toggle);
+    expect(grid.className).toContain('lg:grid-cols-1');
+
+    // Label should now indicate expansion available
+    expect(screen.getByLabelText('Expand Document Input')).toBeTruthy();
+
+    // Click again to expand
+    fireEvent.click(screen.getByTestId('toggle-left-panel-right'));
+    expect(grid.className).not.toContain('lg:grid-cols-1');
+  });
+
+  it('supports initialLeftCollapsed prop', () => {
+    render(
+      <FullDocumentPipeline initialAnalysis={mouthsOfMadnessAnalysis as unknown as DocumentAnalysisResult} initialLeftCollapsed />
+    );
+    const grid = screen.getByTestId('full-document-pipeline-grid');
+
+    expect(grid.className).toContain('lg:grid-cols-1');
+  });
+
+  it('renders canonical preview HTML for a creature', () => {
+    render(<FullDocumentPipeline initialAnalysis={mouthsOfMadnessAnalysis as unknown as DocumentAnalysisResult} />);
+
+    // open the first creature - ensure it's visible
+    const first = screen.getByText(/1\.[\s]Ape/i);
+    // Button is inside CollapsibleTrigger — click to expand
+    fireEvent.click(first);
+
+    // Wait for preview element
+    const preview = screen.getByTestId('full-document-pipeline-grid').querySelector('#preview-1');
+    expect(preview).toBeTruthy();
+    if (preview) {
+      const inner = preview.innerHTML;
+      expect(inner).toContain('<strong>');
+      // Ensure class uses readable foreground text
+      expect(preview.className).toContain('text-foreground');
+    }
+  });
+});
+
+
+File: full-document-pipeline-artifact.test.ts
+Content:
+import { describe, it, expect } from 'vitest';
+import { sanitizeConvertedString } from '../lib/full-document-pipeline';
+import { mouthsOfMadnessAnalysis } from '@/components/mocks/mouths-of-madness.mock';
+
+describe('Full Document Pipeline artifact cleanup', () => {
+  it('should remove starred artifact with curly apostrophe', () => {
+    const input = 'Bold text. *(This creature’s vital stats are unavailable.)* More text.';
+    const out = sanitizeConvertedString(input);
+    expect(out).toBe('Bold text. More text.');
+  });
+
+  it('should remove plain artifact with straight apostrophe and no stars', () => {
+    const input = 'Mount details. (This creature\'s vital stats are unavailable.)';
+    const out = sanitizeConvertedString(input);
+    expect(out).toBe('Mount details.');
+  });
+
+  it('should collapse duplicate whitespace and trim', () => {
+    const input = '  A line  with   lots  of space. *(This creature’s vital stats are unavailable.)*  \n\n';
+    const out = sanitizeConvertedString(input);
+    expect(out).toBe('A line with lots of space.');
+  });
+
+  it('sanitized mock converted strings should not contain the artifact', () => {
+    const regex = /\*?\(This creature[’']s vital stats are unavailable\.\)\*?/i;
+    for (const creature of (mouthsOfMadnessAnalysis as any).creatures) {
+      expect(regex.test(creature.converted)).toBe(false);
+    }
+  });
+});
+
+
+File: parser-integration.test.ts
+Content:
+import { describe, it, expect } from 'vitest';
+import { applyNameMappings } from '../lib/name-mappings';
+
+describe('Parser Integration Tests', () => {
+  it('should correctly transform monster names in a stat block', () => {
+    const input = `
+Aboleth
+Hit Dice: 8
+Armor Class: 16
+Movement: Swim 60 ft.
+Attacks: 4 tentacles
+Damage: 1d6 each
+Special: Mind control
+`;
+    const expected = `
+Abhorrent
+Hit Dice: 8
+Armor Class: 16
+Movement: Swim 60 ft.
+Attacks: 4 tentacles
+Damage: 1d6 each
+Special: Mind control
+`;
+    expect(applyNameMappings(input)).toBe(expected);
+  });
+
+  it('should correctly transform magic items in text', () => {
+    const input = `
+The wizard carried a staff of the magi, a ring of protection, and a dagger of venom.
+The warrior wore a robe of protection and wielded a frost brand sword.
+`;
+    const expected = `
+The wizard carried a Staff of the Magus, a Ring of Armor, and a Dagger of Envenomation.
+The warrior wore a robe of armor and wielded a Frostfire sword.
+`;
+    expect(applyNameMappings(input)).toBe(expected);
+  });
+
+  it('should handle mixed monster and item names correctly', () => {
+    const input = `
+The giant, hill chieftain was equipped with a bag of holding and a horn of valhalla.
+His pet bugbear carried a rod of wonder and wore boots of elvenkind.
+`;
+    const expected = `
+The Giant, Hill chieftain was equipped with a Dimensional Pouch and a Horn of Valhalla.
+His pet Bugbear carried a Rod of Chaos and wore Boots of the Elves.
+`;
+    expect(applyNameMappings(input)).toBe(expected);
+  });
+});
+
+File: name-mappings.test.ts
+Content:
+import { describe, it, expect } from 'vitest';
+import { MAGIC_ITEM_MAPPINGS, MONSTER_NAME_MAPPINGS, applyNameMappings } from '../lib/name-mappings';
+
+describe('Name Mappings', () => {
+  describe('Magic Item Mappings', () => {
+    it('should have correct mappings for magic items', () => {
+      expect(MAGIC_ITEM_MAPPINGS['dagger of venom']).toBe('Dagger of Envenomation');
+      expect(MAGIC_ITEM_MAPPINGS['ring of protection']).toBe('Ring of Armor');
+      expect(MAGIC_ITEM_MAPPINGS['robe of protection']).toBe('robe of armor');
+      expect(MAGIC_ITEM_MAPPINGS['talisman of pure good']).toBe('Talisman of Unwavering Good');
+      expect(MAGIC_ITEM_MAPPINGS['staff of the magi']).toBe('Staff of the Magus');
+      expect(MAGIC_ITEM_MAPPINGS['slaying arrow']).toBe('Arrow of Slaying');
+    });
+  });
+
+  describe('Monster Name Mappings', () => {
+    it('should have correct mappings for monsters', () => {
+      expect(MONSTER_NAME_MAPPINGS['aboleth']).toBe('Abhorrent');
+      expect(MONSTER_NAME_MAPPINGS['bugbear']).toBe('Bugbear');
+      expect(MONSTER_NAME_MAPPINGS['giant, hill']).toBe('Giant, Hill');
+    });
+  });
+
+  describe('applyNameMappings function', () => {
+    it('should transform text with correct mappings', () => {
+      const input = 'The bugbear had a dagger of venom and a ring of protection.';
+      const expected = 'The Bugbear had a Dagger of Envenomation and a Ring of Armor.';
+      expect(applyNameMappings(input)).toBe(expected);
+    });
+
+    it('should handle multiple mappings in a single text', () => {
+      const input = 'The aboleth carried a staff of the magi and wore a robe of protection.';
+      const expected = 'The Abhorrent carried a Staff of the Magus and wore a robe of armor.';
+      expect(applyNameMappings(input)).toBe(expected);
+    });
+
+    it('should not change text without mappings', () => {
+      const input = 'This text has no mappable terms.';
+      expect(applyNameMappings(input)).toBe(input);
+    });
+  });
+});
+
+File: npc-parser-html.test.ts
+Content:
+import { describe, it, expect } from 'vitest';
+import { convertToHtml } from '@/lib/npc-parser';
+
+describe('convertToHtml', () => {
+  it('should convert markdown bold and italics to HTML', () => {
+    const input = '**Bold** and *italic* text\n\nNext paragraph';
+    const html = convertToHtml(input);
+
+    expect(html).toContain('<strong>Bold</strong>');
+    expect(html).toContain('<em>italic</em>');
+    expect(html).toContain('<p>Next paragraph</p>');
+  });
+
+  it('should escape html then convert markdown', () => {
+    const input = '<script>alert(1)</script> **Note**';
+    const html = convertToHtml(input);
+
+    expect(html).not.toContain('<script>');
+    expect(html).toContain('&lt;script&gt;');
+    expect(html).toContain('<strong>Note</strong>');
+  });
+});
+
+
+File: halfling-fix.test.ts
+Content:
+import { describe, it, expect } from 'vitest';
+import { processDumpEnhanced } from './src/lib/npc-parser';
+
+describe('Halfling Unit Parsing Fix', () => {
+  it('should format non-classed halfling units correctly with race name', () => {
+    const input = `Halflings x14 (these halflings' vital stats are Level 1(d6), HP 3, AC 13, and disposition good/neutral. Their primary attributes are physical. They wear leather armor and carry shields and spears.)`;
+
+    const result = processDumpEnhanced(input);
+
+    console.log('Input:', input);
+    console.log('Converted:', result[0].converted);
+
+    // Should use "These halflings'" not "These creatures'"
+    expect(result[0].converted).toContain('These halflings');
+    expect(result[0].converted).not.toContain('These creatures');
+
+    // Should include Level 1(d6)
+    expect(result[0].converted).toContain('Level 1(d6)');
+
+    // Should have disposition in noun form without "toward"
+    expect(result[0].converted).toContain('disposition good/neutral');
+    expect(result[0].converted).not.toContain('toward');
+
+    // Should start with correct title
+    expect(result[0].converted).toMatch(/^\*\*Halflings x14\*\*/);
+  });
+
+  it('should format goblin marauders correctly', () => {
+    const input = `Goblin Marauders x8 (these goblin marauders' vital stats are Level 1(d8), HP 5, AC 14, disposition chaos/evil. Their primary attributes are dexterity. They wear leather armor and carry short swords and shields.)`;
+
+    const result = processDumpEnhanced(input);
+
+    console.log('Goblin Input:', input);
+    console.log('Goblin Converted:', result[0].converted);
+
+    // Should use race-specific descriptor
+    expect(result[0].converted).toContain('goblin marauders');
+    expect(result[0].converted).not.toContain('These creatures');
+
+    // Should include Level
+    expect(result[0].converted).toContain('Level 1(d8)');
+  });
+});
+
+

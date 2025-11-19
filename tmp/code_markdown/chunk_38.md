@@ -1,0 +1,1390 @@
+# Chunk 38
+
+### data/mouths-of-madness/ambiguous-entries.json
+
+```json
+[
+  {
+    "entryNumber": 1,
+    "creatureName": "Ape, carnivorous",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 1. Ape, carnivorous\n\n*These creatures’ vital stats are HD 4d10, HP 23, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 23, AC 15, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 2,
+    "creatureName": "Bandit",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 2. Bandit\n\n*This creature’s vital stats are HP 4, AC 13, disposition neutral/evil. Their primary attributes are physical. He carries 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 13, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 3,
+    "creatureName": "Bandit, Lieutenant",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 3. Bandit, Lieutenant\n\n*This creature’s vital stats are HP 14, AC 14, disposition neutral/evil. Their primary attributes are physical. He carries 6 gold in coin.*\n\n**Core Stats:** HP 14, AC 14, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 4,
+    "creatureName": "Bat, giant cave",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 4. Bat, giant cave\n\n*These creatures’ vital stats are HD 1d2, HP 1, AC 12, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 5,
+    "creatureName": "Batrachianoid",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 5. **Batrachianoid*:** _\n\n*This creature’s vital stats are HD 1d8, HP 5, AC 14, disposition chaos/evil. Their primary attributes are physical. He carries 6 copper in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 6,
+    "creatureName": "Bear, black",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 6. Bear, black\n\n*This creature’s vital stats are HD 3d8, HP 15, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 15, AC 13, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 7,
+    "creatureName": "Boar, wild",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 7. Boar, wild\n\n*This creature’s vital stats are HD 2d8, HP 8, AC 16, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 8, AC 16, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 8,
+    "creatureName": "Brigand, crossbowmen",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 8. Brigand, crossbowmen\n\n*This creature’s vital stats are HP 5, AC 13, disposition neutral/evil. Their primary attributes are physical. He carries 6 gold in coin.*\n\n**Core Stats:** HP 5, AC 13, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 9,
+    "creatureName": "Brigand, flailmen",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 9. Brigand, flailmen\n\n*This creature’s vital stats are HP 5, AC 14, disposition neutral/evil. Their primary attributes are physical. He carries 6 silver in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 10,
+    "creatureName": "Brigand, Serjeant",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 10. Brigand, Serjeant\n\n*This creature’s vital stats are HP 14, AC 15, disposition neutral/evil. Their primary attributes are physical. He carries 8 gold in coin.*\n\n**Core Stats:** HP 14, AC 15, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 11,
+    "creatureName": "Bugbear",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 11. Bugbear\n\n*This creature’s vital stats are HD 3d10, HP 16, AC 16, disposition chaos/evil. Their primary attributes are physical. He carries 4 gold in coin.*\n\n**Core Stats:** HP 16, AC 16, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 12,
+    "creatureName": "Elf, Wood, bowman",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 12. Elf, Wood, bowman\n\n*This creature’s vital stats are HD 1d10, HP 8, AC 12, disposition chaos/neutral. Their primary attributes are physical. He carries 18 silver in coin.*\n\n**Core Stats:** HP 8, AC 12, Disposition chaos/neutral\n"
+  },
+  {
+    "entryNumber": 13,
+    "creatureName": "Elf, Wood, spearman",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 13. Elf, Wood, spearman\n\n*This creature’s vital stats are HD 1d10, HP 8, AC 13, disposition chaos/neutral. Their primary attributes are physical. He carries 12 silver in coin.*\n\n**Core Stats:** HP 8, AC 13, Disposition chaos/neutral\n"
+  },
+  {
+    "entryNumber": 14,
+    "creatureName": "Elf, Wood, swordsman",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 14. Elf, Wood, swordsman\n\n*This creature’s vital stats are HD 1d10, HP 5, AC 14, disposition chaos/neutral. Their primary attributes are physical. He carries 2–12 gold in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/neutral\n"
+  },
+  {
+    "entryNumber": 15,
+    "creatureName": "Ghoul",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 15. Ghoul\n\n*This creature’s vital stats are HD 2d8, HP 10, AC 14, disposition chaos/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 10, AC 14, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 16,
+    "creatureName": "Gnoll",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 16. Gnoll\n\n*This creature’s vital stats are HD 2d10, HP 13, AC 15, disposition chaos/evil. Their primary attributes are physical. He carries 4 gold in coin.*\n\n**Core Stats:** HP 13, AC 15, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 17,
+    "creatureName": "Goblin, raider",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 17. Goblin, raider\n\n*This creature’s vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. He carries 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 18,
+    "creatureName": "Goblin, leader (corporal)",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 18. Goblin, leader (corporal)\n\n*This creature’s vital stats are HD 3d6+2, HP 15, AC 16, disposition law/evil. Their primary attributes are physical. He carries 4 gold in coin.*\n\n**Core Stats:** HP 15, AC 16, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 19,
+    "creatureName": "Griffon",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 19. Griffon\n\n*These creatures’ vital stats are HD 7d10, HP 45, AC 17, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 45, AC 17, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 20,
+    "creatureName": "Hobgoblin",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 20. Hobgoblin\n\n*This creature’s vital stats are HD 1d10, HP 8, AC 15, disposition law/evil. Their primary attributes are physical. He carries 4 silver in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 21,
+    "creatureName": "Kobold",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 21. Kobold\n\n*This creature’s vital stats are HD 1d4, HP 3, AC 15, disposition law/evil. Their primary attributes are physical. He carries 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 22,
+    "creatureName": "Lion (mountain, forest)",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 22. Lion (mountain, forest)\n\n*These creatures’ vital stats are HD 4d8, HP 20, AC 16, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 20, AC 16, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 23,
+    "creatureName": "Lizardfolk",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 23. Lizardfolk\n\n*This creature’s vital stats are HD 2d8, HP 10, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 10, AC 15, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 24,
+    "creatureName": "Losel",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 24. **Losel*:** _\n\n*This creature’s vital stats are HD 1d8+4, HP 10, AC 14, disposition neutral/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 10, AC 14, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 25,
+    "creatureName": "(fisherman/hunter/trapper/woodcutter)",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 25. (fisherman/hunter/trapper/woodcutter)\n\n*This creature’s vital stats are HP 5, AC 12, disposition neutral. Their primary attributes are physical. He carries 6 silver in coin.*\n\n**Core Stats:** HP 5, AC 12, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 26,
+    "creatureName": "Naga, Water",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "weird-level-format",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 26. Naga, Water\n\n*This creature’s vital stats are HD 7d8, HP 35, AC 15, disposition neutral. Their primary attributes are physical. He carries spells as a 7th level wizard, focusing on spells that promote protection, escape, such as Dimensional Leap, invisibility, medium steel shield, Teleportation, and etc.*\n\n**Core Stats:** HP 35, AC 15, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 27,
+    "creatureName": "Nixies (sprite)",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 27. Nixies (sprite)\n\n*This creature’s vital stats are HD 1d4, HP 3, AC 14, disposition neutral. Their primary attributes are physical. He can cast the following number of spells per day: water breathing at will and cast a powerful charm person spell that lasts for one year.*\n\n**Core Stats:** HP 3, AC 14, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 28,
+    "creatureName": "Orc",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 28. Orc\n\n*This creature’s vital stats are HD 1d8, HP 5, AC 13, disposition law/evil. Their primary attributes are physical. He carries 6 gold in coin.*\n\n**Core Stats:** HP 5, AC 13, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 29,
+    "creatureName": "Otter, giant",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 29. Otter, giant\n\n*This creature’s vital stats are HD 4d8, HP 21, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 21, AC 15, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 30,
+    "creatureName": "Owlbear (small)",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 30. Owlbear (small)\n\n*These creatures’ vital stats are HD 3d10, HP 19, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 19, AC 15, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 31,
+    "creatureName": "Rats, River (giant)",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 31. Rats, River (giant)\n\n*This creature’s vital stats are HD 1d4, HP 2, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 32,
+    "creatureName": "Rivermen",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 32. Rivermen\n\n*This creature’s vital stats are HD 1d8, HP 5, AC 11, disposition chaos/neutral. Their primary attributes are physical. His secondary skill is Nautical Ability, which is described in the CZY Appendix.*\n\n**Core Stats:** HP 5, AC 11, Disposition chaos/neutral\n"
+  },
+  {
+    "entryNumber": 33,
+    "creatureName": "Snake, poisonous",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 33. Snake, poisonous\n\n*This creature’s vital stats are HD 1d6, HP 4, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 34,
+    "creatureName": "Snake, poisonous (deadly)",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 34. Snake, poisonous (deadly)\n\n*This creature’s vital stats are HD 2d6, HP 7, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 7, AC 14, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 35,
+    "creatureName": "Spider, Giant (medium-sized)",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 35. Spider, Giant (medium-sized)\n\n*This creature’s vital stats are HD 3d8, HP 15, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 15, AC 15, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 36,
+    "creatureName": "Stirges",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 36. Stirges\n\n*This creature’s vital stats are HD 1d6, HP 3, AC 16, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 16, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 37,
+    "creatureName": "Thieves",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 37. Thieves\n\n*This creature’s vital stats are HP 4, AC 14, disposition variable. Their primary attributes are physical. He carries 6 gold in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition variable\n"
+  },
+  {
+    "entryNumber": 38,
+    "creatureName": "Turtle, Huge Snapping",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 38. Turtle, Huge Snapping\n\n*These creatures’ vital stats are HD 5d8, HP 20, AC 19, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 20, AC 19, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 39,
+    "creatureName": "Wolf, Grey",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 39. Wolf, Grey\n\n*This creature’s vital stats are HD 2d8, HP 9, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 9, AC 13, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 40,
+    "creatureName": "Wolverine (small, normal)",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 40. Wolverine (small, normal)\n\n*This creature’s vital stats are HD 3d8, HP 16, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 16, AC 15, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 41,
+    "creatureName": "Grimlock Manface (Losel Chieftain)",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase",
+      "named-ranked-title"
+    ],
+    "rawMarkdownSnippet": "### 41. Grimlock Manface (Losel Chieftain)\n\n*This creature’s vital stats are HD 4d8+4, HP 32, AC 16, disposition neutral/evil. Their primary attributes are physical. He wears splint mail armor and carries *wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage]—+1 bonus*, lasso*, belt axe, and dagger, and 125 gold in coin.*\n\n**Core Stats:** HP 32, AC 16, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 42,
+    "creatureName": "Ji'gun-tima (Losel Shaman)",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "weird-level-format",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 42. Ji'gun-tima (Losel Shaman)\n\n*This creature’s vital stats are HD 4d8+4, HP 25, AC 12, disposition neutral/evil. Their primary attributes are physical. He can cast the following number of spells per day: a mixture of cleric and wizard spells at a 5ᵗʰ level ability.*\n\n**Core Stats:** HP 25, AC 12, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 43,
+    "creatureName": "Losel sub-chiefs x 10",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 43. Losel sub-chiefs x 10\n\n*These creatures’ vital stats are HD 2d8+4, HP 16, AC 14, disposition neutral/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 16, AC 14, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 44,
+    "creatureName": "Losel warriors x 30",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 44. Losel warriors x 30\n\n*These warriors’ vital stats are HD 1d8+4, HP 10, AC 14, disposition neutral/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 10, AC 14, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 45,
+    "creatureName": "Losel females x 35",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 45. Losel females x 35\n\n*These creatures’ vital stats are HD 1d8, HP 6, AC 12, disposition neutral/evil. Their primary attributes are physical. They carry *clubs [+1 \"to hit\"; 1d6+1 damage]—+1 bonus*.*\n\n**Core Stats:** HP 6, AC 12, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 46,
+    "creatureName": "Iggy the Mad",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 46. **Iggy the Mad*:** _\n\n*This creature’s vital stats are HP 22, AC 13, disposition chaos/neutral. Their primary attributes are physical. He carries 12 copper in coin.*\n\n**Core Stats:** HP 22, AC 13, Disposition chaos/neutral\n"
+  },
+  {
+    "entryNumber": 47,
+    "creatureName": "The Ogre",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 47. The Ogre\n\n*This creature’s vital stats are HD 4d12, HP 27, AC 16, disposition chaos/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 27, AC 16, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 48,
+    "creatureName": "Children x 3-6",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 48. Children x 3-6\n\n*These creatures’ vital stats are HD 1d2, HP 2, AC 10, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 10, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 49,
+    "creatureName": "Batrachianoids* x 6:",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 49. **Batrachianoids* x 6:** _\n\n*These creatures’ vital stats are HD 1d8, HP 5, AC 14, disposition chaos/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 50,
+    "creatureName": "Blook-glook (Batrachianoid Chieftain)",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase",
+      "named-ranked-title"
+    ],
+    "rawMarkdownSnippet": "### 50. Blook-glook (Batrachianoid Chieftain)\n\n*This creature’s vital stats are HD 3d10+4, HP 20, AC 14, disposition chaos/evil. Their primary attributes are physical. He carries a diamond-studded gold necklace worth 1, and 000 gold in coin.*\n\n**Core Stats:** HP 20, AC 14, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 51,
+    "creatureName": "Spider, Giant (medium-sized) x 2",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 51. Spider, Giant (medium-sized) x 2\n\n*These creatures’ vital stats are HD 3d8, HP 13, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 13, AC 15, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 52,
+    "creatureName": "Harpy",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 52. **Harpy*:** _\n\n*These creatures’ vital stats are HD 3d8, HP 13, AC 13, disposition chaos/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 13, AC 13, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 53,
+    "creatureName": "Tick, Giant x 3",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 53. Tick, Giant x 3\n\n*These creatures’ vital stats are HD 2d8, HP 11, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 11, AC 15, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 54,
+    "creatureName": "Wood Elf Scouts x 11",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 54. Wood Elf Scouts x 11\n\n*These creatures’ vital stats are HD 1d10, HP 8, AC 12, disposition chaos/neutral. Their primary attributes are physical. They carry 18 silver in coin.*\n\n**Core Stats:** HP 8, AC 12, Disposition chaos/neutral\n"
+  },
+  {
+    "entryNumber": 55,
+    "creatureName": "Ember Raventree (wood elf leader)",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "ambiguous-coins",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 55. Ember Raventree (wood elf leader)\n\n*This creature’s vital stats are HD 4d10, HP 22, AC 16, disposition chaos/neutral. Their primary attributes are physical. His significant attributes are strength 17 and dexterity 17. He carries 35 sp, 100 gp.*\n\n**Core Stats:** HP 22, AC 16, Disposition chaos/neutral\n"
+  },
+  {
+    "entryNumber": 56,
+    "creatureName": "86-90",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 56. 86-90\n\n*These creatures’ vital stats are HD 4d10, HP 23, AC 15, disposition variable. Their primary attributes are physical. They wear a splint mail and great helms and carry wields a magical heavy flails, and 2–12 gold in coin. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. Their significant attributes are strength 17 and dexterity 17. They can cast the following number of spells per day: water breathing at will and cast a powerful charm person spell that lasts for one year.*\n\n**Core Stats:** HP 23, AC 15, Disposition variable\n"
+  },
+  {
+    "entryNumber": 57,
+    "creatureName": "Raven \"One-Eye\"",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 57. Raven \"One-Eye\"\n\n*This creature’s vital stats are HD 1d2, HP 2, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 14, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 58,
+    "creatureName": "Bandit sentries x 8",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 58. Bandit sentries x 8\n\n*These creatures’ vital stats are HP 4, AC 12, disposition neutral/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 12, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 59,
+    "creatureName": "Bat, Cave",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 59. Bat, Cave\n\n*These creatures’ vital stats are HD 1d2, HP 1, AC 12, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 60,
+    "creatureName": "Centipedes, Black, Giant",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 60. Centipedes, Black, Giant\n\n*This creature’s vital stats are HD 2d3, HP 3, AC 18, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 18, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 61,
+    "creatureName": "Fire Beetles*, Giant:",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 61. **Fire Beetles*, Giant:** _\n\n*This creature’s vital stats are HD 1d10, HP 6, AC 16, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 6, AC 16, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 62,
+    "creatureName": "Rats, Giant",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 62. Rats, Giant\n\n*This creature’s vital stats are HD 1d4, HP 2, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 63,
+    "creatureName": "Snake, Poisonous",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 63. Snake, Poisonous\n\n*This creature’s vital stats are HD 1d6, HP 4, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 64,
+    "creatureName": "Spider, Giant (medium-sized)",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 64. Spider, Giant (medium-sized)\n\n*This creature’s vital stats are HD 3d8, HP 13, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 13, AC 15, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 65,
+    "creatureName": "Tick, Giant",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 65. Tick, Giant\n\n*These creatures’ vital stats are HD 2d8, HP 11, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 11, AC 15, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 66,
+    "creatureName": "Wolves x 5",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 66. Wolves x 5\n\n*These creatures’ vital stats are HD 2d8, HP 9, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 9, AC 13, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 67,
+    "creatureName": "The Little Hillwood Werewolf",
+    "probableType": "classed",
+    "flags": [
+      "weird-level-format"
+    ],
+    "rawMarkdownSnippet": "### 67. **The Little Hillwood Werewolf*:** _\n\n*This 12ᵗʰ level cleric or’s vital stats are HP 25, AC 15, disposition chaos/evil.*\n\n**Core Stats:** HP 25, AC 15, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 68,
+    "creatureName": "Kobold Guards x 2",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 68. Kobold Guards x 2\n\n*These guards’ vital stats are HD 1d4, HP 3, AC 15, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 69,
+    "creatureName": "Mastiff",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 69. Mastiff\n\n*This creature’s vital stats are HD 3d8, HP 15, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 15, AC 14, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 70,
+    "creatureName": "Fekk",
+    "probableType": "classed",
+    "flags": [
+      "ambiguous-coins",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 70. Fekk\n\n*This creature’s vital stats are HP 2, AC 10, disposition law/evil. Their primary attributes are physical. He carries has a key to the door of this room, and 5 gp, 3 cp.*\n\n**Core Stats:** HP 2, AC 10, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 71,
+    "creatureName": "Kobold warrior x 6",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 71. Kobold warrior x 6\n\n*These creatures’ vital stats are HD 1d4, HP 3, AC 15, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 72,
+    "creatureName": "Kobold serjeant x 1",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 72. Kobold serjeant x 1\n\n*These creatures’ vital stats are HD 2d4, HP 6, AC 15, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 73,
+    "creatureName": "Kobold warrior x",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 73. Kobold warrior x\n\n*This creature’s vital stats are HD 1d4, HP 3, AC 15, disposition law/evil. Their primary attributes are physical. He carries 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 74,
+    "creatureName": "Kobold serjeant x 1",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 74. Kobold serjeant x 1\n\n*These creatures’ vital stats are HD 2d4, HP 6, AC 15, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 75,
+    "creatureName": "King Griggle-gruk (Kobold Chieftain)",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase",
+      "named-ranked-title"
+    ],
+    "rawMarkdownSnippet": "### 75. King Griggle-gruk (Kobold Chieftain)\n\n*This creature’s vital stats are HD 4d4, HP 14, AC 17, disposition law/evil. Their primary attributes are physical. He wears plate mail armor and carries has javelins x 3, *+1 shortsword—+1 bonus*, keys to rooms #5, #6, #9, and to the jail cell in this chamber, and 18 gold in coin.*\n\n**Core Stats:** HP 14, AC 17, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 76,
+    "creatureName": "Kobold Bodyguards x 2",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 76. Kobold Bodyguards x 2\n\n*These guards’ vital stats are HD 2d4, HP 7, AC 15, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 7, AC 15, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 77,
+    "creatureName": "Goblin prisoner",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 77. Goblin prisoner\n\n*This creature’s vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. He carries a loin cloth.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 78,
+    "creatureName": "\"Charlie\" the Ogre",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 78. \"Charlie\" the Ogre\n\n*This creature’s vital stats are HD 4d12, HP 20, AC 16, disposition chaos/neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 20, AC 16, Disposition chaos/neutral\n"
+  },
+  {
+    "entryNumber": 79,
+    "creatureName": "Goblin patrol warriors x 5",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 79. Goblin patrol warriors x 5\n\n*These warriors’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 80,
+    "creatureName": "Goblin guards x 4",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 80. Goblin guards x 4\n\n*These guards’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 81,
+    "creatureName": "Goblin patrol warriors x 6",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 81. Goblin patrol warriors x 6\n\n*These warriors’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 82,
+    "creatureName": "Goblin males x 8",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "ambiguous-coins",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 82. Goblin males x 8\n\n*These creatures’ vital stats are HD 1d6, HP 3, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 cp, 50 gp.*\n\n**Core Stats:** HP 3, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 83,
+    "creatureName": "Goblin females x 13",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 83. Goblin females x 13\n\n*These creatures’ vital stats are HD 1d6, HP 2, AC 12, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 12, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 84,
+    "creatureName": "Goblin warriors x 3",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 84. Goblin warriors x 3\n\n*These warriors’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 85,
+    "creatureName": "Goblin serjeant",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "ambiguous-coins",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 85. Goblin serjeant\n\n*This creature’s vital stats are HD 2d6, HP 11, AC 16, disposition law/evil. Their primary attributes are physical. He carries a breastplate, is equipped with medium steel shield, morning star, shortsword, whip, a brass belt ring with keys to #18, and #20, and 5 gp, 6 sp.*\n\n**Core Stats:** HP 11, AC 16, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 86,
+    "creatureName": "Prisoner #2: An elderly orc",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 86. Prisoner #2: An elderly orc\n\n*This creature’s vital stats are HP 2, AC 10. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 10, Disposition —\n"
+  },
+  {
+    "entryNumber": 87,
+    "creatureName": "Robert Cooper",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 87. Robert Cooper\n\n*This creature’s vital stats are HP 2, AC 11, disposition law/good. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 11, Disposition law/good\n"
+  },
+  {
+    "entryNumber": 88,
+    "creatureName": "Oni Blackbeard (Dwarf Crossbowman)",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 88. Oni Blackbeard (Dwarf Crossbowman)\n\n*This creature’s vital stats are HP 18, AC 10, disposition chaos/good. Their primary attributes are physical. He carries a loin cloth.*\n\n**Core Stats:** HP 18, AC 10, Disposition chaos/good\n"
+  },
+  {
+    "entryNumber": 89,
+    "creatureName": "Wilbur Hornblower",
+    "probableType": "classed",
+    "flags": [
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 89. Wilbur Hornblower\n\n*This creature’s vital stats are HP 2, AC 8, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 8, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 90,
+    "creatureName": "Goblin shaman",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "ambiguous-coins",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 90. Goblin shaman\n\n*These creatures’ vital stats are HD 4d6, HP 15, AC 10, disposition law/evil. Their primary attributes are physical. They carry *a bronze-hilted +1 poniard—+1 bonus*, *potion of extra healing [3d8+3]—heals 2d8+2 HPs*, a dragonhide spell book with each of the below spells contained thereins, a scroll of cause paralysis, and a key to door #21s, and 30 gp, 250 gp.*\n\n**Core Stats:** HP 15, AC 10, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 91,
+    "creatureName": "Goblin Skeletons x 4",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 91. Goblin Skeletons x 4\n\n*These creatures’ vital stats are HD 1d12, HP 8, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 8, AC 13, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 92,
+    "creatureName": "Goblin warriors x 2",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 92. Goblin warriors x 2\n\n*These warriors’ vital stats are HD 1d6, HP 6, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 93,
+    "creatureName": "Gruzz Kree (Goblin Chieftain)",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "ambiguous-coins",
+      "attributes-physical-phrase",
+      "named-ranked-title"
+    ],
+    "rawMarkdownSnippet": "### 93. Gruzz Kree (Goblin Chieftain)\n\n*This creature’s vital stats are HD 4d6, HP 18, AC 18, disposition law/evil. Their primary attributes are physical. He carries 12 gp, 50 gp.*\n\n**Core Stats:** HP 18, AC 18, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 94,
+    "creatureName": "Goblin females x 6",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 94. Goblin females x 6\n\n*These creatures’ vital stats are HD 1d6, HP 2, AC 12, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 12, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 95,
+    "creatureName": "Cave bats x 80",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 95. Cave bats x 80\n\n*These creatures’ vital stats are HD 1d2, HP 1, AC 12, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 96,
+    "creatureName": ")",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 96. )** _\n\n*This creature’s vital stats are HD 1d2, HP 1, AC 11, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 1, AC 11, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 97,
+    "creatureName": "Snakes, poisonous",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 97. Snakes, poisonous\n\n*This creature’s vital stats are HD 1d6, HP 4, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 98,
+    "creatureName": "Green slime",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 98. Green slime\n\n*This creature’s vital stats are HD 4d8, HP 16, AC 10, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 16, AC 10, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 99,
+    "creatureName": "Rats, giant x 3-12",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 99. Rats, giant x 3-12\n\n*These creatures’ vital stats are HD 1d4, HP 2, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 100,
+    "creatureName": "Gray Ooze (small)",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 100. Gray Ooze (small)\n\n*These creatures’ vital stats are HD 2d10, HP 15, AC 12, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 15, AC 12, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 101,
+    "creatureName": "Black Centipedes, giant x 5",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 101. Black Centipedes, giant x 5\n\n*These creatures’ vital stats are HD 1d4, HP 2, AC 18, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 18, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 102,
+    "creatureName": "Orcs x 3",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 102. Orcs x 3\n\n*These creatures’ vital stats are HD 1d8, HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 103,
+    "creatureName": "Orcs x 4",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 103. Orcs x 4\n\n*These creatures’ vital stats are HD 1d8, HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 104,
+    "creatureName": "Orcs x 6",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 104. Orcs x 6\n\n*These creatures’ vital stats are HD 1d8, HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 105,
+    "creatureName": "Orc Guards x 2",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 105. Orc Guards x 2\n\n*These guards’ vital stats are HD 1d8, HP 7, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 7, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 106,
+    "creatureName": "King Krusher (Orc Leader)",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase",
+      "named-ranked-title"
+    ],
+    "rawMarkdownSnippet": "### 106. King Krusher (Orc Leader)\n\n*This creature’s vital stats are HD 3d8, HP 20, AC 18, disposition law/evil. Their primary attributes are physical. He carries 30 gold in coin.*\n\n**Core Stats:** HP 20, AC 18, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 107,
+    "creatureName": "Orc chieftain's mate",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase",
+      "named-ranked-title"
+    ],
+    "rawMarkdownSnippet": "### 107. Orc chieftain's mate\n\n*This creature’s vital stats are HD 1d8, HP 4, AC 12, disposition law/evil. Their primary attributes are physical. He carries a 4-inch knife, and 100 gold in coin.*\n\n**Core Stats:** HP 4, AC 12, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 108,
+    "creatureName": "Orcs x 4",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 108. Orcs x 4\n\n*These creatures’ vital stats are HD 1d8, HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 109,
+    "creatureName": "Orc lieutenant",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 109. Orc lieutenant\n\n*This creature’s vital stats are HD 2d8, HP 12, AC 14, disposition law/evil. Their primary attributes are physical. He carries 30 gold in coin.*\n\n**Core Stats:** HP 12, AC 14, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 110,
+    "creatureName": "Zombies x 6",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 110. Zombies x 6\n\n*These creatures’ vital stats are HD 2d12, HP 12, AC 12, disposition neutral/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 12, AC 12, Disposition neutral/evil\n"
+  },
+  {
+    "entryNumber": 111,
+    "creatureName": "Skeletons x 8",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 111. Skeletons x 8\n\n*These creatures’ vital stats are HD 1d12, HP 8, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 8, AC 13, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 112,
+    "creatureName": "Wily Wil, Giant of the Hill",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 112. Wily Wil, Giant of the Hill\n\n*These creatures’ vital stats are HD 9d12, HP 63, AC 17, disposition chaos/neutral. Their primary attributes are physical. They wear hide armors and a large leather sack that contains two boulders and carry a soiled pair of underdrawers, a huge old hams, a comic scrolls, 3 lumps of rock candies, and other assorted trashs.*\n\n**Core Stats:** HP 63, AC 17, Disposition chaos/neutral\n"
+  },
+  {
+    "entryNumber": 113,
+    "creatureName": "\"Pinky\" the Owlbear",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 113. \"Pinky\" the Owlbear\n\n*This creature’s vital stats are HD 4d10, HP 27, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 27, AC 13, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 114,
+    "creatureName": "Black Bear",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 114. Black Bear\n\n*This creature’s vital stats are HD 3d8, HP 15, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 15, AC 13, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 115,
+    "creatureName": "Black Bear cubs x 2",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 115. Black Bear cubs x 2\n\n*These creatures’ vital stats are HD 1d8, HP 6, AC 12, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 6, AC 12, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 116,
+    "creatureName": "River Rats, giant x 40",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 116. River Rats, giant x 40\n\n*These creatures’ vital stats are HD 1d4, HP 2, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 117,
+    "creatureName": "Stirges x 8",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 117. Stirges x 8\n\n*These creatures’ vital stats are HD 1d6, HP 3, AC 16, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 16, Disposition neutral\n"
+  },
+  {
+    "entryNumber": 118,
+    "creatureName": "Bugbears x 3",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 118. Bugbears x 3\n\n*These creatures’ vital stats are HD 3d10, HP 17, AC 16, disposition chaos/evil. Their primary attributes are physical. They carry 6 gold in coin.*\n\n**Core Stats:** HP 17, AC 16, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 119,
+    "creatureName": "Hobgoblin sentries x 2",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 119. Hobgoblin sentries x 2\n\n*These creatures’ vital stats are HD 1d10, HP 8, AC 15, disposition law/evil. Their primary attributes are physical. They wear chain mail armors and carry wield composite short bows, x12 arrows, battle-axes, and 2d4 gp eachs, and 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 120,
+    "creatureName": "Hobgoblin males x 2 or 4",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 120. Hobgoblin males x 2 or 4\n\n*These creatures’ vital stats are HD 1d10, HP 6, AC 15, disposition law/evil. Their primary attributes are physical. They wear crude chain mail armors and carry wield halberds and 2d4 gp eachs, and 4 gold in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 121,
+    "creatureName": "Hobgoblin females x 9",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 121. Hobgoblin females x 9\n\n*These creatures’ vital stats are HD 1d6, HP 3, AC 12, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 122,
+    "creatureName": "Hobgoblin warriors x 2",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 122. Hobgoblin warriors x 2\n\n*These warriors’ vital stats are HD 1d10, HP 8, AC 15, disposition law/evil. Their primary attributes are physical. They carry 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 123,
+    "creatureName": "Hub-Gub the Bloody (Hobgoblin Chieftain)",
+    "probableType": "classed",
+    "flags": [
+      "raw-hd-and-hp",
+      "attributes-physical-phrase",
+      "named-ranked-title"
+    ],
+    "rawMarkdownSnippet": "### 123. Hub-Gub the Bloody (Hobgoblin Chieftain)\n\n*This creature’s vital stats are HD 3d10, HP 18, AC 16, disposition law/evil. Their primary attributes are physical. He wears full chain mail armor and carries *wields a +1 halberd [+4 \"to hit\"; 1d10+3 damage]—+1 bonus*, *broadsword [+3 \"to hit\"; 2d4+2 damage]—+3 bonus*, composite short bow, and 12 arrows, and 12 gold in coin.*\n\n**Core Stats:** HP 18, AC 16, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 124,
+    "creatureName": "Hobgoblin females x 3",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 124. Hobgoblin females x 3\n\n*These creatures’ vital stats are HD 1d6, HP 3, AC 12, disposition law/evil. Their primary attributes are physical. They carry 2 gold in coin.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n"
+  },
+  {
+    "entryNumber": 125,
+    "creatureName": "Gnoll sentries x 2",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 125. Gnoll sentries x 2\n\n*These creatures’ vital stats are HD 2d10, HP 12, AC 15, disposition chaos/evil. Their primary attributes are physical. They carry 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 126,
+    "creatureName": "Gnoll males x 4",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 126. Gnoll males x 4\n\n*These creatures’ vital stats are HD 2d10, HP 12, AC 15, disposition chaos/evil. Their primary attributes are physical. They carry 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 127,
+    "creatureName": "Gnoll females x 5",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 127. Gnoll females x 5\n\n*These creatures’ vital stats are HD 1d10, HP 5, AC 12, disposition chaos/evil. Their primary attributes are physical. They carry 4 silver in coin.*\n\n**Core Stats:** HP 5, AC 12, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 128,
+    "creatureName": "Gnoll guards x 2",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase"
+    ],
+    "rawMarkdownSnippet": "### 128. Gnoll guards x 2\n\n*These guards’ vital stats are HD 2d10, HP 14, AC 15, disposition chaos/evil. Their primary attributes are physical. They carry 4 gold in coin.*\n\n**Core Stats:** HP 14, AC 15, Disposition chaos/evil\n"
+  },
+  {
+    "entryNumber": 129,
+    "creatureName": "Yeexuul (Gnoll Chieftain)",
+    "probableType": "ambiguous",
+    "flags": [
+      "HP+HD",
+      "raw-hd-and-hp",
+      "attributes-physical-phrase",
+      "named-ranked-title"
+    ],
+    "rawMarkdownSnippet": "### 129. Yeexuul (Gnoll Chieftain)\n\n*This creature’s vital stats are HD 3d10, HP 20, AC 17, disposition chaos/evil. Their primary attributes are physical. He wears plate mail armor and carries wields a throwing club, morning star, and 10-inch knife, and 24 gold in coin.*\n\n**Core Stats:** HP 20, AC 17, Disposition chaos/evil\n"
+  }
+]
+```
+

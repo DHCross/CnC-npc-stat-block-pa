@@ -2791,6 +2791,7 @@ Other possible reasons for visiting an armorer include maintenance and repair, c
 
 ((Text to be read to players))
 
+### 3. Coralon
 You have heard many tales of the wondrous craftsmanship of Coralon the Armorer. To stand now before his workshop, the famed “Talon Turned”, and weighed down by sufficient coin to afford his service, you cannot help but feel a stir of excitement. Heroes and kings go forth to battle shrouded in steel from the forge of Coralon, and soon you too will be unassailable in your new suit of mail…
 
 ((End of player text))

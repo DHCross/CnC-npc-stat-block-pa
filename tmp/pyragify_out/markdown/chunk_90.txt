@@ -1,0 +1,294 @@
+Unknown chunk type:
+{'header': '### 32. Rivermen', 'content': '\n*HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability.*\n\n**Core Stats:** HP 5, AC 11, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 33. Snake, poisonous', 'content': '\n*HP 4, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 34. Snake, poisonous (deadly)', 'content': '\n*HP 7, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 7, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 35. Spider, Giant (medium-sized)', 'content': '\n*HP 15, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 15, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 36. Stirges', 'content': '\n*HP 3, AC 16, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 3, AC 16, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 37. Thieves', 'content': '\n*HP 4, AC 14, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition variable\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 38. Turtle, Huge Snapping', 'content': '\n*HP 20, AC 19, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 20, AC 19, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 39. Wolf, Grey', 'content': '\n*HP 9, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 9, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 40. Wolverine (small, normal)', 'content': '\n*HP 16, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 16, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 41. Grimlock Manface (Losel Chieftain)', 'content': '\n*HP 32, AC 16, disposition neutral/evil. Saves: P. It has splint mail armor, *a +1 heavy flail [specialized; +6 "to hit"; 1d10+6 damage]*, a lasso*, a belt axe, a dagger, and 125 gold in coin.*\n\n**Core Stats:** HP 32, AC 16, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': "### 42. Ji'gun-tima (Losel Shaman)", 'content': '\n*HP 25, AC 12, disposition neutral/evil. Saves: P. It can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*.*\n\n**Core Stats:** HP 25, AC 12, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 43. Losel sub-chiefs x 10', 'content': '\n*HP 16, AC 14, disposition neutral/evil. Saves: P.*\n\n**Core Stats:** HP 16, AC 14, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 44. Losel warriors x 30', 'content': '\n*HP 10, AC 14, disposition neutral/evil. Saves: P.*\n\n**Core Stats:** HP 10, AC 14, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 45. Losel females x 35', 'content': '\n*HP 6, AC 12, disposition neutral/evil. Saves: P. It has *clubs [+1 "to hit"; 1d6+1 damage]*.*\n\n**Core Stats:** HP 6, AC 12, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 46. **Iggy the Mad*:** _', 'content': '\n*HP 22, AC 13, disposition chaos/neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 12 copper in coin.*\n\n**Core Stats:** HP 22, AC 13, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 47. The Ogre', 'content': '\n*HP 27, AC 16, disposition chaos/evil. Saves: P.*\n\n**Core Stats:** HP 27, AC 16, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 48. Children x 3-6', 'content': '\n*HP 2, AC 10, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 10, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 49. **Batrachianoids* x 6:** _', 'content': '\n*HP 5, AC 14, disposition chaos/evil. Saves: P.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 50. Blook-glook (Batrachianoid Chieftain)', 'content': '\n*HP 20, AC 14, disposition chaos/evil. Saves: P. It has a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry.*\n\n**Core Stats:** HP 20, AC 14, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 51. Spider, Giant (medium-sized) x 2', 'content': '\n*HP 13, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 13, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 52. **Harpy*:** _', 'content': '\n*HP 13, AC 13, disposition chaos/evil. Saves: P.*\n\n**Core Stats:** HP 13, AC 13, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 53. Tick, Giant x 3', 'content': '\n*HP 11, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 11, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 54. Wood Elf Scouts x 11', 'content': '\n*HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin.*\n\n**Core Stats:** HP 8, AC 12, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 55. Ember Raventree (wood elf leader)', 'content': '\n*HP 22, AC 16, disposition chaos/neutral. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has 35 sp, 100 gp.*\n\n**Core Stats:** HP 22, AC 16, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 56. 86-90', 'content': '\n*HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*\n\n**Core Stats:** HP 23, AC 15, Disposition variable\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 57. Raven "One-Eye"', 'content': '\n*HP 2, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 58. Bandit sentries x 8', 'content': '\n*HP 4, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 12, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 59. Bat, Cave', 'content': '\n*HP 1, AC 12, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 60. Centipedes, Black, Giant', 'content': '\n*HP 3, AC 18, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 3, AC 18, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 61. **Fire Beetles*, Giant:** _', 'content': '\n*HP 6, AC 16, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 6, AC 16, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 62. Rats, Giant', 'content': '\n*HP 2, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 63. Snake, Poisonous', 'content': '\n*HP 4, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 64. Spider, Giant (medium-sized)', 'content': '\n*HP 13, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 13, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 65. Tick, Giant', 'content': '\n*HP 11, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 11, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 66. Wolves x 5', 'content': '\n*HP 9, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 9, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 67. **The Little Hillwood Werewolf*:** _', 'content': '\n*HP 25, AC 15, disposition chaos/evil. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*\n\n**Core Stats:** HP 25, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 68. Kobold Guards x 2', 'content': '\n*HP 3, AC 15, disposition law/evil. Saves: P. They have 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 69. Mastiff', 'content': '\n*HP 15, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 15, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 70. Fekk', 'content': '\n*HP 2, AC 10, disposition law/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries has a key to the door of this room, and 5 gp, 3 cp.*\n\n**Core Stats:** HP 2, AC 10, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 71. Kobold warrior x 6', 'content': '\n*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 72. Kobold serjeant x 1', 'content': '\n*HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 73. Kobold warrior x', 'content': '\n*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 74. Kobold serjeant x 1', 'content': '\n*HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 75. King Griggle-gruk (Kobold Chieftain)', 'content': '\n*HP 14, AC 17, disposition law/evil. Saves: P. It has plate mail armor, a has javelins x 3, *+1 shortsword*, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin.*\n\n**Core Stats:** HP 14, AC 17, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 76. Kobold Bodyguards x 2', 'content': '\n*HP 7, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 7, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 77. Goblin prisoner', 'content': '\n*HP 4, AC 14, disposition law/evil. Saves: P. It has a loin cloth.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 78. "Charlie" the Ogre', 'content': '\n*HP 20, AC 16, disposition chaos/neutral. Saves: P.*\n\n**Core Stats:** HP 20, AC 16, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 79. Goblin patrol warriors x 5', 'content': '\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 80. Goblin guards x 4', 'content': '\n*HP 4, AC 14, disposition law/evil. Saves: P. They have 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 81. Goblin patrol warriors x 6', 'content': '\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 82. Goblin males x 8', 'content': '\n*HP 3, AC 14, disposition law/evil. Saves: P. It has 6 cp, 50 gp.*\n\n**Core Stats:** HP 3, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 83. Goblin females x 13', 'content': '\n*HP 2, AC 12, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 2, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 84. Goblin warriors x 3', 'content': '\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 85. Goblin serjeant', 'content': '\n*HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp.*\n\n**Core Stats:** HP 11, AC 16, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 86. Prisoner #2: An elderly orc', 'content': '\n*HP 2, AC 10. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*\n\n**Core Stats:** HP 2, AC 10, Disposition —\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 87. Robert Cooper', 'content': '\n*HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*\n\n**Core Stats:** HP 2, AC 11, Disposition law/good\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 88. Oni Blackbeard (Dwarf Crossbowman)', 'content': '\n*HP 18, AC 10, disposition chaos/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries a loin cloth.*\n\n**Core Stats:** HP 18, AC 10, Disposition chaos/good\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 89. Wilbur Hornblower', 'content': '\n*HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*\n\n**Core Stats:** HP 2, AC 8, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 90. Goblin shaman', 'content': '\n*HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry.*\n\n**Core Stats:** HP 15, AC 10, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 91. Goblin Skeletons x 4', 'content': '\n*HP 8, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 8, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 92. Goblin warriors x 2', 'content': '\n*HP 6, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 93. Gruzz Kree (Goblin Chieftain)', 'content': '\n*HP 18, AC 18, disposition law/evil. Saves: P. It has 12 gp, 50 gp and fifty in jewelry.*\n\n**Core Stats:** HP 18, AC 18, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 94. Goblin females x 6', 'content': '\n*HP 2, AC 12, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 2, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 95. Cave bats x 80', 'content': '\n*HP 1, AC 12, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 96. )** _', 'content': '\n*HP 1, AC 11, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 1, AC 11, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 97. Snakes, poisonous', 'content': '\n*HP 4, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 98. Green slime', 'content': '\n*HP 16, AC 10, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 16, AC 10, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 99. Rats, giant x 3-12', 'content': '\n*HP 2, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 100. Gray Ooze (small)', 'content': '\n*HP 15, AC 12, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 15, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 101. Black Centipedes, giant x 5', 'content': '\n*HP 2, AC 18, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 18, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 102. Orcs x 3', 'content': '\n*HP 5, AC 14, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 103. Orcs x 4', 'content': '\n*HP 5, AC 14, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 104. Orcs x 6', 'content': '\n*HP 5, AC 14, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 105. Orc Guards x 2', 'content': '\n*HP 7, AC 14, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 7, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 106. King Krusher (Orc Leader)', 'content': '\n*HP 20, AC 18, disposition law/evil. Saves: P. It has 30 gold in coin.*\n\n**Core Stats:** HP 20, AC 18, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': "### 107. Orc chieftain's mate", 'content': '\n*HP 4, AC 12, disposition law/evil. Saves: P. It has a 4-inch knife and 100 gold in coin.*\n\n**Core Stats:** HP 4, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 108. Orcs x 4', 'content': '\n*HP 5, AC 14, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 109. Orc lieutenant', 'content': '\n*HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin.*\n\n**Core Stats:** HP 12, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 110. Zombies x 6', 'content': '\n*HP 12, AC 12, disposition neutral/evil. Saves: P.*\n\n**Core Stats:** HP 12, AC 12, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 111. Skeletons x 8', 'content': '\n*HP 8, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 8, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 112. Wily Wil, Giant of the Hill', 'content': '\n*HP 63, AC 17, disposition chaos/neutral. Saves: P. It has hide armor, a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and an other assorted trash.*\n\n**Core Stats:** HP 63, AC 17, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 113. "Pinky" the Owlbear', 'content': '\n*HP 27, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 27, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 114. Black Bear', 'content': '\n*HP 15, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 15, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 115. Black Bear cubs x 2', 'content': '\n*HP 6, AC 12, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 6, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 116. River Rats, giant x 40', 'content': '\n*HP 2, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 117. Stirges x 8', 'content': '\n*HP 3, AC 16, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 3, AC 16, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 118. Bugbears x 3', 'content': '\n*HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin.*\n\n**Core Stats:** HP 17, AC 16, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 119. Hobgoblin sentries x 2', 'content': '\n*HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 120. Hobgoblin males x 2 or 4', 'content': '\n*HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 121. Hobgoblin females x 9', 'content': '\n*HP 3, AC 12, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 122. Hobgoblin warriors x 2', 'content': '\n*HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 123. Hub-Gub the Bloody (Hobgoblin Chieftain)', 'content': '\n*HP 18, AC 16, disposition law/evil. Saves: P. It has full chain mail armor, *a +1 halberd [+4 "to hit"; 1d10+3 damage]*, *broadsword [+3 "to hit"; 2d4+2 damage]*, a composite short bow, 12 arrows, and 12 gold in coin.*\n\n**Core Stats:** HP 18, AC 16, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 124. Hobgoblin females x 3', 'content': '\n*HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 125. Gnoll sentries x 2', 'content': '\n*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 126. Gnoll males x 4', 'content': '\n*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 127. Gnoll females x 5', 'content': '\n*HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin.*\n\n**Core Stats:** HP 5, AC 12, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 128. Gnoll guards x 2', 'content': '\n*HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin.*\n\n**Core Stats:** HP 14, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 129. Yeexuul (Gnoll Chieftain)', 'content': '\n*HP 20, AC 17, disposition chaos/evil. Saves: P. It has plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin.*\n\n**Core Stats:** HP 20, AC 17, Disposition chaos/evil\n\n---\n\n\n'}
+
