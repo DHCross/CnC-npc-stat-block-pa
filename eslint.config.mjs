@@ -9,7 +9,7 @@ import tseslint from 'typescript-eslint';
 import nextPlugin from '@next/eslint-plugin-next';
 
 export default tseslint.config(
-  { ignores: ['dist', '.next', 'node_modules', 'next-env.d.ts', 'tailwind.config.js', 'test-*.js', '*.config.js'] },
+  { ignores: ['dist', '.next', 'node_modules', 'next-env.d.ts', 'tailwind.config.js', 'test-*.js', '*.config.js', 'vite.config.ts'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx,js,jsx}'],
