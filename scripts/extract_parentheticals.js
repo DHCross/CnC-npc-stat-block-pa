@@ -58,7 +58,7 @@ function deriveInlineLabel(prefix) {
     return colonMatch[1].trim();
   }
 
-  const fragments = text.split(/[\.\u2014–-]/).map(s => s.trim()).filter(Boolean);
+  const fragments = text.split(/[.\u2014–-]/).map(s => s.trim()).filter(Boolean);
   if (fragments.length > 0) {
     return fragments[fragments.length - 1];
   }
