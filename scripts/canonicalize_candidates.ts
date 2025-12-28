@@ -1,9 +1,9 @@
 #!/usr/bin/env tsx
 import fs from 'fs';
 import path from 'path';
-import { extractParentheticalData, buildCanonicalParenthetical, isUnitHeading, expandShorthandForClassed, normalizePrimaryAttributesForMonsters, canonicalizeShields, repositionMagicItemBonuses, normalizeEquipmentVerbs, deduplicateEquipment } from '../src/lib/enhanced-parser.ts';
-import { classifyCreature, classifyEntityV3, extractPreCheckData, getFormattingRules } from '../src/lib/classification-rules.ts';
-import type { CanonicalData } from '../src/lib/canonical-data-mapper.ts';
+import { extractParentheticalData, buildCanonicalParenthetical, isUnitHeading, expandShorthandForClassed, normalizePrimaryAttributesForMonsters, canonicalizeShields, repositionMagicItemBonuses, normalizeEquipmentVerbs, deduplicateEquipment } from '../src/lib/enhanced-parser';
+import { classifyCreature, classifyEntityV3, extractPreCheckData, getFormattingRules } from '../src/lib/classification-rules';
+import type { CanonicalData } from '../src/lib/canonical-data-mapper';
 
 const DATA_SCOPE = process.env.DATA_SCOPE || 'mouths-of-madness';
 const DATA_DIR = path.join(process.cwd(), 'data', DATA_SCOPE);
