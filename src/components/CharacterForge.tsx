@@ -5,7 +5,8 @@ import {
   Shield, Scroll, Backpack, 
   RefreshCw, Calculator,
   Hammer, User, Copy, Check, BookOpen,
-  ChevronUp, ChevronDown, Package, FileText, PenTool, Layout
+  ChevronUp, ChevronDown, Package, FileText, PenTool, Layout,
+  Gem, Save, Upload, Trash2
 } from 'lucide-react';
 
 // --- THE REFORGED LEXICON & RULES ---
@@ -41,7 +42,6 @@ interface CharClass {
 
 interface Spell {
   name: string;
-  original: string;
   level: number;
   type: string;
 }
@@ -94,25 +94,644 @@ const RULES = {
     { id: 'rogue', name: 'Rogue', hd: 6, reqPrime: ['DEX'], desc: 'Skilled tricksters and scouts.', abilities: ['Back Attack', 'Cant', 'Traps', 'Sneak'], bthMod: 0.5 },
     { id: 'wizard', name: 'Wizard', hd: 4, reqPrime: ['INT'], desc: 'Wielders of arcane magic.', abilities: ['Spellcasting (Arcane)', 'Familiar'], spells: true, bthMod: 0.33 },
     { id: 'cleric', name: 'Cleric', hd: 8, reqPrime: ['WIS'], desc: 'Divine servants of the gods.', abilities: ['Spellcasting (Divine)', 'Turn Undead'], spells: true, bthMod: 0.75 },
-    { id: 'bard', name: 'Bard', hd: 6, reqPrime: ['CHA'], desc: 'Chroniclers and inspirers.', abilities: ['Decipher Script', 'Exhort', 'Legend Lore'], spells: true, bthMod: 0.5 },
+    { id: 'bard', name: 'Bard', hd: 6, reqPrime: ['CHA'], desc: 'Chroniclers and inspirers.', abilities: ['Fascinate', 'Exalt', 'Exhort Greatness', 'Decipher Script'], bthMod: 0.5 },
+    { id: 'druid', name: 'Druid', hd: 8, reqPrime: ['WIS'], desc: 'Servants of nature and the old ways.', abilities: ['Nature Lore', 'Resist Elements', 'Woodland Stride'], spells: true, bthMod: 0.75 },
+    { id: 'illusionist', name: 'Illusionist', hd: 4, reqPrime: ['INT'], desc: 'Masters of shadow and deception.', abilities: ['Spellcasting (Arcane)', 'Disguise', 'Detect Illusion'], spells: true, bthMod: 0.33 },
     { id: 'paladin', name: 'Paladin', hd: 10, reqPrime: ['STR', 'CHA'], desc: 'Holy warriors of law and good.', abilities: ['Lay on Hands', 'Divine Aura', 'Cure Disease'], bthMod: 1 },
-    { id: 'knight', name: 'Knight', hd: 10, reqPrime: ['STR', 'CHA'], desc: 'Nobles sworn to a liege or cause.', abilities: ['Birthright Mount', 'Horsemanship', 'Inspire'], bthMod: 1 }
+    { id: 'knight', name: 'Knight', hd: 10, reqPrime: ['STR', 'CHA'], desc: 'Nobles sworn to a liege or cause.', abilities: ['Birthright Mount', 'Horsemanship', 'Inspire'], bthMod: 1 },
+    { id: 'assassin', name: 'Assassin', hd: 6, reqPrime: ['DEX'], desc: 'Masters of stealth and death.', abilities: ['Death Attack', 'Sneak Attack', 'Disguise', 'Poisons'], bthMod: 0.5 },
+    { id: 'barbarian', name: 'Barbarian', hd: 12, reqPrime: ['CON'], desc: 'Fierce warriors from untamed lands.', abilities: ['Combat Sense', 'Deerstalker', 'Intimidate', 'Whirlwind Attack'], bthMod: 1 },
+    { id: 'monk', name: 'Monk', hd: 12, reqPrime: ['CON'], desc: 'Martial artists of mind and body.', abilities: ['Stun Attack', 'Deflect Missiles', 'Iron Body', 'Fast Movement'], bthMod: 1 }
   ] as CharClass[],
 
+  startingGold: {
+    fighter: '3d8x10', ranger: '3d8x10', knight: '6d4x10', paladin: '6d4x10',
+    rogue: '3d4x10', assassin: '3d4x10', bard: '3d4x10',
+    barbarian: '2d4x10', monk: '2d4x10',
+    wizard: '1d10x10', illusionist: '1d10x10',
+    cleric: '2d10x10', druid: '2d10x10'
+  } as Record<string, string>,
+
+  armorRestrictions: {
+    fighter: 'Any', ranger: 'Any', knight: 'Any', paladin: 'Any', barbarian: 'Any',
+    cleric: 'Any', druid: 'Leather, padded, hide, cuir bouille',
+    rogue: 'Leather, leather coat, padded', assassin: 'Leather, leather coat, padded',
+    bard: 'Chain shirt, ring mail, studded leather, leather, padded',
+    wizard: 'None', illusionist: 'None', monk: 'None'
+  } as Record<string, string>,
+
+  spellSlots: {
+    cleric: [
+      [3,1,0,0,0,0,0,0,0,0], [4,2,0,0,0,0,0,0,0,0], [4,2,1,0,0,0,0,0,0,0],
+      [4,3,2,0,0,0,0,0,0,0], [4,3,2,1,0,0,0,0,0,0]
+    ],
+    druid: [
+      [3,1,0,0,0,0,0,0,0,0], [4,2,0,0,0,0,0,0,0,0], [4,2,1,0,0,0,0,0,0,0],
+      [4,3,2,0,0,0,0,0,0,0], [4,3,2,1,0,0,0,0,0,0]
+    ],
+    wizard: [
+      [4,2,0,0,0,0,0,0,0,0], [4,3,0,0,0,0,0,0,0,0], [4,3,1,0,0,0,0,0,0,0],
+      [4,3,2,0,0,0,0,0,0,0], [5,4,2,1,0,0,0,0,0,0]
+    ],
+    illusionist: [
+      [4,2,0,0,0,0,0,0,0,0], [4,3,0,0,0,0,0,0,0,0], [4,3,1,0,0,0,0,0,0,0],
+      [4,3,2,0,0,0,0,0,0,0], [5,4,2,1,0,0,0,0,0,0]
+    ]
+  } as Record<string, number[][]>,
+
+  deities: [
+    { name: 'Burol', domains: ['Stone', 'Mountains'], weapon: 'Club' },
+    { name: 'Corthain', domains: ['Law', 'Good', 'Wind'], weapon: 'Spear, Sword' },
+    { name: 'Daladon Lothian', domains: ['Forests', 'Wilderness'], weapon: 'Two-handed sword, battle axe' },
+    { name: 'Ealor', domains: ['Oceans', 'Seas'], weapon: 'Trident' },
+    { name: 'Ea Raena', domains: ['Night Hunt'], weapon: 'Bow and Arrows' },
+    { name: 'Ea Vette', domains: ['Seasons', 'Sun'], weapon: 'Javelin' },
+    { name: 'Frafnog', domains: ['Knowledge', 'Fire'], weapon: 'None' },
+    { name: 'Hroth', domains: ['Earth', 'Soil'], weapon: 'Mace, Club, Flail' },
+    { name: 'Toth', domains: ['Death', 'Knowledge'], weapon: 'Khopesh, Spear' },
+    { name: 'Unklar', domains: ['Darkness', 'Winter'], weapon: 'Sword, Flail, Mace' },
+    { name: 'Wenafar', domains: ['Stars', 'Fey', 'Animals'], weapon: 'Staff' }
+  ] as { name: string; domains: string[]; weapon: string }[],
+
   spells: [
-    { name: 'Acidic Bolt', original: 'Acid Arrow', level: 2, type: 'Wizard' },
-    { name: "Alter One's Person", original: 'Alter Self', level: 2, type: 'Wizard' },
-    { name: 'Arcane Vision', original: 'Arcane Eye', level: 4, type: 'Wizard' },
-    { name: 'Anti Flora Sphere', original: 'Anti-plant shell', level: 4, type: 'Druid' },
-    { name: 'Magic Missile', original: 'Magic Missile', level: 1, type: 'Wizard' },
-    { name: 'Shield', original: 'Shield', level: 1, type: 'Wizard' },
-    { name: 'Sleep', original: 'Sleep', level: 1, type: 'Wizard' },
-    { name: 'Cure Light Wounds', original: 'Cure Light Wounds', level: 1, type: 'Cleric' },
-    { name: 'Bless', original: 'Bless', level: 1, type: 'Cleric' },
-    { name: 'Protection from Disposition', original: 'Protection from Alignment', level: 1, type: 'Cleric' },
-    { name: 'Command', original: 'Command', level: 1, type: 'Cleric' },
-    { name: 'Wooden Skin', original: 'Barkskin', level: 2, type: 'Druid' },
-    { name: 'Heightened Invisibility', original: 'Improved Invisibility', level: 4, type: 'Wizard' },
+    // WIZARD SPELLS (Arcane)
+    // Level 0
+    { name: 'Arcane Rune', level: 0, type: 'Wizard' },
+    { name: 'Dancing Orbs', level: 0, type: 'Wizard' },
+    { name: 'Discern Magic', level: 0, type: 'Wizard' },
+    { name: 'Discover Poison', level: 0, type: 'Wizard' },
+    { name: 'Endure Cold/Heat', level: 0, type: 'Wizard' },
+    { name: 'Ghostly Noise', level: 0, type: 'Wizard' },
+    { name: 'Light', level: 0, type: 'Wizard' },
+    { name: "Magi's Reach", level: 0, type: 'Wizard' },
+    { name: 'Mending', level: 0, type: 'Wizard' },
+    { name: 'Message', level: 0, type: 'Wizard' },
+    { name: 'Open/Close', level: 0, type: 'Wizard' },
+    { name: 'Prestidigitation', level: 0, type: 'Wizard' },
+    // Level 1
+    { name: "Alter One's Person Lesser", level: 1, type: 'Wizard' },
+    { name: 'Alter Size', level: 1, type: 'Wizard' },
+    { name: 'Arcane Armor', level: 1, type: 'Wizard' },
+    { name: 'Burning Flames', level: 1, type: 'Wizard' },
+    { name: 'Charm Humanoid', level: 1, type: 'Wizard' },
+    { name: 'Comprehension', level: 1, type: 'Wizard' },
+    { name: 'Erase', level: 1, type: 'Wizard' },
+    { name: 'Feather Light', level: 1, type: 'Wizard' },
+    { name: 'Flying Saucer', level: 1, type: 'Wizard' },
+    { name: 'Hold Bar & Gate', level: 1, type: 'Wizard' },
+    { name: 'Identify', level: 1, type: 'Wizard' },
+    { name: 'Jump', level: 1, type: 'Wizard' },
+    { name: "Magi's Missile", level: 1, type: 'Wizard' },
+    { name: 'Protection from Disposition', level: 1, type: 'Wizard' },
+    { name: 'Read Arcane Script', level: 1, type: 'Wizard' },
+    { name: 'Shield', level: 1, type: 'Wizard' },
+    { name: 'Shock', level: 1, type: 'Wizard' },
+    { name: 'Sleep', level: 1, type: 'Wizard' },
+    { name: 'Spider Walk', level: 1, type: 'Wizard' },
+    { name: 'Summon Familiar', level: 1, type: 'Wizard' },
+    { name: 'Unseen ID', level: 1, type: 'Wizard' },
+    // Level 2
+    { name: 'Acidic Bolt', level: 2, type: 'Wizard' },
+    { name: 'Continual Fire', level: 2, type: 'Wizard' },
+    { name: 'Darkness', level: 2, type: 'Wizard' },
+    { name: 'Discern Thoughts', level: 2, type: 'Wizard' },
+    { name: 'Enhance an Attribute', level: 2, type: 'Wizard' },
+    { name: 'Fog', level: 2, type: 'Wizard' },
+    { name: 'Invisibility', level: 2, type: 'Wizard' },
+    { name: 'Knock', level: 2, type: 'Wizard' },
+    { name: 'Levitate', level: 2, type: 'Wizard' },
+    { name: 'Locate Item', level: 2, type: 'Wizard' },
+    { name: "Magi's Visage", level: 2, type: 'Wizard' },
+    { name: 'Mirrored Self', level: 2, type: 'Wizard' },
+    { name: 'Protection from Normal Missiles', level: 2, type: 'Wizard' },
+    { name: 'Pyrotechnics', level: 2, type: 'Wizard' },
+    { name: 'Ray of Weakening', level: 2, type: 'Wizard' },
+    { name: 'Rope Dimension', level: 2, type: 'Wizard' },
+    { name: 'Scare', level: 2, type: 'Wizard' },
+    { name: 'See Invisible', level: 2, type: 'Wizard' },
+    { name: 'Shatter', level: 2, type: 'Wizard' },
+    { name: 'Web', level: 2, type: 'Wizard' },
+    // Level 3
+    { name: 'Blink', level: 3, type: 'Wizard' },
+    { name: 'Clairaudience/Clairvoyance', level: 3, type: 'Wizard' },
+    { name: 'Dispel Magic', level: 3, type: 'Wizard' },
+    { name: 'Explosive Mark', level: 3, type: 'Wizard' },
+    { name: 'Fireball', level: 3, type: 'Wizard' },
+    { name: 'Fly', level: 3, type: 'Wizard' },
+    { name: 'Gas Form', level: 3, type: 'Wizard' },
+    { name: 'Gust', level: 3, type: 'Wizard' },
+    { name: 'Haste', level: 3, type: 'Wizard' },
+    { name: 'Hold Humanoid', level: 3, type: 'Wizard' },
+    { name: 'Invisibility Orb', level: 3, type: 'Wizard' },
+    { name: 'Lightning', level: 3, type: 'Wizard' },
+    { name: 'Magic Circle', level: 3, type: 'Wizard' },
+    { name: 'Nondetection', level: 3, type: 'Wizard' },
+    { name: 'Stench', level: 3, type: 'Wizard' },
+    { name: 'Suggestion', level: 3, type: 'Wizard' },
+    { name: 'Summon Monstrous Ally', level: 3, type: 'Wizard' },
+    { name: 'Tiny Realm', level: 3, type: 'Wizard' },
+    { name: 'Tongues', level: 3, type: 'Wizard' },
+    { name: 'Water Breathing', level: 3, type: 'Wizard' },
+    // Level 4
+    { name: 'Arcane Vision', level: 4, type: 'Wizard' },
+    { name: 'Charm Monster', level: 4, type: 'Wizard' },
+    { name: 'Confusion', level: 4, type: 'Wizard' },
+    { name: 'Dimensional Leap', level: 4, type: 'Wizard' },
+    { name: 'Discern Scrying', level: 4, type: 'Wizard' },
+    { name: 'Fear', level: 4, type: 'Wizard' },
+    { name: 'Flame Shield', level: 4, type: 'Wizard' },
+    { name: 'Flame Snare', level: 4, type: 'Wizard' },
+    { name: 'Hallucinatory Ground', level: 4, type: 'Wizard' },
+    { name: 'Ice Storm', level: 4, type: 'Wizard' },
+    { name: 'Locate Other', level: 4, type: 'Wizard' },
+    { name: 'Minor Globe of Spell Protection', level: 4, type: 'Wizard' },
+    { name: 'Mnemonic Enhancement', level: 4, type: 'Wizard' },
+    { name: 'Polymorph Creature', level: 4, type: 'Wizard' },
+    { name: 'Remove Bane', level: 4, type: 'Wizard' },
+    { name: 'Resilient Globe', level: 4, type: 'Wizard' },
+    { name: 'Scrying', level: 4, type: 'Wizard' },
+    { name: 'Shout', level: 4, type: 'Wizard' },
+    { name: 'Wall of Elemental Fire', level: 4, type: 'Wizard' },
+    { name: 'Wall of Elemental Ice', level: 4, type: 'Wizard' },
+    // Level 5
+    { name: 'Animate Corpse', level: 5, type: 'Wizard' },
+    { name: 'Bind Elemental', level: 5, type: 'Wizard' },
+    { name: 'Cloud of Pestilence', level: 5, type: 'Wizard' },
+    { name: "Cone of Winter's Blast", level: 5, type: 'Wizard' },
+    { name: 'Contact Other Worlds', level: 5, type: 'Wizard' },
+    { name: 'Faithful Watch Dog', level: 5, type: 'Wizard' },
+    { name: 'Feeblemind', level: 5, type: 'Wizard' },
+    { name: 'Hold Creature', level: 5, type: 'Wizard' },
+    { name: "Magi's Vessel", level: 5, type: 'Wizard' },
+    { name: 'Passage', level: 5, type: 'Wizard' },
+    { name: 'Permanency', level: 5, type: 'Wizard' },
+    { name: 'Secret Container', level: 5, type: 'Wizard' },
+    { name: 'Telekinesis', level: 5, type: 'Wizard' },
+    { name: 'Telepathy', level: 5, type: 'Wizard' },
+    { name: 'Teleportation', level: 5, type: 'Wizard' },
+    { name: 'Transform Soft Soil to Stone', level: 5, type: 'Wizard' },
+    { name: 'Wall of Elemental Earth', level: 5, type: 'Wizard' },
+    { name: 'Wall of Resilient Alloy', level: 5, type: 'Wizard' },
+    { name: 'Wall of Will', level: 5, type: 'Wizard' },
+    // Level 6
+    { name: 'Anti-Magic Sphere', level: 6, type: 'Wizard' },
+    { name: 'Chain Lightning', level: 6, type: 'Wizard' },
+    { name: 'Control Atmosphere', level: 6, type: 'Wizard' },
+    { name: 'Disintegrate', level: 6, type: 'Wizard' },
+    { name: 'Geas', level: 6, type: 'Wizard' },
+    { name: 'Globe of Spell Protection', level: 6, type: 'Wizard' },
+    { name: 'Guard with Wards', level: 6, type: 'Wizard' },
+    { name: 'Harrow the Earth', level: 6, type: 'Wizard' },
+    { name: 'Legendary Tales', level: 6, type: 'Wizard' },
+    { name: 'Projection', level: 6, type: 'Wizard' },
+    { name: 'Suggestion in Area', level: 6, type: 'Wizard' },
+    { name: 'Transform Flesh to Stone', level: 6, type: 'Wizard' },
+    // Level 7
+    { name: 'Delayed Fireball', level: 7, type: 'Wizard' },
+    { name: 'Fatal Gesture', level: 7, type: 'Wizard' },
+    { name: 'Instant Item', level: 7, type: 'Wizard' },
+    { name: 'Invisibility in Area', level: 7, type: 'Wizard' },
+    { name: 'Phase Through Obstruction', level: 7, type: 'Wizard' },
+    { name: 'Power of Spoken Word: Immobilize', level: 7, type: 'Wizard' },
+    { name: 'Sequester', level: 7, type: 'Wizard' },
+    { name: 'Teleport Accurately', level: 7, type: 'Wizard' },
+    { name: 'Vanish', level: 7, type: 'Wizard' },
+    { name: 'Wish (Minor)', level: 7, type: 'Wizard' },
+    // Level 8
+    { name: 'Antipathy', level: 8, type: 'Wizard' },
+    { name: 'Bind', level: 8, type: 'Wizard' },
+    { name: 'Charm Area', level: 8, type: 'Wizard' },
+    { name: 'Clone', level: 8, type: 'Wizard' },
+    { name: 'Incendiary Flow', level: 8, type: 'Wizard' },
+    { name: 'Maze', level: 8, type: 'Wizard' },
+    { name: 'Mind Ward', level: 8, type: 'Wizard' },
+    { name: 'Polymorph Creature and Things', level: 8, type: 'Wizard' },
+    { name: 'Power of the Spoken Word: Purblind', level: 8, type: 'Wizard' },
+    { name: 'Symbol', level: 8, type: 'Wizard' },
+    { name: 'Teleportation Field', level: 8, type: 'Wizard' },
+    { name: 'Trap Entity', level: 8, type: 'Wizard' },
+    // Level 9
+    { name: 'Astral Travel', level: 9, type: 'Wizard' },
+    { name: 'Disjunction', level: 9, type: 'Wizard' },
+    { name: 'Gate', level: 9, type: 'Wizard' },
+    { name: 'Imprison', level: 9, type: 'Wizard' },
+    { name: 'Meteor Shower', level: 9, type: 'Wizard' },
+    { name: 'Polychromatic Sphere', level: 9, type: 'Wizard' },
+    { name: 'Power of the Spoken Word: Slay', level: 9, type: 'Wizard' },
+    { name: 'Refuge', level: 9, type: 'Wizard' },
+    { name: 'Shapeshift', level: 9, type: 'Wizard' },
+    { name: 'Temporal Inertia', level: 9, type: 'Wizard' },
+    { name: 'Time Control', level: 9, type: 'Wizard' },
+    { name: 'Wish', level: 9, type: 'Wizard' },
+
+    // CLERIC SPELLS (Divine)
+    // Level 0
+    { name: 'Create Water', level: 0, type: 'Cleric' },
+    { name: 'Detect Disposition', level: 0, type: 'Cleric' },
+    { name: 'Discern Magic', level: 0, type: 'Cleric' },
+    { name: 'Discover Poison', level: 0, type: 'Cleric' },
+    { name: 'Endure Cold/Heat', level: 0, type: 'Cleric' },
+    { name: 'First Aid', level: 0, type: 'Cleric' },
+    { name: 'Light', level: 0, type: 'Cleric' },
+    { name: 'Purify', level: 0, type: 'Cleric' },
+    // Level 1
+    { name: 'Bless', level: 1, type: 'Cleric' },
+    { name: 'Blessing Water', level: 1, type: 'Cleric' },
+    { name: 'Command', level: 1, type: 'Cleric' },
+    { name: 'Discover Secret Doors', level: 1, type: 'Cleric' },
+    { name: 'Discover Undead', level: 1, type: 'Cleric' },
+    { name: 'Heal Light Wounds', level: 1, type: 'Cleric' },
+    { name: 'Invisible Cloak of the Undead', level: 1, type: 'Cleric' },
+    { name: 'Protection from Disposition', level: 1, type: 'Cleric' },
+    { name: 'Remove Despair', level: 1, type: 'Cleric' },
+    { name: 'Resist One Element', level: 1, type: 'Cleric' },
+    { name: 'Sanctuary', level: 1, type: 'Cleric' },
+    { name: 'Shield of the Divine', level: 1, type: 'Cleric' },
+    { name: 'Sound Storm', level: 1, type: 'Cleric' },
+    // Level 2
+    { name: 'Aid', level: 2, type: 'Cleric' },
+    { name: 'Augury', level: 2, type: 'Cleric' },
+    { name: 'Consecrate', level: 2, type: 'Cleric' },
+    { name: 'Darkness', level: 2, type: 'Cleric' },
+    { name: 'Delay Toxin', level: 2, type: 'Cleric' },
+    { name: 'Discover Traps', level: 2, type: 'Cleric' },
+    { name: 'Hold Humanoid', level: 2, type: 'Cleric' },
+    { name: 'Restoration', level: 2, type: 'Cleric' },
+    { name: 'Restore Movement', level: 2, type: 'Cleric' },
+    { name: 'Silence', level: 2, type: 'Cleric' },
+    { name: 'Speak with the Dead', level: 2, type: 'Cleric' },
+    { name: 'Spiritual Warrior', level: 2, type: 'Cleric' },
+    // Level 3
+    { name: 'Animate Corpse', level: 3, type: 'Cleric' },
+    { name: 'Continual Fire', level: 3, type: 'Cleric' },
+    { name: 'Create Sustenance', level: 3, type: 'Cleric' },
+    { name: 'Dispel Magic', level: 3, type: 'Cleric' },
+    { name: 'Glyphs', level: 3, type: 'Cleric' },
+    { name: 'Heal Serious Wounds', level: 3, type: 'Cleric' },
+    { name: 'Locate Item', level: 3, type: 'Cleric' },
+    { name: 'Magic Circle', level: 3, type: 'Cleric' },
+    { name: 'Prayer', level: 3, type: 'Cleric' },
+    { name: 'Remove Bane', level: 3, type: 'Cleric' },
+    { name: 'Remove Malady', level: 3, type: 'Cleric' },
+    { name: 'Restore Sight and Hearing', level: 3, type: 'Cleric' },
+    // Level 4
+    { name: 'Air/Water Stride', level: 4, type: 'Cleric' },
+    { name: 'Control Liquids', level: 4, type: 'Cleric' },
+    { name: 'Discern Falsehood', level: 4, type: 'Cleric' },
+    { name: 'Dismissal', level: 4, type: 'Cleric' },
+    { name: 'Divination', level: 4, type: 'Cleric' },
+    { name: 'Free Motion', level: 4, type: 'Cleric' },
+    { name: 'Hallow', level: 4, type: 'Cleric' },
+    { name: 'Healing Sphere', level: 4, type: 'Cleric' },
+    { name: 'Neutralize Toxins', level: 4, type: 'Cleric' },
+    { name: 'Restoration (Greater)', level: 4, type: 'Cleric' },
+    { name: 'Send', level: 4, type: 'Cleric' },
+    { name: 'Tongues', level: 4, type: 'Cleric' },
+    // Level 5
+    { name: 'Atonement', level: 5, type: 'Cleric' },
+    { name: 'Commune', level: 5, type: 'Cleric' },
+    { name: 'Death Mask', level: 5, type: 'Cleric' },
+    { name: 'Dispel Disposition', level: 5, type: 'Cleric' },
+    { name: 'Ethereal Jump', level: 5, type: 'Cleric' },
+    { name: 'Flame of the Divine', level: 5, type: 'Cleric' },
+    { name: 'Heal Critical Wounds', level: 5, type: 'Cleric' },
+    { name: 'Insect Swarm', level: 5, type: 'Cleric' },
+    { name: 'Planar Travel', level: 5, type: 'Cleric' },
+    { name: 'Raise', level: 5, type: 'Cleric' },
+    { name: 'Scrying', level: 5, type: 'Cleric' },
+    { name: 'Truth Revealed', level: 5, type: 'Cleric' },
+    // Level 6
+    { name: 'Banishment', level: 6, type: 'Cleric' },
+    { name: 'Blade Blockade', level: 6, type: 'Cleric' },
+    { name: 'Create Common/Extraordinary Undead', level: 6, type: 'Cleric' },
+    { name: 'Finding Trails', level: 6, type: 'Cleric' },
+    { name: 'Geas', level: 6, type: 'Cleric' },
+    { name: 'Heal', level: 6, type: 'Cleric' },
+    { name: 'Wind Travel', level: 6, type: 'Cleric' },
+    { name: 'Word of Sanctuary', level: 6, type: 'Cleric' },
+    // Level 7
+    { name: 'Control Atmosphere', level: 7, type: 'Cleric' },
+    { name: 'Holy Utterance', level: 7, type: 'Cleric' },
+    { name: 'Refuge', level: 7, type: 'Cleric' },
+    { name: 'Regenerate', level: 7, type: 'Cleric' },
+    { name: 'Repulsion', level: 7, type: 'Cleric' },
+    { name: 'Restoration (True)', level: 7, type: 'Cleric' },
+    { name: 'Resurrection', level: 7, type: 'Cleric' },
+    { name: 'Scrying (Greater)', level: 7, type: 'Cleric' },
+    // Level 8
+    { name: 'Create Unique Undead', level: 8, type: 'Cleric' },
+    { name: 'Discover Location', level: 8, type: 'Cleric' },
+    { name: 'Earthquake', level: 8, type: 'Cleric' },
+    { name: 'Flaming Tempest', level: 8, type: 'Cleric' },
+    { name: 'Heal in Area', level: 8, type: 'Cleric' },
+    { name: 'Holy Glamour', level: 8, type: 'Cleric' },
+    { name: 'Summon Extraplanar Ally', level: 8, type: 'Cleric' },
+    { name: 'Symbol', level: 8, type: 'Cleric' },
+    // Level 9
+    { name: 'Antipathy', level: 9, type: 'Cleric' },
+    { name: 'Astral Travel', level: 9, type: 'Cleric' },
+    { name: 'Energy Level Drain', level: 9, type: 'Cleric' },
+    { name: 'Gate', level: 9, type: 'Cleric' },
+    { name: 'Mind Ward', level: 9, type: 'Cleric' },
+    { name: 'Resurrection Without Error', level: 9, type: 'Cleric' },
+    { name: 'Soul to Gem', level: 9, type: 'Cleric' },
+    { name: 'Trap Entity', level: 9, type: 'Cleric' },
+
+    // DRUID SPELLS (Divine)
+    // Level 0
+    { name: 'Create Water', level: 0, type: 'Druid' },
+    { name: 'Detect Disposition', level: 0, type: 'Druid' },
+    { name: 'Discover Poison', level: 0, type: 'Druid' },
+    { name: 'Endure Cold/Heat', level: 0, type: 'Druid' },
+    { name: 'First Aid', level: 0, type: 'Druid' },
+    { name: 'Know the Path', level: 0, type: 'Druid' },
+    { name: 'Light', level: 0, type: 'Druid' },
+    { name: 'Purify', level: 0, type: 'Druid' },
+    // Level 1
+    { name: 'Alarm', level: 1, type: 'Druid' },
+    { name: 'Animal Bond', level: 1, type: 'Druid' },
+    { name: 'Calm Animals', level: 1, type: 'Druid' },
+    { name: 'Discover Snares and Pits', level: 1, type: 'Druid' },
+    { name: 'Entangling Vegetation', level: 1, type: 'Druid' },
+    { name: 'Faerie Aura', level: 1, type: 'Druid' },
+    { name: 'Good Fruit', level: 1, type: 'Druid' },
+    { name: 'Invisibility to Animals', level: 1, type: 'Druid' },
+    { name: 'Magic Sling', level: 1, type: 'Druid' },
+    { name: 'Obscure with Mist', level: 1, type: 'Druid' },
+    { name: 'Pass with Woodland Stride', level: 1, type: 'Druid' },
+    { name: 'Shillelagh', level: 1, type: 'Druid' },
+    // Level 2
+    { name: 'Animal Courier', level: 2, type: 'Druid' },
+    { name: 'Barkform', level: 2, type: 'Druid' },
+    { name: 'Charm Humanoid or Animal', level: 2, type: 'Druid' },
+    { name: 'Darkness', level: 2, type: 'Druid' },
+    { name: 'Delay Toxin', level: 2, type: 'Druid' },
+    { name: 'Discover Traps', level: 2, type: 'Druid' },
+    { name: 'Flame Snare', level: 2, type: 'Druid' },
+    { name: 'Gust', level: 2, type: 'Druid' },
+    { name: 'Heal Light Wounds', level: 2, type: 'Druid' },
+    { name: 'Heat Any Alloy', level: 2, type: 'Druid' },
+    { name: 'Hold Animals & Plants', level: 2, type: 'Druid' },
+    { name: 'Produce Fire', level: 2, type: 'Druid' },
+    { name: 'Speak with Animals', level: 2, type: 'Druid' },
+    { name: 'Spider Walk', level: 2, type: 'Druid' },
+    { name: 'Summon Pests', level: 2, type: 'Druid' },
+    { name: 'Warp Timber', level: 2, type: 'Druid' },
+    { name: 'Web', level: 2, type: 'Druid' },
+    // Level 3
+    { name: 'Conjure Lightning', level: 3, type: 'Druid' },
+    { name: 'Create Sustenance', level: 3, type: 'Druid' },
+    { name: 'Faithful Watch Dog', level: 3, type: 'Druid' },
+    { name: 'Meld', level: 3, type: 'Druid' },
+    { name: 'Neutralize Toxins', level: 3, type: 'Druid' },
+    { name: 'Plant Growth', level: 3, type: 'Druid' },
+    { name: 'Protection from Elemental Attacks', level: 3, type: 'Druid' },
+    { name: 'Pyrotechnics', level: 3, type: 'Druid' },
+    { name: 'Remove Bane', level: 3, type: 'Druid' },
+    { name: 'Remove Malady', level: 3, type: 'Druid' },
+    { name: 'Shape Stone or Wood', level: 3, type: 'Druid' },
+    { name: 'Snare', level: 3, type: 'Druid' },
+    { name: 'Speak with Plants', level: 3, type: 'Druid' },
+    { name: 'Wall of Elemental Wind', level: 3, type: 'Druid' },
+    { name: 'Water Breathing', level: 3, type: 'Druid' },
+    // Level 4
+    { name: 'Anti Plant Sphere', level: 4, type: 'Druid' },
+    { name: 'Control Liquids', level: 4, type: 'Druid' },
+    { name: 'Control Plants', level: 4, type: 'Druid' },
+    { name: 'Dispel Magic', level: 4, type: 'Druid' },
+    { name: 'Free Motion', level: 4, type: 'Druid' },
+    { name: 'Heal Serious Wounds', level: 4, type: 'Druid' },
+    { name: 'Quench', level: 4, type: 'Druid' },
+    { name: 'Reincarnate', level: 4, type: 'Druid' },
+    { name: 'Repel Pest', level: 4, type: 'Druid' },
+    { name: 'Scrying', level: 4, type: 'Druid' },
+    { name: 'Sleet', level: 4, type: 'Druid' },
+    { name: 'Spike Spell', level: 4, type: 'Druid' },
+    { name: 'Summon Animals', level: 4, type: 'Druid' },
+    // Level 5
+    { name: 'Animal Alteration', level: 5, type: 'Druid' },
+    { name: 'Awaken', level: 5, type: 'Druid' },
+    { name: 'Bind Elemental', level: 5, type: 'Druid' },
+    { name: 'Commune with the Natural World', level: 5, type: 'Druid' },
+    { name: 'Control Gales', level: 5, type: 'Druid' },
+    { name: 'Death Mask', level: 5, type: 'Druid' },
+    { name: 'Harrow the Earth', level: 5, type: 'Druid' },
+    { name: 'Heal Critical Wounds', level: 5, type: 'Druid' },
+    { name: 'Ice Storm', level: 5, type: 'Druid' },
+    { name: 'Insect Swarm', level: 5, type: 'Druid' },
+    { name: 'Summon Beasts and Plants', level: 5, type: 'Druid' },
+    { name: 'Transform Soft Soil to Stone', level: 5, type: 'Druid' },
+    { name: 'Wall of Bramble & Hedge', level: 5, type: 'Druid' },
+    { name: 'Wall of Elemental Fire', level: 5, type: 'Druid' },
+    // Level 6
+    { name: 'Anti Life Sphere', level: 6, type: 'Druid' },
+    { name: 'Flame Seeds', level: 6, type: 'Druid' },
+    { name: 'Ironbark', level: 6, type: 'Druid' },
+    { name: 'Remove Wood from Path', level: 6, type: 'Druid' },
+    { name: 'Stone Speak', level: 6, type: 'Druid' },
+    { name: 'Summon Elemental Being', level: 6, type: 'Druid' },
+    { name: 'Transport Through Plants', level: 6, type: 'Druid' },
+    { name: 'Wall of Elemental Earth', level: 6, type: 'Druid' },
+    // Level 7
+    { name: 'Change Stave to Treant', level: 7, type: 'Druid' },
+    { name: 'Control Atmosphere', level: 7, type: 'Druid' },
+    { name: 'Creeping Swarm', level: 7, type: 'Druid' },
+    { name: 'Flaming Tempest', level: 7, type: 'Druid' },
+    { name: 'Scrying', level: 7, type: 'Druid' },
+    { name: 'Summon Fey and Magic Beasts', level: 7, type: 'Druid' },
+    { name: 'Transform Metal to Wood', level: 7, type: 'Druid' },
+    { name: 'Wind Travel', level: 7, type: 'Druid' },
+    // Level 8
+    { name: 'Animal Form', level: 8, type: 'Druid' },
+    { name: 'Command Plants', level: 8, type: 'Druid' },
+    { name: 'Fatal Gesture', level: 8, type: 'Druid' },
+    { name: 'Regenerate', level: 8, type: 'Druid' },
+    { name: 'Remove Alloy and Stone from Path', level: 8, type: 'Druid' },
+    { name: 'Sun Flare', level: 8, type: 'Druid' },
+    { name: 'Whirlwind', level: 8, type: 'Druid' },
+    { name: 'Word to Sanctuary', level: 8, type: 'Druid' },
+    // Level 9
+    { name: 'Antipathy', level: 9, type: 'Druid' },
+    { name: 'Astral Travel', level: 9, type: 'Druid' },
+    { name: 'Earthquake', level: 9, type: 'Druid' },
+    { name: 'Heal', level: 9, type: 'Druid' },
+    { name: 'Polychromatic Wall', level: 9, type: 'Druid' },
+    { name: 'Shapeshift', level: 9, type: 'Druid' },
+    { name: 'Storm of Wrath', level: 9, type: 'Druid' },
+    { name: 'Summon Elemental Horde', level: 9, type: 'Druid' },
+
+    // ILLUSIONIST SPELLS (Arcane)
+    // Level 0
+    { name: 'Arcane Rune', level: 0, type: 'Illusionist' },
+    { name: 'Dancing Orbs', level: 0, type: 'Illusionist' },
+    { name: 'Discern Illusion', level: 0, type: 'Illusionist' },
+    { name: 'Dragon Mark', level: 0, type: 'Illusionist' },
+    { name: 'First Aid', level: 0, type: 'Illusionist' },
+    { name: 'Ghostly Noise', level: 0, type: 'Illusionist' },
+    { name: 'Influence', level: 0, type: 'Illusionist' },
+    { name: 'Light', level: 0, type: 'Illusionist' },
+    { name: "Magi's Glamour", level: 0, type: 'Illusionist' },
+    { name: 'Mending', level: 0, type: 'Illusionist' },
+    { name: 'Message', level: 0, type: 'Illusionist' },
+    { name: 'Prestidigitation', level: 0, type: 'Illusionist' },
+    // Level 1
+    { name: "Alter One's Person Lesser", level: 1, type: 'Illusionist' },
+    { name: 'Arcane Armor', level: 1, type: 'Illusionist' },
+    { name: 'Charm Humanoid', level: 1, type: 'Illusionist' },
+    { name: 'Colors', level: 1, type: 'Illusionist' },
+    { name: 'Darkness', level: 1, type: 'Illusionist' },
+    { name: 'Daze', level: 1, type: 'Illusionist' },
+    { name: 'Dragon Armor', level: 1, type: 'Illusionist' },
+    { name: 'Dragon Image', level: 1, type: 'Illusionist' },
+    { name: 'Erase', level: 1, type: 'Illusionist' },
+    { name: 'Faerie Reflection', level: 1, type: 'Illusionist' },
+    { name: 'Head Fog', level: 1, type: 'Illusionist' },
+    { name: 'Hypnotism', level: 1, type: 'Illusionist' },
+    { name: 'Illusionary Hounds', level: 1, type: 'Illusionist' },
+    { name: 'Minor Dark Whips', level: 1, type: 'Illusionist' },
+    { name: 'Obscure with Mist', level: 1, type: 'Illusionist' },
+    { name: 'Read Arcane Script', level: 1, type: 'Illusionist' },
+    { name: 'See Invisible', level: 1, type: 'Illusionist' },
+    { name: 'Silent Illusion', level: 1, type: 'Illusionist' },
+    { name: 'Undetectable Aura', level: 1, type: 'Illusionist' },
+    { name: 'Ventriloquism', level: 1, type: 'Illusionist' },
+    { name: "Ward's Temporary Strength", level: 1, type: 'Illusionist' },
+    // Level 2
+    { name: "Alter One's Person Greater", level: 2, type: 'Illusionist' },
+    { name: 'Angelic Image', level: 2, type: 'Illusionist' },
+    { name: 'Blur', level: 2, type: 'Illusionist' },
+    { name: 'Dark Whips', level: 2, type: 'Illusionist' },
+    { name: 'Discern Magic', level: 2, type: 'Illusionist' },
+    { name: 'Discern Thoughts', level: 2, type: 'Illusionist' },
+    { name: 'Dragon Bite', level: 2, type: 'Illusionist' },
+    { name: 'Eyes of Chaos', level: 2, type: 'Illusionist' },
+    { name: 'False Snare or Trap', level: 2, type: 'Illusionist' },
+    { name: 'Fog', level: 2, type: 'Illusionist' },
+    { name: 'Heal Light Wounds', level: 2, type: 'Illusionist' },
+    { name: 'Hypnotic Imagery', level: 2, type: 'Illusionist' },
+    { name: 'Illusion', level: 2, type: 'Illusionist' },
+    { name: 'Invisibility', level: 2, type: 'Illusionist' },
+    { name: "Magi's Visage", level: 2, type: 'Illusionist' },
+    { name: 'Mirrored Self', level: 2, type: 'Illusionist' },
+    { name: 'Misdirection', level: 2, type: 'Illusionist' },
+    { name: 'Pyrotechnics', level: 2, type: 'Illusionist' },
+    { name: 'Restore Sight and Hearing', level: 2, type: 'Illusionist' },
+    { name: "Ward's Temporary Invisibility", level: 2, type: 'Illusionist' },
+    // Level 3
+    { name: 'Blink', level: 3, type: 'Illusionist' },
+    { name: 'Continual Fire', level: 3, type: 'Illusionist' },
+    { name: 'Discern Illusion', level: 3, type: 'Illusionist' },
+    { name: 'Dispel Magic', level: 3, type: 'Illusionist' },
+    { name: 'Displace', level: 3, type: 'Illusionist' },
+    { name: 'Doubled Treasure', level: 3, type: 'Illusionist' },
+    { name: 'Dragon Mount', level: 3, type: 'Illusionist' },
+    { name: 'Explosive Mark', level: 3, type: 'Illusionist' },
+    { name: 'Hallucinatory Ground', level: 3, type: 'Illusionist' },
+    { name: 'Hold Humanoid', level: 3, type: 'Illusionist' },
+    { name: 'Illusion', level: 3, type: 'Illusionist' },
+    { name: 'Illusionary Help', level: 3, type: 'Illusionist' },
+    { name: 'Illusory Writing', level: 3, type: 'Illusionist' },
+    { name: 'Invisibility Orb', level: 3, type: 'Illusionist' },
+    { name: 'Nondetection', level: 3, type: 'Illusionist' },
+    { name: 'Rope Dimension', level: 3, type: 'Illusionist' },
+    { name: 'Scare', level: 3, type: 'Illusionist' },
+    { name: 'Secret Script', level: 3, type: 'Illusionist' },
+    { name: 'Suggestion', level: 3, type: 'Illusionist' },
+    { name: 'Tongues', level: 3, type: 'Illusionist' },
+    // Level 4
+    { name: 'Charm Monster', level: 4, type: 'Illusionist' },
+    { name: 'Confusion', level: 4, type: 'Illusionist' },
+    { name: 'Dragon Scales', level: 4, type: 'Illusionist' },
+    { name: 'Emotion', level: 4, type: 'Illusionist' },
+    { name: 'Fear', level: 4, type: 'Illusionist' },
+    { name: 'Heal Serious Wounds', level: 4, type: 'Illusionist' },
+    { name: 'Idol of Death', level: 4, type: 'Illusionist' },
+    { name: 'Illusory Barrier', level: 4, type: 'Illusionist' },
+    { name: 'Invisibility Heightened', level: 4, type: 'Illusionist' },
+    { name: 'Major Dark Whips', level: 4, type: 'Illusionist' },
+    { name: 'Minor Concoction', level: 4, type: 'Illusionist' },
+    { name: 'Mirage', level: 4, type: 'Illusionist' },
+    { name: 'Phantasm', level: 4, type: 'Illusionist' },
+    { name: 'Rainbow', level: 4, type: 'Illusionist' },
+    { name: 'Seeming', level: 4, type: 'Illusionist' },
+    { name: 'Shadow Convocation', level: 4, type: 'Illusionist' },
+    { name: 'Shelter', level: 4, type: 'Illusionist' },
+    { name: 'Solidlike Fog', level: 4, type: 'Illusionist' },
+    { name: 'Treasure Hoard', level: 4, type: 'Illusionist' },
+    { name: "Ward's Illusionary Portal", level: 4, type: 'Illusionist' },
+    // Level 5
+    { name: 'Conjure Phantasm', level: 5, type: 'Illusionist' },
+    { name: 'Dragon Breath', level: 5, type: 'Illusionist' },
+    { name: 'Dragon Shadow', level: 5, type: 'Illusionist' },
+    { name: 'Dream', level: 5, type: 'Illusionist' },
+    { name: 'Faithful Watch Dog', level: 5, type: 'Illusionist' },
+    { name: 'False Scrying', level: 5, type: 'Illusionist' },
+    { name: 'Guard with Wards', level: 5, type: 'Illusionist' },
+    { name: 'Hold Creature', level: 5, type: 'Illusionist' },
+    { name: 'Humanoid Finding', level: 5, type: 'Illusionist' },
+    { name: "Magi's Conjuring", level: 5, type: 'Illusionist' },
+    { name: 'Mirror Wall', level: 5, type: 'Illusionist' },
+    { name: 'Neutralize Toxins', level: 5, type: 'Illusionist' },
+    { name: 'Nightmare', level: 5, type: 'Illusionist' },
+    { name: 'Persevering Illusion', level: 5, type: 'Illusionist' },
+    { name: 'Projection', level: 5, type: 'Illusionist' },
+    { name: 'Secret Container', level: 5, type: 'Illusionist' },
+    { name: 'Shadow Sorcery', level: 5, type: 'Illusionist' },
+    { name: 'Suggestion in Area', level: 5, type: 'Illusionist' },
+    { name: 'Truth Revealed', level: 5, type: 'Illusionist' },
+    { name: "Ward's Extended Invisibility", level: 5, type: 'Illusionist' },
+    // Level 6
+    { name: 'Anti Illusion Sphere', level: 6, type: 'Illusionist' },
+    { name: 'Cloak of Smoke and Darkness', level: 6, type: 'Illusionist' },
+    { name: 'Conjure Phantasm', level: 6, type: 'Illusionist' },
+    { name: 'Feeblemind', level: 6, type: 'Illusionist' },
+    { name: 'Geas', level: 6, type: 'Illusionist' },
+    { name: 'Heal Critical Wounds', level: 6, type: 'Illusionist' },
+    { name: 'Illusionary Lions', level: 6, type: 'Illusionist' },
+    { name: 'Misguide', level: 6, type: 'Illusionist' },
+    { name: 'Perpetual Illusion', level: 6, type: 'Illusionist' },
+    { name: 'Programmed Illusion', level: 6, type: 'Illusionist' },
+    { name: 'Shades', level: 6, type: 'Illusionist' },
+    { name: 'Veil', level: 6, type: 'Illusionist' },
+    // Level 7
+    { name: 'Awe', level: 7, type: 'Illusionist' },
+    { name: 'Insanity', level: 7, type: 'Illusionist' },
+    { name: 'Invisibility in Area', level: 7, type: 'Illusionist' },
+    { name: 'Maze', level: 7, type: 'Illusionist' },
+    { name: 'Polychromatic Spray', level: 7, type: 'Illusionist' },
+    { name: 'Power of Spoken Word: Immobilize', level: 7, type: 'Illusionist' },
+    { name: 'Restoration', level: 7, type: 'Illusionist' },
+    { name: 'Sequester', level: 7, type: 'Illusionist' },
+    { name: 'Shadow Journey', level: 7, type: 'Illusionist' },
+    { name: 'Simulacrum', level: 7, type: 'Illusionist' },
+    { name: 'Telepathy', level: 7, type: 'Illusionist' },
+    { name: 'Vision', level: 7, type: 'Illusionist' },
+    // Level 8
+    { name: 'Antipathy', level: 8, type: 'Illusionist' },
+    { name: 'Charm Area', level: 8, type: 'Illusionist' },
+    { name: 'Distort Reality', level: 8, type: 'Illusionist' },
+    { name: 'Finding Trails', level: 8, type: 'Illusionist' },
+    { name: 'Incendiary Flow', level: 8, type: 'Illusionist' },
+    { name: 'Polymorph', level: 8, type: 'Illusionist' },
+    { name: 'Polychromatic Wall', level: 8, type: 'Illusionist' },
+    { name: 'Power of the Spoken Word: Purblind', level: 8, type: 'Illusionist' },
+    { name: 'Screen', level: 8, type: 'Illusionist' },
+    { name: 'Sun Flare', level: 8, type: 'Illusionist' },
+    { name: 'Trap Entity', level: 8, type: 'Illusionist' },
+    { name: 'Wind Travel', level: 8, type: 'Illusionist' },
+    // Level 9
+    { name: 'Astral Travel', level: 9, type: 'Illusionist' },
+    { name: 'Bind', level: 9, type: 'Illusionist' },
+    { name: 'Clone', level: 9, type: 'Illusionist' },
+    { name: 'Dreaming', level: 9, type: 'Illusionist' },
+    { name: 'Heal', level: 9, type: 'Illusionist' },
+    { name: 'Mind Ward', level: 9, type: 'Illusionist' },
+    { name: 'Polymorph Creatures & Things', level: 9, type: 'Illusionist' },
+    { name: 'Polychromatic Sphere', level: 9, type: 'Illusionist' },
+    { name: 'Power of the Spoken Word: Slay', level: 9, type: 'Illusionist' },
+    { name: 'Regenerate', level: 9, type: 'Illusionist' },
+    { name: 'Symbol', level: 9, type: 'Illusionist' },
+    { name: 'Weirding', level: 9, type: 'Illusionist' },
   ] as Spell[],
 
   equipment: [
@@ -123,6 +742,15 @@ const RULES = {
     { id: 'spear', name: 'Spear', type: 'weapon', cost: 2, ev: 3, dmg: '1d6', cat: 'Melee' },
     { id: 'longbow', name: 'Longbow', type: 'weapon', cost: 60, ev: 4, dmg: '1d6', cat: 'Ranged' },
     { id: 'shortbow', name: 'Shortbow', type: 'weapon', cost: 30, ev: 2, dmg: '1d6', cat: 'Ranged' },
+    { id: 'xbow_wood_light', name: 'Crossbow, Wooden Light', type: 'weapon', cost: 35, ev: 3, dmg: '1d6', cat: 'Ranged' },
+    { id: 'xbow_wood_heavy', name: 'Crossbow, Wooden Heavy', type: 'weapon', cost: 45, ev: 5, dmg: '1d6', cat: 'Ranged' },
+    { id: 'xbow_comp_light', name: 'Crossbow, Composite Light', type: 'weapon', cost: 45, ev: 3, dmg: '1d8', cat: 'Ranged' },
+    { id: 'xbow_comp_heavy', name: 'Crossbow, Composite Heavy', type: 'weapon', cost: 50, ev: 5, dmg: '1d10', cat: 'Ranged' },
+    { id: 'xbow_steel_light', name: 'Crossbow, Steel Light', type: 'weapon', cost: 75, ev: 4, dmg: '1d8', cat: 'Ranged' },
+    { id: 'xbow_steel_heavy', name: 'Crossbow, Steel Heavy', type: 'weapon', cost: 100, ev: 6, dmg: '1d10', cat: 'Ranged' },
+    { id: 'xbow_gastraphetes', name: 'Gastraphetes', type: 'weapon', cost: 50, ev: 4, dmg: '1d6', cat: 'Ranged' },
+    { id: 'xbow_pistol', name: 'Crossbow, Pistol', type: 'weapon', cost: 100, ev: 1, dmg: '1d4', cat: 'Ranged' },
+    { id: 'xbow_repeating', name: 'Crossbow, Repeating', type: 'weapon', cost: 125, ev: 4, dmg: '1d4', cat: 'Ranged' },
     { id: 'mace_light', name: 'Mace, light', type: 'weapon', cost: 5, ev: 2, dmg: '1d4', cat: 'Melee' },
     { id: 'mace_heavy', name: 'Mace, heavy', type: 'weapon', cost: 12, ev: 4, dmg: '1d8', cat: 'Melee' },
     { id: 'padded', name: 'Padded armor', type: 'armor', cost: 5, ev: 2, ac: 1, cat: 'Light' },
@@ -131,7 +759,9 @@ const RULES = {
     { id: 'chainmail', name: 'Chain mail', type: 'armor', cost: 150, ev: 8, ac: 5, cat: 'Medium' },
     { id: 'platemail', name: 'Plate mail', type: 'armor', cost: 600, ev: 12, ac: 7, cat: 'Heavy' },
     { id: 'shield_sm', name: 'Shield, small wooden', type: 'shield', cost: 3, ev: 1, ac: 1, cat: 'Shield' },
-    { id: 'shield_lg', name: 'Shield, medium steel', type: 'shield', cost: 7, ev: 2, ac: 1, cat: 'Shield' },
+    { id: 'shield_lg', name: 'Shield, large steel', type: 'shield', cost: 7, ev: 2, ac: 1, cat: 'Shield' },
+    { id: 'shield_adarga', name: 'Adarga (+2 vs missile)', type: 'shield', cost: 12, ev: 2, ac: 1, cat: 'Shield' },
+    { id: 'shield_tower', name: 'Tower Shield', type: 'shield', cost: 30, ev: 6, ac: 3, cat: 'Shield' },
     { id: 'backpack', name: 'Backpack', type: 'gear', cost: 2, ev: 0, cat: 'Gear', desc: 'Holds 8 EV items' },
     { id: 'rations', name: 'Rations (1 week)', type: 'gear', cost: 5, ev: 1, cat: 'Gear', desc: 'Dry food' },
     { id: 'rope', name: 'Rope (50ft)', type: 'gear', cost: 1, ev: 2, cat: 'Gear', desc: 'Hemp' },
@@ -148,7 +778,113 @@ const RULES = {
     bard: { name: 'Minstrel Kit', items: ['leather', 'longsword', 'backpack', 'rations', 'waterskin'], cost: 35 },
     paladin: { name: 'Crusader Kit', items: ['chainmail', 'longsword', 'shield_lg', 'backpack'], cost: 170 },
     knight: { name: 'Noble Kit', items: ['platemail', 'longsword', 'shield_lg', 'backpack'], cost: 630 },
-  } as Record<string, ClassKit>
+    assassin: { name: 'Shadow Kit', items: ['leather', 'shortsword', 'dagger', 'backpack', 'rope'], cost: 40 },
+    barbarian: { name: 'Tribal Kit', items: ['leather', 'greatsword', 'backpack', 'rations'], cost: 50 },
+    monk: { name: 'Ascetic Kit', items: ['backpack', 'rations', 'waterskin', 'rope'], cost: 10 },
+    druid: { name: 'Grove Kit', items: ['leather', 'spear', 'backpack', 'rations'], cost: 20 },
+    illusionist: { name: 'Trickster Kit', items: ['dagger', 'backpack', 'torches', 'waterskin'], cost: 10 },
+  } as Record<string, ClassKit>,
+
+  magicItems: [
+    // Potions & Scrolls
+    { name: 'Potion of Giant Strength', cat: 'Potions' },
+    { name: 'Potion of Youth', cat: 'Potions' },
+    { name: 'Potion of Protection from Disposition', cat: 'Potions' },
+    { name: 'Scroll of Restoration', cat: 'Scrolls' },
+    { name: 'Scroll of Protection', cat: 'Scrolls' },
+    { name: 'Scroll of Anti-Magic Sphere', cat: 'Scrolls' },
+    { name: 'Scroll of Heal', cat: 'Scrolls' },
+    // Swords
+    { name: 'Bane Sword', cat: 'Swords' },
+    { name: 'Sword of Dancing', cat: 'Swords' },
+    { name: 'Sword of Defending', cat: 'Swords' },
+    { name: 'Dragonslayer', cat: 'Swords' },
+    { name: 'Flaming Sword', cat: 'Swords' },
+    { name: 'Frostfire', cat: 'Swords' },
+    { name: 'Holy Avenger', cat: 'Swords' },
+    { name: 'Luck Blade', cat: 'Swords' },
+    { name: 'Nine Lives Thief', cat: 'Swords' },
+    { name: 'Sylvan Blade', cat: 'Swords' },
+    { name: 'Vorpal Sword', cat: 'Swords' },
+    // Weapons
+    { name: 'Club of Dagda', cat: 'Weapons' },
+    { name: 'Dagger of Envenomation', cat: 'Weapons' },
+    { name: 'Dwarven Hammer of Throwing', cat: 'Weapons' },
+    { name: 'Lightning Javelin', cat: 'Weapons' },
+    { name: 'Mace of Turning', cat: 'Weapons' },
+    { name: 'Mace of Banishment', cat: 'Weapons' },
+    { name: 'Oathkeeper Bow', cat: 'Weapons' },
+    { name: 'Arrow of Slaying', cat: 'Weapons' },
+    { name: 'Trident of Sea Creature Command', cat: 'Weapons' },
+    // Armor
+    { name: 'Armor of Cold Resistance', cat: 'Armor' },
+    { name: 'Armor of the Ethereal Knight', cat: 'Armor' },
+    { name: 'Armor of Fire Resistance', cat: 'Armor' },
+    { name: 'Armor of Spell Resistance', cat: 'Armor' },
+    { name: 'Animated Shield', cat: 'Armor' },
+    { name: 'Dwarven Fullplate', cat: 'Armor' },
+    { name: 'Elven Chainmail', cat: 'Armor' },
+    { name: 'Shield of the Roaring Lion', cat: 'Armor' },
+    // Wondrous Items
+    { name: 'Amulet of Superior Health', cat: 'Wondrous' },
+    { name: 'Amulet of Mighty Blows', cat: 'Wondrous' },
+    { name: 'Amulet of Planar Travel', cat: 'Wondrous' },
+    { name: 'Dimensional Pouch', cat: 'Wondrous' },
+    { name: 'Harness of Giant Strength', cat: 'Wondrous' },
+    { name: 'Boots of the Elves', cat: 'Wondrous' },
+    { name: 'Boots of Levitation', cat: 'Wondrous' },
+    { name: 'Boots of Flight of Foot', cat: 'Wondrous' },
+    { name: 'Boots of Teleporting', cat: 'Wondrous' },
+    { name: 'Bracers of Armor', cat: 'Wondrous' },
+    { name: 'Flying Broomstick', cat: 'Wondrous' },
+    { name: 'Flying Carpet', cat: 'Wondrous' },
+    { name: 'Cloak of the Spider', cat: 'Wondrous' },
+    { name: 'Cloak of the Bat', cat: 'Wondrous' },
+    { name: 'Cloak of the Elves', cat: 'Wondrous' },
+    { name: 'Cloak of Ethereal Travel', cat: 'Wondrous' },
+    { name: 'Crystal Ball', cat: 'Wondrous' },
+    { name: 'Decanter of Unending Water', cat: 'Wondrous' },
+    { name: 'Gauntlets of Ogrish Might', cat: 'Wondrous' },
+    { name: 'Gloves of Dexterity', cat: 'Wondrous' },
+    { name: 'Dimensional Backpack', cat: 'Wondrous' },
+    { name: 'Helm of Teleporting', cat: 'Wondrous' },
+    { name: 'Horn of Valhalla', cat: 'Wondrous' },
+    { name: 'Instant Fortress', cat: 'Wondrous' },
+    { name: 'Ioun Stones', cat: 'Wondrous' },
+    { name: 'Portable Hole', cat: 'Wondrous' },
+    { name: 'Robe of the High Magus', cat: 'Wondrous' },
+    { name: 'Seven-League Boots', cat: 'Wondrous' },
+    // Rings
+    { name: 'Ring of Invisibility', cat: 'Rings' },
+    { name: 'Ring of Regeneration', cat: 'Rings' },
+    { name: 'Ring of Spell Keeping', cat: 'Rings' },
+    { name: 'Ring of Spell Deflection', cat: 'Rings' },
+    { name: 'Ring of Flying', cat: 'Rings' },
+    { name: 'Ring of Free Motion', cat: 'Rings' },
+    { name: 'Ring of Granting', cat: 'Rings' },
+    { name: 'Ring of Armor', cat: 'Rings' },
+    { name: 'Ring of Eldritch Wizardry', cat: 'Rings' },
+    { name: 'Gyges Ring', cat: 'Rings' },
+    // Rods & Staves
+    { name: 'Rod of Spell Stealing', cat: 'Rods & Staves' },
+    { name: 'Rod of Supreme Usefulness', cat: 'Rods & Staves' },
+    { name: 'Rod of Chaos', cat: 'Rods & Staves' },
+    { name: 'Staff of Pyromancy', cat: 'Rods & Staves' },
+    { name: 'Staff of Cryomancy', cat: 'Rods & Staves' },
+    { name: 'Staff of Healing', cat: 'Rods & Staves' },
+    { name: 'Staff of Power', cat: 'Rods & Staves' },
+    { name: 'Staff of the Magus', cat: 'Rods & Staves' },
+    { name: 'Staff of the Druids', cat: 'Rods & Staves' },
+    // Legendary
+    { name: 'Aegis', cat: 'Legendary' },
+    { name: 'Excalibur', cat: 'Legendary' },
+    { name: 'Mjolnir', cat: 'Legendary' },
+    { name: 'Deck of Many Things', cat: 'Legendary' },
+    { name: 'Hammer of Thunderbolts', cat: 'Legendary' },
+    { name: 'Philosopher\'s Stone', cat: 'Legendary' },
+    { name: 'Sphere of Obliteration', cat: 'Legendary' },
+    { name: 'Tarnhelm', cat: 'Legendary' },
+  ] as { name: string; cat: string }[]
 };
 
 // --- HELPER TYPES ---
@@ -156,6 +892,12 @@ const RULES = {
 interface AttributeData {
   score: number;
   prime: boolean;
+}
+
+interface MagicItem {
+  name: string;
+  cat: string;
+  notes?: string;
 }
 
 interface CharacterState {
@@ -168,10 +910,13 @@ interface CharacterState {
   attributes: Record<string, AttributeData>;
   inventory: EquipmentItem[];
   knownSpells: Spell[];
+  magicItems: MagicItem[];
   activeTab: string;
   rollingMethod: string;
   pointsRemaining: number;
   viewMode: 'builder' | 'sheet' | 'split';
+  spellLevelFilter: number;
+  treasureCategoryFilter: string;
 }
 
 type CharacterAction =
@@ -187,7 +932,11 @@ type CharacterAction =
   | { type: 'REMOVE_ITEM'; payload: number }
   | { type: 'LEARN_SPELL'; payload: Spell }
   | { type: 'FORGET_SPELL'; payload: Spell }
-  | { type: 'RANDOMIZE_STATS' };
+  | { type: 'RANDOMIZE_STATS' }
+  | { type: 'ADD_MAGIC_ITEM'; payload: MagicItem }
+  | { type: 'REMOVE_MAGIC_ITEM'; payload: number }
+  | { type: 'SAVE_CHARACTER' }
+  | { type: 'LOAD_CHARACTER'; payload: CharacterState };
 
 // --- HELPER: REFORGED TEXT GENERATOR ---
 
@@ -240,10 +989,13 @@ const initialState: CharacterState = {
   },
   inventory: [],
   knownSpells: [],
+  magicItems: [],
   activeTab: 'origin',
   rollingMethod: '3d6',
-  pointsRemaining: 20,
+  pointsRemaining: 48,
   viewMode: 'split',
+  spellLevelFilter: 0,
+  treasureCategoryFilter: 'All',
 };
 
 function characterReducer(state: CharacterState, action: CharacterAction): CharacterState {
@@ -267,6 +1019,7 @@ function characterReducer(state: CharacterState, action: CharacterAction): Chara
       if (state.rollingMethod === 'pointBuy') {
         const currentScore = state.attributes[attr].score;
         const diff = val - currentScore;
+        if (val < 3) return state;
         if (state.pointsRemaining - diff < 0) return state; 
         return { 
           ...state, 
@@ -333,11 +1086,23 @@ function characterReducer(state: CharacterState, action: CharacterAction): Chara
           rolls.sort((a,b) => a-b);
           r = rolls[1] + rolls[2] + rolls[3];
         } else {
-          r = 8;
+          r = 3;
         }
         newAttrs[attr] = { score: r, prime: state.attributes[attr].prime };
       });
-      return { ...state, attributes: newAttrs, pointsRemaining: 25 };
+      return { ...state, attributes: newAttrs, pointsRemaining: state.rollingMethod === 'pointBuy' ? 48 : 0 };
+    }
+
+    case 'ADD_MAGIC_ITEM': {
+      return { ...state, magicItems: [...state.magicItems, action.payload] };
+    }
+
+    case 'REMOVE_MAGIC_ITEM': {
+      return { ...state, magicItems: state.magicItems.filter((_, i) => i !== action.payload) };
+    }
+
+    case 'LOAD_CHARACTER': {
+      return action.payload;
     }
 
     default: return state;
@@ -537,7 +1302,32 @@ export default function CharacterForge() {
     { id: 'stats', label: 'Siege Stats', icon: <Calculator size={18} /> },
     { id: 'spells', label: 'Grimoire', icon: <BookOpen size={18} />, hidden: !state.charClass.spells },
     { id: 'shop', label: 'Gear', icon: <Backpack size={18} /> },
+    { id: 'treasure', label: 'Treasure', icon: <Gem size={18} /> },
   ].filter(t => !t.hidden);
+
+  const saveCharacter = () => {
+    const saveData = JSON.stringify(state);
+    localStorage.setItem('cnc-forge-character', saveData);
+    alert('Character saved to browser storage!');
+  };
+
+  const loadCharacter = () => {
+    const saved = localStorage.getItem('cnc-forge-character');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        const race = RULES.races.find(r => r.id === parsed.race?.id) || RULES.races[0];
+        const charClass = RULES.classes.find(c => c.id === parsed.charClass?.id) || RULES.classes[0];
+        dispatch({ type: 'LOAD_CHARACTER', payload: { ...parsed, race, charClass } });
+      } catch {
+        alert('Failed to load character data.');
+      }
+    } else {
+      alert('No saved character found.');
+    }
+  };
+
+  const treasureCategories = ['All', ...new Set(RULES.magicItems.map(i => i.cat))];
 
   return (
     <div className="flex flex-col h-screen bg-[#fdf6e3] text-[#292524] font-serif overflow-hidden selection:bg-[#fcd34d] selection:text-[#451a03]">
@@ -716,7 +1506,7 @@ export default function CharacterForge() {
                     >
                       <option value="3d6">Classic (3d6)</option>
                       <option value="4d6">Heroic (4d6 drop low)</option>
-                      <option value="pointBuy">Point Buy (25 pts)</option>
+                      <option value="pointBuy">Point Buy (66 pts, min 3)</option>
                     </select>
                     {state.rollingMethod !== 'pointBuy' && (
                       <button onClick={() => dispatch({type: 'RANDOMIZE_STATS'})} className="p-1 text-[#a8a29e] hover:text-white transition-colors" title="Reroll">
@@ -728,7 +1518,7 @@ export default function CharacterForge() {
 
                 {state.rollingMethod === 'pointBuy' && (
                   <div className="text-center text-sm font-bold text-[#b45309] mb-2 bg-[#fffbeb] py-2 rounded-sm border border-[#fcd34d] shadow-sm">
-                    Points Remaining: <span className="font-mono text-lg ml-2">{state.pointsRemaining}</span>
+                    <span className="text-[#78716c]">CKG Method Five:</span> Points Remaining: <span className="font-mono text-lg ml-2">{state.pointsRemaining}</span> <span className="text-xs text-[#a8a29e] ml-2">(of 48 distributable, min 3 per attr)</span>
                   </div>
                 )}
 
@@ -761,28 +1551,64 @@ export default function CharacterForge() {
             {/* 3. SPELLS */}
             {state.activeTab === 'spells' && (
               <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                <div className="bg-[#faf5ff] border-l-4 border-[#9333ea] p-4 rounded-r-sm shadow-sm text-sm text-[#581c87] mb-4">
-                  <h3 className="font-bold flex items-center gap-2 font-serif text-lg"><Scroll size={20}/> Reforged Spell Names</h3>
-                  <p className="opacity-80 mt-1 italic">Spell names have been updated to match the Reforged Canon.</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {RULES.spells.filter(s => s.type === state.charClass.name || (state.charClass.name === 'Knight' ? false : s.type === 'General')).map(spell => {
-                    const known = state.knownSpells.some(k => k.name === spell.name);
-                    return (
-                      <button 
-                        key={spell.name}
-                        onClick={() => dispatch({type: known ? 'FORGET_SPELL' : 'LEARN_SPELL', payload: spell})}
-                        className={`flex items-center justify-between p-3 rounded-sm border transition-all text-left group ${known ? 'bg-[#f3e8ff] border-[#d8b4fe] text-[#6b21a8] shadow-inner' : 'bg-white border-[#e5e7eb] text-[#4b5563] hover:border-[#d1d5db] hover:shadow-sm'}`}
-                      >
-                        <div>
-                          <div className="font-bold text-sm font-serif">{spell.name}</div>
-                          <div className="text-[10px] opacity-70 mt-0.5 font-sans">Lvl {spell.level} • was <span className="italic">&quot;{spell.original}&quot;</span></div>
+                {!state.charClass.spells ? (
+                  <div className="bg-[#fef3c7] border-l-4 border-[#f59e0b] p-4 rounded-r-sm shadow-sm text-sm text-[#92400e]">
+                    <h3 className="font-bold flex items-center gap-2 font-serif text-lg">No Spellcasting</h3>
+                    <p className="opacity-80 mt-1">{state.charClass.name}s do not cast spells. Select a spellcasting class (Wizard, Cleric, Druid, or Illusionist) to access the Grimoire.</p>
+                  </div>
+                ) : (
+                  <>
+                    <div className="bg-[#faf5ff] border-l-4 border-[#9333ea] p-4 rounded-r-sm shadow-sm text-sm text-[#581c87] mb-4">
+                      <h3 className="font-bold flex items-center gap-2 font-serif text-lg"><Scroll size={20}/> {state.charClass.name} Grimoire</h3>
+                      <p className="opacity-80 mt-1 italic">Select spells for your {state.charClass.name}. Names use Reforged Canon.</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {[0,1,2,3,4,5,6,7,8,9].map(lvl => {
+                        const spellsAtLevel = RULES.spells.filter(s => s.type === state.charClass.name && s.level === lvl).length;
+                        if (spellsAtLevel === 0) return null;
+                        return (
+                          <button
+                            key={lvl}
+                            onClick={() => dispatch({type: 'SET_FIELD', field: 'spellLevelFilter', payload: lvl})}
+                            className={`px-3 py-1.5 rounded-sm text-sm font-bold border transition-all ${state.spellLevelFilter === lvl ? 'bg-[#9333ea] text-white border-[#7e22ce]' : 'bg-white text-[#6b7280] border-[#d1d5db] hover:border-[#9333ea] hover:text-[#9333ea]'}`}
+                          >
+                            {lvl === 0 ? 'Cantrips' : `Level ${lvl}`} <span className="opacity-60">({spellsAtLevel})</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[400px] overflow-y-auto pr-2">
+                      {RULES.spells
+                        .filter(s => s.type === state.charClass.name && s.level === state.spellLevelFilter)
+                        .map(spell => {
+                          const known = state.knownSpells.some(k => k.name === spell.name);
+                          return (
+                            <button 
+                              key={spell.name}
+                              onClick={() => dispatch({type: known ? 'FORGET_SPELL' : 'LEARN_SPELL', payload: spell})}
+                              className={`flex items-center justify-between p-3 rounded-sm border transition-all text-left group ${known ? 'bg-[#f3e8ff] border-[#d8b4fe] text-[#6b21a8] shadow-inner' : 'bg-white border-[#e5e7eb] text-[#4b5563] hover:border-[#d1d5db] hover:shadow-sm'}`}
+                            >
+                              <div>
+                                <div className="font-bold text-sm font-serif">{spell.name}</div>
+                                <div className="text-[10px] opacity-70 mt-0.5 font-sans">Level {spell.level}</div>
+                              </div>
+                              {known && <Check size={18} className="text-[#9333ea]" />}
+                            </button>
+                          );
+                        })}
+                    </div>
+                    {state.knownSpells.length > 0 && (
+                      <div className="mt-4 p-3 bg-[#f3e8ff] rounded-sm border border-[#d8b4fe]">
+                        <div className="text-xs font-bold text-[#6b21a8] mb-2">Known Spells ({state.knownSpells.length})</div>
+                        <div className="flex flex-wrap gap-1">
+                          {state.knownSpells.map(s => (
+                            <span key={s.name} className="text-xs bg-white px-2 py-1 rounded-sm border border-[#d8b4fe] text-[#581c87]">{s.name}</span>
+                          ))}
                         </div>
-                        {known && <Check size={18} className="text-[#9333ea]" />}
-                      </button>
-                    )
-                  })}
-                </div>
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
             )}
 
@@ -834,6 +1660,79 @@ export default function CharacterForge() {
                     </div>
                   </div>
                 ))}
+              </div>
+            )}
+
+            {/* 5. TREASURE */}
+            {state.activeTab === 'treasure' && (
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="bg-[#fef3c7] border-l-4 border-[#f59e0b] p-4 rounded-r-sm shadow-sm text-sm text-[#92400e] mb-4">
+                  <h3 className="font-bold flex items-center gap-2 font-serif text-lg"><Gem size={20}/> Magic Item Hoard</h3>
+                  <p className="opacity-80 mt-1 italic">Track your character&apos;s magical acquisitions. Items use Reforged canonical names.</p>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <button onClick={saveCharacter} className="flex items-center gap-2 px-4 py-2 bg-[#10b981] hover:bg-[#059669] text-white rounded-sm text-sm font-bold shadow-sm transition-all">
+                    <Save size={16}/> Save Character
+                  </button>
+                  <button onClick={loadCharacter} className="flex items-center gap-2 px-4 py-2 bg-[#3b82f6] hover:bg-[#2563eb] text-white rounded-sm text-sm font-bold shadow-sm transition-all">
+                    <Upload size={16}/> Load Character
+                  </button>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {treasureCategories.map(cat => (
+                    <button
+                      key={cat}
+                      onClick={() => dispatch({type: 'SET_FIELD', field: 'treasureCategoryFilter', payload: cat})}
+                      className={`px-3 py-1.5 rounded-sm text-sm font-bold border transition-all ${state.treasureCategoryFilter === cat ? 'bg-[#f59e0b] text-white border-[#d97706]' : 'bg-white text-[#6b7280] border-[#d1d5db] hover:border-[#f59e0b] hover:text-[#f59e0b]'}`}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[350px] overflow-y-auto pr-2">
+                  {RULES.magicItems
+                    .filter(item => state.treasureCategoryFilter === 'All' || item.cat === state.treasureCategoryFilter)
+                    .map(item => {
+                      const owned = state.magicItems.some(m => m.name === item.name);
+                      return (
+                        <button 
+                          key={item.name}
+                          onClick={() => {
+                          if (owned) {
+                            const idx = state.magicItems.findIndex(m => m.name === item.name);
+                            dispatch({type: 'REMOVE_MAGIC_ITEM', payload: idx});
+                          } else {
+                            dispatch({type: 'ADD_MAGIC_ITEM', payload: item});
+                          }
+                        }}
+                          className={`flex items-center justify-between p-3 rounded-sm border transition-all text-left group ${owned ? 'bg-[#fef3c7] border-[#fcd34d] text-[#92400e] shadow-inner' : 'bg-white border-[#e5e7eb] text-[#4b5563] hover:border-[#d1d5db] hover:shadow-sm'}`}
+                        >
+                          <div>
+                            <div className="font-bold text-sm font-serif">{item.name}</div>
+                            <div className="text-[10px] opacity-70 mt-0.5 font-sans">{item.cat}</div>
+                          </div>
+                          {owned && <Check size={18} className="text-[#f59e0b]" />}
+                        </button>
+                      );
+                    })}
+                </div>
+
+                {state.magicItems.length > 0 && (
+                  <div className="mt-4 p-3 bg-[#fef3c7] rounded-sm border border-[#fcd34d]">
+                    <div className="text-xs font-bold text-[#92400e] mb-2 flex items-center gap-2"><Gem size={14}/> Owned Magic Items ({state.magicItems.length})</div>
+                    <div className="space-y-1">
+                      {state.magicItems.map((item, idx) => (
+                        <div key={idx} className="flex items-center justify-between text-xs bg-white px-2 py-1.5 rounded-sm border border-[#fcd34d] text-[#78350f]">
+                          <span className="font-bold">{item.name}</span>
+                          <button onClick={() => dispatch({type: 'REMOVE_MAGIC_ITEM', payload: idx})} className="text-[#dc2626] hover:text-[#b91c1c] p-1"><Trash2 size={14}/></button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
@@ -942,6 +1841,28 @@ export default function CharacterForge() {
                 {state.inventory.filter(i=>i.type==='weapon').length===0 && <div className="text-sm italic text-[#78716c] p-2">Unarmed (1d2)</div>}
               </div>
             </div>
+
+            {state.charClass.spells && RULES.spellSlots[state.charClass.id] && (
+              <div className="mb-8">
+                <h3 className="text-sm font-bold uppercase border-b-2 border-[#292524] mb-3 pb-1 text-[#292524] tracking-widest">Spell Slots</h3>
+                <div className="flex flex-wrap gap-2">
+                  {(RULES.spellSlots[state.charClass.id][Math.min(state.level, 5) - 1] || []).map((slots, lvl) => 
+                    slots > 0 && (
+                      <div key={lvl} className="bg-[#f3e8ff] border border-[#d8b4fe] px-3 py-1.5 rounded-sm text-center">
+                        <div className="text-lg font-bold text-[#6b21a8]">{slots}</div>
+                        <div className="text-[9px] uppercase font-bold text-[#9333ea]">{lvl === 0 ? 'Cantrip' : `Lvl ${lvl}`}</div>
+                      </div>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
+
+            {RULES.armorRestrictions[state.charClass.id] && RULES.armorRestrictions[state.charClass.id] !== 'Any' && (
+              <div className="mb-4 text-xs text-[#78716c] italic">
+                <span className="font-bold">Armor:</span> {RULES.armorRestrictions[state.charClass.id]}
+              </div>
+            )}
 
             <div className="mb-8">
               <h3 className="text-sm font-bold uppercase border-b-2 border-[#292524] mb-3 pb-1 text-[#292524] tracking-widest">Equipment</h3>
