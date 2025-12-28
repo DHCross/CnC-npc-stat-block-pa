@@ -1,0 +1,974 @@
+'use client';
+
+import React, { useState, useReducer, useEffect } from 'react';
+import { 
+  Shield, Scroll, Backpack, 
+  RefreshCw, Calculator,
+  Hammer, User, Copy, Check, BookOpen,
+  ChevronUp, ChevronDown, Package, FileText, PenTool, Layout
+} from 'lucide-react';
+
+// --- THE REFORGED LEXICON & RULES ---
+
+interface RaceMod {
+  STR?: number;
+  DEX?: number;
+  CON?: number;
+  INT?: number;
+  WIS?: number;
+  CHA?: number;
+}
+
+interface Race {
+  id: string;
+  name: string;
+  desc: string;
+  mods: RaceMod;
+  traits: string[];
+  baseSpeed: number;
+}
+
+interface CharClass {
+  id: string;
+  name: string;
+  hd: number;
+  reqPrime: string[];
+  desc: string;
+  abilities: string[];
+  spells?: boolean;
+  bthMod: number;
+}
+
+interface Spell {
+  name: string;
+  original: string;
+  level: number;
+  type: string;
+}
+
+interface EquipmentItem {
+  id: string;
+  name: string;
+  type: 'weapon' | 'armor' | 'shield' | 'gear';
+  cost: number;
+  ev: number;
+  dmg?: string;
+  ac?: number;
+  cat: string;
+  desc?: string;
+}
+
+interface ClassKit {
+  name: string;
+  items: string[];
+  cost: number;
+}
+
+const RULES = {
+  attributes: ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'] as const,
+  
+  getMod: (score: number): number => {
+    if (score >= 18) return 3;
+    if (score >= 16) return 2;
+    if (score >= 13) return 1;
+    if (score >= 9) return 0;
+    if (score >= 6) return -1;
+    if (score >= 4) return -2;
+    if (score >= 2) return -3;
+    return -4;
+  },
+
+  races: [
+    { id: 'human', name: 'Human', desc: 'The most adaptable of all races.', mods: {}, traits: ['Extra Prime Attribute', 'Quick Learner'], baseSpeed: 30 },
+    { id: 'dwarf', name: 'Dwarf', desc: 'Stout, hardy, and stubborn.', mods: { CON: 1, CHA: -1 }, traits: ['Darkvision', 'Stonecraft', 'Resistant to Arcane'], baseSpeed: 20 },
+    { id: 'elf', name: 'Elf', desc: 'Long-lived and magical.', mods: { DEX: 1, CON: -1 }, traits: ['Twilight Vision', 'Move Silently', 'Immune to Ghoul Paralysis'], baseSpeed: 30 },
+    { id: 'halfling', name: 'Halfling', desc: 'Small, nimble, and lucky.', mods: { DEX: 1, STR: -1 }, traits: ['Hide', 'Move Silently', 'Fearless'], baseSpeed: 20 },
+    { id: 'gnome', name: 'Gnome', desc: 'Inventive and illusion-prone.', mods: { INT: 1, WIS: -1 }, traits: ['Darkvision', 'Illusion Resistance', 'Listen'], baseSpeed: 20 },
+    { id: 'half-orc', name: 'Half-Orc', desc: 'Strong and fierce lineage.', mods: { STR: 1, CHA: -1 }, traits: ['Darkvision', 'Intimidate'], baseSpeed: 30 },
+    { id: 'half-elf', name: 'Half-Elf', desc: 'Walking two worlds.', mods: {}, traits: ['Twilight Vision', 'Empathy'], baseSpeed: 30 }
+  ] as Race[],
+
+  classes: [
+    { id: 'fighter', name: 'Fighter', hd: 10, reqPrime: ['STR'], desc: 'Masters of weapons and warfare.', abilities: ['Weapon Specialization', 'Combat Dominance'], bthMod: 1 },
+    { id: 'ranger', name: 'Ranger', hd: 10, reqPrime: ['STR'], desc: 'Guardians of the wild places.', abilities: ['Combat Marauder', 'Conceal', 'Track'], bthMod: 1 },
+    { id: 'rogue', name: 'Rogue', hd: 6, reqPrime: ['DEX'], desc: 'Skilled tricksters and scouts.', abilities: ['Back Attack', 'Cant', 'Traps', 'Sneak'], bthMod: 0.5 },
+    { id: 'wizard', name: 'Wizard', hd: 4, reqPrime: ['INT'], desc: 'Wielders of arcane magic.', abilities: ['Spellcasting (Arcane)', 'Familiar'], spells: true, bthMod: 0.33 },
+    { id: 'cleric', name: 'Cleric', hd: 8, reqPrime: ['WIS'], desc: 'Divine servants of the gods.', abilities: ['Spellcasting (Divine)', 'Turn Undead'], spells: true, bthMod: 0.75 },
+    { id: 'bard', name: 'Bard', hd: 6, reqPrime: ['CHA'], desc: 'Chroniclers and inspirers.', abilities: ['Decipher Script', 'Exhort', 'Legend Lore'], spells: true, bthMod: 0.5 },
+    { id: 'paladin', name: 'Paladin', hd: 10, reqPrime: ['STR', 'CHA'], desc: 'Holy warriors of law and good.', abilities: ['Lay on Hands', 'Divine Aura', 'Cure Disease'], bthMod: 1 },
+    { id: 'knight', name: 'Knight', hd: 10, reqPrime: ['STR', 'CHA'], desc: 'Nobles sworn to a liege or cause.', abilities: ['Birthright Mount', 'Horsemanship', 'Inspire'], bthMod: 1 }
+  ] as CharClass[],
+
+  spells: [
+    { name: 'Acidic Bolt', original: 'Acid Arrow', level: 2, type: 'Wizard' },
+    { name: "Alter One's Person", original: 'Alter Self', level: 2, type: 'Wizard' },
+    { name: 'Arcane Vision', original: 'Arcane Eye', level: 4, type: 'Wizard' },
+    { name: 'Anti Flora Sphere', original: 'Anti-plant shell', level: 4, type: 'Druid' },
+    { name: 'Magic Missile', original: 'Magic Missile', level: 1, type: 'Wizard' },
+    { name: 'Shield', original: 'Shield', level: 1, type: 'Wizard' },
+    { name: 'Sleep', original: 'Sleep', level: 1, type: 'Wizard' },
+    { name: 'Cure Light Wounds', original: 'Cure Light Wounds', level: 1, type: 'Cleric' },
+    { name: 'Bless', original: 'Bless', level: 1, type: 'Cleric' },
+    { name: 'Protection from Disposition', original: 'Protection from Alignment', level: 1, type: 'Cleric' },
+    { name: 'Command', original: 'Command', level: 1, type: 'Cleric' },
+    { name: 'Wooden Skin', original: 'Barkskin', level: 2, type: 'Druid' },
+    { name: 'Heightened Invisibility', original: 'Improved Invisibility', level: 4, type: 'Wizard' },
+  ] as Spell[],
+
+  equipment: [
+    { id: 'longsword', name: 'Longsword', type: 'weapon', cost: 15, ev: 3, dmg: '1d8', cat: 'Melee' },
+    { id: 'shortsword', name: 'Short Sword', type: 'weapon', cost: 10, ev: 2, dmg: '1d6', cat: 'Melee' },
+    { id: 'dagger', name: 'Dagger', type: 'weapon', cost: 2, ev: 1, dmg: '1d4', cat: 'Melee' },
+    { id: 'greatsword', name: 'Greatsword', type: 'weapon', cost: 30, ev: 5, dmg: '2d6', cat: 'Melee' },
+    { id: 'spear', name: 'Spear', type: 'weapon', cost: 2, ev: 3, dmg: '1d6', cat: 'Melee' },
+    { id: 'longbow', name: 'Longbow', type: 'weapon', cost: 60, ev: 4, dmg: '1d6', cat: 'Ranged' },
+    { id: 'shortbow', name: 'Shortbow', type: 'weapon', cost: 30, ev: 2, dmg: '1d6', cat: 'Ranged' },
+    { id: 'mace_light', name: 'Mace, light', type: 'weapon', cost: 5, ev: 2, dmg: '1d4', cat: 'Melee' },
+    { id: 'mace_heavy', name: 'Mace, heavy', type: 'weapon', cost: 12, ev: 4, dmg: '1d8', cat: 'Melee' },
+    { id: 'padded', name: 'Padded armor', type: 'armor', cost: 5, ev: 2, ac: 1, cat: 'Light' },
+    { id: 'leather', name: 'Leather armor', type: 'armor', cost: 10, ev: 3, ac: 2, cat: 'Light' },
+    { id: 'ringmail', name: 'Ring mail', type: 'armor', cost: 30, ev: 6, ac: 3, cat: 'Medium' },
+    { id: 'chainmail', name: 'Chain mail', type: 'armor', cost: 150, ev: 8, ac: 5, cat: 'Medium' },
+    { id: 'platemail', name: 'Plate mail', type: 'armor', cost: 600, ev: 12, ac: 7, cat: 'Heavy' },
+    { id: 'shield_sm', name: 'Shield, small wooden', type: 'shield', cost: 3, ev: 1, ac: 1, cat: 'Shield' },
+    { id: 'shield_lg', name: 'Shield, medium steel', type: 'shield', cost: 7, ev: 2, ac: 1, cat: 'Shield' },
+    { id: 'backpack', name: 'Backpack', type: 'gear', cost: 2, ev: 0, cat: 'Gear', desc: 'Holds 8 EV items' },
+    { id: 'rations', name: 'Rations (1 week)', type: 'gear', cost: 5, ev: 1, cat: 'Gear', desc: 'Dry food' },
+    { id: 'rope', name: 'Rope (50ft)', type: 'gear', cost: 1, ev: 2, cat: 'Gear', desc: 'Hemp' },
+    { id: 'torches', name: 'Torches (10)', type: 'gear', cost: 1, ev: 1, cat: 'Gear', desc: 'Lighting' },
+    { id: 'waterskin', name: 'Waterskin', type: 'gear', cost: 1, ev: 1, cat: 'Gear', desc: 'Water' },
+  ] as EquipmentItem[],
+
+  classKits: {
+    fighter: { name: 'Mercenary Kit', items: ['chainmail', 'longsword', 'shield_lg', 'backpack', 'rations'], cost: 175 },
+    ranger: { name: 'Scout Kit', items: ['leather', 'longbow', 'shortsword', 'backpack', 'rations', 'rope'], cost: 95 },
+    rogue: { name: 'Burglar Kit', items: ['leather', 'shortsword', 'dagger', 'backpack', 'rope', 'torches'], cost: 45 },
+    wizard: { name: 'Scholar Kit', items: ['dagger', 'backpack', 'rations', 'waterskin', 'torches'], cost: 15 },
+    cleric: { name: 'Priest Kit', items: ['ringmail', 'mace_heavy', 'shield_sm', 'backpack', 'rations'], cost: 55 },
+    bard: { name: 'Minstrel Kit', items: ['leather', 'longsword', 'backpack', 'rations', 'waterskin'], cost: 35 },
+    paladin: { name: 'Crusader Kit', items: ['chainmail', 'longsword', 'shield_lg', 'backpack'], cost: 170 },
+    knight: { name: 'Noble Kit', items: ['platemail', 'longsword', 'shield_lg', 'backpack'], cost: 630 },
+  } as Record<string, ClassKit>
+};
+
+// --- HELPER TYPES ---
+
+interface AttributeData {
+  score: number;
+  prime: boolean;
+}
+
+interface CharacterState {
+  name: string;
+  race: Race;
+  charClass: CharClass;
+  level: number;
+  gold: number;
+  disposition: string;
+  attributes: Record<string, AttributeData>;
+  inventory: EquipmentItem[];
+  knownSpells: Spell[];
+  activeTab: string;
+  rollingMethod: string;
+  pointsRemaining: number;
+  viewMode: 'builder' | 'sheet' | 'split';
+}
+
+type CharacterAction =
+  | { type: 'SET_FIELD'; field: string; payload: unknown }
+  | { type: 'SET_CLASS'; payload: CharClass }
+  | { type: 'LEVEL_UP' }
+  | { type: 'LEVEL_DOWN' }
+  | { type: 'SET_VIEW_MODE'; payload: 'builder' | 'sheet' | 'split' }
+  | { type: 'UPDATE_ATTR_SCORE'; payload: { attr: string; val: number } }
+  | { type: 'TOGGLE_PRIME'; payload: { attr: string } }
+  | { type: 'BUY_ITEM'; payload: EquipmentItem }
+  | { type: 'BUY_KIT'; payload: ClassKit }
+  | { type: 'REMOVE_ITEM'; payload: number }
+  | { type: 'LEARN_SPELL'; payload: Spell }
+  | { type: 'FORGET_SPELL'; payload: Spell }
+  | { type: 'RANDOMIZE_STATS' };
+
+// --- HELPER: REFORGED TEXT GENERATOR ---
+
+const generateReforgedBlock = (state: CharacterState): string => {
+  const { name, race, charClass, level, attributes, inventory, disposition, gold } = state;
+
+  const conMod = RULES.getMod(attributes.CON.score + (race.mods.CON || 0));
+  const hp = Math.max(1, (charClass.hd + conMod) * level);
+  const dexMod = RULES.getMod(attributes.DEX.score + (race.mods.DEX || 0));
+  const armorBonus = inventory.filter(i => i.type === 'armor' || i.type === 'shield').reduce((sum, i) => sum + (i.ac || 0), 0);
+  const ac = 10 + dexMod + armorBonus;
+
+  const dispString = disposition.toLowerCase();
+  const primes = Object.entries(attributes).filter(([, v]) => v.prime).map(([k]) => k).join(', ');
+
+  const worn = inventory.filter(i => i.type === 'armor' || i.type === 'shield').map(i => i.name.toLowerCase());
+  const carried = inventory.filter(i => i.type === 'weapon' || i.type === 'gear').map(i => i.name.toLowerCase());
+  
+  let equipString = '';
+  if (worn.length > 0) {
+    equipString += `He/She wears ${worn.join(', ')}`;
+  }
+  if (carried.length > 0) {
+    equipString += (worn.length > 0 ? ' and carries ' : 'He/She carries ') + carried.join(', ');
+  }
+  if (gold > 0) {
+    equipString += (worn.length > 0 || carried.length > 0 ? ', and ' : 'He/She carries ') + `${gold} gold in coin`;
+  }
+
+  const ordinal = level === 1 ? 'st' : level === 2 ? 'nd' : level === 3 ? 'rd' : 'th';
+  return `(This ${level}${ordinal} level ${race.name.toLowerCase()} ${charClass.name.toLowerCase()}'s vital stats are HP ${hp}, AC ${ac}, disposition ${dispString}. Primary attributes: ${primes}. ${equipString}.)`;
+};
+
+// --- INITIAL STATE & REDUCER ---
+
+const initialState: CharacterState = {
+  name: 'Unnamed Hero',
+  race: RULES.races[0],
+  charClass: RULES.classes[0],
+  level: 1,
+  gold: 150,
+  disposition: 'Neutral',
+  attributes: {
+    STR: { score: 10, prime: true },
+    DEX: { score: 10, prime: false },
+    CON: { score: 10, prime: false },
+    INT: { score: 10, prime: false },
+    WIS: { score: 10, prime: false },
+    CHA: { score: 10, prime: false },
+  },
+  inventory: [],
+  knownSpells: [],
+  activeTab: 'origin',
+  rollingMethod: '3d6',
+  pointsRemaining: 20,
+  viewMode: 'split',
+};
+
+function characterReducer(state: CharacterState, action: CharacterAction): CharacterState {
+  switch (action.type) {
+    case 'SET_FIELD': return { ...state, [action.field]: action.payload };
+    
+    case 'SET_CLASS': {
+      const newClass = action.payload;
+      const updatedAttributes = { ...state.attributes };
+      newClass.reqPrime.forEach(attr => { updatedAttributes[attr] = { ...updatedAttributes[attr], prime: true }; });
+      return { ...state, charClass: newClass, attributes: updatedAttributes };
+    }
+
+    case 'LEVEL_UP': return { ...state, level: Math.min(20, state.level + 1) };
+    case 'LEVEL_DOWN': return { ...state, level: Math.max(1, state.level - 1) };
+
+    case 'SET_VIEW_MODE': return { ...state, viewMode: action.payload };
+
+    case 'UPDATE_ATTR_SCORE': {
+      const { attr, val } = action.payload;
+      if (state.rollingMethod === 'pointBuy') {
+        const currentScore = state.attributes[attr].score;
+        const diff = val - currentScore;
+        if (state.pointsRemaining - diff < 0) return state; 
+        return { 
+          ...state, 
+          pointsRemaining: state.pointsRemaining - diff,
+          attributes: { ...state.attributes, [attr]: { ...state.attributes[attr], score: val } } 
+        };
+      }
+      return { ...state, attributes: { ...state.attributes, [attr]: { ...state.attributes[attr], score: val } } };
+    }
+
+    case 'TOGGLE_PRIME': {
+      const { attr } = action.payload;
+      const isClassReq = state.charClass.reqPrime.includes(attr);
+      if (isClassReq) return state; 
+      
+      const currentPrimes = Object.values(state.attributes).filter(a => a.prime).length;
+      const maxPrimes = state.race.id === 'human' ? 3 : 2;
+
+      if (!state.attributes[attr].prime && currentPrimes >= maxPrimes) return state;
+
+      return { ...state, attributes: { ...state.attributes, [attr]: { ...state.attributes[attr], prime: !state.attributes[attr].prime } } };
+    }
+
+    case 'BUY_ITEM': {
+      const item = action.payload;
+      if (state.gold < item.cost) return state;
+      return { ...state, gold: state.gold - item.cost, inventory: [...state.inventory, item] };
+    }
+
+    case 'BUY_KIT': {
+      const kit = action.payload;
+      if (state.gold < kit.cost) return state;
+      const newItems = kit.items.map(id => RULES.equipment.find(e => e.id === id)).filter((e): e is EquipmentItem => e !== undefined);
+      return {
+        ...state,
+        gold: state.gold - kit.cost,
+        inventory: [...state.inventory, ...newItems]
+      };
+    }
+
+    case 'REMOVE_ITEM': {
+      const index = action.payload;
+      const item = state.inventory[index];
+      return { ...state, gold: state.gold + item.cost, inventory: state.inventory.filter((_, i) => i !== index) };
+    }
+
+    case 'LEARN_SPELL': {
+      if (state.knownSpells.some(s => s.name === action.payload.name)) return state;
+      return { ...state, knownSpells: [...state.knownSpells, action.payload] };
+    }
+
+    case 'FORGET_SPELL': {
+      return { ...state, knownSpells: state.knownSpells.filter(s => s.name !== action.payload.name) };
+    }
+
+    case 'RANDOMIZE_STATS': {
+      const newAttrs: Record<string, AttributeData> = {};
+      RULES.attributes.forEach(attr => {
+        let r: number;
+        if (state.rollingMethod === '3d6') {
+          r = Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1;
+        } else if (state.rollingMethod === '4d6') {
+          const rolls = [Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1];
+          rolls.sort((a,b) => a-b);
+          r = rolls[1] + rolls[2] + rolls[3];
+        } else {
+          r = 8;
+        }
+        newAttrs[attr] = { score: r, prime: state.attributes[attr].prime };
+      });
+      return { ...state, attributes: newAttrs, pointsRemaining: 25 };
+    }
+
+    default: return state;
+  }
+}
+
+// --- SUB-COMPONENTS ---
+
+const LogoTLG = () => (
+  <svg viewBox="0 0 100 100" className="h-full w-full drop-shadow-md">
+    <path d="M50 0 L95 25 L85 85 L50 100 L15 85 L5 25 Z" fill="#292524" stroke="#d97706" strokeWidth="4"/>
+    <text x="50" y="55" textAnchor="middle" fill="#d97706" fontFamily="serif" fontSize="28" fontWeight="bold" style={{textShadow: '1px 1px 0 #000'}}>TLG</text>
+    <text x="50" y="75" textAnchor="middle" fill="#a8a29e" fontSize="10" fontWeight="bold" fontFamily="serif">GAMES</text>
+  </svg>
+);
+
+const LogoCNC = () => (
+  <svg viewBox="0 0 220 60" className="h-full w-full">
+    <text x="5" y="25" fill="#451a03" fontFamily="serif" fontSize="24" fontWeight="bold" letterSpacing="1" style={{textShadow: '1px 1px 0 #d97706'}}>CASTLES</text>
+    <text x="50" y="50" fill="#451a03" fontFamily="serif" fontSize="24" fontWeight="bold" letterSpacing="1" style={{textShadow: '1px 1px 0 #d97706'}}>& CRUSADES</text>
+    <line x1="5" y1="30" x2="210" y2="30" stroke="#78350f" strokeWidth="2" opacity="0.5"/>
+  </svg>
+);
+
+const LogoSiege = () => (
+  <svg viewBox="0 0 100 30" className="h-full w-full drop-shadow-sm">
+    <rect x="0" y="0" width="100" height="30" rx="2" fill="#292524" stroke="#78350f" strokeWidth="2"/>
+    <text x="50" y="20" textAnchor="middle" fill="#e7e5e4" fontFamily="serif" fontSize="12" fontWeight="bold" letterSpacing="1">SIEGE ENGINE</text>
+  </svg>
+);
+
+// -- DISPOSITION BUILDER --
+interface DispositionBuilderProps {
+  value: string;
+  onChange: (val: string) => void;
+}
+
+const DispositionBuilder = ({ value, onChange }: DispositionBuilderProps) => {
+  const [primary, setPrimary] = useState('Neutral');
+  const [secondary, setSecondary] = useState('None');
+
+  useEffect(() => {
+    if (value.includes('/')) {
+      const [p, s] = value.split('/');
+      setPrimary(p);
+      setSecondary(s);
+    } else {
+      setPrimary(value);
+      setSecondary('None');
+    }
+  }, []);
+
+  useEffect(() => {
+    let newVal = primary;
+    if (secondary !== 'None' && secondary !== primary) {
+      newVal = `${primary}/${secondary}`;
+    }
+    if (primary === 'Neutral' && secondary === 'Neutral') newVal = 'Neutral';
+    
+    if (newVal !== value) onChange(newVal);
+  }, [primary, secondary, value, onChange]);
+
+  const options = ['Law', 'Chaos', 'Good', 'Evil', 'Neutral'];
+
+  return (
+    <div className="bg-[#f5f5f4] p-3 rounded-sm border-2 border-[#d6d3d1] shadow-inner">
+      <div className="flex gap-4">
+        <div className="flex-1">
+          <div className="text-[10px] uppercase font-bold text-[#78716c] mb-1">Core Outlook</div>
+          <div className="flex flex-col gap-1">
+            {options.map(opt => (
+              <button 
+                key={opt}
+                onClick={() => setPrimary(opt)}
+                className={`text-xs py-1 px-2 rounded-sm border text-left font-serif transition-colors ${primary === opt ? 'bg-[#b45309] text-white border-[#b45309]' : 'bg-white text-[#57534e] border-[#e7e5e4] hover:bg-[#e7e5e4]'}`}
+              >
+                {opt}
+              </button>
+            ))}
+          </div>
+        </div>
+        
+        <div className="flex items-center justify-center text-[#d6d3d1]">
+          <ChevronDown className="-rotate-90" />
+        </div>
+
+        <div className="flex-1">
+          <div className="text-[10px] uppercase font-bold text-[#78716c] mb-1">Tendency (Opt)</div>
+          <div className="flex flex-col gap-1">
+            <button 
+                onClick={() => setSecondary('None')}
+                className={`text-xs py-1 px-2 rounded-sm border text-left font-serif italic ${secondary === 'None' ? 'bg-[#78716c] text-white border-[#78716c]' : 'bg-white text-[#a8a29e] border-[#e7e5e4]'}`}
+              >
+                None (Pure)
+            </button>
+            {options.map(opt => (
+              <button 
+                key={opt}
+                onClick={() => setSecondary(opt)}
+                className={`text-xs py-1 px-2 rounded-sm border text-left font-serif transition-colors ${secondary === opt ? 'bg-[#d97706] text-white border-[#d97706]' : 'bg-white text-[#57534e] border-[#e7e5e4] hover:bg-[#e7e5e4]'}`}
+              >
+                {opt}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      <div className="mt-3 pt-2 border-t border-[#d6d3d1]">
+        <div className="text-[10px] uppercase text-[#a8a29e] text-center">Resulting Disposition</div>
+        <div className="text-center font-bold text-[#451a03] text-lg font-serif">{value}</div>
+      </div>
+    </div>
+  );
+};
+
+interface SiegeSwitchProps {
+  attr: string;
+  data: AttributeData;
+  isLocked: boolean;
+  mod: number;
+  onToggle: () => void;
+}
+
+const SiegeSwitch = ({ attr, data, isLocked, mod, onToggle }: SiegeSwitchProps) => (
+  <div className={`relative p-3 rounded-sm border-2 transition-all duration-200 ${data.prime ? 'bg-[#fffbeb] border-[#d97706] shadow-md' : 'bg-[#f5f5f4] border-[#a8a29e]'}`}>
+    <div className="flex justify-between items-center mb-2">
+      <span className="font-bold text-lg text-[#292524] font-serif">{attr}</span>
+      <span className={`text-xl font-mono font-bold ${mod >= 0 ? 'text-[#15803d]' : 'text-[#b91c1c]'}`}>{mod >= 0 ? `+${mod}` : mod}</span>
+    </div>
+    <button onClick={onToggle} disabled={isLocked} className={`w-full py-1 px-2 rounded-sm text-xs font-bold uppercase tracking-wider flex items-center justify-between font-serif ${data.prime ? 'bg-[#d97706] text-white hover:bg-[#b45309]' : 'bg-[#e7e5e4] text-[#57534e] hover:bg-[#d6d3d1]'} ${isLocked ? 'cursor-not-allowed opacity-90' : ''}`}>
+      <span>{data.prime ? 'Prime' : 'Secondary'}</span>
+      {isLocked && <Shield size={12} />}
+    </button>
+    <div className="mt-2 text-xs text-center border-t border-[#d6d3d1] pt-1 font-serif">
+      <div className="text-[#57534e] uppercase text-[10px]">Base Check</div>
+      <div className={`text-lg font-bold ${data.prime ? 'text-[#d97706]' : 'text-[#57534e]'}`}>{data.prime ? '12' : '18'}</div>
+    </div>
+  </div>
+);
+
+interface ReforgedBlockProps {
+  text: string;
+}
+
+const ReforgedBlock = ({ text }: ReforgedBlockProps) => {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="bg-[#fefce8] p-4 rounded-sm border-2 border-[#b45309] mt-6 font-mono text-xs text-[#451a03] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]">
+      <div className="flex justify-between items-center mb-2 border-b border-[#b45309]/30 pb-2">
+        <span className="font-bold text-[#b45309] uppercase tracking-widest font-serif">Reforged Canonical String</span>
+        <button onClick={handleCopy} className="flex items-center gap-1 text-[#78350f] hover:text-[#b45309] transition-colors font-serif font-bold">
+          {copied ? <Check size={14} /> : <Copy size={14} />}
+          {copied ? 'Copied' : 'Copy'}
+        </button>
+      </div>
+      <p className="leading-relaxed whitespace-pre-wrap break-words">{text}</p>
+    </div>
+  );
+};
+
+// --- MAIN COMPONENT ---
+
+export default function CharacterForge() {
+  const [state, dispatch] = useReducer(characterReducer, initialState);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        dispatch({type: 'SET_VIEW_MODE', payload: 'builder'});
+      } else {
+        dispatch({type: 'SET_VIEW_MODE', payload: 'split'});
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  const currentStr = state.attributes.STR.score + (state.race.mods.STR || 0);
+  const evCapacity = currentStr + 2;
+  const currentEV = state.inventory.reduce((sum, item) => sum + item.ev, 0);
+  const isOverburdened = currentEV > evCapacity;
+  
+  const bth = Math.floor(state.charClass.bthMod * state.level);
+  const conMod = RULES.getMod(state.attributes.CON.score + (state.race.mods.CON || 0));
+  const hp = Math.max(1, (state.charClass.hd + conMod) * state.level); 
+
+  const tabs = [
+    { id: 'origin', label: 'Concept', icon: <User size={18} /> },
+    { id: 'stats', label: 'Siege Stats', icon: <Calculator size={18} /> },
+    { id: 'spells', label: 'Grimoire', icon: <BookOpen size={18} />, hidden: !state.charClass.spells },
+    { id: 'shop', label: 'Gear', icon: <Backpack size={18} /> },
+  ].filter(t => !t.hidden);
+
+  return (
+    <div className="flex flex-col h-screen bg-[#fdf6e3] text-[#292524] font-serif overflow-hidden selection:bg-[#fcd34d] selection:text-[#451a03]">
+      
+      {/* Header */}
+      <header className="h-20 bg-[#1c1917] border-b-4 border-[#d97706] flex items-center justify-between px-4 sm:px-6 shrink-0 z-20 shadow-lg relative">
+        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'6\' height=\'6\' viewBox=\'0 0 6 6\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M5 0h1L0 6V5zM6 5v1H5z\'/%3E%3C/g%3E%3C/svg%3E")'}}></div>
+        
+        <div className="flex items-center gap-3 sm:gap-6 relative z-10">
+          <div className="h-12 w-12 sm:h-14 sm:w-14 shrink-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+            <LogoTLG />
+          </div>
+          <div className="h-12 w-32 sm:h-14 sm:w-36 shrink-0 hidden md:block drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+            <LogoCNC />
+          </div>
+          
+          <div className="h-10 w-px bg-[#44403c] mx-2 hidden md:block"></div>
+
+          <div className="flex items-center gap-2 text-[#a8a29e]">
+             <Hammer size={18} className="text-[#d97706]" />
+             <span className="font-bold tracking-widest text-sm sm:text-base uppercase hidden sm:inline text-[#e7e5e4]" style={{textShadow: '2px 2px 0 #000'}}>The Forge</span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 sm:gap-4 relative z-10">
+           <div className="flex items-center bg-[#292524] rounded-sm border border-[#57534e] px-1 sm:px-2 py-1 shadow-inner">
+             <span className="text-[10px] sm:text-xs text-[#a8a29e] mr-1 sm:mr-2 uppercase font-bold tracking-wider">Lvl</span>
+             <button onClick={() => dispatch({type: 'LEVEL_DOWN'})} className="text-[#d6d3d1] hover:text-[#fbbf24] transition-colors"><ChevronDown size={14}/></button>
+             <span className="w-6 sm:w-8 text-center font-bold text-[#fbbf24] text-base sm:text-lg font-mono">{state.level}</span>
+             <button onClick={() => dispatch({type: 'LEVEL_UP'})} className="text-[#d6d3d1] hover:text-[#fbbf24] transition-colors"><ChevronUp size={14}/></button>
+           </div>
+
+           <div className="flex items-center bg-[#292524] rounded-sm border border-[#57534e] p-0.5 shadow-inner">
+             <button 
+                onClick={() => dispatch({type: 'SET_VIEW_MODE', payload: 'builder'})}
+                title="Editor View"
+                className={`p-1.5 rounded-sm transition-colors ${state.viewMode === 'builder' ? 'bg-[#d97706] text-white' : 'text-[#a8a29e] hover:text-white'}`}
+             >
+               <PenTool size={16}/>
+             </button>
+             <button 
+                onClick={() => dispatch({type: 'SET_VIEW_MODE', payload: 'split'})}
+                title="Split View"
+                className={`hidden lg:block p-1.5 rounded-sm transition-colors ${state.viewMode === 'split' ? 'bg-[#d97706] text-white' : 'text-[#a8a29e] hover:text-white'}`}
+             >
+               <Layout size={16}/>
+             </button>
+             <button 
+                onClick={() => dispatch({type: 'SET_VIEW_MODE', payload: 'sheet'})}
+                title="View Sheet"
+                className={`p-1.5 rounded-sm transition-colors ${state.viewMode === 'sheet' ? 'bg-[#d97706] text-white' : 'text-[#a8a29e] hover:text-white'}`}
+             >
+               <FileText size={16}/>
+             </button>
+           </div>
+
+           <input 
+             type="text" 
+             value={state.name}
+             onChange={(e) => dispatch({type: 'SET_FIELD', field: 'name', payload: e.target.value})}
+             className="bg-[#292524] border border-[#57534e] rounded-sm px-2 sm:px-3 py-1 text-sm sm:text-base text-[#e7e5e4] focus:border-[#d97706] outline-none w-24 sm:w-32 md:w-64 text-center transition-all focus:w-32 sm:focus:w-48 md:focus:w-80 placeholder-[#57534e] font-serif font-bold shadow-inner"
+             placeholder="Name"
+           />
+        </div>
+      </header>
+
+      <div className="flex flex-1 overflow-hidden">
+        
+        {/* LEFT: WORKBENCH */}
+        <div className={`
+            flex flex-col bg-[#f5f5f4] relative border-r-4 border-[#d6d3d1] transition-all duration-300 ease-in-out
+            ${state.viewMode === 'sheet' ? 'hidden' : 'flex'}
+            ${state.viewMode === 'split' ? 'w-full lg:w-3/5' : 'w-full'}
+        `}>
+          
+          <div className="flex border-b-2 border-[#d6d3d1] bg-[#e7e5e4] shrink-0 shadow-sm overflow-x-auto">
+            {tabs.map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => dispatch({type: 'SET_FIELD', field: 'activeTab', payload: tab.id})}
+                className={`flex-1 py-4 px-2 min-w-fit flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-widest transition-all ${state.activeTab === tab.id ? 'bg-[#fdf6e3] text-[#b45309] border-b-4 border-[#b45309] -mb-0.5' : 'text-[#78716c] hover:bg-[#d6d3d1] hover:text-[#44403c]'}`}
+              >
+                {tab.icon} <span className="hidden sm:inline">{tab.label}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 scroll-smooth bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]">
+            
+            {/* 1. CONCEPT */}
+            {state.activeTab === 'origin' && (
+              <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <section className="bg-white p-4 rounded-sm border border-[#d6d3d1] shadow-sm">
+                   <h2 className="text-xl font-bold text-[#451a03] mb-4 flex items-center gap-2 border-b-2 border-[#fcd34d] pb-2">
+                    <span className="bg-[#b45309] w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-mono shadow-sm">1</span>
+                    Disposition
+                  </h2>
+                  <DispositionBuilder 
+                    value={state.disposition} 
+                    onChange={(val) => dispatch({type: 'SET_FIELD', field: 'disposition', payload: val})} 
+                  />
+                </section>
+
+                <section className="bg-white p-4 rounded-sm border border-[#d6d3d1] shadow-sm">
+                  <h2 className="text-xl font-bold text-[#451a03] mb-4 flex items-center gap-2 border-b-2 border-[#fcd34d] pb-2">
+                    <span className="bg-[#b45309] w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-mono shadow-sm">2</span>
+                    Ancestry
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {RULES.races.map(r => (
+                      <button
+                        key={r.id}
+                        onClick={() => dispatch({type: 'SET_FIELD', field: 'race', payload: r})}
+                        className={`text-left p-4 rounded-sm border-2 transition-all relative overflow-hidden group ${state.race.id === r.id ? 'border-[#b45309] bg-[#fffbeb] shadow-md' : 'border-[#e7e5e4] bg-[#fafaf9] hover:border-[#d6d3d1] hover:bg-white'}`}
+                      >
+                        <div className="flex justify-between items-start mb-2">
+                          <span className={`font-bold font-serif text-lg ${state.race.id === r.id ? 'text-[#b45309]' : 'text-[#57534e]'}`}>{r.name}</span>
+                          <div className="flex gap-1">
+                            {Object.entries(r.mods).map(([attr, val]) => (
+                              <span key={attr} className={`text-[10px] px-1.5 py-0.5 rounded-sm font-mono font-bold border ${val > 0 ? 'bg-[#dcfce7] text-[#166534] border-[#bbf7d0]' : 'bg-[#fee2e2] text-[#991b1b] border-[#fecaca]'}`}>{attr} {val>0?'+':''}{val}</span>
+                            ))}
+                          </div>
+                        </div>
+                        <p className="text-xs text-[#78716c] mb-2 italic">{r.desc}</p>
+                      </button>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="bg-white p-4 rounded-sm border border-[#d6d3d1] shadow-sm">
+                  <h2 className="text-xl font-bold text-[#451a03] mb-4 flex items-center gap-2 border-b-2 border-[#fcd34d] pb-2">
+                    <span className="bg-[#b45309] w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-mono shadow-sm">3</span>
+                    Class
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {RULES.classes.map(c => (
+                      <button
+                        key={c.id}
+                        onClick={() => dispatch({type: 'SET_CLASS', payload: c})}
+                        className={`text-left p-4 rounded-sm border-2 transition-all flex flex-col h-full ${state.charClass.id === c.id ? 'border-[#0369a1] bg-[#f0f9ff] shadow-md' : 'border-[#e7e5e4] bg-[#fafaf9] hover:border-[#d6d3d1] hover:bg-white'}`}
+                      >
+                        <div className="mb-2">
+                          <span className={`font-bold block font-serif text-lg ${state.charClass.id === c.id ? 'text-[#0369a1]' : 'text-[#57534e]'}`}>{c.name}</span>
+                          <span className="text-[10px] text-[#78716c] uppercase tracking-wide font-bold">HD: d{c.hd} • Prime: {c.reqPrime.join(', ')}</span>
+                        </div>
+                        <p className="text-xs text-[#78716c] mb-2 flex-1 italic">{c.desc}</p>
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              </div>
+            )}
+
+            {/* 2. STATS */}
+            {state.activeTab === 'stats' && (
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                 <div className="bg-[#292524] p-4 rounded-sm shadow-md flex flex-col md:flex-row justify-between items-center gap-4 border-b-4 border-[#b45309]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-24 h-8 opacity-90">
+                        <LogoSiege />
+                    </div>
+                    <div>
+                        <h2 className="text-xl font-bold text-[#e7e5e4] leading-none font-serif tracking-wide">Attributes</h2>
+                        <p className="text-xs text-[#a8a29e] mt-1 font-sans">Primes base 12. Others base 18.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-2 bg-[#1c1917] p-1.5 rounded-sm border border-[#57534e]">
+                    <select 
+                      value={state.rollingMethod}
+                      onChange={(e) => {
+                        dispatch({type: 'SET_FIELD', field: 'rollingMethod', payload: e.target.value});
+                        dispatch({type: 'RANDOMIZE_STATS'});
+                      }}
+                      className="bg-transparent text-sm font-bold text-[#fbbf24] outline-none p-1 font-serif cursor-pointer hover:text-[#fcd34d]"
+                    >
+                      <option value="3d6">Classic (3d6)</option>
+                      <option value="4d6">Heroic (4d6 drop low)</option>
+                      <option value="pointBuy">Point Buy (25 pts)</option>
+                    </select>
+                    {state.rollingMethod !== 'pointBuy' && (
+                      <button onClick={() => dispatch({type: 'RANDOMIZE_STATS'})} className="p-1 text-[#a8a29e] hover:text-white transition-colors" title="Reroll">
+                        <RefreshCw size={16} />
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {state.rollingMethod === 'pointBuy' && (
+                  <div className="text-center text-sm font-bold text-[#b45309] mb-2 bg-[#fffbeb] py-2 rounded-sm border border-[#fcd34d] shadow-sm">
+                    Points Remaining: <span className="font-mono text-lg ml-2">{state.pointsRemaining}</span>
+                  </div>
+                )}
+
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {RULES.attributes.map(attr => {
+                    const baseScore = state.attributes[attr].score;
+                    const racialMod = state.race.mods[attr as keyof RaceMod] || 0;
+                    const totalScore = baseScore + racialMod;
+                    return (
+                      <div key={attr} className="bg-white rounded-sm p-1.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)] border border-[#d6d3d1]">
+                        <SiegeSwitch 
+                          attr={attr} 
+                          data={state.attributes[attr]} 
+                          isLocked={state.charClass.reqPrime.includes(attr)}
+                          mod={RULES.getMod(totalScore)}
+                          onToggle={() => dispatch({type: 'TOGGLE_PRIME', payload: {attr}})}
+                        />
+                        <div className="mt-3 px-2 pb-2 flex items-center gap-2">
+                           <button onClick={() => dispatch({type: 'UPDATE_ATTR_SCORE', payload: {attr, val: Math.max(3, baseScore - 1)}})} className="w-8 h-8 bg-[#f5f5f4] hover:bg-[#e7e5e4] text-[#57534e] rounded-sm flex items-center justify-center font-bold border border-[#d6d3d1] shadow-sm transition-colors">-</button>
+                           <div className="flex-1 text-center font-bold text-[#292524] text-2xl font-mono">{totalScore}</div>
+                           <button onClick={() => dispatch({type: 'UPDATE_ATTR_SCORE', payload: {attr, val: Math.min(19, baseScore + 1)}})} className="w-8 h-8 bg-[#f5f5f4] hover:bg-[#e7e5e4] text-[#57534e] rounded-sm flex items-center justify-center font-bold border border-[#d6d3d1] shadow-sm transition-colors">+</button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* 3. SPELLS */}
+            {state.activeTab === 'spells' && (
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="bg-[#faf5ff] border-l-4 border-[#9333ea] p-4 rounded-r-sm shadow-sm text-sm text-[#581c87] mb-4">
+                  <h3 className="font-bold flex items-center gap-2 font-serif text-lg"><Scroll size={20}/> Reforged Spell Names</h3>
+                  <p className="opacity-80 mt-1 italic">Spell names have been updated to match the Reforged Canon.</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {RULES.spells.filter(s => s.type === state.charClass.name || (state.charClass.name === 'Knight' ? false : s.type === 'General')).map(spell => {
+                    const known = state.knownSpells.some(k => k.name === spell.name);
+                    return (
+                      <button 
+                        key={spell.name}
+                        onClick={() => dispatch({type: known ? 'FORGET_SPELL' : 'LEARN_SPELL', payload: spell})}
+                        className={`flex items-center justify-between p-3 rounded-sm border transition-all text-left group ${known ? 'bg-[#f3e8ff] border-[#d8b4fe] text-[#6b21a8] shadow-inner' : 'bg-white border-[#e5e7eb] text-[#4b5563] hover:border-[#d1d5db] hover:shadow-sm'}`}
+                      >
+                        <div>
+                          <div className="font-bold text-sm font-serif">{spell.name}</div>
+                          <div className="text-[10px] opacity-70 mt-0.5 font-sans">Lvl {spell.level} • was <span className="italic">&quot;{spell.original}&quot;</span></div>
+                        </div>
+                        {known && <Check size={18} className="text-[#9333ea]" />}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* 4. SHOP */}
+            {state.activeTab === 'shop' && (
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="bg-[#292524] p-4 rounded-sm border-b-4 border-[#d97706] sticky top-0 z-10 shadow-lg flex justify-between items-center text-[#e7e5e4]">
+                  <div className="text-[#fbbf24] font-bold text-2xl font-serif">{state.gold} <span className="text-xs text-[#d97706] uppercase tracking-wider font-sans">gold in coin</span></div>
+                  <div className="flex-1 ml-8 text-right">
+                    <div className="text-xs text-[#a8a29e] mb-1 font-bold uppercase tracking-wider">Encumbrance (EV) <span className={isOverburdened ? 'text-[#ef4444]' : ''}>{currentEV} / {evCapacity}</span></div>
+                    <div className="h-2 bg-[#1c1917] rounded-full w-full overflow-hidden border border-[#44403c]"><div className={`h-full transition-all ${isOverburdened ? 'bg-[#ef4444]' : 'bg-[#10b981]'}`} style={{width: `${Math.min(100, (currentEV/evCapacity)*100)}%`}}></div></div>
+                  </div>
+                </div>
+
+                {RULES.classKits[state.charClass.id] && (
+                  <div className="bg-[#f0f9ff] border border-[#0ea5e9] p-4 rounded-sm mb-4 flex justify-between items-center shadow-sm">
+                    <div>
+                      <h3 className="font-bold text-[#0c4a6e] flex items-center gap-2 font-serif text-lg"><Package size={20}/> {RULES.classKits[state.charClass.id].name}</h3>
+                      <p className="text-xs text-[#0369a1] mt-1 italic">Includes standard starting gear for {state.charClass.name}.</p>
+                    </div>
+                    <button 
+                      onClick={() => dispatch({type: 'BUY_KIT', payload: RULES.classKits[state.charClass.id]})}
+                      disabled={state.gold < RULES.classKits[state.charClass.id].cost}
+                      className={`px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wider shadow-sm transition-all ${state.gold < RULES.classKits[state.charClass.id].cost ? 'bg-[#e5e7eb] text-[#9ca3af] cursor-not-allowed' : 'bg-[#0284c7] hover:bg-[#0369a1] text-white'}`}
+                    >
+                      Buy for {RULES.classKits[state.charClass.id].cost}
+                    </button>
+                  </div>
+                )}
+
+                {(['weapon', 'armor', 'shield', 'gear'] as const).map(cat => (
+                  <div key={cat} className="mb-6">
+                    <h3 className="text-xs font-bold uppercase text-[#78716c] mb-2 tracking-widest border-b border-[#d6d3d1] pb-1 font-serif">{cat}s</h3>
+                    <div className="grid grid-cols-1 gap-2">
+                      {RULES.equipment.filter(i => i.type === cat).map(item => (
+                        <button
+                          key={item.id}
+                          disabled={state.gold < item.cost}
+                          onClick={() => dispatch({type: 'BUY_ITEM', payload: item})}
+                          className={`flex justify-between items-center p-2.5 rounded-sm border transition-all text-sm group ${state.gold < item.cost ? 'opacity-50 bg-[#f5f5f4] border-[#e5e5e5] grayscale' : 'bg-white border-[#e7e5e4] hover:border-[#b45309] hover:shadow-sm'}`}
+                        >
+                          <div className="text-left">
+                            <span className="font-bold text-[#292524] block font-serif text-base">{item.name}</span>
+                            <span className="text-[10px] text-[#78716c] font-sans">EV {item.ev} • {item.cat}</span>
+                          </div>
+                          <span className="text-[#d97706] font-mono font-bold text-lg">{item.cost}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+          </div>
+        </div>
+
+        {/* RIGHT: LIVE SHEET */}
+        <div className={`
+            flex flex-col border-[#292524] bg-[#fdf6e3] overflow-y-auto text-[#292524] font-serif relative transition-all duration-300 ease-in-out
+            ${state.viewMode === 'builder' ? 'hidden' : 'flex'}
+            ${state.viewMode === 'split' ? 'w-full lg:w-2/5 border-l-4' : 'w-full'}
+        `}>
+          <div className="absolute inset-0 opacity-30 pointer-events-none mix-blend-multiply" style={{backgroundImage: 'url("https://www.transparenttextures.com/patterns/aged-paper.png")'}}></div>
+          
+          <div className="p-4 sm:p-8 min-h-full relative z-10 w-full">
+            
+            <div className="border-b-4 border-double border-[#292524] pb-4 mb-8">
+              <h1 className="text-4xl sm:text-5xl font-bold uppercase tracking-tight text-[#292524] leading-none" style={{textShadow: '1px 1px 0 #d6d3d1'}}>{state.name}</h1>
+              <div className="flex flex-wrap gap-2 sm:gap-4 mt-3 text-xs sm:text-sm text-[#57534e] font-sans uppercase tracking-widest font-bold">
+                <span>{state.race.name}</span>
+                <span className="text-[#d97706]">•</span>
+                <span>{state.charClass.name}</span>
+                <span className="text-[#d97706]">•</span>
+                <span>Level {state.level}</span>
+                <span className="text-[#d97706]">•</span>
+                <span className="text-[#b45309]">{state.disposition}</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-4 gap-2 sm:gap-4 mb-8 text-center font-sans">
+              <div className="bg-[#292524] text-[#e7e5e4] p-2 sm:p-3 rounded-sm shadow-[3px_3px_0px_0px_#78716c]">
+                <div className="text-2xl sm:text-3xl font-bold">{hp}</div>
+                <div className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-[#d97706] mt-1">HP</div>
+              </div>
+              <div className="bg-white text-[#292524] p-2 sm:p-3 rounded-sm border-2 border-[#292524] shadow-[3px_3px_0px_0px_#a8a29e]">
+                <div className="text-2xl sm:text-3xl font-bold">{10 + RULES.getMod(state.attributes.DEX.score + (state.race.mods.DEX||0)) + state.inventory.filter(i => i.type==='armor'||i.type==='shield').reduce((s,i)=>s+(i.ac||0),0)}</div>
+                <div className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-[#78716c] mt-1">AC</div>
+              </div>
+              <div className="bg-white text-[#292524] p-2 sm:p-3 rounded-sm border-2 border-[#292524] shadow-[3px_3px_0px_0px_#a8a29e]">
+                 <div className="text-2xl sm:text-3xl font-bold">{bth}</div>
+                 <div className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-[#78716c] mt-1">BTH</div>
+              </div>
+              <div className="bg-white text-[#292524] p-2 sm:p-3 rounded-sm border-2 border-[#292524] shadow-[3px_3px_0px_0px_#a8a29e]">
+                 <div className="text-2xl sm:text-3xl font-bold">{state.race.baseSpeed}</div>
+                 <div className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-[#78716c] mt-1">Move</div>
+              </div>
+            </div>
+
+            <div className="mb-8 border-2 border-[#292524] p-4 bg-white rounded-sm shadow-sm">
+              <div className="flex justify-between items-center border-b-2 border-[#292524] mb-3 pb-2">
+                <h3 className="text-sm font-bold uppercase tracking-widest text-[#292524]">Siege Engine</h3>
+                <div className="h-5 w-20 opacity-80">
+                    <LogoSiege />
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-2 text-sm">
+                {RULES.attributes.map(attr => {
+                  const val = state.attributes[attr].score + (state.race.mods[attr as keyof RaceMod]||0);
+                  const mod = RULES.getMod(val);
+                  const totalBonus = mod + state.level;
+                  const base = state.attributes[attr].prime ? 12 : 18;
+
+                  return (
+                    <div key={attr} className="flex justify-between items-center border-b border-dotted border-[#d6d3d1] last:border-0 py-1.5">
+                      <div className="flex items-center gap-1 sm:gap-2">
+                        <div className={`w-2.5 h-2.5 rotate-45 ${state.attributes[attr].prime ? 'bg-[#d97706]' : 'bg-[#d6d3d1]'} border border-[#292524]`} />
+                        <span className={`font-bold text-base ${state.attributes[attr].prime ? 'text-[#292524]' : 'text-[#78716c]'}`}>
+                            {attr}
+                        </span>
+                        <span className="text-xs font-mono text-[#78716c]">[{state.attributes[attr].score}]</span>
+                      </div>
+                      
+                      <div className="text-right">
+                        <div className="flex items-center gap-2 sm:gap-4">
+                            <div className="flex flex-col items-end">
+                                <span className="text-[9px] text-[#a8a29e] uppercase leading-none font-bold">Bonus</span>
+                                <span className="font-mono font-bold text-[#292524] text-lg">
+                                    {totalBonus >= 0 ? `+${totalBonus}` : totalBonus}
+                                </span>
+                            </div>
+
+                            <div className="flex flex-col items-end w-8">
+                                <span className="text-[9px] text-[#a8a29e] uppercase leading-none font-bold">Base</span>
+                                <span className={`font-mono font-bold text-lg ${state.attributes[attr].prime ? 'text-[#d97706]' : 'text-[#a8a29e]'}`}>
+                                    {base}
+                                </span>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="mb-8">
+              <h3 className="text-sm font-bold uppercase border-b-2 border-[#292524] mb-3 pb-1 text-[#292524] tracking-widest">Attacks</h3>
+              <div className="space-y-2">
+                {state.inventory.filter(i=>i.type==='weapon').map(w => (
+                  <div key={w.name} className="flex justify-between text-base bg-white p-2 border border-[#e7e5e4] shadow-sm">
+                    <span className="font-bold text-[#451a03]">{w.name}</span>
+                    <span className="font-mono font-bold text-[#292524]">{w.dmg}</span>
+                  </div>
+                ))}
+                {state.inventory.filter(i=>i.type==='weapon').length===0 && <div className="text-sm italic text-[#78716c] p-2">Unarmed (1d2)</div>}
+              </div>
+            </div>
+
+            <div className="mb-8">
+              <h3 className="text-sm font-bold uppercase border-b-2 border-[#292524] mb-3 pb-1 text-[#292524] tracking-widest">Equipment</h3>
+              <p className="text-sm leading-relaxed text-[#292524] font-medium">
+                {state.inventory.filter(i => i.type === 'armor' || i.type === 'shield').length > 0 && 
+                  <>He wears <span className="font-bold">{state.inventory.filter(i => i.type === 'armor' || i.type === 'shield').map(i => i.name.toLowerCase()).join(', ')}</span>. </>
+                }
+                He carries {state.inventory.filter(i => i.type !== 'armor' && i.type !== 'shield').map(i => i.name.toLowerCase()).join(', ')}
+                {state.inventory.length > 0 ? ', and ' : ''}<span className="text-[#b45309] font-bold">{state.gold} gold in coin</span>.
+              </p>
+            </div>
+            
+            {state.knownSpells.length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-sm font-bold uppercase border-b-2 border-[#292524] mb-3 pb-1 text-[#292524] tracking-widest">Grimoire</h3>
+                <div className="text-sm italic text-[#451a03] bg-[#fffbeb] p-3 border border-[#fcd34d] rounded-sm">
+                  {state.knownSpells.map(s => s.name).join(', ')}
+                </div>
+              </div>
+            )}
+
+            <ReforgedBlock text={generateReforgedBlock(state)} />
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
