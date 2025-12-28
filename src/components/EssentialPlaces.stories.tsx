@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import type { Meta, StoryObj } from '@storybook/react';
 import { FullDocumentPipeline } from './FullDocumentPipeline';
 import { essentialPlacesAnalysis } from './mocks/essential-places.mock';
 
