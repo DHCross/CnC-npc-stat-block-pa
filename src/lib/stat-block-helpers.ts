@@ -40,7 +40,7 @@ export function normalizeDisposition(value: string): string {
   // If the input used explicit ordering (e.g., "good law" or "law/good"),
   // preserve the author's primary/secondary order when possible.
   const tokens = raw
-    .replace(/[\/]+/g, ' / ')
+    .replace(/\/+/g, ' / ')
     .split(/\s+/)
     .filter(Boolean)
     .map(t => t.trim());
