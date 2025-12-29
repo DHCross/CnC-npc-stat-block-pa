@@ -36,10 +36,10 @@
   ],
   "exclude": [
     "node_modules",
+    "**/*.stories.*",
+    "**/.storybook/**",
     "tmp/**",
-    "tmp_*.ts",
-    "vite.config.ts",
-    "**/*.stories.ts",
-    "**/*.stories.tsx"
+    "tmp_debug_*.ts",
+    "vite.config.ts"
   ]
 }

@@ -942,7 +942,7 @@ type CharacterAction =
 // --- HELPER: REFORGED TEXT GENERATOR ---
 
 const generateReforgedBlock = (state: CharacterState): string => {
-  const { name, race, charClass, level, attributes, inventory, disposition, gold } = state;
+  const { race, charClass, level, attributes, inventory, disposition, gold } = state;
 
   const conMod = RULES.getMod(attributes.CON.score + (race.mods.CON || 0));
   const hp = Math.max(1, (charClass.hd + conMod) * level);
@@ -1162,7 +1162,7 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
       setPrimary(value);
       setSecondary('None');
     }
-  }, []);
+  }, [value]);
 
   useEffect(() => {
     let newVal = primary;
@@ -1184,7 +1184,25 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
     }
   }, [primary, secondary, value, onChange, charClass, deityDisposition]);
 
-  const options = ['Law', 'Chaos', 'Good', 'Evil', 'Neutral'];
+  const coreOptions = ['Law', 'Chaos', 'Good', 'Evil', 'Neutral'];
+  
+  // Tendency options depend on core selection to avoid redundancy
+  const getTendencyOptions = () => {
+    switch (primary) {
+      case 'Law':
+        return ['Good', 'Evil', 'Neutral'];
+      case 'Chaos':
+        return ['Good', 'Evil', 'Neutral'];
+      case 'Good':
+        return ['Lawful', 'Chaotic', 'Neutral'];
+      case 'Evil':
+        return ['Lawful', 'Chaotic', 'Neutral'];
+      case 'Neutral':
+        return ['Lawful', 'Chaotic', 'Good', 'Evil'];
+      default:
+        return ['Law', 'Chaos', 'Good', 'Evil', 'Neutral'];
+    }
+  };
 
   return (
     <div className="bg-[#f5f5f4] p-3 rounded-sm border-2 border-[#d6d3d1] shadow-inner">
@@ -1192,7 +1210,7 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
         <div className="flex-1">
           <div className="text-[10px] uppercase font-bold text-[#78716c] mb-1">Core Outlook</div>
           <div className="flex flex-col gap-1">
-            {options.map(opt => (
+            {coreOptions.map(opt => (
               <button 
                 key={opt}
                 onClick={() => setPrimary(opt)}
@@ -1217,7 +1235,7 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
               >
                 None (Pure)
             </button>
-            {options.map(opt => (
+            {getTendencyOptions().map(opt => (
               <button 
                 key={opt}
                 onClick={() => setSecondary(opt)}
