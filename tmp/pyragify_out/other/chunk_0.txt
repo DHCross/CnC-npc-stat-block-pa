@@ -1,0 +1,481 @@
+File: test-spell-debug.js
+Content:
+import { convertLegacySpellText } from './src/lib/spell-converter.ts';
+
+const input = `**Arrest Motion** **(Chr) (Roan** **ot** **Kepulch)**
+
+CT 1R 150ft.D 1 rd./lvl.
+
+SV see belowSR yesComp S
+
+Arrest motion stops objects in motion or keeps them from moving, if already motionless.
+
+The targets are held exactly as they are when the rune is activated.`;
+
+console.log('Input:', input);
+const results = convertLegacySpellText(input);
+console.log('Results:', JSON.stringify(results, null, 2));
+
+
+File: Official CNC-npc-stat-block-pa.code-workspace
+Content:
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
+
+File: test-v3-classifier.ts
+Content:
+/**
+ * Test Version 3.0 5-Step Classification Hierarchy
+ * 
+ * Validates classifyEntityV3() against known test cases
+ */
+
+import { classifyEntityV3, type SignalExtractionContext } from './src/lib/classification-rules';
+import type { CanonicalData } from './src/lib/canonical-data-mapper';
+
+// Test cases covering all 5 steps of the hierarchy
+const testCases = [
+  {
+    name: 'STEP 1: Goblin Shaman (Spellcaster)',
+    creature: 'Goblin Shaman',
+    canonical: {
+      name: 'Goblin Shaman',
+      level: null,
+      hd: '3d8',
+      hp: 15,
+      ac: 14,
+      disposition: 'chaotic evil',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {
+      spells: 'cleric spells per day: 3/2/1'
+    },
+    expected: {
+      format: 'A',
+      reasoning: 'Spellcaster'
+    }
+  },
+  {
+    name: 'STEP 2a: Ember Raventree (Class Keyword)',
+    creature: 'Ember Raventree',
+    canonical: {
+      name: 'Ember Raventree',
+      level: '4th level fighter',
+      hd: null,
+      hp: 22,
+      ac: 16,
+      disposition: 'chaotic neutral',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {
+      raceClass: '4th level fighter'
+    },
+    expected: {
+      format: 'A',
+      reasoning: 'Class: fighter'
+    }
+  },
+  {
+    name: 'STEP 2b: Orc Captain (Rank Title)',
+    creature: 'Orc Captain',
+    canonical: {
+      name: 'Orc Captain',
+      level: null,
+      hd: '3d8',
+      hp: 15,
+      ac: 16,
+      disposition: 'chaotic evil',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {},
+    expected: {
+      format: 'A',
+      reasoning: 'Rank: captain'
+    }
+  },
+  {
+    name: 'STEP 2b: Bandit Lieutenant (Rank Title - bandit with rank)',
+    creature: 'Bandit Lieutenant',
+    canonical: {
+      name: 'Bandit Lieutenant',
+      level: null,
+      hd: '2d8',
+      hp: 14,
+      ac: 14,
+      disposition: 'neutral evil',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {},
+    expected: {
+      format: 'A',
+      reasoning: 'Rank: lieutenant'
+    }
+  },
+  {
+    name: 'STEP 3: Marcus the Human Wizard (Named Humanoid with Class)',
+    creature: 'Marcus',
+    canonical: {
+      name: 'Marcus',
+      level: '5th level human wizard',
+      hd: null,
+      hp: 20,
+      ac: 13,
+      disposition: 'lawful good',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {
+      raceClass: '5th level human wizard',
+      spells: 'wizard spells'
+    },
+    expected: {
+      format: 'A',
+      reasoning: 'Spellcaster' // Spells takes priority over Named+Humanoid
+    }
+  },
+  {
+    name: 'STEP 4: Goblin Guards x 4 (Unit)',
+    creature: 'Goblin Guards x 4',
+    canonical: {
+      name: 'Goblin Guards',
+      level: null,
+      hd: '1d8',
+      hp: 4,
+      ac: 14,
+      disposition: 'lawful evil',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {},
+    expected: {
+      format: 'C',
+      reasoning: 'Unit'
+    }
+  },
+  {
+    name: 'STEP 5: Ape, Carnivorous (Monster)',
+    creature: 'Ape, carnivorous',
+    canonical: {
+      name: 'Ape',
+      level: null,
+      hd: '4d10',
+      hp: 23,
+      ac: 15,
+      disposition: 'neutrality',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {},
+    expected: {
+      format: 'B',
+      reasoning: 'Monster'
+    }
+  },
+  {
+    name: 'STEP 5: Wily Wil (Named Non-Humanoid - remains Monster)',
+    creature: 'Wily Wil, Giant of the Hill',
+    canonical: {
+      name: 'Wily Wil',
+      level: null,
+      hd: '9d12',
+      hp: 63,
+      ac: 17,
+      disposition: 'chaotic neutral',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {},
+    expected: {
+      format: 'B',
+      reasoning: 'Monster' // Named but not humanoid
+    }
+  },
+  {
+    name: 'STEP 5: Pinky the Owlbear (Named Non-Humanoid)',
+    creature: 'Pinky the Owlbear',
+    canonical: {
+      name: 'Pinky',
+      level: null,
+      hd: '5d10',
+      hp: 30,
+      ac: 15,
+      disposition: 'neutral',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {},
+    expected: {
+      format: 'B',
+      reasoning: 'Monster'
+    }
+  },
+  {
+    name: 'Override: Bandit (no rank - default to Monster)',
+    creature: 'Bandit',
+    canonical: {
+      name: 'Bandit',
+      level: null,
+      hd: '1d6',
+      hp: 4,
+      ac: 13,
+      disposition: 'neutral evil',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {},
+    expected: {
+      format: 'B',
+      reasoning: 'Monster' // Bandit without rank is Monster
+    }
+  }
+  ,
+  {
+    name: 'Regression: Elf, Wood, Bowman (generic monster with class keyword)',
+    creature: 'Elf, Wood, Bowman',
+    canonical: {
+      name: 'Elf, Wood, Bowman',
+      level: null,
+      hd: '1d10',
+      hp: 8,
+      ac: 12,
+      disposition: 'chaotic neutral',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {},
+    expected: {
+      format: 'B',
+      reasoning: 'Monster'
+    }
+  },
+  {
+    name: 'Regression: Losel sub-chiefs x 10 (unit with HD)',
+    creature: 'Losel sub-chiefs x 10',
+    canonical: {
+      name: 'Losel sub-chiefs',
+      level: null,
+      hd: '2d8+4',
+      hp: 16,
+      ac: 13,
+      disposition: 'neutral evil',
+      primaryAttributes: null,
+      equipment: null,
+      coins: null
+    },
+    context: {},
+    expected: {
+      format: 'C',
+      reasoning: 'Unit'
+    }
+  }
+];
+
+console.log('=== Version 3.0 5-Step Classification Test ===\n');
+
+let passed = 0;
+let failed = 0;
+
+testCases.forEach(testCase => {
+  console.log(`Testing: ${testCase.name}`);
+  
+  const result = classifyEntityV3(
+    testCase.creature,
+    testCase.canonical as CanonicalData,
+    testCase.context
+  );
+  
+  const errors: string[] = [];
+  
+  // Check format
+  if (result.format !== testCase.expected.format) {
+    errors.push(`  ✗ Format: expected ${testCase.expected.format}, got ${result.format}`);
+  }
+  
+  // Check reasoning contains expected keywords
+  if (!result.reasoning.toLowerCase().includes(testCase.expected.reasoning.toLowerCase())) {
+    errors.push(`  ✗ Reasoning: expected to contain "${testCase.expected.reasoning}", got "${result.reasoning}"`);
+  }
+  
+  if (errors.length === 0) {
+    console.log(`  ✓ Format ${result.format}: ${result.reasoning}`);
+    passed++;
+  } else {
+    console.log(errors.join('\n'));
+    console.log(`  Got: Format ${result.format}: ${result.reasoning}`);
+    failed++;
+  }
+  console.log('');
+});
+
+console.log('=== Results ===');
+console.log(`Passed: ${passed}/${testCases.length}`);
+console.log(`Failed: ${failed}/${testCases.length}`);
+
+if (failed > 0) {
+  process.exit(1);
+}
+
+
+File: test-input.txt
+Content:
+Men-at-Arms, Bowmen x6 (these 2ⁿᵈ level human fighters' vital stats are HP 12, AC 15, disposition neutral. PA physical. they wear chain mail and carry longbows, longswords, belt axes, and carry 2–12 gold in coin. they carry medium steel shields.)
+
+Unknown chunk type:
+{'header': '# Index Builder Status Report', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '## Current Results', 'content': '\n**Input**: 123 cleaned encounter entries  \n**Output**: 94 unique stat blocks  \n**Reduction**: 23.6%\n\n'}
+
+Unknown chunk type:
+{'header': '### Gold Standard Compliance', 'content': '✅ No quantity suffixes (x N)  \n✅ No markdown formatting  \n⚠️ Still contains some NPCs and invalid entries  \n⚠️ Creating "variant" entries for HP differences  \n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Remaining Issues', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### 1. Non-Monster Entries Still Present', 'content': '```\n❌ "(fisherman/hunter/trapper/woodcutter)" - occupation descriptor\n❌ "Children" - not a monster\n❌ "Brigand," - trailing comma artifact\n❌ "Elf, Wood, bowman/spearman/swordsman" - NPC class types\n❌ "Fekk" - NPC name\n❌ "Ember Raventree" - NPC name\n```\n\n'}
+
+Unknown chunk type:
+{'header': '### 2. Too Many "Variant" Entries', 'content': 'Created 20+ "(variant N)" entries for creatures that differ only in HP roll.\n\n**Example: Goblins**\n- Goblin prisoner: 1d6, HP 4, AC 14\n- Goblin males: 1d6, HP 3, AC 14  \n- Goblin females: 1d6, HP 2, AC 12\n- Goblin patrol: 1d6, HP 4, AC 14\n- Goblin warriors: 1d6, HP 4, AC 14\n\n**Should consolidate to**:\n- Goblin, raider (base type)\n- Goblin, leader (corporal) (different HD: 3d6+2)\n- Goblin shaman (different HD: 4d6)\n\nThe issue: Different encounter instances have different HP **rolls** from same HD, not different **stat blocks**.\n\n'}
+
+Unknown chunk type:
+{'header': '### 3. Male/Female Distinction', 'content': '\nSource shows:\n- Goblin males: AC 14\n- Goblin females: AC 12\n\nThis is a mechanical difference, BUT:\n- For an index, we list "Goblin, raider" as the base stat block\n- The male/female AC difference is encounter-specific detail\n- Not separate index entries\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## What Gold Standard Index SHOULD Look Like', 'content': '\nEstimate: **~40-60 unique stat blocks**\n\n'}
+
+Unknown chunk type:
+{'header': '### Breakdown by Type', 'content': '\n**Animals** (~10)\n- Ape, carnivorous\n- Bat, cave\n- Bat, giant cave\n- Bear, black  \n- Boar, wild\n- Lion (mountain, forest)\n- Otter, giant\n- Owlbear (small)\n- Turtle, Huge Snapping\n- Wolf, Grey\n- Wolverine (small, normal)\n\n**Humanoids - Base Types** (~10)\n- Bugbear\n- Gnoll\n- Goblin, raider\n- Goblin, leader (corporal)\n- Hobgoblin\n- Kobold\n- Lizardfolk\n- Losel\n- Orc\n\n**Humanoids - Named Leaders** (~10)\n- Blook-glook (Batrachianoid Chieftain)\n- Grimlock Manface (Losel Chieftain)\n- Gruzz Kree (Goblin Chieftain)\n- Hub-Gub the Bloody (Hobgoblin Chieftain)\n- King Griggle-gruk (Kobold Chieftain)\n- King Krusher (Orc Leader)\n- Yeexuul (Gnoll Chieftain)\n- Ji\'gun-tima (Losel Shaman)\n- Goblin shaman\n- Orc lieutenant\n\n**Special Creatures** (~8)\n- Batrachianoid\n- Griffon\n- Harpy\n- Naga, Water\n- Nixie (sprite)\n- "Charlie" the Ogre\n- "Pinky" the Owlbear  \n- Wily Wil, Giant of the Hill\n\n**Vermin/Insects** (~5)\n- Centipede, Black, Giant\n- Fire Beetles, Giant\n- Rat, River (giant)\n- Spider, Giant (medium-sized)\n- Stirge\n- Tick, Giant\n\n**Undead** (~3)\n- Ghoul\n- Skeleton\n- Zombie\n\n**Oozes** (~2)\n- Gray Ooze (small)\n- Green slime\n\n**Snakes** (~2)\n- Snake, poisonous\n- Snake, poisonous (deadly)\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## What Needs to Happen', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Phase 1: Better NPC Filtering', 'content': '- Remove all entries with "(fisherman/hunter/...)" pattern\n- Remove "Children"\n- Remove "Elf, Wood, [class]" patterns (these are classed NPCs)\n- Remove proper-name NPCs without monster descriptors\n- Keep "Charlie" the Ogre, "Pinky" the Owlbear (unique monsters with names)\n- Keep all "[Name] (Chieftain/Leader/Shaman)" (boss monsters)\n\n'}
+
+Unknown chunk type:
+{'header': '### Phase 2: Smart Deduplication', 'content': 'Current logic creates variants for HP differences.\nShould only create variants for:\n- Different HD (1d6 vs 2d6 vs 3d6+2)\n- Different AC baseline\n- Different race/class descriptor\n\nDo NOT create variants for:\n- Same HD, different HP roll\n- Population descriptors (males, females, guards)\n\n'}
+
+Unknown chunk type:
+{'header': '### Phase 3: Preserve Type Descriptors', 'content': 'Keep creature-defining descriptors:\n- "raider", "leader", "corporal"\n- "poisonous", "poisonous (deadly)"\n- "giant", "small", "huge"\n- "cave", "forest", "mountain"\n\nRemove population descriptors:\n- "males", "females"\n- "guards", "sentries", "warriors"\n- "patrol", "prisoners"\n- Quantity suffixes (already done)\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Expected Final Count', 'content': '\nBased on manual review: **~50 unique stat blocks**\n\nThis represents the true monster index for the Mouths of Madness module.\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Next Action', 'content': '\nRevise `build_canonical_index.cjs` with:\n1. Stricter NPC filtering\n2. Smarter variant detection (HD/AC-based, not HP-based)\n3. Better preservation of type descriptors  \n4. Manual review of output to verify quality\n'}
+
+Unknown chunk type:
+{'header': '# Changelog', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '## 2025-10-14', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Bug Fixes', 'content': '- **Fixed: Attributes being collapsed to "physical" or "mental"**\n  - Issue: Parser was converting specific attributes (strength, dexterity, etc.) to generic "physical" or "mental" labels\n  - Root cause: `normalizeAttributes()` in `enhanced-parser.ts` was defaulting to prime type designations\n  - Fix: Modified logic to preserve and list specific attribute names in PHB order\n  - Now properly outputs: "strength, dexterity, and constitution" instead of "physical"\n  - Only uses "physical" or "mental" if explicitly stated in the input text\n  - Applies to both classed NPCs (when no scores provided) and unclassed units\n\n'}
+
+Unknown chunk type:
+{'header': '### Development Experiments', 'content': "- **Attempted Jules API Integration (Reverted)**\n  - Explored integrating Google's Jules AI API for developer assistance\n  - Created chat interface UI components (`JulesChat.tsx`, `dialog.tsx`, `scroll-area.tsx`)\n  - Added API route (`/api/jules/route.ts`) with environment variable configuration\n  - **Discovery**: Jules API is session-based and designed for GitHub repository automation (creating PRs, fixing bugs), not real-time chat\n  - **Decision**: Removed integration as it didn't match the intended use case\n  - Cleaned up UI components and removed Dev button from footer\n\n"}
+
+Unknown chunk type:
+{'header': '### UI Components Added (Available for Future Use)', 'content': '- Implemented Radix UI Dialog component (`src/components/ui/dialog.tsx`)\n- Implemented Radix UI Scroll Area component (`src/components/ui/scroll-area.tsx`)\n- These remain available for future features requiring modal dialogs or scrollable content\n\n'}
+
+Unknown chunk type:
+{'header': '### Lessons Learned', 'content': '- Jules API uses `X-Goog-Api-Key` header authentication (not Bearer tokens)\n- Base URL: `https://jules.googleapis.com/v1alpha/`\n- API structure: Sources (repos) → Sessions (tasks) → Activities (work updates)\n- Not all AI APIs are designed for conversational chat interfaces\n- Alternative APIs for chat: OpenAI GPT, Anthropic Claude, Google Gemini, GitHub Copilot Chat\n\n'}
+
+Unknown chunk type:
+{'header': '## 2025-09-20', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Tooling & Workflow Improvements', 'content': ' Documented the process for installing dependencies with the `-W` flag in Yarn workspaces.\n'}
+
+Unknown chunk type:
+{'header': '## 2025-09-19', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Major Enhancements', 'content': '- Relaxed parser to accept parenthetical/prose NPC input:\n\t- Accepts HP/AC in parentheses after bold title\n\t- Parses disposition from "He is a/an ..." and "They are a/an ..."\n\t- Extracts equipment from prose ("He carries ...") and normalizes/italicizes items\n\t- Detects mounts from "rides a/an ..." and generates canonical warhorse block\n\t- Block detection now accepts title + parenthetical + prose body\n- Editorial enforcement (italics, PHB order, shield normalization, PHB renames, complete sentences) still applied\n- Added comprehensive test for flexible input (Sir Reynard example); all 20 tests passing\n\n'}
+
+Unknown chunk type:
+{'header': '### Lessons Learned', 'content': '- Prose parsing requires robust title/body splitting and flexible regexes\n- Editorial standards can be enforced even with permissive input\n- Test-driven development ensures reliability for both strict and flexible formats\n'}
+
+Unknown chunk type:
+{'header': '# Full Document Pipeline - Testing Guide', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '## 🧪 Standalone Submodule for Document Processing', 'content': '\nThis is an **isolated, testable submodule** that processes full bestiary documents (like Mouths of Madness) without being wired into the main app yet.\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## 📁 Files Created', 'content': '\n```\nsrc/\n├── types/\n│   └── document-pipeline.ts          # TypeScript interfaces\n├── lib/\n│   └── full-document-pipeline.ts     # Core processing logic\n├── components/\n│   └── FullDocumentPipeline.tsx      # React UI component\n└── app/\n    └── test/\n        └── document-pipeline/\n            └── page.tsx               # Test route (isolated)\n\ntest/\n└── full-document-pipeline.test.ts    # Unit tests\n```\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## 🚀 How to Test', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### **Option 1: Test Route (Visual Testing)**', 'content': '\n1. **Start the dev server**:\n   ```bash\n   npm run dev\n   ```\n\n2. **Navigate to the test route**:\n   ```\n   http://localhost:3000/test/document-pipeline\n   ```\n\n3. **Test with your data**:\n   - Click "Upload File" and select `CnC Docs/mouths-of-madness-canonical-clean.md`\n   - Or click "Load Example" to see it work with sample data\n   - Click "Process Document"\n\n4. **Explore results**:\n   - **Summary tab**: Document stats, compliance score, AC/HP ranges\n   - **Creatures tab**: Individual parsed creatures with validation\n   - **Export tab**: Download as Markdown, CSV, HTML, or JSON\n\n'}
+
+Unknown chunk type:
+{'header': '### **Option 2: Unit Tests (Logic Testing)**', 'content': '\nRun the test suite:\n```bash\nnpm test test/full-document-pipeline.test.ts\n```\n\nThis tests:\n- ✅ Creature extraction from markdown\n- ✅ Parsing individual entries\n- ✅ Statistics generation\n- ✅ Anomaly detection\n- ✅ Full document analysis pipeline\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## 🎯 What It Does', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### **1. Extraction**', 'content': '- Scans markdown for numbered creature headers: `### 1. Creature Name`\n- Extracts stat block content for each entry\n- Handles special formatting (bold, asterisks, etc.)\n\n'}
+
+Unknown chunk type:
+{'header': '### **2. Parsing**', 'content': '- Uses your existing `processDumpWithValidation()` from `npc-parser.ts`\n- Applies the 23-point validation system\n- Extracts creature type (e.g., "Goblin, raider" → "Goblin")\n\n'}
+
+Unknown chunk type:
+{'header': '### **3. Statistics**', 'content': '- Creature type frequency (how many Goblins, Orcs, etc.)\n- AC/HP ranges (min, max, mean, median)\n- Disposition distribution\n- Equipment & spell frequency\n- Compliance scores per creature\n\n'}
+
+Unknown chunk type:
+{'header': '### **4. Validation**', 'content': '- Per-creature validation (standard 23 checks)\n- Cross-entry consistency checks\n- Statistical anomaly detection (outliers, inconsistencies)\n- Batch-level recommendations\n\n'}
+
+Unknown chunk type:
+{'header': '### **5. Export**', 'content': '- **Markdown**: Clean bestiary with stats & validation\n- **CSV**: Spreadsheet-friendly creature table\n- **HTML**: Styled web page for viewing/printing\n- **JSON**: Full data structure for tooling\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## 📊 Example Output', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Stats from Mouths of Madness:', 'content': '```\nTotal Creatures: 129\nSuccess Rate: 98%\nAC Range: 10-19 (avg: 14)\nHP Range: 1-63 (avg: 12)\n\nCreature Types:\n- Goblin: 15\n- Orc: 8\n- Kobold: 12\n- Bandit: 4\n...\n```\n\n'}
+
+Unknown chunk type:
+{'header': '### Validation Report:', 'content': '```\nOverall Compliance: 87%\nTotal Issues: 42\nCritical Issues: 3\n\nRecommendations:\n- Use auto-correction for common formatting issues\n- Review 3 critical errors before publication\n- 5 statistical anomalies detected\n```\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## 🔧 Architecture', 'content': '\n```\nUser Input (Markdown)\n    ↓\nextractCreatureEntries()  ← Parse headers, split entries\n    ↓\nparseCreatureBlock()      ← Delegate to existing NPC parser\n    ↓\nanalyzeFullDocument()     ← Orchestrate full pipeline\n    ↓\n    ├─ generateDocumentStatistics()\n    ├─ detectAnomalies()\n    └─ validateDocumentBatch()\n    ↓\nexportCreatures()         ← Format output (MD, CSV, HTML, JSON)\n```\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## 🧩 Integration (Future)', 'content': '\nWhen ready to integrate into the main app:\n\n1. **Add a new tab** in `src/App.tsx`:\n   ```tsx\n   <TabsTrigger value="full-doc">Full Document</TabsTrigger>\n   ```\n\n2. **Import the component**:\n   ```tsx\n   import { FullDocumentPipeline } from \'@/components/FullDocumentPipeline\';\n   ```\n\n3. **Add tab content**:\n   ```tsx\n   <TabsContent value="full-doc">\n     <FullDocumentPipeline />\n   </TabsContent>\n   ```\n\n4. **Delete the test route**:\n   ```bash\n   rm -rf src/app/test/document-pipeline\n   ```\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## ✅ Testing Checklist', 'content': '\n- [ ] Upload mouths-of-madness-canonical-clean.md\n- [ ] Verify all 129+ creatures are extracted\n- [ ] Check statistics are accurate (AC/HP ranges, creature counts)\n- [ ] Review validation report for anomalies\n- [ ] Export as Markdown and verify output\n- [ ] Export as CSV and open in Excel/Google Sheets\n- [ ] Run unit tests: `npm test test/full-document-pipeline.test.ts`\n- [ ] Test with east-mark-canonical.md\n- [ ] Test with malformed/incomplete data\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## 🐛 Known Limitations', 'content': '\n- XP/CR calculation is placeholder (needs proper formula)\n- Equipment parsing is basic (splits by comma)\n- Spell detection only checks presence, not details\n- Anomaly detection is conservative (can be enhanced)\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## 📝 Next Steps', 'content': '\n1. Test with your real data (Mouths of Madness, East Mark)\n2. Refine extraction regex if needed for edge cases\n3. Add more statistical insights (CR distribution, encounter balance)\n4. Enhance anomaly detection rules\n5. Integrate into main app when satisfied\n6. Delete test route before production\n\n---\n\n**Happy testing! 🎲**\n'}
+

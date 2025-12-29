@@ -1,0 +1,63 @@
+id: cnc
+name: Castles & Crusades (C&C) Adapter
+version: 0.1.0
+
+description: |
+  Adapter manifest describing how Castles & Crusades stat blocks should be converted
+  into canonical JSON/Markdown for tests and UI previews. This adapter must remain
+  isolated from the runtime `src/` code unless explicitly requested.
+
+maintainer:
+  name: DHCross
+  contact: https://github.com/DHCross/CnC-npc-stat-block-pa/issues
+
+metadata:
+  repo: CnC-npc-stat-block-pa
+  system: cnc
+  adapter_type: primary_system
+  status: active
+
+inputs:
+  - name: CnC stat blocks
+    glob: "system-profiles/CnC/**/*.md"
+    required: true
+    description: "Canonical or sample CnC inputs used for testing and preview."
+
+  - name: Storybook mock (optional)
+    glob: "src/components/mocks/cnc-sample.mock.ts"
+    required: false
+    description: "Optional UI mock for Storybook preview."
+
+outputs:
+  - name: canonical-json
+    pattern: "system-profiles/CnC/out/*.canonical.json"
+    format: json
+    description: "Canonicalized stat-block outputs for tests and CI."
+
+behavioral_constraints:
+  - "No spell expansion: NPC spell lists must remain reference-only. Do not insert spell descriptions or conversion into NPC outputs. (Spell Converter is a separate, descriptive tool.)"
+  - "Do not rewrite names into descriptive prose. Preserve CnC names; store canonical alias lookups in metadata only."
+  - "Clear separation: adapter logic lives under `system-profiles/CnC/` and must not import `src/` unless this is the official C&C adapter for the runtime and approved by the maintainers."
+  - "Determinism: JSON outputs are deterministic and reproducible; do not include timestamps or random IDs."
+
+validation_harness:
+  description: "Adapter tests for classification, parsing, and the no-expansion rule."
+  test_files:
+    - "src/test/cnc-classifier.test.ts"
+    - "src/test/no-expansion-of-npc-spells.test.ts"
+  expected_assertions:
+    - "Creature parsing: hp/ac extraction and classification."
+    - "NPCs: class & level detection."
+    - "No expansion of NPC spell lists; canonical outputs list reference names only."
+
+test_entry_point:
+  - "npx vitest run src/test/cnc-classifier.test.ts"
+  - "npx vitest run src/test/no-expansion-of-npc-spells.test.ts"
+
+notes:
+  - "Contribute new CnC samples into `system-profiles/CnC/` and reference them in PRs for adapter changes."
+  - "Adapters may include `system-profiles/CnC/scripts/` for local previews, but do not add to `src/` unless explicitly requested."
+
+reviewers:
+  - role: adapter-maintainer
+    name: DHCross

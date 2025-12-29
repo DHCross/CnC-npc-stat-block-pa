@@ -1,0 +1,675 @@
+File: generate-mouths-mock.ts
+Content:
+import fs from 'fs';
+import path from 'path';
+import { analyzeFullDocument } from '@/lib/full-document-pipeline';
+
+async function main() {
+  const cwd = process.cwd();
+  
+  // Load canonical data if available
+  const canonicalPath = path.join(cwd, 'data', 'mouths-of-madness', 'entities.canonical.json');
+  let canonicalData: any[] = [];
+  if (fs.existsSync(canonicalPath)) {
+    try {
+      canonicalData = JSON.parse(fs.readFileSync(canonicalPath, 'utf8'));
+      console.log(`Loaded ${canonicalData.length} canonical entries from entities.canonical.json`);
+    } catch (err) {
+      console.warn('Failed to load canonical data:', err);
+    }
+  }
+  
+  // Load canonical report for accurate validation metrics
+  const reportPath = path.join(cwd, 'data', 'mouths-of-madness', 'canonical_report.json');
+  let canonicalReport: any = null;
+  if (fs.existsSync(reportPath)) {
+    try {
+      canonicalReport = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+      console.log(`Loaded canonical report with ${canonicalReport.flagged?.length || 0} flagged items`);
+    } catch (err) {
+      console.warn('Failed to load canonical report:', err);
+    }
+  }
+  
+  // Try to find the mouths-of-madness canonical file in 'CnC Docs' folder
+  // Prefer mouths-of-madness-canonical-clean.md without date suffix
+  const docsDirCandidates = [path.join(cwd, 'CnC Docs'), path.join(cwd, 'CnC-Docs'), path.join(cwd, 'CnC Docs/')];
+  let filePath = '';
+  for (const dir of docsDirCandidates) {
+    if (!fs.existsSync(dir)) continue;
+    // Try exact match first
+    const preferredFile = path.join(dir, 'mouths-of-madness-canonical-clean.md');
+    if (fs.existsSync(preferredFile)) {
+      filePath = preferredFile;
+      break;
+    }
+    // Fall back to any canonical file
+    const files = fs.readdirSync(dir);
+    const candidate = files.find(f => f.startsWith('mouths-of-madness-canonical') && !f.includes('.11.14'));
+    if (candidate) {
+      filePath = path.join(dir, candidate);
+      break;
+    }
+  }
+  if (!fs.existsSync(filePath)) {
+    filePath = path.join(cwd, 'CnC Docs', 'mouths-of-madness-canonical-clean.md');
+  }
+
+  if (!fs.existsSync(filePath)) {
+    console.error('Cannot find mouths-of-madness-canonical*.md in CnC Docs. Abort.');
+    process.exit(2);
+  }
+
+  const md = fs.readFileSync(filePath, 'utf8');
+
+  console.log('Running full-document pipeline on:', filePath);
+  const analysis = analyzeFullDocument(md, 'Mouths of Madness', 'enhanced');
+  
+  // Merge canonical data into creatures
+  if (canonicalData.length > 0 && analysis.creatures) {
+    console.log(`Merging canonical data into ${analysis.creatures.length} creatures`);
+    
+    // Build a map of flagged entries from canonical report
+    const flaggedMap = new Map<string, string[]>();
+    if (canonicalReport?.flagged) {
+      for (const item of canonicalReport.flagged) {
+        if (item.title && item.flags) {
+          flaggedMap.set(item.title, item.flags);
+        }
+      }
+    }
+    
+    for (let i = 0; i < analysis.creatures.length && i < canonicalData.length; i++) {
+      const creature = analysis.creatures[i];
+      const canonical = canonicalData[i];
+      
+      if (canonical.canonicalParenthetical) {
+        creature.converted = creature.converted.replace(
+          /\*[^*]+\*\s*$/,
+          `*${canonical.canonicalParenthetical}*`
+        );
+      }
+      
+      // Also add the canonical data to the creature object for reference
+      if (canonical.canonicalData) {
+        creature.canonicalData = canonical.canonicalData;
+      }
+      
+      // Update validation based on canonical report
+      const flags = flaggedMap.get(canonical.title);
+      if (flags && flags.length > 0) {
+        // This creature is flagged - lower compliance score
+        creature.validation = {
+          warnings: flags.map(flag => ({
+            type: 'warning' as const,
+            category: 'Canonical Analysis',
+            message: flag,
+          })),
+          complianceScore: 80,
+        };
+      } else {
+        // This creature passed canonical validation - high compliance
+        creature.validation = {
+          warnings: [],
+          complianceScore: 95,
+        };
+      }
+    }
+  }
+  
+  // If we have classification results, merge them into the analysis for Storybook use
+  const classificationPath = path.join(process.cwd(), 'data', 'mouths-of-madness', 'creature-classifications.json');
+  if (fs.existsSync(classificationPath)) {
+    try {
+      const classifications = JSON.parse(fs.readFileSync(classificationPath, 'utf8'));
+      if (Array.isArray(classifications) && analysis.creatures) {
+        const byEntry = new Map<number, any>();
+        for (const c of classifications) {
+          if (typeof c.entryNumber === 'number') byEntry.set(c.entryNumber, c);
+        }
+
+        for (const creature of analysis.creatures) {
+          const c = byEntry.get(creature.entryNumber);
+          if (c) {
+            creature.classification = {
+              type: c.type,
+              subtype: c.subtype,
+              confidence: c.confidence,
+              reasoning: c.reasoning,
+              warnings: c.warnings,
+            } as any;
+          } else {
+            creature.classification = null;
+          }
+        }
+      }
+    } catch (err) {
+      console.warn('Failed to attach classification data to Storybook mock', err);
+    }
+  }
+  
+  // Override validation report with canonical report data
+  if (canonicalReport && analysis.validationReport) {
+    console.log('Replacing validation report with canonical analyzer results');
+    const flaggedCount = canonicalReport.flagged?.length || 0;
+    const totalEntries = canonicalData.length || analysis.creatures?.length || 0;
+    
+    // Calculate compliance based on entries without critical flags
+    const compliance = totalEntries > 0 
+      ? Math.round(((totalEntries - flaggedCount) / totalEntries) * 100)
+      : 100;
+    
+    analysis.validationReport = {
+      totalValidationScore: compliance,
+      perCreatureScores: analysis.creatures?.map(() => compliance) || [],
+      crossEntryIssues: [],
+      statisticalAnomalies: [],
+      recommendations: [
+        ...(compliance < 70 ? ['Overall compliance is below 70% - consider using auto-correction features'] : []),
+        ...(flaggedCount > 0 ? [`${flaggedCount} entries flagged in canonical report - review for completeness`] : []),
+      ],
+      totalIssues: flaggedCount,
+      criticalIssues: flaggedCount,
+    };
+  }
+
+  // Sanitize the object: remove circular or complex data if needed
+  const out = JSON.stringify(analysis, null, 2);
+
+  const destDir = path.join(cwd, 'src', 'components', 'mocks');
+  if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
+  const dest = path.join(destDir, 'mouths-of-madness.mock.ts');
+
+  const content = `/* This file is auto-generated by scripts/generate-mouths-mock.ts */\nexport const mouthsOfMadnessAnalysis = ${out} as const;\n`;
+  fs.writeFileSync(dest, content, 'utf8');
+
+  console.log('Wrote mock to', dest);
+}
+
+main().catch((err) => {
+  console.error('Error generating mock:', err);
+  process.exit(1);
+});
+
+
+File: cleanup_canonical.cjs
+Content:
+#!/usr/bin/env node
+
+/**
+ * Parser Cleanup Script
+ * 
+ * Fixes identified data quality issues in canonical.json:
+ * 1. Strip markdown formatting from titles
+ * 2. Remove non-stat-block fragments
+ * 3. Deduplicate identical entries
+ * 4. Normalize case variations for duplicates
+ * 
+ * Creates: entities.canonical.clean.json
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+// Configuration
+const CANONICAL_FILE = path.join(__dirname, '../data/mouths-of-madness/entities.canonical.json');
+const CLEAN_FILE = path.join(__dirname, '../data/mouths-of-madness/entities.canonical.clean.json');
+
+// Critical issues to auto-fix
+const FRAGMENT_PATTERNS = [
+  /^\d+-\d+$/,              // "86-90" (table reference)
+  /^\).*_$/,                 // ")** _" (parse error)
+];
+
+/**
+ * Strip markdown formatting from title
+ */
+function cleanTitle(title) {
+  let cleaned = title;
+  
+  // Remove bold markers: **text** -> text
+  cleaned = cleaned.replace(/\*\*/g, '');
+  
+  // Remove emphasis markers: *text* -> text or _text_ -> text
+  cleaned = cleaned.replace(/\*([^*]+)\*/g, '$1');
+  cleaned = cleaned.replace(/_([^_]+)_/g, '$1');
+  
+  // Remove trailing underscore emphasis patterns: text*: _ -> text:
+  cleaned = cleaned.replace(/\*:\s*_?$/g, ':');
+  
+  // Remove standalone trailing symbols
+  cleaned = cleaned.replace(/:\s*_?$/g, '');
+  
+  // Remove any remaining standalone asterisks
+  cleaned = cleaned.replace(/\*/g, '');
+  
+  // Clean up extra whitespace
+  cleaned = cleaned.trim().replace(/\s+/g, ' ');
+  
+  return cleaned;
+}
+
+/**
+ * Check if entry is a fragment that should be removed
+ */
+function isFragment(entry) {
+  const title = entry.title;
+  
+  // Check fragment patterns
+  if (FRAGMENT_PATTERNS.some(p => p.test(title))) {
+    return true;
+  }
+  
+  // Check for missing critical data
+  const data = entry.canonicalData || {};
+  const hasCriticalData = data.hp && data.ac;
+  
+  if (!hasCriticalData && title.length < 5) {
+    return true;
+  }
+  
+  return false;
+}
+
+/**
+ * Normalize title for duplicate detection
+ */
+function normalizeForComparison(title) {
+  return title.toLowerCase()
+    .replace(/[^a-z0-9\s]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Deduplicate entries
+ * - If exact match (after normalization), keep first
+ * - If case variation, prefer title-case over lowercase
+ */
+function deduplicateEntries(entries) {
+  const seen = new Map();
+  const deduplicated = [];
+  
+  entries.forEach((entry, idx) => {
+    const normalized = normalizeForComparison(entry.title);
+    
+    if (seen.has(normalized)) {
+      const existingIdx = seen.get(normalized);
+      const existing = entries[existingIdx];
+      
+      console.log(`  Duplicate found:`);
+      console.log(`    #${existingIdx}: "${existing.title}"`);
+      console.log(`    #${idx}: "${entry.title}" (removing)`);
+      
+      // Keep the one with better formatting (prefer title with capitals)
+      const hasMoreCaps = (entry.title.match(/[A-Z]/g) || []).length >
+                          (existing.title.match(/[A-Z]/g) || []).length;
+      
+      if (hasMoreCaps) {
+        // Replace existing with current
+        deduplicated[seen.get(normalized)] = entry;
+        console.log(`    → Keeping #${idx} (better formatting)`);
+      }
+    } else {
+      seen.set(normalized, deduplicated.length);
+      deduplicated.push(entry);
+    }
+  });
+  
+  return deduplicated;
+}
+
+/**
+ * Main cleanup function
+ */
+function cleanupCanonical() {
+  console.log('🧹 Starting Parser Cleanup\n');
+  
+  // Load data
+  if (!fs.existsSync(CANONICAL_FILE)) {
+    console.error(`❌ Canonical file not found: ${CANONICAL_FILE}`);
+    process.exit(1);
+  }
+  
+  const entries = JSON.parse(fs.readFileSync(CANONICAL_FILE, 'utf8'));
+  console.log(`✅ Loaded ${entries.length} entries\n`);
+  
+  let cleanedCount = 0;
+  let removedCount = 0;
+  let deduplicatedCount = 0;
+  
+  // Step 1: Clean titles and filter fragments
+  console.log('Step 1: Cleaning titles and removing fragments...');
+  let cleaned = entries.map(entry => {
+    const originalTitle = entry.title;
+    const cleanedTitle = cleanTitle(originalTitle);
+    
+    if (originalTitle !== cleanedTitle) {
+      console.log(`  Cleaned: "${originalTitle}" → "${cleanedTitle}"`);
+      cleanedCount++;
+    }
+    
+    return {
+      ...entry,
+      title: cleanedTitle,
+      originalTitle: originalTitle !== cleanedTitle ? originalTitle : undefined
+    };
+  }).filter(entry => {
+    if (isFragment(entry)) {
+      console.log(`  ❌ Removing fragment: "${entry.title}"`);
+      removedCount++;
+      return false;
+    }
+    return true;
+  });
+  
+  console.log(`\n  Titles cleaned: ${cleanedCount}`);
+  console.log(`  Fragments removed: ${removedCount}\n`);
+  
+  // Step 2: Deduplicate
+  console.log('Step 2: Deduplicating entries...');
+  const beforeDedup = cleaned.length;
+  cleaned = deduplicateEntries(cleaned);
+  deduplicatedCount = beforeDedup - cleaned.length;
+  console.log(`\n  Duplicates removed: ${deduplicatedCount}\n`);
+  
+  // Step 3: Sort by sourceIndex for consistency
+  console.log('Step 3: Sorting by sourceIndex...');
+  cleaned.sort((a, b) => a.sourceIndex - b.sourceIndex);
+  
+  // Write clean file
+  fs.writeFileSync(CLEAN_FILE, JSON.stringify(cleaned, null, 2));
+  console.log(`\n✅ Clean data written to: ${CLEAN_FILE}`);
+  
+  // Summary
+  console.log('\n📊 CLEANUP SUMMARY');
+  console.log('═'.repeat(60));
+  console.log(`Original entries: ${entries.length}`);
+  console.log(`Titles cleaned: ${cleanedCount}`);
+  console.log(`Fragments removed: ${removedCount}`);
+  console.log(`Duplicates removed: ${deduplicatedCount}`);
+  console.log(`Final entries: ${cleaned.length}`);
+  console.log('═'.repeat(60));
+  
+  // Quality check
+  const remainingIssues = cleaned.filter(e => {
+    return cleanTitle(e.title) !== e.title || isFragment(e);
+  });
+  
+  if (remainingIssues.length > 0) {
+    console.log(`\n⚠️  ${remainingIssues.length} entries still have issues`);
+    process.exit(1);
+  } else {
+    console.log('\n✅ All identified issues resolved');
+    process.exit(0);
+  }
+}
+
+// Run if called directly
+if (require.main === module) {
+  cleanupCanonical();
+}
+
+module.exports = { cleanTitle, isFragment, deduplicateEntries };
+
+
+File: generate-essentialplaces-mock.ts
+Content:
+import fs from 'fs';
+import path from 'path';
+import { analyzeFullDocument } from '@/lib/full-document-pipeline';
+
+async function main() {
+  const cwd = process.cwd();
+  const src = path.join(cwd, 'CnC Docs', 'Essential Places 10.30.25_headers_export.md');
+  if (!fs.existsSync(src)) {
+    console.error('Source markdown missing:', src);
+    process.exit(2);
+  }
+
+  const md = fs.readFileSync(src, 'utf8');
+  console.log('Running full-document pipeline on:', src);
+
+  const analysis = analyzeFullDocument(md, 'Essential Places (headers export)', 'enhanced');
+
+  // Sanitize the object to avoid circular references and keep config small
+  const out = JSON.stringify(analysis, null, 2);
+
+  const destDir = path.join(cwd, 'src', 'components', 'mocks');
+  if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
+  const dest = path.join(destDir, 'essential-places.mock.ts');
+
+  const content = `/* This file is auto-generated by scripts/generate-essentialplaces-mock.ts */\nexport const essentialPlacesAnalysis = ${out} as const;\n`;
+  fs.writeFileSync(dest, content, 'utf8');
+
+  console.log('Wrote mock to', dest);
+}
+
+main().catch(err => {
+  console.error('Error generating mock:', err);
+  process.exit(1);
+});
+
+
+File: verify-named-canon.ts
+Content:
+#!/usr/bin/env tsx
+import { mouthsOfMadnessAnalysis } from '../src/components/mocks/mouths-of-madness.mock';
+import { processDumpWithValidation } from '../src/lib/npc-parser';
+
+const named = ['Ember Raventree', 'Hub-Gub the Bloody', 'Wily Wil', 'The Little Hillwood Werewolf'];
+
+function run() {
+  const namedEntries = mouthsOfMadnessAnalysis.creatures.filter((c: any) => {
+    const type = c.creatureType ?? '';
+    return named.some((n) => type.includes(n));
+  });
+
+  const results = namedEntries.map((entry: any) => {
+    const parsed = processDumpWithValidation(entry.rawMarkdown, true);
+    return {
+      type: entry.creatureType,
+      raw: entry.rawMarkdown,
+      processed: parsed,
+    };
+  });
+
+  console.log('Found entries:', namedEntries.map((e: any) => e.creatureType));
+  for (const r of results) {
+    console.log('\n---\n', r.type);
+    for (const p of r.processed) {
+      console.log('Name:', p.name);
+      console.log('Converted:', p.converted);
+      console.log('CanonicalData:', JSON.stringify(p.canonicalData, null, 2));
+    }
+  }
+}
+
+run();
+
+
+Function: find_files
+Code:
+def find_files(dirs: List[str], all_walk: bool=False):
+    files = []
+    if all_walk:
+        for root, dirnames, filenames in os.walk(ROOT):
+            # prune
+            dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRS]
+            for f in filenames:
+                if Path(f).suffix.lower() in INCLUDE_EXTS:
+                    files.append(Path(root) / f)
+        return sorted(files)
+
+    for d in dirs:
+        path = ROOT / d
+        if not path.exists():
+            continue
+        for root, _, filenames in os.walk(path):
+            # skip common exclusions
+            if any(part in EXCLUDE_DIRS for part in Path(root).parts):
+                continue
+            for f in filenames:
+                if Path(f).suffix.lower() in INCLUDE_EXTS:
+                    files.append(Path(root) / f)
+    return sorted(files)
+
+Function: write_compiled_md
+Code:
+def write_compiled_md(file_list: List[Path], dest: Path):
+    lines = []
+    for p in file_list:
+        lines.append(f"\n\n<!-- BEGIN_FILE: {p.relative_to(ROOT)} -->\n\n")
+        lines.append(f"# Source: {p.relative_to(ROOT)}\n\n")
+        try:
+            text = p.read_text(encoding='utf8')
+        except Exception as e:
+            text = f"(Could not read file: {e})"
+        lines.append(text)
+        lines.append("\n\n<!-- END_FILE -->\n")
+    dest.write_text('\n'.join(lines), encoding='utf8')
+    print('Wrote', dest)
+
+Function: compile_to_pdf
+Code:
+def compile_to_pdf(md_file: Path, pdf_file: Path):
+    # Prefer pandoc if installed
+    # pypandoc may not be present; call pandoc CLI if available
+    try:
+        subprocess.run(['pandoc', str(md_file), '-o', str(pdf_file)], check=True)
+        print('Wrote', pdf_file)
+        return True
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        print('Pandoc not available or failed; skipping PDF generation')
+        return False
+
+File: extract_parentheticals.js
+Content:
+#!/usr/bin/env node
+const fs = require('fs');
+const path = require('path');
+
+const DATA_SCOPE = process.env.DATA_SCOPE || 'mouths-of-madness';
+const inputPath = process.argv[2] || path.join(__dirname, '..', 'CnC Docs', '02 CZ Ruins Mouths of Madness.md');
+const outDir = path.join(__dirname, '..', 'data', DATA_SCOPE);
+const outPath = path.join(outDir, 'entities.full.json');
+
+if (!fs.existsSync(inputPath)) {
+  console.error('Input file not found:', inputPath);
+  process.exit(2);
+}
+
+const text = fs.readFileSync(inputPath, 'utf8');
+
+// Build line offsets
+const lines = text.split(/\r?\n/);
+const offsets = [];
+let pos = 0;
+for (let i = 0; i < lines.length; i++) {
+  offsets.push(pos);
+  pos += lines[i].length + 1; // +1 for the newline
+}
+
+function lineForIndex(idx) {
+  // binary search
+  let lo = 0, hi = offsets.length - 1;
+  while (lo <= hi) {
+    const mid = Math.floor((lo + hi) / 2);
+    const start = offsets[mid];
+    const end = mid + 1 < offsets.length ? offsets[mid + 1] : text.length + 1;
+    if (idx >= start && idx < end) return mid + 1; // 1-based
+    if (idx < start) hi = mid - 1; else lo = mid + 1;
+  }
+  return offsets.length;
+}
+
+const results = [];
+
+function deriveInlineLabel(prefix) {
+  if (!prefix) return null;
+  const text = prefix.trim();
+  if (!text) return null;
+
+  let match;
+  let lastBold = null;
+  const boldRegex = /\*\*([^*]+)\*\*/g;
+  while ((match = boldRegex.exec(prefix)) !== null) {
+    lastBold = match[1].trim();
+  }
+  if (lastBold) {
+    return lastBold.replace(/[:：]\s*$/, '');
+  }
+
+  const colonMatch = text.match(/([A-Za-z0-9,'"&#/\\-][^:]{1,120})[:：]\s*$/);
+  if (colonMatch) {
+    return colonMatch[1].trim();
+  }
+
+  const fragments = text.split(/[\.\u2014–-]/).map(s => s.trim()).filter(Boolean);
+  if (fragments.length > 0) {
+    return fragments[fragments.length - 1];
+  }
+  return null;
+}
+
+const stack = [];
+for (let i = 0; i < text.length; i++) {
+  const ch = text[i];
+  if (ch === '(') {
+    stack.push(i);
+  } else if (ch === ')') {
+    if (stack.length > 0) {
+      const start = stack.pop();
+      const end = i;
+      const parenthetical = text.slice(start + 1, end).trim();
+
+      // compute surrounding title line: find the line that contains the opening paren or previous non-empty line
+      const startLine = lineForIndex(start);
+      const endLine = lineForIndex(end);
+
+      // find title: previous non-empty line within 5 lines
+      let titleLineNum = startLine;
+      for (let l = startLine - 1; l >= Math.max(1, startLine - 6); l--) {
+        const content = lines[l - 1].trim();
+        if (content) { titleLineNum = l; break; }
+      }
+
+      const titleLine = lines[titleLineNum - 1] || '';
+
+      const lineText = lines[startLine - 1] || '';
+      const lineStartIdx = offsets[startLine - 1] ?? 0;
+      const inlinePrefix = lineText.slice(0, Math.max(0, start - lineStartIdx));
+      const inlineLabel = deriveInlineLabel(inlinePrefix);
+
+      // snippet: join the title line and the parenthetical containing line
+      const snippetLines = [];
+      snippetLines.push(titleLine);
+      // include the line where the parenthetical occurs
+      const parenLine = lineText;
+      if (parenLine !== titleLine) snippetLines.push(parenLine);
+
+      const snippet = snippetLines.join(' ').replace(/\s+/g, ' ').trim();
+
+      results.push({
+        parenthetical,
+        start,
+        end,
+        startLine,
+        endLine,
+        titleLineNum,
+        titleLine: titleLine.trim(),
+        lineText,
+        inlineContext: inlinePrefix.trim() || null,
+        inlineLabel: inlineLabel || null,
+        snippet
+      });
+    }
+  }
+}
+
+// Ensure output dir exists
+if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
+fs.writeFileSync(outPath, JSON.stringify(results, null, 2), 'utf8');
+console.log('Wrote', outPath, 'with', results.length, 'parentheticals');
+
+

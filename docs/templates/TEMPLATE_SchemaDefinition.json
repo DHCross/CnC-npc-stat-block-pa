@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generic Stat Block Schema",
+  "description": "Template schema showing canonical fields for a stat block; replace placeholders {SYSTEM_NAME} and {DIFFICULTY_METRIC} with the system values",
+  "type": "object",
+  "properties": {
+    "name": {"type": "string"},
+    "hp": {"type": "string"},
+    "ac": {"type": "number"},
+    "difficulty": {"type": "string", "description": "{DIFFICULTY_METRIC} - system specific difficulty metric"},
+    "abilities": {"type": "object"},
+    "saves": {"type": "object"}
+  },
+  "required": ["name", "hp", "ac"]
+}

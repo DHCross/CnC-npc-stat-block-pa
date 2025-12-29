@@ -1,0 +1,583 @@
+Unknown chunk type:
+{'header': '# Parser Audit - Quick Reference', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '## TL;DR', 'content': '\n✅ **All 8 observations investigated and resolved**\n\n| User Observation | Status | Outcome |\n|-----------------|--------|---------|\n| 1. Headings extracted as creatures | ❌ Not Found | Parser correctly ignores headings |\n| 2. Incomplete subtype families | ⚠️ User Assumption | Source only has 1 giant type (not 5) |\n| 3. Truncated/partial names | ✅ Fixed | Deduplication removed 4 entries |\n| 4. Context qualifiers stripped | ✅ Verified | Campaign-specific context preserved |\n| 5. Non-stat-block references | ✅ Fixed | 2 fragments removed |\n| 6. Alphabetization gaps | ✅ Fixed | Markdown formatting stripped |\n| 7. Over-normalized duplicates | ✅ Fixed | 4 true duplicates removed |\n| 8. Multi-column continuation | ❌ Not Applicable | Source is markdown (not PDF) |\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Results', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Before Cleanup', 'content': '```\nEntries: 129\nValid: ~120\nInvalid: ~9\n  • Markdown formatting: 7 titles (**Title*:** _)\n  • Fragments: 2 entries (86-90, )** _)\n  • Duplicates: 4 entries\n```\n\n'}
+
+Unknown chunk type:
+{'header': '### After Cleanup', 'content': '```\nEntries: 123\nValid: 123 ✓\nInvalid: 0 ✓\n  • All markdown stripped\n  • All fragments removed\n  • All duplicates resolved\n```\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Files Generated', 'content': '\n1. **PARSER-AUDIT-FINAL-REPORT.md** - Complete analysis (this is the main one)\n2. **PARSER-AUDIT-FINDINGS.md** - Investigation notes\n3. **data/mouths-of-madness/entities.canonical.clean.json** - Fixed dataset (USE THIS)\n4. **scripts/audit_parser_quality.cjs** - Automated quality checker\n5. **scripts/cleanup_canonical.cjs** - Automated cleanup tool\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Usage', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### To Use Clean Data', 'content': '```bash\n'}
+
+Unknown chunk type:
+{'header': '# The cleaned dataset is ready to use', 'content': 'cp data/mouths-of-madness/entities.canonical.clean.json \\\n   data/mouths-of-madness/entities.canonical.json\n```\n\n'}
+
+Unknown chunk type:
+{'header': '### To Re-run Analysis', 'content': '```bash\n'}
+
+Unknown chunk type:
+{'header': '# Run quality audit', 'content': 'node scripts/audit_parser_quality.cjs\n\n'}
+
+Unknown chunk type:
+{'header': '# Run cleanup', 'content': 'node scripts/cleanup_canonical.cjs\n```\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Key Findings', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Fixed Issues', 'content': '- ✅ 7 titles had markdown formatting → **stripped**\n- ✅ 2 entries were parse fragments → **removed**\n- ✅ 4 entries were exact duplicates → **deduplicated**\n\n'}
+
+Unknown chunk type:
+{'header': '### False Alarms', 'content': "- ❌ Section headers NOT extracted (parser works correctly)\n- ❌ Multiple giant types don't exist in source (only hill giant in this module)\n- ❌ No PDF layout issues (source is markdown)\n\n"}
+
+Unknown chunk type:
+{'header': '### Data Quality', 'content': '- HP coverage: 100%\n- AC coverage: 100%\n- raceClass coverage: 100%\n- disposition coverage: 99.2%\n- XP coverage: 95.1% (recommended field, not required)\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Before vs After Example', 'content': '\n**Before:**\n```\n**Batrachianoid*:** _\n**Losel*:** _\n86-90\n)** _\n**Fire Beetles*, Giant:** _\n```\n\n**After:**\n```\nBatrachianoid\nLosel\nFire Beetles, Giant\n```\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Recommendation', 'content': '\n**Use the clean dataset** (`entities.canonical.clean.json`) - all identified issues have been resolved. The parser is working correctly; issues were data artifacts that have been cleaned up.\n'}
+
+File: tmp_debug_werewolf.ts
+Content:
+import { mouthsOfMadnessAnalysis } from './src/components/mocks/mouths-of-madness.mock';
+import { analyzeFullDocument } from './src/lib/full-document-pipeline';
+const doc = mouthsOfMadnessAnalysis.creatures.map(c=>c.rawMarkdown).join('\n\n');
+const result = analyzeFullDocument(doc,'mock');
+const werewolf = result.creatures.find(c => c.entryNumber === 67);
+console.log('converted:', werewolf?.converted);
+console.log('canonicalData:', werewolf?.canonicalData);
+
+
+File: tailwind.config.cjs
+Content:
+/* eslint-disable @typescript-eslint/no-require-imports */
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+  ],
+  prefix: "",
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+};
+
+
+File: .gitignore
+Content:
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+.next/
+dist/
+*.tgz
+*.dmg
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Electron
+app/dist/
+app/.vite/
+
+# Temporary files
+*.tmp
+*.temp
+*storybook.log
+storybook-static
+
+
+File: package.json
+Content:
+{
+  "name": "cnc-npc-stat-block-pa",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "CNC NPC Stat Block Parser and App (Next.js/React)",
+  "scripts": {
+    "dev": "next dev",
+    "dev:web": "next dev",
+    "build": "NEXT_PUBLIC_COMMIT_HASH=\"$(git rev-parse --short HEAD)\" NEXT_PUBLIC_BUILD_DATE=\"$(date -u)\" next build",
+    "start": "next start",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "test": "vitest run",
+    "analyze:bestiary": "node scripts/analyze_bestiary.cjs",
+    "regen:mouths": "node scripts/extract_parentheticals.cjs && node scripts/parse_parentheticals.cjs && node scripts/build_candidates.cjs && npx tsx scripts/canonicalize_candidates.ts && node scripts/render_mouths_markdown.cjs && node scripts/analyze_bestiary.cjs",
+    "generate:mocks": "npx tsx scripts/generate-mouths-mock.ts",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/react-collapsible": "^1.1.12",
+    "@radix-ui/react-context-menu": "^2.2.6",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",
+    "@radix-ui/react-hover-card": "^1.1.6",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-menubar": "^1.1.6",
+    "@radix-ui/react-navigation-menu": "^1.2.5",
+    "@radix-ui/react-popover": "^1.1.6",
+    "@radix-ui/react-progress": "^1.1.2",
+    "@radix-ui/react-radio-group": "^1.2.3",
+    "@radix-ui/react-scroll-area": "^1.2.9",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-slider": "^1.2.3",
+    "@radix-ui/react-slot": "^1.1.2",
+    "@radix-ui/react-switch": "^1.1.3",
+    "@radix-ui/react-tabs": "^1.1.3",
+    "@radix-ui/react-toggle": "^1.1.2",
+    "@radix-ui/react-toggle-group": "^1.1.2",
+    "@radix-ui/react-tooltip": "^1.1.8",
+    "@tailwindcss/typography": "^0.5.18",
+    "@tanstack/react-query": "^5.83.1",
+    "autoprefixer": "^10.4.21",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "d3": "^7.9.0",
+    "date-fns": "^3.6.0",
+    "embla-carousel-react": "^8.5.2",
+    "framer-motion": "^12.6.2",
+    "geist": "^1.5.1",
+    "input-otp": "^1.4.2",
+    "lucide-react": "^0.484.0",
+    "mammoth": "^1.11.0",
+    "marked": "^15.0.7",
+    "next": "^15.5.3",
+    "next-themes": "^0.4.6",
+    "octokit": "^4.1.2",
+    "pdfjs-dist": "^5.4.149",
+    "postcss": "^8.5.6",
+    "react": "^19.0.0",
+    "react-day-picker": "^9.6.7",
+    "react-dom": "^19.0.0",
+    "react-error-boundary": "^6.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-markdown": "^10.1.0",
+    "react-resizable-panels": "^2.1.7",
+    "recharts": "^2.15.1",
+    "rehype-raw": "^7.0.0",
+    "rehype-sanitize": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "sonner": "^2.0.1",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.175.0",
+    "tw-animate-css": "^1.2.4",
+    "uuid": "^11.1.0",
+    "vaul": "^1.1.2",
+    "xlsx": "^0.18.5",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.2",
+    "@eslint/js": "^9.21.0",
+    "@storybook/addon-a11y": "^10.0.7",
+    "@storybook/addon-docs": "^10.0.7",
+    "@storybook/addon-onboarding": "^10.0.7",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addon-vitest": "^10.0.7",
+    "@storybook/nextjs-vite": "^10.0.7",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitest/browser": "3.2.4",
+    "@vitest/coverage-v8": "3.2.4",
+    "eslint": "^9.28.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "eslint-plugin-storybook": "^10.0.7",
+    "globals": "^16.0.0",
+    "jsdom": "^27.0.0",
+    "playwright": "^1.56.1",
+    "storybook": "^10.0.7",
+    "tsx": "^4.20.6",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.38.0",
+    "vitest": "^3.2.4"
+  }
+}
+
+
+File: CnC-npc-stat-block.code-workspace
+Content:
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
+
+Unknown chunk type:
+{'header': "# What's New - NPC Stat Block Parser", 'content': "\n**Welcome!** This changelog highlights improvements to the NPC Stat Block Parser for Castles & Crusades. Our goal is to make your stat blocks more consistent and PHB-compliant while saving you time.\n\n**We'd love your feedback!** If you notice any issues or have suggestions, please let us know.\n\n---\n\n"}
+
+Unknown chunk type:
+{'header': '## October 14, 2025', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### 🐛 Fixed: Attribute Names Now Preserved', 'content': '\n**What was happening:** When parsing NPCs, specific attribute names like "strength, dexterity, constitution" were being changed to generic terms like "physical" or "mental."\n\n**What we fixed:** The parser now preserves the exact attribute names you provide, maintaining clarity about which abilities are prime attributes.\n\n**Example:**\n- **Before:** "primary attributes: physical"\n- **After:** "primary attributes: strength, dexterity, and constitution"\n\n**Why this matters:** Knowing the specific prime attributes helps you and your players understand the character\'s strengths and mechanics more clearly.\n\n**Your feedback needed:** Does this match how you\'d like to see attributes displayed? If you prefer a different format or notice any issues, please let us know!\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## September 19, 2025', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### ✨ New: More Flexible Input Formats', 'content': '\n**What changed:** The parser now accepts NPC stat blocks written in a more natural, prose-style format in addition to the strict format.\n\n**What you can now do:**\n- Write stats in parentheses after the NPC name: `**Sir Reynard** (HP 45, AC 18)`\n- Use natural language: "He is lawful good" or "She carries a sword and shield"\n- Describe mounts naturally: "He rides a heavy warhorse into battle"\n- Mix formats as needed\n\n**What the parser does:**\n- Automatically converts your prose into the standard PHB format\n- Italicizes magic items correctly\n- Generates complete mount stat blocks when mentioned\n- Ensures consistent terminology and formatting\n\n**Example Input:**\n```\nSir Reynard (HP 45, AC 18, lawful good). He carries a sword +1, \nfull plate, and a large shield. He rides a heavy warhorse.\n```\n\n**Parser Output:**\n```\n**Sir Reynard** *(This 5th level human fighter\'s vital stats are \nHP 45, AC 18, disposition lawful/good. His primary attributes are \nstrength, dexterity, and constitution. He carries *sword +1 (+1 bonus)*, \nfull plate mail, and a large steel shield.)*\n\nHe rides a heavy warhorse in battle.\n\n**Heavy War Horse (mount)** *(This creature\'s vital stats are \nHD 4d10, HP 35, AC 19, disposition neutral. It receives two hoof \nattacks for 1–4 damage or one overbearing attack.)*\n```\n\n**Why this matters:** You can write stat blocks more naturally and let the tool handle the formatting details.\n\n**Your feedback needed:** Is this flexibility helpful? What other input formats would make your work easier?\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## How to Give Feedback', 'content': "\nWe're constantly improving this tool based on your needs. Please share:\n- **Issues you encounter** - What's not working as expected?\n- **Desired features** - What would make this more useful?\n- **Format preferences** - How do you prefer your stat blocks formatted?\n- **Real examples** - Share stat blocks that the parser struggles with\n\nThe more specific you can be, the better we can help!\n\n---\n\n"}
+
+Unknown chunk type:
+{'header': '## Coming Soon', 'content': "\nWe're exploring:\n- Better handling of edge cases in equipment parsing\n- Improved magic item name recognition and formatting\n- Support for more complex NPC abilities and special rules\n\nStay tuned for updates!\n"}
+
+File: CnC-npc-stat-block-pa.code-workspace
+Content:
+{
+	"folders": [
+		{
+			"path": "../../../iCloud Drive (Archive)/Documents/GitHub/CnC-npc-stat-block-pa"
+		}
+	],
+	"settings": {}
+}
+
+File: tmp_inspect.ts
+Content:
+import { analyzeFullDocument } from './src/lib/full-document-pipeline';
+import { mouthsOfMadnessAnalysis } from './src/components/mocks/mouths-of-madness.mock';
+
+const doc = mouthsOfMadnessAnalysis.creatures.map((c) => c.rawMarkdown).join('\n\n');
+const result = analyzeFullDocument(doc, 'mock');
+const ember = result.creatures.find((c) => c.entryNumber === 55);
+console.log('Ember:\n', ember?.converted);
+const hub = result.creatures.find((c) => c.entryNumber === 123);
+console.log('\nHub-Gub:\n', hub?.converted);
+const werewolf = result.creatures.find((c) => c.creatureType?.includes('Little Hillwood Werewolf'));
+console.log('\nWerewolf:\n', werewolf?.converted);
+const wil = result.creatures.find((c) => c.creatureType?.includes('Wily Wil'));
+console.log('\nWily Wil:\n', wil?.converted);
+
+
+Unknown chunk type:
+{'header': '# Phase 1: Signal Extraction Implementation - Complete', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '## Summary', 'content': '\nSuccessfully implemented Version 3.0 signal extraction module (`extractSignals()`) in `src/lib/classification-rules.ts`. All six core signals are now correctly detected with comprehensive validation against both unit tests and the full mouths-of-madness dataset (129 entities).\n\n'}
+
+Unknown chunk type:
+{'header': '## Implementation Details', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Six Core Signals (per Version 3.0 Section 0)', 'content': '\n1. **HasSpells**: Detects spell lists, spell slots, or "can cast" phrases\n   - Filters out false positives (e.g., "destroyed by a spell")\n   - Pattern: `/(?:spellcaster|spellcasting|can\\s+cast|casts?\\s+\\d+|spells?\\s+per\\s+day)/i`\n\n2. **HasClassKeyword**: Detects explicit class names\n   - Classes: fighter, cleric, wizard, rogue, thief, paladin, ranger, bard, druid, monk, barbarian, assassin, illusionist, knight, magic-user\n   - Renamed from `CHARACTER_CLASSES` to `CLASS_KEYWORDS`\n\n3. **HasRankTitle**: Detects leadership/rank titles (separate from class keywords)\n   - Titles: chieftain, captain, lieutenant, sergeant, shaman, priest, acolyte, king, queen, etc.\n   - Renamed from `LEADERSHIP_TITLES` to `RANK_TITLES`\n   - Important: Rank detection is now separated from class detection per Version 3.0 requirements\n\n4. **IsNamed**: Proper noun detection (capitalized names not in exclusion lists)\n   - Excludes: monster types, rank titles, hireling types, generic descriptors\n   - Handles plurals correctly (e.g., "Bandits" → not named, "Ember" → named)\n   - Examples: "Ember Raventree" (✓), "Wily Wil" (✓), "Goblin Captain" (✗)\n\n5. **IsUnit**: Numeration detection in header\n   - Patterns: `x4`, `x 4`, `(3)`, `2-12`, etc.\n   - Improved regex to handle spaces: `/\\b(?:x\\s*\\d+|\\d+\\s*x|\\(\\d+\\)|\\d+-\\d+)\\b/i`\n   - Also checks plural monster names with numeration\n\n6. **IsHumanoid**: PC-like race detection\n   - Races: human, elf, dwarf, halfling, gnome, half-elf, half-orc\n   - Handles elf variants: wood elf, high elf, dark elf, wild elf, sea elf\n   - Checks multiple locations: raceClass field, level field, creature name itself\n\n'}
+
+Unknown chunk type:
+{'header': '### Signal Extraction Context', 'content': '\n```typescript\nexport interface SignalExtractionContext {\n  spells?: string;              // From ParentheticalData\n  raceClass?: string;           // From ParentheticalData\n  description?: string;         // Full description text if available\n}\n```\n\n'}
+
+Unknown chunk type:
+{'header': '## Test Results', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Unit Tests: 8/8 Passed ✓', 'content': '\nAll test cases validate correctly:\n- Ember Raventree: HasClassKeyword + IsNamed + IsHumanoid\n- Goblin Shaman: HasSpells + HasRankTitle\n- Bandits (x4): IsUnit only\n- Bandit Captain: HasClassKeyword + HasRankTitle\n- Wily Wil: IsNamed only (giant, not humanoid)\n- Pinky the Owlbear: IsNamed only (monster, not humanoid)\n- Orc Captain: HasRankTitle only\n- Marcus the Wizard: HasSpells + HasClassKeyword + IsNamed\n\n'}
+
+Unknown chunk type:
+{'header': '### Dataset Validation: 129 Entities', 'content': '\nSignal distribution from mouths-of-madness dataset:\n- **HasSpells**: 3 (2.3%) - Spellcasters\n- **HasClassKeyword**: 0 (0.0%) - No explicit class names in dataset\n- **HasRankTitle**: 20 (15.5%) - Leaders, captains, sergeants, shamans\n- **IsNamed**: 42 (32.6%) - Proper names (Ember, Wily Wil, Gruzz Kree, King Krusher)\n- **IsUnit**: 48 (37.2%) - Groups with numeration\n- **IsHumanoid**: 6 (4.7%) - PC races (wood elf, etc.)\n\n'}
+
+Unknown chunk type:
+{'header': '### Notable Corrections', 'content': '\n1. **IsUnit** improvements:\n   - Fixed regex to handle spaces: "x 5", "x 6" now detected correctly\n   - Increased detection from 10.9% → 37.2%\n\n2. **IsNamed** false positive removal:\n   - "Green slime" → not named (✓)\n   - "Goblin Skeletons" → not named (✓)\n   - "Orcs" → not named (✓)\n   - Reduced false positives from 48.1% → 32.6%\n\n3. **HasSpells** refinement:\n   - "Green slime" no longer triggers false positive from "destroyed by a spell" text\n   - Now requires active spell casting indicators\n\n4. **IsHumanoid** expansion:\n   - "Ember Raventree (wood elf leader)" now correctly detected as humanoid\n   - Checks creature name in addition to canonical fields\n\n'}
+
+Unknown chunk type:
+{'header': '## Preview Classifications (5-Step Hierarchy)', 'content': '\nBased on the extracted signals, preview classifications show correct Format A/B/C assignments:\n\n**Format A (Classed NPCs)**:\n- Ember Raventree: HasRankTitle + IsNamed + IsHumanoid\n- Goblin shaman: HasSpells (spellcaster)\n- Gruzz Kree (Goblin Chieftain): HasRankTitle + IsNamed\n- King Krusher (Orc Leader): HasRankTitle + IsNamed\n- Orc lieutenant: HasRankTitle\n\n**Format B (Monsters)**:\n- Ape, carnivorous: Default\n- Bat, giant cave: Default\n- Green slime: Default (no longer misclassified as spellcaster)\n- Wily Wil, Giant of the Hill: IsNamed but not humanoid → remains monster\n\n**Format C (Units)**:\n- Goblin guards x 4: IsUnit\n- Goblin patrol warriors x 5: IsUnit\n- Orcs x 3, x 4, x 6: IsUnit\n- Orc Guards x 2: IsUnit\n\n'}
+
+Unknown chunk type:
+{'header': '## Code Changes', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### New Files', 'content': '- `src/lib/classification-rules.ts`: Added `extractSignals()` function\n- `src/lib/classification-rules.ts`: Added `SignalExtractionContext` interface\n- `src/lib/classification-rules.ts`: Added `detectProperNoun()` helper function\n- `test-signal-extraction.ts`: Unit test suite\n- `test-signal-dataset.ts`: Dataset validation script\n\n'}
+
+Unknown chunk type:
+{'header': '### Modified Constants', 'content': '- `CHARACTER_CLASSES` → `CLASS_KEYWORDS` (renamed for clarity)\n- `LEADERSHIP_TITLES` → `RANK_TITLES` (renamed for clarity)\n- `HUMANOID_RACES`: Expanded with elf variant handling\n\n'}
+
+Unknown chunk type:
+{'header': '### Key Functions', 'content': '- `extractSignals()`: Main signal extraction function (6 signals)\n- `detectProperNoun()`: Proper noun detection with comprehensive exclusions\n- Updated `MONSTER_TYPE_FLAT_SET` usage for plural handling\n\n'}
+
+Unknown chunk type:
+{'header': '## Architecture Notes', 'content': '\nThe signal extraction module is designed to be **additive and non-breaking**:\n- Does not modify existing classification logic\n- Provides foundation for Phase 2 (5-step hierarchy implementation)\n- Can be used independently for analysis and debugging\n- Returns both boolean signals and detected context (className, rankTitle, race)\n\n'}
+
+Unknown chunk type:
+{'header': '## Next Steps (Phase 2)', 'content': '\nWith signal extraction complete, the next phase will:\n1. Implement 5-step classification hierarchy using extracted signals\n2. Replace binary `hasClassLevels` logic with three-way Format A/B/C system\n3. Apply Version 3.0 priority rules (Spells > Class/Rank > Named+Humanoid > Unit > Monster)\n4. Handle override cases (bandits, named non-humanoids, etc.)\n\n'}
+
+Unknown chunk type:
+{'header': '## Verification Commands', 'content': '\n```bash\n'}
+
+Unknown chunk type:
+{'header': '# Run unit tests', 'content': 'npx tsx test-signal-extraction.ts\n\n'}
+
+Unknown chunk type:
+{'header': '# Validate against dataset', 'content': 'npx tsx test-signal-dataset.ts\n\n'}
+
+Unknown chunk type:
+{'header': '# Check specific entity', 'content': 'jq \'.[] | select(.title == "Ember Raventree (wood elf leader)")\' \\\n  data/mouths-of-madness/entities.canonical.json\n```\n\n'}
+
+Unknown chunk type:
+{'header': '## Risk Assessment', 'content': '\n**✅ Low Risk**: Signal extraction is purely additive\n- No changes to existing formatting logic\n- No changes to canonical data generation\n- Existing tests remain passing\n- Can be tested independently before integration\n\n---\n\n**Status**: Phase 1 Complete ✓  \n**Date**: 2025-11-16  \n**Tests**: 8/8 unit tests passed, 129 dataset entities validated  \n**Next**: Phase 2 - 5-step classification hierarchy implementation\n'}
+
+File: tsconfig.json
+Content:
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "incremental": true,
+    "module": "esnext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*", "./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+
+
+File: test-mount-fix.test.ts
+Content:
+import { describe, it, expect } from 'vitest';
+import { processDumpEnhanced } from './src/lib/npc-parser';
+
+describe('Mount Extraction Fix', () => {
+  it('should separate mounts into dedicated blocks', () => {
+    const input = 'Knight (human fighter, HP 35, AC 18, rides heavy war horse HP 40, AC 19, 2 hooves 1d4)';
+    const result = processDumpEnhanced(input);
+
+    console.log('Result:', result[0].converted);
+
+    // Should have separate mount block
+    expect(result[0].converted).toContain('**');
+    expect(result[0].converted).toContain('(mount)');
+
+    // Mount data should be removed from rider
+    expect(result[0].converted).not.toContain('rides heavy war horse');
+  });
+});
+
+File: eslint.config.js
+Content:
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(
+  { ignores: ['dist', '.next', 'node_modules', '**/*.cjs'] },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx,js,jsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
+);
+
+Unknown chunk type:
+{'header': '# Canonical Monster Index - Final Status', 'content': '\n**Date**: November 16, 2025  \n**Module**: Mouths of Madness (Castle Zagyg)\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Summary', 'content': '\nSuccessfully transformed encounter extraction list into a canonical monster index.\n\n| Metric | Value |\n|--------|-------|\n| Source stat blocks | 125 |\n| Initial extraction | 129 entries (over-captured) |\n| After cleanup | 123 entries (removed fragments) |\n| **Final index** | **73 unique stat blocks** |\n| **Reduction** | **40.7%** |\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## What Was Built', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Phase 1: Extraction (COMPLETE)', 'content': '✅ `scripts/parse_candidates.ts` - Extracted all parenthetical stat blocks  \n✅ `scripts/canonicalize_candidates.ts` - Applied formatting rules  \n✅ Result: 129 encounter entries captured\n\n'}
+
+Unknown chunk type:
+{'header': '### Phase 2: Cleanup (COMPLETE)', 'content': '✅ `scripts/audit_parser_quality.cjs` - Identified 10 critical issues  \n✅ `scripts/cleanup_canonical.cjs` - Fixed markdown, fragments, duplicates  \n✅ Result: 123 clean encounter entries\n\n'}
+
+Unknown chunk type:
+{'header': '### Phase 3: Index Building (COMPLETE)', 'content': '✅ `scripts/build_canonical_index.cjs` - Deduplicated to unique stat blocks  \n✅ Stripped quantity suffixes (x 3, x 30, x 3-6)  \n✅ Removed population descriptors (males, females, guards, warriors)  \n✅ Filtered NPCs (bandits, brigands, rivermen, thieves, classed elves)  \n✅ Preserved type descriptors (raider, leader, poisonous, giant)  \n✅ Deduplicated by HD + AC (not HP rolls)  \n✅ Result: **73 unique stat blocks**\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Index Quality Assessment', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Gold Standard Compliance: 90%', 'content': '\n**Passes:**\n- ✅ No quantity suffixes (x N)\n- ✅ No markdown formatting\n- ✅ No generic NPCs (bandits, rivermen)\n- ✅ Preserves type descriptors\n- ✅ Deduplicates encounter instances\n\n**Remaining Issues:**\n- ⚠️ 3-4 named NPCs still present (Fekk, Oni Blackbeard, Raven "One-Eye")\n- ⚠️ HD/AC variants show as duplicates (3x "Goblin", 3x "Orc", 2x "Gnoll", etc.)\n- ⚠️ Some entries need better naming (unlabeled variants)\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Index Breakdown by Category', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Animals (14 entries)', 'content': '- Ape, carnivorous\n- Bat, Cave / Bat, giant cave / Cave bats\n- Bear, black / Black Bear cubs\n- Boar, wild\n- Lion (mountain, forest)\n- Mastiff\n- Otter, giant\n- Owlbear (small)\n- Turtle, Huge Snapping\n- Wolf / Wolf, Grey\n- Wolverine (small, normal)\n\n'}
+
+Unknown chunk type:
+{'header': '### Humanoids - Base Types (15 entries)', 'content': '- Batrachianoid\n- Bugbear\n- Gnoll (2 variants - 2d10 AC 15, 1d10 AC 12)\n- Goblin (3 variants - raider, serjeant, females)\n- Goblin, raider\n- Goblin, leader (corporal)\n- Goblin shaman\n- Hobgoblin (2 variants - 1d10 AC 15, 1d6 AC 12)\n- Kobold (2 variants - 1d4 AC 15, 2d4 AC 15)\n- Lizardfolk\n- Losel (3 variants - different HD/AC combinations)\n- Orc (3 variants - AC 13, AC 14, AC 12)\n- Orc lieutenant\n\n'}
+
+Unknown chunk type:
+{'header': '### Named Leaders/Bosses (8 entries)', 'content': "- Blook-glook (Batrachianoid Chieftain)\n- Grimlock Manface (Losel Chieftain)\n- Gruzz Kree (Goblin Chieftain)\n- Hub-Gub the Bloody (Hobgoblin Chieftain)\n- Ji'gun-tima (Losel Shaman)\n- King Griggle-gruk (Kobold Chieftain)\n- King Krusher (Orc Leader)\n- Yeexuul (Gnoll Chieftain)\n\n"}
+
+Unknown chunk type:
+{'header': '### Special/Unique Creatures (8 entries)', 'content': '- "Charlie" the Ogre\n- "Pinky" the Owlbear\n- Griffon\n- Harpy\n- Iggy the Mad (half-orc ranger)\n- Naga, Water\n- The Little Hillwood Werewolf\n- Wily Wil, Giant of the Hill\n\n'}
+
+Unknown chunk type:
+{'header': '### Vermin/Insects (8 entries)', 'content': '- Black Centipede, giant / Centipede, Black, Giant\n- Fire Beetles, Giant\n- Rat, Giant / Rat, River (giant) / River Rat, giant\n- Spider, Giant (medium-sized)\n- Stirge\n- Tick, Giant\n\n'}
+
+Unknown chunk type:
+{'header': '### Undead (3 entries)', 'content': '- Ghoul\n- Skeleton\n- Zombie\n\n'}
+
+Unknown chunk type:
+{'header': '### Oozes/Slimes (2 entries)', 'content': '- Gray Ooze (small)\n- Green slime\n\n'}
+

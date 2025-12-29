@@ -13,7 +13,7 @@ import { DictionaryStats } from '@/components/DictionaryStats';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Toaster } from '@/components/ui/sonner';
-import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode, FileCode as FileHtml, FileCheck, Users, Skull } from 'lucide-react';
+import { Copy, Download, Upload, AlertCircle, Trash, FileText, AlertTriangle as Warning, Info, CheckCircle, ChevronDown, ChevronRight, Wand2 as Wand, Sparkle, ArrowRight, Clipboard, FileCode, FileCode as FileHtml, FileCheck, Users, Skull, Hammer } from 'lucide-react';
 import { generateNPCTemplate, generateBatchTemplate, processDumpWithValidation, ProcessedNPC, ValidationWarning, CorrectionFix, generateAutoCorrectionFixes, applyCorrectionFix, applyAllHighConfidenceFixes, convertToHtml, ValidationResult } from '@/lib/npc-parser';
 import type { DictionaryCounts } from '@/lib/dictionary-counts';
 import { formatVersionString } from '@/lib/version';
@@ -624,9 +624,18 @@ function App() {
 
         <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-6 pb-20 pt-12 lg:px-10 lg:pb-28">
           <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
-            <Badge variant="outline" className="border-primary/50 bg-primary/10 text-primary normal-case">
-              Castles & Crusades toolkit
-            </Badge>
+            <div className="flex items-center gap-3">
+              <Badge variant="outline" className="border-primary/50 bg-primary/10 text-primary normal-case">
+                Castles & Crusades toolkit
+              </Badge>
+              <a 
+                href="/forge" 
+                className="flex items-center gap-1.5 rounded-full border border-amber-500/50 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-400 transition-colors hover:bg-amber-500/20 hover:text-amber-300"
+              >
+                <Hammer className="h-3.5 w-3.5" />
+                Character Forge
+              </a>
+            </div>
             <h1 className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
               Narrative-ready NPC stat blocks
             </h1>
@@ -650,7 +659,7 @@ function App() {
         </div>
 
           <Tabs defaultValue="single" className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-4 mb-8">
+            <TabsList className="grid w-full max-w-xl mx-auto grid-cols-5 mb-8">
               <TabsTrigger value="single" className="flex items-center gap-2">
                 <Upload className="h-4 w-4" />
                 Single/Batch Parser
@@ -666,6 +675,12 @@ function App() {
                 <TabsTrigger value="pipeline" className="flex items-center gap-2">
                   <FileCode className="h-4 w-4" />
                   Full Document Pipeline
+                </TabsTrigger>
+                <TabsTrigger value="forge" asChild>
+                  <a href="/forge" className="flex items-center gap-2">
+                    <Hammer className="h-4 w-4" />
+                    Character Forge
+                  </a>
                 </TabsTrigger>
             </TabsList>
 

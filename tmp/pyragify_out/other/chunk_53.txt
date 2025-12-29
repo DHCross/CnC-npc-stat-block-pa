@@ -1,0 +1,251 @@
+File: main
+Content:
+0000000000000000000000000000000000000000 a9511e32876361c36b3d125ce5151af92547860c DHCross <45954119+DHCross@users.noreply.github.com> 1758652647 -0500	commit (initial): Convert from Electron to Next.js/React app for Vercel deployment
+a9511e32876361c36b3d125ce5151af92547860c a9511e32876361c36b3d125ce5151af92547860c DHCross <45954119+DHCross@users.noreply.github.com> 1758652667 -0500	Branch: renamed refs/heads/main to refs/heads/main
+a9511e32876361c36b3d125ce5151af92547860c 6b492027fc3f251e7467f5a24abd0602934de4ca DHCross <45954119+DHCross@users.noreply.github.com> 1758654227 -0500	commit: update
+6b492027fc3f251e7467f5a24abd0602934de4ca 885ebe70a72ef1a8b06bb4ac08a6a74cdd44a495 DHCross <45954119+DHCross@users.noreply.github.com> 1758664847 -0500	commit: update for vercel
+885ebe70a72ef1a8b06bb4ac08a6a74cdd44a495 4c8452c56b0e58ca1be552307f1770f5af18fcb4 DHCross <45954119+DHCross@users.noreply.github.com> 1758665144 -0500	commit: Fix Vercel build issues and resolve module dependencies
+4c8452c56b0e58ca1be552307f1770f5af18fcb4 f8c7d7b3741a17ae62ae0eba885cf7fb46f0dd78 DHCross <45954119+DHCross@users.noreply.github.com> 1758666155 -0500	commit: Fix CSS and Tailwind configuration for proper styling
+f8c7d7b3741a17ae62ae0eba885cf7fb46f0dd78 4866e09bd330ad93cde457587389e7e7043715e8 DHCross <45954119+DHCross@users.noreply.github.com> 1758667871 -0500	commit: Downgrade to Tailwind CSS v3 for better compatibility
+4866e09bd330ad93cde457587389e7e7043715e8 771709e211fd799e0078ca183d535f217e123c0f DHCross <45954119+DHCross@users.noreply.github.com> 1758671830 -0500	pull --tags origin main: Fast-forward
+771709e211fd799e0078ca183d535f217e123c0f e88de6a027e21aaa0af8208139f1a1e9b8fd64d2 DHCross <45954119+DHCross@users.noreply.github.com> 1758673864 -0500	commit: updated parser
+e88de6a027e21aaa0af8208139f1a1e9b8fd64d2 432f7a8aec3a84602339362b162c5ad83464ea59 DHCross <45954119+DHCross@users.noreply.github.com> 1758674085 -0500	pull origin main: Merge made by the 'ort' strategy.
+432f7a8aec3a84602339362b162c5ad83464ea59 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 DHCross <45954119+DHCross@users.noreply.github.com> 1758697407 -0500	commit: update styling
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 d89400c2beaec6b397b32f4556d63471eb88f3b5 DHCross <45954119+DHCross@users.noreply.github.com> 1758755196 -0500	commit: update sytles
+d89400c2beaec6b397b32f4556d63471eb88f3b5 a3514e312a4358c9a9b7ffae34d267c61ca87f7b DHCross <45954119+DHCross@users.noreply.github.com> 1758755300 -0500	commit (merge): Merge remote changes and fix font configuration
+a3514e312a4358c9a9b7ffae34d267c61ca87f7b ea567dc522899a5a6fdd971aa267608fda52dcc5 DHCross <45954119+DHCross@users.noreply.github.com> 1758756075 -0500	commit: update formatting
+ea567dc522899a5a6fdd971aa267608fda52dcc5 516b7fdab56c166148135f4d7104212023e41610 DHCross <45954119+DHCross@users.noreply.github.com> 1758761299 -0500	commit: update
+516b7fdab56c166148135f4d7104212023e41610 0b19ef18d3e54de05005f84bb00cb93009a325f5 DHCross <45954119+DHCross@users.noreply.github.com> 1758762958 -0500	pull --tags origin main: Fast-forward
+0b19ef18d3e54de05005f84bb00cb93009a325f5 7cf6758d0e2a23d663f14f779194320aaf871aa3 DHCross <45954119+DHCross@users.noreply.github.com> 1758776320 -0500	commit: update
+7cf6758d0e2a23d663f14f779194320aaf871aa3 8b4e95f5d8405be4f219cd8ba4f7ec0415e3cc02 DHCross <45954119+DHCross@users.noreply.github.com> 1758787014 -0500	commit: update
+8b4e95f5d8405be4f219cd8ba4f7ec0415e3cc02 29bb33e92ddef114b9644dd2dc62e87eca9c665c DHCross <45954119+DHCross@users.noreply.github.com> 1758918840 -0500	commit: review doc update
+29bb33e92ddef114b9644dd2dc62e87eca9c665c c80f0855c1b5689390694b15b05942ad2018a827 DHCross <45954119+DHCross@users.noreply.github.com> 1758919157 -0500	commit: Implement enhanced NPC parser with Jeremy's specifications
+c80f0855c1b5689390694b15b05942ad2018a827 2bb923e204e650c50053c3c3722f7f30dd82cf3a DHCross <45954119+DHCross@users.noreply.github.com> 1758926335 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+2bb923e204e650c50053c3c3722f7f30dd82cf3a ada5a9ab6c89f83e482d7bff9ca846a1a56dfd2e DHCross <45954119+DHCross@users.noreply.github.com> 1758929902 -0500	commit: update for correct parsing
+ada5a9ab6c89f83e482d7bff9ca846a1a56dfd2e 80fcdc7986d9af3c7da9735fe20a493c77124572 DHCross <45954119+DHCross@users.noreply.github.com> 1758929906 -0500	pull --tags origin main: Merge made by the 'ort' strategy.
+80fcdc7986d9af3c7da9735fe20a493c77124572 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 DHCross <45954119+DHCross@users.noreply.github.com> 1758931229 -0500	commit: update
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 77ccbeddadd0cd58509e4495c003ab548b35fc82 DHCross <45954119+DHCross@users.noreply.github.com> 1758996194 -0500	commit: fix parser 9.27.25
+77ccbeddadd0cd58509e4495c003ab548b35fc82 06162afcd237275e545b0215637409bd1006c2be DHCross <45954119+DHCross@users.noreply.github.com> 1758996475 -0500	commit: Add version information display to front page
+06162afcd237275e545b0215637409bd1006c2be 7886f113e5d518664ccb83490c41e22b85dc1487 DHCross <45954119+DHCross@users.noreply.github.com> 1758997147 -0500	commit: Comprehensive Jeremy editorial compliance sweep
+7886f113e5d518664ccb83490c41e22b85dc1487 855143867e97ee2da0a965be9fb058ddace6a17a DHCross <45954119+DHCross@users.noreply.github.com> 1758997577 -0500	commit: update 9.27.25 1.08pm part 1
+855143867e97ee2da0a965be9fb058ddace6a17a 9712b393b2b716356410777712e8a8d764170cca DHCross <45954119+DHCross@users.noreply.github.com> 1758997579 -0500	pull --tags origin main: Merge made by the 'ort' strategy.
+9712b393b2b716356410777712e8a8d764170cca 349c4cb9d5135a1038d4a14ea546ba34f00d2296 DHCross <45954119+DHCross@users.noreply.github.com> 1759011150 -0500	commit: update 9.27.25 5.12 pm
+349c4cb9d5135a1038d4a14ea546ba34f00d2296 9e863c5cf404c6a345df076de5dfe8978875f297 DHCross <45954119+DHCross@users.noreply.github.com> 1759011814 -0500	pull --tags origin main: Merge made by the 'ort' strategy.
+9e863c5cf404c6a345df076de5dfe8978875f297 87c5004e956c4cb8adff9f45d868e113749b1f67 DHCross <45954119+DHCross@users.noreply.github.com> 1759013206 -0500	commit: update 9.27.25 5.46pm
+87c5004e956c4cb8adff9f45d868e113749b1f67 3c20d955a416096e9a339fe0e6782a939dfeed2e DHCross <45954119+DHCross@users.noreply.github.com> 1759013207 -0500	pull --tags origin main: Merge made by the 'ort' strategy.
+3c20d955a416096e9a339fe0e6782a939dfeed2e 698c123cfcc8b69b8c588ba08ced596d0b35a1ee DHCross <45954119+DHCross@users.noreply.github.com> 1759014236 -0500	commit: update 9.27.25 6.03pm
+698c123cfcc8b69b8c588ba08ced596d0b35a1ee 0a07c7fbb032fc5ae188dace1d5fd3730b9adb4a DHCross <45954119+DHCross@users.noreply.github.com> 1759014640 -0500	commit: 9.27.25 6.10pm
+0a07c7fbb032fc5ae188dace1d5fd3730b9adb4a 243d3fcebbda266d1698b3e10ba7f8dfb8bbbd9c DHCross <45954119+DHCross@users.noreply.github.com> 1759016098 -0500	commit: 9.27.25 6.34pm
+243d3fcebbda266d1698b3e10ba7f8dfb8bbbd9c b09e965af0de5bf2bbf3d56cb724e5bb64aa52aa DHCross <45954119+DHCross@users.noreply.github.com> 1759016447 -0500	commit: update 9.27.25
+b09e965af0de5bf2bbf3d56cb724e5bb64aa52aa 7f26b9874eb85ed69354fc4a7a6ac8c4c4d43e3c DHCross <45954119+DHCross@users.noreply.github.com> 1759017236 -0500	commit: update 9.27.25
+7f26b9874eb85ed69354fc4a7a6ac8c4c4d43e3c b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 DHCross <45954119+DHCross@users.noreply.github.com> 1759017524 -0500	commit: 9.27.25 6.68pm
+b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 dce462a8e323e5ba9b42dd32af2206f87c05da5b DHCross <45954119+DHCross@users.noreply.github.com> 1759026622 -0500	commit: fix deploy issue 9.27.25 9.30pm
+dce462a8e323e5ba9b42dd32af2206f87c05da5b 0492d102d246c9b553363128e143258bbda6c88b DHCross <45954119+DHCross@users.noreply.github.com> 1759032064 -0500	commit: update reports
+0492d102d246c9b553363128e143258bbda6c88b 986eae984aa13f9ed46691778c2ed7ebd0d4974c DHCross <45954119+DHCross@users.noreply.github.com> 1759039053 -0500	commit: update sep 28 12.57 am
+986eae984aa13f9ed46691778c2ed7ebd0d4974c 19d7e66ebbf0b13c1cdcc02c423fedd2bc1053a9 DHCross <45954119+DHCross@users.noreply.github.com> 1759039054 -0500	pull --tags origin main: Merge made by the 'ort' strategy.
+19d7e66ebbf0b13c1cdcc02c423fedd2bc1053a9 e3b1699ab0779569870a0cb29d5dc5348da55d5b DHCross <45954119+DHCross@users.noreply.github.com> 1759039815 -0500	commit: update 9.28.25 1.10 am
+e3b1699ab0779569870a0cb29d5dc5348da55d5b e07be76f41d177e71cf45866c5851bbd61119629 DHCross <45954119+DHCross@users.noreply.github.com> 1759040209 -0500	commit: update 9.28 1.16 am
+e07be76f41d177e71cf45866c5851bbd61119629 563bf17cb4c1ef546df1d0aff003674a24aed225 DHCross <45954119+DHCross@users.noreply.github.com> 1759082405 -0500	pull --tags origin main: Fast-forward
+563bf17cb4c1ef546df1d0aff003674a24aed225 827758a958088e6b9e3a35e0583e189d0e8d040a DHCross <45954119+DHCross@users.noreply.github.com> 1759083233 -0500	commit: update
+827758a958088e6b9e3a35e0583e189d0e8d040a 941f5bd5c51e71cf63011898a6ddb14d6bfeed5c DHCross <45954119+DHCross@users.noreply.github.com> 1759084186 -0500	commit: fix bugs
+941f5bd5c51e71cf63011898a6ddb14d6bfeed5c 6a6b68ec394233aeb83f48c65066a119e866c3da DHCross <45954119+DHCross@users.noreply.github.com> 1759100361 -0500	commit: fix deploy 9.28.25 5.59pm
+6a6b68ec394233aeb83f48c65066a119e866c3da 998f65153fb91af2be67b6dc2ea2895ee5d1e310 DHCross <45954119+DHCross@users.noreply.github.com> 1759100884 -0500	commit: update punctuation 9.28.25 6.07 pm
+998f65153fb91af2be67b6dc2ea2895ee5d1e310 87ce9040eaf88dc0f233e9d35817344214c2356e DHCross <45954119+DHCross@users.noreply.github.com> 1759106030 -0500	commit: fix punctuation
+87ce9040eaf88dc0f233e9d35817344214c2356e a8d9a1a67bada8359e3136fcfa395ab9877301d9 DHCross <45954119+DHCross@users.noreply.github.com> 1759106495 -0500	commit: fix punctuation
+a8d9a1a67bada8359e3136fcfa395ab9877301d9 ce4b7ea42d34f1ab8071d30984e090868ea5797b DHCross <45954119+DHCross@users.noreply.github.com> 1759108001 -0500	commit: update
+ce4b7ea42d34f1ab8071d30984e090868ea5797b 8247dde4e4dca407c77871c63d759a6f3fe3696d DHCross <45954119+DHCross@users.noreply.github.com> 1759108954 -0500	commit: fix parser
+8247dde4e4dca407c77871c63d759a6f3fe3696d 8af67520f0cbb99571fd21c5c674810e53340ae1 DHCross <45954119+DHCross@users.noreply.github.com> 1759112563 -0500	commit: update
+8af67520f0cbb99571fd21c5c674810e53340ae1 fe6a364513878f35c1445df606a52767cd4c3164 DHCross <45954119+DHCross@users.noreply.github.com> 1759127690 -0500	commit: update
+fe6a364513878f35c1445df606a52767cd4c3164 ad9d29936ef289b15e9daab806d3d51c03e340dd DHCross <45954119+DHCross@users.noreply.github.com> 1759273591 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+ad9d29936ef289b15e9daab806d3d51c03e340dd 80175159852b7d9e0a82473e393f760b089d4ed3 DHCross <45954119+DHCross@users.noreply.github.com> 1759283008 -0500	commit: fix
+80175159852b7d9e0a82473e393f760b089d4ed3 54344f5424f65ff015258b1531f6c603414489e1 DHCross <45954119+DHCross@users.noreply.github.com> 1759283084 -0500	commit (merge): Merge remote-tracking branch 'origin/main' into main
+54344f5424f65ff015258b1531f6c603414489e1 2a94786b12b920f5dfae944ab1ca549b05776a95 DHCross <45954119+DHCross@users.noreply.github.com> 1759289226 -0500	commit: updates
+2a94786b12b920f5dfae944ab1ca549b05776a95 6a5f69ce353490e9feae8d3ac0b1d3e7700a37c4 DHCross <45954119+DHCross@users.noreply.github.com> 1759310787 -0500	commit: update
+6a5f69ce353490e9feae8d3ac0b1d3e7700a37c4 5a86f0ae905031911017024cee4a492360a81de3 DHCross <45954119+DHCross@users.noreply.github.com> 1759360798 -0500	commit: Fix parser bugs for non-classed creature units
+5a86f0ae905031911017024cee4a492360a81de3 e52bab5822f85058029b39b1e32dbcfbb426a41b DHCross <45954119+DHCross@users.noreply.github.com> 1759361605 -0500	commit: Add formatter mode selector to UI with dedicated monster option
+e52bab5822f85058029b39b1e32dbcfbb426a41b a5f62ee890b87653761cb9f632225db5c077a7d5 DHCross <45954119+DHCross@users.noreply.github.com> 1759362325 -0500	commit: update
+a5f62ee890b87653761cb9f632225db5c077a7d5 9886493ae7a84ad9a1133d70d987908e954ae887 DHCross <45954119+DHCross@users.noreply.github.com> 1759362701 -0500	commit: Fix multiple parser issues for complex NPCs
+9886493ae7a84ad9a1133d70d987908e954ae887 daef89cfcf0cef8f7bac425b820d93b909e0a511 DHCross <45954119+DHCross@users.noreply.github.com> 1759363158 -0500	commit: update to fix deploy
+daef89cfcf0cef8f7bac425b820d93b909e0a511 f16557fd22b61332adaff39f822dfabf07e30554 DHCross <45954119+DHCross@users.noreply.github.com> 1759789335 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+f16557fd22b61332adaff39f822dfabf07e30554 e2944e3f80a14c2e3776a39ea7398f00c74dd401 DHCross <45954119+DHCross@users.noreply.github.com> 1759789802 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+e2944e3f80a14c2e3776a39ea7398f00c74dd401 e66a64e5f6d887ea310e18e6f6301acdf16625a9 DHCross <45954119+DHCross@users.noreply.github.com> 1759795279 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+e66a64e5f6d887ea310e18e6f6301acdf16625a9 73ac6f006513191603c730b32ecfc76f725fd695 DHCross <45954119+DHCross@users.noreply.github.com> 1759805173 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+73ac6f006513191603c730b32ecfc76f725fd695 fbc81e4696213686922197ca48d6477f8796b95d DHCross <45954119+DHCross@users.noreply.github.com> 1759969981 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+fbc81e4696213686922197ca48d6477f8796b95d 3f5e7255e7f034d78b0ba9aefb5af07f80124d2a DHCross <45954119+DHCross@users.noreply.github.com> 1759993927 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+3f5e7255e7f034d78b0ba9aefb5af07f80124d2a ff48a213b9a246fa58a29b4a726fa8dbdbaf442f DHCross <45954119+DHCross@users.noreply.github.com> 1760062843 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+ff48a213b9a246fa58a29b4a726fa8dbdbaf442f 98f407209c8ea6b5b065de0ffa0035e333e41727 DHCross <45954119+DHCross@users.noreply.github.com> 1760137615 -0500	pull --ff --recurse-submodules --progress origin: Fast-forward
+98f407209c8ea6b5b065de0ffa0035e333e41727 14bfcafb91e2bc4e17a4be3a64364055416a1479 DHCross <45954119+DHCross@users.noreply.github.com> 1760505629 -0500	commit: update with fixes
+14bfcafb91e2bc4e17a4be3a64364055416a1479 925a08dd856806027529eb18ba40c7e378c4a732 DHCross <45954119+DHCross@users.noreply.github.com> 1761781532 -0500	commit: fix deploy
+925a08dd856806027529eb18ba40c7e378c4a732 21813a06e43c2eeef28e439e9fba5d7537ef7031 DHCross <45954119+DHCross@users.noreply.github.com> 1761782154 -0500	commit: remove the other git distraction and redeploy
+21813a06e43c2eeef28e439e9fba5d7537ef7031 e0a4638a93ec32d9be06097484b4d75759041d56 DHCross <45954119+DHCross@users.noreply.github.com> 1763272814 -0600	commit: Complete canonicalizer iteration: pronouns, attributes, equipment verbs, treasure normalization
+e0a4638a93ec32d9be06097484b4d75759041d56 9a5cf8ba744d9d5c47ce52a43b605edaacc1db63 DHCross <45954119+DHCross@users.noreply.github.com> 1763272835 -0600	commit: Final validation complete: canonicalizer working correctly
+9a5cf8ba744d9d5c47ce52a43b605edaacc1db63 5e32d157ba23a27cc2e8818c157ed18bbf4961e1 DHCross <45954119+DHCross@users.noreply.github.com> 1763275839 -0600	commit: full doc pipeline
+5e32d157ba23a27cc2e8818c157ed18bbf4961e1 d62506a6cca25238e234ac27566dd8823b0e2f19 DHCross <45954119+DHCross@users.noreply.github.com> 1763276768 -0600	commit: update full doc pipeline
+d62506a6cca25238e234ac27566dd8823b0e2f19 c38983f40c35d73a269bc7075e35976d94fc6ecb DHCross <45954119+DHCross@users.noreply.github.com> 1763277721 -0600	commit: feat: add Canonical Monster Index Builder script
+c38983f40c35d73a269bc7075e35976d94fc6ecb 275f2605a0e0b6e4d3439712d839b216b7bd6254 DHCross <45954119+DHCross@users.noreply.github.com> 1763332260 -0600	commit: Refactor NPC detection and index building logic in build_canonical_index.cjs
+275f2605a0e0b6e4d3439712d839b216b7bd6254 b7af491e31f82c3f2d6d43c3a65b9f122c3b3533 DHCross <45954119+DHCross@users.noreply.github.com> 1763374425 -0600	commit: feat(signal-extraction): Complete Phase 1 implementation of signal extraction module with comprehensive tests
+b7af491e31f82c3f2d6d43c3a65b9f122c3b3533 210a8ed33a70a14dd48023111a3ec2bf420b834e DHCross <45954119+DHCross@users.noreply.github.com> 1763463920 -0600	commit: Add pipeline-friendly headers for Essential Places, generate Essential Places mock and Storybook story for UI validation
+
+
+File: fix-monster-parser-multiline
+Content:
+0000000000000000000000000000000000000000 b62991c73768d43a3fbbc62b3475e15a1af7f104 DHCross <45954119+DHCross@users.noreply.github.com> 1759907544 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: HEAD
+Content:
+0000000000000000000000000000000000000000 a9511e32876361c36b3d125ce5151af92547860c Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758654037 -0500	remote set-head
+6b492027fc3f251e7467f5a24abd0602934de4ca 6b492027fc3f251e7467f5a24abd0602934de4ca Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758664074 -0500	remote set-head
+771709e211fd799e0078ca183d535f217e123c0f 771709e211fd799e0078ca183d535f217e123c0f Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758671029 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758699484 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758701441 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758703778 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758707083 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758711004 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758712961 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758714918 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758717246 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758719560 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758721517 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758723570 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758725527 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758727484 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758729441 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Macmini.attlocal.net> 1758732275 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758734276 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758736233 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758738190 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758740147 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758742104 -0500	remote set-head
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758751527 -0500	remote set-head
+1c26892e2394222fa71056cdf76c000e0e7e954e 1c26892e2394222fa71056cdf76c000e0e7e954e Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758753484 -0500	remote set-head
+8b4e95f5d8405be4f219cd8ba4f7ec0415e3cc02 8b4e95f5d8405be4f219cd8ba4f7ec0415e3cc02 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758824946 -0500	remote set-head
+2bb923e204e650c50053c3c3722f7f30dd82cf3a 2bb923e204e650c50053c3c3722f7f30dd82cf3a Dan Cross <dancross@Mac-mini.attlocal.net> 1758926324 -0500	remote set-head
+2bb923e204e650c50053c3c3722f7f30dd82cf3a 2bb923e204e650c50053c3c3722f7f30dd82cf3a Dan Cross <dancross@Mac-mini.attlocal.net> 1758926335 -0500	remote set-head
+2bb923e204e650c50053c3c3722f7f30dd82cf3a 2bb923e204e650c50053c3c3722f7f30dd82cf3a Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758927987 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Macmini.attlocal.net> 1758934803 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758936685 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758938510 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758940335 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758942160 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758943985 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758945810 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758947635 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758949460 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758951285 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758953111 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758954936 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758956761 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758958586 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758960411 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758962236 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758964060 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758965885 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758967710 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758969535 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758971360 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758974108 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758975933 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758977758 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758979583 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758981408 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758983233 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758985057 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758986882 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758988708 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758990533 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758992358 -0500	remote set-head
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1758994183 -0500	remote set-head
+ce13859dc94cf57235f980dd5567b8ea360882eb ce13859dc94cf57235f980dd5567b8ea360882eb Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759000522 -0500	remote set-head
+ce13859dc94cf57235f980dd5567b8ea360882eb ce13859dc94cf57235f980dd5567b8ea360882eb Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759002345 -0500	remote set-head
+ce13859dc94cf57235f980dd5567b8ea360882eb ce13859dc94cf57235f980dd5567b8ea360882eb Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759004170 -0500	remote set-head
+ce13859dc94cf57235f980dd5567b8ea360882eb ce13859dc94cf57235f980dd5567b8ea360882eb Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759006630 -0500	remote set-head
+ce13859dc94cf57235f980dd5567b8ea360882eb ce13859dc94cf57235f980dd5567b8ea360882eb Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759008707 -0500	remote set-head
+ce13859dc94cf57235f980dd5567b8ea360882eb ce13859dc94cf57235f980dd5567b8ea360882eb Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759010532 -0500	remote set-head
+9e863c5cf404c6a345df076de5dfe8978875f297 9e863c5cf404c6a345df076de5dfe8978875f297 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759011835 -0500	remote set-head
+0a07c7fbb032fc5ae188dace1d5fd3730b9adb4a 0a07c7fbb032fc5ae188dace1d5fd3730b9adb4a Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759015514 -0500	remote set-head
+b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759019461 -0500	remote set-head
+b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759021546 -0500	remote set-head
+b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 Dan Cross <dancross@Macmini.attlocal.net> 1759023783 -0500	remote set-head
+b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759025975 -0500	remote set-head
+563bf17cb4c1ef546df1d0aff003674a24aed225 563bf17cb4c1ef546df1d0aff003674a24aed225 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759049902 -0500	remote set-head
+941f5bd5c51e71cf63011898a6ddb14d6bfeed5c 941f5bd5c51e71cf63011898a6ddb14d6bfeed5c Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759099908 -0500	remote set-head
+998f65153fb91af2be67b6dc2ea2895ee5d1e310 998f65153fb91af2be67b6dc2ea2895ee5d1e310 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759101560 -0500	remote set-head
+87ce9040eaf88dc0f233e9d35817344214c2356e 87ce9040eaf88dc0f233e9d35817344214c2356e Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759106225 -0500	remote set-head
+8247dde4e4dca407c77871c63d759a6f3fe3696d 8247dde4e4dca407c77871c63d759a6f3fe3696d Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759112436 -0500	remote set-head
+ad9d29936ef289b15e9daab806d3d51c03e340dd ad9d29936ef289b15e9daab806d3d51c03e340dd Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759273592 -0500	remote set-head
+ad9d29936ef289b15e9daab806d3d51c03e340dd ad9d29936ef289b15e9daab806d3d51c03e340dd Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759275823 -0500	remote set-head
+ad9d29936ef289b15e9daab806d3d51c03e340dd ad9d29936ef289b15e9daab806d3d51c03e340dd Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759277738 -0500	remote set-head
+ad9d29936ef289b15e9daab806d3d51c03e340dd ad9d29936ef289b15e9daab806d3d51c03e340dd Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759279654 -0500	remote set-head
+ad9d29936ef289b15e9daab806d3d51c03e340dd ad9d29936ef289b15e9daab806d3d51c03e340dd Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759281569 -0500	remote set-head
+6a5f69ce353490e9feae8d3ac0b1d3e7700a37c4 6a5f69ce353490e9feae8d3ac0b1d3e7700a37c4 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759352177 -0500	remote set-head
+a5f62ee890b87653761cb9f632225db5c077a7d5 a5f62ee890b87653761cb9f632225db5c077a7d5 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759362327 -0500	remote set-head
+daef89cfcf0cef8f7bac425b820d93b909e0a511 daef89cfcf0cef8f7bac425b820d93b909e0a511 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759363492 -0500	remote set-head
+daef89cfcf0cef8f7bac425b820d93b909e0a511 daef89cfcf0cef8f7bac425b820d93b909e0a511 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759365561 -0500	remote set-head
+daef89cfcf0cef8f7bac425b820d93b909e0a511 daef89cfcf0cef8f7bac425b820d93b909e0a511 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759367506 -0500	remote set-head
+daef89cfcf0cef8f7bac425b820d93b909e0a511 daef89cfcf0cef8f7bac425b820d93b909e0a511 Dan Cross <dancross@Dans-Mac-mini.attlocal.net> 1759369451 -0500	remote set-head
+76dd110cfe03d858a1888af84ff2876b48817029 76dd110cfe03d858a1888af84ff2876b48817029 Dan Cross <dancross@Dans-Mac-mini.local> 1759472259 -0500	remote set-head
+1e3bd74eebc0fd76cd68bfc7ca7ee323a38a63a9 1e3bd74eebc0fd76cd68bfc7ca7ee323a38a63a9 Dan Cross <dancross@Dans-Mac-mini.local> 1759638683 -0500	remote set-head
+b03c5d4adab9932f2761f02add8e7c51785721cf b03c5d4adab9932f2761f02add8e7c51785721cf Dan Cross <dancross@Dans-Mac-mini.local> 1759652186 -0500	remote set-head
+f16557fd22b61332adaff39f822dfabf07e30554 f16557fd22b61332adaff39f822dfabf07e30554 Dan Cross <dancross@Dans-Mac-mini.local> 1759702022 -0500	remote set-head
+f16557fd22b61332adaff39f822dfabf07e30554 f16557fd22b61332adaff39f822dfabf07e30554 Dan Cross <dancross@Dans-Mac-mini.local> 1759725835 -0500	remote set-head
+f16557fd22b61332adaff39f822dfabf07e30554 f16557fd22b61332adaff39f822dfabf07e30554 Dan Cross <dancross@Dans-Mac-mini.local> 1759789333 -0500	remote set-head
+f16557fd22b61332adaff39f822dfabf07e30554 f16557fd22b61332adaff39f822dfabf07e30554 Dan Cross <dancross@Dans-Mac-mini.local> 1759789335 -0500	remote set-head
+e2944e3f80a14c2e3776a39ea7398f00c74dd401 e2944e3f80a14c2e3776a39ea7398f00c74dd401 Dan Cross <dancross@Dans-Mac-mini.local> 1759789800 -0500	remote set-head
+e2944e3f80a14c2e3776a39ea7398f00c74dd401 e2944e3f80a14c2e3776a39ea7398f00c74dd401 Dan Cross <dancross@Dans-Mac-mini.local> 1759789802 -0500	remote set-head
+e2944e3f80a14c2e3776a39ea7398f00c74dd401 e2944e3f80a14c2e3776a39ea7398f00c74dd401 Dan Cross <dancross@Dans-Mac-mini.local> 1759791853 -0500	remote set-head
+e66a64e5f6d887ea310e18e6f6301acdf16625a9 e66a64e5f6d887ea310e18e6f6301acdf16625a9 Dan Cross <dancross@Dans-Mac-mini.local> 1759793744 -0500	remote set-head
+e66a64e5f6d887ea310e18e6f6301acdf16625a9 e66a64e5f6d887ea310e18e6f6301acdf16625a9 Dan Cross <dancross@Dans-Mac-mini.local> 1759795279 -0500	remote set-head
+c1e5c7423ee57715f5dcd8b49dfec4b93e90dc33 c1e5c7423ee57715f5dcd8b49dfec4b93e90dc33 Dan Cross <dancross@Dans-Mac-mini.local> 1759797210 -0500	remote set-head
+c1e5c7423ee57715f5dcd8b49dfec4b93e90dc33 c1e5c7423ee57715f5dcd8b49dfec4b93e90dc33 Dan Cross <dancross@Dans-Mac-mini.local> 1759799101 -0500	remote set-head
+73ac6f006513191603c730b32ecfc76f725fd695 73ac6f006513191603c730b32ecfc76f725fd695 Dan Cross <dancross@Dans-Mac-mini.local> 1759800995 -0500	remote set-head
+73ac6f006513191603c730b32ecfc76f725fd695 73ac6f006513191603c730b32ecfc76f725fd695 Dan Cross <dancross@Dans-Mac-mini.local> 1759802886 -0500	remote set-head
+73ac6f006513191603c730b32ecfc76f725fd695 73ac6f006513191603c730b32ecfc76f725fd695 Dan Cross <dancross@Dans-Mac-mini.local> 1759804777 -0500	remote set-head
+73ac6f006513191603c730b32ecfc76f725fd695 73ac6f006513191603c730b32ecfc76f725fd695 Dan Cross <dancross@Dans-Mac-mini.local> 1759805173 -0500	remote set-head
+c98233026a27efd1d2cc8c15bb8a37d0974c354d c98233026a27efd1d2cc8c15bb8a37d0974c354d Dan Cross <dancross@Dans-Mac-mini.local> 1759907545 -0500	remote set-head
+c376237e6df266277a3b25eaa0a506a83c364f53 c376237e6df266277a3b25eaa0a506a83c364f53 Dan Cross <dancross@Dans-Mac-mini.local> 1759944864 -0500	remote set-head
+fbc81e4696213686922197ca48d6477f8796b95d fbc81e4696213686922197ca48d6477f8796b95d Dan Cross <dancross@Dans-Mac-mini.local> 1759969979 -0500	remote set-head
+fbc81e4696213686922197ca48d6477f8796b95d fbc81e4696213686922197ca48d6477f8796b95d Dan Cross <dancross@Dans-Mac-mini.local> 1759969982 -0500	remote set-head
+3f5e7255e7f034d78b0ba9aefb5af07f80124d2a 3f5e7255e7f034d78b0ba9aefb5af07f80124d2a Dan Cross <dancross@Dans-Mac-mini.local> 1759993923 -0500	remote set-head
+3f5e7255e7f034d78b0ba9aefb5af07f80124d2a 3f5e7255e7f034d78b0ba9aefb5af07f80124d2a Dan Cross <dancross@Dans-Mac-mini.local> 1759993927 -0500	remote set-head
+cfc5afedb362697b48a6e47e842b362c185efa18 cfc5afedb362697b48a6e47e842b362c185efa18 Dan Cross <dancross@Dans-Mac-mini.local> 1759995736 -0500	remote set-head
+cfc5afedb362697b48a6e47e842b362c185efa18 cfc5afedb362697b48a6e47e842b362c185efa18 Dan Cross <dancross@Dans-Mac-mini.local> 1759997549 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1759999363 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760001175 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760002988 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760004801 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760006614 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760008427 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760010240 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760012053 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760013866 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760015679 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760017492 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760019312 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760024153 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760025966 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760027779 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760029592 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760031405 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760033218 -0500	remote set-head
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 d1dec6881ed923d5e2b758beb93c824c3bf018d3 Dan Cross <dancross@Dans-Mac-mini.local> 1760035031 -0500	remote set-head
+0be0e8f00ea1e68fc1b79c573d7de9ecbf6a4d59 0be0e8f00ea1e68fc1b79c573d7de9ecbf6a4d59 Dan Cross <dancross@Dans-Mac-mini.local> 1760036847 -0500	remote set-head
+0be0e8f00ea1e68fc1b79c573d7de9ecbf6a4d59 0be0e8f00ea1e68fc1b79c573d7de9ecbf6a4d59 Dan Cross <dancross@Dans-Mac-mini.local> 1760038660 -0500	remote set-head
+a31f22e31bdb3572abc3fc315f4cfe22be03d67b a31f22e31bdb3572abc3fc315f4cfe22be03d67b Dan Cross <dancross@Dans-Mac-mini.local> 1760040473 -0500	remote set-head
+a31f22e31bdb3572abc3fc315f4cfe22be03d67b a31f22e31bdb3572abc3fc315f4cfe22be03d67b Dan Cross <dancross@Dans-Mac-mini.local> 1760042286 -0500	remote set-head
+a31f22e31bdb3572abc3fc315f4cfe22be03d67b a31f22e31bdb3572abc3fc315f4cfe22be03d67b Dan Cross <dancross@Dans-Mac-mini.local> 1760044099 -0500	remote set-head
+c7c8a21f8bfc269288864ff56425b3a7f92ae286 c7c8a21f8bfc269288864ff56425b3a7f92ae286 Dan Cross <dancross@Dans-Mac-mini.local> 1760045912 -0500	remote set-head
+71a5315069f311b554c3535b87cb5e0e510d0181 71a5315069f311b554c3535b87cb5e0e510d0181 Dan Cross <dancross@Dans-Mac-mini.local> 1760050150 -0500	remote set-head
+8147cd7643f57dd66d8e5f5371398d9a84a95d74 8147cd7643f57dd66d8e5f5371398d9a84a95d74 Dan Cross <dancross@Dans-Mac-mini.local> 1760051964 -0500	remote set-head
+8147cd7643f57dd66d8e5f5371398d9a84a95d74 8147cd7643f57dd66d8e5f5371398d9a84a95d74 Dan Cross <dancross@Dans-Mac-mini.local> 1760053779 -0500	remote set-head
+8147cd7643f57dd66d8e5f5371398d9a84a95d74 8147cd7643f57dd66d8e5f5371398d9a84a95d74 Dan Cross <dancross@Dans-Mac-mini.local> 1760055593 -0500	remote set-head
+8147cd7643f57dd66d8e5f5371398d9a84a95d74 8147cd7643f57dd66d8e5f5371398d9a84a95d74 Dan Cross <dancross@Dans-Mac-mini.local> 1760057410 -0500	remote set-head
+2cf42c0e1f4743a577e5107cf4f41d22f2d8eeb5 2cf42c0e1f4743a577e5107cf4f41d22f2d8eeb5 Dan Cross <dancross@Dans-Mac-mini.local> 1760059225 -0500	remote set-head
+ada6d8c86ca3e1e8ef5aa050f40d8cb4785d831d ada6d8c86ca3e1e8ef5aa050f40d8cb4785d831d Dan Cross <dancross@Dans-Mac-mini.local> 1760061040 -0500	remote set-head
+ff48a213b9a246fa58a29b4a726fa8dbdbaf442f ff48a213b9a246fa58a29b4a726fa8dbdbaf442f Dan Cross <dancross@Dans-Mac-mini.local> 1760062844 -0500	remote set-head
+ff48a213b9a246fa58a29b4a726fa8dbdbaf442f ff48a213b9a246fa58a29b4a726fa8dbdbaf442f Dan Cross <dancross@Dans-Mac-mini.local> 1760064667 -0500	remote set-head
+98f407209c8ea6b5b065de0ffa0035e333e41727 98f407209c8ea6b5b065de0ffa0035e333e41727 Dan Cross <dancross@Dans-Mac-mini.local> 1760137613 -0500	remote set-head
+98f407209c8ea6b5b065de0ffa0035e333e41727 98f407209c8ea6b5b065de0ffa0035e333e41727 Dan Cross <dancross@Dans-Mac-mini.local> 1760137616 -0500	remote set-head
+98f407209c8ea6b5b065de0ffa0035e333e41727 98f407209c8ea6b5b065de0ffa0035e333e41727 Dan Cross <dancross@Dans-Mac-mini.local> 1760139549 -0500	remote set-head
+
+

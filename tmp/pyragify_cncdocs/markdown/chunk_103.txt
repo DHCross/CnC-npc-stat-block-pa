@@ -1,0 +1,69 @@
+Unknown chunk type:
+{'header': "### 107. Orc chieftain's mate", 'content': '\n*HP 4, AC 12, disposition law/evil. Saves: P. It has a 4-inch knife and 100 gold in coin.*\n\n**Core Stats:** HP 4, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 108. Orcs x 4', 'content': '\n*HP 5, AC 14, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 109. Orc lieutenant', 'content': '\n*HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin.*\n\n**Core Stats:** HP 12, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 110. Zombies x 6', 'content': '\n*HP 12, AC 12, disposition neutral/evil. Saves: P.*\n\n**Core Stats:** HP 12, AC 12, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 111. Skeletons x 8', 'content': '\n*HP 8, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 8, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 112. Wily Wil, Giant of the Hill', 'content': '\n*HP 63, AC 17, disposition chaos/neutral. Saves: P. It has hide armor, a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and an other assorted trash.*\n\n**Core Stats:** HP 63, AC 17, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 113. "Pinky" the Owlbear', 'content': '\n*HP 27, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 27, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 114. Black Bear', 'content': '\n*HP 15, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 15, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 115. Black Bear cubs x 2', 'content': '\n*HP 6, AC 12, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 6, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 116. River Rats, giant x 40', 'content': '\n*HP 2, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 117. Stirges x 8', 'content': '\n*HP 3, AC 16, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 3, AC 16, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 118. Bugbears x 3', 'content': '\n*HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin.*\n\n**Core Stats:** HP 17, AC 16, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 119. Hobgoblin sentries x 2', 'content': '\n*HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 120. Hobgoblin males x 2 or 4', 'content': '\n*HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 121. Hobgoblin females x 9', 'content': '\n*HP 3, AC 12, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 122. Hobgoblin warriors x 2', 'content': '\n*HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 123. Hub-Gub the Bloody (Hobgoblin Chieftain)', 'content': '\n*HP 18, AC 16, disposition law/evil. Saves: P. It has full chain mail armor, *a +1 halberd [+4 "to hit"; 1d10+3 damage]*, *broadsword [+3 "to hit"; 2d4+2 damage]*, a composite short bow, 12 arrows, and 12 gold in coin.*\n\n**Core Stats:** HP 18, AC 16, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 124. Hobgoblin females x 3', 'content': '\n*HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 125. Gnoll sentries x 2', 'content': '\n*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 126. Gnoll males x 4', 'content': '\n*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 127. Gnoll females x 5', 'content': '\n*HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin.*\n\n**Core Stats:** HP 5, AC 12, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 128. Gnoll guards x 2', 'content': '\n*HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin.*\n\n**Core Stats:** HP 14, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 129. Yeexuul (Gnoll Chieftain)', 'content': '\n*HP 20, AC 17, disposition chaos/evil. Saves: P. It has plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin.*\n\n**Core Stats:** HP 20, AC 17, Disposition chaos/evil\n\n---\n\n\n'}
+

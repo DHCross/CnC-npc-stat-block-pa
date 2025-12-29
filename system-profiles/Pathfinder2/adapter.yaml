@@ -1,0 +1,74 @@
+id: pf2e
+name: Pathfinder Second Edition (PF2e) Adapter
+version: 0.1.0
+
+description: |
+  Defines how PF2e stat blocks should be parsed and converted into the repo’s
+  canonical JSON/Markdown structures for testing and preview. The PF2e adapter
+  is fully isolated from the C&C runtime and does not import from `src/`.
+
+maintainer:
+  name: DHCross
+  contact: https://github.com/DHCross/CnC-npc-stat-block-pa/issues
+
+metadata:
+  repo: CnC-npc-stat-block-pa
+  system: pf2e
+  adapter_type: external_system
+  status: experimental
+
+inputs:
+  - name: PF2e sample stat blocks
+    glob: "system-profiles/Pathfinder2/**/*.md"
+    required: true
+    description: "Representative PF2e stat block samples used for adapter tests."
+
+  - name: Storybook mock (optional)
+    glob: "src/components/mocks/pf2e-sample.mock.ts"
+    required: false
+    description: "Optional UI mock for Storybook preview."
+
+outputs:
+  - name: canonical-json
+    pattern: "system-profiles/Pathfinder2/out/*.canonical.json"
+    format: json
+    description: "Canonicalized stat-block outputs for tests and CI."
+
+  - name: diagnostics
+    pattern: "system-profiles/Pathfinder2/out/adapter-report.yaml"
+    format: yaml
+    description: "Adapter diagnostic/validation output."
+
+behavioral_constraints:
+  - "No spell expansion: NPC spell lists must remain reference-only. Do not insert\n     spell descriptions, durations, casting times, or PF2e spell text."
+  - "Do not rewrite names into prose. Preserve original PF2e names; store any \n     canonical lookups in metadata only."
+  - "Adapter logic must remain isolated under system-profiles/Pathfinder2/.\n     Do not import from src/ or C&C Reforged modules."
+  - "Outputs must be deterministic (no timestamps, random IDs, or nondeterministic ordering)."
+
+validation_harness:
+  description: "Tests that verify the PF2e adapter behaves correctly and obeys constraints."
+  test_files:
+    - "src/test/pf2e-classifier.test.ts"
+    - "src/test/no-expansion-of-npc-spells.test.ts"
+  expected_assertions:
+    - "Goblin Warrior → kind: 'monster', HP/AC parsed numerically."
+    - "Named NPCs detect class/level where appropriate."
+    - "Hazards parse as hazards with correct DC fields."
+    - "Spell lists remain unexpanded and do not include PF2e spell text."
+
+test_entry_point:
+  - "npx vitest run src/test/pf2e-classifier.test.ts"
+  - "npx vitest run src/test/no-expansion-of-npc-spells.test.ts"
+
+example_run:
+  - "# Run all PF2e adapter tests"
+  - "npx vitest run src/test/pf2e-classifier.test.ts"
+  - "npx vitest run src/test/no-expansion-of-npc-spells.test.ts"
+
+notes:
+  - "Adapters may provide utility scripts under system-profiles/Pathfinder2/scripts/."
+  - "A README.md should document how to add new PF2e samples and run tests."
+
+reviewers:
+  - role: adapter-maintainer
+    name: DHCross

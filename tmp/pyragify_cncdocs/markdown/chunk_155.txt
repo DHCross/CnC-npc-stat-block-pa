@@ -1,0 +1,228 @@
+Unknown chunk type:
+{'header': '### 11. Bugbear', 'content': '\n*This creature’s vital stats are HD 3d10, HP 16, AC 16, disposition chaos/evil. Their primary attributes are physical. He carries 4 gold in coin.*\n\n**Core Stats:** HP 16, AC 16, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 12. Elf, Wood, bowman', 'content': '\n*This creature’s vital stats are HD 1d10, HP 8, AC 12, disposition chaos/neutral. Their primary attributes are physical. He carries 18 silver in coin.*\n\n**Core Stats:** HP 8, AC 12, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 13. Elf, Wood, spearman', 'content': '\n*This creature’s vital stats are HD 1d10, HP 8, AC 13, disposition chaos/neutral. Their primary attributes are physical. He carries 12 silver in coin.*\n\n**Core Stats:** HP 8, AC 13, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 14. Elf, Wood, swordsman', 'content': '\n*This creature’s vital stats are HD 1d10, HP 5, AC 14, disposition chaos/neutral. Their primary attributes are physical. He carries 2–12 gold in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 15. Ghoul', 'content': '\n*This creature’s vital stats are HD 2d8, HP 10, AC 14, disposition chaos/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 10, AC 14, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 16. Gnoll', 'content': '\n*This creature’s vital stats are HD 2d10, HP 13, AC 15, disposition chaos/evil. Their primary attributes are physical. He carries 4 gold in coin.*\n\n**Core Stats:** HP 13, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 17. Goblin, raider', 'content': '\n*This creature’s vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. He carries 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 18. Goblin, leader (corporal)', 'content': '\n*This creature’s vital stats are HD 3d6+2, HP 15, AC 16, disposition law/evil. Their primary attributes are physical. He carries 4 gold in coin.*\n\n**Core Stats:** HP 15, AC 16, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 19. Griffon', 'content': '\n*These creatures’ vital stats are HD 7d10, HP 45, AC 17, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 45, AC 17, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 20. Hobgoblin', 'content': '\n*This creature’s vital stats are HD 1d10, HP 8, AC 15, disposition law/evil. Their primary attributes are physical. He carries 4 silver in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 21. Kobold', 'content': '\n*This creature’s vital stats are HD 1d4, HP 3, AC 15, disposition law/evil. Their primary attributes are physical. He carries 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 22. Lion (mountain, forest)', 'content': '\n*These creatures’ vital stats are HD 4d8, HP 20, AC 16, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 20, AC 16, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 23. Lizardfolk', 'content': '\n*This creature’s vital stats are HD 2d8, HP 10, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 10, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 24. **Losel*:** _', 'content': '\n*This creature’s vital stats are HD 1d8+4, HP 10, AC 14, disposition neutral/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 10, AC 14, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 25. (fisherman/hunter/trapper/woodcutter)', 'content': '\n*This creature’s vital stats are HP 5, AC 12, disposition neutral. Their primary attributes are physical. He carries 6 silver in coin.*\n\n**Core Stats:** HP 5, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 26. Naga, Water', 'content': '\n*This creature’s vital stats are HD 7d8, HP 35, AC 15, disposition neutral. Their primary attributes are physical. He carries spells as a 7th level wizard, focusing on spells that promote protection, escape, such as Dimensional Leap, invisibility, medium steel shield, Teleportation, and etc.*\n\n**Core Stats:** HP 35, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 27. Nixies (sprite)', 'content': '\n*This creature’s vital stats are HD 1d4, HP 3, AC 14, disposition neutral. Their primary attributes are physical. He can cast the following number of spells per day: water breathing at will and cast a powerful charm person spell that lasts for one year.*\n\n**Core Stats:** HP 3, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 28. Orc', 'content': '\n*This creature’s vital stats are HD 1d8, HP 5, AC 13, disposition law/evil. Their primary attributes are physical. He carries 6 gold in coin.*\n\n**Core Stats:** HP 5, AC 13, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 29. Otter, giant', 'content': '\n*This creature’s vital stats are HD 4d8, HP 21, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 21, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 30. Owlbear (small)', 'content': '\n*These creatures’ vital stats are HD 3d10, HP 19, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 19, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 31. Rats, River (giant)', 'content': '\n*This creature’s vital stats are HD 1d4, HP 2, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 32. Rivermen', 'content': '\n*This creature’s vital stats are HD 1d8, HP 5, AC 11, disposition chaos/neutral. Their primary attributes are physical. His secondary skill is Nautical Ability, which is described in the CZY Appendix.*\n\n**Core Stats:** HP 5, AC 11, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 33. Snake, poisonous', 'content': '\n*This creature’s vital stats are HD 1d6, HP 4, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 34. Snake, poisonous (deadly)', 'content': '\n*This creature’s vital stats are HD 2d6, HP 7, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 7, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 35. Spider, Giant (medium-sized)', 'content': '\n*This creature’s vital stats are HD 3d8, HP 15, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 15, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 36. Stirges', 'content': '\n*This creature’s vital stats are HD 1d6, HP 3, AC 16, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 16, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 37. Thieves', 'content': '\n*This creature’s vital stats are HP 4, AC 14, disposition variable. Their primary attributes are physical. He carries 6 gold in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition variable\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 38. Turtle, Huge Snapping', 'content': '\n*These creatures’ vital stats are HD 5d8, HP 20, AC 19, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 20, AC 19, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 39. Wolf, Grey', 'content': '\n*This creature’s vital stats are HD 2d8, HP 9, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 9, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 40. Wolverine (small, normal)', 'content': '\n*This creature’s vital stats are HD 3d8, HP 16, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 16, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 41. Grimlock Manface (Losel Chieftain)', 'content': '\n*This creature’s vital stats are HD 4d8+4, HP 32, AC 16, disposition neutral/evil. Their primary attributes are physical. He wears splint mail armor and carries *wields a +1 heavy flail [specialized; +6 "to hit"; 1d10+6 damage]—+1 bonus*, lasso*, belt axe, and dagger, and 125 gold in coin.*\n\n**Core Stats:** HP 32, AC 16, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': "### 42. Ji'gun-tima (Losel Shaman)", 'content': '\n*This creature’s vital stats are HD 4d8+4, HP 25, AC 12, disposition neutral/evil. Their primary attributes are physical. He can cast the following number of spells per day: a mixture of cleric and wizard spells at a 5ᵗʰ level ability.*\n\n**Core Stats:** HP 25, AC 12, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 43. Losel sub-chiefs x 10', 'content': '\n*These creatures’ vital stats are HD 2d8+4, HP 16, AC 14, disposition neutral/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 16, AC 14, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 44. Losel warriors x 30', 'content': '\n*These warriors’ vital stats are HD 1d8+4, HP 10, AC 14, disposition neutral/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 10, AC 14, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 45. Losel females x 35', 'content': '\n*These creatures’ vital stats are HD 1d8, HP 6, AC 12, disposition neutral/evil. Their primary attributes are physical. They carry *clubs [+1 "to hit"; 1d6+1 damage]—+1 bonus*.*\n\n**Core Stats:** HP 6, AC 12, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 46. **Iggy the Mad*:** _', 'content': '\n*This creature’s vital stats are HP 22, AC 13, disposition chaos/neutral. Their primary attributes are physical. He carries 12 copper in coin.*\n\n**Core Stats:** HP 22, AC 13, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 47. The Ogre', 'content': '\n*This creature’s vital stats are HD 4d12, HP 27, AC 16, disposition chaos/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 27, AC 16, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 48. Children x 3-6', 'content': '\n*These creatures’ vital stats are HD 1d2, HP 2, AC 10, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 10, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 49. **Batrachianoids* x 6:** _', 'content': '\n*These creatures’ vital stats are HD 1d8, HP 5, AC 14, disposition chaos/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 50. Blook-glook (Batrachianoid Chieftain)', 'content': '\n*This creature’s vital stats are HD 3d10+4, HP 20, AC 14, disposition chaos/evil. Their primary attributes are physical. He carries a diamond-studded gold necklace worth 1, and 000 gold in coin.*\n\n**Core Stats:** HP 20, AC 14, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 51. Spider, Giant (medium-sized) x 2', 'content': '\n*These creatures’ vital stats are HD 3d8, HP 13, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 13, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 52. **Harpy*:** _', 'content': '\n*These creatures’ vital stats are HD 3d8, HP 13, AC 13, disposition chaos/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 13, AC 13, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 53. Tick, Giant x 3', 'content': '\n*These creatures’ vital stats are HD 2d8, HP 11, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 11, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 54. Wood Elf Scouts x 11', 'content': '\n*These creatures’ vital stats are HD 1d10, HP 8, AC 12, disposition chaos/neutral. Their primary attributes are physical. They carry 18 silver in coin.*\n\n**Core Stats:** HP 8, AC 12, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 55. Ember Raventree (wood elf leader)', 'content': '\n*This creature’s vital stats are HD 4d10, HP 22, AC 16, disposition chaos/neutral. Their primary attributes are physical. His significant attributes are strength 17 and dexterity 17. He carries 35 sp, 100 gp.*\n\n**Core Stats:** HP 22, AC 16, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 56. 86-90', 'content': '\n*These creatures’ vital stats are HD 4d10, HP 23, AC 15, disposition variable. Their primary attributes are physical. They wear a splint mail and great helms and carry wields a magical heavy flails, and 2–12 gold in coin. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. Their significant attributes are strength 17 and dexterity 17. They can cast the following number of spells per day: water breathing at will and cast a powerful charm person spell that lasts for one year.*\n\n**Core Stats:** HP 23, AC 15, Disposition variable\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 57. Raven "One-Eye"', 'content': '\n*This creature’s vital stats are HD 1d2, HP 2, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 58. Bandit sentries x 8', 'content': '\n*These creatures’ vital stats are HP 4, AC 12, disposition neutral/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 12, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 59. Bat, Cave', 'content': '\n*These creatures’ vital stats are HD 1d2, HP 1, AC 12, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 60. Centipedes, Black, Giant', 'content': '\n*This creature’s vital stats are HD 2d3, HP 3, AC 18, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 18, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 61. **Fire Beetles*, Giant:** _', 'content': '\n*This creature’s vital stats are HD 1d10, HP 6, AC 16, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 6, AC 16, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 62. Rats, Giant', 'content': '\n*This creature’s vital stats are HD 1d4, HP 2, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 63. Snake, Poisonous', 'content': '\n*This creature’s vital stats are HD 1d6, HP 4, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 64. Spider, Giant (medium-sized)', 'content': '\n*This creature’s vital stats are HD 3d8, HP 13, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 13, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 65. Tick, Giant', 'content': '\n*These creatures’ vital stats are HD 2d8, HP 11, AC 15, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 11, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 66. Wolves x 5', 'content': '\n*These creatures’ vital stats are HD 2d8, HP 9, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 9, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 67. **The Little Hillwood Werewolf*:** _', 'content': '\n*This 12ᵗʰ level cleric or’s vital stats are HP 25, AC 15, disposition chaos/evil.*\n\n**Core Stats:** HP 25, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 68. Kobold Guards x 2', 'content': '\n*These guards’ vital stats are HD 1d4, HP 3, AC 15, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 69. Mastiff', 'content': '\n*This creature’s vital stats are HD 3d8, HP 15, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 15, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 70. Fekk', 'content': '\n*This creature’s vital stats are HP 2, AC 10, disposition law/evil. Their primary attributes are physical. He carries has a key to the door of this room, and 5 gp, 3 cp.*\n\n**Core Stats:** HP 2, AC 10, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 71. Kobold warrior x 6', 'content': '\n*These creatures’ vital stats are HD 1d4, HP 3, AC 15, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 72. Kobold serjeant x 1', 'content': '\n*These creatures’ vital stats are HD 2d4, HP 6, AC 15, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 73. Kobold warrior x', 'content': '\n*This creature’s vital stats are HD 1d4, HP 3, AC 15, disposition law/evil. Their primary attributes are physical. He carries 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 74. Kobold serjeant x 1', 'content': '\n*These creatures’ vital stats are HD 2d4, HP 6, AC 15, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 75. King Griggle-gruk (Kobold Chieftain)', 'content': '\n*This creature’s vital stats are HD 4d4, HP 14, AC 17, disposition law/evil. Their primary attributes are physical. He wears plate mail armor and carries has javelins x 3, *+1 shortsword—+1 bonus*, keys to rooms #5, #6, #9, and to the jail cell in this chamber, and 18 gold in coin.*\n\n**Core Stats:** HP 14, AC 17, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 76. Kobold Bodyguards x 2', 'content': '\n*These guards’ vital stats are HD 2d4, HP 7, AC 15, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 7, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 77. Goblin prisoner', 'content': '\n*This creature’s vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. He carries a loin cloth.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 78. "Charlie" the Ogre', 'content': '\n*This creature’s vital stats are HD 4d12, HP 20, AC 16, disposition chaos/neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 20, AC 16, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 79. Goblin patrol warriors x 5', 'content': '\n*These warriors’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 80. Goblin guards x 4', 'content': '\n*These guards’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 81. Goblin patrol warriors x 6', 'content': '\n*These warriors’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 82. Goblin males x 8', 'content': '\n*These creatures’ vital stats are HD 1d6, HP 3, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 cp, 50 gp.*\n\n**Core Stats:** HP 3, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 83. Goblin females x 13', 'content': '\n*These creatures’ vital stats are HD 1d6, HP 2, AC 12, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 84. Goblin warriors x 3', 'content': '\n*These warriors’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 85. Goblin serjeant', 'content': '\n*This creature’s vital stats are HD 2d6, HP 11, AC 16, disposition law/evil. Their primary attributes are physical. He carries a breastplate, is equipped with medium steel shield, morning star, shortsword, whip, a brass belt ring with keys to #18, and #20, and 5 gp, 6 sp.*\n\n**Core Stats:** HP 11, AC 16, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 86. Prisoner #2: An elderly orc', 'content': '\n*This creature’s vital stats are HP 2, AC 10. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 10, Disposition —\n\n---\n\n'}
+

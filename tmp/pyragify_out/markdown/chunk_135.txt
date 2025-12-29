@@ -1,0 +1,162 @@
+Unknown chunk type:
+{'header': '### 77. Goblin prisoner', 'content': '\n*This creature’s vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. He carries a loin cloth.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 78. "Charlie" the Ogre', 'content': '\n*This creature’s vital stats are HD 4d12, HP 20, AC 16, disposition chaos/neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 20, AC 16, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 79. Goblin patrol warriors x 5', 'content': '\n*These warriors’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 80. Goblin guards x 4', 'content': '\n*These guards’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 81. Goblin patrol warriors x 6', 'content': '\n*These warriors’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 82. Goblin males x 8', 'content': '\n*These creatures’ vital stats are HD 1d6, HP 3, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 cp, 50 gp.*\n\n**Core Stats:** HP 3, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 83. Goblin females x 13', 'content': '\n*These creatures’ vital stats are HD 1d6, HP 2, AC 12, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 84. Goblin warriors x 3', 'content': '\n*These warriors’ vital stats are HD 1d6, HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 85. Goblin serjeant', 'content': '\n*This creature’s vital stats are HD 2d6, HP 11, AC 16, disposition law/evil. Their primary attributes are physical. He carries a breastplate, is equipped with medium steel shield, morning star, shortsword, whip, a brass belt ring with keys to #18, and #20, and 5 gp, 6 sp.*\n\n**Core Stats:** HP 11, AC 16, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 86. Prisoner #2: An elderly orc', 'content': '\n*This creature’s vital stats are HP 2, AC 10. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 10, Disposition —\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 87. Robert Cooper', 'content': '\n*This creature’s vital stats are HP 2, AC 11, disposition law/good. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 11, Disposition law/good\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 88. Oni Blackbeard (Dwarf Crossbowman)', 'content': '\n*This creature’s vital stats are HP 18, AC 10, disposition chaos/good. Their primary attributes are physical. He carries a loin cloth.*\n\n**Core Stats:** HP 18, AC 10, Disposition chaos/good\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 89. Wilbur Hornblower', 'content': '\n*This creature’s vital stats are HP 2, AC 8, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 8, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 90. Goblin shaman', 'content': '\n*These creatures’ vital stats are HD 4d6, HP 15, AC 10, disposition law/evil. Their primary attributes are physical. They carry *a bronze-hilted +1 poniard—+1 bonus*, *potion of extra healing [3d8+3]—heals 2d8+2 HPs*, a dragonhide spell book with each of the below spells contained thereins, a scroll of cause paralysis, and a key to door #21s, and 30 gp, 250 gp.*\n\n**Core Stats:** HP 15, AC 10, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 91. Goblin Skeletons x 4', 'content': '\n*These creatures’ vital stats are HD 1d12, HP 8, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 8, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 92. Goblin warriors x 2', 'content': '\n*These warriors’ vital stats are HD 1d6, HP 6, AC 14, disposition law/evil. Their primary attributes are physical. They carry 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 93. Gruzz Kree (Goblin Chieftain)', 'content': '\n*This creature’s vital stats are HD 4d6, HP 18, AC 18, disposition law/evil. Their primary attributes are physical. He carries 12 gp, 50 gp.*\n\n**Core Stats:** HP 18, AC 18, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 94. Goblin females x 6', 'content': '\n*These creatures’ vital stats are HD 1d6, HP 2, AC 12, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 95. Cave bats x 80', 'content': '\n*These creatures’ vital stats are HD 1d2, HP 1, AC 12, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 96. )** _', 'content': '\n*This creature’s vital stats are HD 1d2, HP 1, AC 11, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 1, AC 11, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 97. Snakes, poisonous', 'content': '\n*This creature’s vital stats are HD 1d6, HP 4, AC 14, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 98. Green slime', 'content': '\n*This creature’s vital stats are HD 4d8, HP 16, AC 10, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 16, AC 10, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 99. Rats, giant x 3-12', 'content': '\n*These creatures’ vital stats are HD 1d4, HP 2, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 100. Gray Ooze (small)', 'content': '\n*These creatures’ vital stats are HD 2d10, HP 15, AC 12, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 15, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 101. Black Centipedes, giant x 5', 'content': '\n*These creatures’ vital stats are HD 1d4, HP 2, AC 18, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 18, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 102. Orcs x 3', 'content': '\n*These creatures’ vital stats are HD 1d8, HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 103. Orcs x 4', 'content': '\n*These creatures’ vital stats are HD 1d8, HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 104. Orcs x 6', 'content': '\n*These creatures’ vital stats are HD 1d8, HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 105. Orc Guards x 2', 'content': '\n*These guards’ vital stats are HD 1d8, HP 7, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 7, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 106. King Krusher (Orc Leader)', 'content': '\n*This creature’s vital stats are HD 3d8, HP 20, AC 18, disposition law/evil. Their primary attributes are physical. He carries 30 gold in coin.*\n\n**Core Stats:** HP 20, AC 18, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': "### 107. Orc chieftain's mate", 'content': '\n*This creature’s vital stats are HD 1d8, HP 4, AC 12, disposition law/evil. Their primary attributes are physical. He carries a 4-inch knife, and 100 gold in coin.*\n\n**Core Stats:** HP 4, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 108. Orcs x 4', 'content': '\n*These creatures’ vital stats are HD 1d8, HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 109. Orc lieutenant', 'content': '\n*This creature’s vital stats are HD 2d8, HP 12, AC 14, disposition law/evil. Their primary attributes are physical. He carries 30 gold in coin.*\n\n**Core Stats:** HP 12, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 110. Zombies x 6', 'content': '\n*These creatures’ vital stats are HD 2d12, HP 12, AC 12, disposition neutral/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 12, AC 12, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 111. Skeletons x 8', 'content': '\n*These creatures’ vital stats are HD 1d12, HP 8, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 8, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 112. Wily Wil, Giant of the Hill', 'content': '\n*These creatures’ vital stats are HD 9d12, HP 63, AC 17, disposition chaos/neutral. Their primary attributes are physical. They wear hide armors and a large leather sack that contains two boulders and carry a soiled pair of underdrawers, a huge old hams, a comic scrolls, 3 lumps of rock candies, and other assorted trashs.*\n\n**Core Stats:** HP 63, AC 17, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 113. "Pinky" the Owlbear', 'content': '\n*This creature’s vital stats are HD 4d10, HP 27, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 27, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 114. Black Bear', 'content': '\n*This creature’s vital stats are HD 3d8, HP 15, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 15, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 115. Black Bear cubs x 2', 'content': '\n*These creatures’ vital stats are HD 1d8, HP 6, AC 12, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 6, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 116. River Rats, giant x 40', 'content': '\n*These creatures’ vital stats are HD 1d4, HP 2, AC 13, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 117. Stirges x 8', 'content': '\n*These creatures’ vital stats are HD 1d6, HP 3, AC 16, disposition neutral. Their primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 16, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 118. Bugbears x 3', 'content': '\n*These creatures’ vital stats are HD 3d10, HP 17, AC 16, disposition chaos/evil. Their primary attributes are physical. They carry 6 gold in coin.*\n\n**Core Stats:** HP 17, AC 16, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 119. Hobgoblin sentries x 2', 'content': '\n*These creatures’ vital stats are HD 1d10, HP 8, AC 15, disposition law/evil. Their primary attributes are physical. They wear chain mail armors and carry wield composite short bows, x12 arrows, battle-axes, and 2d4 gp eachs, and 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 120. Hobgoblin males x 2 or 4', 'content': '\n*These creatures’ vital stats are HD 1d10, HP 6, AC 15, disposition law/evil. Their primary attributes are physical. They wear crude chain mail armors and carry wield halberds and 2d4 gp eachs, and 4 gold in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 121. Hobgoblin females x 9', 'content': '\n*These creatures’ vital stats are HD 1d6, HP 3, AC 12, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 122. Hobgoblin warriors x 2', 'content': '\n*These warriors’ vital stats are HD 1d10, HP 8, AC 15, disposition law/evil. Their primary attributes are physical. They carry 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 123. Hub-Gub the Bloody (Hobgoblin Chieftain)', 'content': '\n*This creature’s vital stats are HD 3d10, HP 18, AC 16, disposition law/evil. Their primary attributes are physical. He wears full chain mail armor and carries *wields a +1 halberd [+4 "to hit"; 1d10+3 damage]—+1 bonus*, *broadsword [+3 "to hit"; 2d4+2 damage]—+3 bonus*, composite short bow, and 12 arrows, and 12 gold in coin.*\n\n**Core Stats:** HP 18, AC 16, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 124. Hobgoblin females x 3', 'content': '\n*These creatures’ vital stats are HD 1d6, HP 3, AC 12, disposition law/evil. Their primary attributes are physical. They carry 2 gold in coin.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 125. Gnoll sentries x 2', 'content': '\n*These creatures’ vital stats are HD 2d10, HP 12, AC 15, disposition chaos/evil. Their primary attributes are physical. They carry 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 126. Gnoll males x 4', 'content': '\n*These creatures’ vital stats are HD 2d10, HP 12, AC 15, disposition chaos/evil. Their primary attributes are physical. They carry 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 127. Gnoll females x 5', 'content': '\n*These creatures’ vital stats are HD 1d10, HP 5, AC 12, disposition chaos/evil. Their primary attributes are physical. They carry 4 silver in coin.*\n\n**Core Stats:** HP 5, AC 12, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 128. Gnoll guards x 2', 'content': '\n*These guards’ vital stats are HD 2d10, HP 14, AC 15, disposition chaos/evil. Their primary attributes are physical. They carry 4 gold in coin.*\n\n**Core Stats:** HP 14, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 129. Yeexuul (Gnoll Chieftain)', 'content': '\n*This creature’s vital stats are HD 3d10, HP 20, AC 17, disposition chaos/evil. Their primary attributes are physical. He wears plate mail armor and carries wields a throwing club, morning star, and 10-inch knife, and 24 gold in coin.*\n\n**Core Stats:** HP 20, AC 17, Disposition chaos/evil\n\n---\n'}
+
+Unknown chunk type:
+{'header': None, 'content': 'I\n\nTable of Contents for Essential Places Chapter 1 – Introduction\n\nChapter 2 – Inn of the Orange Stork Chapter 3 – Tavern\n\nChapter 4 – Guild Smith of Armor and Weapons for War Chapter 5 – General Store\n\nChapter 6 – Assassins Guild Chapter 7 – Troll Bridge Chapter 8 – Money Changer Chapter 9 – City Barracks Chapter 10 – Manor House Chapter 11 – Jail House Chapter 12 – Trading Post\n\nChapter 13 – Manor House Chapter 14 – Mage Guild Chapter 15 – Smithy Chapter 16 – Stable Chapter 17 – Apothecary\n\nChapter 18 – Harbor and Harbor Masters Office Appendix\n\nLike everyone who runs a role-playing game—whether you style yourself an old school Game Master or Storyteller—you must weave a world of complex people and places for your players to explore. From dark alleys to darker dungeons, parties of wide-eyed adventurers will traipse freely from locale to locale, drinking deeply of your creation.\n\nWhether your players want to plumb the depths of their characters’ deep-rooted Oedipal complexes, or just break things, kill people, and take their stuff, they will invariably visit—often repeatedly—many of the same fundamental places. Essential Places, as it were.\n\nIs there a greater archetypical locale in role-playing than the local inn, where the bartender is a grizzled former adventurer and the wenches are both comely and easily charmed? If that innkeeper only had a gold sovereign for every pup of an adventurer who has been through those swinging doors (or even the oft-broken windows)!\n\nWhile some Castle Keepers are meticulous about detailing every shop, house, temple, inn, or wide spot in the road in their campaigns, the reality is that most of us wing it when it comes to what exactly the general store looks like, or precisely how many horses the local stable can house. Even if you carefully prepare for every contingency, your players will routinely confound you by insisting on heading across town, away from your painstakingly detailed dwarven armorer, because they’ve heard that some obscure blacksmith has a sale on.\n\n**Essential Places** is intended to provide Castle Keepers with a series of detailed locales, urban and rural, populated by interesting characters that can easily be set down in virtually any campaign. This is not a book of exotic places and peoples to be pillaged and burned (though nothing but your skill prevents players from that), but rather an easy reference library to bring life to some of the more regularly traveled places in the game world. The locales are certainly not mundane or dull, but most are common locations that characters will grow familiar with.\n\nThis book does not pretend to detail every nook of every location in exacting precision. It would be much longer if it dwelt on every closet on every floor of every building. In most cases, a locale has a floor plan and a detailed write-up of the areas most likely to be visited by players. Thus, the armorer’s showroom and workshop are described in detail, but the loft upstairs where his apprentice sleeps, while mentioned, is not elaborated upon. Similarly, statistics are given for the armorer himself, but not for his wife.\n\nIn keeping with the tradition of the **Gygax Archives**, **Essential Places** is largely a generic sourcebook. Where necessary, character statistics or item descriptions are given for Castles & Crusades, the basic material can be easily incorporated into any fantasy role-playing system. In most cases, there is little need for system-specific statistics, since most of the places in the book offer little opportunity for combat (or at least challenging combat) or other mechanics-heavy activities. Should your players insist on wading through the blood of the common folk contained herein, you should assume that, unless otherwise indicated, the characters they meet are simple folk—easily dispatched. Such behavior should have consequences, however, and the authorities tend to frown upon the murder of peaceful citizens.\n\nEach locale in the book begins with a general discussion of the role of such locations in the typical fantasy campaign. While many of these places are reminiscent of real-world medieval locations, this is not intended to be a work of scholarly history, and considerable liberties are taken in transplanting places and items of various fantastic origins. No single book could hope to fully explore the role of these locales in every style or kind of role-playing fantasy world, but in addition to the general discussion on role, each location includes a few variations—suggesting ways in which a particular locale might differ from the norm.\n\nFollowing these general descriptions, a sample locale is detailed, ready to be transplanted wholesale into a Castle Keeper’s campaign world. Given the generic nature of the work, some details are necessarily left to the imagination of the reader, but these details are rarely integral to the use of the locale. The identity of the exact deity celebrated in the chapel of a noble manor house, for example, is easily customized by the Castle Keeper prior to use.\n\nAgain keeping with the standards of the **Gygax Archives**, generic monetary units are used when values are called for. This system allows for easy use of the material in different systems. The symbol “$” is used to denote currency, but should not be understood to mean “dollars” as we understand them today. The symbol represents whatever the base value of the monetary standard is in a Castle Keeper’s campaign world and can be interpreted accordingly.\n\nThe costs and values for items indicated herein are intended to be generally consistent with the value of the same items as detailed in Gary Gygax’s _Essential Facts and Things_.\n\nTo sum up, this work provides not only the places themselves with descriptions and maps, but a host of characters and opportunities to become immersed in the day-to-day dealings of the people involved—with just a little effort on your part. Small quests or plot hooks are provided if an evening of play not vital to the main campaign is desired, or the material can be easily expanded into the next major adventure.\n\nSo, no longer is it just another nameless inn that is stopped by, but **The Inn of the Orange Stork**, with Roscoe “Jolly” Buridge at the counter, ready to serve the weary travelers. Or a fully populated moneychanger’s place of business, where hard-earned coin is exchanged for more portable gems or the local currency.\n\nWith continuity comes a deeper sense of reality to your world, and some of these places may become mainstays—giving your players somewhere to return to again and again, enriching the gaming experience. Many of these can be used in the place of any institution called for on the spur of the moment.\n\nWe hope you enjoy what we have assembled here, and that it enhances your world—for both you and your players.\n\n'}
+

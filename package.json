@@ -13,6 +13,7 @@
     "analyze:bestiary": "node scripts/analyze_bestiary.cjs",
     "regen:mouths": "node scripts/extract_parentheticals.cjs && node scripts/parse_parentheticals.cjs && node scripts/build_candidates.cjs && npx tsx scripts/canonicalize_candidates.ts && node scripts/render_mouths_markdown.cjs && node scripts/analyze_bestiary.cjs",
     "generate:mocks": "npx tsx scripts/generate-mouths-mock.ts",
+    "generate:pf2e-mock": "npx tsx scripts/generate-pf2e-mock.ts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
