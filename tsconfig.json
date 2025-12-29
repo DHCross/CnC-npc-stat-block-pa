@@ -36,6 +36,9 @@
   ],
   "exclude": [
     "node_modules",
+    "tmp/**",
+    "tmp_*.ts",
+    "vite.config.ts",
     "**/*.stories.ts",
     "**/*.stories.tsx"
   ]
