@@ -200,28 +200,22 @@ export function lookupCanonicalMount(raw: string): MountBlock | undefined {
     return undefined;
   }
 
-    let normalizedAttrs: NormalizedAttributesResult | undefined;
-    const canonical = CANONICAL_MOUNT_DATA[key];
+  const canonical = CANONICAL_MOUNT_DATA[key];
   if (!canonical) {
     return undefined;
   }
 
-    if (!normalizedAttrs && isNamedRanked && data.significantAttributes) {
-      // Convert significant attributes to a normalized list form
-      normalizedAttrs = { type: 'list', value: data.significantAttributes };
-    }
-
-    return {
-      name: canonical.name,
-      raw: block.raw ?? canonical.raw,
-      level: block.level ?? canonical.level,
-      hd: block.hd ?? canonical.hd,
-      hp: block.hp ?? canonical.hp,
-      ac: block.ac ?? canonical.ac,
-      disposition: block.disposition ?? canonical.disposition,
-      attacks: block.attacks ?? canonical.attacks,
-      equipment: block.equipment ?? canonical.equipment,
-    };
+  return {
+    name: canonical.name,
+    raw: block.raw ?? canonical.raw,
+    level: block.level ?? canonical.level,
+    hd: block.hd ?? canonical.hd,
+    hp: block.hp ?? canonical.hp,
+    ac: block.ac ?? canonical.ac,
+    disposition: block.disposition ?? canonical.disposition,
+    attacks: block.attacks ?? canonical.attacks,
+    equipment: block.equipment ?? canonical.equipment,
+  };
 }
 
 export function canonicalizeMountBlock(block: MountBlock): MountBlock {
