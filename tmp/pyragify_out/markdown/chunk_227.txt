@@ -1,0 +1,149 @@
+Unknown chunk type:
+{'header': '# Monster & Item Conversion Reference Guide', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '## Purpose', 'content': 'This guide provides contextual rules, formatting mandates, and conversion principles to support the master CSV mappings. It ensures consistent naming, mechanical clarity, and alignment with the latest *Monsters & Treasure* (M&T) conventions.\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Conversion Principles', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### 1. Standardization to Canonical Forms', 'content': '- All monster names must be standardized to the latest canonical *Monsters & Treasure* (M&T) equivalents\n- The master CSV acts as the dictionary for required replacements\n- Consistency across all game materials is mandatory\n\n'}
+
+Unknown chunk type:
+{'header': '### 2. Addressing IP Issues and Removal', 'content': '- Differentiate between:\n  - **Name changes** (creature retained with new name)\n  - **Removals** (creature eliminated from M&T)\n- Document rationale for IP-related changes\n\n'}
+
+Unknown chunk type:
+{'header': '### 3. Formatting Mandates', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '#### Italicization', 'content': '- Magic item names must be italicized (e.g., *Robe of Armor*, *Portable Portal*)\n- Monster abilities that reference items should follow the same convention\n\n'}
+
+Unknown chunk type:
+{'header': '#### Bonus Placement', 'content': '- All numerical bonuses must appear **at the end** of the item name\n- Examples:\n  - Correct: *Robe of Armor +3*\n  - Incorrect: *+3 Robe of Armor*\n\n'}
+
+Unknown chunk type:
+{'header': '#### Naming Conventions', 'content': '- Use consistent capitalization\n- Maintain "Giant" suffix for oversized creatures (e.g., "Ant, Giant" or "Ant Lion, Giant")\n- Preserve mythological accuracy where applicable\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Specific Replacement Rules', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Monster Name Conversions', 'content': 'Based on the conversion table from source documents:\n\n| Old Name | New Name | Type | Notes |\n|----------|----------|------|-------|\n| Aboleth | Abhorrent | Aberration | Standardization via SRD |\n| Acephali | *Remove from M&T* | Humanoid | Removed due to mythological origin |\n| Aerial Servant | Aerial Thrall | Extraplanar | Name change |\n| Allip | Wraithwisp | Undead | Name change |\n| Ankheg | Ankh Mantis | Beast | Name change |\n| Azer | Aiser | Extraplanar | Name change/Slavic creature similarity |\n| Behir | Lightning Wyrm | Magical Beast | Name change |\n| Belker | Shadow Demon | Elemental | Name change |\n| Cadaver Caterpillar | Cadaver Caterpillar | Aberration | Carrion Crawler with name changed |\n| Flumph | Flumm | Extraplanar | Name change |\n| Mephit, Fire | Impling, Fire | Extraplanar | Part of group conversion of mephits to Implings |\n| Xorn | Zorn | Extraplanar | Name change |\n\n'}
+
+Unknown chunk type:
+{'header': '### Magic Item Conversions', 'content': '| Old Name | New Name | Notes |\n|----------|----------|-------|\n| Robe of Protection | *Robe of Armor* or *Robe +3* | Canonicalization; bonus at end |\n| Well of Many Worlds | *Portable Portal* | Canonicalization |\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Potion & Scroll Level Reference', 'content': '*(To be populated with specific level requirements for potions and scrolls)*\n\n'}
+
+Unknown chunk type:
+{'header': '### Potions', 'content': '- Document minimum caster level\n- Note duration and effect scaling\n- Cross-reference spell equivalents\n\n'}
+
+Unknown chunk type:
+{'header': '### Scrolls', 'content': '- Specify spell level\n- Note caster level requirements\n- Document material component exceptions\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Monster Notes & Special Cases', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### Undead Creatures', 'content': '- Distinguish between Extraordinary and Supernatural undead\n- Note Sanity effects where applicable\n- Document Turn Undead interactions\n\n'}
+
+Unknown chunk type:
+{'header': '### Extraplanar Creatures', 'content': '- Specify home plane\n- Note summoning restrictions\n- Document banishment vulnerabilities\n\n'}
+
+Unknown chunk type:
+{'header': '### Environmental Considerations', 'content': '- Climate restrictions (Tropical, Temperate, Arctic, etc.)\n- Biome preferences (Subterranean, Aquatic, Forest, Plains, etc.)\n- AD&D 2E environment compatibility notes\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Quality Assurance Checklist', 'content': '\n- [ ] All old names mapped to new canonical names\n- [ ] Magic items properly italicized\n- [ ] Bonuses placed at end of item names\n- [ ] Type classification accurate\n- [ ] Source attribution included\n- [ ] IP issues documented\n- [ ] Environmental data complete\n- [ ] HD and Die Value specified\n- [ ] Disposition/Alignment noted\n- [ ] Sanity effects flagged\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Usage Notes', 'content': '\n1. **For Conversion**: Use the master CSV as the authoritative mapping\n2. **For Authoring**: Follow formatting mandates strictly\n3. **For QA**: Cross-reference against this guide\n4. **For Tooling**: Parse CSV for automated replacements\n\n---\n\n*This guide should be updated as new conversions are identified and M&T conventions evolve.*\n'}
+
+File: ORIG_HEAD
+Content:
+b7af491e31f82c3f2d6d43c3a65b9f122c3b3533
+
+
+File: config
+Content:
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = https://github.com/DHCross/CnC-npc-stat-block-pa.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+	vscode-merge-base = origin/main
+	gk-merge-base = origin/main
+[pull]
+	rebase = false
+
+
+File: HEAD
+Content:
+ref: refs/heads/main
+
+
+File: description
+Content:
+Unnamed repository; edit this file 'description' to name the repository.
+
+
+File: COMMIT_EDITMSG
+Content:
+Add pipeline-friendly headers for Essential Places, generate Essential Places mock and Storybook story for UI validation
+
+
+File: FETCH_HEAD
+Content:
+b7af491e31f82c3f2d6d43c3a65b9f122c3b3533		branch 'main' of https://github.com/DHCross/CnC-npc-stat-block-pa
+9c518ea3a031fc7c0716b1f1d4bc8edd830fa0b1	not-for-merge	branch 'codex/add-commit-hash-and-build-date-display' of https://github.com/DHCross/CnC-npc-stat-block-pa
+c7de2e4fc7b5ba68fd0e59aaa2da890d6dcfed8d	not-for-merge	branch 'codex/add-typography-plugin-to-tailwind-config' of https://github.com/DHCross/CnC-npc-stat-block-pa
+62d253d869adbef600f3b3e59cb75815b6807f9e	not-for-merge	branch 'codex/ensure-document-compliance-analyzer-supports-docx-and-pdf' of https://github.com/DHCross/CnC-npc-stat-block-pa
+f3e653f29be7f3d6525706c68920481185aba91e	not-for-merge	branch 'codex/extract-validationwarnings-component' of https://github.com/DHCross/CnC-npc-stat-block-pa
+b63e97bfc2c385cb8003e60f0022e2c6048b7d2f	not-for-merge	branch 'codex/fix-build-errors-in-deployment' of https://github.com/DHCross/CnC-npc-stat-block-pa
+6a19d8cb33289fd5881d3be291f320f756ee5486	not-for-merge	branch 'codex/fix-build-errors-in-next.js-application' of https://github.com/DHCross/CnC-npc-stat-block-pa
+c9321f3c25ba7aea91318d6ec3b7042b49fb4f0c	not-for-merge	branch 'codex/fix-build-failure-due-to-missing-swc-dependencies' of https://github.com/DHCross/CnC-npc-stat-block-pa
+eb1daa7d16ef0c753a760d078e75fe780d6125fb	not-for-merge	branch 'codex/fix-deployment-build-error' of https://github.com/DHCross/CnC-npc-stat-block-pa
+30d1d35f9131b53b1ddc9c02df01cf415e264334	not-for-merge	branch 'codex/fix-deployment-errors-and-check-code-quality' of https://github.com/DHCross/CnC-npc-stat-block-pa
+e8da164dbede2f30342740438b3169b82f4b44ed	not-for-merge	branch 'codex/fix-mount-pronoun-unit-context-issue' of https://github.com/DHCross/CnC-npc-stat-block-pa
+7c1776f638e7260498361dc850bd4e3dd23e7324	not-for-merge	branch 'codex/fix-name-formatting-and-possessive-errors' of https://github.com/DHCross/CnC-npc-stat-block-pa
+4206f545bf5eacd9d5b495a9a1a33ef0c34354e8	not-for-merge	branch 'codex/fix-output-format-for-npc-stat-block' of https://github.com/DHCross/CnC-npc-stat-block-pa
+36d562dbc0cee44db57ddea5af4fc31b6f4f83db	not-for-merge	branch 'codex/fix-shield-handling-logic-in-enhanced-parser' of https://github.com/DHCross/CnC-npc-stat-block-pa
+ab08a9dd6da6fcc307f681361ba64aa13371c4b9	not-for-merge	branch 'codex/fix-typescript-build-error' of https://github.com/DHCross/CnC-npc-stat-block-pa
+f4da49c288153601dc947d979fb46e9b473948b6	not-for-merge	branch 'codex/implement-monster-parser-functions-and-validation' of https://github.com/DHCross/CnC-npc-stat-block-pa
+03d6a2b1729a031e84083bf141472a9f00a4e3bc	not-for-merge	branch 'codex/implement-monster-parser-functions-and-validation-gie9ax' of https://github.com/DHCross/CnC-npc-stat-block-pa
+eebe7098a3e12c8993f22111f5e09a915d1117c3	not-for-merge	branch 'codex/implement-monster-parser-functions-and-validation-npa0eh' of https://github.com/DHCross/CnC-npc-stat-block-pa
+0c78b895323f0ce51ba65e310833ea660de05cab	not-for-merge	branch 'codex/refactor-canonicalizer-for-unit-entries' of https://github.com/DHCross/CnC-npc-stat-block-pa
+489533f5148803e2d3dc0bc597f48c8ad10507af	not-for-merge	branch 'codex/refactor-equipmatch-to-const' of https://github.com/DHCross/CnC-npc-stat-block-pa
+28934bf860922e7d1f2eecce114dbc79734033e2	not-for-merge	branch 'codex/remove-class/level-info-from-title-line' of https://github.com/DHCross/CnC-npc-stat-block-pa
+34c423e5c60d76044430ae8f57b476a7a13040a8	not-for-merge	branch 'codex/remove-coinage-spelling-rule' of https://github.com/DHCross/CnC-npc-stat-block-pa
+43fe1f525f9e66229cdf14f4cae7e80902db6124	not-for-merge	branch 'codex/remove-debug-logs-from-enhanced-parser' of https://github.com/DHCross/CnC-npc-stat-block-pa
+ec300b74ee50514cfc7856ad1ef0c05f7f3efc38	not-for-merge	branch 'codex/restore-app-styling' of https://github.com/DHCross/CnC-npc-stat-block-pa
+e8cddd9d70dadd184025a60c0480c72b3957f27b	not-for-merge	branch 'codex/restore-app-styling-d06ntt' of https://github.com/DHCross/CnC-npc-stat-block-pa
+8ac9f3f6a207f24ade64aed20b7b0f164a85a39f	not-for-merge	branch 'codex/restore-app-styling-ydb7ai' of https://github.com/DHCross/CnC-npc-stat-block-pa
+1c5fb0043a10c4d6ca0963f656d3846c9b549e58	not-for-merge	branch 'codex/update-buildcanonicalparenthetical-for-name-mappings' of https://github.com/DHCross/CnC-npc-stat-block-pa
+39b85cb2ed02df6e6ab4304acfeeca338d83c7e3	not-for-merge	branch 'codex/update-dictionary-suggestion-handling' of https://github.com/DHCross/CnC-npc-stat-block-pa
+0bc4bd35cc489d5d0f3ea3cddaaa73071fe83561	not-for-merge	branch 'codex/update-document-for-integration-fixes' of https://github.com/DHCross/CnC-npc-stat-block-pa
+7ab81fa93700c2af4a457a69c364ec953ef65765	not-for-merge	branch 'codex/update-monster-stats-for-compliance' of https://github.com/DHCross/CnC-npc-stat-block-pa
+6fb438a70e1bbc41fbbcbfcd97b28530c9494496	not-for-merge	branch 'codex/update-parser-for-cc-stat-blocks' of https://github.com/DHCross/CnC-npc-stat-block-pa
+11a66d13ebe88ad0a589257bebdf84edfb47fb04	not-for-merge	branch 'codex/update-parser-formatting-standards' of https://github.com/DHCross/CnC-npc-stat-block-pa
+fa1d77a0f4487477d0ed23c502c939e60ec012da	not-for-merge	branch 'codex/validate-npc-entry-for-victor-oldham' of https://github.com/DHCross/CnC-npc-stat-block-pa
+c150333d67f63aa16bcfd1b42577ae3901ac50b3	not-for-merge	branch 'codex/validate-npc-entry-for-victor-oldham-zfqw2r' of https://github.com/DHCross/CnC-npc-stat-block-pa
+7dcb418ae6d1ad6c53bc954a94a65ead87f89ed4	not-for-merge	branch 'feat/name-correction' of https://github.com/DHCross/CnC-npc-stat-block-pa
+d2c33e3d87090c370b1f56f7d310732aabd8cd3d	not-for-merge	branch 'feature/human-default-parser' of https://github.com/DHCross/CnC-npc-stat-block-pa
+853fbf4ab0e815eac397b627fa98796b1f59ea93	not-for-merge	branch 'fix-build-error' of https://github.com/DHCross/CnC-npc-stat-block-pa
+b62991c73768d43a3fbbc62b3475e15a1af7f104	not-for-merge	branch 'fix-monster-parser-multiline' of https://github.com/DHCross/CnC-npc-stat-block-pa
+992b3f1d61c45a309a08dc250df3b7567f6f991f	not-for-merge	branch 'fix/parser-fallback' of https://github.com/DHCross/CnC-npc-stat-block-pa
+1bb6aba85fd2e1c271aa26dacbd09ed362d0bb33	not-for-merge	branch 'fix/remove-unused-imports' of https://github.com/DHCross/CnC-npc-stat-block-pa
+eae3d3a7311b2bf79f6b286259e462bae9771c2c	not-for-merge	branch 'fix/single-line-parser' of https://github.com/DHCross/CnC-npc-stat-block-pa
+
+

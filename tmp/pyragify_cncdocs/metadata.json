@@ -1,0 +1,53 @@
+{
+    "processed_files": [],
+    "skipped_files": [
+        {
+            "path": "Essential Places 10.30.25_headers.md",
+            "reason": "Unchanged file (hash match)"
+        },
+        {
+            "path": "east-mark-canonical-clean.md",
+            "reason": "Unchanged file (hash match)"
+        },
+        {
+            "path": "Essential Places 10.30.25.md",
+            "reason": "Unchanged file (hash match)"
+        },
+        {
+            "path": "east-mark-canonical.md",
+            "reason": "Unchanged file (hash match)"
+        },
+        {
+            "path": "mouths-of-madness-canonical-clean.md",
+            "reason": "Unchanged file (hash match)"
+        },
+        {
+            "path": "01 CZ Ruins East Mark.md",
+            "reason": "Unchanged file (hash match)"
+        },
+        {
+            "path": "Essential Places 10.30.25_headers_export.md",
+            "reason": "Unchanged file (hash match)"
+        },
+        {
+            "path": "mouths-of-madness-canonical-clean.11.14.25.md",
+            "reason": "Unchanged file (hash match)"
+        },
+        {
+            "path": "Essential Places 10.30.25_autoheaders.md",
+            "reason": "Unchanged file (hash match)"
+        },
+        {
+            "path": "mouths-of-madness-canonical.md",
+            "reason": "Unchanged file (hash match)"
+        },
+        {
+            "path": "02 CZ Ruins Mouths of Madness.md",
+            "reason": "Unchanged file (hash match)"
+        }
+    ],
+    "summary": {
+        "total_files_processed": 0,
+        "total_words": 0
+    }
+}

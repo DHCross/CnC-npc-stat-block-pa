@@ -1,0 +1,38 @@
+name: Verify No-Expansion & Adapter Isolation
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ main, master ]
+
+jobs:
+  verify-no-expansion:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check adapter isolation (no imports from src/ in system-profiles/CnC)
+        run: |
+          set -euo pipefail
+          if grep -R --exclude-dir=node_modules -nE "from\s+['\"]@/|from\s+['\"]src/" system-profiles/CnC; then
+            echo "Adapter imports C&C runtime code (forbidden)"
+            exit 1
+          else
+            echo "Adapter isolation check passed."
+          fi
+
+      - name: Run no-expansion test
+        run: npx vitest run src/test/no-expansion-of-npc-spells.test.ts
+
+      - name: Run full test suite
+        run: npm test

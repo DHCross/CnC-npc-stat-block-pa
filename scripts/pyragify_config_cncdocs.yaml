@@ -1,0 +1,20 @@
+repo_path: "CnC Docs"
+output_dir: tmp/pyragify_cncdocs
+max_words: 2500
+max_file_size: 2000000
+skip_dirs:
+  - node_modules
+  - .venv
+  - __pycache__
+skip_patterns:
+  - '*.png'
+  - '*.jpg'
+  - '*.jpeg'
+  - 'tmp/*'
+  - 'node_modules/*'
+  - 'data/*'
+  - 'external/*'
+# Optional: allow you to include only certain files
+#include_patterns:
+#  - 'CnC Docs/**/*.md'
+#  - '**/*.md'

@@ -1,0 +1,17 @@
+# System profile for: GenericGame
+# Use this YAML to map system fields to canonical fields.
+# Example mapping: system attribute -> canonical attribute
+mappings:
+  STR: strength
+  DEX: dexterity
+  CON: constitution
+  INT: intelligence
+  WIS: wisdom
+  CHA: charisma
+
+# Example transformations:
+# - convert_hit dice to integer
+# - convert_hp_string: "2d8+3" -> approximate or exact numeric parse
+transformations:
+  parse_hp: true
+  armor_value: 'AC'

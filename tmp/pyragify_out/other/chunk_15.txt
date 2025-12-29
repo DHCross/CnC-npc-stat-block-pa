@@ -1,0 +1,705 @@
+File: npc-parser.test.ts
+Content:
+import { describe, it, expect } from 'vitest'
+import {
+  collapseNPCEntry,
+  formatPrimaryAttributes,
+  extractDisposition,
+  parseRaceClassLevel,
+  validateStatBlock
+  , processDumpWithValidation
+} from '@/lib/npc-parser';
+import { findEquipment } from '@/lib/enhanced-parser';
+
+describe('NPC Parser - Jeremy Farkas Editor Requirements', () => {
+  describe('Italicized Stat Blocks', () => {
+    it('should wrap entire stat block content in italics inside parentheses', () => {
+      const input = `**Victor Oldham, High Priest**
+
+Disposition: lawful good
+Race & Class: human, 16th level cleric
+Hit Points (HP): 59
+Armor Class (AC): 13/22
+Prime Attributes (PA): Strength, Wisdom
+Equipment: mace, shield
+Spells: 0–6, 1st–6`
+
+      const result = collapseNPCEntry(input)
+      
+      // Should have the pattern **Name[, Title]** *(italic content)*
+      expect(result).toMatch(/\*\*[^*]+\*\* \*\(.*\)\*/)
+      expect(result).toContain('*(This 16ᵗʰ level human cleric')
+      expect(result).toContain('disposition law/good.')
+    })
+  })
+
+  describe('Complete Sentences with "and disposition"', () => {
+    it('should format vital stats as complete sentence with Oxford comma', () => {
+      const input = `**Test NPC**
+Disposition: law/good
+Race & Class: human, 5th level fighter
+Hit Points (HP): 35
+Armor Class (AC): 18`
+
+      const result = collapseNPCEntry(input)
+      
+      expect(result).toContain('HP 35, AC 18, disposition law/good.')
+      expect(result).toMatch(/vital stats are HP \d+, AC \d+, disposition .+\./)
+    })
+  })
+
+  describe('Primary Attributes: Lowercase PHB Order', () => {
+    it('should output attributes in lowercase PHB canonical order', () => {
+      const testAttributes = 'Charisma, Intelligence, Strength'
+      const result = formatPrimaryAttributes(testAttributes)
+      
+      // Should be reordered to PHB order and lowercase
+      expect(result).toBe('strength, intelligence, and charisma')
+    })
+
+    it('should handle single attribute in lowercase', () => {
+      const result = formatPrimaryAttributes('Wisdom')
+      expect(result).toBe('wisdom')
+    })
+
+    it('should handle two attributes with "and"', () => {
+      const result = formatPrimaryAttributes('Dexterity, Strength')
+      expect(result).toBe('strength and dexterity')
+    })
+    
+    it('should use singular possessive pronoun when prose uses "He carries" (enhanced)', () => {
+      const input = `**Bruno** (HP 10, AC 12) He carries a dagger.`;
+      const processed = processDumpWithValidation(input, true, 'enhanced');
+      expect(processed.length).toBeGreaterThan(0);
+      const converted = processed[0].converted;
+      expect(converted).toContain('HP 10, AC 12');
+      expect(converted).toContain('His primary attributes are physical');
+    });
+  })
+
+  describe('Classification-driven attribute phrasing', () => {
+    it('converts shorthand to long-form attributes for classed NPCs', () => {
+      const input = `**Bandit Sentry** (*HP 4; AC 7; Disposition: neutral; Their primary attributes are physical; Equipment: dagger*)`;
+      const processed = processDumpWithValidation(input, true, 'enhanced');
+      expect(processed.length).toBeGreaterThan(0);
+      const converted = processed[0].converted;
+      expect(converted).toContain('primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.');
+      expect(converted).not.toContain('Saves:');
+    });
+
+    it('applies Saves notation for monsters with HD-based stat blocks', () => {
+      const input = `**Ape, carnivorous** (*HD 4d10; AC 15; Disposition: neutral; Their primary attributes are physical; Equipment: claws*)`;
+      const processed = processDumpWithValidation(input, true, 'enhanced');
+      expect(processed.length).toBeGreaterThan(0);
+      const converted = processed[0].converted;
+      expect(converted).toContain('Saves: P');
+      expect(converted).not.toContain('primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.');
+    });
+
+    it('applies Saves notation for HD+HP monsters (Bat, giant cave)', () => {
+      const input = `**Bat, giant cave** (*HD 1d2; HP 1; AC 12; disposition: neutral; Their primary attributes are physical*)`;
+      const processed = processDumpWithValidation(input, true, 'enhanced');
+      const converted = processed[0].converted;
+      expect(converted).toContain('Saves: P');
+      expect(converted).not.toContain('primary attributes are strength, dexterity');
+    });
+  });
+
+  describe('Shield Type Specification', () => {
+    it('should normalize generic shield to medium steel shield', () => {
+      const input = 'sword, shield, armor'
+      const result = findEquipment(input)
+      
+      expect(result).toContain('medium steel shield')
+      expect(result).not.toContain(', shield,')
+    })
+
+    it('should preserve explicit shield types', () => {
+      const input = 'sword, wooden shield, armor'
+      const result = findEquipment(input)
+      
+      expect(result).toContain('wooden shield')
+      expect(result).not.toContain('large steel shield')
+    })
+
+    it('should preserve shield bonuses with normalization', () => {
+      const input = 'sword, shield +2, armor'
+      const result = findEquipment(input)
+      
+      expect(result).toContain('medium steel shield +2')
+    })
+  })
+
+  describe('PHB Magic Item Name Updates', () => {
+    it('should rename robe of protection to robe of armor', () => {
+      const input = 'robe of protection, sword'
+      const result = findEquipment(input)
+      
+      expect(result).toContain('robe of armor')
+      expect(result).not.toContain('robe of protection')
+    })
+
+    it('should rename ring of protection to ring of armor', () => {
+      const input = 'ring of protection, mace'
+      const result = findEquipment(input)
+      
+      expect(result).toContain('Ring of Armor (AC +1 to +5)')
+      expect(result).not.toContain('ring of protection')
+    })
+
+    it('should rename dagger of venom to dagger of envenomation', () => {
+      const input = 'dagger of venom, bow'
+      const result = findEquipment(input)
+      
+      expect(result).toContain('Dagger of Envenomation')
+      expect(result).not.toContain('dagger of venom')
+    })
+  })
+
+  describe('Magic Item Italicization', () => {
+    it('should italicize obvious magic items', () => {
+      const input = 'sword +1, staff of striking, normal mace'
+      const result = findEquipment(input)
+      
+      expect(result).toContain('*sword +1 (+1 bonus)*')
+      expect(result).toContain('*Staff of Striking Blows (see Appendix: Magic Items)*')
+      expect(result).toContain('normal mace') // Not italicized
+      expect(result).not.toContain('*normal mace*')
+    })
+  })
+
+  describe('No Bold Text Inside Stat Blocks', () => {
+    it('should not contain bold formatting inside italicized stat blocks', () => {
+      const input = `**Guard Captain**
+Race & Class: human, 5th level fighter
+Hit Points (HP): 35
+Armor Class (AC): 18`
+
+      const result = collapseNPCEntry(input)
+      
+      // Extract the content inside parentheses
+      const match = result.match(/\*\((.+?)\)\*/s)
+      const statBlockContent = match ? match[1] : ''
+
+      // Should not contain ** bold markers inside the stat block
+      expect(statBlockContent).not.toMatch(/\*\*/)
+      expect(statBlockContent).toContain('5ᵗʰ level') // Superscript but not bold
+    })
+  })
+
+  describe('Mount Stat Block Integration', () => {
+    it('should default to minimal mount mention without stat block', () => {
+      const input = `**Knight**
+Mount: heavy war horse`
+
+      const result = collapseNPCEntry(input)
+
+      expect(result).toContain('He rides a heavy warhorse in battle.')
+      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are HD 4d10, HP 35, AC 19, disposition neutral. It receives two hoof attacks for 1–4 damage or one overbearing attack. It wears chain mail barding.)*')
+    })
+  })
+
+  describe('Disposition Parsing', () => {
+    it('should parse various disposition formats correctly', () => {
+      expect(extractDisposition('Disposition: lawful good')).toBe('law/good')
+      expect(extractDisposition('Disposition: chaos/evil')).toBe('chaos/evil')
+      expect(extractDisposition('Alignment: Chaotic Neutral')).toBe('chaos/neutral')
+      expect(extractDisposition('He is neutral')).toBe('neutral')
+    })
+  })
+
+  describe('Title sanitization', () => {
+    it('should remove race/class descriptors from the title line', () => {
+      const input = `**Captain Alaric, human, 5th level fighter**
+Disposition: lawful good
+Race & Class: human, 5th level fighter
+Hit Points (HP): 45
+Armor Class (AC): 17`;
+
+      const result = collapseNPCEntry(input);
+
+      expect(result.startsWith('**Captain Alaric**')).toBe(true);
+      expect(result).not.toMatch(/\*\*Captain Alaric, human/i);
+
+      const parentheticalMatch = result.match(/\*\((.+?)\)\*/);
+      const parenthetical = parentheticalMatch ? parentheticalMatch[1] : '';
+      expect(parenthetical).toMatch(/This 5ᵗʰ level human fighter/i);
+    });
+  
+    it('should canonicalize magic item names and remove bracket detail', () => {
+      const input = 'a bronze-hilted +1 poniard—+1 bonus, potion of extra healing [3d8+3]—heals 2d8+2 HPs';
+      const result = findEquipment(input);
+      expect(result).toContain('*poniard +1*');
+      expect(result).toContain('*potion of extra healing* (heals 2d8+2 HP)');
+      expect(result).not.toContain('bronze-hilted');
+    });
+  });
+
+  describe('Race/Class/Level Parsing', () => {
+    it('should parse race, class, and level correctly', () => {
+      const result = parseRaceClassLevel('human, 16th level cleric')
+
+      expect(result.race).toBe('human')
+      expect(result.level).toBe('16')
+      expect(result.charClass).toBe('cleric')
+    })
+
+    it('should handle different formats', () => {
+      const result1 = parseRaceClassLevel('Race & Class: elf, 8th level wizard')
+      expect(result1.race).toBe('elf')
+      expect(result1.level).toBe('8')
+      expect(result1.charClass).toBe('wizard')
+
+      const result2 = parseRaceClassLevel('12th level dwarf fighter')
+      expect(result2.race).toBe('dwarf')
+      expect(result2.level).toBe('12')
+      expect(result2.charClass).toBe('fighter')
+    })
+  })
+
+  describe('Validation System Updates', () => {
+    it('should use "Primary attributes" in validation messages', () => {
+      const input = `**Test NPC**
+Prime Attributes: Str, Dex, Con`
+
+      const validation = validateStatBlock(input)
+      const attributeWarnings = validation.warnings.filter(w => 
+        w.message.includes('Primary attributes') || w.category.includes('Primary Attributes')
+      )
+      
+      expect(attributeWarnings.length).toBeGreaterThan(0)
+      expect(attributeWarnings.some(w => w.message.includes('Primary attributes'))).toBe(true)
+    })
+  })
+
+  describe('Integration Test - Council of Eight Format', () => {
+    it('should produce correctly formatted output matching Jeremy\'s specifications', () => {
+      const input = `**The Right Honorable President Counselor Victor Oldham, High Priest**
+
+Disposition: lawful good
+Race & Class: human, 16th level cleric
+Hit Points (HP): 59
+Armor Class (AC): 13/22
+Prime Attributes (PA): Strength, Wisdom, Charisma
+Equipment: pectoral of protection +3, full plate mail, shield, staff of striking, mace
+Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
+Mount: heavy war horse`
+
+      const result = collapseNPCEntry(input)
+      
+      // Check all major formatting requirements
+      expect(result).toMatch(/\*\*.*\*\* \*\(.*\)\*/) // Italicized stat block
+      expect(result).toContain('disposition law/good.') // Complete sentence
+
+      expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order with Oxford comma
+      expect(result).toContain('He carries *pectoral of armor +3 (AC +1 to +3)*, full plate mail, a medium steel shield, *Staff of Striking Blows (see Appendix: Magic Items)*, and a mace.')
+      expect(result).toContain('He rides a heavy warhorse in battle.')
+
+      expect(result).toContain('strength, wisdom, and charisma') // Lowercase PHB order
+      expect(result).toContain('*pectoral of armor +3 (AC +1 to +3)*') // PHB rename + italics
+	expect(result).toContain('medium steel shield') // Shield normalization (defaults)
+      expect(result).toContain('*Staff of Striking Blows (see Appendix: Magic Items)*') // Magic item italics
+
+      const mainBlockMatch = result.match(/\*\((.+?)\)\*/s)
+      const mainBlock = mainBlockMatch ? mainBlockMatch[1] : ''
+      expect(mainBlock).not.toMatch(/\*\*/)
+      // Canonical mount block with neutral pronoun
+      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are HD 4d10, HP 35, AC 19, disposition neutral. It receives two hoof attacks for 1–4 damage or one overbearing attack. It wears chain mail barding.)*')
+    })
+  })
+
+  describe('Default example regression', () => {
+    it('should match the canonical Victor Oldham entry', () => {
+      const input = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple**
+
+Disposition: law/good
+Race & Class: human, 16th level cleric
+Hit Points (HP): 59
+Armor Class (AC): 13/22
+Primary attributes: strength, wisdom, charisma
+Equipment: pectoral of armor +3, full plate mail, large steel shield, staff of striking, mace
+Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
+Mount: heavy war horse`
+
+      const expected = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple** *(This 16ᵗʰ level human cleric’s vital stats are HP 59, AC 13/22, disposition law/good. His primary attributes are strength, wisdom, and charisma. He carries *pectoral of armor +3 (AC +1 to +3)*, full plate mail, a large steel shield, *Staff of Striking Blows (see Appendix: Magic Items)*, and a mace. He can cast the following number of cleric spells per day: 0–6, 1ˢᵗ–6, 2ⁿᵈ–5, 3ʳᵈ–5, 4ᵗʰ–4, 5ᵗʰ–4, 6ᵗʰ–3, 7ᵗʰ–3, 8ᵗʰ–2.)*
+
+He rides a heavy warhorse in battle.
+
+**Heavy War Horse (mount)** *(This creature’s vital stats are HD 4d10, HP 35, AC 19, disposition neutral. It receives two hoof attacks for 1–4 damage or one overbearing attack. It wears chain mail barding.)*`
+
+      const result = collapseNPCEntry(input)
+
+      expect(result).toBe(expected)
+    })
+  })
+
+  describe('Flexible Prose Input Acceptance', () => {
+    it('should parse parenthetical HP/AC, prose disposition, equipment, and mount', () => {
+      const input = `**Sir Reynard** (HP 59, AC 13/22) He is a lawful good human knight. He carries a pectoral of protection +3, full plate mail, a shield, and a mace. He rides a heavy war horse.`
+
+      const result = collapseNPCEntry(input)
+
+      // Vital stats from parenthetical and prose disposition
+      expect(result).toContain('HP 59, AC 13/22, disposition law/good.')
+
+      // Equipment from prose, with PHB rename and shield normalization
+      expect(result).toContain('*pectoral of armor +3 (AC +1 to +3)*')
+      expect(result).toContain('full plate mail')
+      expect(result).toContain('medium steel shield')
+      expect(result).toContain('mace')
+
+      // Mount from prose creates canonical block
+      expect(result).toContain('He rides a heavy warhorse in battle.')
+      expect(result).toContain('**Heavy War Horse (mount)** *(This creature’s vital stats are HD 4d10, HP 35, AC 19, disposition neutral. It receives two hoof attacks for 1–4 damage or one overbearing attack. It wears chain mail barding.)*')
+    })
+  })
+})
+
+
+File: relational-report-sample.json
+Content:
+{
+  "metadata": {
+    "reportId": "relational-2025-09-28-constellation-duet",
+    "generatedOn": "2025-09-28T12:05:00Z",
+    "kind": "relational",
+    "subject": "Alex",
+    "counterpart": "Jordan",
+    "includesTransits": false,
+    "timezone": "America/Los_Angeles"
+  },
+  "blueprint": {
+    "modes": {
+      "primary": "Mutual Spark",
+      "secondary": "Oceanic Resonance",
+      "shadow": "Silent Retreat"
+    },
+    "metaphor": "Together you function like a tidepool laboratory-brimming with discoveries when you let curiosity stay gentle.",
+    "balanceOverview": "The bond hums when shared structure makes room for surprise; collapse happens when both default to strategic quiet.",
+    "contrastHighlights": [
+      "Alex leads with quicker cognitive pivots",
+      "Jordan anchors through steady sensory referencing"
+    ]
+  },
+  "weather": {
+    "sharedField": {
+      "field": "The bond climate feels like a warm draft moving through an open studio-ideas drift in if you keep the windows cracked.",
+      "map": "Check where this breeze shows up between you; name it together before deciding what it means.",
+      "voice": null
+    },
+    "snapshot": {
+      "summary": "Shared circuitry is currently weighted toward collaborative problem-solving with a latent need for co-regulated rest.",
+      "keyShifts": [
+        "Mutual curiosity up 6% after yesterday's sync",
+        "Emotional pacing slightly mismatched"
+      ],
+      "focusAreas": [
+        "Schedule a micro-pause before moving into decision mode",
+        "Let Jordan set the closing ritual tonight"
+      ],
+      "quantitative": {
+        "coherence": 77,
+        "attunement": 71,
+        "momentum": 63
+      }
+    }
+  },
+  "frictionZones": [
+    {
+      "name": "Planning Cadence",
+      "polarity": [
+        "Rapid iteration",
+        "Sustained contemplation"
+      ],
+      "field": "There is a subtle handoff hesitation when the conversation shifts from ideation into concrete plans.",
+      "map": "If you notice a pause stretch too long, ask whose nervous system wants the mic next.",
+      "voice": null,
+      "supportCue": "Use a 3-minute co-regulation check before committing to timelines."
+    },
+    {
+      "name": "Emotional Translation",
+      "polarity": [
+        "Analytical decoding",
+        "Somatic storytelling"
+      ],
+      "field": "Meaning sometimes travels through different channels; one of you speaks in images while the other waits for thesis statements.",
+      "map": null,
+      "voice": "Share a moment when this FIELD is live and I'll reflect the texture you're both tracking.",
+      "supportCue": "Invite a metaphor plus a body cue before moving into solutions."
+    }
+  ],
+  "integration": {
+    "weave": "Your bond stays clearest when experiments and rest stop competing; today's weather favors tandem tinkering followed by a shared landing pad.",
+    "invitation": "Notice which micro-ritual keeps both nervous systems within range, then extend it into tomorrow's opening move."
+  }
+}
+
+
+File: math-brain-result-20250928.json
+Content:
+{
+  "personal": {
+    "metadata": {
+      "reportId": "math-brain-personal-2025-09-28",
+      "generatedOn": "2025-09-28T12:00:00Z",
+      "kind": "personal",
+      "subject": "Subject Alpha",
+      "sourceSystem": "astrologer_app",
+      "timezone": "America/Los_Angeles",
+      "houseSystem": "Placidus",
+      "ephemeris": "swiss-ephemeris-v2",
+      "maskedSchema": false,
+      "silentGeometryCheck": {
+        "passed": true,
+        "notes": "Sanity-check delta within <0.01 deg threshold."
+      },
+      "notes": "Populate with raw values prior to Poetic Brain interpretation."
+    },
+    "natalBlueprint": {
+      "primaryMode": {
+        "quality": "astrologerAPI.birth_data(subject).data.sun.quality",
+        "element": "astrologerAPI.birth_data(subject).data.sun.element",
+        "sign": "astrologerAPI.birth_data(subject).data.sun.sign",
+        "planet": "Sun",
+        "coordinate": {
+          "longitude": 0.0,
+          "zodiacPosition": "astrologerAPI.birth_data(subject).data.sun.position",
+          "house": 0
+        }
+      },
+      "secondaryMode": {
+        "quality": "astrologerAPI.birth_data(subject).data.moon.quality",
+        "element": "astrologerAPI.birth_data(subject).data.moon.element",
+        "sign": "astrologerAPI.birth_data(subject).data.moon.sign",
+        "planet": "Moon",
+        "coordinate": {
+          "longitude": 0.0,
+          "zodiacPosition": "astrologerAPI.birth_data(subject).data.moon.position",
+          "house": 0
+        }
+      },
+      "shadowMode": {
+        "quality": "astrologerAPI.birth_data(subject).data.mercury.quality",
+        "element": "astrologerAPI.birth_data(subject).data.mercury.element",
+        "sign": "astrologerAPI.birth_data(subject).data.mercury.sign",
+        "planet": "Mercury",
+        "coordinate": {
+          "longitude": 0.0,
+          "zodiacPosition": "astrologerAPI.birth_data(subject).data.mercury.position",
+          "house": 0
+        }
+      },
+      "dominantSignature": {
+        "qualities": [
+          "synthesized dominant quality keyword",
+          "secondary quality keyword"
+        ],
+        "elements": [
+          "synthesized dominant element keyword",
+          "secondary element keyword"
+        ],
+        "synthesisNotes": "Short note describing how qualities and elements combine."
+      },
+      "energeticBalance": {
+        "rawKeywords": [
+          "baseline balance keyword one",
+          "baseline balance keyword two"
+        ],
+        "headline": "Optional balance headline"
+      }
+    },
+    "dailyData": {
+      "date": "2025-09-28",
+      "fieldTriggers": [
+        "keywords from astrologerAPI.get_now aspects"
+      ],
+      "transitContexts": [
+        {
+          "transitingBody": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].p1_name",
+          "aspect": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].aspect",
+          "natalBody": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].p2_name",
+          "orb": 0.42,
+          "applying": true,
+          "exactAt": "2025-09-28T15:00:00Z"
+        }
+      ],
+      "balanceIndices": {
+        "magnitude": 23.4,
+        "valence": 1.2,
+        "volatility": 2.1,
+        "supportFrictionDifferential": 0.18
+      },
+      "referenceLocation": {
+        "latitude": 34.0522,
+        "longitude": -118.2437
+      }
+    },
+    "coreTensions": {
+      "aspects": [
+        {
+          "aspectLabel": "astrologerAPI.natal_aspects_data(subject).aspects[0].p1_name astrologerAPI.natal_aspects_data(subject).aspects[0].aspect astrologerAPI.natal_aspects_data(subject).aspects[0].p2_name",
+          "keywords": [
+            "tension keyword one",
+            "tension keyword two"
+          ]
+        },
+        {
+          "aspectLabel": "astrologerAPI.natal_aspects_data(subject).aspects[1].p1_name astrologerAPI.natal_aspects_data(subject).aspects[1].aspect astrologerAPI.natal_aspects_data(subject).aspects[1].p2_name",
+          "keywords": [
+            "tension keyword three",
+            "tension keyword four"
+          ]
+        }
+      ]
+    },
+    "stitchedNotes": {
+      "majorTheme": [
+        "combined natal and daily keyword"
+      ],
+      "todaysMode": [
+        "daily intensity keyword",
+        "daily valence keyword",
+        "daily stability keyword"
+      ],
+      "observables": [
+        "example manifestation keyword"
+      ]
+    },
+    "sstFlags": {
+      "wb": 12,
+      "abe": 3,
+      "osr": 1
+    }
+  },
+  "relational": {
+    "metadata": {
+      "reportId": "math-brain-relational-2025-09-28",
+      "generatedOn": "2025-09-28T12:05:00Z",
+      "kind": "relational",
+      "subject": "Subject Alpha",
+      "counterpart": "Subject Beta",
+      "sourceSystem": "astrologer_app",
+      "timezone": "America/Los_Angeles",
+      "houseSystem": "Placidus",
+      "ephemeris": "swiss-ephemeris-v2",
+      "maskedSchema": false,
+      "silentGeometryCheck": {
+        "passed": true,
+        "notes": "Synastry grid verified <0.5 deg discrepancy across houses."
+      },
+      "notes": "Raw dyadic data prior to Poetic Brain rendering."
+    },
+    "sharedBlueprint": {
+      "coreDynamic": [
+        "combined dominant quality keyword",
+        "combined dominant element keyword"
+      ],
+      "contrasts": [
+        "primary energetic difference keyword",
+        "secondary energetic difference keyword"
+      ],
+      "keySynastryAspects": [
+        {
+          "transitingBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[0].p1_name",
+          "aspect": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[0].aspect",
+          "natalBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[0].p2_name",
+          "orb": 1.08,
+          "applying": false
+        },
+        {
+          "transitingBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[1].p1_name",
+          "aspect": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[1].aspect",
+          "natalBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[1].p2_name",
+          "orb": 0.76,
+          "applying": true
+        }
+      ],
+      "relationshipScore": {
+        "value": 0.0,
+        "descriptor": "descriptor derived from score range"
+      },
+      "dominantComposite": {
+        "coordinate": {
+          "longitude": 0.0,
+          "zodiacPosition": "compositeChart.sun.position",
+          "house": 0
+        },
+        "label": "composite focal point keyword"
+      }
+    },
+    "dailyData": {
+      "date": "2025-09-28",
+      "sharedFieldTriggers": [
+        "keywords from astrologerAPI.get_now interactions with both charts"
+      ],
+      "transitContexts": [
+        {
+          "transitingBody": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].p1_name",
+          "aspect": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].aspect",
+          "natalBody": "astrologerAPI.transit_chart(first_subject, transit_subject).aspects[0].p2_name",
+          "orb": 0.35,
+          "applying": true,
+          "exactAt": "2025-09-28T18:00:00Z"
+        }
+      ],
+      "balanceIndices": {
+        "magnitude": 27.8,
+        "valence": -0.6,
+        "volatility": 3.4,
+        "supportFrictionDifferential": -0.22
+      },
+      "referenceLocation": {
+        "latitude": 34.0522,
+        "longitude": -118.2437
+      }
+    },
+    "frictionSupport": {
+      "friction": {
+        "label": "label for challenging synastry aspect",
+        "keywords": [
+          "friction keyword one",
+          "friction keyword two"
+        ],
+        "aspectRef": {
+          "transitingBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[2].p1_name",
+          "aspect": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[2].aspect",
+          "natalBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[2].p2_name",
+          "orb": 0.92,
+          "applying": false
+        }
+      },
+      "support": {
+        "label": "label for supportive synastry aspect",
+        "keywords": [
+          "support keyword one",
+          "support keyword two"
+        ],
+        "aspectRef": {
+          "transitingBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[3].p1_name",
+          "aspect": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[3].aspect",
+          "natalBody": "astrologerAPI.synastry_aspects_data(first_subject, second_subject).aspects[3].p2_name",
+          "orb": 0.54,
+          "applying": true
+        }
+      },
+      "paradox": [
+        "recurring relational theme keyword"
+      ]
+    },
+    "compositeNotes": {
+      "climateBaseline": [
+        "baseline relational climate keyword"
+      ],
+      "dailySnapshot": [
+        "daily relational mode keyword"
+      ]
+    },
+    "sstFlags": {
+      "wb": 9,
+      "abe": 4,
+      "osr": 2
+    }
+  }
+}
+
+

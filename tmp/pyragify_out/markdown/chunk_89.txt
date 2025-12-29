@@ -1,0 +1,129 @@
+Unknown chunk type:
+{'header': '# TRADERS STORE', 'content': '\nBackpack, cloth (capacity c. four cubic feet): $100.\n\nBag, cloth (25-pound weight capacity, one-peck volume): $5. Balance, fine, carat/grain weight (gems/precious metals): $500. Balls, baked clay, half-inch diameter, 100 in cloth bag: $10.\n\nBlanket, light: $35.\n\nBlanket, thick: $75.\n\nCandle, beeswax, eight-hour burn time, 12: $30. Candle, wax, four-hour burn time, 12: $12.\n\nCandle, tallow, two-hour burn time, 12: $5.\n\nCanteen. water gourd, one-quart, with leather thong sling: $5. Canvas, thick, per square yard: $15.\n\nCap, fool’s/jester’s-type: $100.\n\nClothing, beggar-type, with bowl, wooden and crutch, wooden: $50. Clothing, motley suit, (performer/fool/jester): $200.\n\nClothing, service* suit, outdoors/hunting: $750.\n\n*effectively armor, full cloth garment Drum, kettle: $500.\n\nDrum, large: $200.\n\nDrum, small: $50.\n\nFile, metal and lock pick in leather case: $500. Flute, silver: $700.\n\nGrease, clay pot of, one quart, with rag wrapping: $2.50 Horn, bugle, brass: $350.\n\nHorn, hunting: $200.\n\nHorn, trumpet, brass: $750. Ivory. uncut, per pound: $200.\n\nLamp, wicked, oil-burning, metal (with one-hour of fuel): $50. Lamp, wicked, oil-burning: $15.\n\nLantern, candle-burning: $10. Lantern, oil-burning, common: $25. Lantern, oil-burning, hooded: $75.\n\nLantern, oil-burning, common. bullseye: $50. Lantern, oil-burning, bullseye, hooded: $100. Line, cord, 100-foot ball: $20.\n\nLine, rope, extra fine horsehair, 10 feet: $20. Line, rope, ordinary, 10 feet: $10.\n\nLine, string, fine, strong (fishing), 100 feet: $10. Looking glass, hand, three by five inch: $50.\n\nLyre, small: $1,000.\n\nMakeup, entertainment/disguise, various items in leather case: $250.\n\nMandolin: $600.\n\nMirror, one by three feet: $500. Mirror, two by five feet: $2,000.\n\nOil, lamp/lantern, 1 gallon jug: $10. Oilskin coat and overalls: $300.\n\nPan pipes: $150. Pouch, belt, cloth: $25.\n\nPouch, shoulder, with sling, cloth: $75. Pouch, small, pocket-size, cloth: $5.\n\nSack, large (60-pound weight capacity, one-bushel volume): $15.\n\nSack, large, heavy cloth (100-pound weight capacity, one-bushel volume): $20. Sword, average, crude*, cleaving: $900.\n\nSword, average, crude*, cutting & thrusting: $2,000. Sword, average, crude*, cutting, curved: $750.\n\nSword, average, crude*, cutting/hacking: $1,000. Sword, average, crude*, thrusting, short/small: $500. Sword, average, crude*, thrusting: $1,000.\n\n*Breakage occurs automatically on a 96-00 attack roll score.\n\nTinder box: $20.\n\nTorch, wood and resin-soaked rope, 30 minute burn time: $1. animals, small\n\nbandor birds carpet carving\n\nexotic handicrafts hammock\n\nharp\n\nlivestock, small mat\n\nrug spices tambor tapestry\n\n'}
+
+Unknown chunk type:
+{'header': '# WATCHMAKER & JEWELER', 'content': '\n**_Music box, large, gold, enameled, inlaid gems_**: $55,000 to $250,000.\n\n**_Music box, large, gold, enameled_**: $23,000.\n\n**_Music box, large, gold, engraved_**: $15,250.\n\n**_Music box, large, gold, inlaid gems_**: $51,500 to $300,000.\n\n**_Music box, large, gold, plain_**: $10,750.\n\n**_Music box, large, gold, relief work_**: $13,500. **_Music box, large, ivory, carved relief_**: $8,750. **_Music box, large, ivory, engraved_**: $8,000.\n\n**_Music box, large, ivory, inlaid gems_**: $25,000 to $100,000.\n\n**_Music box, large, ivory, plain_**: $7,000.\n\n**_Music box, large, silver, enameled, inlaid gems_**: $35,000 to $150,000.\n\n**_Music box, large, silver, enameled_**: $14,250.\n\n**_Music box, large, silver, engraved_**: $9,000.\n\n**_Music box, large, silver, inlaid gems_**: $25,000 to $100,000.\n\n**_Music box, large, silver, plain_**: $5,000.\n\n**_Music box, large, silver, relief work_**: $6,500.\n\n**_Music box, small, gold, enameled, inlaid gems_**: $7,500 to $60,000.\n\n**_Music box, small, gold, enameled_**: $3,500. **_Music box, small, gold, engraved_**: $2,750. **_Music box, small, gold, plain_**: $2,250.\n\n**_Music box, small, gold, relief work_**: $3,750. **_Music box, small, ivory, carved relief_**: $1,500. **_Music box, small, ivory, engraved_**: $1,250.\n\n**_Music box, small, ivory, inlaid gems_**: $5,250 to $45,000.\n\n**_Music box, small, ivory, plain_**: $1,000.\n\n**_Music box, small, silver, enameled, inlaid gems_**: $3,750 to $45,000.\n\n**_Music box, small, silver, enameled_**: $2,000.\n\n**_Music box, small, silver, engraved_**: $1,250.\n\n**_Music box, small, silver, inlaid gems_**: $2,750 to $35,000.\n\n**_Music box, small, silver, plain_**: $750.\n\n**_Music box, small, silver, relief work_**: $1,000.\n\n**_Music box, small. gold, inlaid gems_**: $7,000 to $55,000.\n\n**_Watch, pocket, chain, gold, fancy, with gems_**: $10,000 to $27,500.\n\n**_Watch, pocket, chain, gold, fancy_**: $3,500.\n\n**_Watch, pocket, chain, gold, plain_**: $2,000.\n\n**_Watch, pocket, chain, platinum, fancy, with gems_**: $17,000 to $35,000..\n\n**_Watch, pocket, chain, platinum, fancy_**: $5,000.\n\n**_Watch, pocket, chain, platinum, plain_**: $3,250.\n\n**_Watch, pocket, chain, silver, fancy, with gems_**: $1,000 to $3,500.\n\n**_Watch, pocket, chain, silver, fancy_**: $350.\n\n**_Watch, pocket, chain, silver, plain_**: $200.\n\n**_Watch, pocket, fob, gold, enameled, inlaid gems_**: $5,500 to $16,000.\n\n**_Watch, pocket, fob, gold, enameled_**: $1,750.\n\n**_Watch, pocket, fob, gold, engraved_**: $1,500.\n\n**_Watch, pocket, fob, gold, inlaid gems_**: $4,500 to $15,000.\n\n**_Watch, pocket, fob, gold, personal seal_**: $2,250.\n\n**_Watch, pocket, fob, gold, plain_**: $1,250.\n\n**_Watch, pocket, fob, gold, relief work_**: $2,500.\n\n**_Watch, pocket, fob, platinum, enameled, inlaid gems_**: $6,500 to $17,000.\n\n**_Watch, pocket, fob, platinum, enameled_**: $2,500.\n\n**_Watch, pocket, fob, platinum, engraved_**: $2,250,\n\n**_Watch, pocket, fob, platinum, inlaid gems_**: $5,500 to $16,000.\n\n**_Watch, pocket, fob, platinum, personal seal_**: $3,500.\n\n**_Watch, pocket, fob, platinum, plain_**: $2,000.\n\n**_Watch, pocket, fob, platinum, relief work_**: $3,500.\n\n**_Watch, pocket, fob, silver, enameled, inlaid gems_**: $1,650 to $12,500.\n\n**_Watch, pocket, fob, silver, enameled_**: $350.\n\n**_Watch, pocket, fob, silver, engraved_**: $325.\n\n**_Watch, pocket, fob, silver, inlaid gems_**: $1,500 to $12,000.\n\n**_Watch, pocket, fob, silver, personal seal_**: $750.\n\n**_Watch, pocket, fob, silver, plain_**: $250.\n\n**_Watch, pocket, fob, silver, relief work_**: $500.\n\n**_Watch, pocket, gold, enameled, inlaid gems_**: $14,500 to $25,000.\n\n**_Watch, pocket, gold, enameled_**: $12,750.\n\n**_Watch, pocket, gold, engraved_**: $13,500.\n\n**_Watch, pocket, gold, inlaid gems_**: $15,500 to $26,000.\n\n**_Watch, pocket, gold, plain_**: $12,250.\n\n**_Watch, pocket, gold, relief work_**: $14,500.\n\n**_Watch, pocket, platinum, enameled, inlaid gems_**: $12,500 to $27,000.\n\n**_Watch, pocket, platinum, enameled_**: $14,500.\n\n**_Watch, pocket, platinum, engraved_**: $15,500.\n\n**_Watch, pocket, platinum, inlaid gems_**: $19,500 to $30,000.\n\n**_Watch, pocket, platinum, plain_**: $14,000.\n\n**_Watch, pocket, platinum, relief work_**: $17,500.\n\n**_Watch, pocket, silver, enameled, inlaid gems_**: $11,250 to $16,250.\n\n**_Watch, pocket, silver, enameled_**: $10,500.\n\n**_Watch, pocket, silver, engraved_**: $10,350.\n\n**_Watch, pocket, silver, inlaid gems_**: $11,000 to $16,000.\n\n**_Watch, pocket, silver, plain_**: $10,000. **_Watch, pocket, silver, relief work_**: $10,500. **WEAPON SMITH**\n\nCatapult, hand, repeating (four-shot): $12,500.\n\nCatapult, hand, pneumatic repeating (six-shot): $125,000. Catapult, shoulder, pneumatic (single-shot): $65,000.\n\nCrossbow, small, repeating (nine-shot): $3,500.\n\nCrossbow, small, pellet, repeating (14-shot): $4,500.\n\nMace, two-handed, iron: $2,750.\n\n**_Stick, Gentlemen’s walking, silver head_**, with hidden blades, a “feather staff” therein: $50,000 to $55,000.\n\n_Special Items Possibly Found Herein, cost per available item at $1,000 per Grade, + 10 to 40% (d4):_\n\nWylf bolt Wylf shot\n\nMONETARY VALUES OF PRECIOUS SUBSTANCES & EXTRAORDINARY ITEMS MONETARY VALUES OF PRECIOUS SUBSTANCES & EXTRAORDINARY ITEMS\n\n'}
+
+Unknown chunk type:
+{'header': '## Add the following corrections to the Furs category to the list contained in the core book:', 'content': '\nFurs (assuming prime pelts that are undamaged): Beaver: $1,000/square foot, undressed pelt $500. Ermine: $4,000/square foot, undressed pelt $400.\n\nFox, gray: $1,250/square foot, undressed pelt $750. Fox, red: $2,000/square foot, undressed pelt $1,500. Fox, white: $2,500/square foot, undressed pelt $2,000. Lynx: $3,000/square foot, undressed pelt $2,750.\n\nMarten: $2,000/square foot, undressed pelt $500. Mink: $3,500/square foot, undressed pelt $100.\n\nOtter: $1,500/square foot, undressed pelt $850. Otter, sea: $5,000/square foot, undressed pelt $7,500. Sable: $5,000/square foot, undressed pelt $500.\n\nWild Animal Skin, other, common: $750-$1,250 large, $75-$250, small.\n\nWild Animal Skin, other, uncommon: $3,500-$5,000 large*, $500-$750, small.\n\nWild Animal Skin, other, rare: $15,000 large*, $1,500, small.\n\n*The size of a bison, horse, lion, etc.\n\n**The size of a mountain goat or smaller.\n\n'}
+
+Unknown chunk type:
+{'header': '## Add the following to the list contained in the core book:', 'content': '\nOracalcum: $5,000/ounce. This rare metal is called “golden copper” although it is neither gold nor copper. It is a non-tarnishing, non-corroding, non- conductive metal. It has a weight of about double that of aluminum (half that of steel), is flexible yet resilient when forged to be so, unyielding as an iron bar likewise. As it is exceptionally difficult to work, oracalcum objects of any sort cost twice the base price for a normal object, plus the weight of the oracalcum metal. A coin of this metal the size of a silver ounce weighs approximately one-half ounce. Were it accepted as legal tender, its value will be ten times that of gold, $5,000 per ounce, perhaps\n\nmore because of its rarity.\n\nPROTECTION AND COMMAND CIRCLE MATERIALS FOR GEOURGY, NECROURGY & SORCERY\n\nIt is generally required that a geourge, necromancer, or sorcerer possess both protection and command circle materials in order to perform acts of summoning, calling, commanding, or creating otherworldly forces or entities. These materials are typically first acquired as part of a practitioner’s magical training or initiation, often drawn from specialized guilds, colleges, or private arcane sources. Such items are costly and difficult to obtain, ranging in value from several thousand to tens of thousands in local currency, depending on availability and quality.\n\nThe question naturally arises as to how long these materials last before they must be replenished, for even the finest substances wear thin with repeated use.\n\nIf one adopts a lenient interpretation, the materials might suffice for as many as twelve complete pairs of circles before exhaustion sets in and a fresh supply must be acquired. The moderate stance allows seven sets of circles to deplete the stock. The strictest view holds that three sets are all that may be formed before the materials are entirely consumed—three times being the charm, as the saying goes.\n\nIn all cases, it should be remembered that such organizations and institutions providing these materials rely on more than membership dues to keep their doors open. The expense of resupply may well serve as a reminder that power has its price, and that the path of the summoner is never maintained without cost.\n\nIn many fantasy settings, priests, theurges, and other divine practitioners require both propitiation and votive summoning materials to perform sacred rites or channel divine power. These materials represent the tangible means by which a servant of the gods communes with higher powers, honors divine will, or invokes a response through ritual. The precise nature of such items depends heavily on the deity, faith, and cosmology of the campaign world. Each pantheon and tradition defines what is holy, acceptable, or forbidden; thus, the specifics of these materials must be shaped by the Castle Keeper or Game Master to suit the setting’s theology and tone.\n\nStill, some general principles can be applied across systems and faiths to guide their use in play:\n\nPropitiation Materials are offerings made to appease, honor, or seek favor from a deity or spiritual force. They may include incense, sacred oils, blessed candles, libations, or symbolic items of sacrifice. The value and rarity of such materials should scale with the importance of the rite being performed—minor blessings requiring only common materials, while greater invocations or miracles demand rare, costly, or personally significant offerings.\n\nVotive Summoning Materials serve as conduits for summoning or manifesting divine energy—whether to call forth celestial servitors, sanctify a place, or perform acts of theurgy. These may take the form of relics, inscribed seals, blessed symbols, or carefully prepared components aligned with the deity’s domain. The exact items should reflect both the character’s faith and the setting’s cosmology.\n\nWhen determining the use or cost of these materials, consider three elements: the rite’s magnitude, the sacred context, and the moral or spiritual weight of the act. A simple prayer for healing might consume a pinch of consecrated dust, while a grand invocation to repel a demon lord could require a gemstone etched with runes and anointed in sanctified oil beneath a full moon.\n\nThese guidelines are intentionally flexible to suit any system or campaign. The key principle remains constant across worlds: the physical act of devotion—through offering, sacrifice, or ritual focus—links the mortal to the divine, binding faith to tangible expression within the game world.\n\n**Propitiation Materials:** Blessed oil Blessed water\n\nBody marking (with paint or pigment) Brazier\n\nBreviary\n\nCandles (lit when active) Censor\n\nDevotional object (symbol displayed or worn) Devotional salve\n\nGarments, ecclesiastical Head covering\n\nHerbs\n\nIcon (drawing, etching, painting etc.) Icon (statuette)\n\nIncense Mantle Mask Perfume Phylactery\n\nPortable altar (small)\n\nPowder (special—colored, dust of sacred sort, etc.) Prayer beads\n\nPrayer book Prayer wheel Shawl\n\nSmall sacrificial of things (drink, flowers, food, paper depictions, etc.) Thurible\n\n'}
+
+Unknown chunk type:
+{'header': '## Votive Summoning Materials:', 'content': '\nBell(s) Brazier\n\nBreviary\n\nCandles (lit when active) Chime\n\nCensor\n\nDevotional object (symbol displayed or worn) Deital symbol\n\nGarments, ecclesiastical Gong (small)\n\nHerbs Hymnal\n\nIcon (drawing, etching, painting etc.) Icon (statuette)\n\nIncense\n\nJewelry item (bracelet, ring, etc.) Perfume\n\nPhylactery\n\nPortable altar (small) Prayer beads\n\nPrayer book Prayer wheel Rattle\n\nService piece (bowl, cup, dish, etc.)\n\nSmall sacrificial of things (drink, flowers, food, paper depictions, etc.) Thurible\n\nWhistle\n\nAs indicated on the above lists, some things will be of double duty, while others will be unique in either serving to propitiate or be of votive summoning use.\n\n'}
+
+Unknown chunk type:
+{'header': '## Craftsmanship & Rarity Multiplier to Artistic Item Value,', 'content': '\n**Including Fine Furniture, Jewelry, Porcelain, Pottery, and Table Service Ware:**\n\nThe workmanship of most items is a major factor in their value. So too the rarity of the item. Craftsmanship and rarity are especially important in areas where considerable expertise and artistry can be demonstrated. Generally, the quality of workmanship will add immensely to base worth of various items, as will the number of like items extant, and to reflect this in generic fashion, the table of multipliers below will serve the Game Master well:\n\nFine Furniture, Jewelry, Porcelain, Pottery, and Table Service Ware\n\n_Craftsmanship_\n\n_Multiplier_\n\nPoor or damaged:\n\n.10 to .50\n\nAverage\n\n1\n\nGood\n\n2\n\nVery good\n\n5\n\nFine expert work\n\n10\n\nMasterwork\n\n20\n\nMasterwork, signed\n\n40\n\n_Rarit_y\n\n_Multiplier_\n\nCommon and quantities available:\n\n.10 to .50\n\nNormal availability\n\n1\n\nUncommon\n\n2\n\nRare\n\n5\n\nVery Rare\n\n10\n\nOne of a few\n\n30\n\nNonesuch\n\n60\n\nApply multipliers by adding them together. Do not apply one and then the other, as that inflates the worth far too much.\n\nExample: A badly damaged signed masterwork that is the only example of its kind known (.20 x 40 + 60 [100] = 20 times normal value for a similar object, even though this item is badly damaged.\n\n'}
+
+Unknown chunk type:
+{'header': '# Castle Zagyg: The Upper Works – Mouths of Madness (Reforged)', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '## Master Bestiary & NPC Roster', 'content': '\n*This document contains all canonical creatures and NPCs extracted from the Mouths of Madness module, converted to Castles & Crusades Reforged format.*\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Creatures & NPCs (By Order of Appearance)', 'content': '\n\n'}
+
+Unknown chunk type:
+{'header': '# Castle Zagyg: The Upper Works – Mouths of Madness (Reforged)', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '## Master Bestiary & NPC Roster', 'content': '\n*This document contains all canonical creatures and NPCs extracted from the Mouths of Madness module, converted to Castles & Crusades Reforged format.*\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '## Creatures & NPCs (By Order of Appearance)', 'content': '\n'}
+
+Unknown chunk type:
+{'header': '### 1. Ape, carnivorous', 'content': '\n*HP 23, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 23, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 2. Bandit', 'content': '\n*HP 4, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 13, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 3. Bandit, Lieutenant', 'content': '\n*HP 14, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*\n\n**Core Stats:** HP 14, AC 14, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 4. Bat, giant cave', 'content': '\n*HP 1, AC 12, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 5. **Batrachianoid*:** _', 'content': '\n*HP 5, AC 14, disposition chaos/evil. Saves: P. It has 6 copper in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 6. Bear, black', 'content': '\n*HP 15, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 15, AC 13, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 7. Boar, wild', 'content': '\n*HP 8, AC 16, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 8, AC 16, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 8. Brigand, crossbowmen', 'content': '\n*HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*\n\n**Core Stats:** HP 5, AC 13, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 9. Brigand, flailmen', 'content': '\n*HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 10. Brigand, Serjeant', 'content': '\n*HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 8 gold in coin.*\n\n**Core Stats:** HP 14, AC 15, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 11. Bugbear', 'content': '\n*HP 16, AC 16, disposition chaos/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 16, AC 16, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 12. Elf, Wood, bowman', 'content': '\n*HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin.*\n\n**Core Stats:** HP 8, AC 12, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 13. Elf, Wood, spearman', 'content': '\n*HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin.*\n\n**Core Stats:** HP 8, AC 13, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 14. Elf, Wood, swordsman', 'content': '\n*HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 15. Ghoul', 'content': '\n*HP 10, AC 14, disposition chaos/evil. Saves: P.*\n\n**Core Stats:** HP 10, AC 14, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 16. Gnoll', 'content': '\n*HP 13, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 13, AC 15, Disposition chaos/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 17. Goblin, raider', 'content': '\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 18. Goblin, leader (corporal)', 'content': '\n*HP 15, AC 16, disposition law/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 15, AC 16, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 19. Griffon', 'content': '\n*HP 45, AC 17, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 45, AC 17, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 20. Hobgoblin', 'content': '\n*HP 8, AC 15, disposition law/evil. Saves: P. It has 4 silver in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 21. Kobold', 'content': '\n*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 22. Lion (mountain, forest)', 'content': '\n*HP 20, AC 16, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 20, AC 16, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 23. Lizardfolk', 'content': '\n*HP 10, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 10, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 24. **Losel*:** _', 'content': '\n*HP 10, AC 14, disposition neutral/evil. Saves: P.*\n\n**Core Stats:** HP 10, AC 14, Disposition neutral/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 25. (fisherman/hunter/trapper/woodcutter)', 'content': '\n*HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*\n\n**Core Stats:** HP 5, AC 12, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 26. Naga, Water', 'content': '\n*HP 35, AC 15, disposition neutral. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc.*\n\n**Core Stats:** HP 35, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 27. Nixies (sprite)', 'content': '\n*HP 3, AC 14, disposition neutral. Saves: P. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*\n\n**Core Stats:** HP 3, AC 14, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 28. Orc', 'content': '\n*HP 5, AC 13, disposition law/evil. Saves: P. It has 6 gold in coin.*\n\n**Core Stats:** HP 5, AC 13, Disposition law/evil\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 29. Otter, giant', 'content': '\n*HP 21, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 21, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 30. Owlbear (small)', 'content': '\n*HP 19, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 19, AC 15, Disposition neutral\n\n---\n\n'}
+
+Unknown chunk type:
+{'header': '### 31. Rats, River (giant)', 'content': '\n*HP 2, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---\n\n'}
+

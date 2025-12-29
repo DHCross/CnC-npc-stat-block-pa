@@ -1,0 +1,669 @@
+File: main
+Content:
+0000000000000000000000000000000000000000 a9511e32876361c36b3d125ce5151af92547860c DHCross <45954119+DHCross@users.noreply.github.com> 1758653174 -0500	update by push
+a9511e32876361c36b3d125ce5151af92547860c 6b492027fc3f251e7467f5a24abd0602934de4ca DHCross <45954119+DHCross@users.noreply.github.com> 1758654229 -0500	update by push
+6b492027fc3f251e7467f5a24abd0602934de4ca 885ebe70a72ef1a8b06bb4ac08a6a74cdd44a495 DHCross <45954119+DHCross@users.noreply.github.com> 1758664849 -0500	update by push
+885ebe70a72ef1a8b06bb4ac08a6a74cdd44a495 4c8452c56b0e58ca1be552307f1770f5af18fcb4 DHCross <45954119+DHCross@users.noreply.github.com> 1758665149 -0500	update by push
+4c8452c56b0e58ca1be552307f1770f5af18fcb4 f8c7d7b3741a17ae62ae0eba885cf7fb46f0dd78 DHCross <45954119+DHCross@users.noreply.github.com> 1758666161 -0500	update by push
+f8c7d7b3741a17ae62ae0eba885cf7fb46f0dd78 4866e09bd330ad93cde457587389e7e7043715e8 DHCross <45954119+DHCross@users.noreply.github.com> 1758667872 -0500	update by push
+4866e09bd330ad93cde457587389e7e7043715e8 771709e211fd799e0078ca183d535f217e123c0f DHCross <45954119+DHCross@users.noreply.github.com> 1758669221 -0500	fetch: fast-forward
+771709e211fd799e0078ca183d535f217e123c0f 7f5914edf7ae6b7d57b386a8e71c68e98748651d DHCross <45954119+DHCross@users.noreply.github.com> 1758672846 -0500	fetch: fast-forward
+7f5914edf7ae6b7d57b386a8e71c68e98748651d 432f7a8aec3a84602339362b162c5ad83464ea59 DHCross <45954119+DHCross@users.noreply.github.com> 1758674103 -0500	update by push
+432f7a8aec3a84602339362b162c5ad83464ea59 1d3bfa8a8c18bfe11435ef8f798b72d79053d078 DHCross <45954119+DHCross@users.noreply.github.com> 1758697409 -0500	update by push
+1d3bfa8a8c18bfe11435ef8f798b72d79053d078 1c26892e2394222fa71056cdf76c000e0e7e954e DHCross <45954119+DHCross@users.noreply.github.com> 1758753484 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+1c26892e2394222fa71056cdf76c000e0e7e954e a3514e312a4358c9a9b7ffae34d267c61ca87f7b DHCross <45954119+DHCross@users.noreply.github.com> 1758755452 -0500	update by push
+a3514e312a4358c9a9b7ffae34d267c61ca87f7b ea567dc522899a5a6fdd971aa267608fda52dcc5 DHCross <45954119+DHCross@users.noreply.github.com> 1758756077 -0500	update by push
+ea567dc522899a5a6fdd971aa267608fda52dcc5 516b7fdab56c166148135f4d7104212023e41610 DHCross <45954119+DHCross@users.noreply.github.com> 1758761300 -0500	update by push
+516b7fdab56c166148135f4d7104212023e41610 0b19ef18d3e54de05005f84bb00cb93009a325f5 DHCross <45954119+DHCross@users.noreply.github.com> 1758762956 -0500	fetch: fast-forward
+0b19ef18d3e54de05005f84bb00cb93009a325f5 7cf6758d0e2a23d663f14f779194320aaf871aa3 DHCross <45954119+DHCross@users.noreply.github.com> 1758776325 -0500	update by push
+7cf6758d0e2a23d663f14f779194320aaf871aa3 8b4e95f5d8405be4f219cd8ba4f7ec0415e3cc02 DHCross <45954119+DHCross@users.noreply.github.com> 1758787016 -0500	update by push
+8b4e95f5d8405be4f219cd8ba4f7ec0415e3cc02 29bb33e92ddef114b9644dd2dc62e87eca9c665c DHCross <45954119+DHCross@users.noreply.github.com> 1758918842 -0500	update by push
+29bb33e92ddef114b9644dd2dc62e87eca9c665c c80f0855c1b5689390694b15b05942ad2018a827 DHCross <45954119+DHCross@users.noreply.github.com> 1758919193 -0500	update by push
+c80f0855c1b5689390694b15b05942ad2018a827 2bb923e204e650c50053c3c3722f7f30dd82cf3a DHCross <45954119+DHCross@users.noreply.github.com> 1758926324 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+2bb923e204e650c50053c3c3722f7f30dd82cf3a 7fdd25abc0f7e95ad777533c0340fcdfa1cfdfa0 DHCross <45954119+DHCross@users.noreply.github.com> 1758929384 -0500	fetch: fast-forward
+7fdd25abc0f7e95ad777533c0340fcdfa1cfdfa0 80fcdc7986d9af3c7da9735fe20a493c77124572 DHCross <45954119+DHCross@users.noreply.github.com> 1758929907 -0500	update by push
+80fcdc7986d9af3c7da9735fe20a493c77124572 1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 DHCross <45954119+DHCross@users.noreply.github.com> 1758931231 -0500	update by push
+1ac0c2f5bb96ce8a54e8e5ece519508ea4dd3bd7 77ccbeddadd0cd58509e4495c003ab548b35fc82 DHCross <45954119+DHCross@users.noreply.github.com> 1758996195 -0500	update by push
+77ccbeddadd0cd58509e4495c003ab548b35fc82 06162afcd237275e545b0215637409bd1006c2be DHCross <45954119+DHCross@users.noreply.github.com> 1758996545 -0500	update by push
+06162afcd237275e545b0215637409bd1006c2be 2a58bd37a220e183a13673d4b75188aca9d06b9b DHCross <45954119+DHCross@users.noreply.github.com> 1758997489 -0500	fetch: fast-forward
+2a58bd37a220e183a13673d4b75188aca9d06b9b 9712b393b2b716356410777712e8a8d764170cca DHCross <45954119+DHCross@users.noreply.github.com> 1758997580 -0500	update by push
+9712b393b2b716356410777712e8a8d764170cca ce13859dc94cf57235f980dd5567b8ea360882eb DHCross <45954119+DHCross@users.noreply.github.com> 1758997874 -0500	fetch: fast-forward
+ce13859dc94cf57235f980dd5567b8ea360882eb 9e863c5cf404c6a345df076de5dfe8978875f297 DHCross <45954119+DHCross@users.noreply.github.com> 1759011815 -0500	update by push
+9e863c5cf404c6a345df076de5dfe8978875f297 a25ce165753bcad9b1357e7c9462ab0c576cf319 DHCross <45954119+DHCross@users.noreply.github.com> 1759012636 -0500	fetch: fast-forward
+a25ce165753bcad9b1357e7c9462ab0c576cf319 3c20d955a416096e9a339fe0e6782a939dfeed2e DHCross <45954119+DHCross@users.noreply.github.com> 1759013208 -0500	update by push
+3c20d955a416096e9a339fe0e6782a939dfeed2e 698c123cfcc8b69b8c588ba08ced596d0b35a1ee DHCross <45954119+DHCross@users.noreply.github.com> 1759014238 -0500	update by push
+698c123cfcc8b69b8c588ba08ced596d0b35a1ee 0a07c7fbb032fc5ae188dace1d5fd3730b9adb4a DHCross <45954119+DHCross@users.noreply.github.com> 1759014641 -0500	update by push
+0a07c7fbb032fc5ae188dace1d5fd3730b9adb4a 243d3fcebbda266d1698b3e10ba7f8dfb8bbbd9c DHCross <45954119+DHCross@users.noreply.github.com> 1759016099 -0500	update by push
+243d3fcebbda266d1698b3e10ba7f8dfb8bbbd9c b09e965af0de5bf2bbf3d56cb724e5bb64aa52aa DHCross <45954119+DHCross@users.noreply.github.com> 1759016449 -0500	update by push
+b09e965af0de5bf2bbf3d56cb724e5bb64aa52aa 7f26b9874eb85ed69354fc4a7a6ac8c4c4d43e3c DHCross <45954119+DHCross@users.noreply.github.com> 1759017238 -0500	update by push
+7f26b9874eb85ed69354fc4a7a6ac8c4c4d43e3c b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 DHCross <45954119+DHCross@users.noreply.github.com> 1759017526 -0500	update by push
+b32baa1f12c4acd8e7a6144cf5715440f85c2ae7 dce462a8e323e5ba9b42dd32af2206f87c05da5b DHCross <45954119+DHCross@users.noreply.github.com> 1759026624 -0500	update by push
+dce462a8e323e5ba9b42dd32af2206f87c05da5b 0492d102d246c9b553363128e143258bbda6c88b DHCross <45954119+DHCross@users.noreply.github.com> 1759032066 -0500	update by push
+0492d102d246c9b553363128e143258bbda6c88b 928cb9e6b1dfa26a010fd347166921eda57ee480 DHCross <45954119+DHCross@users.noreply.github.com> 1759037566 -0500	fetch: fast-forward
+928cb9e6b1dfa26a010fd347166921eda57ee480 02047b3489595bf1187265c38ef3a3d3858fbc9a DHCross <45954119+DHCross@users.noreply.github.com> 1759038718 -0500	fetch: fast-forward
+02047b3489595bf1187265c38ef3a3d3858fbc9a 19d7e66ebbf0b13c1cdcc02c423fedd2bc1053a9 DHCross <45954119+DHCross@users.noreply.github.com> 1759039054 -0500	update by push
+19d7e66ebbf0b13c1cdcc02c423fedd2bc1053a9 e3b1699ab0779569870a0cb29d5dc5348da55d5b DHCross <45954119+DHCross@users.noreply.github.com> 1759039817 -0500	update by push
+e3b1699ab0779569870a0cb29d5dc5348da55d5b e07be76f41d177e71cf45866c5851bbd61119629 DHCross <45954119+DHCross@users.noreply.github.com> 1759040212 -0500	update by push
+e07be76f41d177e71cf45866c5851bbd61119629 9489215f73c4c78914973c7406e5fe693007d818 DHCross <45954119+DHCross@users.noreply.github.com> 1759044411 -0500	fetch: fast-forward
+9489215f73c4c78914973c7406e5fe693007d818 563bf17cb4c1ef546df1d0aff003674a24aed225 DHCross <45954119+DHCross@users.noreply.github.com> 1759049901 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+563bf17cb4c1ef546df1d0aff003674a24aed225 941f5bd5c51e71cf63011898a6ddb14d6bfeed5c DHCross <45954119+DHCross@users.noreply.github.com> 1759084188 -0500	update by push
+941f5bd5c51e71cf63011898a6ddb14d6bfeed5c 6a6b68ec394233aeb83f48c65066a119e866c3da DHCross <45954119+DHCross@users.noreply.github.com> 1759100363 -0500	update by push
+6a6b68ec394233aeb83f48c65066a119e866c3da 998f65153fb91af2be67b6dc2ea2895ee5d1e310 DHCross <45954119+DHCross@users.noreply.github.com> 1759100886 -0500	update by push
+998f65153fb91af2be67b6dc2ea2895ee5d1e310 87ce9040eaf88dc0f233e9d35817344214c2356e DHCross <45954119+DHCross@users.noreply.github.com> 1759106032 -0500	update by push
+87ce9040eaf88dc0f233e9d35817344214c2356e a8d9a1a67bada8359e3136fcfa395ab9877301d9 DHCross <45954119+DHCross@users.noreply.github.com> 1759106497 -0500	update by push
+a8d9a1a67bada8359e3136fcfa395ab9877301d9 ce4b7ea42d34f1ab8071d30984e090868ea5797b DHCross <45954119+DHCross@users.noreply.github.com> 1759108002 -0500	update by push
+ce4b7ea42d34f1ab8071d30984e090868ea5797b 8247dde4e4dca407c77871c63d759a6f3fe3696d DHCross <45954119+DHCross@users.noreply.github.com> 1759108956 -0500	update by push
+8247dde4e4dca407c77871c63d759a6f3fe3696d 8af67520f0cbb99571fd21c5c674810e53340ae1 DHCross <45954119+DHCross@users.noreply.github.com> 1759112565 -0500	update by push
+8af67520f0cbb99571fd21c5c674810e53340ae1 fe6a364513878f35c1445df606a52767cd4c3164 DHCross <45954119+DHCross@users.noreply.github.com> 1759127692 -0500	update by push
+fe6a364513878f35c1445df606a52767cd4c3164 1dfb3a936d8651e7efc31eaf05e2313afb530618 DHCross <45954119+DHCross@users.noreply.github.com> 1759267862 -0500	fetch: fast-forward
+1dfb3a936d8651e7efc31eaf05e2313afb530618 ad9d29936ef289b15e9daab806d3d51c03e340dd DHCross <45954119+DHCross@users.noreply.github.com> 1759273591 -0500	pull --ff --recurse-submodules --progress origin: fast-forward
+ad9d29936ef289b15e9daab806d3d51c03e340dd aad682e7e161e59cfb3183ae7cf647847d1d4d95 DHCross <45954119+DHCross@users.noreply.github.com> 1759282373 -0500	fetch: fast-forward
+aad682e7e161e59cfb3183ae7cf647847d1d4d95 54344f5424f65ff015258b1531f6c603414489e1 DHCross <45954119+DHCross@users.noreply.github.com> 1759283109 -0500	update by push
+54344f5424f65ff015258b1531f6c603414489e1 2a94786b12b920f5dfae944ab1ca549b05776a95 DHCross <45954119+DHCross@users.noreply.github.com> 1759289228 -0500	update by push
+2a94786b12b920f5dfae944ab1ca549b05776a95 6a5f69ce353490e9feae8d3ac0b1d3e7700a37c4 DHCross <45954119+DHCross@users.noreply.github.com> 1759310789 -0500	update by push
+6a5f69ce353490e9feae8d3ac0b1d3e7700a37c4 5a86f0ae905031911017024cee4a492360a81de3 DHCross <45954119+DHCross@users.noreply.github.com> 1759360803 -0500	update by push
+5a86f0ae905031911017024cee4a492360a81de3 e52bab5822f85058029b39b1e32dbcfbb426a41b DHCross <45954119+DHCross@users.noreply.github.com> 1759361610 -0500	update by push
+e52bab5822f85058029b39b1e32dbcfbb426a41b a5f62ee890b87653761cb9f632225db5c077a7d5 DHCross <45954119+DHCross@users.noreply.github.com> 1759362327 -0500	update by push
+a5f62ee890b87653761cb9f632225db5c077a7d5 9886493ae7a84ad9a1133d70d987908e954ae887 DHCross <45954119+DHCross@users.noreply.github.com> 1759362705 -0500	update by push
+9886493ae7a84ad9a1133d70d987908e954ae887 daef89cfcf0cef8f7bac425b820d93b909e0a511 DHCross <45954119+DHCross@users.noreply.github.com> 1759363160 -0500	update by push
+daef89cfcf0cef8f7bac425b820d93b909e0a511 76dd110cfe03d858a1888af84ff2876b48817029 DHCross <45954119+DHCross@users.noreply.github.com> 1759472259 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+76dd110cfe03d858a1888af84ff2876b48817029 1e3bd74eebc0fd76cd68bfc7ca7ee323a38a63a9 DHCross <45954119+DHCross@users.noreply.github.com> 1759638683 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+1e3bd74eebc0fd76cd68bfc7ca7ee323a38a63a9 b03c5d4adab9932f2761f02add8e7c51785721cf DHCross <45954119+DHCross@users.noreply.github.com> 1759652186 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+b03c5d4adab9932f2761f02add8e7c51785721cf f16557fd22b61332adaff39f822dfabf07e30554 DHCross <45954119+DHCross@users.noreply.github.com> 1759702022 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+f16557fd22b61332adaff39f822dfabf07e30554 e2944e3f80a14c2e3776a39ea7398f00c74dd401 DHCross <45954119+DHCross@users.noreply.github.com> 1759789800 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+e2944e3f80a14c2e3776a39ea7398f00c74dd401 e66a64e5f6d887ea310e18e6f6301acdf16625a9 DHCross <45954119+DHCross@users.noreply.github.com> 1759793744 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+e66a64e5f6d887ea310e18e6f6301acdf16625a9 c1e5c7423ee57715f5dcd8b49dfec4b93e90dc33 DHCross <45954119+DHCross@users.noreply.github.com> 1759797210 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+c1e5c7423ee57715f5dcd8b49dfec4b93e90dc33 73ac6f006513191603c730b32ecfc76f725fd695 DHCross <45954119+DHCross@users.noreply.github.com> 1759800994 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+73ac6f006513191603c730b32ecfc76f725fd695 c98233026a27efd1d2cc8c15bb8a37d0974c354d DHCross <45954119+DHCross@users.noreply.github.com> 1759907544 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+c98233026a27efd1d2cc8c15bb8a37d0974c354d c376237e6df266277a3b25eaa0a506a83c364f53 DHCross <45954119+DHCross@users.noreply.github.com> 1759944864 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+c376237e6df266277a3b25eaa0a506a83c364f53 fbc81e4696213686922197ca48d6477f8796b95d DHCross <45954119+DHCross@users.noreply.github.com> 1759969979 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+fbc81e4696213686922197ca48d6477f8796b95d 3f5e7255e7f034d78b0ba9aefb5af07f80124d2a DHCross <45954119+DHCross@users.noreply.github.com> 1759993923 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+3f5e7255e7f034d78b0ba9aefb5af07f80124d2a cfc5afedb362697b48a6e47e842b362c185efa18 DHCross <45954119+DHCross@users.noreply.github.com> 1759995736 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+cfc5afedb362697b48a6e47e842b362c185efa18 d1dec6881ed923d5e2b758beb93c824c3bf018d3 DHCross <45954119+DHCross@users.noreply.github.com> 1759999362 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+d1dec6881ed923d5e2b758beb93c824c3bf018d3 0be0e8f00ea1e68fc1b79c573d7de9ecbf6a4d59 DHCross <45954119+DHCross@users.noreply.github.com> 1760036847 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+0be0e8f00ea1e68fc1b79c573d7de9ecbf6a4d59 a31f22e31bdb3572abc3fc315f4cfe22be03d67b DHCross <45954119+DHCross@users.noreply.github.com> 1760040473 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+a31f22e31bdb3572abc3fc315f4cfe22be03d67b c7c8a21f8bfc269288864ff56425b3a7f92ae286 DHCross <45954119+DHCross@users.noreply.github.com> 1760045912 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+c7c8a21f8bfc269288864ff56425b3a7f92ae286 71a5315069f311b554c3535b87cb5e0e510d0181 DHCross <45954119+DHCross@users.noreply.github.com> 1760050149 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+71a5315069f311b554c3535b87cb5e0e510d0181 8147cd7643f57dd66d8e5f5371398d9a84a95d74 DHCross <45954119+DHCross@users.noreply.github.com> 1760051964 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+8147cd7643f57dd66d8e5f5371398d9a84a95d74 2cf42c0e1f4743a577e5107cf4f41d22f2d8eeb5 DHCross <45954119+DHCross@users.noreply.github.com> 1760059225 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+2cf42c0e1f4743a577e5107cf4f41d22f2d8eeb5 ada6d8c86ca3e1e8ef5aa050f40d8cb4785d831d DHCross <45954119+DHCross@users.noreply.github.com> 1760061040 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+ada6d8c86ca3e1e8ef5aa050f40d8cb4785d831d ff48a213b9a246fa58a29b4a726fa8dbdbaf442f DHCross <45954119+DHCross@users.noreply.github.com> 1760062843 -0500	pull --ff --recurse-submodules --progress origin: fast-forward
+ff48a213b9a246fa58a29b4a726fa8dbdbaf442f 98f407209c8ea6b5b065de0ffa0035e333e41727 DHCross <45954119+DHCross@users.noreply.github.com> 1760137613 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+98f407209c8ea6b5b065de0ffa0035e333e41727 14bfcafb91e2bc4e17a4be3a64364055416a1479 DHCross <45954119+DHCross@users.noreply.github.com> 1760505631 -0500	update by push
+14bfcafb91e2bc4e17a4be3a64364055416a1479 925a08dd856806027529eb18ba40c7e378c4a732 DHCross <45954119+DHCross@users.noreply.github.com> 1761781535 -0500	update by push
+925a08dd856806027529eb18ba40c7e378c4a732 21813a06e43c2eeef28e439e9fba5d7537ef7031 DHCross <45954119+DHCross@users.noreply.github.com> 1761782155 -0500	update by push
+21813a06e43c2eeef28e439e9fba5d7537ef7031 e0a4638a93ec32d9be06097484b4d75759041d56 DHCross <45954119+DHCross@users.noreply.github.com> 1763272819 -0600	update by push
+e0a4638a93ec32d9be06097484b4d75759041d56 9a5cf8ba744d9d5c47ce52a43b605edaacc1db63 DHCross <45954119+DHCross@users.noreply.github.com> 1763272837 -0600	update by push
+9a5cf8ba744d9d5c47ce52a43b605edaacc1db63 5e32d157ba23a27cc2e8818c157ed18bbf4961e1 DHCross <45954119+DHCross@users.noreply.github.com> 1763275841 -0600	update by push
+5e32d157ba23a27cc2e8818c157ed18bbf4961e1 d62506a6cca25238e234ac27566dd8823b0e2f19 DHCross <45954119+DHCross@users.noreply.github.com> 1763276770 -0600	update by push
+d62506a6cca25238e234ac27566dd8823b0e2f19 c38983f40c35d73a269bc7075e35976d94fc6ecb DHCross <45954119+DHCross@users.noreply.github.com> 1763277726 -0600	update by push
+c38983f40c35d73a269bc7075e35976d94fc6ecb 275f2605a0e0b6e4d3439712d839b216b7bd6254 DHCross <45954119+DHCross@users.noreply.github.com> 1763332262 -0600	update by push
+275f2605a0e0b6e4d3439712d839b216b7bd6254 b7af491e31f82c3f2d6d43c3a65b9f122c3b3533 DHCross <45954119+DHCross@users.noreply.github.com> 1763374776 -0600	update by push
+
+
+File: fix-build-error
+Content:
+0000000000000000000000000000000000000000 853fbf4ab0e815eac397b627fa98796b1f59ea93 DHCross <45954119+DHCross@users.noreply.github.com> 1760045912 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: name-correction
+Content:
+0000000000000000000000000000000000000000 7dcb418ae6d1ad6c53bc954a94a65ead87f89ed4 DHCross <45954119+DHCross@users.noreply.github.com> 1760040473 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: restore-app-styling
+Content:
+0000000000000000000000000000000000000000 52174891df582be5715be7dbeacabb92b26adaf3 DHCross <45954119+DHCross@users.noreply.github.com> 1758723570 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+52174891df582be5715be7dbeacabb92b26adaf3 ec300b74ee50514cfc7856ad1ef0c05f7f3efc38 DHCross <45954119+DHCross@users.noreply.github.com> 1758725527 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+
+
+File: update-buildcanonicalparenthetical-for-name-mappings
+Content:
+0000000000000000000000000000000000000000 1c5fb0043a10c4d6ca0963f656d3846c9b549e58 DHCross <45954119+DHCross@users.noreply.github.com> 1759282373 -0500	fetch: storing head
+
+
+File: fix-build-errors-in-deployment
+Content:
+0000000000000000000000000000000000000000 b63e97bfc2c385cb8003e60f0022e2c6048b7d2f DHCross <45954119+DHCross@users.noreply.github.com> 1759472259 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: restore-app-styling-d06ntt
+Content:
+0000000000000000000000000000000000000000 863248397a014fef603d9f24c17cbc96cfb4750c DHCross <45954119+DHCross@users.noreply.github.com> 1758727484 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+863248397a014fef603d9f24c17cbc96cfb4750c e8cddd9d70dadd184025a60c0480c72b3957f27b DHCross <45954119+DHCross@users.noreply.github.com> 1758729441 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+
+
+File: fix-mount-pronoun-unit-context-issue
+Content:
+0000000000000000000000000000000000000000 e8da164dbede2f30342740438b3169b82f4b44ed DHCross <45954119+DHCross@users.noreply.github.com> 1759907544 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: validate-npc-entry-for-victor-oldham-zfqw2r
+Content:
+0000000000000000000000000000000000000000 5fd32aa3516a374ee576548838d4b596163fd833 DHCross <45954119+DHCross@users.noreply.github.com> 1759800994 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+5fd32aa3516a374ee576548838d4b596163fd833 af0ebb73c5a7ca4549b31e00efb977cfcf56beb9 DHCross <45954119+DHCross@users.noreply.github.com> 1759995736 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+af0ebb73c5a7ca4549b31e00efb977cfcf56beb9 c150333d67f63aa16bcfd1b42577ae3901ac50b3 DHCross <45954119+DHCross@users.noreply.github.com> 1759999362 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+
+
+File: fix-output-format-for-npc-stat-block
+Content:
+0000000000000000000000000000000000000000 4206f545bf5eacd9d5b495a9a1a33ef0c34354e8 DHCross <45954119+DHCross@users.noreply.github.com> 1759044411 -0500	fetch: storing head
+
+
+File: update-dictionary-suggestion-handling
+Content:
+0000000000000000000000000000000000000000 39b85cb2ed02df6e6ab4304acfeeca338d83c7e3 DHCross <45954119+DHCross@users.noreply.github.com> 1758672846 -0500	fetch: storing head
+
+
+File: implement-monster-parser-functions-and-validation
+Content:
+0000000000000000000000000000000000000000 f4da49c288153601dc947d979fb46e9b473948b6 DHCross <45954119+DHCross@users.noreply.github.com> 1759638683 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: fix-name-formatting-and-possessive-errors
+Content:
+0000000000000000000000000000000000000000 7c1776f638e7260498361dc850bd4e3dd23e7324 DHCross <45954119+DHCross@users.noreply.github.com> 1759044411 -0500	fetch: storing head
+
+
+File: implement-monster-parser-functions-and-validation-gie9ax
+Content:
+0000000000000000000000000000000000000000 03d6a2b1729a031e84083bf141472a9f00a4e3bc DHCross <45954119+DHCross@users.noreply.github.com> 1759652186 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: validate-npc-entry-for-victor-oldham
+Content:
+0000000000000000000000000000000000000000 fa1d77a0f4487477d0ed23c502c939e60ec012da DHCross <45954119+DHCross@users.noreply.github.com> 1759791853 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: remove-coinage-spelling-rule
+Content:
+0000000000000000000000000000000000000000 34c423e5c60d76044430ae8f57b476a7a13040a8 DHCross <45954119+DHCross@users.noreply.github.com> 1759273591 -0500	pull --ff --recurse-submodules --progress origin: storing head
+
+
+File: fix-build-failure-due-to-missing-swc-dependencies
+Content:
+0000000000000000000000000000000000000000 c9321f3c25ba7aea91318d6ec3b7042b49fb4f0c DHCross <45954119+DHCross@users.noreply.github.com> 1759038718 -0500	fetch: storing head
+
+
+File: refactor-canonicalizer-for-unit-entries
+Content:
+0000000000000000000000000000000000000000 0c78b895323f0ce51ba65e310833ea660de05cab DHCross <45954119+DHCross@users.noreply.github.com> 1759049901 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: restore-app-styling-ydb7ai
+Content:
+0000000000000000000000000000000000000000 feee7144f6c966493ffc61924b18aa7893e5f971 DHCross <45954119+DHCross@users.noreply.github.com> 1758738190 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+feee7144f6c966493ffc61924b18aa7893e5f971 8ac9f3f6a207f24ade64aed20b7b0f164a85a39f DHCross <45954119+DHCross@users.noreply.github.com> 1758753484 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+
+
+File: fix-deployment-errors-and-check-code-quality
+Content:
+0000000000000000000000000000000000000000 30d1d35f9131b53b1ddc9c02df01cf415e264334 DHCross <45954119+DHCross@users.noreply.github.com> 1763502556 -0600	fetch: storing head
+
+
+File: fix-build-errors-in-next.js-application
+Content:
+0000000000000000000000000000000000000000 6a19d8cb33289fd5881d3be291f320f756ee5486 DHCross <45954119+DHCross@users.noreply.github.com> 1759789800 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: update-document-for-integration-fixes
+Content:
+0000000000000000000000000000000000000000 ee6bdb9ffb66e2a09b17f3fd10b4bdf4aac99c43 DHCross <45954119+DHCross@users.noreply.github.com> 1758997489 -0500	fetch: storing head
+ee6bdb9ffb66e2a09b17f3fd10b4bdf4aac99c43 0bc4bd35cc489d5d0f3ea3cddaaa73071fe83561 DHCross <45954119+DHCross@users.noreply.github.com> 1759012455 -0500	fetch: fast-forward
+
+
+File: ensure-document-compliance-analyzer-supports-docx-and-pdf
+Content:
+0000000000000000000000000000000000000000 62d253d869adbef600f3b3e59cb75815b6807f9e DHCross <45954119+DHCross@users.noreply.github.com> 1758926324 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: update-parser-formatting-standards
+Content:
+0000000000000000000000000000000000000000 11a66d13ebe88ad0a589257bebdf84edfb47fb04 DHCross <45954119+DHCross@users.noreply.github.com> 1758917564 -0500	fetch: storing head
+
+
+File: add-commit-hash-and-build-date-display
+Content:
+0000000000000000000000000000000000000000 9c518ea3a031fc7c0716b1f1d4bc8edd830fa0b1 DHCross <45954119+DHCross@users.noreply.github.com> 1758997874 -0500	fetch: storing head
+
+
+File: update-monster-stats-for-compliance
+Content:
+0000000000000000000000000000000000000000 2651670405a84d8d305ff60d9c53473c4207735e DHCross <45954119+DHCross@users.noreply.github.com> 1759725834 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+2651670405a84d8d305ff60d9c53473c4207735e 7ab81fa93700c2af4a457a69c364ec953ef65765 DHCross <45954119+DHCross@users.noreply.github.com> 1759797210 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
+
+
+File: fix-typescript-build-error
+Content:
+0000000000000000000000000000000000000000 ab08a9dd6da6fcc307f681361ba64aa13371c4b9 DHCross <45954119+DHCross@users.noreply.github.com> 1759037566 -0500	fetch: storing head
+
+
+File: fix-deployment-build-error
+Content:
+0000000000000000000000000000000000000000 eb1daa7d16ef0c753a760d078e75fe780d6125fb DHCross <45954119+DHCross@users.noreply.github.com> 1758762956 -0500	fetch: storing head
+
+
+File: refactor-equipmatch-to-const
+Content:
+0000000000000000000000000000000000000000 489533f5148803e2d3dc0bc597f48c8ad10507af DHCross <45954119+DHCross@users.noreply.github.com> 1759273591 -0500	pull --ff --recurse-submodules --progress origin: storing head
+
+
+File: implement-monster-parser-functions-and-validation-npa0eh
+Content:
+0000000000000000000000000000000000000000 eebe7098a3e12c8993f22111f5e09a915d1117c3 DHCross <45954119+DHCross@users.noreply.github.com> 1759702022 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: add-typography-plugin-to-tailwind-config
+Content:
+0000000000000000000000000000000000000000 c7de2e4fc7b5ba68fd0e59aaa2da890d6dcfed8d DHCross <45954119+DHCross@users.noreply.github.com> 1758669221 -0500	fetch: storing head
+
+
+File: update-parser-for-cc-stat-blocks
+Content:
+0000000000000000000000000000000000000000 6fb438a70e1bbc41fbbcbfcd97b28530c9494496 DHCross <45954119+DHCross@users.noreply.github.com> 1759273591 -0500	pull --ff --recurse-submodules --progress origin: storing head
+
+
+File: fix-shield-handling-logic-in-enhanced-parser
+Content:
+0000000000000000000000000000000000000000 36d562dbc0cee44db57ddea5af4fc31b6f4f83db DHCross <45954119+DHCross@users.noreply.github.com> 1759273591 -0500	pull --ff --recurse-submodules --progress origin: storing head
+
+
+File: extract-validationwarnings-component
+Content:
+0000000000000000000000000000000000000000 f3e653f29be7f3d6525706c68920481185aba91e DHCross <45954119+DHCross@users.noreply.github.com> 1758672846 -0500	fetch: storing head
+
+
+File: remove-debug-logs-from-enhanced-parser
+Content:
+0000000000000000000000000000000000000000 43fe1f525f9e66229cdf14f4cae7e80902db6124 DHCross <45954119+DHCross@users.noreply.github.com> 1758997489 -0500	fetch: storing head
+
+
+File: remove-unused-imports
+Content:
+0000000000000000000000000000000000000000 1bb6aba85fd2e1c271aa26dacbd09ed362d0bb33 DHCross <45954119+DHCross@users.noreply.github.com> 1759969979 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: single-line-parser
+Content:
+0000000000000000000000000000000000000000 eae3d3a7311b2bf79f6b286259e462bae9771c2c DHCross <45954119+DHCross@users.noreply.github.com> 1759944864 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: parser-fallback
+Content:
+0000000000000000000000000000000000000000 992b3f1d61c45a309a08dc250df3b7567f6f991f DHCross <45954119+DHCross@users.noreply.github.com> 1759969979 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: human-default-parser
+Content:
+0000000000000000000000000000000000000000 d2c33e3d87090c370b1f56f7d310732aabd8cd3d DHCross <45954119+DHCross@users.noreply.github.com> 1760036847 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
+
+
+File: level-info-from-title-line
+Content:
+0000000000000000000000000000000000000000 28934bf860922e7d1f2eecce114dbc79734033e2 DHCross <45954119+DHCross@users.noreply.github.com> 1759273591 -0500	pull --ff --recurse-submodules --progress origin: storing head
+
+
+File: packs
+Content:
+P pack-da225b5b4c67f387ab042f8a0de99cedf72fa730.pack
+
+
+
+File: Activate.ps1
+Content:
+<#
+.Synopsis
+Activate a Python virtual environment for the current PowerShell session.
+
+.Description
+Pushes the python executable for a virtual environment to the front of the
+$Env:PATH environment variable and sets the prompt to signify that you are
+in a Python virtual environment. Makes use of the command line switches as
+well as the `pyvenv.cfg` file values present in the virtual environment.
+
+.Parameter VenvDir
+Path to the directory that contains the virtual environment to activate. The
+default value for this is the parent of the directory that the Activate.ps1
+script is located within.
+
+.Parameter Prompt
+The prompt prefix to display when this virtual environment is activated. By
+default, this prompt is the name of the virtual environment folder (VenvDir)
+surrounded by parentheses and followed by a single space (ie. '(.venv) ').
+
+.Example
+Activate.ps1
+Activates the Python virtual environment that contains the Activate.ps1 script.
+
+.Example
+Activate.ps1 -Verbose
+Activates the Python virtual environment that contains the Activate.ps1 script,
+and shows extra information about the activation as it executes.
+
+.Example
+Activate.ps1 -VenvDir C:\Users\MyUser\Common\.venv
+Activates the Python virtual environment located in the specified location.
+
+.Example
+Activate.ps1 -Prompt "MyPython"
+Activates the Python virtual environment that contains the Activate.ps1 script,
+and prefixes the current prompt with the specified string (surrounded in
+parentheses) while the virtual environment is active.
+
+.Notes
+On Windows, it may be required to enable this Activate.ps1 script by setting the
+execution policy for the user. You can do this by issuing the following PowerShell
+command:
+
+PS C:\> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+For more information on Execution Policies: 
+https://go.microsoft.com/fwlink/?LinkID=135170
+
+#>
+Param(
+    [Parameter(Mandatory = $false)]
+    [String]
+    $VenvDir,
+    [Parameter(Mandatory = $false)]
+    [String]
+    $Prompt
+)
+
+<# Function declarations --------------------------------------------------- #>
+
+<#
+.Synopsis
+Remove all shell session elements added by the Activate script, including the
+addition of the virtual environment's Python executable from the beginning of
+the PATH variable.
+
+.Parameter NonDestructive
+If present, do not remove this function from the global namespace for the
+session.
+
+#>
+function global:deactivate ([switch]$NonDestructive) {
+    # Revert to original values
+
+    # The prior prompt:
+    if (Test-Path -Path Function:_OLD_VIRTUAL_PROMPT) {
+        Copy-Item -Path Function:_OLD_VIRTUAL_PROMPT -Destination Function:prompt
+        Remove-Item -Path Function:_OLD_VIRTUAL_PROMPT
+    }
+
+    # The prior PYTHONHOME:
+    if (Test-Path -Path Env:_OLD_VIRTUAL_PYTHONHOME) {
+        Copy-Item -Path Env:_OLD_VIRTUAL_PYTHONHOME -Destination Env:PYTHONHOME
+        Remove-Item -Path Env:_OLD_VIRTUAL_PYTHONHOME
+    }
+
+    # The prior PATH:
+    if (Test-Path -Path Env:_OLD_VIRTUAL_PATH) {
+        Copy-Item -Path Env:_OLD_VIRTUAL_PATH -Destination Env:PATH
+        Remove-Item -Path Env:_OLD_VIRTUAL_PATH
+    }
+
+    # Just remove the VIRTUAL_ENV altogether:
+    if (Test-Path -Path Env:VIRTUAL_ENV) {
+        Remove-Item -Path env:VIRTUAL_ENV
+    }
+
+    # Just remove VIRTUAL_ENV_PROMPT altogether.
+    if (Test-Path -Path Env:VIRTUAL_ENV_PROMPT) {
+        Remove-Item -Path env:VIRTUAL_ENV_PROMPT
+    }
+
+    # Just remove the _PYTHON_VENV_PROMPT_PREFIX altogether:
+    if (Get-Variable -Name "_PYTHON_VENV_PROMPT_PREFIX" -ErrorAction SilentlyContinue) {
+        Remove-Variable -Name _PYTHON_VENV_PROMPT_PREFIX -Scope Global -Force
+    }
+
+    # Leave deactivate function in the global namespace if requested:
+    if (-not $NonDestructive) {
+        Remove-Item -Path function:deactivate
+    }
+}
+
+<#
+.Description
+Get-PyVenvConfig parses the values from the pyvenv.cfg file located in the
+given folder, and returns them in a map.
+
+For each line in the pyvenv.cfg file, if that line can be parsed into exactly
+two strings separated by `=` (with any amount of whitespace surrounding the =)
+then it is considered a `key = value` line. The left hand string is the key,
+the right hand is the value.
+
+If the value starts with a `'` or a `"` then the first and last character is
+stripped from the value before being captured.
+
+.Parameter ConfigDir
+Path to the directory that contains the `pyvenv.cfg` file.
+#>
+function Get-PyVenvConfig(
+    [String]
+    $ConfigDir
+) {
+    Write-Verbose "Given ConfigDir=$ConfigDir, obtain values in pyvenv.cfg"
+
+    # Ensure the file exists, and issue a warning if it doesn't (but still allow the function to continue).
+    $pyvenvConfigPath = Join-Path -Resolve -Path $ConfigDir -ChildPath 'pyvenv.cfg' -ErrorAction Continue
+
+    # An empty map will be returned if no config file is found.
+    $pyvenvConfig = @{ }
+
+    if ($pyvenvConfigPath) {
+
+        Write-Verbose "File exists, parse `key = value` lines"
+        $pyvenvConfigContent = Get-Content -Path $pyvenvConfigPath
+
+        $pyvenvConfigContent | ForEach-Object {
+            $keyval = $PSItem -split "\s*=\s*", 2
+            if ($keyval[0] -and $keyval[1]) {
+                $val = $keyval[1]
+
+                # Remove extraneous quotations around a string value.
+                if ("'""".Contains($val.Substring(0, 1))) {
+                    $val = $val.Substring(1, $val.Length - 2)
+                }
+
+                $pyvenvConfig[$keyval[0]] = $val
+                Write-Verbose "Adding Key: '$($keyval[0])'='$val'"
+            }
+        }
+    }
+    return $pyvenvConfig
+}
+
+
+<# Begin Activate script --------------------------------------------------- #>
+
+# Determine the containing directory of this script
+$VenvExecPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
+$VenvExecDir = Get-Item -Path $VenvExecPath
+
+Write-Verbose "Activation script is located in path: '$VenvExecPath'"
+Write-Verbose "VenvExecDir Fullname: '$($VenvExecDir.FullName)"
+Write-Verbose "VenvExecDir Name: '$($VenvExecDir.Name)"
+
+# Set values required in priority: CmdLine, ConfigFile, Default
+# First, get the location of the virtual environment, it might not be
+# VenvExecDir if specified on the command line.
+if ($VenvDir) {
+    Write-Verbose "VenvDir given as parameter, using '$VenvDir' to determine values"
+}
+else {
+    Write-Verbose "VenvDir not given as a parameter, using parent directory name as VenvDir."
+    $VenvDir = $VenvExecDir.Parent.FullName.TrimEnd("\\/")
+    Write-Verbose "VenvDir=$VenvDir"
+}
+
+# Next, read the `pyvenv.cfg` file to determine any required value such
+# as `prompt`.
+$pyvenvCfg = Get-PyVenvConfig -ConfigDir $VenvDir
+
+# Next, set the prompt from the command line, or the config file, or
+# just use the name of the virtual environment folder.
+if ($Prompt) {
+    Write-Verbose "Prompt specified as argument, using '$Prompt'"
+}
+else {
+    Write-Verbose "Prompt not specified as argument to script, checking pyvenv.cfg value"
+    if ($pyvenvCfg -and $pyvenvCfg['prompt']) {
+        Write-Verbose "  Setting based on value in pyvenv.cfg='$($pyvenvCfg['prompt'])'"
+        $Prompt = $pyvenvCfg['prompt'];
+    }
+    else {
+        Write-Verbose "  Setting prompt based on parent's directory's name. (Is the directory name passed to venv module when creating the virtual environment)"
+        Write-Verbose "  Got leaf-name of $VenvDir='$(Split-Path -Path $venvDir -Leaf)'"
+        $Prompt = Split-Path -Path $venvDir -Leaf
+    }
+}
+
+Write-Verbose "Prompt = '$Prompt'"
+Write-Verbose "VenvDir='$VenvDir'"
+
+# Deactivate any currently active virtual environment, but leave the
+# deactivate function in place.
+deactivate -nondestructive
+
+# Now set the environment variable VIRTUAL_ENV, used by many tools to determine
+# that there is an activated venv.
+$env:VIRTUAL_ENV = $VenvDir
+
+$env:VIRTUAL_ENV_PROMPT = $Prompt
+
+if (-not $Env:VIRTUAL_ENV_DISABLE_PROMPT) {
+
+    Write-Verbose "Setting prompt to '$Prompt'"
+
+    # Set the prompt to include the env name
+    # Make sure _OLD_VIRTUAL_PROMPT is global
+    function global:_OLD_VIRTUAL_PROMPT { "" }
+    Copy-Item -Path function:prompt -Destination function:_OLD_VIRTUAL_PROMPT
+    New-Variable -Name _PYTHON_VENV_PROMPT_PREFIX -Description "Python virtual environment prompt prefix" -Scope Global -Option ReadOnly -Visibility Public -Value $Prompt
+
+    function global:prompt {
+        Write-Host -NoNewline -ForegroundColor Green "($_PYTHON_VENV_PROMPT_PREFIX) "
+        _OLD_VIRTUAL_PROMPT
+    }
+}
+
+# Clear PYTHONHOME
+if (Test-Path -Path Env:PYTHONHOME) {
+    Copy-Item -Path Env:PYTHONHOME -Destination Env:_OLD_VIRTUAL_PYTHONHOME
+    Remove-Item -Path Env:PYTHONHOME
+}
+
+# Add the venv to the PATH
+Copy-Item -Path Env:PATH -Destination Env:_OLD_VIRTUAL_PATH
+$Env:PATH = "$VenvExecDir$([System.IO.Path]::PathSeparator)$Env:PATH"
+
+
+File: pip3.14
+Content:
+#!/Users/dancross/Documents/GitHub/CnC-npc-stat-block-pa/.venv/bin/python
+import sys
+from pip._internal.cli.main import main
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(main())
+
+
+File: pip3
+Content:
+#!/Users/dancross/Documents/GitHub/CnC-npc-stat-block-pa/.venv/bin/python
+import sys
+from pip._internal.cli.main import main
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(main())
+
+
+File: activate.fish
+Content:
+# This file must be used with "source <venv>/bin/activate.fish" *from fish*
+# (https://fishshell.com/). You cannot run it directly.
+
+function deactivate  -d "Exit virtual environment and return to normal shell environment"
+    # reset old environment variables
+    if test -n "$_OLD_VIRTUAL_PATH"
+        set -gx PATH $_OLD_VIRTUAL_PATH
+        set -e _OLD_VIRTUAL_PATH
+    end
+    if test -n "$_OLD_VIRTUAL_PYTHONHOME"
+        set -gx PYTHONHOME $_OLD_VIRTUAL_PYTHONHOME
+        set -e _OLD_VIRTUAL_PYTHONHOME
+    end
+
+    if test -n "$_OLD_FISH_PROMPT_OVERRIDE"
+        set -e _OLD_FISH_PROMPT_OVERRIDE
+        # prevents error when using nested fish instances (Issue #93858)
+        if functions -q _old_fish_prompt
+            functions -e fish_prompt
+            functions -c _old_fish_prompt fish_prompt
+            functions -e _old_fish_prompt
+        end
+    end
+
+    set -e VIRTUAL_ENV
+    set -e VIRTUAL_ENV_PROMPT
+    if test "$argv[1]" != "nondestructive"
+        # Self-destruct!
+        functions -e deactivate
+    end
+end
+
+# Unset irrelevant variables.
+deactivate nondestructive
+
+set -gx VIRTUAL_ENV /Users/dancross/Documents/GitHub/CnC-npc-stat-block-pa/.venv
+
+set -gx _OLD_VIRTUAL_PATH $PATH
+set -gx PATH "$VIRTUAL_ENV/"bin $PATH
+set -gx VIRTUAL_ENV_PROMPT .venv
+
+# Unset PYTHONHOME if set.
+if set -q PYTHONHOME
+    set -gx _OLD_VIRTUAL_PYTHONHOME $PYTHONHOME
+    set -e PYTHONHOME
+end
+
+if test -z "$VIRTUAL_ENV_DISABLE_PROMPT"
+    # fish uses a function instead of an env var to generate the prompt.
+
+    # Save the current fish_prompt function as the function _old_fish_prompt.
+    functions -c fish_prompt _old_fish_prompt
+
+    # With the original prompt function renamed, we can override with our own.
+    function fish_prompt
+        # Save the return status of the last command.
+        set -l old_status $status
+
+        # Output the venv prompt; color taken from the blue of the Python logo.
+        printf "%s(%s)%s " (set_color 4B8BBE) .venv (set_color normal)
+
+        # Restore the return status of the previous command.
+        echo "exit $old_status" | .
+        # Output the original/"old" prompt.
+        _old_fish_prompt
+    end
+
+    set -gx _OLD_FISH_PROMPT_OVERRIDE "$VIRTUAL_ENV"
+end
+
+
+File: pip
+Content:
+#!/Users/dancross/Documents/GitHub/CnC-npc-stat-block-pa/.venv/bin/python
+import sys
+from pip._internal.cli.main import main
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(main())
+
+

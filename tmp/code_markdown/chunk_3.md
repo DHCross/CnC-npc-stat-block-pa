@@ -1,0 +1,774 @@
+# Chunk 3
+
+### src/test/enhanced-parser.test.ts
+
+```typescript
+import { describe, it, expect } from 'vitest';
+import type { FormattingRules } from '../lib/classification-rules';
+import {
+  splitTitleAndBody,
+  extractParentheticalData,
+  isUnitHeading,
+  normalizeDisposition,
+  normalizeAttributes,
+  canonicalizeShields,
+  repositionMagicItemBonuses,
+  deduplicateEquipment,
+  normalizeEquipmentVerbs,
+  extractMountFromParenthetical,
+  buildCanonicalParenthetical,
+  formatMountBlock
+} from '../lib/enhanced-parser';
+import { processDumpWithValidation } from '../lib/npc-parser';
+
+describe('Enhanced Parser Functions', () => {
+  describe('splitTitleAndBody', () => {
+    it('should extract title and parentheticals from text', () => {
+      const input = `**Owen Carter, lieutenant of the town guard**
+(He is a neutral, human, 4th level fighter. His vital stats are HP 24, AC 16. He carries banded mail, shield, longsword and dagger.)`;
+
+      const result = splitTitleAndBody(input);
+
+      expect(result.title).toBe('**Owen Carter, lieutenant of the town guard**');
+      expect(result.parentheticals).toHaveLength(1);
+      expect(result.parentheticals[0]).toContain('He is a neutral, human, 4th level fighter');
+    });
+
+    it('should handle multiple parentheticals', () => {
+      const input = `**Sir Knight** (human fighter) (HP 30, AC 18)`;
+      const result = splitTitleAndBody(input);
+
+      expect(result.parentheticals).toHaveLength(2);
+      expect(result.parentheticals[0]).toBe('human fighter');
+      expect(result.parentheticals[1]).toBe('HP 30, AC 18');
+    });
+  });
+
+  describe('extractParentheticalData', () => {
+    it('should extract HP from various formats', () => {
+      expect(extractParentheticalData('HP 36').hp).toBe('36');
+      expect(extractParentheticalData('Hit Points: 59').hp).toBe('59');
+      expect(extractParentheticalData('vital stats are HP 24').hp).toBe('24');
+    });
+
+    it('should extract AC from various formats', () => {
+      expect(extractParentheticalData('AC 16').ac).toBe('16');
+      expect(extractParentheticalData('AC 13/22').ac).toBe('13/22');
+      expect(extractParentheticalData('AC: 18').ac).toBe('18');
+    });
+
+    it('should extract race/class/level', () => {
+      const data = extractParentheticalData('human, 4th level fighter');
+      expect(data.raceClass).toBe('human, 4ᵗʰ level fighter');
+      expect(data.level).toBe('4');
+    });
+
+    it('should extract disposition and normalize it', () => {
+      expect(extractParentheticalData('alignment: lawful good').disposition).toBe('law/good');
+      expect(extractParentheticalData('disposition neutral').disposition).toBe('neutral');
+      expect(extractParentheticalData('disposition neutral/neutral').disposition).toBe('neutral');
+      expect(extractParentheticalData('disposition true neutral').disposition).toBe('neutral');
+    });
+
+    it('should extract equipment', () => {
+      const data = extractParentheticalData('carries banded mail, shield, longsword');
+      expect(data.equipment).toBe('banded mail, shield, longsword');
+    });
+  });
+
+  describe('isUnitHeading', () => {
+    it('should detect unit headings', () => {
+      expect(isUnitHeading('Men-at-Arms, Bowmen x6')).toBe(true);
+      expect(isUnitHeading('Guards x10')).toBe(true);
+      expect(isUnitHeading('Militia Warriors')).toBe(true);
+      expect(isUnitHeading('Sir Owen Carter')).toBe(false);
+    });
+  });
+
+  describe('normalizeDisposition', () => {
+    it('should convert adjective forms to noun forms', () => {
+      expect(normalizeDisposition('lawful good')).toBe('law/good');
+      expect(normalizeDisposition('Chaotic Evil')).toBe('chaos/evil');
+      expect(normalizeDisposition('neutral good')).toBe('neutral/good');
+      expect(normalizeDisposition('true neutral')).toBe('neutral');
+      expect(normalizeDisposition('neutral/neutral')).toBe('neutral');
+    });
+
+    it('should handle single-word alignments', () => {
+      expect(normalizeDisposition('lawful')).toBe('law/neutral');
+      expect(normalizeDisposition('chaotic')).toBe('chaos/neutral');
+      expect(normalizeDisposition('neutral')).toBe('neutral');
+    });
+  });
+
+  describe('normalizeAttributes', () => {
+    it('should list specific unit attributes instead of collapsing to "physical"', () => {
+      const result = normalizeAttributes('str, dex, con', { isUnit: true });
+      expect(result.type).toBe('list');
+      expect(result.value).toBe('strength, dexterity, and constitution');
+    });
+
+    it('should include all prime attributes for classed NPCs', () => {
+      const result = normalizeAttributes('str 15, dex 12, con 13', {
+        raceClassText: 'human, 4ᵗʰ level fighter',
+        levelText: '4'
+      });
+      expect(result.type).toBe('list');
+      // Fighters have strength, dexterity, constitution as primes
+      expect(result.value).toBe('strength, dexterity, and constitution');
+    });
+
+    it('should always include fighter primes for 1st level fighters', () => {
+      const result = normalizeAttributes('str 11, dex 10, con 9', {
+        raceClassText: 'human, 1ˢᵗ level fighter',
+        levelText: '1'
+      });
+      expect(result.type).toBe('list');
+      expect(result.value).toBe('strength, dexterity, and constitution');
+    });
+
+    it('should list specific attributes for creatures without class levels', () => {
+      const result = normalizeAttributes('str 14, con 13', {
+        raceClassText: 'ogre brute'
+      });
+      expect(result.type).toBe('list');
+      expect(result.value).toBe('strength and constitution');
+    });
+  });
+
+  describe('canonicalizeShields', () => {
+    it('should fix the buckler bug', () => {
+      expect(canonicalizeShields('buckler +1')).toBe('buckler +1');
+      expect(canonicalizeShields('+2 shield')).toBe('medium steel shield +2');
+      expect(canonicalizeShields('steel shield')).toBe('medium steel shield');
+    });
+
+    it('should handle various shield formats', () => {
+      expect(canonicalizeShields('a shield')).toBe('medium steel shield');
+      expect(canonicalizeShields('wooden buckler')).toBe('buckler');
+      expect(canonicalizeShields('iron pavis +3')).toBe('pavis +3');
+    });
+  });
+
+  describe('repositionMagicItemBonuses', () => {
+    it('should move bonuses from beginning to end', () => {
+      expect(repositionMagicItemBonuses('+1 longsword')).toBe('longsword +1');
+      expect(repositionMagicItemBonuses('+2 shield')).toBe('shield +2');
+      expect(repositionMagicItemBonuses('+3 full plate mail')).toBe('full plate mail +3');
+    });
+
+    it('should handle multiple magic items', () => {
+      const input = '+1 longsword, +2 shield, +3 lance';
+      const expected = 'longsword +1, shield +2, lance +3';
+      expect(repositionMagicItemBonuses(input)).toBe(expected);
+    });
+  });
+
+  describe('deduplicateEquipment', () => {
+    it('should remove duplicate equipment items', () => {
+      expect(deduplicateEquipment('lance, lance, sword')).toBe('lance, sword');
+      expect(deduplicateEquipment('shield, sword, shield, dagger')).toBe('shield, sword, dagger');
+    });
+  });
+
+  describe('normalizeEquipmentVerbs', () => {
+    it('should normalize armor verbs to root "wear"', () => {
+      expect(normalizeEquipmentVerbs('wearing chain mail')).toBe('wear chain mail');
+      expect(normalizeEquipmentVerbs('worn plate armor')).toBe('wear plate armor');
+    });
+
+    it('should handle mixed verb clauses and normalize to root verbs', () => {
+      const input = 'He is armed with a bow and is wearing chain mail and has a dagger';
+      const out = normalizeEquipmentVerbs(input);
+      expect(out).toContain('carry a bow');
+      expect(out).toContain('wear chain mail');
+      expect(out).toContain('carry dagger');
+    });
+
+    it('should normalize weapon verbs to "carry"', () => {
+      expect(normalizeEquipmentVerbs('carries longsword')).toBe('carry longsword');
+      expect(normalizeEquipmentVerbs('carrying a bow')).toBe('carry a bow');
+    });
+  });
+
+  describe('extractMountFromParenthetical', () => {
+    it('should extract war horse data and clean parenthetical', () => {
+      const input = 'human fighter, HP 30, AC 16, heavy war horse HP 35, AC 19, 2 hooves for 1d4 each';
+      const result = extractMountFromParenthetical(input);
+
+      expect(result.mountBlock).toBeDefined();
+      expect(result.mountBlock?.name).toBe('heavy war horse');
+      expect(result.mountBlock?.hp).toBe('35');
+      expect(result.mountBlock?.ac).toBe('19');
+      expect(result.cleanedParenthetical).not.toContain('war horse');
+      expect(result.cleanedParenthetical).not.toContain('hooves');
+    });
+
+    it('should return unchanged if no mount data', () => {
+      const input = 'human fighter, HP 30, AC 16';
+      const result = extractMountFromParenthetical(input);
+
+      expect(result.mountBlock).toBeUndefined();
+      expect(result.cleanedParenthetical).toBe(input);
+    });
+  });
+
+  describe('buildCanonicalParenthetical', () => {
+    it('should build canonical format for individual NPC with qualifying attributes', () => {
+      const data = {
+        hp: '24',
+        ac: '16',
+        disposition: 'neutral',
+        raceClass: 'human, 4th level fighter',
+        level: '4',
+        attributes: 'strength 15, dexterity 12, constitution 13',
+        equipment: 'wears banded mail, carry shield, longsword, dagger',
+        raw: 'original'
+      };
+
+      const result = buildCanonicalParenthetical(data, false, false, false);
+
+      expect(result).toContain("HP 24, AC 16, disposition neutral");
+      // Fighters list all primes: strength, dexterity, constitution
+      expect(result).toContain('His primary attributes are strength, dexterity, and constitution');
+      expect(result).toContain('He carries banded mail, a medium steel shield, a longsword, and a dagger');
+    });
+
+    it('should build canonical format for unit with explicit physical designation', () => {
+      const data = {
+        hp: '12',
+        ac: '15',
+        disposition: 'neutral',
+        raceClass: 'human, 2nd level fighters',
+        level: '2',
+        attributes: 'PA physical',  // Explicitly says "physical" so should keep it
+        equipment: 'chain mail, longbow, longsword',
+        raw: 'original'
+      };
+
+
+      const result = buildCanonicalParenthetical(data, true, false, false);
+
+      // When input explicitly says "physical", keep it
+      expect(result).toContain('Their primary attributes are physical');
+      // Mundane equipment should NOT be italicized
+      expect(result).toContain('chain mail');
+      expect(result).not.toContain('*chain mail*');
+    });
+ 
+    it('should enforce physical attribute shorthand for non-classed creatures', () => {
+      const data = {
+        hp: '18',
+        ac: '14',
+        disposition: 'chaos/evil',
+        raceClass: 'goblin marauder',
+        attributes: 'dex 14, con 11',  // Specific attributes provided
+        equipment: 'leather armor, short sword',
+        raw: 'original'
+      };
+
+      const result = buildCanonicalParenthetical(data, false, false, false);
+
+      expect(result).toContain('Its primary attributes are physical');
+      expect(result).toMatch(/vital stats are .+\.\s+Its primary attributes/);
+    });
+
+    it('should use singular possessive pronoun when canonical parenthetical contains "He carries"', () => {
+      const data = {
+        hp: '10',
+        ac: '12',
+        disposition: 'neutral',
+        raceClass: undefined,
+        level: undefined,
+        attributes: undefined,
+        equipment: 'He carries a club',
+        raw: 'He carries a club'
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false);
+      expect(result).toContain('HP 10, AC 12, disposition neutral');
+      expect(result).toContain('His primary attributes are physical');
+    });
+
+    it('should flatten HD to HP for named/chieftain entities (Rule-of-Rank)', () => {
+      const data = {
+        hd: '3d10',
+        hp: '18',
+        ac: '16',
+        disposition: 'law/evil',
+        significantAttributes: 'strength 16, dexterity 14',
+        raw: '',
+        raceClass: 'hobgoblin chieftain'
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false, 'Hub-Gub the Bloody (Hobgoblin Chieftain)');
+      expect(result).toContain('HP 18');
+      expect(result).not.toContain('HD 3d10');
+      expect(result).toContain('His primary attributes are strength 16, dexterity 14');
+    });
+
+    it('Hub-Gub shows magic items and HP (no HD)', () => {
+      const data = {
+        hd: '3d10',
+        hp: '18',
+        ac: '16',
+        disposition: 'law/evil',
+        significantAttributes: 'strength 16, dexterity 14',
+        equipment: 'wears full chain mail armor and carries +1 halberd, broadsword +3, composite short bow, 12 arrows',
+        raw: '',
+        raceClass: 'hobgoblin chieftain'
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false, 'Hub-Gub the Bloody (Hobgoblin Chieftain)');
+      expect(result).toContain('HP 18');
+      expect(result).not.toContain('HD 3d10');
+      // Magic items should be italicized; bonus placement may vary depending on normalization.
+      expect(result).toMatch(/\*\+?1\s*halberd|\*halberd \+1/i);
+      expect(result).toMatch(/\*broadsword|\*broadsword \+3/i);
+    });
+
+    it('Wily Wil grammar corrections', () => {
+      const data = {
+        hd: '9d12',
+        hp: '63',
+        ac: '17',
+        disposition: 'chaos/neutral',
+        equipment: 'hide armors, huge old hams, a comic scrolls, other assorted trashs',
+        raw: '',
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false, 'Wily Wil, Giant of the Hill');
+      // Grammar fixes: armors -> armor, trashs -> trash, hams -> ham
+      expect(result).toContain('hide armor');
+      expect(result).toContain('ham');
+      expect(result).toContain('trash');
+    });
+
+    it('Bandit pronoun detection (He carries -> His)', () => {
+      const data = {
+        hp: '4',
+        ac: '13',
+        disposition: 'neutral/evil',
+        attributes: undefined,
+        equipment: 'He carries 6 silver in coin',
+        raw: 'He carries 6 silver in coin'
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false, 'Bandit');
+      expect(result).toContain('His primary attributes are physical');
+    });
+
+    it('should replace superscript ordinal with plain numeral for named ranked entities', () => {
+      const data = {
+        level: '12',
+        hp: '25',
+        ac: '15',
+        disposition: 'chaos/evil',
+        attributes: undefined,
+        raw: ''
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false, 'The Little Hillwood Werewolf');
+      expect(result).not.toContain('12ᵗʰ');
+      expect(result).toContain('12 level');
+      expect(result).toContain('His primary attributes are');
+    });
+
+    it('should estimate HP from HD for heavily-ranked named entities like kings/emperors', () => {
+      const data = {
+        hd: '10d8',
+        ac: '20',
+        disposition: 'law/good',
+        raceClass: 'human, 10th level lord',
+        raw: ''
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false, 'Emperor Zhar the Great');
+      // Estimation flattens to a computed HP number — assert presence of HP value
+      expect(result).toMatch(/HP \d+/);
+      // Should not mention HD explicitly
+      expect(result).not.toContain('HD');
+    });
+
+    it('Ember Raventree (named classed NPC) should show full long-form attributes', () => {
+      const data = {
+        hp: '42',
+        ac: '17',
+        disposition: 'law/good',
+        raceClass: 'human, 8th level wizard',
+        attributes: 'strength 17, dexterity 12, constitution 11',
+        raw: ''
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false, 'Ember Raventree');
+      expect(result).toContain('His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma');
+    });
+
+    it('Ember Raventree enhanced output should include long-form attributes when parenthetical split exists', () => {
+      const input = `**Ember Raventree (wood elf leader)** (This creature's vital stats are HP 42, AC 17, disposition law/good. Primary attributes: strength 17, dexterity 12, constitution 11.)`;
+
+      const [processed] = processDumpWithValidation(input, true, 'enhanced');
+
+      expect(processed).toBeDefined();
+      const { converted } = processed;
+
+      // Should have expanded to full PHB attribute list and not collapsed to "physical"
+      expect(converted).toContain('His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma');
+      expect(converted).not.toContain('Their primary attributes are physical');
+    });
+
+    it('should convert HD to estimated HP for titled kings like King Griggle-gruk', () => {
+      const data = {
+        hd: '8d10',
+        ac: '18',
+        disposition: 'law/evil',
+        raceClass: 'goblin king',
+        raw: ''
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false, 'King Griggle-gruk');
+      expect(result).toMatch(/HP \d+/);
+      expect(result).not.toContain('HD 8d10');
+    });
+
+    it('should collapse double verbs like "carry wield" into a single verb', () => {
+      const data = {
+        hp: '12', ac: '14', disposition: 'neutral',
+        equipment: 'carry wield composite short bows, chain mail',
+        raw: 'carry wield composite short bows, chain mail'
+      } as any;
+
+      const out = buildCanonicalParenthetical(data, true, false, false);
+      // Should not contain 'carry wield' and should keep 'composite short bows'
+      expect(out).not.toContain('carry wield');
+      expect(out).toContain('composite short bows');
+    });
+
+    it('enforces plural pronouns when formatting rules demand a unit track', () => {
+      const data = {
+        hp: '12',
+        ac: '14',
+        disposition: 'neutral',
+        equipment: 'leather armor, shield, spear',
+        raw: 'He carries spear'
+      } as any;
+
+      const formattingRules: FormattingRules = {
+        pronounTrack: 'plural',
+        pronounThis: 'These',
+        pronounPossessive: 'their',
+        attributePhrasing: 'saves-notation',
+        equipmentVerbs: 'has-possesses',
+        showLevel: false,
+        showHD: true,
+        useLevelOrdinal: false,
+      };
+
+      const result = buildCanonicalParenthetical(data, true, false, false, undefined, formattingRules);
+      expect(result).toContain('Their primary attributes are physical');
+      expect(result).toMatch(/They wear/);
+    });
+
+    it('forces neutral singular pronouns for monsters via formatting rules', () => {
+      const data = {
+        hp: '18',
+        ac: '15',
+        disposition: 'chaos/evil',
+        equipment: 'scaled armor, spear',
+        raw: 'He carries a spear'
+      } as any;
+
+      const formattingRules: FormattingRules = {
+        pronounTrack: 'singular',
+        pronounThis: 'This',
+        pronounPossessive: 'its',
+        attributePhrasing: 'saves-notation',
+        equipmentVerbs: 'has-possesses',
+        showLevel: false,
+        showHD: true,
+        useLevelOrdinal: false,
+      };
+
+      const result = buildCanonicalParenthetical(data, false, false, false, undefined, formattingRules);
+      expect(result).toContain('Its primary attributes are physical');
+      expect(result).toMatch(/It wears/);
+    });
+
+    it('should use "Her" when canonical parenthetical contains "She carries"', () => {
+      const data = {
+        hp: '10',
+        ac: '12',
+        disposition: 'neutral',
+        raceClass: undefined,
+        level: undefined,
+        attributes: undefined,
+        equipment: 'She carries a club',
+        raw: 'She carries a club'
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false);
+      expect(result).toContain('Her primary attributes are physical');
+    });
+
+    it('should merge jewelry and coins into single carry sentence when no weapons present', () => {
+      const data = {
+        hp: '30',
+        ac: '12',
+        disposition: 'neutral',
+        raceClass: 'human merchant',
+        equipment: 'leather armor',
+        jewelry: '50 gold worth of jewelry',
+        coins: '25gp',
+        raw: 'original'
+      };
+
+      const result = buildCanonicalParenthetical(data, false, false, false);
+
+      // Should have exactly one carry sentence that includes both jewelry and coins
+      expect(result).toContain('He carries leather armor, 25 gold in coin, and fifty in jewelry.');
+
+      // Should only have one instance of "carries" (merged into single sentence)
+      const carriesCount = (result.match(/\bcarries\b/g) || []).length;
+      expect(carriesCount).toBe(1);
+    });
+
+    it('should merge jewelry and coins using "has" style when formatting rules demand it (monster)', () => {
+      const data = {
+        hp: '5',
+        ac: '13',
+        disposition: 'chaos/evil',
+        raceClass: undefined,
+        equipment: undefined,
+        jewelry: '10 gold worth of jewelry',
+        coins: '5gp',
+        raw: 'original'
+      } as any;
+
+      const formattingRules: FormattingRules = {
+        pronounTrack: 'singular',
+        pronounThis: 'This',
+        pronounPossessive: 'its',
+        attributePhrasing: 'saves-notation',
+        equipmentVerbs: 'has-possesses',
+        showLevel: false,
+        showHD: true,
+        useLevelOrdinal: false,
+      };
+
+      const result = buildCanonicalParenthetical(data, false, false, false, undefined, formattingRules);
+      // Expect 'It has' style merge
+      expect(result).toContain('It has 5 gold in coin and ten in jewelry');
+    });
+
+    it('should merge jewelry and coins using plural "have" when formatting rules demand plural track', () => {
+      const data = {
+        hp: '12',
+        ac: '14',
+        disposition: 'neutral',
+        raceClass: 'militia',
+        equipment: undefined,
+        jewelry: '6 gold worth of jewelry',
+        coins: '2gp',
+        raw: 'original'
+      } as any;
+
+      const formattingRules: FormattingRules = {
+        pronounTrack: 'plural',
+        pronounThis: 'These',
+        pronounPossessive: 'their',
+        attributePhrasing: 'saves-notation',
+        equipmentVerbs: 'has-possesses',
+        showLevel: false,
+        showHD: true,
+        useLevelOrdinal: false,
+      };
+
+      const result = buildCanonicalParenthetical(data, true, false, false, undefined, formattingRules);
+      expect(result).toContain('They have 2 gold in coin and six in jewelry');
+    });
+
+    it('should parse comma formatted jewelry amounts and convert to words', () => {
+      const data = {
+        hp: '20', ac: '12', disposition: 'neutral',
+        equipment: undefined,
+        jewelry: '1,000 gold worth of jewelry',
+        coins: '200gp', raw: 'original'
+      } as any;
+
+      const formattingRules: FormattingRules = {
+        pronounTrack: 'singular',
+        pronounThis: 'This',
+        pronounPossessive: 'its',
+        attributePhrasing: 'saves-notation',
+        equipmentVerbs: 'has-possesses',
+        showLevel: false,
+        showHD: true,
+        useLevelOrdinal: false,
+      };
+
+      const result = buildCanonicalParenthetical(data, false, false, false, undefined, formattingRules);
+      expect(result).toContain('It has 200 gold in coin and one thousand in jewelry');
+    });
+  });
+
+  describe('formatMountBlock', () => {
+    it('should format complete mount block', () => {
+      const mountBlock = {
+        name: 'warhorse',
+        level: '4(d10)',
+        hp: '35',
+        ac: '19',
+        disposition: 'neutral',
+        attacks: '2 hooves for 1d4 damage each',
+        equipment: 'chainmail barding',
+        raw: 'original'
+      };
+
+      const result = formatMountBlock(mountBlock);
+
+      expect(result).toContain("Level 4(d10), HP 35, AC 19, disposition neutral");
+      expect(result).toContain("It attacks with 2 hooves for 1d4 damage each");
+      expect(result).toContain("It wears chainmail barding");
+    });
+
+    it('should handle minimal mount data', () => {
+      const mountBlock = {
+        name: 'horse',
+        raw: 'original'
+      };
+
+      const result = formatMountBlock(mountBlock);
+
+      expect(result).toBe('**Horse (mount)**');
+    });
+
+    it('should canonicalize magic items and potions in equipment', () => {
+      const data = {
+        name: 'Goblin Shaman',
+        hp: '15',
+        ac: '10',
+        disposition: 'law/evil',
+        attributes: undefined,
+        equipment: 'a bronze-hilted +1 poniard—+1 bonus, potion of extra healing [3d8+3]—heals 2d8+2 HPs, medium steel shield',
+        raw: 'a bronze-hilted +1 poniard—+1 bonus, potion of extra healing [3d8+3]—heals 2d8+2 HPs, medium steel shield'
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false);
+
+      expect(result).toContain('*poniard +1*');
+      expect(result).toContain('*potion of extra healing* (heals 2d8+2 HPs)');
+      expect(result).not.toContain('bronze-hilted');
+    });
+
+    it('should italicize spell names and remove equipment from spell lists', () => {
+      const data = {
+        spells: 'Dimension Door, teleportation, medium steel shield',
+        raceClass: 'human, 3rd level cleric'
+      } as any;
+
+      const result = buildCanonicalParenthetical(data, false, false, false);
+      // Should italicize mapped spell names and drop 'medium steel shield'
+      expect(result).toMatch(/\*.+Door\*/i);
+      expect(result).toMatch(/\*.+Teleport\*/i);
+      expect(result).not.toContain('medium steel shield');
+    });
+  });
+
+  describe('Integration tests', () => {
+    it('should handle Owen Carter example correctly', () => {
+      const input = `**Owen Carter, lieutenant of the town guard**
+(He is a neutral, human, 4th level fighter. His vital stats are HP 24, AC 16. He carries banded mail, shield, longsword and dagger.)`;
+
+      const { title, parentheticals } = splitTitleAndBody(input);
+      const data = extractParentheticalData(parentheticals[0]);
+      const isUnit = isUnitHeading(title);
+
+      expect(data.hp).toBe('24');
+      expect(data.ac).toBe('16');
+      // Note: disposition extraction from prose requires more sophisticated parsing
+      expect(isUnit).toBe(false);
+
+      // Test equipment canonicalization
+      if (data.equipment) {
+        let equipment = canonicalizeShields(data.equipment);
+        equipment = repositionMagicItemBonuses(equipment);
+        expect(equipment).toContain('medium steel shield');
+      }
+    });
+
+    it('should handle unit example correctly', () => {
+      const input = `**Men-at-Arms, Bowmen x6**
+(these human men-at-arms are 2nd level fighters; HP 12; AC 15; primary attributes strength, dexterity, constitution; EQ chain mail, longbow, longsword, belt axe; 2-12gp.)`;
+
+      const { title, parentheticals } = splitTitleAndBody(input);
+      const data = extractParentheticalData(parentheticals[0]);
+      const isUnit = isUnitHeading(title);
+
+      expect(data.hp).toBe('12');
+      expect(data.ac).toBe('15');
+      expect(isUnit).toBe(true);
+
+      if (data.attributes) {
+        const normalizedAttrs = normalizeAttributes(data.attributes, {
+          isUnit,
+          raceClassText: data.raceClass,
+          levelText: data.level
+        });
+        expect(normalizedAttrs.type).toBe('list');
+        // Should list specific attributes, not collapse to "physical"
+        expect(normalizedAttrs.value).toBe('strength, dexterity, and constitution');
+      }
+    });
+
+    it('should flag missing vital stats as a validation error', () => {
+      const input = `**Shadow Thug**\n\nDisposition: neutral\nEquipment: trident`;
+
+      const [processed] = processDumpWithValidation(input, true, 'enhanced');
+
+      expect(processed).toBeDefined();
+      const vitalWarning = processed.validation.warnings.find(w => w.category === 'Vital Stats');
+      expect(vitalWarning).toBeDefined();
+      expect(vitalWarning?.type).toBe('error');
+      expect(vitalWarning?.message).toMatch(/Vital stats are unavailable/i);
+    });
+
+    it('should retain equipment and spells for the marquee NPC example', () => {
+      const example = `**The Right Honorable President Counselor of Yggsburgh, His Supernal Devotion Victor Oldham, High Priest of the Grand Temple**
+
+Disposition: law/good
+Race & Class: human, 16th level cleric
+Hit Points (HP): 59
+Armor Class (AC): 13/22
+Primary attributes: strength, wisdom, charisma
+Equipment: pectoral of armor +3, full plate mail, large steel shield, staff of striking, mace
+Spells: 0–6, 1st–6, 2nd–5, 3rd–5, 4th–4, 5th–4, 6th–3, 7th–3, 8th–2
+Mount: heavy war horse`;
+
+      const [processed] = processDumpWithValidation(example, true, 'enhanced');
+
+      expect(processed).toBeDefined();
+      const { converted } = processed;
+
+      expect(converted).toContain('HP 59');
+      expect(converted).toContain('AC 13/22');
+      expect(converted).toMatch(/pectoral of armor \+3/i);
+      expect(converted).toMatch(/staff of striking/i);
+      expect(converted).toMatch(/can cast the following number of cleric spells per day/i);
+    });
+
+    it('should include a vital-stats error for monsters with no HD or AC', () => {
+      const simpleMonster = `Goblin
+
+HP: \nAC:`;
+
+      const [processed] = processDumpWithValidation(simpleMonster, false, 'monster');
+      expect(processed).toBeDefined();
+      const vit = processed.validation.warnings.find(w => w.category === 'Vital Stats');
+      expect(vit).toBeDefined();
+      expect(vit?.type).toBe('error');
+    });
+  });
+});
+
+```
+
