@@ -207,7 +207,10 @@ export function lookupCanonicalMount(raw: string): MountBlock | undefined {
 
   return {
     name: canonical.name,
+
     raw: canonical.raw ?? raw,
+
+
     level: canonical.level,
     hd: canonical.hd,
     hp: canonical.hp,
