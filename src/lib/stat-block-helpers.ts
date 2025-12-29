@@ -18,7 +18,8 @@ export function normalizeDisposition(value: string): string {
   };
 
   // Normalize whitespace/punctuation and lowercase for lookup
-  const trimmed = value.trim().toLowerCase().replace(/[-/\\]/g, ' ').replace(/\.+$/, '');
+  const raw = value.trim();
+  const trimmed = raw.toLowerCase().replace(/[-/\\]/g, ' ').replace(/\.+$/, '');
 
   // Support common one- or two-letter abbreviations (LG, CN, etc.)
   const abbr = trimmed.replace(/[^a-z]/g, '');
@@ -36,7 +37,94 @@ export function normalizeDisposition(value: string): string {
 
   if (abbrMap[abbr]) return abbrMap[abbr];
 
+  // If the input used explicit ordering (e.g., "good law" or "law/good"),
+  // preserve the author's primary/secondary order when possible.
+  const tokens = raw
+    .replace(/[\/]+/g, ' / ')
+    .split(/\s+/)
+    .filter(Boolean)
+    .map(t => t.trim());
+
+  // Helper to map a single token to its noun-form canonical piece
+  const mapToken = (tok: string): string | null => {
+    if (!tok) return null;
+    const l = tok.toLowerCase().replace(/[^a-z]/g, '');
+    if (l === 'law' || l === 'lawful') return 'law';
+    if (l === 'chaos' || l === 'chaotic') return 'chaos';
+    if (l === 'true' || l === 'neutral' || l === 'neutrality') return 'neutral';
+    if (l === 'good') return 'good';
+    if (l === 'evil') return 'evil';
+    // Accept single-letter abbreviations mixed in token form
+    if (abbrMap[l]) return abbrMap[l].split('/')[0] ?? abbrMap[l];
+    return null;
+  };
+
+  // If tokens include an explicit slash, respect token order around it.
+  const slashIndex = tokens.indexOf('/');
+  if (slashIndex >= 1 && slashIndex < tokens.length - 1) {
+    const left = mapToken(tokens.slice(0, slashIndex).join(' ')) || '';
+    const right = mapToken(tokens.slice(slashIndex + 1).join(' ')) || '';
+    if (left && right) return `${left}/${right}`;
+  }
+
+  // If there are exactly two meaningful tokens, use their order as primary/secondary
+  const meaningful = tokens.filter(t => t !== '/');
+  if (meaningful.length === 2) {
+    const a = mapToken(meaningful[0]);
+    const b = mapToken(meaningful[1]);
+    if (a && b) return `${a}/${b}`;
+  }
+
+  // Fallback: use the original mapping table or return the trimmed input
   return mapping[trimmed] ?? value.trim();
+}
+
+/**
+ * Validate a disposition string against class and optional deity restrictions.
+ * Returns an object with `valid: boolean` and an optional `reason` string.
+ */
+export function validateDispositionForClass(disposition: string, charClass?: string, deityDisposition?: string): { valid: boolean; reason?: string } {
+  if (!disposition) return { valid: false, reason: 'No disposition provided' };
+
+  const disp = disposition.trim().toLowerCase();
+
+  // Normalize forms like 'chaos/good' or 'law/good' or single 'neutral'
+  const parts = disp.includes('/') ? disp.split('/').map(s => s.trim()) : [disp];
+
+  const hasGood = parts.includes('good');
+  const hasNeutral = parts.includes('neutral');
+  const hasEvil = parts.includes('evil');
+  const hasLaw = parts.includes('law') || parts.includes('lawful');
+  const hasChaos = parts.includes('chaos') || parts.includes('chaotic');
+
+  const cls = (charClass ?? '').trim().toLowerCase();
+
+  if (cls === 'assassin') {
+    if (hasGood) return { valid: false, reason: 'Assassins must be non-good' };
+    return { valid: true };
+  }
+
+  if (cls === 'cleric') {
+    if (!deityDisposition) return { valid: false, reason: 'Clerics must match their deity disposition' };
+    const normDeity = normalizeDisposition(deityDisposition);
+    const normDisp = normalizeDisposition(disposition);
+    if (normDeity !== normDisp) return { valid: false, reason: 'Cleric disposition must match deity disposition' };
+    return { valid: true };
+  }
+
+  if (cls === 'druid') {
+    if (hasNeutral) return { valid: true };
+    return { valid: false, reason: 'Druids must include neutrality (e.g., neutral, neutral/good, law/neutral)' };
+  }
+
+  if (cls === 'paladin') {
+    const n = normalizeDisposition(disposition);
+    if (n === 'law/good' || n === 'good/law') return { valid: true };
+    return { valid: false, reason: 'Paladins must be Law/Good or Good/Law' };
+  }
+
+  // Other classes: no restriction
+  return { valid: true };
 }
 
 export interface SubjectOptions {
