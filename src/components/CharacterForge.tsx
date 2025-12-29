@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
 import React, { useState, useReducer, useEffect } from 'react';
+import { normalizeDisposition, validateDispositionForClass } from '@/lib/stat-block-helpers';
 import { 
   Shield, Scroll, Backpack, 
   RefreshCw, Calculator,
@@ -1140,9 +1141,17 @@ interface DispositionBuilderProps {
   onChange: (val: string) => void;
 }
 
-const DispositionBuilder = ({ value, onChange }: DispositionBuilderProps) => {
+interface DispositionBuilderProps {
+  value: string;
+  onChange: (val: string) => void;
+  charClass?: string;
+  deityDisposition?: string;
+}
+
+const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: DispositionBuilderProps) => {
   const [primary, setPrimary] = useState('Neutral');
   const [secondary, setSecondary] = useState('None');
+  const [validation, setValidation] = useState<{ valid: boolean; reason?: string } | null>(null);
 
   useEffect(() => {
     if (value.includes('/')) {
@@ -1161,9 +1170,19 @@ const DispositionBuilder = ({ value, onChange }: DispositionBuilderProps) => {
       newVal = `${primary}/${secondary}`;
     }
     if (primary === 'Neutral' && secondary === 'Neutral') newVal = 'Neutral';
-    
-    if (newVal !== value) onChange(newVal);
-  }, [primary, secondary, value, onChange]);
+
+    // Normalize to noun-form (e.g., law/good, neutrality)
+    const normalized = normalizeDisposition(newVal).toString();
+    if (normalized !== value) onChange(normalized);
+
+    // Run class/deity validation when available
+    if (charClass) {
+      const v = validateDispositionForClass(normalized, charClass, deityDisposition);
+      setValidation(v);
+    } else {
+      setValidation(null);
+    }
+  }, [primary, secondary, value, onChange, charClass, deityDisposition]);
 
   const options = ['Law', 'Chaos', 'Good', 'Evil', 'Neutral'];
 
@@ -1202,7 +1221,9 @@ const DispositionBuilder = ({ value, onChange }: DispositionBuilderProps) => {
               <button 
                 key={opt}
                 onClick={() => setSecondary(opt)}
-                className={`text-xs py-1 px-2 rounded-sm border text-left font-serif transition-colors ${secondary === opt ? 'bg-[#d97706] text-white border-[#d97706]' : 'bg-white text-[#57534e] border-[#e7e5e4] hover:bg-[#e7e5e4]'}`}
+                disabled={opt === primary}
+                title={opt === primary ? 'Secondary cannot be the same as Primary' : undefined}
+                className={`text-xs py-1 px-2 rounded-sm border text-left font-serif transition-colors ${secondary === opt ? 'bg-[#d97706] text-white border-[#d97706]' : 'bg-white text-[#57534e] border-[#e7e5e4] hover:bg-[#e7e5e4]'} ${opt === primary ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 {opt}
               </button>
@@ -1214,6 +1235,9 @@ const DispositionBuilder = ({ value, onChange }: DispositionBuilderProps) => {
       <div className="mt-3 pt-2 border-t border-[#d6d3d1]">
         <div className="text-[10px] uppercase text-[#a8a29e] text-center">Resulting Disposition</div>
         <div className="text-center font-bold text-[#451a03] text-lg font-serif">{value}</div>
+        {validation && !validation.valid && (
+          <div className="mt-2 text-xs text-red-600 text-center">{validation.reason}</div>
+        )}
       </div>
     </div>
   );
@@ -1426,8 +1450,10 @@ export default function CharacterForge() {
                     Disposition
                   </h2>
                   <DispositionBuilder 
-                    value={state.disposition} 
-                    onChange={(val) => dispatch({type: 'SET_FIELD', field: 'disposition', payload: val})} 
+                    value={state.disposition}
+                    onChange={(val) => dispatch({type: 'SET_FIELD', field: 'disposition', payload: val})}
+                    charClass={state.charClass?.name}
+                    deityDisposition={state.charClass?.name === 'Cleric' || state.charClass?.name === 'Druid' ? state.deityDisposition : undefined}
                   />
                 </section>
 
