@@ -207,14 +207,13 @@ export function lookupCanonicalMount(raw: string): MountBlock | undefined {
 
   return {
     name: canonical.name,
-    raw: block.raw ?? canonical.raw,
-    level: block.level ?? canonical.level,
-    hd: block.hd ?? canonical.hd,
-    hp: block.hp ?? canonical.hp,
-    ac: block.ac ?? canonical.ac,
-    disposition: block.disposition ?? canonical.disposition,
-    attacks: block.attacks ?? canonical.attacks,
-    equipment: block.equipment ?? canonical.equipment,
+    level: canonical.level,
+    hd: canonical.hd,
+    hp: canonical.hp,
+    ac: canonical.ac,
+    disposition: canonical.disposition,
+    attacks: canonical.attacks,
+    equipment: canonical.equipment,
   };
 }
 
