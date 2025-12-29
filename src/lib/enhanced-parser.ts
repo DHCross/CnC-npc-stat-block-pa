@@ -1430,6 +1430,30 @@ export function buildCanonicalParenthetical(
   formattingRules?: FormattingRules
 ): string {
   const parts: string[] = [];
+  const resolvedTitle = title ?? '';
+  // VERSION 3.0: Use V3 classifier to determine format
+  const v3Context: SignalExtractionContext = {
+    spells: data.spells,
+    raceClass: data.raceClass,
+    description: data.raw
+  };
+  const v3Classification = classifyEntityV3(resolvedTitle, {
+    name: resolvedTitle,
+    level: data.level ?? null,
+    hd: data.hd ?? null,
+    hp: data.hp ? parseInt(String(data.hp), 10) : null,
+    ac: data.ac ? parseInt(String(data.ac), 10) : null,
+    disposition: data.disposition ?? null,
+    primaryAttributes: data.attributes ?? null,
+    equipment: data.equipment ?? null,
+    coins: data.coins ?? null
+  }, v3Context);
+
+  // Legacy compatibility
+  const classInfo = extractClassInfo(data.raceClass, data.level);
+  const hasClassLevels = classInfo.hasClassLevels || v3Classification.format === 'A';
+  const isNamedRanked = isRankedNamedEntity(resolvedTitle, data);
+
   // Determine pronoun-based formatting early
   const pronounTrack: 'singular' | 'plural' = formattingRules?.pronounTrack ?? (isUnit ? 'plural' : 'singular');
   const possessiveSeed = formattingRules?.pronounPossessive ?? (hasClassLevels ? 'his' : 'its');
@@ -1462,30 +1486,6 @@ export function buildCanonicalParenthetical(
   let coinsIncludedInWeapons = false;
   let jewelryIncludedInEquipment = false;
   
-  // VERSION 3.0: Use V3 classifier to determine format
-  const v3Context: SignalExtractionContext = {
-    spells: data.spells,
-    raceClass: data.raceClass,
-    description: data.raw
-  };
-  const v3Classification = classifyEntityV3(title, {
-    name: data.name || title,
-    level: data.level,
-    hd: data.hd,
-    hp: data.hp ? parseInt(String(data.hp), 10) : null,
-    ac: data.ac ? parseInt(String(data.ac), 10) : null,
-    disposition: data.disposition,
-    primaryAttributes: data.attributes,
-    equipment: data.equipment,
-    coins: data.coins
-  }, v3Context);
-  
-  // Legacy compatibility
-  const classInfo = extractClassInfo(data.raceClass, data.level);
-  const hasClassLevels = classInfo.hasClassLevels || v3Classification.format === 'A';
-  const isNamedRanked = isRankedNamedEntity(title, data);
-
-
   // Build vital stats
   const vitalParts: string[] = [];
 
