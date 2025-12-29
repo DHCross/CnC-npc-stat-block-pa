@@ -35,6 +35,11 @@
     "**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "**/*.stories.*",
+    "**/.storybook/**",
+    "tmp/**",
+    "tmp_debug_*.ts",
+    "vite.config.ts"
   ]
 }

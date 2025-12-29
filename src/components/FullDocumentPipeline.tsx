@@ -539,7 +539,7 @@ export function FullDocumentPipeline({ initialAnalysis = null, isProcessing: isP
                                     <div className="text-card-foreground/60">{creature.classification.confidence}</div>
                                   )}
                                 </div>
-                                {creature.classification.warnings?.length > 0 && (
+                                {creature.classification.warnings && creature.classification.warnings.length > 0 && (
                                   <div className="mt-2 text-xs text-amber-300">
                                     ⚠️ {creature.classification.warnings.join('; ')}
                                   </div>

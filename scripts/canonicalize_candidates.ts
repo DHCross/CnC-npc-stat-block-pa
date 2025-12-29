@@ -187,7 +187,7 @@ function analyzeAndCanonicalize() {
       if (!data.hp && data.ac) flags.push('missing HP');
       if (!data.ac && data.hp) flags.push('missing AC');
       if (!data.raceClass) flags.push('missing raceClass');
-      if (!data.xp && !/XP[:\s]/i.test(item.parenthetical || '')) flags.push('missing XP');
+      if (!(data as any).xp && !/XP[:\s]/i.test(item.parenthetical || '')) flags.push('missing XP');
 
       if (flags.length > 0) {
         report.flagged.push({ title: title || item.snippet || '', start: item.start, flags });

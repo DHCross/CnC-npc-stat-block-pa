@@ -200,28 +200,21 @@ export function lookupCanonicalMount(raw: string): MountBlock | undefined {
     return undefined;
   }
 
-    let normalizedAttrs: NormalizedAttributesResult | undefined;
-    const canonical = CANONICAL_MOUNT_DATA[key];
+  const canonical = CANONICAL_MOUNT_DATA[key];
   if (!canonical) {
     return undefined;
   }
 
-    if (!normalizedAttrs && isNamedRanked && data.significantAttributes) {
-      // Convert significant attributes to a normalized list form
-      normalizedAttrs = { type: 'list', value: data.significantAttributes };
-    }
-
-    return {
-      name: canonical.name,
-      raw: block.raw ?? canonical.raw,
-      level: block.level ?? canonical.level,
-      hd: block.hd ?? canonical.hd,
-      hp: block.hp ?? canonical.hp,
-      ac: block.ac ?? canonical.ac,
-      disposition: block.disposition ?? canonical.disposition,
-      attacks: block.attacks ?? canonical.attacks,
-      equipment: block.equipment ?? canonical.equipment,
-    };
+  return {
+    name: canonical.name,
+    level: canonical.level,
+    hd: canonical.hd,
+    hp: canonical.hp,
+    ac: canonical.ac,
+    disposition: canonical.disposition,
+    attacks: canonical.attacks,
+    equipment: canonical.equipment,
+  };
 }
 
 export function canonicalizeMountBlock(block: MountBlock): MountBlock {
@@ -1093,7 +1086,7 @@ export function repositionMagicItemBonuses(equipment: string): string {
 }
 
 export function deduplicateEquipment(equipment: string): string {
-  const items = equipment.split(/,\s*/).map(item => item.trim().replace(/[\.]+$/g, ''));
+  const items = equipment.split(/,\s*/).map(item => item.trim().replace(/[.]+$/g, ''));
   const unique = [...new Set(items)];
   return unique.join(', ');
 }
@@ -1437,6 +1430,11 @@ export function buildCanonicalParenthetical(
   formattingRules?: FormattingRules
 ): string {
   const parts: string[] = [];
+  
+  // Legacy compatibility
+  const classInfo = extractClassInfo(data.raceClass, data.level);
+  const hasClassLevels = classInfo.hasClassLevels;
+  
   // Determine pronoun-based formatting early
   const pronounTrack: 'singular' | 'plural' = formattingRules?.pronounTrack ?? (isUnit ? 'plural' : 'singular');
   const possessiveSeed = formattingRules?.pronounPossessive ?? (hasClassLevels ? 'his' : 'its');
@@ -1475,21 +1473,18 @@ export function buildCanonicalParenthetical(
     raceClass: data.raceClass,
     description: data.raw
   };
-  const v3Classification = classifyEntityV3(title, {
-    name: data.name || title,
-    level: data.level,
-    hd: data.hd,
+  const v3Classification = classifyEntityV3(title || 'Unknown', {
+    name: title || 'Unknown',
+    level: data.level || null,
+    hd: data.hd || null,
     hp: data.hp ? parseInt(String(data.hp), 10) : null,
     ac: data.ac ? parseInt(String(data.ac), 10) : null,
-    disposition: data.disposition,
-    primaryAttributes: data.attributes,
-    equipment: data.equipment,
-    coins: data.coins
+    disposition: data.disposition || null,
+    primaryAttributes: data.attributes || null,
+    equipment: data.equipment || null,
+    coins: data.coins || null
   }, v3Context);
   
-  // Legacy compatibility
-  const classInfo = extractClassInfo(data.raceClass, data.level);
-  const hasClassLevels = classInfo.hasClassLevels || v3Classification.format === 'A';
   const isNamedRanked = isRankedNamedEntity(title, data);
 
 
@@ -1606,7 +1601,7 @@ export function buildCanonicalParenthetical(
   if (normalizedAttrs && normalizedAttrs.value) {
     if (normalizedAttrs.type === 'list') {
       // Format A: Long-form with singular possessive
-      let possessive = fallbackBase;
+      const possessive = fallbackBase;
       parts.push(`${possessive} primary attributes are ${normalizedAttrs.value}`);
     } else if (normalizedAttrs.type === 'prime') {
       // Format B/C: Shorthand
@@ -2037,7 +2032,7 @@ export function formatMountBlock(mountBlock: MountBlock): string {
 }
 
 export function findEquipment(equipment: string): string {
-  let processed = applyNameMappings(equipment);
+  const processed = applyNameMappings(equipment);
 
   // Shield normalization: split by comma, process each part individually
   const parts = processed.split(',').map(part => part.trim());

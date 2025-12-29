@@ -18,7 +18,7 @@ export function normalizeDisposition(value: string): string {
   };
 
   // Normalize whitespace/punctuation and lowercase for lookup
-  const trimmed = value.trim().toLowerCase().replace(/[\-\/\\]/g, ' ').replace(/\.+$/, '');
+  const trimmed = value.trim().toLowerCase().replace(/[-/\\]/g, ' ').replace(/\.+$/, '');
 
   // Support common one- or two-letter abbreviations (LG, CN, etc.)
   const abbr = trimmed.replace(/[^a-z]/g, '');
