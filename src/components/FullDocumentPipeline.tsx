@@ -456,56 +456,59 @@ export function FullDocumentPipeline({ initialAnalysis = null, isProcessing: isP
 
               <TabsContent value="creatures" className="space-y-3">
                 <div className="max-h-[600px] space-y-3 overflow-y-auto pr-2">
-                  {result.creatures.map((creature: ParsedCreature) => (
-                    <Collapsible
-                      key={creature.entryNumber}
-                      open={expandedCreatures.has(creature.entryNumber)}
-                      onOpenChange={() => toggleCreature(creature.entryNumber)}
-                    >
-                      <Card className="border-white/10 bg-white/5">
-                        <CollapsibleTrigger className="w-full">
-                          <CardHeader className="py-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                {expandedCreatures.has(creature.entryNumber) ? (
-                                  <ChevronDown className="h-4 w-4" />
-                                ) : (
-                                  <ChevronRight className="h-4 w-4" />
-                                )}
-                                <span className="text-sm font-medium text-card-foreground">
-                                  {creature.entryNumber}. {creature.creatureType}
-                                </span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                {/* classification badge shown after compliance score */}
-                                {creature.validation.warnings.length === 0 ? (
-                                  <CheckCircle className="h-4 w-4 text-emerald-400" />
-                                ) : (
-                                  <AlertCircle className="h-4 w-4 text-amber-400" />
-                                )}
-                                <Badge className={`text-xs normal-case ${getComplianceColor(creature.validation.complianceScore)}`}>
-                                  {creature.validation.complianceScore}%
-                                </Badge>
-                                {creature.classification && (
-                                  <Badge
-                                    className={`text-xs normal-case ${
-                                      creature.classification.type === 'classed'
-                                        ? 'bg-indigo-600 text-white'
-                                        : creature.classification.type === 'monster'
-                                        ? 'bg-amber-600 text-white'
-                                        : 'bg-gray-600 text-white'
-                                    }`}
-                                  >
-                                    {creature.classification.type}
-                                    {creature.classification.confidence ? ` · ${creature.classification.confidence}` : ''}
+                  {result.creatures.map((creature: ParsedCreature) => {
+                    const classificationWarnings = creature.classification?.warnings ?? [];
+
+                    return (
+                      <Collapsible
+                        key={creature.entryNumber}
+                        open={expandedCreatures.has(creature.entryNumber)}
+                        onOpenChange={() => toggleCreature(creature.entryNumber)}
+                      >
+                        <Card className="border-white/10 bg-white/5">
+                          <CollapsibleTrigger className="w-full">
+                            <CardHeader className="py-3">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  {expandedCreatures.has(creature.entryNumber) ? (
+                                    <ChevronDown className="h-4 w-4" />
+                                  ) : (
+                                    <ChevronRight className="h-4 w-4" />
+                                  )}
+                                  <span className="text-sm font-medium text-card-foreground">
+                                    {creature.entryNumber}. {creature.creatureType}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  {/* classification badge shown after compliance score */}
+                                  {creature.validation.warnings.length === 0 ? (
+                                    <CheckCircle className="h-4 w-4 text-emerald-400" />
+                                  ) : (
+                                    <AlertCircle className="h-4 w-4 text-amber-400" />
+                                  )}
+                                  <Badge className={`text-xs normal-case ${getComplianceColor(creature.validation.complianceScore)}`}>
+                                    {creature.validation.complianceScore}%
                                   </Badge>
-                                )}
+                                  {creature.classification && (
+                                    <Badge
+                                      className={`text-xs normal-case ${
+                                        creature.classification.type === 'classed'
+                                          ? 'bg-indigo-600 text-white'
+                                          : creature.classification.type === 'monster'
+                                          ? 'bg-amber-600 text-white'
+                                          : 'bg-gray-600 text-white'
+                                      }`}
+                                    >
+                                      {creature.classification.type}
+                                      {creature.classification.confidence ? ` · ${creature.classification.confidence}` : ''}
+                                    </Badge>
+                                  )}
+                                </div>
                               </div>
-                            </div>
-                          </CardHeader>
-                        </CollapsibleTrigger>
-                        <CollapsibleContent>
-                          <CardContent className="space-y-3 border-t border-white/10 pt-3">
+                            </CardHeader>
+                          </CollapsibleTrigger>
+                          <CollapsibleContent>
+                            <CardContent className="space-y-3 border-t border-white/10 pt-3">
                             <div className="rounded-xl border border-white/10 bg-slate-950/60 p-3">
                               <pre className="whitespace-pre-wrap font-mono text-xs text-card-foreground/80">
                                 {creature.converted}
@@ -539,9 +542,9 @@ export function FullDocumentPipeline({ initialAnalysis = null, isProcessing: isP
                                     <div className="text-card-foreground/60">{creature.classification.confidence}</div>
                                   )}
                                 </div>
-                                {creature.classification.warnings?.length > 0 && (
+                                {classificationWarnings.length > 0 && (
                                   <div className="mt-2 text-xs text-amber-300">
-                                    ⚠️ {creature.classification.warnings.join('; ')}
+                                    ⚠️ {classificationWarnings.join('; ')}
                                   </div>
                                 )}
                               </div>
@@ -578,11 +581,12 @@ export function FullDocumentPipeline({ initialAnalysis = null, isProcessing: isP
                               <Copy className="h-3 w-3" />
                               Copy Creature
                             </Button>
-                          </CardContent>
-                        </CollapsibleContent>
-                      </Card>
-                    </Collapsible>
-                  ))}
+                            </CardContent>
+                          </CollapsibleContent>
+                        </Card>
+                      </Collapsible>
+                    );
+                  })}
                 </div>
               </TabsContent>
 
