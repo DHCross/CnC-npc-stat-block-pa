@@ -13,7 +13,7 @@ export interface CanonicalData {
   notes?: string[];
 }
 
-function parseFirstNumber(value: string | undefined): number | null {
+function parseFirstNumber(value: string | null | undefined): number | null {
   if (!value) return null;
   const match = value.match(/\d+/);
   return match ? Number(match[0]) : null;
