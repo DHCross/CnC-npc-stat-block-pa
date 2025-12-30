@@ -7,7 +7,7 @@ import {
   RefreshCw, Calculator,
   Hammer, User, Copy, Check, BookOpen,
   ChevronUp, ChevronDown, Package, FileText, PenTool, Layout,
-  Gem, Save, Upload, Trash2
+  Gem, Save, Upload, Trash2, Archive, Book
 } from 'lucide-react';
 
 // --- THE REFORGED LEXICON & RULES ---
@@ -902,7 +902,9 @@ interface MagicItem {
 }
 
 interface CharacterState {
+  id: string;
   name: string;
+  notes: string;
   race: Race;
   charClass: CharClass;
   level: number;
@@ -937,7 +939,9 @@ type CharacterAction =
   | { type: 'ADD_MAGIC_ITEM'; payload: MagicItem }
   | { type: 'REMOVE_MAGIC_ITEM'; payload: number }
   | { type: 'SAVE_CHARACTER' }
-  | { type: 'LOAD_CHARACTER'; payload: CharacterState };
+  | { type: 'LOAD_CHARACTER'; payload: CharacterState }
+  | { type: 'SET_NOTES'; payload: string }
+  | { type: 'NEW_CHARACTER' };
 
 // --- HELPER: REFORGED TEXT GENERATOR ---
 
@@ -973,8 +977,12 @@ const generateReforgedBlock = (state: CharacterState): string => {
 
 // --- INITIAL STATE & REDUCER ---
 
-const initialState: CharacterState = {
+const generateId = () => Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
+const getInitialState = (): CharacterState => ({
+  id: generateId(),
   name: 'Unnamed Hero',
+  notes: '',
   race: RULES.races[0],
   charClass: RULES.classes[0],
   level: 1,
@@ -997,12 +1005,15 @@ const initialState: CharacterState = {
   viewMode: 'split',
   spellLevelFilter: 0,
   treasureCategoryFilter: 'All',
-};
+});
 
 function characterReducer(state: CharacterState, action: CharacterAction): CharacterState {
   switch (action.type) {
     case 'SET_FIELD': return { ...state, [action.field]: action.payload };
     
+    case 'SET_NOTES': return { ...state, notes: action.payload };
+    case 'NEW_CHARACTER': return getInitialState();
+
     case 'SET_CLASS': {
       const newClass = action.payload;
       const updatedAttributes = { ...state.attributes };
@@ -1332,7 +1343,7 @@ const ReforgedBlock = ({ text }: ReforgedBlockProps) => {
 // --- MAIN COMPONENT ---
 
 export default function CharacterForge() {
-  const [state, dispatch] = useReducer(characterReducer, initialState);
+  const [state, dispatch] = useReducer(characterReducer, null, getInitialState);
   
   useEffect(() => {
     const handleResize = () => {
@@ -1362,27 +1373,44 @@ export default function CharacterForge() {
     { id: 'spells', label: 'Grimoire', icon: <BookOpen size={18} />, hidden: !state.charClass.spells },
     { id: 'shop', label: 'Gear', icon: <Backpack size={18} /> },
     { id: 'treasure', label: 'Treasure', icon: <Gem size={18} /> },
+    { id: 'journal', label: 'Journal', icon: <Book size={18} /> },
+    { id: 'vault', label: 'Vault', icon: <Archive size={18} /> },
   ].filter(t => !t.hidden);
 
-  const saveCharacter = () => {
-    const saveData = JSON.stringify(state);
-    localStorage.setItem('cnc-forge-character', saveData);
-    alert('Character saved to browser storage!');
+  const [vaultCharacters, setVaultCharacters] = useState<CharacterState[]>([]);
+
+  useEffect(() => {
+    const savedVault = localStorage.getItem('cnc-forge-vault');
+    if (savedVault) {
+      try {
+        setVaultCharacters(JSON.parse(savedVault));
+      } catch (e) {
+        console.error('Failed to load vault', e);
+      }
+    }
+  }, []);
+
+  const saveToVault = () => {
+    const newVault = [...vaultCharacters.filter(c => c.id !== state.id), state];
+    setVaultCharacters(newVault);
+    localStorage.setItem('cnc-forge-vault', JSON.stringify(newVault));
+    alert('Character saved to Vault!');
   };
 
-  const loadCharacter = () => {
-    const saved = localStorage.getItem('cnc-forge-character');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        const race = RULES.races.find(r => r.id === parsed.race?.id) || RULES.races[0];
-        const charClass = RULES.classes.find(c => c.id === parsed.charClass?.id) || RULES.classes[0];
-        dispatch({ type: 'LOAD_CHARACTER', payload: { ...parsed, race, charClass } });
-      } catch {
-        alert('Failed to load character data.');
-      }
-    } else {
-      alert('No saved character found.');
+  const loadFromVault = (char: CharacterState) => {
+    // Rehydrate references
+    const race = RULES.races.find(r => r.id === char.race?.id) || RULES.races[0];
+    const charClass = RULES.classes.find(c => c.id === char.charClass?.id) || RULES.classes[0];
+    dispatch({ type: 'LOAD_CHARACTER', payload: { ...char, race, charClass } });
+    // Switch to sheet or origin after load?
+    dispatch({ type: 'SET_FIELD', field: 'activeTab', payload: 'origin' });
+  };
+
+  const deleteFromVault = (id: string) => {
+    if (confirm('Are you sure you want to delete this character?')) {
+      const newVault = vaultCharacters.filter(c => c.id !== id);
+      setVaultCharacters(newVault);
+      localStorage.setItem('cnc-forge-vault', JSON.stringify(newVault));
     }
   };
 
@@ -1733,15 +1761,6 @@ export default function CharacterForge() {
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <button onClick={saveCharacter} className="flex items-center gap-2 px-4 py-2 bg-[#10b981] hover:bg-[#059669] text-white rounded-sm text-sm font-bold shadow-sm transition-all">
-                    <Save size={16}/> Save Character
-                  </button>
-                  <button onClick={loadCharacter} className="flex items-center gap-2 px-4 py-2 bg-[#3b82f6] hover:bg-[#2563eb] text-white rounded-sm text-sm font-bold shadow-sm transition-all">
-                    <Upload size={16}/> Load Character
-                  </button>
-                </div>
-
-                <div className="flex flex-wrap gap-2 mb-4">
                   {treasureCategories.map(cat => (
                     <button
                       key={cat}
@@ -1792,6 +1811,89 @@ export default function CharacterForge() {
                         </div>
                       ))}
                     </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* 6. JOURNAL */}
+            {state.activeTab === 'journal' && (
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                 <div className="bg-[#f0fdf4] border-l-4 border-[#16a34a] p-4 rounded-r-sm shadow-sm text-sm text-[#166534] mb-4">
+                  <h3 className="font-bold flex items-center gap-2 font-serif text-lg"><Book size={20}/> Adventurer&apos;s Journal</h3>
+                  <p className="opacity-80 mt-1 italic">Record your deeds, quest notes, and campaign details here.</p>
+                </div>
+                <div className="bg-white p-2 rounded-sm border border-[#d6d3d1] shadow-sm">
+                  <textarea
+                    value={state.notes}
+                    onChange={(e) => dispatch({type: 'SET_NOTES', payload: e.target.value})}
+                    className="w-full h-[400px] p-4 text-sm font-serif leading-relaxed outline-none resize-none bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] text-[#292524]"
+                    placeholder="Day 1: We entered the dungeon..."
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* 7. VAULT */}
+            {state.activeTab === 'vault' && (
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                 <div className="bg-[#eff6ff] border-l-4 border-[#3b82f6] p-4 rounded-r-sm shadow-sm text-sm text-[#1e40af] mb-4">
+                  <h3 className="font-bold flex items-center gap-2 font-serif text-lg"><Archive size={20}/> Character Vault</h3>
+                  <p className="opacity-80 mt-1 italic">Save, load, and manage your characters. Data is stored in your browser.</p>
+                </div>
+
+                <div className="flex gap-4 mb-6">
+                  <button
+                    onClick={saveToVault}
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#10b981] hover:bg-[#059669] text-white rounded-sm text-sm font-bold shadow-sm transition-all"
+                  >
+                    <Save size={18}/> Save Current Character
+                  </button>
+                   <button
+                    onClick={() => {
+                      if(confirm('This will clear your current character. Are you sure?')) {
+                        dispatch({type: 'NEW_CHARACTER'});
+                      }
+                    }}
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#f59e0b] hover:bg-[#d97706] text-white rounded-sm text-sm font-bold shadow-sm transition-all"
+                  >
+                    <RefreshCw size={18}/> New Character
+                  </button>
+                </div>
+
+                <h3 className="font-bold text-[#451a03] mb-3 uppercase tracking-wider text-sm border-b border-[#d6d3d1] pb-1">Saved Characters ({vaultCharacters.length})</h3>
+
+                {vaultCharacters.length === 0 ? (
+                  <div className="text-center py-8 text-[#a8a29e] italic">No characters in the vault.</div>
+                ) : (
+                  <div className="grid grid-cols-1 gap-3">
+                    {vaultCharacters.map(char => (
+                      <div key={char.id} className="bg-white p-4 rounded-sm border border-[#e7e5e4] shadow-sm flex justify-between items-center group hover:border-[#3b82f6] transition-colors">
+                        <div>
+                          <div className="font-bold text-lg text-[#292524] font-serif">{char.name}</div>
+                          <div className="text-xs text-[#78716c] font-sans uppercase tracking-wide mt-1">
+                            Lvl {char.level} {char.race.name} {char.charClass.name}
+                          </div>
+                          <div className="text-[10px] text-[#a8a29e] mt-1">ID: {char.id.substring(0,8)}...</div>
+                        </div>
+                        <div className="flex gap-2">
+                           <button
+                            onClick={() => loadFromVault(char)}
+                            className="p-2 text-[#3b82f6] hover:bg-[#eff6ff] rounded-sm transition-colors"
+                            title="Load Character"
+                          >
+                            <Upload size={18}/>
+                          </button>
+                          <button
+                            onClick={() => deleteFromVault(char.id)}
+                            className="p-2 text-[#ef4444] hover:bg-[#fef2f2] rounded-sm transition-colors"
+                            title="Delete Character"
+                          >
+                            <Trash2 size={18}/>
+                          </button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
