@@ -2001,8 +2001,6 @@ export default function CharacterForge() {
                 {RULES.attributes.map(attr => {
                   const val = state.attributes[attr].score + (state.race.mods[attr as keyof RaceMod]||0);
                   const mod = RULES.getMod(val);
-                  const totalBonus = mod + state.level;
-                  const base = state.attributes[attr].prime ? 12 : 18;
 
                   return (
                     <div key={attr} className="flex justify-between items-center border-b border-dotted border-[#d6d3d1] last:border-0 py-1.5">
@@ -2011,22 +2009,15 @@ export default function CharacterForge() {
                         <span className={`font-bold text-base ${state.attributes[attr].prime ? 'text-[#292524]' : 'text-[#78716c]'}`}>
                             {attr}
                         </span>
-                        <span className="text-xs font-mono text-[#78716c]">[{state.attributes[attr].score}]</span>
+                        <span className="text-xs font-mono text-[#78716c]">[{val}]</span>
                       </div>
                       
                       <div className="text-right">
                         <div className="flex items-center gap-2 sm:gap-4">
                             <div className="flex flex-col items-end">
-                                <span className="text-[9px] text-[#a8a29e] uppercase leading-none font-bold">Bonus</span>
+                                <span className="text-[9px] text-[#a8a29e] uppercase leading-none font-bold">Mod</span>
                                 <span className="font-mono font-bold text-[#292524] text-lg">
-                                    {totalBonus >= 0 ? `+${totalBonus}` : totalBonus}
-                                </span>
-                            </div>
-
-                            <div className="flex flex-col items-end w-8">
-                                <span className="text-[9px] text-[#a8a29e] uppercase leading-none font-bold">Base</span>
-                                <span className={`font-mono font-bold text-lg ${state.attributes[attr].prime ? 'text-[#d97706]' : 'text-[#a8a29e]'}`}>
-                                    {base}
+                                    {mod >= 0 ? `+${mod}` : mod}
                                 </span>
                             </div>
                         </div>
