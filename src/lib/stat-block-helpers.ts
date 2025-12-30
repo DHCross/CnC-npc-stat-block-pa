@@ -15,6 +15,21 @@ export function normalizeDisposition(value: string): string {
     'chaotic good': 'chaos/good',
     'chaotic neutral': 'chaos/neutral',
     'chaotic evil': 'chaos/evil',
+    // C&C Explicit Noun/Noun mappings
+    'law good': 'law/good',
+    'law neutral': 'law/neutral',
+    'law evil': 'law/evil',
+    'chaos good': 'chaos/good',
+    'chaos neutral': 'chaos/neutral',
+    'chaos evil': 'chaos/evil',
+    'good law': 'good/law',
+    'good neutral': 'good/neutral',
+    'good chaos': 'good/chaos',
+    'evil law': 'evil/law',
+    'evil neutral': 'evil/neutral',
+    'evil chaos': 'evil/chaos',
+    'neutral law': 'neutral/law',
+    'neutral chaos': 'neutral/chaos',
   };
 
   // Normalize whitespace/punctuation and lowercase for lookup
@@ -277,4 +292,32 @@ export function pluralizeClassName(name: string): string {
   }
 
   return `${lower}s`;
+}
+
+export function validateDispositionForClass(disposition: string, className: string, deityDisposition?: string): { valid: boolean; reason?: string } {
+  const disp = disposition.toLowerCase();
+  const cls = className.toLowerCase();
+
+  // Basic Paladin check
+  if (cls === 'paladin') {
+    if (disp !== 'law/good') {
+      return { valid: false, reason: 'Paladins must be Lawful Good.' };
+    }
+  }
+
+  // Basic Monk check
+  if (cls === 'monk') {
+    if (!disp.includes('law')) {
+         return { valid: false, reason: 'Monks must be Lawful.' };
+    }
+  }
+
+  // Basic Druid check
+  if (cls === 'druid') {
+      if (!disp.includes('neutral')) {
+          return { valid: false, reason: 'Druids must be Neutral.' };
+      }
+  }
+
+  return { valid: true };
 }

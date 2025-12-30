@@ -1139,11 +1139,6 @@ const LogoSiege = () => (
 interface DispositionBuilderProps {
   value: string;
   onChange: (val: string) => void;
-}
-
-interface DispositionBuilderProps {
-  value: string;
-  onChange: (val: string) => void;
   charClass?: string;
   deityDisposition?: string;
 }
@@ -1154,12 +1149,18 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
   const [validation, setValidation] = useState<{ valid: boolean; reason?: string } | null>(null);
 
   useEffect(() => {
+    const toTitleCase = (str: string) => str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : '';
+
     if (value.includes('/')) {
-      const [p, s] = value.split('/');
-      setPrimary(p);
-      setSecondary(s);
+      const [p, s] = value.split('/').map(x => x.trim());
+      setPrimary(toTitleCase(p));
+      // Normalize legacy adjectives to nouns for internal state
+      let cleanS = toTitleCase(s);
+      if (cleanS === 'Lawful') cleanS = 'Law';
+      if (cleanS === 'Chaotic') cleanS = 'Chaos';
+      setSecondary(cleanS);
     } else {
-      setPrimary(value);
+      setPrimary(toTitleCase(value.trim()));
       setSecondary('None');
     }
   }, [value]);
@@ -1187,20 +1188,28 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
   const coreOptions = ['Law', 'Chaos', 'Good', 'Evil', 'Neutral'];
   
   // Tendency options depend on core selection to avoid redundancy
-  const getTendencyOptions = () => {
-    switch (primary) {
+  const getTendencyOptions = (core: string) => {
+    switch (core) {
       case 'Law':
         return ['Good', 'Evil', 'Neutral'];
       case 'Chaos':
         return ['Good', 'Evil', 'Neutral'];
       case 'Good':
-        return ['Lawful', 'Chaotic', 'Neutral'];
+        return ['Law', 'Chaos', 'Neutral'];
       case 'Evil':
-        return ['Lawful', 'Chaotic', 'Neutral'];
+        return ['Law', 'Chaos', 'Neutral'];
       case 'Neutral':
-        return ['Lawful', 'Chaotic', 'Good', 'Evil'];
+        return ['Law', 'Chaos', 'Good', 'Evil'];
       default:
         return ['Law', 'Chaos', 'Good', 'Evil', 'Neutral'];
+    }
+  };
+
+  const handlePrimaryChange = (newPrimary: string) => {
+    setPrimary(newPrimary);
+    const valid = getTendencyOptions(newPrimary);
+    if (secondary !== 'None' && !valid.includes(secondary)) {
+      setSecondary('None');
     }
   };
 
@@ -1208,12 +1217,12 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
     <div className="bg-[#f5f5f4] p-3 rounded-sm border-2 border-[#d6d3d1] shadow-inner">
       <div className="flex gap-4">
         <div className="flex-1">
-          <div className="text-[10px] uppercase font-bold text-[#78716c] mb-1">Core Outlook</div>
+          <div className="text-[10px] uppercase font-bold text-[#78716c] mb-1">Primary (Core Outlook)</div>
           <div className="flex flex-col gap-1">
             {coreOptions.map(opt => (
               <button 
                 key={opt}
-                onClick={() => setPrimary(opt)}
+                onClick={() => handlePrimaryChange(opt)}
                 className={`text-xs py-1 px-2 rounded-sm border text-left font-serif transition-colors ${primary === opt ? 'bg-[#b45309] text-white border-[#b45309]' : 'bg-white text-[#57534e] border-[#e7e5e4] hover:bg-[#e7e5e4]'}`}
               >
                 {opt}
@@ -1222,12 +1231,13 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
           </div>
         </div>
         
-        <div className="flex items-center justify-center text-[#d6d3d1]">
+        <div className="flex flex-col justify-center items-center gap-1 text-[#d6d3d1]">
+          <div className="text-[8px] uppercase tracking-widest font-bold rotate-0 text-[#a8a29e]">with</div>
           <ChevronDown className="-rotate-90" />
         </div>
 
         <div className="flex-1">
-          <div className="text-[10px] uppercase font-bold text-[#78716c] mb-1">Tendency (Opt)</div>
+          <div className="text-[10px] uppercase font-bold text-[#78716c] mb-1">Secondary (Tendency)</div>
           <div className="flex flex-col gap-1">
             <button 
                 onClick={() => setSecondary('None')}
@@ -1235,7 +1245,7 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
               >
                 None (Pure)
             </button>
-            {getTendencyOptions().map(opt => (
+            {getTendencyOptions(primary).map(opt => (
               <button 
                 key={opt}
                 onClick={() => setSecondary(opt)}
@@ -1251,6 +1261,13 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
       </div>
       
       <div className="mt-3 pt-2 border-t border-[#d6d3d1]">
+        <div className="text-[10px] uppercase text-[#a8a29e] text-center mb-1">Explanation</div>
+        <div className="text-center text-xs italic text-[#78350f] mb-3 px-2">
+          {secondary === 'None' || (primary === 'Neutral' && secondary === 'Neutral')
+            ? `Character is purely ${primary}.`
+            : `Character is primarily ${primary}, with ${secondary} tendencies.`}
+        </div>
+
         <div className="text-[10px] uppercase text-[#a8a29e] text-center">Resulting Disposition</div>
         <div className="text-center font-bold text-[#451a03] text-lg font-serif">{value}</div>
         {validation && !validation.valid && (
@@ -1471,7 +1488,7 @@ export default function CharacterForge() {
                     value={state.disposition}
                     onChange={(val) => dispatch({type: 'SET_FIELD', field: 'disposition', payload: val})}
                     charClass={state.charClass?.name}
-                    deityDisposition={state.charClass?.name === 'Cleric' || state.charClass?.name === 'Druid' ? state.deityDisposition : undefined}
+                    deityDisposition={undefined} // Placeholder for future deity selection logic
                   />
                 </section>
 
