@@ -51,6 +51,7 @@ interface EquipmentItem {
   id: string;
   name: string;
   type: 'weapon' | 'armor' | 'shield' | 'gear';
+  attackType?: 'melee' | 'ranged' | 'thrown';
   cost: number;
   ev: number;
   dmg?: string;
@@ -64,6 +65,41 @@ interface ClassKit {
   items: string[];
   cost: number;
 }
+
+const formatSigned = (value: number): string => (value >= 0 ? `+${value}` : `${value}`);
+
+const formatDamage = (dice: string, mod: number): string => {
+  if (!dice) return '';
+  if (mod === 0) return dice;
+  return `${dice}${mod > 0 ? `+${mod}` : mod}`;
+};
+
+const getWeaponModifiers = (item: EquipmentItem, strMod: number, dexMod: number) => {
+  const attackType = item.attackType ?? (item.cat === 'Ranged' ? 'ranged' : 'melee');
+  if (attackType === 'ranged') {
+    return { toHit: dexMod, damage: 0 };
+  }
+  if (attackType === 'thrown') {
+    return { toHit: dexMod, damage: strMod };
+  }
+  return { toHit: strMod, damage: strMod };
+};
+
+const formatEquipmentItem = (item: EquipmentItem, strMod: number, dexMod: number): string => {
+  if (item.type === 'weapon') {
+    const { toHit, damage } = getWeaponModifiers(item, strMod, dexMod);
+    const toHitText = `${formatSigned(toHit)} to hit`;
+    const damageText = `${formatDamage(item.dmg || '', damage)} damage`;
+    return `${item.name.toLowerCase()} [${toHitText}; ${damageText}]`;
+  }
+
+  if (item.type === 'armor' || item.type === 'shield') {
+    const acValue = item.ac ?? 0;
+    return `${item.name.toLowerCase()} (${formatSigned(acValue)} AC)`;
+  }
+
+  return item.name.toLowerCase();
+};
 
 const RULES = {
   attributes: ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'] as const,
@@ -736,24 +772,24 @@ const RULES = {
   ] as Spell[],
 
   equipment: [
-    { id: 'longsword', name: 'Longsword', type: 'weapon', cost: 15, ev: 3, dmg: '1d8', cat: 'Melee' },
-    { id: 'shortsword', name: 'Short Sword', type: 'weapon', cost: 10, ev: 2, dmg: '1d6', cat: 'Melee' },
-    { id: 'dagger', name: 'Dagger', type: 'weapon', cost: 2, ev: 1, dmg: '1d4', cat: 'Melee' },
-    { id: 'greatsword', name: 'Greatsword', type: 'weapon', cost: 30, ev: 5, dmg: '2d6', cat: 'Melee' },
-    { id: 'spear', name: 'Spear', type: 'weapon', cost: 2, ev: 3, dmg: '1d6', cat: 'Melee' },
-    { id: 'longbow', name: 'Longbow', type: 'weapon', cost: 60, ev: 4, dmg: '1d6', cat: 'Ranged' },
-    { id: 'shortbow', name: 'Shortbow', type: 'weapon', cost: 30, ev: 2, dmg: '1d6', cat: 'Ranged' },
-    { id: 'xbow_wood_light', name: 'Crossbow, Wooden Light', type: 'weapon', cost: 35, ev: 3, dmg: '1d6', cat: 'Ranged' },
-    { id: 'xbow_wood_heavy', name: 'Crossbow, Wooden Heavy', type: 'weapon', cost: 45, ev: 5, dmg: '1d6', cat: 'Ranged' },
-    { id: 'xbow_comp_light', name: 'Crossbow, Composite Light', type: 'weapon', cost: 45, ev: 3, dmg: '1d8', cat: 'Ranged' },
-    { id: 'xbow_comp_heavy', name: 'Crossbow, Composite Heavy', type: 'weapon', cost: 50, ev: 5, dmg: '1d10', cat: 'Ranged' },
-    { id: 'xbow_steel_light', name: 'Crossbow, Steel Light', type: 'weapon', cost: 75, ev: 4, dmg: '1d8', cat: 'Ranged' },
-    { id: 'xbow_steel_heavy', name: 'Crossbow, Steel Heavy', type: 'weapon', cost: 100, ev: 6, dmg: '1d10', cat: 'Ranged' },
-    { id: 'xbow_gastraphetes', name: 'Gastraphetes', type: 'weapon', cost: 50, ev: 4, dmg: '1d6', cat: 'Ranged' },
-    { id: 'xbow_pistol', name: 'Crossbow, Pistol', type: 'weapon', cost: 100, ev: 1, dmg: '1d4', cat: 'Ranged' },
-    { id: 'xbow_repeating', name: 'Crossbow, Repeating', type: 'weapon', cost: 125, ev: 4, dmg: '1d4', cat: 'Ranged' },
-    { id: 'mace_light', name: 'Mace, light', type: 'weapon', cost: 5, ev: 2, dmg: '1d4', cat: 'Melee' },
-    { id: 'mace_heavy', name: 'Mace, heavy', type: 'weapon', cost: 12, ev: 4, dmg: '1d8', cat: 'Melee' },
+    { id: 'longsword', name: 'Longsword', type: 'weapon', attackType: 'melee', cost: 15, ev: 3, dmg: '1d8', cat: 'Melee' },
+    { id: 'shortsword', name: 'Short Sword', type: 'weapon', attackType: 'melee', cost: 10, ev: 2, dmg: '1d6', cat: 'Melee' },
+    { id: 'dagger', name: 'Dagger', type: 'weapon', attackType: 'thrown', cost: 2, ev: 1, dmg: '1d4', cat: 'Melee' },
+    { id: 'greatsword', name: 'Greatsword', type: 'weapon', attackType: 'melee', cost: 30, ev: 5, dmg: '2d6', cat: 'Melee' },
+    { id: 'spear', name: 'Spear', type: 'weapon', attackType: 'thrown', cost: 2, ev: 3, dmg: '1d6', cat: 'Melee' },
+    { id: 'longbow', name: 'Longbow', type: 'weapon', attackType: 'ranged', cost: 60, ev: 4, dmg: '1d6', cat: 'Ranged' },
+    { id: 'shortbow', name: 'Shortbow', type: 'weapon', attackType: 'ranged', cost: 30, ev: 2, dmg: '1d6', cat: 'Ranged' },
+    { id: 'xbow_wood_light', name: 'Crossbow, Wooden Light', type: 'weapon', attackType: 'ranged', cost: 35, ev: 3, dmg: '1d6', cat: 'Ranged' },
+    { id: 'xbow_wood_heavy', name: 'Crossbow, Wooden Heavy', type: 'weapon', attackType: 'ranged', cost: 45, ev: 5, dmg: '1d6', cat: 'Ranged' },
+    { id: 'xbow_comp_light', name: 'Crossbow, Composite Light', type: 'weapon', attackType: 'ranged', cost: 45, ev: 3, dmg: '1d8', cat: 'Ranged' },
+    { id: 'xbow_comp_heavy', name: 'Crossbow, Composite Heavy', type: 'weapon', attackType: 'ranged', cost: 50, ev: 5, dmg: '1d10', cat: 'Ranged' },
+    { id: 'xbow_steel_light', name: 'Crossbow, Steel Light', type: 'weapon', attackType: 'ranged', cost: 75, ev: 4, dmg: '1d8', cat: 'Ranged' },
+    { id: 'xbow_steel_heavy', name: 'Crossbow, Steel Heavy', type: 'weapon', attackType: 'ranged', cost: 100, ev: 6, dmg: '1d10', cat: 'Ranged' },
+    { id: 'xbow_gastraphetes', name: 'Gastraphetes', type: 'weapon', attackType: 'ranged', cost: 50, ev: 4, dmg: '1d6', cat: 'Ranged' },
+    { id: 'xbow_pistol', name: 'Crossbow, Pistol', type: 'weapon', attackType: 'ranged', cost: 100, ev: 1, dmg: '1d4', cat: 'Ranged' },
+    { id: 'xbow_repeating', name: 'Crossbow, Repeating', type: 'weapon', attackType: 'ranged', cost: 125, ev: 4, dmg: '1d4', cat: 'Ranged' },
+    { id: 'mace_light', name: 'Mace, light', type: 'weapon', attackType: 'melee', cost: 5, ev: 2, dmg: '1d4', cat: 'Melee' },
+    { id: 'mace_heavy', name: 'Mace, heavy', type: 'weapon', attackType: 'melee', cost: 12, ev: 4, dmg: '1d8', cat: 'Melee' },
     { id: 'padded', name: 'Padded armor', type: 'armor', cost: 5, ev: 2, ac: 1, cat: 'Light' },
     { id: 'leather', name: 'Leather armor', type: 'armor', cost: 10, ev: 3, ac: 2, cat: 'Light' },
     { id: 'ringmail', name: 'Ring mail', type: 'armor', cost: 30, ev: 6, ac: 3, cat: 'Medium' },
@@ -949,16 +985,21 @@ const generateReforgedBlock = (state: CharacterState): string => {
   const { race, charClass, level, attributes, inventory, disposition, gold } = state;
 
   const conMod = RULES.getMod(attributes.CON.score + (race.mods.CON || 0));
-  const hp = Math.max(1, (charClass.hd + conMod) * level);
+  const strMod = RULES.getMod(attributes.STR.score + (race.mods.STR || 0));
   const dexMod = RULES.getMod(attributes.DEX.score + (race.mods.DEX || 0));
+  const hp = Math.max(1, (charClass.hd + conMod) * level);
   const armorBonus = inventory.filter(i => i.type === 'armor' || i.type === 'shield').reduce((sum, i) => sum + (i.ac || 0), 0);
   const ac = 10 + dexMod + armorBonus;
 
   const dispString = disposition.toLowerCase();
   const primes = Object.entries(attributes).filter(([, v]) => v.prime).map(([k]) => k).join(', ');
 
-  const worn = inventory.filter(i => i.type === 'armor' || i.type === 'shield').map(i => i.name.toLowerCase());
-  const carried = inventory.filter(i => i.type === 'weapon' || i.type === 'gear').map(i => i.name.toLowerCase());
+  const worn = inventory
+    .filter(i => i.type === 'armor' || i.type === 'shield')
+    .map(i => formatEquipmentItem(i, strMod, dexMod));
+  const carried = inventory
+    .filter(i => i.type === 'weapon' || i.type === 'gear')
+    .map(i => formatEquipmentItem(i, strMod, dexMod));
   
   let equipString = '';
   if (worn.length > 0) {
@@ -1360,6 +1401,9 @@ export default function CharacterForge() {
   }, []);
   
   const currentStr = state.attributes.STR.score + (state.race.mods.STR || 0);
+  const currentDex = state.attributes.DEX.score + (state.race.mods.DEX || 0);
+  const strMod = RULES.getMod(currentStr);
+  const dexMod = RULES.getMod(currentDex);
   const evCapacity = currentStr + 2;
   const currentEV = state.inventory.reduce((sum, item) => sum + item.ev, 0);
   const isOverburdened = currentEV > evCapacity;
@@ -1996,12 +2040,16 @@ export default function CharacterForge() {
             <div className="mb-8">
               <h3 className="text-sm font-bold uppercase border-b-2 border-[#292524] mb-3 pb-1 text-[#292524] tracking-widest">Attacks</h3>
               <div className="space-y-2">
-                {state.inventory.filter(i=>i.type==='weapon').map(w => (
-                  <div key={w.name} className="flex justify-between text-base bg-white p-2 border border-[#e7e5e4] shadow-sm">
-                    <span className="font-bold text-[#451a03]">{w.name}</span>
-                    <span className="font-mono font-bold text-[#292524]">{w.dmg}</span>
-                  </div>
-                ))}
+                {state.inventory.filter(i=>i.type==='weapon').map(w => {
+                  const { toHit, damage } = getWeaponModifiers(w, strMod, dexMod);
+                  const damageText = formatDamage(w.dmg || '', damage);
+                  return (
+                    <div key={w.name} className="flex justify-between text-base bg-white p-2 border border-[#e7e5e4] shadow-sm">
+                      <span className="font-bold text-[#451a03]">{w.name}</span>
+                      <span className="font-mono font-bold text-[#292524]">{formatSigned(toHit)} to hit • {damageText}</span>
+                    </div>
+                  );
+                })}
                 {state.inventory.filter(i=>i.type==='weapon').length===0 && <div className="text-sm italic text-[#78716c] p-2">Unarmed (1d2)</div>}
               </div>
             </div>
@@ -2032,9 +2080,9 @@ export default function CharacterForge() {
               <h3 className="text-sm font-bold uppercase border-b-2 border-[#292524] mb-3 pb-1 text-[#292524] tracking-widest">Equipment</h3>
               <p className="text-sm leading-relaxed text-[#292524] font-medium">
                 {state.inventory.filter(i => i.type === 'armor' || i.type === 'shield').length > 0 && 
-                  <>He wears <span className="font-bold">{state.inventory.filter(i => i.type === 'armor' || i.type === 'shield').map(i => i.name.toLowerCase()).join(', ')}</span>. </>
+                  <>He wears <span className="font-bold">{state.inventory.filter(i => i.type === 'armor' || i.type === 'shield').map(i => formatEquipmentItem(i, strMod, dexMod)).join(', ')}</span>. </>
                 }
-                He carries {state.inventory.filter(i => i.type !== 'armor' && i.type !== 'shield').map(i => i.name.toLowerCase()).join(', ')}
+                He carries {state.inventory.filter(i => i.type !== 'armor' && i.type !== 'shield').map(i => formatEquipmentItem(i, strMod, dexMod)).join(', ')}
                 {state.inventory.length > 0 ? ', and ' : ''}<span className="text-[#b45309] font-bold">{state.gold} gold in coin</span>.
               </p>
             </div>
