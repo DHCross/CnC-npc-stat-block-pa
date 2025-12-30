@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useReducer, useEffect, useMemo } from 'react';
 import { normalizeDisposition, validateDispositionForClass } from '@/lib/stat-block-helpers';
 import { 
   Shield, Scroll, Backpack, 
@@ -1157,7 +1157,6 @@ interface DispositionBuilderProps {
 const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: DispositionBuilderProps) => {
   const [primary, setPrimary] = useState('Neutral');
   const [secondary, setSecondary] = useState('None');
-  const [validation, setValidation] = useState<{ valid: boolean; reason?: string } | null>(null);
 
   useEffect(() => {
     const toTitleCase = (str: string) => str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : '';
@@ -1176,7 +1175,7 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
     }
   }, [value]);
 
-  useEffect(() => {
+  const normalizedValue = useMemo(() => {
     let newVal = primary;
     if (secondary !== 'None' && secondary !== primary) {
       newVal = `${primary}/${secondary}`;
@@ -1184,17 +1183,19 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
     if (primary === 'Neutral' && secondary === 'Neutral') newVal = 'Neutral';
 
     // Normalize to noun-form (e.g., law/good, neutrality)
-    const normalized = normalizeDisposition(newVal).toString();
-    if (normalized !== value) onChange(normalized);
+    return normalizeDisposition(newVal).toString();
+  }, [primary, secondary]);
 
-    // Run class/deity validation when available
-    if (charClass) {
-      const v = validateDispositionForClass(normalized, charClass, deityDisposition);
-      setValidation(v);
-    } else {
-      setValidation(null);
+  useEffect(() => {
+    if (normalizedValue && normalizedValue !== value) {
+      onChange(normalizedValue);
     }
-  }, [primary, secondary, value, onChange, charClass, deityDisposition]);
+  }, [normalizedValue, value, onChange]);
+
+  const validation = useMemo(() => {
+    if (!charClass) return null;
+    return validateDispositionForClass(normalizedValue || value, charClass, deityDisposition);
+  }, [normalizedValue, value, charClass, deityDisposition]);
 
   const coreOptions = ['Law', 'Chaos', 'Good', 'Evil', 'Neutral'];
   
