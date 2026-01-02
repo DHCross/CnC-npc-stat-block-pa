@@ -1204,34 +1204,35 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
 
     if (value.includes('/')) {
       const [p, s] = value.split('/').map(x => x.trim());
-      setPrimary(toTitleCase(p));
+      const nextPrimary = toTitleCase(p);
       // Normalize legacy adjectives to nouns for internal state
       let cleanS = toTitleCase(s);
       if (cleanS === 'Lawful') cleanS = 'Law';
       if (cleanS === 'Chaotic') cleanS = 'Chaos';
-      setSecondary(cleanS);
+      const nextSecondary = cleanS;
+      if (nextPrimary !== primary) setPrimary(nextPrimary);
+      if (nextSecondary !== secondary) setSecondary(nextSecondary);
     } else {
-      setPrimary(toTitleCase(value.trim()));
-      setSecondary('None');
+      const nextPrimary = toTitleCase(value.trim());
+      if (nextPrimary !== primary) setPrimary(nextPrimary);
+      if (secondary !== 'None') setSecondary('None');
     }
-  }, [value]);
+  }, [primary, secondary, value]);
 
-  const normalizedValue = useMemo(() => {
-    let newVal = primary;
-    if (secondary !== 'None' && secondary !== primary) {
-      newVal = `${primary}/${secondary}`;
+  const buildNormalizedDisposition = (nextPrimary: string, nextSecondary: string) => {
+    let newVal = nextPrimary;
+    if (nextSecondary !== 'None' && nextSecondary !== nextPrimary) {
+      newVal = `${nextPrimary}/${nextSecondary}`;
     }
-    if (primary === 'Neutral' && secondary === 'Neutral') newVal = 'Neutral';
+    if (nextPrimary === 'Neutral' && nextSecondary === 'Neutral') newVal = 'Neutral';
 
     // Normalize to noun-form (e.g., law/good, neutrality)
     return normalizeDisposition(newVal).toString();
-  }, [primary, secondary]);
+  };
 
-  useEffect(() => {
-    if (normalizedValue && normalizedValue !== value) {
-      onChange(normalizedValue);
-    }
-  }, [normalizedValue, value, onChange]);
+  const normalizedValue = useMemo(() => {
+    return buildNormalizedDisposition(primary, secondary);
+  }, [primary, secondary]);
 
   const validation = useMemo(() => {
     if (!charClass) return null;
@@ -1259,11 +1260,18 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
   };
 
   const handlePrimaryChange = (newPrimary: string) => {
-    setPrimary(newPrimary);
     const valid = getTendencyOptions(newPrimary);
-    if (secondary !== 'None' && !valid.includes(secondary)) {
-      setSecondary('None');
-    }
+    const nextSecondary = secondary !== 'None' && !valid.includes(secondary) ? 'None' : secondary;
+    setPrimary(newPrimary);
+    if (nextSecondary !== secondary) setSecondary(nextSecondary);
+    const nextValue = buildNormalizedDisposition(newPrimary, nextSecondary);
+    if (nextValue !== value) onChange(nextValue);
+  };
+
+  const handleSecondaryChange = (newSecondary: string) => {
+    setSecondary(newSecondary);
+    const nextValue = buildNormalizedDisposition(primary, newSecondary);
+    if (nextValue !== value) onChange(nextValue);
   };
 
   return (
@@ -1293,7 +1301,7 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
           <div className="text-[10px] uppercase font-bold text-[#78716c] mb-1">Secondary (Tendency)</div>
           <div className="flex flex-col gap-1">
             <button 
-                onClick={() => setSecondary('None')}
+                onClick={() => handleSecondaryChange('None')}
                 className={`text-xs py-1 px-2 rounded-sm border text-left font-serif italic ${secondary === 'None' ? 'bg-[#78716c] text-white border-[#78716c]' : 'bg-white text-[#a8a29e] border-[#e7e5e4]'}`}
               >
                 None (Pure)
@@ -1301,7 +1309,7 @@ const DispositionBuilder = ({ value, onChange, charClass, deityDisposition }: Di
             {getTendencyOptions(primary).map(opt => (
               <button 
                 key={opt}
-                onClick={() => setSecondary(opt)}
+                onClick={() => handleSecondaryChange(opt)}
                 disabled={opt === primary}
                 title={opt === primary ? 'Secondary cannot be the same as Primary' : undefined}
                 className={`text-xs py-1 px-2 rounded-sm border text-left font-serif transition-colors ${secondary === opt ? 'bg-[#d97706] text-white border-[#d97706]' : 'bg-white text-[#57534e] border-[#e7e5e4] hover:bg-[#e7e5e4]'} ${opt === primary ? 'opacity-50 cursor-not-allowed' : ''}`}
