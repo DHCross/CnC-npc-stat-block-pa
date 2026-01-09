@@ -1063,7 +1063,15 @@ function characterReducer(state: CharacterState, action: CharacterAction): Chara
     }
 
     case 'LEVEL_UP': return { ...state, level: Math.min(20, state.level + 1) };
-    case 'LEVEL_DOWN': return { ...state, level: Math.max(1, state.level - 1) };
+    case 'LEVEL_DOWN': {
+      const nextLevel = Math.max(1, state.level - 1);
+      return {
+        ...state,
+        level: nextLevel,
+        // Release 1.0: Wipe magic items if level drops to 1
+        magicItems: nextLevel === 1 ? [] : state.magicItems
+      };
+    }
 
     case 'SET_VIEW_MODE': return { ...state, viewMode: action.payload };
 
@@ -1813,45 +1821,59 @@ export default function CharacterForge() {
                   <p className="opacity-80 mt-1 italic">Track your character&apos;s magical acquisitions. Items use Reforged canonical names.</p>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {treasureCategories.map(cat => (
-                    <button
-                      key={cat}
-                      onClick={() => dispatch({type: 'SET_FIELD', field: 'treasureCategoryFilter', payload: cat})}
-                      className={`px-3 py-1.5 rounded-sm text-sm font-bold border transition-all ${state.treasureCategoryFilter === cat ? 'bg-[#f59e0b] text-white border-[#d97706]' : 'bg-white text-[#6b7280] border-[#d1d5db] hover:border-[#f59e0b] hover:text-[#f59e0b]'}`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[350px] overflow-y-auto pr-2">
-                  {RULES.magicItems
-                    .filter(item => state.treasureCategoryFilter === 'All' || item.cat === state.treasureCategoryFilter)
-                    .map(item => {
-                      const owned = state.magicItems.some(m => m.name === item.name);
-                      return (
-                        <button 
-                          key={item.name}
-                          onClick={() => {
-                          if (owned) {
-                            const idx = state.magicItems.findIndex(m => m.name === item.name);
-                            dispatch({type: 'REMOVE_MAGIC_ITEM', payload: idx});
-                          } else {
-                            dispatch({type: 'ADD_MAGIC_ITEM', payload: item});
-                          }
-                        }}
-                          className={`flex items-center justify-between p-3 rounded-sm border transition-all text-left group ${owned ? 'bg-[#fef3c7] border-[#fcd34d] text-[#92400e] shadow-inner' : 'bg-white border-[#e5e7eb] text-[#4b5563] hover:border-[#d1d5db] hover:shadow-sm'}`}
+                {state.level === 1 ? (
+                   // Release 1.0: Educational Empty State for Level 1
+                  <div className="bg-white p-6 rounded-sm border-2 border-[#d6d3d1] border-dashed shadow-sm text-center">
+                     <div className="flex justify-center mb-4 text-[#d97706] opacity-50"><Shield size={48} strokeWidth={1.5}/></div>
+                     <h4 className="text-xl font-bold text-[#451a03] mb-2 font-serif">The Vault is Locked</h4>
+                     <p className="text-sm text-[#57534e] leading-relaxed mb-4 max-w-md mx-auto">
+                       Magic items are rare and not available for purchase at character creation. 1st-level characters are limited to mundane equipment; magic items must be earned through adventure.
+                     </p>
+                     <div className="text-[10px] uppercase tracking-widest text-[#a8a29e] font-bold">Castles & Crusades Rules</div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {treasureCategories.map(cat => (
+                        <button
+                          key={cat}
+                          onClick={() => dispatch({type: 'SET_FIELD', field: 'treasureCategoryFilter', payload: cat})}
+                          className={`px-3 py-1.5 rounded-sm text-sm font-bold border transition-all ${state.treasureCategoryFilter === cat ? 'bg-[#f59e0b] text-white border-[#d97706]' : 'bg-white text-[#6b7280] border-[#d1d5db] hover:border-[#f59e0b] hover:text-[#f59e0b]'}`}
                         >
-                          <div>
-                            <div className="font-bold text-sm font-serif">{item.name}</div>
-                            <div className="text-[10px] opacity-70 mt-0.5 font-sans">{item.cat}</div>
-                          </div>
-                          {owned && <Check size={18} className="text-[#f59e0b]" />}
+                          {cat}
                         </button>
-                      );
-                    })}
-                </div>
+                      ))}
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[350px] overflow-y-auto pr-2">
+                      {RULES.magicItems
+                        .filter(item => state.treasureCategoryFilter === 'All' || item.cat === state.treasureCategoryFilter)
+                        .map(item => {
+                          const owned = state.magicItems.some(m => m.name === item.name);
+                          return (
+                            <button
+                              key={item.name}
+                              onClick={() => {
+                              if (owned) {
+                                const idx = state.magicItems.findIndex(m => m.name === item.name);
+                                dispatch({type: 'REMOVE_MAGIC_ITEM', payload: idx});
+                              } else {
+                                dispatch({type: 'ADD_MAGIC_ITEM', payload: item});
+                              }
+                            }}
+                              className={`flex items-center justify-between p-3 rounded-sm border transition-all text-left group ${owned ? 'bg-[#fef3c7] border-[#fcd34d] text-[#92400e] shadow-inner' : 'bg-white border-[#e5e7eb] text-[#4b5563] hover:border-[#d1d5db] hover:shadow-sm'}`}
+                            >
+                              <div>
+                                <div className="font-bold text-sm font-serif">{item.name}</div>
+                                <div className="text-[10px] opacity-70 mt-0.5 font-sans">{item.cat}</div>
+                              </div>
+                              {owned && <Check size={18} className="text-[#f59e0b]" />}
+                            </button>
+                          );
+                        })}
+                    </div>
+                  </>
+                )}
 
                 {state.magicItems.length > 0 && (
                   <div className="mt-4 p-3 bg-[#fef3c7] rounded-sm border border-[#fcd34d]">
