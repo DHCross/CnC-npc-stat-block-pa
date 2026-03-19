@@ -9,6 +9,8 @@ import {
   ChevronUp, ChevronDown, Package, FileText, PenTool, Layout,
   Gem, Save, Upload, Trash2, Archive, Book
 } from 'lucide-react';
+import { toast } from 'sonner';
+import { Toaster } from '@/components/ui/sonner';
 
 // --- THE REFORGED LEXICON & RULES ---
 
@@ -1455,7 +1457,7 @@ export default function CharacterForge() {
     const newVault = [...vaultCharacters.filter(c => c.id !== state.id), state];
     setVaultCharacters(newVault);
     localStorage.setItem('cnc-forge-vault', JSON.stringify(newVault));
-    alert('Character saved to Vault!');
+    toast.success('Character saved to Vault!');
   };
 
   const loadFromVault = (char: CharacterState) => {
@@ -1468,11 +1470,21 @@ export default function CharacterForge() {
   };
 
   const deleteFromVault = (id: string) => {
-    if (confirm('Are you sure you want to delete this character?')) {
-      const newVault = vaultCharacters.filter(c => c.id !== id);
-      setVaultCharacters(newVault);
-      localStorage.setItem('cnc-forge-vault', JSON.stringify(newVault));
-    }
+    toast('Delete character?', {
+      description: 'This action cannot be undone.',
+      action: {
+        label: 'Delete',
+        onClick: () => {
+          const newVault = vaultCharacters.filter(c => c.id !== id);
+          setVaultCharacters(newVault);
+          localStorage.setItem('cnc-forge-vault', JSON.stringify(newVault));
+        },
+      },
+      cancel: {
+        label: 'Cancel',
+        onClick: () => {},
+      },
+    });
   };
 
   const treasureCategories = ['All', ...new Set(RULES.magicItems.map(i => i.cat))];
@@ -1926,9 +1938,17 @@ export default function CharacterForge() {
                   </button>
                    <button
                     onClick={() => {
-                      if(confirm('This will clear your current character. Are you sure?')) {
-                        dispatch({type: 'NEW_CHARACTER'});
-                      }
+                      toast('Start a new character?', {
+                        description: 'This will clear your current character.',
+                        action: {
+                          label: 'Confirm',
+                          onClick: () => dispatch({type: 'NEW_CHARACTER'}),
+                        },
+                        cancel: {
+                          label: 'Cancel',
+                          onClick: () => {},
+                        },
+                      });
                     }}
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#f59e0b] hover:bg-[#d97706] text-white rounded-sm text-sm font-bold shadow-sm transition-all"
                   >
@@ -2123,6 +2143,7 @@ export default function CharacterForge() {
         </div>
 
       </div>
+      <Toaster />
     </div>
   );
 }
