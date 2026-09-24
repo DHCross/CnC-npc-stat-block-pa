@@ -82,7 +82,9 @@ export const SPELL_NAME_MAPPINGS: Record<string, string> = {
   'distort reality': 'Distort Reality',
   'double treasure': 'Doubled Treasure',
   'endure elements': 'Endure Cold/Heat',
-  'energy drain': 'Energy Level Drain',
+  // 'energy drain' deliberately unmapped: it is a current monster ability name AND
+  // the old name of the cleric spell 'Energy Level Drain'. Auto-renaming conflates
+  // the two — flag for human review instead of rewriting.
   'enhance attribute': 'Enhance an Attribute',
   'entangle': 'Entangling Vegetation',
   'ethereal jaunt': 'Ethereal Jump',
@@ -156,7 +158,9 @@ export const SPELL_NAME_MAPPINGS: Record<string, string> = {
   'locate object': 'Locate Item',
   'mage hand': 'Magi\'s Reach',
   'magic aura': 'Magi\'s Glamour',
-  'magic jar': 'Magi\'s Vessel',
+  // 'magic jar' deliberately unmapped: 'Magi's Vessel' is the spell rename, but
+  // "a magic jar" in adventure text is usually a literal jar object, not a spell
+  // reference. Auto-renaming rewrites descriptions — flag for human review.
   'magic missile': 'Magi\'s Missile',
   'magic mouth': 'Magi\'s Visage',
   'magic stones': 'Magic Sling',
@@ -1103,6 +1107,12 @@ function applyMappings(result: string, mappings: Record<string, string>): string
     const extendsOld = lowerNew.startsWith(lowerOld) && lowerNew.length > lowerOld.length;
 
     result = result.replace(regex, (match: string, offset: number, original: string) => {
+      // A scaling qualifier marks a custom variant borrowing the name (e.g., "minor
+      // flame strike" is a bespoke 1d6 ability, not the cleric spell) — do not rename.
+      const before = original.slice(0, offset);
+      if (/\b(?:minor|lesser|greater|major|mass|improved|superior|inferior|potent)\s+$/i.test(before)) {
+        return match;
+      }
       if (extendsOld) {
         const slice = original.slice(offset, offset + newName.length);
         if (slice.toLowerCase() === lowerNew) {

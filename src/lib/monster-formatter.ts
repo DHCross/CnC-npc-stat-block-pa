@@ -3,13 +3,13 @@
 // NOT NPCs, NPC units, or units of non-humans with character classes.
 //
 // Key distinguishing features of monsters:
-// - Use HD (Hit Dice) instead of levels
+// - HD (Hit Dice) input renders as "Level X(dY)" per the abbreviated template
 // - Have monster-specific fields: TREASURE, XP, SAVES, TYPE, ALIGNMENT
 // - Do not have character classes (fighter, wizard, etc.)
 // - Follow different formatting rules than classed NPCs
 
 import type { ParsedNPC, ValidationResult, ValidationWarning, WarningType } from './stat-block-types';
-import { buildSubjectDescriptor, normalizeDisposition, toPossessiveSubject } from './stat-block-helpers';
+import { buildSubjectDescriptor, normalizeDisposition, toPossessiveSubject, formatHdAsLevel } from './stat-block-helpers';
 
 export type { ParsedNPC, ValidationResult, ValidationWarning, WarningType } from './stat-block-types';
 
@@ -52,10 +52,10 @@ export function formatToMonsterNarrative(parsed: ParsedNPC): string {
 
   const statParts: string[] = [];
 
-  // Level/HD
+  // Level/HD — HD XdY renders as Level X(dY) in the abbreviated template
   const level = parsed.fields['Level'] || parsed.fields['HD'];
   if (level) {
-    statParts.push(`Level ${level}`);
+    statParts.push(`Level ${formatHdAsLevel(level)}`);
   }
 
   // Hit Points (prefer explicit HP if present for named creatures or when available)

@@ -10,7 +10,7 @@
 
 ### 1. Ape, carnivorous
 
-*HP 23, AC 15, disposition neutral. Saves: P.*
+*Level 4(d10), HP 23, AC 15, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 23, AC 15, Disposition neutral
 
@@ -21,6 +21,14 @@
 {
   "sourceIndex": 58495,
   "title": "Ape, carnivorous",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Ape, carnivorous",
     "titleLine": "The Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification."
@@ -53,9 +61,9 @@
     "ac": "15",
     "disposition": "neutral",
     "raceClass": "animal",
-    "attributes": "strength"
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 23, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 4(d10), HP 23, AC 15, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -64,7 +72,7 @@
 
 ### 2. Bandit
 
-*HP 4, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*
+*Level 1(d6), HP 4, AC 13, disposition neutral/evil. Its primary attributes are physical. It has 6 silver in coin.*
 
 **Core Stats:** HP 4, AC 13, Disposition neutral/evil
 
@@ -75,6 +83,14 @@
 {
   "sourceIndex": 59104,
   "title": "Bandit",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (bandit override)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Bandit",
     "titleLine": "**Ape, carnivorous:** _(This neutral animal's vital stats are HD 4d10, HP 23, AC 15, MV 30 ft., 30 ft. climb. Its saves are physical. It attacks with two fist smashes that deliver 1d4 damage each, and it can also deliver an overbearing attack at the same time. If both fist attacks are successful, a grappling attack is allowed that, if successful, causes an additional 2d4 damage. Once an opponent is grappled, hugging damage continues until the character makes a successful strength save. This creature has a natural ability to hide, thus +5 to all hide checks, and receives a +3 to all surprise checks. XP: 80+4)_"
@@ -107,9 +123,10 @@
     "disposition": "neutral/evil",
     "attributes": "physical",
     "coins": "6 sp",
-    "raceClass": "0th level, neutral evil, human fighters"
+    "raceClass": "0th level, neutral evil, human fighters",
+    "hd": "1d6"
   },
-  "canonicalParenthetical": "HP 4, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
+  "canonicalParenthetical": "Level 1(d6), HP 4, AC 13, disposition neutral/evil. Its primary attributes are physical. It has 6 silver in coin."
 }
 ```
 </details>
@@ -118,7 +135,7 @@
 
 ### 3. Bandit, Lieutenant
 
-*HP 14, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*
+*Level 1(d6), HP 14, AC 14, disposition neutral/evil. Its primary attributes are physical. It has 6 gold in coin.*
 
 **Core Stats:** HP 14, AC 14, Disposition neutral/evil
 
@@ -129,6 +146,14 @@
 {
   "sourceIndex": 59395,
   "title": "Bandit, Lieutenant",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Bandit, Lieutenant",
     "titleLine": "**Bandit:** _(They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1)_"
@@ -161,9 +186,10 @@
     "disposition": "neutral/evil",
     "attributes": "physical",
     "coins": "6 gp",
-    "raceClass": "2nd level, neutral evil, human fighters"
+    "raceClass": "2nd level, neutral evil, human fighters",
+    "hd": "1d6"
   },
-  "canonicalParenthetical": "HP 14, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin."
+  "canonicalParenthetical": "Level 1(d6), HP 14, AC 14, disposition neutral/evil. Its primary attributes are physical. It has 6 gold in coin."
 }
 ```
 </details>
@@ -172,7 +198,7 @@
 
 ### 4. Bat, giant cave
 
-*HP 1, AC 12, disposition neutral. Saves: P.*
+*Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 1, AC 12, Disposition neutral
 
@@ -183,6 +209,14 @@
 {
   "sourceIndex": 59695,
   "title": "Bat, giant cave",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Bat, giant cave",
     "titleLine": "**Bandit, Lieutenant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2)_"
@@ -214,9 +248,10 @@
     "hp": "1",
     "ac": "12",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 1, AC 12, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -225,7 +260,7 @@
 
 ### 5. **Batrachianoid*:** _
 
-*HP 5, AC 14, disposition chaos/evil. Saves: P. It has 6 copper in coin.*
+*Level 1(d8), HP 5, AC 14, disposition chaos/evil. Its primary attributes are physical. It has 6 copper in coin.*
 
 **Core Stats:** HP 5, AC 14, Disposition chaos/evil
 
@@ -236,6 +271,14 @@
 {
   "sourceIndex": 60136,
   "title": "**Batrachianoid*:** _",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "**Batrachianoid*:** _",
     "titleLine": "**Bat, giant cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of_ _four, and_ _receive 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_"
@@ -268,9 +311,10 @@
     "ac": "14",
     "disposition": "chaos/evil",
     "raceClass": "humanoid",
-    "coins": "6 cp"
+    "coins": "6 cp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 5, AC 14, disposition chaos/evil. Saves: P. It has 6 copper in coin."
+  "canonicalParenthetical": "Level 1(d8), HP 5, AC 14, disposition chaos/evil. Its primary attributes are physical. It has 6 copper in coin."
 }
 ```
 </details>
@@ -279,7 +323,7 @@
 
 ### 6. Bear, black
 
-*HP 15, AC 13, disposition neutral. Saves: P.*
+*Level 3(d8), HP 15, AC 13, disposition neutral.*
 
 **Core Stats:** HP 15, AC 13, Disposition neutral
 
@@ -290,6 +334,14 @@
 {
   "sourceIndex": 60547,
   "title": "Bear, black",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Bear, black",
     "titleLine": "**Batrachianoid*:** _(These chaotic evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 20 ft., 30 ft. hop, 40 ft. swim. Their saves are physical. They attack by weapon type. Their special abilities include a hopping attack for double damage [though -4 to their AC], and a chameleon ability that gives them +5 to hide checks and +10 to surprise checks. They have leather armor, spear, and 1d6 cp. XP: 11+1)_"
@@ -324,7 +376,7 @@
     "raceClass": "animal",
     "attributes": "ws for 1d4+1 damage and a bite for 1d6+1 damage"
   },
-  "canonicalParenthetical": "HP 15, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 3(d8), HP 15, AC 13, disposition neutral."
 }
 ```
 </details>
@@ -333,7 +385,7 @@
 
 ### 7. Boar, wild
 
-*HP 8, AC 16, disposition neutral. Saves: P.*
+*Level 2(d8), HP 8, AC 16, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 8, AC 16, Disposition neutral
 
@@ -344,6 +396,14 @@
 {
   "sourceIndex": 60899,
   "title": "Boar, wild",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Boar, wild",
     "titleLine": "**Bear, black:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the bear's foe must make a strength save or be caught in its crushing hug for 2d4+1 points of damage. XP: 40+3)_"
@@ -375,9 +435,10 @@
     "hp": "8",
     "ac": "16",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 8, AC 16, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 2(d8), HP 8, AC 16, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -386,7 +447,7 @@
 
 ### 8. Brigand, crossbowmen
 
-*HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*
+*HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 gold in coin.*
 
 **Core Stats:** HP 5, AC 13, Disposition neutral/evil
 
@@ -397,6 +458,14 @@
 {
   "sourceIndex": 61144,
   "title": "Brigand, crossbowmen",
+  "classification": {
+    "type": "classed",
+    "format": "A",
+    "subtype": "named-class",
+    "confidence": "high",
+    "reasoning": "Classed NPC (Class: fighter)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Brigand, crossbowmen",
     "titleLine": "**Boar, wild:** _(This neutral animal's vital stats are HD 2d8, HP 8, AC 16, MV 40 ft. Its saves are physical. It attacks with a gore for 2d6 damage. Boars have twilight vision and attack as though they are 5 HD creatures. XP: 15+2)_"
@@ -431,7 +500,7 @@
     "coins": "6 gp",
     "raceClass": "1st level, neutral evil, human fighters"
   },
-  "canonicalParenthetical": "HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin."
+  "canonicalParenthetical": "HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 gold in coin."
 }
 ```
 </details>
@@ -440,7 +509,7 @@
 
 ### 9. Brigand, flailmen
 
-*HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*
+*HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*
 
 **Core Stats:** HP 5, AC 14, Disposition neutral/evil
 
@@ -451,6 +520,14 @@
 {
   "sourceIndex": 61483,
   "title": "Brigand, flailmen",
+  "classification": {
+    "type": "classed",
+    "format": "A",
+    "subtype": "named-class",
+    "confidence": "high",
+    "reasoning": "Classed NPC (Class: fighter)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Brigand, flailmen",
     "titleLine": "**Brigand, crossbowmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1)_"
@@ -485,7 +562,7 @@
     "coins": "6 sp",
     "raceClass": "1st level, neutral evil, human fighters"
   },
-  "canonicalParenthetical": "HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
+  "canonicalParenthetical": "HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin."
 }
 ```
 </details>
@@ -494,7 +571,7 @@
 
 ### 10. Brigand, Serjeant
 
-*HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 8 gold in coin.*
+*HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 8 gold in coin.*
 
 **Core Stats:** HP 14, AC 15, Disposition neutral/evil
 
@@ -505,6 +582,14 @@
 {
   "sourceIndex": 61749,
   "title": "Brigand, Serjeant",
+  "classification": {
+    "type": "classed",
+    "format": "A",
+    "subtype": "named-class",
+    "confidence": "high",
+    "reasoning": "Classed NPC (Class: fighter)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Brigand, Serjeant",
     "titleLine": "**Brigand, flailmen:** _(They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1)_"
@@ -539,7 +624,7 @@
     "coins": "8 gp",
     "raceClass": "2nd level, neutral evil, human fighters"
   },
-  "canonicalParenthetical": "HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 8 gold in coin."
+  "canonicalParenthetical": "HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 8 gold in coin."
 }
 ```
 </details>
@@ -548,7 +633,7 @@
 
 ### 11. Bugbear
 
-*HP 16, AC 16, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
+*Level 3(d10), HP 16, AC 16, disposition chaos/evil. Its primary attributes are physical. It has 4 gold in coin.*
 
 **Core Stats:** HP 16, AC 16, Disposition chaos/evil
 
@@ -559,6 +644,14 @@
 {
   "sourceIndex": 62055,
   "title": "Bugbear",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Bugbear",
     "titleLine": "**Brigand, Serjeant:** _(They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2)_"
@@ -591,10 +684,10 @@
     "ac": "16",
     "disposition": "chaos/evil",
     "raceClass": "humanoid",
-    "attributes": "tchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength",
+    "attributes": "physical",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HP 16, AC 16, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+  "canonicalParenthetical": "Level 3(d10), HP 16, AC 16, disposition chaos/evil. Its primary attributes are physical. It has 4 gold in coin."
 }
 ```
 </details>
@@ -603,7 +696,7 @@
 
 ### 12. Elf, Wood, bowman
 
-*HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin.*
+*Level 1(d10), HP 8, AC 12, disposition chaos/neutral. Its primary attributes are physical. It has 18 silver in coin.*
 
 **Core Stats:** HP 8, AC 12, Disposition chaos/neutral
 
@@ -614,6 +707,14 @@
 {
   "sourceIndex": 62393,
   "title": "Elf, Wood, bowman",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Elf, Wood, bowman",
     "titleLine": "**Bugbear:** _(These chaotic evil humanoids' vital stats are HD 3d10, HP 16, AC 16, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. They have patchwork ring mail armor, buckler, bastard sword, light throwing hammers x2—all weapons at +3 damage due to strength. They also carry 2d4 gp. XP: 30+3)_"
@@ -649,7 +750,7 @@
     "coins": "18 sp",
     "raceClass": "1st level, chaotic neutral fighters"
   },
-  "canonicalParenthetical": "HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin."
+  "canonicalParenthetical": "Level 1(d10), HP 8, AC 12, disposition chaos/neutral. Its primary attributes are physical. It has 18 silver in coin."
 }
 ```
 </details>
@@ -658,7 +759,7 @@
 
 ### 13. Elf, Wood, spearman
 
-*HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin.*
+*Level 1(d10), HP 8, AC 13, disposition chaos/neutral. Its primary attributes are physical. It has 12 silver in coin.*
 
 **Core Stats:** HP 8, AC 13, Disposition chaos/neutral
 
@@ -669,6 +770,14 @@
 {
   "sourceIndex": 62830,
   "title": "Elf, Wood, spearman",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Elf, Wood, spearman",
     "titleLine": "**Elf, Wood, bowman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They have padded armor, longbow [specialized, +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword [+1 \"to hit\", and 3-18 sp. XP: 13+1)_"
@@ -704,7 +813,7 @@
     "coins": "12 sp",
     "raceClass": "1st level, chaotic neutral fighters"
   },
-  "canonicalParenthetical": "HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin."
+  "canonicalParenthetical": "Level 1(d10), HP 8, AC 13, disposition chaos/neutral. Its primary attributes are physical. It has 12 silver in coin."
 }
 ```
 </details>
@@ -713,7 +822,7 @@
 
 ### 14. Elf, Wood, swordsman
 
-*HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin.*
+*Level 1(d10), HP 5, AC 14, disposition chaos/neutral. Its primary attributes are physical. It has 2–12 gold in coin.*
 
 **Core Stats:** HP 5, AC 14, Disposition chaos/neutral
 
@@ -724,6 +833,14 @@
 {
   "sourceIndex": 63267,
   "title": "Elf, Wood, swordsman",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Elf, Wood, swordsman",
     "titleLine": "**Elf, Wood, spearman:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 13, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, spear [specialized; +3 \"to hit\"; 1d6+1 damage], longsword [+2 \"to hit\"; 1d8 damage], and 2-12 sp. XP: 13+1)_"
@@ -759,7 +876,7 @@
     "coins": "2–12 gp",
     "raceClass": "1st - 3rd level, chaotic neutral fighters"
   },
-  "canonicalParenthetical": "HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin."
+  "canonicalParenthetical": "Level 1(d10), HP 5, AC 14, disposition chaos/neutral. Its primary attributes are physical. It has 2–12 gold in coin."
 }
 ```
 </details>
@@ -768,7 +885,7 @@
 
 ### 15. Ghoul
 
-*HP 10, AC 14, disposition chaos/evil. Saves: P.*
+*Level 2(d8), HP 10, AC 14, disposition chaos/evil.*
 
 **Core Stats:** HP 10, AC 14, Disposition chaos/evil
 
@@ -779,6 +896,14 @@
 {
   "sourceIndex": 63705,
   "title": "Ghoul",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Ghoul",
     "titleLine": "**Elf, Wood, swordsman:** _(They are 1st - 3rd level, chaotic neutral fighters whose vital stats are HD 1d10, HP 5 per level, AC 14, MV 30 ft. Their primary attributes are physical. Their significant attribute is strength 15. Their special abilities include hide, move silent, pass without trace, longsword training. They have leather armor, shield, longsword [specialized; +4 to +6 \"to hit\"; 1d8+2 damage], dagger, and 2-12 gp. XP: 13+1; 16+2; 26+3)_"
@@ -813,7 +938,7 @@
     "raceClass": "undead",
     "attributes": "ralysis or become rigid [paralyzed]"
   },
-  "canonicalParenthetical": "HP 10, AC 14, disposition chaos/evil. Saves: P."
+  "canonicalParenthetical": "Level 2(d8), HP 10, AC 14, disposition chaos/evil."
 }
 ```
 </details>
@@ -822,7 +947,7 @@
 
 ### 16. Gnoll
 
-*HP 13, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
+*Level 2(d10), HP 13, AC 15, disposition chaos/evil. It has 4 gold in coin.*
 
 **Core Stats:** HP 13, AC 15, Disposition chaos/evil
 
@@ -833,6 +958,14 @@
 {
   "sourceIndex": 64380,
   "title": "Gnoll",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Gnoll",
     "titleLine": "**Ghoul:** _(These chaotic evil undeads' vital stats are HD 2d8, HP 10, AC 14, MV 30 ft. Their saves are physical._ _They_ _attacks_ _with 2 claws for 1d4+2 damage and 1 bite for 1d4+1 damage. Any living creature, other than an elf [they are immune], that is clawed or bitten by these monsters must make a save versus paralysis or become rigid [paralyzed]. This paralysis lasts 20-50 minutes [1d4+1 x 10], unless a remove curse or remove paralysis is cast. These creatures are immune to sleep and charm spells. Their killed victims will become ghouls unless a bless spell is cast. These monsters will not enter the magic circle of a protection from evil spell._ _XP: 30+2)_"
@@ -868,7 +1001,7 @@
     "attributes": "tchwork leather armor, shield, throwing club, morning star, and 2d4 gp",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HP 13, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+  "canonicalParenthetical": "Level 2(d10), HP 13, AC 15, disposition chaos/evil. It has 4 gold in coin."
 }
 ```
 </details>
@@ -877,7 +1010,7 @@
 
 ### 17. Goblin, raider
 
-*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -888,6 +1021,14 @@
 {
   "sourceIndex": 64699,
   "title": "Goblin, raider",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin, raider",
     "titleLine": "**Gnoll:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 13, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +2 damage due to strength. Their special ability is darkvision 60 ft. They have patchwork leather armor, shield, throwing club, morning star, and 2d4 gp. XP: 12+2)_"
@@ -920,9 +1061,10 @@
     "ac": "14",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin."
 }
 ```
 </details>
@@ -931,7 +1073,7 @@
 
 ### 18. Goblin, leader (corporal)
 
-*HP 15, AC 16, disposition law/evil. Saves: P. It has 4 gold in coin.*
+*Level 3(d6+2), HP 15, AC 16, disposition law/evil. Its primary attributes are physical. It has 4 gold in coin.*
 
 **Core Stats:** HP 15, AC 16, Disposition law/evil
 
@@ -942,6 +1084,14 @@
 {
   "sourceIndex": 65005,
   "title": "Goblin, leader (corporal)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin, leader (corporal)",
     "titleLine": "**Goblin, raider:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, belt axe, shortsword, and 3d6 sp. XP 5+1)_"
@@ -974,10 +1124,10 @@
     "ac": "16",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HP 15, AC 16, disposition law/evil. Saves: P. It has 4 gold in coin."
+  "canonicalParenthetical": "Level 3(d6+2), HP 15, AC 16, disposition law/evil. Its primary attributes are physical. It has 4 gold in coin."
 }
 ```
 </details>
@@ -986,7 +1136,7 @@
 
 ### 19. Griffon
 
-*HP 45, AC 17, disposition neutral. Saves: P.*
+*Level 7(d10), HP 45, AC 17, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 45, AC 17, Disposition neutral
 
@@ -997,6 +1147,14 @@
 {
   "sourceIndex": 65369,
   "title": "Griffon",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Griffon",
     "titleLine": "**Goblin, leader (corporal):** _(These lawful evil humanoids' vital stats are HD 3d6+2, HP 15, AC 16, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft., and light sensitivity [-1 to attacks in bright light], and high strength for an additional +1 \"to hit\" and +1 damage. They have breastplate, shield, belt axe, morning star, and 2d4 gp. XP: 20+3)_"
@@ -1028,9 +1186,10 @@
     "hp": "45",
     "ac": "17",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 45, AC 17, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 7(d10), HP 45, AC 17, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -1039,7 +1198,7 @@
 
 ### 20. Hobgoblin
 
-*HP 8, AC 15, disposition law/evil. Saves: P. It has 4 silver in coin.*
+*Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has 4 silver in coin.*
 
 **Core Stats:** HP 8, AC 15, Disposition law/evil
 
@@ -1050,6 +1209,14 @@
 {
   "sourceIndex": 65660,
   "title": "Hobgoblin",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Hobgoblin",
     "titleLine": "**Griffon:** _(This neutral creature's vital stats are HD 7d10, HP 45, AC 17, MV 30 ft., or fly 80 ft. Its saves are physical. It attacks with two claws for 1d4 damage each and one bite for 2d8 damage. It has dark vision and twilight vision that allows it to see in the dark. XP: 270+7)_"
@@ -1082,10 +1249,10 @@
     "ac": "15",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "coins": "4 sp"
   },
-  "canonicalParenthetical": "HP 8, AC 15, disposition law/evil. Saves: P. It has 4 silver in coin."
+  "canonicalParenthetical": "Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has 4 silver in coin."
 }
 ```
 </details>
@@ -1094,7 +1261,7 @@
 
 ### 21. Kobold
 
-*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*
 
 **Core Stats:** HP 3, AC 15, Disposition law/evil
 
@@ -1105,6 +1272,14 @@
 {
   "sourceIndex": 65971,
   "title": "Kobold",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Kobold",
     "titleLine": "**Hobgoblin:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 8, AC 15, MV 30 ft. Their saves are physical. They attack by weapon at +1 damage due to strength. Their special ability is darkvision 60 ft. They have crude chain mail armor, composite short bow, x12 arrows, halberd, and 2d4 sp. XP: 7+1)_"
@@ -1137,9 +1312,10 @@
     "ac": "15",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin."
 }
 ```
 </details>
@@ -1148,7 +1324,7 @@
 
 ### 22. Lion (mountain, forest)
 
-*HP 20, AC 16, disposition neutral. Saves: P.*
+*Level 4(d8), HP 20, AC 16, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 20, AC 16, Disposition neutral
 
@@ -1159,6 +1335,14 @@
 {
   "sourceIndex": 66281,
   "title": "Lion (mountain, forest)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Lion (mountain, forest)",
     "titleLine": "**Kobold:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have chain hauberk armor, javelins x3, shortsword, and 1d6 sp. XP: 5+1)_"
@@ -1190,9 +1374,10 @@
     "hp": "20",
     "ac": "16",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 20, AC 16, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 4(d8), HP 20, AC 16, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -1201,7 +1386,7 @@
 
 ### 23. Lizardfolk
 
-*HP 10, AC 15, disposition neutral. Saves: P.*
+*Level 2(d8), HP 10, AC 15, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 10, AC 15, Disposition neutral
 
@@ -1212,6 +1397,14 @@
 {
   "sourceIndex": 66601,
   "title": "Lizardfolk",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Lizardfolk",
     "titleLine": "**Lion (mountain, forest):** _(These neutral animals' vital stats are HD 4d8, HP 20, AC 16, MV 40 ft. Their saves are physical. They attack with two claws for 1d3 points of damage and one bite for 1d6 points of damage. If both claws hit, they make two additional rear claw rake attacks for 1d4 points of damage each. XP: 60+4)_"
@@ -1243,9 +1436,10 @@
     "hp": "10",
     "ac": "15",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 10, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 2(d8), HP 10, AC 15, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -1254,7 +1448,7 @@
 
 ### 24. **Losel*:** _
 
-*HP 10, AC 14, disposition neutral/evil. Saves: P.*
+*Level 1(d8+4), HP 10, AC 14, disposition neutral/evil. Its primary attributes are physical.*
 
 **Core Stats:** HP 10, AC 14, Disposition neutral/evil
 
@@ -1265,6 +1459,14 @@
 {
   "sourceIndex": 66823,
   "title": "**Losel*:** _",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "**Losel*:** _",
     "titleLine": "**Lizardfolk:** _(These neutral creatures' vital stats are HD 2d8, HP 10, AC 15, MV 30 ft., 20 ft. swim. Their saves are physical. They attack with a spear, or two claws for 1d2 damage and a bite for 1d8 damage. XP: 10+2)_"
@@ -1297,9 +1499,9 @@
     "ac": "14",
     "disposition": "neutral/evil",
     "raceClass": "humanoid",
-    "attributes": "strength"
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 10, AC 14, disposition neutral/evil. Saves: P."
+  "canonicalParenthetical": "Level 1(d8+4), HP 10, AC 14, disposition neutral/evil. Its primary attributes are physical."
 }
 ```
 </details>
@@ -1308,7 +1510,7 @@
 
 ### 25. (fisherman/hunter/trapper/woodcutter)
 
-*HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*
+*HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*
 
 **Core Stats:** HP 5, AC 12, Disposition neutral
 
@@ -1319,6 +1521,14 @@
 {
   "sourceIndex": 67390,
   "title": "(fisherman/hunter/trapper/woodcutter)",
+  "classification": {
+    "type": "classed",
+    "format": "A",
+    "subtype": "named-class",
+    "confidence": "high",
+    "reasoning": "Classed NPC (Class: fighter)",
+    "warnings": []
+  },
   "labels": {
     "inline": "(fisherman/hunter/trapper/woodcutter)",
     "titleLine": "**Losel*:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_"
@@ -1353,7 +1563,7 @@
     "coins": "6 sp",
     "raceClass": "0th-2nd level, neutral, human fighters"
   },
-  "canonicalParenthetical": "HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
+  "canonicalParenthetical": "HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin."
 }
 ```
 </details>
@@ -1362,7 +1572,7 @@
 
 ### 26. Naga, Water
 
-*HP 35, AC 15, disposition neutral. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc.*
+*Level 7(d8), HP 35, AC 15, disposition neutral. Its primary attributes are physical. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc.*
 
 **Core Stats:** HP 35, AC 15, Disposition neutral
 
@@ -1373,6 +1583,14 @@
 {
   "sourceIndex": 67707,
   "title": "Naga, Water",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Naga, Water",
     "titleLine": "**Man, woodsman** **(fisherman/hunter/trapper/woodcutter):** _(They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2)_"
@@ -1405,10 +1623,10 @@
     "ac": "15",
     "disposition": "neutral",
     "raceClass": "creature",
-    "attributes": "strength",
+    "attributes": "physical",
     "equipment": "spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, medium steel shield, teleport, etc"
   },
-  "canonicalParenthetical": "HP 35, AC 15, disposition neutral. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc."
+  "canonicalParenthetical": "Level 7(d8), HP 35, AC 15, disposition neutral. Its primary attributes are physical. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc."
 }
 ```
 </details>
@@ -1417,7 +1635,7 @@
 
 ### 27. Nixies (sprite)
 
-*HP 3, AC 14, disposition neutral. Saves: P. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*
+*HP 3, AC 14, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*
 
 **Core Stats:** HP 3, AC 14, Disposition neutral
 
@@ -1428,6 +1646,14 @@
 {
   "sourceIndex": 68589,
   "title": "Nixies (sprite)",
+  "classification": {
+    "type": "classed",
+    "format": "A",
+    "subtype": "spellcaster",
+    "confidence": "high",
+    "reasoning": "Classed NPC (Spellcaster - highest priority override)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Nixies (sprite)",
     "titleLine": "**Naga, Water:** _(This neutral creature's vital stats are HD 7d8, HP 35, AC 15, MV 30 ft., 50 ft. swim. Its saves are physical. It attacks with a bite for 1d4 damage, though is non-aggressive and will avoid combat. Its bite delivers a mild toxin that causes 1d4 additional damage, save negates. It also wields spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, shield, teleport, etc. If forced to fight it will use_ _its_ _constrict ability and drag the victim underwater. To constrict, the naga must make a successful bite attack. The next round it can make a grappling attack against the opponent. If successful, the defender is entwined and being constricted for 1d10+2 damage per round. Individuals with a 15 strength or greater can attempt a strength check to escape the naga's coils. XP: 540+7)_"
@@ -1462,7 +1688,7 @@
     "raceClass": "creature",
     "spells": "water breathing at will and cast a powerful charm person spell that lasts for one year"
   },
-  "canonicalParenthetical": "HP 3, AC 14, disposition neutral. Saves: P. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
+  "canonicalParenthetical": "HP 3, AC 14, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
 }
 ```
 </details>
@@ -1471,7 +1697,7 @@
 
 ### 28. Orc
 
-*HP 5, AC 13, disposition law/evil. Saves: P. It has 6 gold in coin.*
+*Level 1(d8), HP 5, AC 13, disposition law/evil. Its primary attributes are physical. It has 6 gold in coin.*
 
 **Core Stats:** HP 5, AC 13, Disposition law/evil
 
@@ -1482,6 +1708,14 @@
 {
   "sourceIndex": 68931,
   "title": "Orc",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Orc",
     "titleLine": "**Nixies (sprite):** _(These neutral creatures' vital stats are HD 1d4, HP 3, AC 14, MV 10 ft, 30 ft. swim. Their saves are mental. They attack by weapon type, though avoid direct confrontation if possible. They have daggers and javelins. They can cast water breathing at will and cast a powerful charm person spell that lasts for one year. XP: 15+1)_"
@@ -1514,9 +1748,10 @@
     "ac": "13",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 gp"
+    "coins": "6 gp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 5, AC 13, disposition law/evil. Saves: P. It has 6 gold in coin."
+  "canonicalParenthetical": "Level 1(d8), HP 5, AC 13, disposition law/evil. Its primary attributes are physical. It has 6 gold in coin."
 }
 ```
 </details>
@@ -1525,7 +1760,7 @@
 
 ### 29. Otter, giant
 
-*HP 21, AC 15, disposition neutral. Saves: P.*
+*Level 4(d8), HP 21, AC 15, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 21, AC 15, Disposition neutral
 
@@ -1536,6 +1771,14 @@
 {
   "sourceIndex": 69249,
   "title": "Otter, giant",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Otter, giant",
     "titleLine": "**Orc:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 13, MV 30 ft. Their saves are physical. Their special abilities_ _are_ _darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, halberd, warhammer, short bow, 6 arrows, and 1d6 gp. XP: 5+1)_"
@@ -1567,9 +1810,10 @@
     "hp": "21",
     "ac": "15",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 21, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 4(d8), HP 21, AC 15, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -1578,7 +1822,7 @@
 
 ### 30. Owlbear (small)
 
-*HP 19, AC 15, disposition neutral. Saves: P.*
+*Level 3(d10), HP 19, AC 15, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 19, AC 15, Disposition neutral
 
@@ -1589,6 +1833,14 @@
 {
   "sourceIndex": 69448,
   "title": "Owlbear (small)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Owlbear (small)",
     "titleLine": "**Otter, giant:** _(This neutral creature's vital stats are HD 4d8, HP 21, AC 15, MV 30 ft., 40 ft. swim. Its saves are physical. It attacks with a bite for 2d6+5 points of damage. XP: 40+4.)_"
@@ -1621,9 +1873,9 @@
     "ac": "15",
     "disposition": "neutral",
     "raceClass": "monster",
-    "attributes": "strength"
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 19, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 3(d10), HP 19, AC 15, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -1632,7 +1884,7 @@
 
 ### 31. Rats, River (giant)
 
-*HP 2, AC 13, disposition neutral. Saves: P.*
+*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 2, AC 13, Disposition neutral
 
@@ -1643,6 +1895,14 @@
 {
   "sourceIndex": 70000,
   "title": "Rats, River (giant)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Rats, River (giant)",
     "titleLine": "**Owlbear (small):** _(These neutral monsters' vital stats are HD 3d10, HP 19, AC 15, MV 30 ft. Their saves are physical. They attack with two claws for 1d4 points of damage and one bite for 2d4 points of damage. If the owlbear strikes with 2 claws, it pulls the victim to itself, hugging and dealing an extra 2d4 points of damage, save versus strength to avoid. Additional strength saves are allowed each round, if trapped thus. The owlbear can automatically squeeze for 2d4 damage and bite for 2d4 damage a hugged victim each round. XP: 40+3)_"
@@ -1674,9 +1934,10 @@
     "hp": "2",
     "ac": "13",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -1685,7 +1946,7 @@
 
 ### 32. Rivermen
 
-*HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability.*
+*Level 1(d8), HP 5, AC 11, disposition chaos/neutral. Its primary attributes are physical. Its secondary skill is Nautical Ability.*
 
 **Core Stats:** HP 5, AC 11, Disposition chaos/neutral
 
@@ -1696,6 +1957,13 @@
 {
   "sourceIndex": 70331,
   "title": "Rivermen",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "confidence": "high",
+    "reasoning": "Default to Monster",
+    "warnings": []
+  },
   "labels": {
     "inline": "Rivermen",
     "titleLine": "**Rats, River (giant):** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_"
@@ -1731,7 +1999,7 @@
     "secondarySkills": "Nautical Ability",
     "raceClass": "0th level, chaotic neutral, human fighters"
   },
-  "canonicalParenthetical": "HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability."
+  "canonicalParenthetical": "Level 1(d8), HP 5, AC 11, disposition chaos/neutral. Its primary attributes are physical. Its secondary skill is Nautical Ability."
 }
 ```
 </details>
@@ -1740,7 +2008,7 @@
 
 ### 33. Snake, poisonous
 
-*HP 4, AC 14, disposition neutral. Saves: P.*
+*Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 4, AC 14, Disposition neutral
 
@@ -1751,6 +2019,14 @@
 {
   "sourceIndex": 70677,
   "title": "Snake, poisonous",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Snake, poisonous",
     "titleLine": "**Rivermen:** _(They are 0th level, chaotic neutral, human fighters whose vital stats are HD 1d8, HP 5, AC 11. Their primary attributes are physical. Their secondary skill is Nautical Ability, which is described in the CZY Appendix. They have waterproofed leather coats, spears [+0 \"to hit\"; 1d6 damage], and 12-inch knives._ _XP: 5+1)_"
@@ -1782,9 +2058,10 @@
     "hp": "4",
     "ac": "14",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 4, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -1793,7 +2070,7 @@
 
 ### 34. Snake, poisonous (deadly)
 
-*HP 7, AC 14, disposition neutral. Saves: P.*
+*Level 2(d6), HP 7, AC 14, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 7, AC 14, Disposition neutral
 
@@ -1804,6 +2081,14 @@
 {
   "sourceIndex": 70950,
   "title": "Snake, poisonous (deadly)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Snake, poisonous (deadly)",
     "titleLine": "**Snake, poisonous:** _(This neutral animal's vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 2d4 points of additional damage, save versus poison negates. XP: 9+1)_"
@@ -1835,9 +2120,10 @@
     "hp": "7",
     "ac": "14",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 7, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 2(d6), HP 7, AC 14, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -1846,7 +2132,7 @@
 
 ### 35. Spider, Giant (medium-sized)
 
-*HP 15, AC 15, disposition neutral. Saves: P.*
+*Level 3(d8), HP 15, AC 15, disposition neutral.*
 
 **Core Stats:** HP 15, AC 15, Disposition neutral
 
@@ -1857,6 +2143,14 @@
 {
   "sourceIndex": 71269,
   "title": "Spider, Giant (medium-sized)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Spider, Giant (medium-sized)",
     "titleLine": "**Snake, poisonous (deadly):** _(This neutral animal's vital stats are HD 2d6, HP 7, AC 14, MV 20 ft. Its saves are physical. It attacks with a bite for 1 point of damage. Its bite delivers poison for 1d4 points of additional damage for 10 rounds, save versus poison reduces damage to 1 point per round. XP: 20+2)_"
@@ -1891,7 +2185,7 @@
     "raceClass": "creature",
     "attributes": "ralyzation for 1d6 hours"
   },
-  "canonicalParenthetical": "HP 15, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 3(d8), HP 15, AC 15, disposition neutral."
 }
 ```
 </details>
@@ -1900,7 +2194,7 @@
 
 ### 36. Stirges
 
-*HP 3, AC 16, disposition neutral. Saves: P.*
+*Level 1(d6), HP 3, AC 16, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 3, AC 16, Disposition neutral
 
@@ -1911,6 +2205,14 @@
 {
   "sourceIndex": 71684,
   "title": "Stirges",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Stirges",
     "titleLine": "**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 15, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 3d4 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim also suffers paralyzation for 1d6 hours. XP: 52+3)_"
@@ -1942,9 +2244,10 @@
     "hp": "3",
     "ac": "16",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 3, AC 16, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d6), HP 3, AC 16, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -1953,7 +2256,7 @@
 
 ### 37. Thieves
 
-*HP 4, AC 14, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*
+*HP 4, AC 14, disposition variable. Its primary attributes are physical. It has 6 gold in coin.*
 
 **Core Stats:** HP 4, AC 14, Disposition variable
 
@@ -1964,6 +2267,13 @@
 {
   "sourceIndex": 71967,
   "title": "Thieves",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "confidence": "high",
+    "reasoning": "Monster (default - no class/rank/humanoid signals)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Thieves",
     "titleLine": "**Stirges:** _(These neutral creatures' vital stats are HD 1d6, HP 3, AC 16 Move 10 ft., 40 ft. fly. Their saves are physical. They attack with a sting for 1d3 points of damage. Their special abilities include attach and blood drain for 1d4 points of damage per round. XP: 15+1)_"
@@ -1998,7 +2308,7 @@
     "coins": "6 gp",
     "raceClass": "3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves"
   },
-  "canonicalParenthetical": "HP 4, AC 14, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin."
+  "canonicalParenthetical": "HP 4, AC 14, disposition variable. Its primary attributes are physical. It has 6 gold in coin."
 }
 ```
 </details>
@@ -2007,7 +2317,7 @@
 
 ### 38. Turtle, Huge Snapping
 
-*HP 20, AC 19, disposition neutral. Saves: P.*
+*Level 5(d8), HP 20, AC 19, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 20, AC 19, Disposition neutral
 
@@ -2018,6 +2328,14 @@
 {
   "sourceIndex": 72473,
   "title": "Turtle, Huge Snapping",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Turtle, Huge Snapping",
     "titleLine": "**Thieves**:** _(They are 3rd-4th level, alignment variable, race variable_ —_human, dwarf, elf, half-elf, halfling— thieves whose vital stats are HP 4 per level, AC 14. Their primary attributes are physical. Their significant attribute is dexterity 16. They have leather armor, longsword [+1 \"to hit\"; 1d8 damage], and_ _throwing daggers [+3 \"to hit\"; 1d4 damage]. They also carry thieves' tools, 50' rope, grappling hook, 6-inch iron spikes x4, and 3d6 gp in mixed coin. XP: 50+3; 120+4.)_"
@@ -2052,7 +2370,7 @@
     "raceClass": "creature",
     "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 20, AC 19, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 5(d8), HP 20, AC 19, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -2061,7 +2379,7 @@
 
 ### 39. Wolf, Grey
 
-*HP 9, AC 13, disposition neutral. Saves: P.*
+*Level 2(d8), HP 9, AC 13, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 9, AC 13, Disposition neutral
 
@@ -2072,6 +2390,14 @@
 {
   "sourceIndex": 73124,
   "title": "Wolf, Grey",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Wolf, Grey",
     "titleLine": "**Turtle, Huge Snapping:** _(These neutral creatures' vital stats are HD 5d8, HP 20 AC 19 shell, 12 head, limbs, and tail, MV 3 ft. land, 6 ft. swimming. Their primary attributes are physical. They attack with a bite for 2d4+10 points of damage. Once the huge snapping turtle has successfully bitten a victim it does not have to strike again. Each round thereafter the turtle inflicts 2d4 points of damage per round. Also, the turtle may attempt to drag creatures into the water where they can drown. To escape, the turtle must be killed or suffer the loss of 50% of its hit points, or the victim must make a successful strength save to break free. XP: 100+5)_"
@@ -2103,9 +2429,10 @@
     "hp": "9",
     "ac": "13",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 9, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 2(d8), HP 9, AC 13, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -2114,7 +2441,7 @@
 
 ### 40. Wolverine (small, normal)
 
-*HP 16, AC 15, disposition neutral. Saves: P.*
+*Level 3(d8), HP 16, AC 15, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 16, AC 15, Disposition neutral
 
@@ -2125,6 +2452,14 @@
 {
   "sourceIndex": 73400,
   "title": "Wolverine (small, normal)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Wolverine (small, normal)",
     "titleLine": "**Wolf, Grey:** _(These neutral animals' vital stats are HD 2d8, HP 9, AC 13, MV 50 ft. Their saves are physical. They attack with a bite for 1d4+3 damage. Their special abilities include a trip attack, superior sense of smell, and twilight vision. XP: 10+2)_"
@@ -2157,9 +2492,9 @@
     "ac": "15",
     "disposition": "neutral",
     "raceClass": "creature",
-    "attributes": "strength, dexterity"
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 16, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 3(d8), HP 16, AC 15, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -2168,7 +2503,7 @@
 
 ### 41. Grimlock Manface (Losel Chieftain)
 
-*HP 32, AC 16, disposition neutral/evil. Saves: P. It has splint mail armor, *a +1 heavy flail [specialized; +6 "to hit"; 1d10+6 damage]*, a lasso*, a belt axe, a dagger, and 125 gold in coin.*
+*Level 4(d8+4), HP 32, AC 16, disposition neutral/evil. Its primary attributes are physical. It has splint mail armor, *a +1 heavy flail [specialized; +6 "to hit"; 1d10+6 damage]*, a lasso*, a belt axe, a dagger, and 125 gold in coin.*
 
 **Core Stats:** HP 32, AC 16, Disposition neutral/evil
 
@@ -2179,6 +2514,14 @@
 {
   "sourceIndex": 88639,
   "title": "Grimlock Manface (Losel Chieftain)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Grimlock Manface (Losel Chieftain)",
     "titleLine": "There are smaller tribes scattered about the Little Hillwood Forest, and when an adolescent male is ostracized by the tribe (usually after losing a fight over mating rights), he may join one of these or likely perish alone; otherwise, outside tribes are treated with hostility. The Castle Keeper must choose where these are located, though it is possible that they are migratory."
@@ -2211,11 +2554,11 @@
     "ac": "16",
     "disposition": "neutral/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "equipment": "splint mail armor and carry a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger",
     "coins": "125 gp"
   },
-  "canonicalParenthetical": "HP 32, AC 16, disposition neutral/evil. Saves: P. It has splint mail armor, *a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage]*, a lasso*, a belt axe, a dagger, and 125 gold in coin."
+  "canonicalParenthetical": "Level 4(d8+4), HP 32, AC 16, disposition neutral/evil. Its primary attributes are physical. It has splint mail armor, *a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage]*, a lasso*, a belt axe, a dagger, and 125 gold in coin."
 }
 ```
 </details>
@@ -2224,7 +2567,7 @@
 
 ### 42. Ji'gun-tima (Losel Shaman)
 
-*HP 25, AC 12, disposition neutral/evil. Saves: P. It can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*.*
+*HP 25, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. She can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*.*
 
 **Core Stats:** HP 25, AC 12, Disposition neutral/evil
 
@@ -2235,6 +2578,14 @@
 {
   "sourceIndex": 89263,
   "title": "Ji'gun-tima (Losel Shaman)",
+  "classification": {
+    "type": "classed",
+    "format": "A",
+    "subtype": "spellcaster",
+    "confidence": "high",
+    "reasoning": "Classed NPC (Spellcaster - highest priority override)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Ji'gun-tima (Losel Shaman)",
     "titleLine": "**Grimlock Manface (Losel Chieftain):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 32, AC 16, MV 30 ft., 40 ft. climb or brachiate. His saves are physical. His special ability is darkvision 300 ft. He attacks by weapon at +4 damage due to strength. His long arms allow first strike against any creature of equal or smaller size, and he has the conceal ability as per the PHB ranger class. He wears splint mail armor and wields a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger. He also wears a sinew necklace laced with 100 fingers, and a gold armlet worth 125 gp. XP: 268)_"
@@ -2270,7 +2621,7 @@
     "attributes": "strength",
     "spells": "a mixture of cleric and wizard spells at a 5th level ability"
   },
-  "canonicalParenthetical": "HP 25, AC 12, disposition neutral/evil. Saves: P. It can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*."
+  "canonicalParenthetical": "HP 25, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. She can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*."
 }
 ```
 </details>
@@ -2279,7 +2630,7 @@
 
 ### 43. Losel sub-chiefs x 10
 
-*HP 16, AC 14, disposition neutral/evil. Saves: P.*
+*Level 2(d8+4), HP 16, AC 14, disposition neutral/evil. Its primary attributes are physical.*
 
 **Core Stats:** HP 16, AC 14, Disposition neutral/evil
 
@@ -2290,6 +2641,14 @@
 {
   "sourceIndex": 89896,
   "title": "Losel sub-chiefs x 10",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Losel sub-chiefs x 10",
     "titleLine": "**Ji'gun-tima (Losel Shaman):** _(This neutral evil humanoid's vital stats are HD 4d8+4, HP 25, AC 12, MV 30 ft., 40 ft. climb or brachiate. Her saves are mental and physical. Her special ability is darkvision 300 ft. Her attacks are at +2 damage due to strength. She has a +1 dagger [+5 \"to hit\"; 1d4+3 damage], +1 staff of protection mounted with bronzed skull head, and a shaman's rattle**. She can cast a mixture of cleric and wizard spells at a 5th level ability. She typically has the following spells memorized: 1st level--cause fear, cure light wounds, magic missile, sleep; 2nd--hold person, mirror image; 3rd--curse. XP: 260)_"
@@ -2322,9 +2681,9 @@
     "ac": "14",
     "disposition": "neutral/evil",
     "raceClass": "humanoid",
-    "attributes": "strength"
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 16, AC 14, disposition neutral/evil. Saves: P."
+  "canonicalParenthetical": "Level 2(d8+4), HP 16, AC 14, disposition neutral/evil. Its primary attributes are physical."
 }
 ```
 </details>
@@ -2333,7 +2692,7 @@
 
 ### 44. Losel warriors x 30
 
-*HP 10, AC 14, disposition neutral/evil. Saves: P.*
+*Level 1(d8+4), HP 10, AC 14, disposition neutral/evil. Its primary attributes are physical.*
 
 **Core Stats:** HP 10, AC 14, Disposition neutral/evil
 
@@ -2344,6 +2703,14 @@
 {
   "sourceIndex": 90458,
   "title": "Losel warriors x 30",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Losel warriors x 30",
     "titleLine": "**Losel sub-chiefs x 10:** _(These neutral evil humanoids' vital stats are HD 2d8+4, HP 16, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack by weapon at +3 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have chain mail armor, heavy flail [+2 \"to hit\"; 1d10+3 damage], lasso*, and sinew necklaces laced with the fingers of those they have killed. XP: 40+2)_"
@@ -2376,9 +2743,9 @@
     "ac": "14",
     "disposition": "neutral/evil",
     "raceClass": "humanoid",
-    "attributes": "strength"
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 10, AC 14, disposition neutral/evil. Saves: P."
+  "canonicalParenthetical": "Level 1(d8+4), HP 10, AC 14, disposition neutral/evil. Its primary attributes are physical."
 }
 ```
 </details>
@@ -2387,7 +2754,7 @@
 
 ### 45. Losel females x 35
 
-*HP 6, AC 12, disposition neutral/evil. Saves: P. It has *clubs [+1 "to hit"; 1d6+1 damage]*.*
+*Level 1(d8), HP 6, AC 12, disposition neutral/evil. Its primary attributes are physical. It has *clubs [+1 "to hit"; 1d6+1 damage]*.*
 
 **Core Stats:** HP 6, AC 12, Disposition neutral/evil
 
@@ -2398,6 +2765,14 @@
 {
   "sourceIndex": 91060,
   "title": "Losel females x 35",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Losel females x 35",
     "titleLine": "**Losel warriors x 30:** _(These neutral evil humanoids' vital stats are HD 1d8+4, HP 10, AC 14, MV 30 ft., 40 ft. climb or brachiate. Their saves are physical. Their special ability is darkvision 300 ft. They attack at +2 damage due to strength. Their long arms allow first strike against any creature of equal or smaller size, and they have the conceal ability as per the PHB ranger class. They have crude leather armor, stone clubs [+1 \"to hit\"; 1d6+2 damage] and/or long bow [+1 \"to hit\"; 1d6 damage] with 12 arrows, and sinew necklaces laced with the fingers of those they have killed. XP: 18+1)_"
@@ -2430,10 +2805,10 @@
     "ac": "12",
     "disposition": "neutral/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "equipment": "clubs [+1 \"to hit\"; 1d6+1 damage]"
   },
-  "canonicalParenthetical": "HP 6, AC 12, disposition neutral/evil. Saves: P. It has *clubs [+1 \"to hit\"; 1d6+1 damage]*."
+  "canonicalParenthetical": "Level 1(d8), HP 6, AC 12, disposition neutral/evil. Its primary attributes are physical. It has *clubs [+1 \"to hit\"; 1d6+1 damage]*."
 }
 ```
 </details>
@@ -2442,7 +2817,7 @@
 
 ### 46. **Iggy the Mad*:** _
 
-*HP 22, AC 13, disposition chaos/neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 12 copper in coin.*
+*HP 22, AC 13, disposition chaos/neutral. Its primary attributes are physical. It has 12 copper in coin.*
 
 **Core Stats:** HP 22, AC 13, Disposition chaos/neutral
 
@@ -2453,6 +2828,15 @@
 {
   "sourceIndex": 92960,
   "title": "**Iggy the Mad*:** _",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "confidence": "high",
+    "reasoning": "Monster (default - no class/rank/humanoid signals) - Named creature",
+    "warnings": [
+      "Named non-humanoid creature remains Monster format (correct per V3.0)"
+    ]
+  },
   "labels": {
     "inline": "**Iggy the Mad*:** _",
     "titleLine": "See **Player Handout #2** _(Upper Works Map & Illustration Booklet)_ for an illustration of Iggy the Mad."
@@ -2483,11 +2867,11 @@
     "hp": "22",
     "ac": "13",
     "disposition": "chaos/neutral",
-    "attributes": "strength and wisdom",
+    "attributes": "physical",
     "coins": "12 cp",
     "raceClass": "within 20'"
   },
-  "canonicalParenthetical": "HP 22, AC 13, disposition chaos/neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 12 copper in coin."
+  "canonicalParenthetical": "HP 22, AC 13, disposition chaos/neutral. Its primary attributes are physical. It has 12 copper in coin."
 }
 ```
 </details>
@@ -2496,7 +2880,7 @@
 
 ### 47. The Ogre
 
-*HP 27, AC 16, disposition chaos/evil. Saves: P.*
+*Level 4(d12), HP 27, AC 16, disposition chaos/evil.*
 
 **Core Stats:** HP 27, AC 16, Disposition chaos/evil
 
@@ -2507,6 +2891,14 @@
 {
   "sourceIndex": 96795,
   "title": "The Ogre",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "The Ogre",
     "titleLine": "This cottage is owned by a 9.5-foot tall, hairy, pot-bellied **ogre** of nasty disposition. The ogre is here 85% of the time, cracking the whip on the **3-6 human children** whom he has enslaved; otherwise he is out on a raiding mission for loot or more slaves."
@@ -2541,7 +2933,7 @@
     "raceClass": "humanoid",
     "attributes": "dlock"
   },
-  "canonicalParenthetical": "HP 27, AC 16, disposition chaos/evil. Saves: P."
+  "canonicalParenthetical": "Level 4(d12), HP 27, AC 16, disposition chaos/evil."
 }
 ```
 </details>
@@ -2550,7 +2942,7 @@
 
 ### 48. Children x 3-6
 
-*HP 2, AC 10, disposition neutral. Saves: P.*
+*Level 1(d2), HP 2, AC 10, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 2, AC 10, Disposition neutral
 
@@ -2561,6 +2953,13 @@
 {
   "sourceIndex": 97199,
   "title": "Children x 3-6",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "confidence": "high",
+    "reasoning": "Default to Monster",
+    "warnings": []
+  },
   "labels": {
     "inline": "Children x 3-6",
     "titleLine": "**The Ogre:** _(This chaotic evil humanoid's vital stats are HD 4d12, HP 27, AC 16, MV 30 ft. Its saves are physical. It attacks with a giant spiked club for 1d8+4 damage or by slamming with its fists for 1d10+4 damage [attacks at +4 damage due to size and strength]. It has a giant spiked club, a hand_ _axe_ _the size of a normal battle axe, a 25' whip, and a key to the barn padlock. XP: 178)_"
@@ -2592,9 +2991,10 @@
     "hp": "2",
     "ac": "10",
     "disposition": "neutral",
-    "raceClass": "neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10"
+    "raceClass": "neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 2, AC 10, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d2), HP 2, AC 10, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -2603,7 +3003,7 @@
 
 ### 49. **Batrachianoids* x 6:** _
 
-*HP 5, AC 14, disposition chaos/evil. Saves: P.*
+*Level 1(d8), HP 5, AC 14, disposition chaos/evil. Its primary attributes are physical.*
 
 **Core Stats:** HP 5, AC 14, Disposition chaos/evil
 
@@ -2614,6 +3014,14 @@
 {
   "sourceIndex": 103505,
   "title": "**Batrachianoids* x 6:** _",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "**Batrachianoids* x 6:** _",
     "titleLine": "Under the moss-gripped mound is a maze of muddy burrows (tunnels of c. two feet in diameter) and two dens (hemispherical earth caves of c. 12 and 16 feet in diameter and six and eight feet in height). If disturbed, 6 boggiwog warriors will slither up from the muck using their _hide_ and _chameleon_ abilities. They will the spring forth to assail the intruders while the remainder of the tribe hides in the lair."
@@ -2645,9 +3053,10 @@
     "hp": "5",
     "ac": "14",
     "disposition": "chaos/evil",
-    "raceClass": "humanoid"
+    "raceClass": "humanoid",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 5, AC 14, disposition chaos/evil. Saves: P."
+  "canonicalParenthetical": "Level 1(d8), HP 5, AC 14, disposition chaos/evil. Its primary attributes are physical."
 }
 ```
 </details>
@@ -2656,7 +3065,7 @@
 
 ### 50. Blook-glook (Batrachianoid Chieftain)
 
-*HP 20, AC 14, disposition chaos/evil. Saves: P. It has a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry.*
+*Level 3(d10+4), HP 20, AC 14, disposition chaos/evil. Its primary attributes are physical. It has a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry.*
 
 **Core Stats:** HP 20, AC 14, Disposition chaos/evil
 
@@ -2667,6 +3076,14 @@
 {
   "sourceIndex": 104261,
   "title": "Blook-glook (Batrachianoid Chieftain)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Blook-glook (Batrachianoid Chieftain)",
     "titleLine": "In the larger of the two lairs there are **2 more boggiwog warriors** (as above), **3 females** (equal to the males, except of 4 HP each), **8 young** (non-combatant, 1 HP each), and **1 chieftain, Blook-glook**. The two warriors and chieftain win initiative versus any opponent that crawls into the fen mound of these batrachianoids."
@@ -2699,12 +3116,12 @@
     "ac": "14",
     "disposition": "chaos/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "equipment": "a diamond-studded gold necklace worth 1, 000 gp",
     "jewelry": "1000 gold worth of jewelry",
     "coins": "000 gp"
   },
-  "canonicalParenthetical": "HP 20, AC 14, disposition chaos/evil. Saves: P. It has a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry."
+  "canonicalParenthetical": "Level 3(d10+4), HP 20, AC 14, disposition chaos/evil. Its primary attributes are physical. It has a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry."
 }
 ```
 </details>
@@ -2713,7 +3130,7 @@
 
 ### 51. Spider, Giant (medium-sized) x 2
 
-*HP 13, AC 15, disposition neutral. Saves: P.*
+*Level 3(d8), HP 13, AC 15, disposition neutral.*
 
 **Core Stats:** HP 13, AC 15, Disposition neutral
 
@@ -2724,6 +3141,14 @@
 {
   "sourceIndex": 105936,
   "title": "Spider, Giant (medium-sized) x 2",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Spider, Giant (medium-sized) x 2",
     "titleLine": "**2 giant spiders** have spun a nest of webs between the trees and underbrush here, occupying an area of 120 square feet. On the ground, under dead leaves and conifer needles, lies a pile of parched bones and scraps of metal. Among these is a **+1 warhammer of lesser undead detection**. This _intelligent weapon_ glows with an indigo-blue light in the presence (50-ft. radius) of lesser undead (zombies, skeletons, ghouls -- anything HD 2 or less). The hammer will urge its wielder to destroy such foul vermin, \"...in the name of Thor!\" Other items include a rusted suit of chain mail, a cracked kite shield emblazoned with a green dragon, and the buckles and clasps of garments long since rotted."
@@ -2758,7 +3183,7 @@
     "raceClass": "creature",
     "attributes": "ralyzation for 1d6 hours"
   },
-  "canonicalParenthetical": "HP 13, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 3(d8), HP 13, AC 15, disposition neutral."
 }
 ```
 </details>
@@ -2767,7 +3192,7 @@
 
 ### 52. **Harpy*:** _
 
-*HP 13, AC 13, disposition chaos/evil. Saves: P.*
+*Level 3(d8), HP 13, AC 13, disposition chaos/evil. Its primary attributes are physical.*
 
 **Core Stats:** HP 13, AC 13, Disposition chaos/evil
 
@@ -2778,6 +3203,13 @@
 {
   "sourceIndex": 107407,
   "title": "**Harpy*:** _",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "confidence": "high",
+    "reasoning": "Default to Monster",
+    "warnings": []
+  },
   "labels": {
     "inline": "**Harpy*:** _",
     "titleLine": "Nested high in the boughs dwells a **harpy**. She has a strangely attractive appearance when viewed from afar (100+ feet), though is hideous upon closer inspection. Once she spots a potential victim(s), such as those who veer off from the Old Castle Track (perhaps to camp, etc.), she will position herself at a slightly visible distance and then sing her lamenting, _captivating song_. She will lure her victims close, then take one back to her nest to be tortured and devoured. She is not of mind to fight a party of adventurers, preferring to steal one away, though she will defend her nest if the blackjack oak is ascended, for she places a great value on her treasures."
@@ -2812,7 +3244,7 @@
     "raceClass": "humanoid",
     "attributes": "charisma"
   },
-  "canonicalParenthetical": "HP 13, AC 13, disposition chaos/evil. Saves: P."
+  "canonicalParenthetical": "Level 3(d8), HP 13, AC 13, disposition chaos/evil. Its primary attributes are physical."
 }
 ```
 </details>
@@ -2821,7 +3253,7 @@
 
 ### 53. Tick, Giant x 3
 
-*HP 11, AC 15, disposition neutral. Saves: P.*
+*Level 2(d8), HP 11, AC 15, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 11, AC 15, Disposition neutral
 
@@ -2832,6 +3264,14 @@
 {
   "sourceIndex": 108895,
   "title": "Tick, Giant x 3",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Tick, Giant x 3",
     "titleLine": "Hidden in the alders is a nest of three giant ticks of 2.5-foot length. These mega-insects will bide their time, crawling under leaves, between stones, preying on creatures that drink of the sparkling water."
@@ -2863,9 +3303,10 @@
     "hp": "11",
     "ac": "15",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 11, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 2(d8), HP 11, AC 15, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -2874,7 +3315,7 @@
 
 ### 54. Wood Elf Scouts x 11
 
-*HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin.*
+*Level 1(d10), HP 8, AC 12, disposition chaos/neutral. Its primary attributes are physical. It has 18 silver in coin.*
 
 **Core Stats:** HP 8, AC 12, Disposition chaos/neutral
 
@@ -2885,6 +3326,14 @@
 {
   "sourceIndex": 111852,
   "title": "Wood Elf Scouts x 11",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Wood Elf Scouts x 11",
     "titleLine": "There are **12 wood elves** stationed here. Every day they send out a team of 4 to patrol the east bank of the False Urt River, and wear armor laced with leaves and twigs, their faces painted green and brown, whilst doing so. So, if it is daytime, there is a 75% chance only 8 of the 12 elves will be present here. Of those present, 4 will be spread about the verge of the tamarack stand. By night, all are here. The wood elves are led by one **Ember Raventree**, who answers directly to **Aldion Ashgrove** _(CZY environs #26)_."
@@ -2920,7 +3369,7 @@
     "coins": "18 sp",
     "raceClass": "1st level, chaotic neutral fighters"
   },
-  "canonicalParenthetical": "HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin."
+  "canonicalParenthetical": "Level 1(d10), HP 8, AC 12, disposition chaos/neutral. Its primary attributes are physical. It has 18 silver in coin."
 }
 ```
 </details>
@@ -2929,7 +3378,7 @@
 
 ### 55. Ember Raventree (wood elf leader)
 
-*HP 22, AC 16, disposition chaos/neutral. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has 35 sp, 100 gp.*
+*Level 4(d10), HP 22, AC 16, disposition chaos/neutral. Its primary attributes are physical. Its significant attributes are strength 17 and dexterity 17. It has 35 silver, 100 gold.*
 
 **Core Stats:** HP 22, AC 16, Disposition chaos/neutral
 
@@ -2940,6 +3389,14 @@
 {
   "sourceIndex": 112303,
   "title": "Ember Raventree (wood elf leader)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Ember Raventree (wood elf leader)",
     "titleLine": "**Wood Elf Scouts x 11:** _(They are 1st level, chaotic neutral fighters whose vital stats are HD 1d10, HP 8, AC 12, MV 30 ft. Their primary attributes are physical. Their significant attribute is dexterity 15. Their special abilities include hide, move silent, pass without trace, longbow training. They are equipped with padded armor, longbow [specialized; +4 \"to hit\"; 1d6+1 damage], arrows x12, short sword, and 3-18 sp. XP: 13+1)_"
@@ -2976,7 +3433,7 @@
     "coins": "35 sp, 100 gp",
     "raceClass": "He is a 4th level, chaotic neutral fighter whose"
   },
-  "canonicalParenthetical": "HP 22, AC 16, disposition chaos/neutral. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has 35 sp, 100 gp."
+  "canonicalParenthetical": "Level 4(d10), HP 22, AC 16, disposition chaos/neutral. Its primary attributes are physical. Its significant attributes are strength 17 and dexterity 17. It has 35 silver, 100 gold."
 }
 ```
 </details>
@@ -2985,7 +3442,7 @@
 
 ### 56. 86-90
 
-*HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*
+*HP 23, AC 15, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He wears a splint mail and great helms and carries a magical heavy flails, and 2–12 gold in coin. His secondary skill is Nautical Ability. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*. He carries twenty-five in jewelry.*
 
 **Core Stats:** HP 23, AC 15, Disposition variable
 
@@ -2996,6 +3453,14 @@
 {
   "sourceIndex": 55432,
   "title": "86-90",
+  "classification": {
+    "type": "classed",
+    "format": "A",
+    "subtype": "spellcaster",
+    "confidence": "high",
+    "reasoning": "Classed NPC (Spellcaster - highest priority override)",
+    "warnings": []
+  },
   "labels": {
     "inline": "86-90",
     "titleLine": "**81-85** Dying (40% chance from poison, 30% from injury, 30% from disease); -1 to -2 on attack \"to hit\", and damage scored."
@@ -3036,7 +3501,7 @@
     "spells": "water breathing at will and cast a powerful charm person spell that lasts for one year",
     "jewelry": "25 gold worth of jewelry"
   },
-  "canonicalParenthetical": "HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*."
+  "canonicalParenthetical": "HP 23, AC 15, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He wears a splint mail and great helms and carries a magical heavy flails, and 2–12 gold in coin. His secondary skill is Nautical Ability. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*. He carries twenty-five in jewelry."
 }
 ```
 </details>
@@ -3045,7 +3510,7 @@
 
 ### 57. Raven "One-Eye"
 
-*HP 2, AC 14, disposition neutral. Saves: P.*
+*Level 1(d2), HP 2, AC 14, disposition neutral.*
 
 **Core Stats:** HP 2, AC 14, Disposition neutral
 
@@ -3056,6 +3521,13 @@
 {
   "sourceIndex": 115657,
   "title": "Raven \"One-Eye\"",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "confidence": "high",
+    "reasoning": "Default to Monster",
+    "warnings": []
+  },
   "labels": {
     "inline": "Raven \"One-Eye\"",
     "titleLine": "Outside the cabin, hidden under a tarpaulin of waterproofed leather (covered with leaves and twigs), there are 3 canoes of birch that will each hold up to four men and their usual gear. Also, in the northern portion of the tamarack stand, there resides an old one-eyed **raven**, quite ornery, though wise and intelligent. It conveys messages between Ember Raventree and Aldion Ashgrove (both of whom understand its tongue)."
@@ -3090,7 +3562,7 @@
     "raceClass": "animal",
     "attributes": "ble of combat, fleeing from danger"
   },
-  "canonicalParenthetical": "HP 2, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d2), HP 2, AC 14, disposition neutral."
 }
 ```
 </details>
@@ -3099,7 +3571,7 @@
 
 ### 58. Bandit sentries x 8
 
-*HP 4, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*
+*Level 1(d6), HP 4, AC 12, disposition neutral/evil. Their primary attributes are physical. They have 6 silver in coin.*
 
 **Core Stats:** HP 4, AC 12, Disposition neutral/evil
 
@@ -3110,6 +3582,14 @@
 {
   "sourceIndex": 116651,
   "title": "Bandit sentries x 8",
+  "classification": {
+    "type": "monster",
+    "format": "C",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Unit (bandit group override)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Bandit sentries x 8",
     "titleLine": "If the PCs approach Castle Zagyg by way of the Old Castle Track they will at length approach the Outer Gatehouse (barbican) (_Ruins of the Castle Precincts_ **#**1). **Bandit sentries x 8**, however, are positioned along the last mile of the Old Castle Track. There are four teams, each comprised of two carefully hidden bandit sentries. These sentries will send a chain of warning arrows to alert their fellows at the barbican of approaching adventurers. They will not confront the PCs unless conflict erupts at the barbican."
@@ -3142,9 +3622,10 @@
     "disposition": "neutral/evil",
     "attributes": "physical",
     "coins": "6 sp",
-    "raceClass": "1st level, neutral evil, human fighters"
+    "raceClass": "1st level, neutral evil, human fighters",
+    "hd": "1d6"
   },
-  "canonicalParenthetical": "HP 4, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin."
+  "canonicalParenthetical": "Level 1(d6), HP 4, AC 12, disposition neutral/evil. Their primary attributes are physical. They have 6 silver in coin."
 }
 ```
 </details>
@@ -3153,7 +3634,7 @@
 
 ### 59. Bat, Cave
 
-*HP 1, AC 12, disposition neutral. Saves: P.*
+*Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 1, AC 12, Disposition neutral
 
@@ -3164,6 +3645,14 @@
 {
   "sourceIndex": 127925,
   "title": "Bat, Cave",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Bat, Cave",
     "titleLine": "The following creatures are among those randomly encountered inside the _Mouths of Madness_. Most are fully described in _Monsters & Treasure_, though notable exceptions are indicated below, including some slight modifications to the _M&T_ critters. The Castle Keeper is encouraged to bolster or reduce monster stats and numbers to appropriately challenge the player characters. Hit Point totals are suggested values open to CK modification."
@@ -3195,9 +3684,10 @@
     "hp": "1",
     "ac": "12",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 1, AC 12, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -3206,7 +3696,7 @@
 
 ### 60. Centipedes, Black, Giant
 
-*HP 3, AC 18, disposition neutral. Saves: P.*
+*Level 2(d3), HP 3, AC 18, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 3, AC 18, Disposition neutral
 
@@ -3217,6 +3707,14 @@
 {
   "sourceIndex": 128374,
   "title": "Centipedes, Black, Giant",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Centipedes, Black, Giant",
     "titleLine": "**Bat, Cave:** _(These neutral creatures' vital stats are HD 1d2, HP 1, AC 12, MV 5 ft., 50 ft. fly. Their saves are physical. They attack by swarming exposed portions of the body. Their attacks are in groups of four, and they make 1 attack for each 4 bats. If a hit is scored, 1 point of damage is inflicted from scratches and bites. They receive +3 to all \"to hit\" rolls. They attack for only 1d4 rounds before leaving. XP: 5+1)_"
@@ -3248,9 +3746,10 @@
     "hp": "3",
     "ac": "18",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 3, AC 18, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 2(d3), HP 3, AC 18, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -3259,7 +3758,7 @@
 
 ### 61. **Fire Beetles*, Giant:** _
 
-*HP 6, AC 16, disposition neutral. Saves: P.*
+*Level 1(d10), HP 6, AC 16, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 6, AC 16, Disposition neutral
 
@@ -3270,6 +3769,14 @@
 {
   "sourceIndex": 128665,
   "title": "**Fire Beetles*, Giant:** _",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "**Fire Beetles*, Giant:** _",
     "titleLine": "**Centipedes, Black, Giant:** _(These neutral creatures' vital stats are HD 2d3, HP 3, AC 18, MV 25 ft. Their saves are physical. They attack with a bite for 1d2 points of damage. If the bite attack is successful, the victim must save vs. poison or take another 2d6 points of damage. XP: 7+1)_"
@@ -3301,9 +3808,10 @@
     "hp": "6",
     "ac": "16",
     "disposition": "neutral",
-    "raceClass": "These neutral insects'"
+    "raceClass": "These neutral insects'",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 6, AC 16, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d10), HP 6, AC 16, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -3312,7 +3820,7 @@
 
 ### 62. Rats, Giant
 
-*HP 2, AC 13, disposition neutral. Saves: P.*
+*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 2, AC 13, Disposition neutral
 
@@ -3323,6 +3831,14 @@
 {
   "sourceIndex": 128908,
   "title": "Rats, Giant",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Rats, Giant",
     "titleLine": "**Fire Beetles*, Giant:** _(These neutral insects' vital stats are HD 1d10, HP 6, AC 16, MV 30 ft. Their saves are physical. They attack with a bite for 2d4 damage. Their special ability is darkvision 60'. They glow red in a 10-foot radius. XP: 7+1)_"
@@ -3354,9 +3870,10 @@
     "hp": "2",
     "ac": "13",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -3365,7 +3882,7 @@
 
 ### 63. Snake, Poisonous
 
-*HP 4, AC 14, disposition neutral. Saves: P.*
+*Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 4, AC 14, Disposition neutral
 
@@ -3376,6 +3893,14 @@
 {
   "sourceIndex": 129247,
   "title": "Snake, Poisonous",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Snake, Poisonous",
     "titleLine": "**Rats, Giant:** _(These neutral animals' vital stats are HD 1d4, HP 2, AC 13, MV 30 ft., 15 ft. climb. Their saves are physical. They attack with a bite for 1d2 points of damage, a shield's AC bonus not applicable. They have twilight vision, and 10% will be diseased, the effects of which the Castle Keeper may determine. XP: 1+1)_"
@@ -3407,9 +3932,10 @@
     "hp": "4",
     "ac": "14",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 4, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -3418,7 +3944,7 @@
 
 ### 64. Spider, Giant (medium-sized)
 
-*HP 13, AC 15, disposition neutral. Saves: P.*
+*Level 3(d8), HP 13, AC 15, disposition neutral.*
 
 **Core Stats:** HP 13, AC 15, Disposition neutral
 
@@ -3429,6 +3955,14 @@
 {
   "sourceIndex": 129551,
   "title": "Spider, Giant (medium-sized)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Spider, Giant (medium-sized)",
     "titleLine": "**Snake, Poisonous:** _(These neutral animals' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. They attack with a bite for 1 point of damage. Their bite delivers poison for 2d3 points of additional damage, save vs. poison reduces damage to one-half [1d3]. XP: 9+1)_"
@@ -3463,7 +3997,7 @@
     "raceClass": "creature",
     "attributes": "ralyzation for 1d6 hours"
   },
-  "canonicalParenthetical": "HP 13, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 3(d8), HP 13, AC 15, disposition neutral."
 }
 ```
 </details>
@@ -3472,7 +4006,7 @@
 
 ### 65. Tick, Giant
 
-*HP 11, AC 15, disposition neutral. Saves: P.*
+*Level 2(d8), HP 11, AC 15, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 11, AC 15, Disposition neutral
 
@@ -3483,6 +4017,14 @@
 {
   "sourceIndex": 130089,
   "title": "Tick, Giant",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Tick, Giant",
     "titleLine": "**Spider, Giant (medium-sized):** _(These neutral creatures' vital stats are HD 3d8, HP 13, AC 15, Move 30 ft., 20 ft. climb. Their saves are physical. They attack with a bite for 1d6 points of damage. Their bite injects venom for 1d6 additional damage, save negates. If the first save fails, an additional save is required one round later. If the second save also fails, the victim suffers an additional 1d4 damage and paralyzation for 1d6 hours. These spiders also can throw a web 8 times per day as per the web spell [as found in the PHB]. XP: 52+3)_"
@@ -3514,9 +4056,10 @@
     "hp": "11",
     "ac": "15",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 11, AC 15, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 2(d8), HP 11, AC 15, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -3525,7 +4068,7 @@
 
 ### 66. Wolves x 5
 
-*HP 9, AC 13, disposition neutral. Saves: P.*
+*Level 2(d8), HP 9, AC 13, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 9, AC 13, Disposition neutral
 
@@ -3536,6 +4079,13 @@
 {
   "sourceIndex": 131969,
   "title": "Wolves x 5",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "confidence": "high",
+    "reasoning": "Default to Monster",
+    "warnings": []
+  },
   "labels": {
     "inline": "Wolves x 5",
     "titleLine": "The **Little Hillwood Werewolf**, a diabolical creature that terrorizes local humans and humanoids alike, has taken to lairing here (20% chance of being about), and nary an alpha male or female contests his presence."
@@ -3567,9 +4117,10 @@
     "hp": "9",
     "ac": "13",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 9, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 2(d8), HP 9, AC 13, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -3578,7 +4129,7 @@
 
 ### 67. **The Little Hillwood Werewolf*:** _
 
-*HP 25, AC 15, disposition chaos/evil. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*
+*Level 4(d8), HP 25, AC 15, disposition chaos/evil.*
 
 **Core Stats:** HP 25, AC 15, Disposition chaos/evil
 
@@ -3589,6 +4140,14 @@
 {
   "sourceIndex": 133978,
   "title": "**The Little Hillwood Werewolf*:** _",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "**The Little Hillwood Werewolf*:** _",
     "titleLine": "**>>[end boxed** **text]<<**"
@@ -3624,7 +4183,7 @@
     "level": "12",
     "attributes": "citate the person for 1d4 days"
   },
-  "canonicalParenthetical": "HP 25, AC 15, disposition chaos/evil. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
+  "canonicalParenthetical": "Level 4(d8), HP 25, AC 15, disposition chaos/evil."
 }
 ```
 </details>
@@ -3633,7 +4192,7 @@
 
 ### 68. Kobold Guards x 2
 
-*HP 3, AC 15, disposition law/evil. Saves: P. They have 6 silver in coin.*
+*Level 1(d4), HP 3, AC 15, disposition law/evil. Their primary attributes are physical. They have 6 silver in coin.*
 
 **Core Stats:** HP 3, AC 15, Disposition law/evil
 
@@ -3644,6 +4203,14 @@
 {
   "sourceIndex": 138174,
   "title": "Kobold Guards x 2",
+  "classification": {
+    "type": "monster",
+    "format": "C",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Unit (HD present + group formation detected)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Kobold Guards x 2",
     "titleLine": "**Tactics**: Any intrusion will result in the kobold youngster running to alert the kobolds of rooms #7, 8, and 9. First it will traverse a board that spans the **pit** **[X]**, then pull the board with him, thus effecting the trap. Meantime, the two kobold guards will use blowguns to attack intruders, then javelins. These darts are laced with a _sleep_ toxin. If an intruder gets by, the kobolds will unleash the guard dog on them. The kobolds will attempt to take prisoners whom they will then ransom for 10 gp each, such prisoners being sequestered in the chieftain's chamber (#9)."
@@ -3676,9 +4243,10 @@
     "ac": "15",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. They have 6 silver in coin."
+  "canonicalParenthetical": "Level 1(d4), HP 3, AC 15, disposition law/evil. Their primary attributes are physical. They have 6 silver in coin."
 }
 ```
 </details>
@@ -3687,7 +4255,7 @@
 
 ### 69. Mastiff
 
-*HP 15, AC 14, disposition neutral. Saves: P.*
+*Level 3(d8), HP 15, AC 14, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 15, AC 14, Disposition neutral
 
@@ -3698,6 +4266,13 @@
 {
   "sourceIndex": 138585,
   "title": "Mastiff",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "confidence": "high",
+    "reasoning": "Default to Monster",
+    "warnings": []
+  },
   "labels": {
     "inline": "Mastiff",
     "titleLine": "**Kobold Guards x 2:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light_ _sensitivity[-1 to attacks in bright light]. They have leather armor, javelins x3, dagger, blowguns, 2 needles, and 1d6 sp. The blowgun needles hold a sleep toxin, save versus poison [CL 3] or fall into a slumber for 4d4 rounds. XP: 9+1)_"
@@ -3729,9 +4304,10 @@
     "hp": "15",
     "ac": "14",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 15, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 3(d8), HP 15, AC 14, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -3740,7 +4316,7 @@
 
 ### 70. Fekk
 
-*HP 2, AC 10, disposition law/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries has a key to the door of this room, and 5 gp, 3 cp.*
+*HP 2, AC 10, disposition law/evil. Its primary attributes are physical. It has a has a key to the door of this room and 5 gold, 3 copper.*
 
 **Core Stats:** HP 2, AC 10, Disposition law/evil
 
@@ -3751,6 +4327,15 @@
 {
   "sourceIndex": 141713,
   "title": "Fekk",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "confidence": "high",
+    "reasoning": "Monster (default - no class/rank/humanoid signals) - Named creature",
+    "warnings": [
+      "Named non-humanoid creature remains Monster format (correct per V3.0)"
+    ]
+  },
   "labels": {
     "inline": "Fekk",
     "titleLine": "**_CK's Note_**: If the PCs use flaming missiles against the kobolds, the humanoids will remember what the wood alcohol and bottles are for and retaliate with like “grenades.” It is suggested that damage from a direct hit be d6 per round for 3 rounds or until the fire is extinguished, splash damage causing d4 for 1 round only."
@@ -3783,9 +4368,10 @@
     "disposition": "law/evil",
     "equipment": "a silver armlet worth 5 gp, carry key to the door of this room, and 3 cp",
     "coins": "5 gp, 3 cp",
-    "raceClass": "kobold"
+    "raceClass": "kobold",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 2, AC 10, disposition law/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries has a key to the door of this room, and 5 gp, 3 cp."
+  "canonicalParenthetical": "HP 2, AC 10, disposition law/evil. Its primary attributes are physical. It has a has a key to the door of this room and 5 gold, 3 copper."
 }
 ```
 </details>
@@ -3794,7 +4380,7 @@
 
 ### 71. Kobold warrior x 6
 
-*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*
 
 **Core Stats:** HP 3, AC 15, Disposition law/evil
 
@@ -3805,6 +4391,14 @@
 {
   "sourceIndex": 142512,
   "title": "Kobold warrior x 6",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Kobold warrior x 6",
     "titleLine": "**>>[end boxed** **text]<<**"
@@ -3837,9 +4431,10 @@
     "ac": "15",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin."
 }
 ```
 </details>
@@ -3848,7 +4443,7 @@
 
 ### 72. Kobold serjeant x 1
 
-*HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*Level 2(d4), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*
 
 **Core Stats:** HP 6, AC 15, Disposition law/evil
 
@@ -3859,6 +4454,14 @@
 {
   "sourceIndex": 142809,
   "title": "Kobold serjeant x 1",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Kobold serjeant x 1",
     "titleLine": "**Kobold warrior x 6:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_"
@@ -3891,9 +4494,10 @@
     "ac": "15",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "Level 2(d4), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin."
 }
 ```
 </details>
@@ -3902,7 +4506,7 @@
 
 ### 73. Kobold warrior x
 
-*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*
 
 **Core Stats:** HP 3, AC 15, Disposition law/evil
 
@@ -3913,6 +4517,14 @@
 {
   "sourceIndex": 144008,
   "title": "Kobold warrior x",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Kobold warrior x",
     "titleLine": "**>>[end boxed** **text]<<**"
@@ -3945,9 +4557,10 @@
     "ac": "15",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin."
 }
 ```
 </details>
@@ -3956,7 +4569,7 @@
 
 ### 74. Kobold serjeant x 1
 
-*HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*Level 2(d4), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*
 
 **Core Stats:** HP 6, AC 15, Disposition law/evil
 
@@ -3967,6 +4580,14 @@
 {
   "sourceIndex": 144305,
   "title": "Kobold serjeant x 1",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Kobold serjeant x 1",
     "titleLine": "**Kobold warrior x **5:** _(These lawful evil humanoids' vital stats are HD 1d4, HP 3, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, javelins x 3, dagger, and 1d6 sp. XP: 5+1)_"
@@ -3999,9 +4620,10 @@
     "ac": "15",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "Level 2(d4), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin."
 }
 ```
 </details>
@@ -4010,7 +4632,7 @@
 
 ### 75. King Griggle-gruk (Kobold Chieftain)
 
-*HP 14, AC 17, disposition law/evil. Saves: P. It has plate mail armor, a has javelins x 3, *+1 shortsword*, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin.*
+*Level 4(d4), HP 14, AC 17, disposition law/evil. Its primary attributes are physical. It has plate mail armor, a has javelins x 3, *+1 shortsword*, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin.*
 
 **Core Stats:** HP 14, AC 17, Disposition law/evil
 
@@ -4021,6 +4643,14 @@
 {
   "sourceIndex": 146654,
   "title": "King Griggle-gruk (Kobold Chieftain)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "King Griggle-gruk (Kobold Chieftain)",
     "titleLine": "**>>[end boxed** **text]<<**"
@@ -4053,11 +4683,11 @@
     "ac": "17",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "equipment": "plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber",
     "coins": "18 gp"
   },
-  "canonicalParenthetical": "HP 14, AC 17, disposition law/evil. Saves: P. It has plate mail armor, a has javelins x 3, *+1 shortsword*, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin."
+  "canonicalParenthetical": "Level 4(d4), HP 14, AC 17, disposition law/evil. Its primary attributes are physical. It has plate mail armor, a has javelins x 3, *+1 shortsword*, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin."
 }
 ```
 </details>
@@ -4066,7 +4696,7 @@
 
 ### 76. Kobold Bodyguards x 2
 
-*HP 7, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*Level 2(d4), HP 7, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*
 
 **Core Stats:** HP 7, AC 15, Disposition law/evil
 
@@ -4077,6 +4707,14 @@
 {
   "sourceIndex": 147108,
   "title": "Kobold Bodyguards x 2",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Kobold Bodyguards x 2",
     "titleLine": "**King Griggle-gruk (Kobold Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d4, HP 14, AC 17, MV 30 ft. Its saves are physical. Its attacks are at +2 damage due to its strength and ferocity. Its special ability is darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. It wears plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber. In a pouch it carries 18 gp. XP: 72)_"
@@ -4109,9 +4747,10 @@
     "ac": "15",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 7, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "Level 2(d4), HP 7, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin."
 }
 ```
 </details>
@@ -4120,7 +4759,7 @@
 
 ### 77. Goblin prisoner
 
-*HP 4, AC 14, disposition law/evil. Saves: P. It has a loin cloth.*
+*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has a loin cloth.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -4131,6 +4770,14 @@
 {
   "sourceIndex": 148467,
   "title": "Goblin prisoner",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin prisoner",
     "titleLine": "The **goblin prisoner** is a spy from #D who was captured when he snuck in between a shift change and fell in the pit trap. He is being ransomed for 10 gp but the goblins have not paid the price. Soon he is likely to become dinner for the kobolds."
@@ -4163,9 +4810,10 @@
     "ac": "14",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "equipment": "a loin cloth"
+    "equipment": "a loin cloth",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has a loin cloth."
+  "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has a loin cloth."
 }
 ```
 </details>
@@ -4174,7 +4822,7 @@
 
 ### 78. "Charlie" the Ogre
 
-*HP 20, AC 16, disposition chaos/neutral. Saves: P.*
+*Level 4(d12), HP 20, AC 16, disposition chaos/neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 20, AC 16, Disposition chaos/neutral
 
@@ -4185,6 +4833,14 @@
 {
   "sourceIndex": 151141,
   "title": "\"Charlie\" the Ogre",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "\"Charlie\" the Ogre",
     "titleLine": "He has no wisdom to impart, save his like for his _\"little buddy\"_ kobolds. He doesn't like most others here, especially the **owlbear** (#J) which once bit him (he will show the scar on his forearm):_“See what dat big, feathered bear do? Nasty thing needs killin’!”_ He will, however, lose his temper should anyone laugh at him or refer to him as “stupid” or “dumb”—and he might attack (25% chance per insult)."
@@ -4217,9 +4873,9 @@
     "ac": "16",
     "disposition": "chaos/neutral",
     "raceClass": "humanoid",
-    "attributes": "strength"
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 20, AC 16, disposition chaos/neutral. Saves: P."
+  "canonicalParenthetical": "Level 4(d12), HP 20, AC 16, disposition chaos/neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -4228,7 +4884,7 @@
 
 ### 79. Goblin patrol warriors x 5
 
-*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*
+*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper in coin.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -4239,6 +4895,14 @@
 {
   "sourceIndex": 155973,
   "title": "Goblin patrol warriors x 5",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin patrol warriors x 5",
     "titleLine": "**Goblin Patrol:** The halls of this lair are patrolled by units of **5 goblin warriors**, these goblins also functioning as conveyors of various goods. It takes this patrol 10 minutes to do a complete circuit of the lair, so the Castle Keeper should roll a 1d6 for every 20 feet traveled in this lair, a 6 indicating an encounter with the patrol. These humanoids, if encountered, will attack any intruders, letting loose their battle cry, _“KREE-AHK!”_"
@@ -4271,9 +4935,10 @@
     "ac": "14",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 cp"
+    "coins": "6 cp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin."
+  "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper in coin."
 }
 ```
 </details>
@@ -4282,7 +4947,7 @@
 
 ### 80. Goblin guards x 4
 
-*HP 4, AC 14, disposition law/evil. Saves: P. They have 6 copper in coin.*
+*Level 1(d6), HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They have 6 copper in coin.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -4293,6 +4958,14 @@
 {
   "sourceIndex": 157044,
   "title": "Goblin guards x 4",
+  "classification": {
+    "type": "monster",
+    "format": "C",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Unit (HD present + group formation detected)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin guards x 4",
     "titleLine": "There is a 3-in-4 chance the goblins from #13 will respond to the hue and cry of these guards. As 1d4 of the goblins at #13 will be sleeping, the CK should stagger their arrival."
@@ -4325,9 +4998,10 @@
     "ac": "14",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 cp"
+    "coins": "6 cp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. They have 6 copper in coin."
+  "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They have 6 copper in coin."
 }
 ```
 </details>
@@ -4336,7 +5010,7 @@
 
 ### 81. Goblin patrol warriors x 6
 
-*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*
+*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper in coin.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -4347,6 +5021,14 @@
 {
   "sourceIndex": 158677,
   "title": "Goblin patrol warriors x 6",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin patrol warriors x 6",
     "titleLine": "The goblins will be gathered around a table, eating fish and talking, on break from patrolling. 1d4 of them will be sleeping on one of the six pallets of straw that line the east wall. These goblins will relieve patrol group (above) every four hours."
@@ -4379,9 +5061,10 @@
     "ac": "14",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 cp"
+    "coins": "6 cp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin."
+  "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper in coin."
 }
 ```
 </details>
@@ -4390,7 +5073,7 @@
 
 ### 82. Goblin males x 8
 
-*HP 3, AC 14, disposition law/evil. Saves: P. It has 6 cp, 50 gp.*
+*Level 1(d6), HP 3, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper, 50 gold.*
 
 **Core Stats:** HP 3, AC 14, Disposition law/evil
 
@@ -4401,6 +5084,14 @@
 {
   "sourceIndex": 161831,
   "title": "Goblin males x 8",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin males x 8",
     "titleLine": "**_CK's Note:_** for more on the double doors of the west side, see #14."
@@ -4434,9 +5125,10 @@
     "disposition": "law/evil",
     "raceClass": "humanoid",
     "equipment": "a gold chain worth 50 gp",
-    "coins": "6 cp, 50 gp"
+    "coins": "6 cp, 50 gp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 3, AC 14, disposition law/evil. Saves: P. It has 6 cp, 50 gp."
+  "canonicalParenthetical": "Level 1(d6), HP 3, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper, 50 gold."
 }
 ```
 </details>
@@ -4445,7 +5137,7 @@
 
 ### 83. Goblin females x 13
 
-*HP 2, AC 12, disposition law/evil. Saves: P.*
+*Level 1(d6), HP 2, AC 12, disposition law/evil. Its primary attributes are physical.*
 
 **Core Stats:** HP 2, AC 12, Disposition law/evil
 
@@ -4456,6 +5148,14 @@
 {
   "sourceIndex": 162165,
   "title": "Goblin females x 13",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin females x 13",
     "titleLine": "**Goblin males x 8:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 3, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have leather armor, clubs, daggers and 2d6 cp. One male wears a gold chain worth 50 gp. XP: 5+1)_"
@@ -4487,9 +5187,10 @@
     "hp": "2",
     "ac": "12",
     "disposition": "law/evil",
-    "raceClass": "humanoid"
+    "raceClass": "humanoid",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 2, AC 12, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "Level 1(d6), HP 2, AC 12, disposition law/evil. Its primary attributes are physical."
 }
 ```
 </details>
@@ -4498,7 +5199,7 @@
 
 ### 84. Goblin warriors x 3
 
-*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*
 
 **Core Stats:** HP 4, AC 14, Disposition law/evil
 
@@ -4509,6 +5210,14 @@
 {
   "sourceIndex": 168595,
   "title": "Goblin warriors x 3",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin warriors x 3",
     "titleLine": "**Area #g:** There are **3 goblin warriors** that keep watch on the prison (#20) and the storage room #18. If trouble presents they will shout their battle cry (“KREE-AHK!”) thus alerting the **shaman** (#21) and possibly a **goblin patrol** _(see introductory material of this lair, #D)_. Their serjeant holds both the key to the prison and the key to the storage room (#18) on a brass belt ring."
@@ -4541,9 +5250,10 @@
     "ac": "14",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin."
 }
 ```
 </details>
@@ -4552,7 +5262,7 @@
 
 ### 85. Goblin serjeant
 
-*HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp.*
+*Level 2(d6), HP 11, AC 16, disposition law/evil. Its primary attributes are physical. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gold, 6 silver.*
 
 **Core Stats:** HP 11, AC 16, Disposition law/evil
 
@@ -4563,6 +5273,14 @@
 {
   "sourceIndex": 168929,
   "title": "Goblin serjeant",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin serjeant",
     "titleLine": "**Goblin warriors x 3:** _(These lawful evil humanoids' vital stats are HD 1d6, HP 4, AC 14, MV 20 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They are equipped with leather armor, belt axe, shortsword, light crossbow, 6 bolts, and 1d6 sp. XP: 5+1)_"
@@ -4595,11 +5313,11 @@
     "ac": "16",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "equipment": "a breastplate and carry medium steel shield, morning star, shortsword, whip, a brass belt ring with keys to #18 and #20",
     "coins": "5 gp, 6 sp"
   },
-  "canonicalParenthetical": "HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp."
+  "canonicalParenthetical": "Level 2(d6), HP 11, AC 16, disposition law/evil. Its primary attributes are physical. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gold, 6 silver."
 }
 ```
 </details>
@@ -4608,7 +5326,7 @@
 
 ### 86. Prisoner #2: An elderly orc
 
-*HP 2, AC 10. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*
+*Level 1(d8), HP 2, AC 10. Its primary attributes are physical.*
 
 **Core Stats:** HP 2, AC 10, Disposition —
 
@@ -4619,6 +5337,14 @@
 {
   "sourceIndex": 171131,
   "title": "Prisoner #2: An elderly orc",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Prisoner #2: An elderly orc",
     "titleLine": "- **Prisoner #1: Goblin female**. During a recent (and secretive) raiding mission, this female of the Gublinish Tribe _(Ruins of the Castle Precincts #15)_ was pulled from her cottage, abducted for information. She has been able to give no information about the military prowess of her tribe, but does state that their chieftain is the descendant of a god, and that he has visited her with affection in the past. She is scheduled to be sacrificed to Gubeezablu in the chapel #17."
@@ -4648,9 +5374,11 @@
     "raw": "weak and non-combatant, HP 2, AC 10",
     "hp": "2",
     "ac": "10",
-    "raceClass": "bat"
+    "raceClass": "bat",
+    "hd": "1d8",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 2, AC 10. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma."
+  "canonicalParenthetical": "Level 1(d8), HP 2, AC 10. Its primary attributes are physical."
 }
 ```
 </details>
@@ -4659,7 +5387,7 @@
 
 ### 87. Robert Cooper
 
-*HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*
+*HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*
 
 **Core Stats:** HP 2, AC 11, Disposition law/good
 
@@ -4670,6 +5398,14 @@
 {
   "sourceIndex": 172453,
   "title": "Robert Cooper",
+  "classification": {
+    "type": "classed",
+    "format": "A",
+    "subtype": "named-class",
+    "confidence": "high",
+    "reasoning": "Classed NPC (Class: knight)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Robert Cooper",
     "titleLine": "- **Prisoner #3: Human boy**. This boy, **Robert Cooper**, was abducted a fortnight ago while tending a pair of fine stallions in the forest nearby. The boy serves a knight to whom he is esquired, and thus comports himself with the precepts of gallantry. Although Robert is but 14 summers, he possesses the heart of a champion and has revealed nothing to these evil goblins. To a good party, if rescued, he will present himself as horseman to **Sir Galvinde**, a knight who came to investigate Castle Zagyg with his staunch and rugged ally, **Morgan**, a barbarian of the northern woodlands. Robert fears the worst for those two men, because they'd assured him of their return within 24 hours and by the time he was captured by the goblins, a sennight already had passed. This boy is scheduled to be boiled and eaten during a coming goblin feast."
@@ -4703,7 +5439,7 @@
     "attributes": "_ _as yet_ _undeveloped",
     "raceClass": "This lawful good, 0th level, human knight"
   },
-  "canonicalParenthetical": "HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma."
+  "canonicalParenthetical": "HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
 }
 ```
 </details>
@@ -4712,7 +5448,7 @@
 
 ### 88. Oni Blackbeard (Dwarf Crossbowman)
 
-*HP 18, AC 10, disposition chaos/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries a loin cloth.*
+*Level 3(d8), HP 18, AC 10, disposition chaos/good. Its primary attributes are physical. It has a loin cloth.*
 
 **Core Stats:** HP 18, AC 10, Disposition chaos/good
 
@@ -4723,6 +5459,14 @@
 {
   "sourceIndex": 173642,
   "title": "Oni Blackbeard (Dwarf Crossbowman)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Oni Blackbeard (Dwarf Crossbowman)",
     "titleLine": "- **Prisoner #4: The Dwarf.** This doughty dwarf formerly served as a mercenary crossbowman for a group of gnomish prospectors seeking iron ore deposits in the region. The contingent became lost, then subsequently attacked by humanoid ape-men (losels), suffering terrible losses. The survivors later stumbled upon Castle Zagyg. “_We saw the fog lifting right before our very eyes! Yar!”_ In the ravine outside the castle bluff, they were attacked by goblins, and this dwarf, **Oni Blackbeard**, is the last of that group. Oni will take service with his rescuers for one year, requiring room and board alone—if provided with armor and weapons. Oni sees no redeeming qualities in his fellow prisoners, except the boy, whom he will request be rescued first and foremost, even shedding a tear about that one: “_They burned him with a hot poker, yar. And the boy, he never gave them the satisfaction of a whimper. The heart of a lion, that one, yar.”_ This dwarf is scheduled to be sacrificed to Gubeezablu in the chapel #17."
@@ -4753,11 +5497,12 @@
     "hp": "18",
     "ac": "10",
     "disposition": "chaos/good",
-    "attributes": "strength and dexterity",
+    "attributes": "physical",
     "equipment": "a loin cloth",
-    "raceClass": "This chaotic good, 2nd_ _level, dwarf fighter"
+    "raceClass": "This chaotic good, 2nd_ _level, dwarf fighter",
+    "hd": "3d8"
   },
-  "canonicalParenthetical": "HP 18, AC 10, disposition chaos/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries a loin cloth."
+  "canonicalParenthetical": "Level 3(d8), HP 18, AC 10, disposition chaos/good. Its primary attributes are physical. It has a loin cloth."
 }
 ```
 </details>
@@ -4766,7 +5511,7 @@
 
 ### 89. Wilbur Hornblower
 
-*HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*
+*HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*
 
 **Core Stats:** HP 2, AC 8, Disposition neutral
 
@@ -4777,6 +5522,14 @@
 {
   "sourceIndex": 174887,
   "title": "Wilbur Hornblower",
+  "classification": {
+    "type": "classed",
+    "format": "A",
+    "subtype": "named-humanoid",
+    "confidence": "high",
+    "reasoning": "Classed NPC (Named Humanoid: human)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Wilbur Hornblower",
     "titleLine": "- **Prisoner #5: Fat spice merchant.** This is Wilbur Hornblower. This man's wagon was assaulted by the _Little Hillwood Werewolf_ _(#A)_ ten miles away on the Menhir Hills Road. His guards were killed, their throats torn, and his plump wife, who was wearing her finest red silk dress, was carried off by the shapechanger while the fat man cowered under a blanket. In the aftermath, he found the courage to take up the sword of one of his guards and venture down the Old Castle Track. There he avoided a ravenous owlbear, was hounded by ape-men (losels), and eventually was captured by goblin raiders of this tribe. Wilbur is a fat, bald man with rosy cheeks and fleshy jowls. He demands to be rescued first, citing himself as a nobleman of great wealth (a lie). He will offer 100 gp for his rescue and return to Yggsburgh, another 100 gp for the rescue of his wife, Gertrude (she is dead). This man is scheduled to be sacrificed to Gubeezablu in the chapel #17."
@@ -4810,7 +5563,7 @@
     "attributes": "mental",
     "raceClass": "This neutral, 0th level, human commoner"
   },
-  "canonicalParenthetical": "HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma."
+  "canonicalParenthetical": "HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma."
 }
 ```
 </details>
@@ -4819,7 +5572,7 @@
 
 ### 90. Goblin shaman
 
-*HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry.*
+*Level 4(d6), HP 15, AC 10, disposition law/evil. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gold, 250 gold, and two hundred fifty in jewelry.*
 
 **Core Stats:** HP 15, AC 10, Disposition law/evil
 
@@ -4830,6 +5583,14 @@
 {
   "sourceIndex": 177449,
   "title": "Goblin shaman",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin shaman",
     "titleLine": "If the PCs enter the room, the **4 goblin skeletons** emerge from shallow alcoves (2 in each alcove) on either side of the door, dry bones springing to animated state, grabbing their spears and attacking. The skeletons will surprise the unwary_._ If the shaman is here when intruders present, he will cast _protection from good_, then burst out from the silk beddings and cry “KREE-AHK!” thus summoning any surrounding goblins to assist."
@@ -4867,7 +5628,7 @@
     "jewelry": "250 gold worth of jewelry",
     "coins": "30 gp, 250 gp"
   },
-  "canonicalParenthetical": "HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry."
+  "canonicalParenthetical": "Level 4(d6), HP 15, AC 10, disposition law/evil. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gold, 250 gold, and two hundred fifty in jewelry."
 }
 ```
 </details>
@@ -4876,7 +5637,7 @@
 
 ### 91. Goblin Skeletons x 4
 
-*HP 8, AC 13, disposition neutral. Saves: P.*
+*Level 1(d12), HP 8, AC 13, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 8, AC 13, Disposition neutral
 
@@ -4887,6 +5648,14 @@
 {
   "sourceIndex": 178128,
   "title": "Goblin Skeletons x 4",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin Skeletons x 4",
     "titleLine": "**Goblin shaman:** _(This lawful evil humanoid's vital stats are HD 4d6, HP 15, AC 10, MV 20 ft. Its saves are mental and physical. Its significant attribute is wisdom 18. It has darkvision 60' and light sensitivity [-1 to attacks in bright light]. It carries a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21. The shaman typically has the following spells prepared: detect good x 2, detect magic x 2, protection from good x 2, cause fear, cause paralysis, hold person. XP: 200)_"
@@ -4918,9 +5687,10 @@
     "hp": "8",
     "ac": "13",
     "disposition": "neutral",
-    "raceClass": "undead"
+    "raceClass": "undead",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 8, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d12), HP 8, AC 13, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -4929,7 +5699,7 @@
 
 ### 92. Goblin warriors x 2
 
-*HP 6, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*
+*Level 1(d6), HP 6, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*
 
 **Core Stats:** HP 6, AC 14, Disposition law/evil
 
@@ -4940,6 +5710,14 @@
 {
   "sourceIndex": 181975,
   "title": "Goblin warriors x 2",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin warriors x 2",
     "titleLine": "There are **2 goblin guards** stationed at the top of the 8 stairs (a 7-foot rise total) to this room. They will throw javelins down at intruders from their high vantage point _(+1 \"to hit\" from above)_ and shout, _“KREE-AHK!”_ During the evening hours (say 7 to 10 pm) the chieftain is often (75%) attended by his **shaman** (see #21 for stats)."
@@ -4972,9 +5750,10 @@
     "ac": "14",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "coins": "6 sp"
+    "coins": "6 sp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 6, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin."
+  "canonicalParenthetical": "Level 1(d6), HP 6, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin."
 }
 ```
 </details>
@@ -4983,7 +5762,7 @@
 
 ### 93. Gruzz Kree (Goblin Chieftain)
 
-*HP 18, AC 18, disposition law/evil. Saves: P. It has 12 gp, 50 gp and fifty in jewelry.*
+*Level 4(d6), HP 18, AC 18, disposition law/evil. Its primary attributes are physical. It has 12 gold, 50 gold and fifty in jewelry.*
 
 **Core Stats:** HP 18, AC 18, Disposition law/evil
 
@@ -4994,6 +5773,14 @@
 {
   "sourceIndex": 184388,
   "title": "Gruzz Kree (Goblin Chieftain)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Gruzz Kree (Goblin Chieftain)",
     "titleLine": "Of course the chieftain will attack any intruders, his concubines cowering in fear and attacking only if cornered thus."
@@ -5026,11 +5813,11 @@
     "ac": "18",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "jewelry": "50 gold worth of jewelry",
     "coins": "12 gp, 50 gp"
   },
-  "canonicalParenthetical": "HP 18, AC 18, disposition law/evil. Saves: P. It has 12 gp, 50 gp and fifty in jewelry."
+  "canonicalParenthetical": "Level 4(d6), HP 18, AC 18, disposition law/evil. Its primary attributes are physical. It has 12 gold, 50 gold and fifty in jewelry."
 }
 ```
 </details>
@@ -5039,7 +5826,7 @@
 
 ### 94. Goblin females x 6
 
-*HP 2, AC 12, disposition law/evil. Saves: P.*
+*Level 1(d6), HP 2, AC 12, disposition law/evil. Its primary attributes are physical.*
 
 **Core Stats:** HP 2, AC 12, Disposition law/evil
 
@@ -5050,6 +5837,14 @@
 {
   "sourceIndex": 184824,
   "title": "Goblin females x 6",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Goblin females x 6",
     "titleLine": "**Gruzz Kree (Goblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 4d6, HP 18, AC 18, MV 20 ft. Its saves are physical. Its special abilities are darkvision 60 ft., light sensitivity [-1 to attacks in bright light], and +1 attack damage due to high strength. It is equipped with a breast plate, shield, +1 spear [+5 \"to hit\"; 1d6+2 damage], morning star and dagger, 12 gp, 10 ep, and a gold ring with pearl worth 50 gp. XP 132)_"
@@ -5081,9 +5876,10 @@
     "hp": "2",
     "ac": "12",
     "disposition": "law/evil",
-    "raceClass": "humanoid"
+    "raceClass": "humanoid",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 2, AC 12, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "Level 1(d6), HP 2, AC 12, disposition law/evil. Its primary attributes are physical."
 }
 ```
 </details>
@@ -5092,7 +5888,7 @@
 
 ### 95. Cave bats x 80
 
-*HP 1, AC 12, disposition neutral. Saves: P.*
+*Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 1, AC 12, Disposition neutral
 
@@ -5103,6 +5899,14 @@
 {
   "sourceIndex": 186327,
   "title": "Cave bats x 80",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Cave bats x 80",
     "titleLine": "The passage is narrow, opening to a cave measuring around 35 by 40 feet with a 20–foot high ceiling that is filled with bats. The description below is intended for daytime exploration; at night the bats are out. Encountering the bats is not very likely unless the characters light a large fire or otherwise attempt to disturb them. Another possibility is probing about this cave at dawn or dusk when the bats migrate to and from their roost."
@@ -5134,9 +5938,10 @@
     "hp": "1",
     "ac": "12",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 1, AC 12, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -5145,7 +5950,7 @@
 
 ### 96. )** _
 
-*HP 1, AC 11, disposition neutral. Saves: P.*
+*Level 1(d2), HP 1, AC 11, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 1, AC 11, Disposition neutral
 
@@ -5156,6 +5961,13 @@
 {
   "sourceIndex": 188927,
   "title": ")** _",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "confidence": "high",
+    "reasoning": "Default to Monster",
+    "warnings": []
+  },
   "labels": {
     "inline": ")** _",
     "titleLine": "Any PC passed out or otherwise crawling on the guano will suffer d6 damage per round so doing (nibbling **flesh beetles**), as well as having a 25% chance per round of contracting a fatal disease that will have an onset in 2d8 days and cause the loss of 1 HP per day thereafter until the character dies or a _cure disease_ spell is successfully cast upon him."
@@ -5187,9 +5999,10 @@
     "hp": "1",
     "ac": "11",
     "disposition": "neutral",
-    "raceClass": "These neutral insects'"
+    "raceClass": "These neutral insects'",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 1, AC 11, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d2), HP 1, AC 11, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -5198,7 +6011,7 @@
 
 ### 97. Snakes, poisonous
 
-*HP 4, AC 14, disposition neutral. Saves: P.*
+*Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 4, AC 14, Disposition neutral
 
@@ -5209,6 +6022,14 @@
 {
   "sourceIndex": 190284,
   "title": "Snakes, poisonous",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Snakes, poisonous",
     "titleLine": "One minute here, and **1d6+2 snakes** will slither out from the holes. They are 3.5 to 4.5 feet long and of black coloration, with yellow underbellies and orange markings along their vertebrae. They seek prey (mice, voles, etc.) While the snakes only consume small mammals, they are aggressive toward intruders."
@@ -5240,9 +6061,10 @@
     "hp": "4",
     "ac": "14",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 4, AC 14, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -5251,7 +6073,7 @@
 
 ### 98. Green slime
 
-*HP 16, AC 10, disposition neutral. Saves: P.*
+*Level 4(d8), HP 16, AC 10, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 16, AC 10, Disposition neutral
 
@@ -5262,6 +6084,14 @@
 {
   "sourceIndex": 192531,
   "title": "Green slime",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Green slime",
     "titleLine": "A **green slime** colony infests the body of the gnoll, the humanoid having been tossed here by rival orcs. Its eyes have been chewed out by rats. There is nothing of value here."
@@ -5294,9 +6124,9 @@
     "ac": "10",
     "disposition": "neutral",
     "raceClass": "creature",
-    "attributes": "constitution"
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 16, AC 10, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 4(d8), HP 16, AC 10, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -5305,7 +6135,7 @@
 
 ### 99. Rats, giant x 3-12
 
-*HP 2, AC 13, disposition neutral. Saves: P.*
+*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 2, AC 13, Disposition neutral
 
@@ -5316,6 +6146,14 @@
 {
   "sourceIndex": 194494,
   "title": "Rats, giant x 3-12",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Rats, giant x 3-12",
     "titleLine": "The pool is of 2.5 feet in depth. Its water is stagnant, the walls a sheen of rust-brown mold. **Giant rats** (variable in number, as they scavenge outside as well) nest here in the various cubbyholes, these rodents conditioned to avoid the resident green slime of #26. They thus enjoy the \"clean\" parts of bodies tossed into this cave. The rats, however, will sometimes chew on the mushrooms, these being **_sunset mushrooms_***, which have a sopoforic effect."
@@ -5347,9 +6185,10 @@
     "hp": "2",
     "ac": "13",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -5358,7 +6197,7 @@
 
 ### 100. Gray Ooze (small)
 
-*HP 15, AC 12, disposition neutral. Saves: P.*
+*Level 2(d10), HP 15, AC 12, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 15, AC 12, Disposition neutral
 
@@ -5369,6 +6208,14 @@
 {
   "sourceIndex": 196194,
   "title": "Gray Ooze (small)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Gray Ooze (small)",
     "titleLine": "This large cavern is home to a **small gray ooze** that lurks just inside the pool by the tunnel leading north via a narrow flight of steps to the goblin chapel #17. It blends with its surroundings, waiting for some hapless creature to come within its striking range. It strikes like a serpent."
@@ -5400,9 +6247,10 @@
     "hp": "15",
     "ac": "12",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 15, AC 12, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 2(d10), HP 15, AC 12, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -5411,7 +6259,7 @@
 
 ### 101. Black Centipedes, giant x 5
 
-*HP 2, AC 18, disposition neutral. Saves: P.*
+*Level 1(d4), HP 2, AC 18, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 2, AC 18, Disposition neutral
 
@@ -5422,6 +6270,14 @@
 {
   "sourceIndex": 199320,
   "title": "Black Centipedes, giant x 5",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Black Centipedes, giant x 5",
     "titleLine": "Wet and vulnerable, such victims will at once be attacked by the resident centipedes. The huge centipedes have a nest located at a position of the Castle Keeper's choosing. These creatures are black with orange spots, of 1.5 feet in length, and have gnashing pincers. There are about **20 young centipedes** here, these of 3-inch length and harmless . . . for now."
@@ -5453,9 +6309,10 @@
     "hp": "2",
     "ac": "18",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 2, AC 18, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d4), HP 2, AC 18, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -5464,7 +6321,7 @@
 
 ### 102. Orcs x 3
 
-*HP 5, AC 14, disposition law/evil. Saves: P.*
+*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*
 
 **Core Stats:** HP 5, AC 14, Disposition law/evil
 
@@ -5475,6 +6332,14 @@
 {
   "sourceIndex": 201602,
   "title": "Orcs x 3",
+  "classification": {
+    "type": "monster",
+    "format": "C",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Unit (HD present + group formation detected)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Orcs x 3",
     "titleLine": "**Area #g:** There are **3 orc guards** stationed at the end of this 40-foot-long hall. An iron bell with a chain pull that threads into the stonework is set on the wall here, it tolling when the **pit trap [X]** above is triggered. If alerted by the bell, 2 of these orcs will rush to jab their spears at the pit trap victims while the third will alert the guards at #30."
@@ -5506,9 +6371,10 @@
     "hp": "5",
     "ac": "14",
     "disposition": "law/evil",
-    "raceClass": "humanoid"
+    "raceClass": "humanoid",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical."
 }
 ```
 </details>
@@ -5517,7 +6383,7 @@
 
 ### 103. Orcs x 4
 
-*HP 5, AC 14, disposition law/evil. Saves: P.*
+*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*
 
 **Core Stats:** HP 5, AC 14, Disposition law/evil
 
@@ -5528,6 +6394,14 @@
 {
   "sourceIndex": 202054,
   "title": "Orcs x 4",
+  "classification": {
+    "type": "monster",
+    "format": "C",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Unit (HD present + group formation detected)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Orcs x 4",
     "titleLine": "The door is unlocked. There are **4 orcs guards** here. They will rush to the hue and cry of battle should intruders present."
@@ -5559,9 +6433,10 @@
     "hp": "5",
     "ac": "14",
     "disposition": "law/evil",
-    "raceClass": "humanoid"
+    "raceClass": "humanoid",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical."
 }
 ```
 </details>
@@ -5570,7 +6445,7 @@
 
 ### 104. Orcs x 6
 
-*HP 5, AC 14, disposition law/evil. Saves: P.*
+*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*
 
 **Core Stats:** HP 5, AC 14, Disposition law/evil
 
@@ -5581,6 +6456,14 @@
 {
   "sourceIndex": 204714,
   "title": "Orcs x 6",
+  "classification": {
+    "type": "monster",
+    "format": "C",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Unit (HD present + group formation detected)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Orcs x 6",
     "titleLine": "The males will rise to arms upon intrusion, issuing their hue and cry, and possibly (1-in-4 chance) summoning forth the chieftain, **King Krusher** (#35)."
@@ -5612,9 +6495,10 @@
     "hp": "5",
     "ac": "14",
     "disposition": "law/evil",
-    "raceClass": "humanoid"
+    "raceClass": "humanoid",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical."
 }
 ```
 </details>
@@ -5623,7 +6507,7 @@
 
 ### 105. Orc Guards x 2
 
-*HP 7, AC 14, disposition law/evil. Saves: P.*
+*Level 1(d8), HP 7, AC 14, disposition law/evil. Their primary attributes are physical.*
 
 **Core Stats:** HP 7, AC 14, Disposition law/evil
 
@@ -5634,6 +6518,14 @@
 {
   "sourceIndex": 205532,
   "title": "Orc Guards x 2",
+  "classification": {
+    "type": "monster",
+    "format": "C",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Unit (HD present + group formation detected)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Orc Guards x 2",
     "titleLine": "This is where general meetings are held and gatherings prior to a religious ceremony. There are **2 orc guards** stationed here. They stand in the 10-foot-long passage at the north side, thus protecting the door to the chieftain's chamber (#35). They will not be immediately observed if the PCs enter this chamber, potentially surprising the party. Unless silenced before they are aware of the PCs, they will have let loose their battle cries and thus alert the chieftain of intrusion"
@@ -5665,9 +6557,10 @@
     "hp": "7",
     "ac": "14",
     "disposition": "law/evil",
-    "raceClass": "humanoid"
+    "raceClass": "humanoid",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 7, AC 14, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "Level 1(d8), HP 7, AC 14, disposition law/evil. Their primary attributes are physical."
 }
 ```
 </details>
@@ -5676,7 +6569,7 @@
 
 ### 106. King Krusher (Orc Leader)
 
-*HP 20, AC 18, disposition law/evil. Saves: P. It has 30 gold in coin.*
+*Level 3(d8), HP 20, AC 18, disposition law/evil. Its primary attributes are physical. It has 30 gold in coin.*
 
 **Core Stats:** HP 20, AC 18, Disposition law/evil
 
@@ -5687,6 +6580,14 @@
 {
   "sourceIndex": 208684,
   "title": "King Krusher (Orc Leader)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "King Krusher (Orc Leader)",
     "titleLine": "The door of this room **locked** _(CL 3 to pick, CL 8 to break down)_. It is guarded by the **2 orc guards** of room #33. This is where the orc leader, **King Krusher** resides, a massive orc who earned his leadership by way of combat and murder. Krusher is cruel and sadistic. His tribe is small, but he is quite ambitious, believing he will build a greater force and soon conquer his humanoid rivals, such as the goblins (#D) and the kobolds (#B). He has a mind for expansion above as well, to claim a tower of the Castle Precincts."
@@ -5719,10 +6620,10 @@
     "ac": "18",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "coins": "30 gp"
   },
-  "canonicalParenthetical": "HP 20, AC 18, disposition law/evil. Saves: P. It has 30 gold in coin."
+  "canonicalParenthetical": "Level 3(d8), HP 20, AC 18, disposition law/evil. Its primary attributes are physical. It has 30 gold in coin."
 }
 ```
 </details>
@@ -5731,7 +6632,7 @@
 
 ### 107. Orc chieftain's mate
 
-*HP 4, AC 12, disposition law/evil. Saves: P. It has a 4-inch knife and 100 gold in coin.*
+*Level 1(d8), HP 4, AC 12, disposition law/evil. Its primary attributes are physical. It has a 4-inch knife and 100 gold in coin.*
 
 **Core Stats:** HP 4, AC 12, Disposition law/evil
 
@@ -5742,6 +6643,14 @@
 {
   "sourceIndex": 209707,
   "title": "Orc chieftain's mate",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Orc chieftain's mate",
     "titleLine": "The **chieftain's mate** is usually lying under the sheets of the four-poster. She is a round, voluptuous creature with a protruding lower jaw from which large fangs jut. She wears an obscene white silk dress, torn and stained. She cowers in the face of danger, begging for mercy."
@@ -5775,9 +6684,10 @@
     "disposition": "law/evil",
     "raceClass": "humanoid",
     "equipment": "a 4-inch knife, and 100 gp worth of gold jewelry",
-    "coins": "100 gp"
+    "coins": "100 gp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 4, AC 12, disposition law/evil. Saves: P. It has a 4-inch knife and 100 gold in coin."
+  "canonicalParenthetical": "Level 1(d8), HP 4, AC 12, disposition law/evil. Its primary attributes are physical. It has a 4-inch knife and 100 gold in coin."
 }
 ```
 </details>
@@ -5786,7 +6696,7 @@
 
 ### 108. Orcs x 4
 
-*HP 5, AC 14, disposition law/evil. Saves: P.*
+*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*
 
 **Core Stats:** HP 5, AC 14, Disposition law/evil
 
@@ -5797,6 +6707,14 @@
 {
   "sourceIndex": 211369,
   "title": "Orcs x 4",
+  "classification": {
+    "type": "monster",
+    "format": "C",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Unit (HD present + group formation detected)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Orcs x 4",
     "titleLine": "Recently, the orcs' only skilled engineer mysteriously disappeared (see #20), so the orcs have doubled their guards here. Thus there are **4 orc warriors** and **1 lieutenant** here at all times."
@@ -5828,9 +6746,10 @@
     "hp": "5",
     "ac": "14",
     "disposition": "law/evil",
-    "raceClass": "humanoid"
+    "raceClass": "humanoid",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 5, AC 14, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical."
 }
 ```
 </details>
@@ -5839,7 +6758,7 @@
 
 ### 109. Orc lieutenant
 
-*HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin.*
+*Level 2(d8), HP 12, AC 14, disposition law/evil. Its primary attributes are physical. It has 30 gold in coin.*
 
 **Core Stats:** HP 12, AC 14, Disposition law/evil
 
@@ -5850,6 +6769,14 @@
 {
   "sourceIndex": 211687,
   "title": "Orc lieutenant",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Orc lieutenant",
     "titleLine": "**Orcs x 4:** _(These lawful evil humanoids' vital stats are HD 1d8, HP 5, AC 14, MV 30 ft. Their saves are physical. Their special abilities are darkvision 60 ft. and light sensitivity [-1 to attacks in bright light]. They have piecemeal armor, shield, short bow, arrows x 6, war hammer, and 1d8 ep. XP: 5+1)_"
@@ -5882,10 +6809,10 @@
     "ac": "14",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "coins": "30 gp"
   },
-  "canonicalParenthetical": "HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin."
+  "canonicalParenthetical": "Level 2(d8), HP 12, AC 14, disposition law/evil. Its primary attributes are physical. It has 30 gold in coin."
 }
 ```
 </details>
@@ -5894,7 +6821,7 @@
 
 ### 110. Zombies x 6
 
-*HP 12, AC 12, disposition neutral/evil. Saves: P.*
+*Level 2(d12), HP 12, AC 12, disposition neutral/evil. Its primary attributes are physical.*
 
 **Core Stats:** HP 12, AC 12, Disposition neutral/evil
 
@@ -5905,6 +6832,14 @@
 {
   "sourceIndex": 216535,
   "title": "Zombies x 6",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Zombies x 6",
     "titleLine": "See **Player Handout #6** _(Upper Works Map & Illustration Booklet)_ for an illustration of these **zombies**."
@@ -5936,9 +6871,10 @@
     "hp": "12",
     "ac": "12",
     "disposition": "neutral/evil",
-    "raceClass": "undead"
+    "raceClass": "undead",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 12, AC 12, disposition neutral/evil. Saves: P."
+  "canonicalParenthetical": "Level 2(d12), HP 12, AC 12, disposition neutral/evil. Its primary attributes are physical."
 }
 ```
 </details>
@@ -5947,7 +6883,7 @@
 
 ### 111. Skeletons x 8
 
-*HP 8, AC 13, disposition neutral. Saves: P.*
+*Level 1(d12), HP 8, AC 13, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 8, AC 13, Disposition neutral
 
@@ -5958,6 +6894,14 @@
 {
   "sourceIndex": 218587,
   "title": "Skeletons x 8",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Skeletons x 8",
     "titleLine": "There are **8 skeletons** haunting here, and they bear rusty shortswords. They will emerge from the dirt, debris, and various surrounding alcoves in 1d4 rounds if the PCs enter from area #41. Otherwise they will file down the narrow tunnel to #39 if the characters begin a search of that place, or to #38 or #37 if the characters linger very long there. There is nothing of value to be found here, except for the skull of each of these 8 skeletons, these being inset in the center of the brow ridge with a small red garnet (worth 20 gp each)."
@@ -5989,9 +6933,10 @@
     "hp": "8",
     "ac": "13",
     "disposition": "neutral",
-    "raceClass": "undead"
+    "raceClass": "undead",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 8, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d12), HP 8, AC 13, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -6000,7 +6945,7 @@
 
 ### 112. Wily Wil, Giant of the Hill
 
-*HP 63, AC 17, disposition chaos/neutral. Saves: P. It has hide armor, a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and an other assorted trash.*
+*Level 9(d12), HP 63, AC 17, disposition chaos/neutral. It has hide armor, a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and an other assorted trash.*
 
 **Core Stats:** HP 63, AC 17, Disposition chaos/neutral
 
@@ -6011,6 +6956,14 @@
 {
   "sourceIndex": 222850,
   "title": "Wily Wil, Giant of the Hill",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Wily Wil, Giant of the Hill",
     "titleLine": "If you, the CK, wish to have the PC party encounter this giant, his stat block is presented here as well as at his lair. Do take the time to review his encounter information in _The Storerooms_ before doing so."
@@ -6046,7 +6999,7 @@
     "attributes": "ir of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash",
     "equipment": "hide armor and carry a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash"
   },
-  "canonicalParenthetical": "HP 63, AC 17, disposition chaos/neutral. Saves: P. It has hide armor, a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and an other assorted trash."
+  "canonicalParenthetical": "Level 9(d12), HP 63, AC 17, disposition chaos/neutral. It has hide armor, a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and an other assorted trash."
 }
 ```
 </details>
@@ -6055,7 +7008,7 @@
 
 ### 113. "Pinky" the Owlbear
 
-*HP 27, AC 13, disposition neutral. Saves: P.*
+*Level 4(d10), HP 27, AC 13, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 27, AC 13, Disposition neutral
 
@@ -6066,6 +7019,14 @@
 {
   "sourceIndex": 225293,
   "title": "\"Pinky\" the Owlbear",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "\"Pinky\" the Owlbear",
     "titleLine": "See **Player Handout #7** _(Upper Works Map & Illustration Booklet)_ for an illustration of this deranged **owlbear**."
@@ -6097,9 +7058,10 @@
     "hp": "27",
     "ac": "13",
     "disposition": "neutral",
-    "raceClass": "monster"
+    "raceClass": "monster",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 27, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 4(d10), HP 27, AC 13, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -6108,7 +7070,7 @@
 
 ### 114. Black Bear
 
-*HP 15, AC 13, disposition neutral. Saves: P.*
+*Level 3(d8), HP 15, AC 13, disposition neutral.*
 
 **Core Stats:** HP 15, AC 13, Disposition neutral
 
@@ -6119,6 +7081,14 @@
 {
   "sourceIndex": 229920,
   "title": "Black Bear",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Black Bear",
     "titleLine": "A large female **black bear** and her **2 cubs** dwell in this cave. There is a 70% chance the bears are out foraging by the river, as the cubs are a year old and learning how to hunt for food—squirrels, beaver, fish, tender grass, pine nuts, honey, etc. The mother bear has learned her lesson with her neighbors, the **rats** of cave **#M**, and no longer hunts them, unless particularly desperate."
@@ -6153,7 +7123,7 @@
     "raceClass": "animal",
     "attributes": "ws for 1d4+1 damage and a bite for 1d6+1 damage"
   },
-  "canonicalParenthetical": "HP 15, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 3(d8), HP 15, AC 13, disposition neutral."
 }
 ```
 </details>
@@ -6162,7 +7132,7 @@
 
 ### 115. Black Bear cubs x 2
 
-*HP 6, AC 12, disposition neutral. Saves: P.*
+*Level 1(d8), HP 6, AC 12, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 6, AC 12, Disposition neutral
 
@@ -6173,6 +7143,14 @@
 {
   "sourceIndex": 230329,
   "title": "Black Bear cubs x 2",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Black Bear cubs x 2",
     "titleLine": "**Black Bear:** _(This neutral animal's vital stats are HD 3d8, HP 15, AC 13, MV 40 ft. Its saves are physical. It attacks with two paws for 1d4+1 damage and a bite for 1d6+1 damage. If both claw attacks are successful in a single round, the victim is caught in a crushing hug for 2d4+1 points of damage. As she is protecting her young, she is very aggressive and attacks at a +2 “to hit.” XP: 95)_"
@@ -6204,9 +7182,10 @@
     "hp": "6",
     "ac": "12",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 6, AC 12, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d8), HP 6, AC 12, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -6215,7 +7194,7 @@
 
 ### 116. River Rats, giant x 40
 
-*HP 2, AC 13, disposition neutral. Saves: P.*
+*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 2, AC 13, Disposition neutral
 
@@ -6226,6 +7205,14 @@
 {
   "sourceIndex": 231908,
   "title": "River Rats, giant x 40",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "River Rats, giant x 40",
     "titleLine": "There are a large number of river rats dwelling within, c. 40 in total, though it is the purview of the Castle Keeper to determine how many of these will be both present and/or agitated by the actions of the PCs. The CK should assign an appropriate number of rats to challenge the party, starting easy, perhaps 1 rat for every PC, but more rats joining the fray. Never will all 40 rats of this lair be present at once."
@@ -6257,9 +7244,10 @@
     "hp": "2",
     "ac": "13",
     "disposition": "neutral",
-    "raceClass": "animal"
+    "raceClass": "animal",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 2, AC 13, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -6268,7 +7256,7 @@
 
 ### 117. Stirges x 8
 
-*HP 3, AC 16, disposition neutral. Saves: P.*
+*Level 1(d6), HP 3, AC 16, disposition neutral. Its primary attributes are physical.*
 
 **Core Stats:** HP 3, AC 16, Disposition neutral
 
@@ -6279,6 +7267,14 @@
 {
   "sourceIndex": 240182,
   "title": "Stirges x 8",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Stirges x 8",
     "titleLine": "A stirge nest lay within. In mere seconds, warm-blooded creatures will be attacked by the swarm, these small monsters driven to a frenzy by the sweet smell of mammal sweat and blood."
@@ -6310,9 +7306,10 @@
     "hp": "3",
     "ac": "16",
     "disposition": "neutral",
-    "raceClass": "creature"
+    "raceClass": "creature",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 3, AC 16, disposition neutral. Saves: P."
+  "canonicalParenthetical": "Level 1(d6), HP 3, AC 16, disposition neutral. Its primary attributes are physical."
 }
 ```
 </details>
@@ -6321,7 +7318,7 @@
 
 ### 118. Bugbears x 3
 
-*HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin.*
+*Level 3(d10), HP 17, AC 16, disposition chaos/evil. It has 6 gold in coin.*
 
 **Core Stats:** HP 17, AC 16, Disposition chaos/evil
 
@@ -6332,6 +7329,14 @@
 {
   "sourceIndex": 241850,
   "title": "Bugbears x 3",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Bugbears x 3",
     "titleLine": "**3 bugbears** dwell here. They are in their lair 35% of the time. If a noisy party arrives, they will lie in wait. Should the party discover the rope ladder (see below) the bugbears will cut the rope once they are about 20 feet up."
@@ -6367,7 +7372,7 @@
     "attributes": "tchwork ring mail, buckler, bastard sword, light throwing hammers x 2",
     "coins": "6 gp"
   },
-  "canonicalParenthetical": "HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin."
+  "canonicalParenthetical": "Level 3(d10), HP 17, AC 16, disposition chaos/evil. It has 6 gold in coin."
 }
 ```
 </details>
@@ -6376,7 +7381,7 @@
 
 ### 119. Hobgoblin sentries x 2
 
-*HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*
+*Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*
 
 **Core Stats:** HP 8, AC 15, Disposition law/evil
 
@@ -6387,6 +7392,14 @@
 {
   "sourceIndex": 248459,
   "title": "Hobgoblin sentries x 2",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Hobgoblin sentries x 2",
     "titleLine": "**Area #g**: There are **2 hobgoblin sentries** posted here at all times, alert and prepared for a gnoll invasion. They will ring the bell violently should anyone arrive, friend or enemy. This does not necessitate combat, as these hobgoblins might well seek to negotiate in their present, vulnerable position, calling for parley*."
@@ -6419,11 +7432,11 @@
     "ac": "15",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "equipment": "chain mail armor and carry composite short bows, x12 arrows, battle-axes, and 2d4 gp each",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin."
+  "canonicalParenthetical": "Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin."
 }
 ```
 </details>
@@ -6432,7 +7445,7 @@
 
 ### 120. Hobgoblin males x 2 or 4
 
-*HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*
+*Level 1(d10), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*
 
 **Core Stats:** HP 6, AC 15, Disposition law/evil
 
@@ -6443,6 +7456,14 @@
 {
   "sourceIndex": 249977,
   "title": "Hobgoblin males x 2 or 4",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Hobgoblin males x 2 or 4",
     "titleLine": "This is where the bulk of the tribe dwells, including **2 or 4 male warriors** (see above note on hunters), **9 females**, and all **6 young** (non-combatant). The youngsters are all the offspring of the chieftain, **Hub-Gub the Bloody** (#56)."
@@ -6475,11 +7496,11 @@
     "ac": "15",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "equipment": "crude chain mail armor, carry halberds, and carry 2d4 gp each",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin."
+  "canonicalParenthetical": "Level 1(d10), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin."
 }
 ```
 </details>
@@ -6488,7 +7509,7 @@
 
 ### 121. Hobgoblin females x 9
 
-*HP 3, AC 12, disposition law/evil. Saves: P.*
+*Level 1(d6), HP 3, AC 12, disposition law/evil. Its primary attributes are physical.*
 
 **Core Stats:** HP 3, AC 12, Disposition law/evil
 
@@ -6499,6 +7520,14 @@
 {
   "sourceIndex": 250292,
   "title": "Hobgoblin females x 9",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Hobgoblin females x 9",
     "titleLine": "**Hobgoblin males x 2 or 4:** _(These lawful evil humanoids' vital stats are HD 1d10, HP 6, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They wear crude chain mail armor, wield halberds, and carry 2d4 gp each. XP: 7+1)_"
@@ -6530,9 +7559,10 @@
     "hp": "3",
     "ac": "12",
     "disposition": "law/evil",
-    "raceClass": "humanoid"
+    "raceClass": "humanoid",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 3, AC 12, disposition law/evil. Saves: P."
+  "canonicalParenthetical": "Level 1(d6), HP 3, AC 12, disposition law/evil. Its primary attributes are physical."
 }
 ```
 </details>
@@ -6541,7 +7571,7 @@
 
 ### 122. Hobgoblin warriors x 2
 
-*HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin.*
+*Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has 4 gold in coin.*
 
 **Core Stats:** HP 8, AC 15, Disposition law/evil
 
@@ -6552,6 +7582,14 @@
 {
   "sourceIndex": 252899,
   "title": "Hobgoblin warriors x 2",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Hobgoblin warriors x 2",
     "titleLine": "**2 hobgoblin guards**, **1 hobgoblin leader**, and **3 hobgoblin females** here. The door to this chamber is **locked** _(CL 5 to break down, CL 1 to pick)_ via a simple oak bar on the inside. The 2 guards stand by the door, answering all calls. Each, however, is quite consumed by the leader's concubines, and thus spends more time ogling than being vigilant."
@@ -6584,10 +7622,10 @@
     "ac": "15",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin."
+  "canonicalParenthetical": "Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has 4 gold in coin."
 }
 ```
 </details>
@@ -6596,7 +7634,7 @@
 
 ### 123. Hub-Gub the Bloody (Hobgoblin Chieftain)
 
-*HP 18, AC 16, disposition law/evil. Saves: P. It has full chain mail armor, *a +1 halberd [+4 "to hit"; 1d10+3 damage]*, *broadsword [+3 "to hit"; 2d4+2 damage]*, a composite short bow, 12 arrows, and 12 gold in coin.*
+*Level 3(d10), HP 18, AC 16, disposition law/evil. Its primary attributes are physical. It has full chain mail armor, *a +1 halberd [+4 "to hit"; 1d10+3 damage]*, *broadsword [+3 "to hit"; 2d4+2 damage]*, a composite short bow, 12 arrows, and 12 gold in coin.*
 
 **Core Stats:** HP 18, AC 16, Disposition law/evil
 
@@ -6607,6 +7645,14 @@
 {
   "sourceIndex": 254444,
   "title": "Hub-Gub the Bloody (Hobgoblin Chieftain)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Hub-Gub the Bloody (Hobgoblin Chieftain)",
     "titleLine": "These are the quarters of the hobgoblin leader. His two finest (surviving) warriors guard the door, quick to alert the chieftain should the bell be rung by the guards at **area g**."
@@ -6639,11 +7685,11 @@
     "ac": "16",
     "disposition": "law/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "equipment": "full chain mail armor and carry a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows",
     "coins": "12 gp"
   },
-  "canonicalParenthetical": "HP 18, AC 16, disposition law/evil. Saves: P. It has full chain mail armor, *a +1 halberd [+4 \"to hit\"; 1d10+3 damage]*, *broadsword [+3 \"to hit\"; 2d4+2 damage]*, a composite short bow, 12 arrows, and 12 gold in coin."
+  "canonicalParenthetical": "Level 3(d10), HP 18, AC 16, disposition law/evil. Its primary attributes are physical. It has full chain mail armor, *a +1 halberd [+4 \"to hit\"; 1d10+3 damage]*, *broadsword [+3 \"to hit\"; 2d4+2 damage]*, a composite short bow, 12 arrows, and 12 gold in coin."
 }
 ```
 </details>
@@ -6652,7 +7698,7 @@
 
 ### 124. Hobgoblin females x 3
 
-*HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin.*
+*Level 1(d6), HP 3, AC 12, disposition law/evil. Its primary attributes are physical. It has 2 gold in coin.*
 
 **Core Stats:** HP 3, AC 12, Disposition law/evil
 
@@ -6663,6 +7709,14 @@
 {
   "sourceIndex": 254900,
   "title": "Hobgoblin females x 3",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Hobgoblin females x 3",
     "titleLine": "**Hub-Gub the Bloody (Hobgoblin Chieftain):** _(This lawful evil humanoid's vital stats are HD 3d10, HP 18, AC 16, MV 30 ft. Its saves are physical. Its special ability is darkvision 60 ft. Due to its strength and brutality, all melee damage is at +2. It wears full chain mail armor and wields a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows. In a pouch it carries 12 gp and an iron key to #55. XP: 84)_"
@@ -6696,9 +7750,10 @@
     "disposition": "law/evil",
     "raceClass": "humanoid",
     "equipment": "an engraved silver armband worth 2 gp",
-    "coins": "2 gp"
+    "coins": "2 gp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin."
+  "canonicalParenthetical": "Level 1(d6), HP 3, AC 12, disposition law/evil. Its primary attributes are physical. It has 2 gold in coin."
 }
 ```
 </details>
@@ -6707,7 +7762,7 @@
 
 ### 125. Gnoll sentries x 2
 
-*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
+*Level 2(d10), HP 12, AC 15, disposition chaos/evil. It has 4 gold in coin.*
 
 **Core Stats:** HP 12, AC 15, Disposition chaos/evil
 
@@ -6718,6 +7773,14 @@
 {
   "sourceIndex": 257035,
   "title": "Gnoll sentries x 2",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Gnoll sentries x 2",
     "titleLine": "**Area #g**: There are **2 gnoll sentries** posted here, both of which hide themselves in the nooks and alcoves near to where the natural part of this cave terminates. When a creature approaches the mouth of the cave, they begin to yip, bark, and howl terribly. This is usually enough to drive most potential intruders away, particularly their kobold neighbors (cave #B). It also keeps the wolves (cave #A) at bay, and frightens the hobgoblins (cave #R) as well, the latter having recently suffered terrible losses at the hands of these gnolls. 30 feet south of their position is a **stuck** _(CL 2 to force open)_ oaken door, iron-bound."
@@ -6753,7 +7816,7 @@
     "attributes": "tchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+  "canonicalParenthetical": "Level 2(d10), HP 12, AC 15, disposition chaos/evil. It has 4 gold in coin."
 }
 ```
 </details>
@@ -6762,7 +7825,7 @@
 
 ### 126. Gnoll males x 4
 
-*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*
+*Level 2(d10), HP 12, AC 15, disposition chaos/evil. It has 4 gold in coin.*
 
 **Core Stats:** HP 12, AC 15, Disposition chaos/evil
 
@@ -6773,6 +7836,14 @@
 {
   "sourceIndex": 259311,
   "title": "Gnoll males x 4",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Gnoll males x 4",
     "titleLine": "**>>[end boxed** **text]<<**"
@@ -6808,7 +7879,7 @@
     "attributes": "tchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin."
+  "canonicalParenthetical": "Level 2(d10), HP 12, AC 15, disposition chaos/evil. It has 4 gold in coin."
 }
 ```
 </details>
@@ -6817,7 +7888,7 @@
 
 ### 127. Gnoll females x 5
 
-*HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin.*
+*Level 1(d10), HP 5, AC 12, disposition chaos/evil. Its primary attributes are physical. It has 4 silver in coin.*
 
 **Core Stats:** HP 5, AC 12, Disposition chaos/evil
 
@@ -6828,6 +7899,14 @@
 {
   "sourceIndex": 259645,
   "title": "Gnoll females x 5",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Gnoll females x 5",
     "titleLine": "**Gnoll males x 4:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 12, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They each have patchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp. XP: 12+2)_"
@@ -6860,9 +7939,10 @@
     "ac": "12",
     "disposition": "chaos/evil",
     "raceClass": "humanoid",
-    "coins": "4 sp"
+    "coins": "4 sp",
+    "attributes": "physical"
   },
-  "canonicalParenthetical": "HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin."
+  "canonicalParenthetical": "Level 1(d10), HP 5, AC 12, disposition chaos/evil. Its primary attributes are physical. It has 4 silver in coin."
 }
 ```
 </details>
@@ -6871,7 +7951,7 @@
 
 ### 128. Gnoll guards x 2
 
-*HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin.*
+*Level 2(d10), HP 14, AC 15, disposition chaos/evil. Their primary attributes are physical. They have 4 gold in coin.*
 
 **Core Stats:** HP 14, AC 15, Disposition chaos/evil
 
@@ -6882,6 +7962,14 @@
 {
   "sourceIndex": 260733,
   "title": "Gnoll guards x 2",
+  "classification": {
+    "type": "monster",
+    "format": "C",
+    "subtype": "monster-unit",
+    "confidence": "high",
+    "reasoning": "Unit (HD present + group formation detected)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Gnoll guards x 2",
     "titleLine": "Yeexuul is a terrible warrior with plans for expansion, beginning with the hobgoblins (cave #R) and eventually the bugbears (cave #Q). Once he has secured this significant portion of the _Mouths of Madness_, he intends to take on the more tactically-minded **kobolds** (#B). He will be here only if taken by surprise; otherwise he will have joined his tribesman to meet intruders. He has two guards that stand vigilant in the 20' passage that leads to his chamber."
@@ -6914,10 +8002,10 @@
     "ac": "15",
     "disposition": "chaos/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "coins": "4 gp"
   },
-  "canonicalParenthetical": "HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin."
+  "canonicalParenthetical": "Level 2(d10), HP 14, AC 15, disposition chaos/evil. Their primary attributes are physical. They have 4 gold in coin."
 }
 ```
 </details>
@@ -6926,7 +8014,7 @@
 
 ### 129. Yeexuul (Gnoll Chieftain)
 
-*HP 20, AC 17, disposition chaos/evil. Saves: P. It has plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin.*
+*Level 3(d10), HP 20, AC 17, disposition chaos/evil. Its primary attributes are physical. It has plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin.*
 
 **Core Stats:** HP 20, AC 17, Disposition chaos/evil
 
@@ -6937,6 +8025,14 @@
 {
   "sourceIndex": 261048,
   "title": "Yeexuul (Gnoll Chieftain)",
+  "classification": {
+    "type": "monster",
+    "format": "B",
+    "subtype": "monster",
+    "confidence": "high",
+    "reasoning": "Monster (HD present and entry appears to be a monster/level line)",
+    "warnings": []
+  },
   "labels": {
     "inline": "Yeexuul (Gnoll Chieftain)",
     "titleLine": "**Gnoll guards x 2:** _(These chaotic evil humanoids' vital stats are HD 2d10, HP 14, AC 15, MV 30 ft. Their saves are physical. Their special ability is darkvision 60 ft._ _They attack_ _by weapon at +1 damage due to strength. They have chain hauberk armor, halberd, morning star, and 2d4 gp. XP: 10+2)_"
@@ -6969,11 +8065,11 @@
     "ac": "17",
     "disposition": "chaos/evil",
     "raceClass": "humanoid",
-    "attributes": "strength",
+    "attributes": "physical",
     "equipment": "plate mail armor, and carry a throwing club, morning star, and 10-inch knife",
     "coins": "24 gp"
   },
-  "canonicalParenthetical": "HP 20, AC 17, disposition chaos/evil. Saves: P. It has plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin."
+  "canonicalParenthetical": "Level 3(d10), HP 20, AC 17, disposition chaos/evil. Its primary attributes are physical. It has plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin."
 }
 ```
 </details>

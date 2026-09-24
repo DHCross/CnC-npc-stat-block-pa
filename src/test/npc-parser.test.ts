@@ -85,20 +85,22 @@ Armor Class (AC): 18`
       expect(converted).not.toContain('Saves:');
     });
 
-    it('applies Saves notation for monsters with HD-based stat blocks', () => {
+    it('keeps primary-attributes phrasing for monsters with HD-based stat blocks', () => {
       const input = `**Ape, carnivorous** (*HD 4d10; AC 15; Disposition: neutral; Their primary attributes are physical; Equipment: claws*)`;
       const processed = processDumpWithValidation(input, true, 'enhanced');
       expect(processed.length).toBeGreaterThan(0);
       const converted = processed[0].converted;
-      expect(converted).toContain('Saves: P');
+      expect(converted).toContain('primary attributes are physical');
+      expect(converted).not.toContain('Saves:');
       expect(converted).not.toContain('primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.');
     });
 
-    it('applies Saves notation for HD+HP monsters (Bat, giant cave)', () => {
+    it('keeps primary-attributes phrasing for HD+HP monsters (Bat, giant cave)', () => {
       const input = `**Bat, giant cave** (*HD 1d2; HP 1; AC 12; disposition: neutral; Their primary attributes are physical*)`;
       const processed = processDumpWithValidation(input, true, 'enhanced');
       const converted = processed[0].converted;
-      expect(converted).toContain('Saves: P');
+      expect(converted).toContain('primary attributes are physical');
+      expect(converted).not.toContain('Saves:');
       expect(converted).not.toContain('primary attributes are strength, dexterity');
     });
   });
