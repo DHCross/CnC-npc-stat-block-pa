@@ -10,6 +10,7 @@
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "vitest run",
+    "test:unit": "vitest run --config vitest.unit.config.mts",
     "analyze:bestiary": "node scripts/analyze_bestiary.cjs",
     "regen:mouths": "node scripts/extract_parentheticals.cjs && node scripts/parse_parentheticals.cjs && node scripts/build_candidates.cjs && npx tsx scripts/canonicalize_candidates.ts && node scripts/render_mouths_markdown.cjs && node scripts/analyze_bestiary.cjs",
     "generate:mocks": "npx tsx scripts/generate-mouths-mock.ts",

@@ -1,4 +1,4 @@
-export { formatHdAsLevel } from './format-hd-as-level';
+export { formatHdAsLevel, extractHdHpModifier } from './format-hd-as-level';
 
 export function normalizeDisposition(value: string): string {
   if (!value) return '';
@@ -15,6 +15,13 @@ export function normalizeDisposition(value: string): string {
     'chaotic good': 'chaos/good',
     'chaotic neutral': 'chaos/neutral',
     'chaotic evil': 'chaos/evil',
+    // Single-axis shorthands resolve to the two-axis canonical form
+    'lawful': 'law/neutral',
+    'chaotic': 'chaos/neutral',
+    'law': 'law/neutral',
+    'chaos': 'chaos/neutral',
+    'good': 'neutral/good',
+    'evil': 'neutral/evil',
     // C&C Explicit Noun/Noun mappings
     'law good': 'law/good',
     'law neutral': 'law/neutral',

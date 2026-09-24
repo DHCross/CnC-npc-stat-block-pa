@@ -3,8 +3,8 @@ export const mouthsOfMadnessAnalysis = {
   "creatures": [
     {
       "name": "### 1. Ape, carnivorous",
-      "original": "### 1. Ape, carnivorous\n\n*HP 23, AC 15, disposition neutral. Saves: P.*",
-      "converted": "**### 1. Ape, carnivorous** *Level 4(d10), HP 23, AC 15, disposition neutrality. Saves: P.*",
+      "original": "### 1. Ape, carnivorous\n\n*Level 4(d10), HP 23, AC 15, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 1. Ape, carnivorous** *Level 4(d10), HP 23, AC 15, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -14,13 +14,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d10",
         "hp": "23",
         "ac": "15",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 1,
       "creatureType": "Ape",
-      "rawMarkdown": "### 1. Ape, carnivorous\n\n*HP 23, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 23, AC 15, Disposition neutral\n\n---",
+      "rawMarkdown": "### 1. Ape, carnivorous\n\n*Level 4(d10), HP 23, AC 15, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 23, AC 15, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -30,8 +30,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 2. Bandit",
-      "original": "### 2. Bandit\n\n*HP 4, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*",
-      "converted": "**### 2. Bandit** *Level 1(d6), HP 4, AC 13, disposition neutral evil. Saves: P. It has 6 silver in coin.*",
+      "original": "### 2. Bandit\n\n*Level 1(d6), HP 4, AC 13, disposition neutral/evil. Its primary attributes are physical. It has 6 silver in coin.*",
+      "converted": "**### 2. Bandit** *Level 1(d6), HP 4, AC 13, disposition neutral/evil. Its primary attributes are physical. It has 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -40,7 +40,7 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "They are 0th level, neutral evil, human fighters whose vital stats are HP 4, AC 13. Their primary attributes are physical. They have studded leather armor, battle axe [+0 \"to hit\"; 1d8 damage], short bow [+0 \"to hit\"; 1d6 damage], arrows x6, and 1d6 sp. XP: 5+1",
         "hp": "4",
         "ac": "13",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "attributes": "physical",
         "coins": "6 sp",
         "raceClass": "0th level, neutral evil, human fighters",
@@ -48,7 +48,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 2,
       "creatureType": "Bandit",
-      "rawMarkdown": "### 2. Bandit\n\n*HP 4, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 13, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 2. Bandit\n\n*Level 1(d6), HP 4, AC 13, disposition neutral/evil. Its primary attributes are physical. It has 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 13, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -59,8 +59,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 3. Bandit, Lieutenant",
-      "original": "### 3. Bandit, Lieutenant\n\n*HP 14, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*",
-      "converted": "**### 3. Bandit, Lieutenant** *HP 14, AC 14, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 gold in coin.*",
+      "original": "### 3. Bandit, Lieutenant\n\n*Level 1(d6), HP 14, AC 14, disposition neutral/evil. Its primary attributes are physical. It has 6 gold in coin.*",
+      "converted": "**### 3. Bandit, Lieutenant** *Level 1(d6), HP 14, AC 14, disposition neutral/evil. Its primary attributes are physical. It has 6 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -69,7 +69,7 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 14. Their primary attributes are physical. They have scale mail, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, and 1d6 gp. XP: 10+2",
         "hp": "14",
         "ac": "14",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "attributes": "physical",
         "coins": "6 gp",
         "raceClass": "2nd level, neutral evil, human fighters",
@@ -77,7 +77,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 3,
       "creatureType": "Bandit",
-      "rawMarkdown": "### 3. Bandit, Lieutenant\n\n*HP 14, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*\n\n**Core Stats:** HP 14, AC 14, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 3. Bandit, Lieutenant\n\n*Level 1(d6), HP 14, AC 14, disposition neutral/evil. Its primary attributes are physical. It has 6 gold in coin.*\n\n**Core Stats:** HP 14, AC 14, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "rank-inferred",
@@ -90,8 +90,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 4. Bat, giant cave",
-      "original": "### 4. Bat, giant cave\n\n*HP 1, AC 12, disposition neutral. Saves: P.*",
-      "converted": "**### 4. Bat, giant cave** *Level 1(d2), HP 1, AC 12, disposition neutrality. Saves: P.*",
+      "original": "### 4. Bat, giant cave\n\n*Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 4. Bat, giant cave** *Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -101,13 +101,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d2",
         "hp": "1",
         "ac": "12",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 4,
       "creatureType": "Bat",
-      "rawMarkdown": "### 4. Bat, giant cave\n\n*HP 1, AC 12, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n\n---",
+      "rawMarkdown": "### 4. Bat, giant cave\n\n*Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -117,8 +117,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 5. **Batrachianoid*:** _",
-      "original": "### 5. **Batrachianoid*:** _\n\n*HP 5, AC 14, disposition chaos/evil. Saves: P. It has 6 copper in coin.*",
-      "converted": "**### 5. Batrachianoid*: _** *HP 5, AC 14, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 copper in coin.*",
+      "original": "### 5. **Batrachianoid*:** _\n\n*Level 1(d8), HP 5, AC 14, disposition chaos/evil. Its primary attributes are physical. It has 6 copper in coin.*",
+      "converted": "**### 5. Batrachianoid*: _** *Level 1(d8), HP 5, AC 14, disposition chaos/evil. Its primary attributes are physical. It has 6 copper in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -128,13 +128,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "5",
         "ac": "14",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
-        "coins": "6 cp"
+        "coins": "6 cp",
+        "attributes": "physical"
       },
       "entryNumber": 5,
       "creatureType": "Batrachianoid",
-      "rawMarkdown": "### 5. **Batrachianoid*:** _\n\n*HP 5, AC 14, disposition chaos/evil. Saves: P. It has 6 copper in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 5. **Batrachianoid*:** _\n\n*Level 1(d8), HP 5, AC 14, disposition chaos/evil. Its primary attributes are physical. It has 6 copper in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -144,8 +145,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 6. Bear, black",
-      "original": "### 6. Bear, black\n\n*HP 15, AC 13, disposition neutral. Saves: P.*",
-      "converted": "**### 6. Bear, black** *Level 3(d8), HP 15, AC 13, disposition neutrality.*",
+      "original": "### 6. Bear, black\n\n*Level 3(d8), HP 15, AC 13, disposition neutral.*",
+      "converted": "**### 6. Bear, black** *Level 3(d8), HP 15, AC 13, disposition neutral.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -155,13 +156,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d8",
         "hp": "15",
         "ac": "13",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "ws for 1d4+1 damage and a bite for 1d6+1 damage"
       },
       "entryNumber": 6,
       "creatureType": "Bear",
-      "rawMarkdown": "### 6. Bear, black\n\n*HP 15, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 15, AC 13, Disposition neutral\n\n---",
+      "rawMarkdown": "### 6. Bear, black\n\n*Level 3(d8), HP 15, AC 13, disposition neutral.*\n\n**Core Stats:** HP 15, AC 13, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -171,8 +172,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 7. Boar, wild",
-      "original": "### 7. Boar, wild\n\n*HP 8, AC 16, disposition neutral. Saves: P.*",
-      "converted": "**### 7. Boar, wild** *Level 2(d8), HP 8, AC 16, disposition neutrality. Saves: P.*",
+      "original": "### 7. Boar, wild\n\n*Level 2(d8), HP 8, AC 16, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 7. Boar, wild** *Level 2(d8), HP 8, AC 16, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -182,13 +183,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d8",
         "hp": "8",
         "ac": "16",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 7,
       "creatureType": "Boar",
-      "rawMarkdown": "### 7. Boar, wild\n\n*HP 8, AC 16, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 8, AC 16, Disposition neutral\n\n---",
+      "rawMarkdown": "### 7. Boar, wild\n\n*Level 2(d8), HP 8, AC 16, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 8, AC 16, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -198,8 +199,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 8. Brigand, crossbowmen",
-      "original": "### 8. Brigand, crossbowmen\n\n*HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*",
-      "converted": "**### 8. Brigand, crossbowmen** *HP 5, AC 13, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 gold in coin.*",
+      "original": "### 8. Brigand, crossbowmen\n\n*HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 gold in coin.*",
+      "converted": "**### 8. Brigand, crossbowmen** *HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -208,14 +209,14 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 13. Their primary attributes are physical. They have studded leather armor, longsword [+1 \"to hit\"; 1d8 damage], heavy crossbow [specialized; +2 \"to hit\"; 1d10+1 damage; 1 attack per 2 rounds], 8 bolts, dagger, and 1d6 gp. XP: 7+1",
         "hp": "5",
         "ac": "13",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "attributes": "physical",
         "coins": "6 gp",
         "raceClass": "1st level, neutral evil, human fighters"
       },
       "entryNumber": 8,
       "creatureType": "Brigand",
-      "rawMarkdown": "### 8. Brigand, crossbowmen\n\n*HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*\n\n**Core Stats:** HP 5, AC 13, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 8. Brigand, crossbowmen\n\n*HP 5, AC 13, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 gold in coin.*\n\n**Core Stats:** HP 5, AC 13, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -226,8 +227,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 9. Brigand, flailmen",
-      "original": "### 9. Brigand, flailmen\n\n*HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*",
-      "converted": "**### 9. Brigand, flailmen** *HP 5, AC 14, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*",
+      "original": "### 9. Brigand, flailmen\n\n*HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*",
+      "converted": "**### 9. Brigand, flailmen** *HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -236,14 +237,14 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "They are 1st level, neutral evil, human fighters whose vital stats are HP 5, AC 14. Their primary attributes are physical. They have scale mail, heavy flail [specialized; +2 \"to hit\"; 1d10+1 damage], belt axe, dagger, and 3d6 sp. XP: 7+1",
         "hp": "5",
         "ac": "14",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "attributes": "physical",
         "coins": "6 sp",
         "raceClass": "1st level, neutral evil, human fighters"
       },
       "entryNumber": 9,
       "creatureType": "Brigand",
-      "rawMarkdown": "### 9. Brigand, flailmen\n\n*HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 9. Brigand, flailmen\n\n*HP 5, AC 14, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -254,8 +255,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 10. Brigand, Serjeant",
-      "original": "### 10. Brigand, Serjeant\n\n*HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 8 gold in coin.*",
-      "converted": "**### 10. Brigand, Serjeant** *HP 14, AC 15, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 8 gold in coin.*",
+      "original": "### 10. Brigand, Serjeant\n\n*HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 8 gold in coin.*",
+      "converted": "**### 10. Brigand, Serjeant** *HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 8 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -264,14 +265,14 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "They are 2nd level, neutral evil, human fighters whose vital statistics are HP 14, AC 15. Their primary attributes are physical. They have chain hauberk, shield, longsword [specialized; +3 \"to hit\"; 1d8+1 damage], light crossbow [+1 \"to hit\"; 1d6 damage], bolts x12, and 2d8 gp. XP: 10+2",
         "hp": "14",
         "ac": "15",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "attributes": "physical",
         "coins": "8 gp",
         "raceClass": "2nd level, neutral evil, human fighters"
       },
       "entryNumber": 10,
       "creatureType": "Brigand",
-      "rawMarkdown": "### 10. Brigand, Serjeant\n\n*HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 8 gold in coin.*\n\n**Core Stats:** HP 14, AC 15, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 10. Brigand, Serjeant\n\n*HP 14, AC 15, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 8 gold in coin.*\n\n**Core Stats:** HP 14, AC 15, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "rank-inferred",
@@ -284,8 +285,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 11. Bugbear",
-      "original": "### 11. Bugbear\n\n*HP 16, AC 16, disposition chaos/evil. Saves: P. It has 4 gold in coin.*",
-      "converted": "**### 11. Bugbear** *Level 3(d10), HP 16, AC 16, disposition chaotic evil. Saves: P. It has 4 gold in coin.*",
+      "original": "### 11. Bugbear\n\n*Level 3(d10), HP 16, AC 16, disposition chaos/evil. Its primary attributes are physical. It has 4 gold in coin.*",
+      "converted": "**### 11. Bugbear** *Level 3(d10), HP 16, AC 16, disposition chaos/evil. Its primary attributes are physical. It has 4 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -295,14 +296,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d10",
         "hp": "16",
         "ac": "16",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
         "attributes": "physical",
         "coins": "4 gp"
       },
       "entryNumber": 11,
       "creatureType": "Bugbear",
-      "rawMarkdown": "### 11. Bugbear\n\n*HP 16, AC 16, disposition chaos/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 16, AC 16, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 11. Bugbear\n\n*Level 3(d10), HP 16, AC 16, disposition chaos/evil. Its primary attributes are physical. It has 4 gold in coin.*\n\n**Core Stats:** HP 16, AC 16, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -312,8 +313,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 12. Elf, Wood, bowman",
-      "original": "### 12. Elf, Wood, bowman\n\n*HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin.*",
-      "converted": "**### 12. Elf, Wood, bowman** *HP 8, AC 12, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 18 silver in coin.*",
+      "original": "### 12. Elf, Wood, bowman\n\n*Level 1(d10), HP 8, AC 12, disposition chaos/neutral. Its primary attributes are physical. It has 18 silver in coin.*",
+      "converted": "**### 12. Elf, Wood, bowman** *Level 1(d10), HP 8, AC 12, disposition chaos/neutral. Its primary attributes are physical. It has 18 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -323,14 +324,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d10",
         "hp": "8",
         "ac": "12",
-        "disposition": "chaotic neutral",
+        "disposition": "chaos/neutral",
         "attributes": "physical",
         "coins": "18 sp",
         "raceClass": "1st level, chaotic neutral fighters"
       },
       "entryNumber": 12,
       "creatureType": "Elf",
-      "rawMarkdown": "### 12. Elf, Wood, bowman\n\n*HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin.*\n\n**Core Stats:** HP 8, AC 12, Disposition chaos/neutral\n\n---",
+      "rawMarkdown": "### 12. Elf, Wood, bowman\n\n*Level 1(d10), HP 8, AC 12, disposition chaos/neutral. Its primary attributes are physical. It has 18 silver in coin.*\n\n**Core Stats:** HP 8, AC 12, Disposition chaos/neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -340,8 +341,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 13. Elf, Wood, spearman",
-      "original": "### 13. Elf, Wood, spearman\n\n*HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin.*",
-      "converted": "**### 13. Elf, Wood, spearman** *HP 8, AC 13, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 12 silver in coin.*",
+      "original": "### 13. Elf, Wood, spearman\n\n*Level 1(d10), HP 8, AC 13, disposition chaos/neutral. Its primary attributes are physical. It has 12 silver in coin.*",
+      "converted": "**### 13. Elf, Wood, spearman** *Level 1(d10), HP 8, AC 13, disposition chaos/neutral. Its primary attributes are physical. It has 12 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -351,14 +352,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d10",
         "hp": "8",
         "ac": "13",
-        "disposition": "chaotic neutral",
+        "disposition": "chaos/neutral",
         "attributes": "physical",
         "coins": "12 sp",
         "raceClass": "1st level, chaotic neutral fighters"
       },
       "entryNumber": 13,
       "creatureType": "Elf",
-      "rawMarkdown": "### 13. Elf, Wood, spearman\n\n*HP 8, AC 13, disposition chaos/neutral. Saves: P. It has 12 silver in coin.*\n\n**Core Stats:** HP 8, AC 13, Disposition chaos/neutral\n\n---",
+      "rawMarkdown": "### 13. Elf, Wood, spearman\n\n*Level 1(d10), HP 8, AC 13, disposition chaos/neutral. Its primary attributes are physical. It has 12 silver in coin.*\n\n**Core Stats:** HP 8, AC 13, Disposition chaos/neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -368,8 +369,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 14. Elf, Wood, swordsman",
-      "original": "### 14. Elf, Wood, swordsman\n\n*HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin.*",
-      "converted": "**### 14. Elf, Wood, swordsman** *HP 5, AC 14, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 2–12 gold in coin.*",
+      "original": "### 14. Elf, Wood, swordsman\n\n*Level 1(d10), HP 5, AC 14, disposition chaos/neutral. Its primary attributes are physical. It has 2–12 gold in coin.*",
+      "converted": "**### 14. Elf, Wood, swordsman** *Level 1(d10), HP 5, AC 14, disposition chaos/neutral. Its primary attributes are physical. It has 2–12 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -379,14 +380,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d10",
         "hp": "5",
         "ac": "14",
-        "disposition": "chaotic neutral",
+        "disposition": "chaos/neutral",
         "attributes": "physical",
         "coins": "2–12 gp",
         "raceClass": "1st - 3rd level, chaotic neutral fighters"
       },
       "entryNumber": 14,
       "creatureType": "Elf",
-      "rawMarkdown": "### 14. Elf, Wood, swordsman\n\n*HP 5, AC 14, disposition chaos/neutral. Saves: P. It has 2–12 gold in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/neutral\n\n---",
+      "rawMarkdown": "### 14. Elf, Wood, swordsman\n\n*Level 1(d10), HP 5, AC 14, disposition chaos/neutral. Its primary attributes are physical. It has 2–12 gold in coin.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -396,8 +397,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 15. Ghoul",
-      "original": "### 15. Ghoul\n\n*HP 10, AC 14, disposition chaos/evil. Saves: P.*",
-      "converted": "**### 15. Ghoul** *Level 2(d8), HP 10, AC 14, disposition chaotic evil.*",
+      "original": "### 15. Ghoul\n\n*Level 2(d8), HP 10, AC 14, disposition chaos/evil.*",
+      "converted": "**### 15. Ghoul** *Level 2(d8), HP 10, AC 14, disposition chaos/evil.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -407,13 +408,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d8",
         "hp": "10",
         "ac": "14",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "undead",
         "attributes": "ralysis or become rigid [paralyzed]"
       },
       "entryNumber": 15,
       "creatureType": "Ghoul",
-      "rawMarkdown": "### 15. Ghoul\n\n*HP 10, AC 14, disposition chaos/evil. Saves: P.*\n\n**Core Stats:** HP 10, AC 14, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 15. Ghoul\n\n*Level 2(d8), HP 10, AC 14, disposition chaos/evil.*\n\n**Core Stats:** HP 10, AC 14, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -423,8 +424,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 16. Gnoll",
-      "original": "### 16. Gnoll\n\n*HP 13, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*",
-      "converted": "**### 16. Gnoll** *Level 2(d10), HP 13, AC 15, disposition chaotic evil. It has 4 gold in coin.*",
+      "original": "### 16. Gnoll\n\n*Level 2(d10), HP 13, AC 15, disposition chaos/evil. It has 4 gold in coin.*",
+      "converted": "**### 16. Gnoll** *Level 2(d10), HP 13, AC 15, disposition chaos/evil. It has 4 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -434,14 +435,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d10",
         "hp": "13",
         "ac": "15",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
         "attributes": "tchwork leather armor, shield, throwing club, morning star, and 2d4 gp",
         "coins": "4 gp"
       },
       "entryNumber": 16,
       "creatureType": "Gnoll",
-      "rawMarkdown": "### 16. Gnoll\n\n*HP 13, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 13, AC 15, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 16. Gnoll\n\n*Level 2(d10), HP 13, AC 15, disposition chaos/evil. It has 4 gold in coin.*\n\n**Core Stats:** HP 13, AC 15, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -451,8 +452,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 17. Goblin, raider",
-      "original": "### 17. Goblin, raider\n\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*",
-      "converted": "**### 17. Goblin, raider** *Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. It has 6 silver in coin.*",
+      "original": "### 17. Goblin, raider\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
+      "converted": "**### 17. Goblin, raider** *Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -462,14 +463,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "4",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "coins": "6 sp",
         "attributes": "physical"
       },
       "entryNumber": 17,
       "creatureType": "Goblin",
-      "rawMarkdown": "### 17. Goblin, raider\n\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 17. Goblin, raider\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -479,8 +480,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 18. Goblin, leader (corporal)",
-      "original": "### 18. Goblin, leader (corporal)\n\n*HP 15, AC 16, disposition law/evil. Saves: P. It has 4 gold in coin.*",
-      "converted": "**### 18. Goblin, leader (corporal)** *HP 15, AC 16, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 4 gold in coin.*",
+      "original": "### 18. Goblin, leader (corporal)\n\n*Level 3(d6+2), HP 15, AC 16, disposition law/evil. Its primary attributes are physical. It has 4 gold in coin.*",
+      "converted": "**### 18. Goblin, leader (corporal)** *Level 3(d6+2), HP 15, AC 16, disposition law/evil. Its primary attributes are physical. It has 4 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -490,14 +491,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d6+2",
         "hp": "15",
         "ac": "16",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
-        "attributes": "strength",
+        "attributes": "physical",
         "coins": "4 gp"
       },
       "entryNumber": 18,
       "creatureType": "Goblin",
-      "rawMarkdown": "### 18. Goblin, leader (corporal)\n\n*HP 15, AC 16, disposition law/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 15, AC 16, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 18. Goblin, leader (corporal)\n\n*Level 3(d6+2), HP 15, AC 16, disposition law/evil. Its primary attributes are physical. It has 4 gold in coin.*\n\n**Core Stats:** HP 15, AC 16, Disposition law/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "rank-inferred",
@@ -510,8 +511,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 19. Griffon",
-      "original": "### 19. Griffon\n\n*HP 45, AC 17, disposition neutral. Saves: P.*",
-      "converted": "**### 19. Griffon** *Level 7(d10), HP 45, AC 17, disposition neutrality. Saves: P.*",
+      "original": "### 19. Griffon\n\n*Level 7(d10), HP 45, AC 17, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 19. Griffon** *Level 7(d10), HP 45, AC 17, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -521,13 +522,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "7d10",
         "hp": "45",
         "ac": "17",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 19,
       "creatureType": "Griffon",
-      "rawMarkdown": "### 19. Griffon\n\n*HP 45, AC 17, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 45, AC 17, Disposition neutral\n\n---",
+      "rawMarkdown": "### 19. Griffon\n\n*Level 7(d10), HP 45, AC 17, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 45, AC 17, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -537,8 +538,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 20. Hobgoblin",
-      "original": "### 20. Hobgoblin\n\n*HP 8, AC 15, disposition law/evil. Saves: P. It has 4 silver in coin.*",
-      "converted": "**### 20. Hobgoblin** *Level 1(d10), HP 8, AC 15, disposition lawful evil. Saves: P. It has 4 silver in coin.*",
+      "original": "### 20. Hobgoblin\n\n*Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has 4 silver in coin.*",
+      "converted": "**### 20. Hobgoblin** *Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has 4 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -548,14 +549,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d10",
         "hp": "8",
         "ac": "15",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical",
         "coins": "4 sp"
       },
       "entryNumber": 20,
       "creatureType": "Hobgoblin",
-      "rawMarkdown": "### 20. Hobgoblin\n\n*HP 8, AC 15, disposition law/evil. Saves: P. It has 4 silver in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 20. Hobgoblin\n\n*Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has 4 silver in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -565,8 +566,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 21. Kobold",
-      "original": "### 21. Kobold\n\n*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*",
-      "converted": "**### 21. Kobold** *Level 1(d4), HP 3, AC 15, disposition lawful evil. Saves: P. It has 6 silver in coin.*",
+      "original": "### 21. Kobold\n\n*Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
+      "converted": "**### 21. Kobold** *Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -576,14 +577,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d4",
         "hp": "3",
         "ac": "15",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "coins": "6 sp",
         "attributes": "physical"
       },
       "entryNumber": 21,
       "creatureType": "Kobold",
-      "rawMarkdown": "### 21. Kobold\n\n*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 21. Kobold\n\n*Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -593,8 +594,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 22. Lion (mountain, forest)",
-      "original": "### 22. Lion (mountain, forest)\n\n*HP 20, AC 16, disposition neutral. Saves: P.*",
-      "converted": "**### 22. Lion (mountain, forest)** *Level 4(d8), HP 20, AC 16, disposition neutrality. Saves: P.*",
+      "original": "### 22. Lion (mountain, forest)\n\n*Level 4(d8), HP 20, AC 16, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 22. Lion (mountain, forest)** *Level 4(d8), HP 20, AC 16, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -604,13 +605,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d8",
         "hp": "20",
         "ac": "16",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 22,
       "creatureType": "Lion",
-      "rawMarkdown": "### 22. Lion (mountain, forest)\n\n*HP 20, AC 16, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 20, AC 16, Disposition neutral\n\n---",
+      "rawMarkdown": "### 22. Lion (mountain, forest)\n\n*Level 4(d8), HP 20, AC 16, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 20, AC 16, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -620,8 +621,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 23. Lizardfolk",
-      "original": "### 23. Lizardfolk\n\n*HP 10, AC 15, disposition neutral. Saves: P.*",
-      "converted": "**### 23. Lizardfolk** *Level 2(d8), HP 10, AC 15, disposition neutrality. Saves: P.*",
+      "original": "### 23. Lizardfolk\n\n*Level 2(d8), HP 10, AC 15, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 23. Lizardfolk** *Level 2(d8), HP 10, AC 15, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -631,13 +632,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d8",
         "hp": "10",
         "ac": "15",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 23,
       "creatureType": "Lizardfolk",
-      "rawMarkdown": "### 23. Lizardfolk\n\n*HP 10, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 10, AC 15, Disposition neutral\n\n---",
+      "rawMarkdown": "### 23. Lizardfolk\n\n*Level 2(d8), HP 10, AC 15, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 10, AC 15, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -647,8 +648,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 24. **Losel*:** _",
-      "original": "### 24. **Losel*:** _\n\n*HP 10, AC 14, disposition neutral/evil. Saves: P.*",
-      "converted": "**### 24. Losel*: _** *HP 10, AC 14, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "original": "### 24. **Losel*:** _\n\n*Level 1(d8+4), HP 10, AC 14, disposition neutral/evil. Its primary attributes are physical.*",
+      "converted": "**### 24. Losel*: _** *Level 1(d8+4), HP 10, AC 14, disposition neutral/evil. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -658,13 +659,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8+4",
         "hp": "10",
         "ac": "14",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "raceClass": "humanoid",
-        "attributes": "strength"
+        "attributes": "physical"
       },
       "entryNumber": 24,
       "creatureType": "Losel",
-      "rawMarkdown": "### 24. **Losel*:** _\n\n*HP 10, AC 14, disposition neutral/evil. Saves: P.*\n\n**Core Stats:** HP 10, AC 14, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 24. **Losel*:** _\n\n*Level 1(d8+4), HP 10, AC 14, disposition neutral/evil. Its primary attributes are physical.*\n\n**Core Stats:** HP 10, AC 14, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -674,8 +675,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 25. (fisherman/hunter/trapper/woodcutter)",
-      "original": "### 25. (fisherman/hunter/trapper/woodcutter)\n\n*HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*",
-      "converted": "**### 25. (fisherman/hunter/trapper/woodcutter)** *HP 5, AC 12, disposition neutrality. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*",
+      "original": "### 25. (fisherman/hunter/trapper/woodcutter)\n\n*HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*",
+      "converted": "**### 25. (fisherman/hunter/trapper/woodcutter)** *HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -684,14 +685,14 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "They are 0th-2nd level, neutral, human fighters whose vital stats are HD d8, HP 5 per HD, AC 12. Their primary attributes are physical. Their significant attribute is strength 15. They have leather armor, battle axe [+1 to +3 \"to hit\"; 1d8+1 damage], heavy knife, and 1d6 sp. XP: 3+1, 5+1, 10+2",
         "hp": "5",
         "ac": "12",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "attributes": "physical",
         "coins": "6 sp",
         "raceClass": "0th-2nd level, neutral, human fighters"
       },
       "entryNumber": 25,
       "creatureType": "",
-      "rawMarkdown": "### 25. (fisherman/hunter/trapper/woodcutter)\n\n*HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*\n\n**Core Stats:** HP 5, AC 12, Disposition neutral\n\n---",
+      "rawMarkdown": "### 25. (fisherman/hunter/trapper/woodcutter)\n\n*HP 5, AC 12, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*\n\n**Core Stats:** HP 5, AC 12, Disposition neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -702,8 +703,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 26. Naga, Water",
-      "original": "### 26. Naga, Water\n\n*HP 35, AC 15, disposition neutral. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc.*",
-      "converted": "**### 26. Naga, Water** *Level 7(d8), HP 35, AC 15, disposition neutrality. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc.*",
+      "original": "### 26. Naga, Water\n\n*Level 7(d8), HP 35, AC 15, disposition neutral. Its primary attributes are physical. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc.*",
+      "converted": "**### 26. Naga, Water** *Level 7(d8), HP 35, AC 15, disposition neutral. Its primary attributes are physical. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -713,14 +714,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "7d8",
         "hp": "35",
         "ac": "15",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical",
         "equipment": "spells as a 7th level wizard, focusing on spells that promote protection and escape, such as dimension door, invisibility, medium steel shield, teleport, etc"
       },
       "entryNumber": 26,
       "creatureType": "Naga",
-      "rawMarkdown": "### 26. Naga, Water\n\n*HP 35, AC 15, disposition neutral. Saves: P. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc.*\n\n**Core Stats:** HP 35, AC 15, Disposition neutral\n\n---",
+      "rawMarkdown": "### 26. Naga, Water\n\n*Level 7(d8), HP 35, AC 15, disposition neutral. Its primary attributes are physical. It has a spells as a 7th level wizard, a focusing on spells that promote protection, an escape, a such as Dimension Door, an invisibility, a medium steel shield, a Teleport, and an etc.*\n\n**Core Stats:** HP 35, AC 15, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -730,8 +731,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 27. Nixies (sprite)",
-      "original": "### 27. Nixies (sprite)\n\n*HP 3, AC 14, disposition neutral. Saves: P. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*",
-      "converted": "**### 27. Nixies (sprite)** *HP 3, AC 14, disposition neutrality. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*",
+      "original": "### 27. Nixies (sprite)\n\n*HP 3, AC 14, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*",
+      "converted": "**### 27. Nixies (sprite)** *HP 3, AC 14, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -741,13 +742,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d4",
         "hp": "3",
         "ac": "14",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "spells": "water breathing at will and cast a powerful charm person spell that lasts for one year"
       },
       "entryNumber": 27,
       "creatureType": "Nixies",
-      "rawMarkdown": "### 27. Nixies (sprite)\n\n*HP 3, AC 14, disposition neutral. Saves: P. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*\n\n**Core Stats:** HP 3, AC 14, Disposition neutral\n\n---",
+      "rawMarkdown": "### 27. Nixies (sprite)\n\n*HP 3, AC 14, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*\n\n**Core Stats:** HP 3, AC 14, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -757,8 +758,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 28. Orc",
-      "original": "### 28. Orc\n\n*HP 5, AC 13, disposition law/evil. Saves: P. It has 6 gold in coin.*",
-      "converted": "**### 28. Orc** *Level 1(d8), HP 5, AC 13, disposition lawful evil. Saves: P. It has 6 gold in coin.*",
+      "original": "### 28. Orc\n\n*Level 1(d8), HP 5, AC 13, disposition law/evil. Its primary attributes are physical. It has 6 gold in coin.*",
+      "converted": "**### 28. Orc** *Level 1(d8), HP 5, AC 13, disposition law/evil. Its primary attributes are physical. It has 6 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -768,14 +769,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "5",
         "ac": "13",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "coins": "6 gp",
         "attributes": "physical"
       },
       "entryNumber": 28,
       "creatureType": "Orc",
-      "rawMarkdown": "### 28. Orc\n\n*HP 5, AC 13, disposition law/evil. Saves: P. It has 6 gold in coin.*\n\n**Core Stats:** HP 5, AC 13, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 28. Orc\n\n*Level 1(d8), HP 5, AC 13, disposition law/evil. Its primary attributes are physical. It has 6 gold in coin.*\n\n**Core Stats:** HP 5, AC 13, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -785,8 +786,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 29. Otter, giant",
-      "original": "### 29. Otter, giant\n\n*HP 21, AC 15, disposition neutral. Saves: P.*",
-      "converted": "**### 29. Otter, giant** *Level 4(d8), HP 21, AC 15, disposition neutrality. Saves: P.*",
+      "original": "### 29. Otter, giant\n\n*Level 4(d8), HP 21, AC 15, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 29. Otter, giant** *Level 4(d8), HP 21, AC 15, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -796,13 +797,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d8",
         "hp": "21",
         "ac": "15",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 29,
       "creatureType": "Otter",
-      "rawMarkdown": "### 29. Otter, giant\n\n*HP 21, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 21, AC 15, Disposition neutral\n\n---",
+      "rawMarkdown": "### 29. Otter, giant\n\n*Level 4(d8), HP 21, AC 15, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 21, AC 15, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -812,8 +813,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 30. Owlbear (small)",
-      "original": "### 30. Owlbear (small)\n\n*HP 19, AC 15, disposition neutral. Saves: P.*",
-      "converted": "**### 30. Owlbear (small)** *Level 3(d10), HP 19, AC 15, disposition neutrality. Saves: P.*",
+      "original": "### 30. Owlbear (small)\n\n*Level 3(d10), HP 19, AC 15, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 30. Owlbear (small)** *Level 3(d10), HP 19, AC 15, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -823,13 +824,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d10",
         "hp": "19",
         "ac": "15",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "monster",
         "attributes": "physical"
       },
       "entryNumber": 30,
       "creatureType": "Owlbear",
-      "rawMarkdown": "### 30. Owlbear (small)\n\n*HP 19, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 19, AC 15, Disposition neutral\n\n---",
+      "rawMarkdown": "### 30. Owlbear (small)\n\n*Level 3(d10), HP 19, AC 15, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 19, AC 15, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -839,8 +840,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 31. Rats, River (giant)",
-      "original": "### 31. Rats, River (giant)\n\n*HP 2, AC 13, disposition neutral. Saves: P.*",
-      "converted": "**### 31. Rats, River (giant)** *Level 1(d4), HP 2, AC 13, disposition neutrality. Saves: P.*",
+      "original": "### 31. Rats, River (giant)\n\n*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 31. Rats, River (giant)** *Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -850,13 +851,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d4",
         "hp": "2",
         "ac": "13",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 31,
       "creatureType": "Rats",
-      "rawMarkdown": "### 31. Rats, River (giant)\n\n*HP 2, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---",
+      "rawMarkdown": "### 31. Rats, River (giant)\n\n*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -866,8 +867,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 32. Rivermen",
-      "original": "### 32. Rivermen\n\n*HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability.*",
-      "converted": "**### 32. Rivermen** *HP 5, AC 11, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. His secondary skill is Nautical Ability.*",
+      "original": "### 32. Rivermen\n\n*Level 1(d8), HP 5, AC 11, disposition chaos/neutral. Its primary attributes are physical. Its secondary skill is Nautical Ability.*",
+      "converted": "**### 32. Rivermen** *Level 1(d8), HP 5, AC 11, disposition chaos/neutral. Its primary attributes are physical. Its secondary skill is Nautical Ability.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -877,14 +878,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "5",
         "ac": "11",
-        "disposition": "chaotic neutral",
+        "disposition": "chaos/neutral",
         "attributes": "physical",
         "secondarySkills": "Nautical Ability",
         "raceClass": "0th level, chaotic neutral, human fighters"
       },
       "entryNumber": 32,
       "creatureType": "Rivermen",
-      "rawMarkdown": "### 32. Rivermen\n\n*HP 5, AC 11, disposition chaos/neutral. Saves: P. Its secondary skill is Nautical Ability.*\n\n**Core Stats:** HP 5, AC 11, Disposition chaos/neutral\n\n---",
+      "rawMarkdown": "### 32. Rivermen\n\n*Level 1(d8), HP 5, AC 11, disposition chaos/neutral. Its primary attributes are physical. Its secondary skill is Nautical Ability.*\n\n**Core Stats:** HP 5, AC 11, Disposition chaos/neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -896,8 +897,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 33. Snake, poisonous",
-      "original": "### 33. Snake, poisonous\n\n*HP 4, AC 14, disposition neutral. Saves: P.*",
-      "converted": "**### 33. Snake, poisonous** *Level 1(d6), HP 4, AC 14, disposition neutrality. Saves: P.*",
+      "original": "### 33. Snake, poisonous\n\n*Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 33. Snake, poisonous** *Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -907,13 +908,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "4",
         "ac": "14",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 33,
       "creatureType": "Snake",
-      "rawMarkdown": "### 33. Snake, poisonous\n\n*HP 4, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---",
+      "rawMarkdown": "### 33. Snake, poisonous\n\n*Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -923,8 +924,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 34. Snake, poisonous (deadly)",
-      "original": "### 34. Snake, poisonous (deadly)\n\n*HP 7, AC 14, disposition neutral. Saves: P.*",
-      "converted": "**### 34. Snake, poisonous (deadly)** *Level 2(d6), HP 7, AC 14, disposition neutrality. Saves: P.*",
+      "original": "### 34. Snake, poisonous (deadly)\n\n*Level 2(d6), HP 7, AC 14, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 34. Snake, poisonous (deadly)** *Level 2(d6), HP 7, AC 14, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -934,13 +935,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d6",
         "hp": "7",
         "ac": "14",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 34,
       "creatureType": "Snake",
-      "rawMarkdown": "### 34. Snake, poisonous (deadly)\n\n*HP 7, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 7, AC 14, Disposition neutral\n\n---",
+      "rawMarkdown": "### 34. Snake, poisonous (deadly)\n\n*Level 2(d6), HP 7, AC 14, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 7, AC 14, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -950,8 +951,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 35. Spider, Giant (medium-sized)",
-      "original": "### 35. Spider, Giant (medium-sized)\n\n*HP 15, AC 15, disposition neutral. Saves: P.*",
-      "converted": "**### 35. Spider, Giant (medium-sized)** *Level 3(d8), HP 15, AC 15, disposition neutrality.*",
+      "original": "### 35. Spider, Giant (medium-sized)\n\n*Level 3(d8), HP 15, AC 15, disposition neutral.*",
+      "converted": "**### 35. Spider, Giant (medium-sized)** *Level 3(d8), HP 15, AC 15, disposition neutral.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -961,13 +962,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d8",
         "hp": "15",
         "ac": "15",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "ralyzation for 1d6 hours"
       },
       "entryNumber": 35,
       "creatureType": "Spider",
-      "rawMarkdown": "### 35. Spider, Giant (medium-sized)\n\n*HP 15, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 15, AC 15, Disposition neutral\n\n---",
+      "rawMarkdown": "### 35. Spider, Giant (medium-sized)\n\n*Level 3(d8), HP 15, AC 15, disposition neutral.*\n\n**Core Stats:** HP 15, AC 15, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -977,8 +978,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 36. Stirges",
-      "original": "### 36. Stirges\n\n*HP 3, AC 16, disposition neutral. Saves: P.*",
-      "converted": "**### 36. Stirges** *Level 1(d6), HP 3, AC 16, disposition neutrality. Saves: P.*",
+      "original": "### 36. Stirges\n\n*Level 1(d6), HP 3, AC 16, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 36. Stirges** *Level 1(d6), HP 3, AC 16, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -988,13 +989,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "3",
         "ac": "16",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 36,
       "creatureType": "Stirges",
-      "rawMarkdown": "### 36. Stirges\n\n*HP 3, AC 16, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 3, AC 16, Disposition neutral\n\n---",
+      "rawMarkdown": "### 36. Stirges\n\n*Level 1(d6), HP 3, AC 16, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 16, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1004,8 +1005,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 37. Thieves",
-      "original": "### 37. Thieves\n\n*HP 4, AC 14, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*",
-      "converted": "**### 37. Thieves** *HP 4, AC 14, disposition variable. Saves: P. It has 6 gold in coin.*",
+      "original": "### 37. Thieves\n\n*HP 4, AC 14, disposition variable. Its primary attributes are physical. It has 6 gold in coin.*",
+      "converted": "**### 37. Thieves** *HP 4, AC 14, disposition variable. Its primary attributes are physical. It has 6 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1021,7 +1022,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 37,
       "creatureType": "Thieves",
-      "rawMarkdown": "### 37. Thieves\n\n*HP 4, AC 14, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 gold in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition variable\n\n---",
+      "rawMarkdown": "### 37. Thieves\n\n*HP 4, AC 14, disposition variable. Its primary attributes are physical. It has 6 gold in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition variable\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -1032,8 +1033,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 38. Turtle, Huge Snapping",
-      "original": "### 38. Turtle, Huge Snapping\n\n*HP 20, AC 19, disposition neutral. Saves: P.*",
-      "converted": "**### 38. Turtle, Huge Snapping** *Level 5(d8), HP 20, AC 19, disposition neutrality. Saves: P.*",
+      "original": "### 38. Turtle, Huge Snapping\n\n*Level 5(d8), HP 20, AC 19, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 38. Turtle, Huge Snapping** *Level 5(d8), HP 20, AC 19, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1043,13 +1044,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "5d8",
         "hp": "20",
         "ac": "19",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 38,
       "creatureType": "Turtle",
-      "rawMarkdown": "### 38. Turtle, Huge Snapping\n\n*HP 20, AC 19, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 20, AC 19, Disposition neutral\n\n---",
+      "rawMarkdown": "### 38. Turtle, Huge Snapping\n\n*Level 5(d8), HP 20, AC 19, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 20, AC 19, Disposition neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -1062,8 +1063,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 39. Wolf, Grey",
-      "original": "### 39. Wolf, Grey\n\n*HP 9, AC 13, disposition neutral. Saves: P.*",
-      "converted": "**### 39. Wolf, Grey** *Level 2(d8), HP 9, AC 13, disposition neutrality. Saves: P.*",
+      "original": "### 39. Wolf, Grey\n\n*Level 2(d8), HP 9, AC 13, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 39. Wolf, Grey** *Level 2(d8), HP 9, AC 13, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1073,13 +1074,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d8",
         "hp": "9",
         "ac": "13",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 39,
       "creatureType": "Wolf",
-      "rawMarkdown": "### 39. Wolf, Grey\n\n*HP 9, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 9, AC 13, Disposition neutral\n\n---",
+      "rawMarkdown": "### 39. Wolf, Grey\n\n*Level 2(d8), HP 9, AC 13, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 9, AC 13, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1089,8 +1090,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 40. Wolverine (small, normal)",
-      "original": "### 40. Wolverine (small, normal)\n\n*HP 16, AC 15, disposition neutral. Saves: P.*",
-      "converted": "**### 40. Wolverine (small, normal)** *Level 3(d8), HP 16, AC 15, disposition neutrality. Saves: P.*",
+      "original": "### 40. Wolverine (small, normal)\n\n*Level 3(d8), HP 16, AC 15, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 40. Wolverine (small, normal)** *Level 3(d8), HP 16, AC 15, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1100,13 +1101,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d8",
         "hp": "16",
         "ac": "15",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 40,
       "creatureType": "Wolverine",
-      "rawMarkdown": "### 40. Wolverine (small, normal)\n\n*HP 16, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 16, AC 15, Disposition neutral\n\n---",
+      "rawMarkdown": "### 40. Wolverine (small, normal)\n\n*Level 3(d8), HP 16, AC 15, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 16, AC 15, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1116,8 +1117,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 41. Grimlock Manface (Losel Chieftain)",
-      "original": "### 41. Grimlock Manface (Losel Chieftain)\n\n*HP 32, AC 16, disposition neutral/evil. Saves: P. It has splint mail armor, *a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage]*, a lasso*, a belt axe, a dagger, and 125 gold in coin.*",
-      "converted": "**### 41. Grimlock Manface (Losel Chieftain)** *HP 32, AC 16. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries splint mail armor and a *HP 32, AC 16, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries splint mail armor, a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], a lasso*, a belt axe, a dagger, and 125 gold in coin.*",
+      "original": "### 41. Grimlock Manface (Losel Chieftain)\n\n*Level 4(d8+4), HP 32, AC 16, disposition neutral/evil. Its primary attributes are physical. It has splint mail armor, *a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage]*, a lasso*, a belt axe, a dagger, and 125 gold in coin.*",
+      "converted": "**### 41. Grimlock Manface (Losel Chieftain)** *HP 32, AC 16. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He wears splint mail armor and carries **+1*Level 4(d8+4), HP 32, AC 16, disposition neutral/evil. Its primary attributes are physical. It has splint mail armor, *a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage]*, a lasso*, a belt axe, a dagger, and 125 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1127,15 +1128,15 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d8+4",
         "hp": "32",
         "ac": "16",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "raceClass": "humanoid",
-        "attributes": "strength",
+        "attributes": "physical",
         "equipment": "splint mail armor and carry a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage], lasso*, belt axe, and dagger",
         "coins": "125 gp"
       },
       "entryNumber": 41,
       "creatureType": "Grimlock Manface",
-      "rawMarkdown": "### 41. Grimlock Manface (Losel Chieftain)\n\n*HP 32, AC 16, disposition neutral/evil. Saves: P. It has splint mail armor, *a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage]*, a lasso*, a belt axe, a dagger, and 125 gold in coin.*\n\n**Core Stats:** HP 32, AC 16, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 41. Grimlock Manface (Losel Chieftain)\n\n*Level 4(d8+4), HP 32, AC 16, disposition neutral/evil. Its primary attributes are physical. It has splint mail armor, *a +1 heavy flail [specialized; +6 \"to hit\"; 1d10+6 damage]*, a lasso*, a belt axe, a dagger, and 125 gold in coin.*\n\n**Core Stats:** HP 32, AC 16, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "rank-inferred",
@@ -1148,8 +1149,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 42. Ji'gun-tima (Losel Shaman)",
-      "original": "### 42. Ji'gun-tima (Losel Shaman)\n\n*HP 25, AC 12, disposition neutral/evil. Saves: P. It can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*.*",
-      "converted": "**### 42. Ji'gun-tima (Losel Shaman)** *HP 25, AC 12, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. She can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*.*",
+      "original": "### 42. Ji'gun-tima (Losel Shaman)\n\n*HP 25, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. She can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*.*",
+      "converted": "**### 42. Ji'gun-tima (Losel Shaman)** *HP 25, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. She can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1159,14 +1160,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d8+4",
         "hp": "25",
         "ac": "12",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "raceClass": "humanoid",
         "attributes": "strength",
         "spells": "a mixture of cleric and wizard spells at a 5th level ability"
       },
       "entryNumber": 42,
       "creatureType": "Ji'gun-tima",
-      "rawMarkdown": "### 42. Ji'gun-tima (Losel Shaman)\n\n*HP 25, AC 12, disposition neutral/evil. Saves: P. It can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*.*\n\n**Core Stats:** HP 25, AC 12, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 42. Ji'gun-tima (Losel Shaman)\n\n*HP 25, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. She can cast the following number of spells per day: *a mixture of cleric and wizard spells at a 5th level ability*.*\n\n**Core Stats:** HP 25, AC 12, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-leader",
@@ -1179,8 +1180,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 43. Losel sub-chiefs x 10",
-      "original": "### 43. Losel sub-chiefs x 10\n\n*HP 16, AC 14, disposition neutral/evil. Saves: P.*",
-      "converted": "**### 43. Losel sub-chiefs x 10** *HP 16, AC 14, disposition neutral evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "original": "### 43. Losel sub-chiefs x 10\n\n*Level 2(d8+4), HP 16, AC 14, disposition neutral/evil. Its primary attributes are physical.*",
+      "converted": "**### 43. Losel sub-chiefs x 10** *Level 2(d8+4), HP 16, AC 14, disposition neutral/evil. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1190,13 +1191,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d8+4",
         "hp": "16",
         "ac": "14",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "raceClass": "humanoid",
-        "attributes": "strength"
+        "attributes": "physical"
       },
       "entryNumber": 43,
       "creatureType": "Losel sub-chiefs x 10",
-      "rawMarkdown": "### 43. Losel sub-chiefs x 10\n\n*HP 16, AC 14, disposition neutral/evil. Saves: P.*\n\n**Core Stats:** HP 16, AC 14, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 43. Losel sub-chiefs x 10\n\n*Level 2(d8+4), HP 16, AC 14, disposition neutral/evil. Its primary attributes are physical.*\n\n**Core Stats:** HP 16, AC 14, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-leader",
@@ -1209,8 +1210,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 44. Losel warriors x 30",
-      "original": "### 44. Losel warriors x 30\n\n*HP 10, AC 14, disposition neutral/evil. Saves: P.*",
-      "converted": "**### 44. Losel warriors x 30** *Level 1(d8+4), HP 10, AC 14, disposition neutral evil. Saves: P.*",
+      "original": "### 44. Losel warriors x 30\n\n*Level 1(d8+4), HP 10, AC 14, disposition neutral/evil. Its primary attributes are physical.*",
+      "converted": "**### 44. Losel warriors x 30** *Level 1(d8+4), HP 10, AC 14, disposition neutral/evil. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1220,13 +1221,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8+4",
         "hp": "10",
         "ac": "14",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "raceClass": "humanoid",
         "attributes": "physical"
       },
       "entryNumber": 44,
       "creatureType": "Losel warriors x 30",
-      "rawMarkdown": "### 44. Losel warriors x 30\n\n*HP 10, AC 14, disposition neutral/evil. Saves: P.*\n\n**Core Stats:** HP 10, AC 14, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 44. Losel warriors x 30\n\n*Level 1(d8+4), HP 10, AC 14, disposition neutral/evil. Its primary attributes are physical.*\n\n**Core Stats:** HP 10, AC 14, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1236,8 +1237,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 45. Losel females x 35",
-      "original": "### 45. Losel females x 35\n\n*HP 6, AC 12, disposition neutral/evil. Saves: P. It has *clubs [+1 \"to hit\"; 1d6+1 damage]*.*",
-      "converted": "**### 45. Losel females x 35** *HP 6, AC 12. Their primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries *clubs [+1 \"to hit\"; 1d6+1 damage]*Level 1(d8), HP 6, AC 12, disposition neutral evil. Saves: P. They have *clubs [+1 \"to hit\"; 1d6+1 damage]*.*",
+      "original": "### 45. Losel females x 35\n\n*Level 1(d8), HP 6, AC 12, disposition neutral/evil. Its primary attributes are physical. It has *clubs [+1 \"to hit\"; 1d6+1 damage]*.*",
+      "converted": "**### 45. Losel females x 35** *HP 6, AC 12. Their primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries *clubs [+1 \"to hit\"; 1d6+1 damage]*Level 1(d8), HP 6, AC 12, disposition neutral/evil. Its primary attributes are physical. It has *clubs [+1 \"to hit\"; 1d6+1 damage]*.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1247,14 +1248,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "6",
         "ac": "12",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "raceClass": "humanoid",
         "attributes": "physical",
         "equipment": "clubs [+1 \"to hit\"; 1d6+1 damage]"
       },
       "entryNumber": 45,
       "creatureType": "Losel females x 35",
-      "rawMarkdown": "### 45. Losel females x 35\n\n*HP 6, AC 12, disposition neutral/evil. Saves: P. It has *clubs [+1 \"to hit\"; 1d6+1 damage]*.*\n\n**Core Stats:** HP 6, AC 12, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 45. Losel females x 35\n\n*Level 1(d8), HP 6, AC 12, disposition neutral/evil. Its primary attributes are physical. It has *clubs [+1 \"to hit\"; 1d6+1 damage]*.*\n\n**Core Stats:** HP 6, AC 12, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1264,8 +1265,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 46. **Iggy the Mad*:** _",
-      "original": "### 46. **Iggy the Mad*:** _\n\n*HP 22, AC 13, disposition chaos/neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 12 copper in coin.*",
-      "converted": "**### 46. Iggy the Mad*: _** *HP 22, AC 13, disposition chaotic neutral. Saves: P. It has 12 copper in coin.*",
+      "original": "### 46. **Iggy the Mad*:** _\n\n*HP 22, AC 13, disposition chaos/neutral. Its primary attributes are physical. It has 12 copper in coin.*",
+      "converted": "**### 46. Iggy the Mad*: _** *HP 22, AC 13, disposition chaos/neutral. Its primary attributes are physical. It has 12 copper in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1274,14 +1275,14 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "He is a 3rd level, chaotic neutral, half-orc ranger whose vital stats are HP 22, AC 13, MV 30 ft. His primary attributes are strength and wisdom. His significant attribute is strength 18. His special ability is a permanent protection from normal missiles enchantment that, when invoked, causes a golden halo to surround him_ _and also_ _provides a +2 AC bonus to his allies vs., normal missiles if they are within 20'. He also has darkvision 60 ft. He has studded leather armor, +1 trident [+6 \"to hit\"; 1d8+4 damage], short bow [+2 \"to hit\"; 1d6 damage], arrows x12, 12-inch hunting knife, 12 cp, and a rabbit's foot dyed green. XP: 122",
         "hp": "22",
         "ac": "13",
-        "disposition": "chaotic neutral",
+        "disposition": "chaos/neutral",
         "attributes": "physical",
         "coins": "12 cp",
         "raceClass": "within 20'"
       },
       "entryNumber": 46,
       "creatureType": "Iggy the Mad",
-      "rawMarkdown": "### 46. **Iggy the Mad*:** _\n\n*HP 22, AC 13, disposition chaos/neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 12 copper in coin.*\n\n**Core Stats:** HP 22, AC 13, Disposition chaos/neutral\n\n---",
+      "rawMarkdown": "### 46. **Iggy the Mad*:** _\n\n*HP 22, AC 13, disposition chaos/neutral. Its primary attributes are physical. It has 12 copper in coin.*\n\n**Core Stats:** HP 22, AC 13, Disposition chaos/neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -1294,8 +1295,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 47. The Ogre",
-      "original": "### 47. The Ogre\n\n*HP 27, AC 16, disposition chaos/evil. Saves: P.*",
-      "converted": "**### 47. The Ogre** *Level 4(d12), HP 27, AC 16, disposition chaotic evil.*",
+      "original": "### 47. The Ogre\n\n*Level 4(d12), HP 27, AC 16, disposition chaos/evil.*",
+      "converted": "**### 47. The Ogre** *Level 4(d12), HP 27, AC 16, disposition chaos/evil.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1305,13 +1306,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d12",
         "hp": "27",
         "ac": "16",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
         "attributes": "dlock"
       },
       "entryNumber": 47,
       "creatureType": "The Ogre",
-      "rawMarkdown": "### 47. The Ogre\n\n*HP 27, AC 16, disposition chaos/evil. Saves: P.*\n\n**Core Stats:** HP 27, AC 16, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 47. The Ogre\n\n*Level 4(d12), HP 27, AC 16, disposition chaos/evil.*\n\n**Core Stats:** HP 27, AC 16, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -1324,8 +1325,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 48. Children x 3-6",
-      "original": "### 48. Children x 3-6\n\n*HP 2, AC 10, disposition neutral. Saves: P.*",
-      "converted": "**### 48. Children x 3-6** *HP 2, AC 10, disposition neutrality. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "original": "### 48. Children x 3-6\n\n*Level 1(d2), HP 2, AC 10, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 48. Children x 3-6** *Level 1(d2), HP 2, AC 10, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [
           {
@@ -1341,12 +1342,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d2",
         "hp": "2",
         "ac": "10",
-        "disposition": "neutrality",
-        "raceClass": "neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10"
+        "disposition": "neutral",
+        "raceClass": "neutral and/or good human boys and girls, HD 1d2, HP 2, AC 10",
+        "attributes": "physical"
       },
       "entryNumber": 48,
       "creatureType": "Children x 3-6",
-      "rawMarkdown": "### 48. Children x 3-6\n\n*HP 2, AC 10, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 10, Disposition neutral\n\n---",
+      "rawMarkdown": "### 48. Children x 3-6\n\n*Level 1(d2), HP 2, AC 10, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 10, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "low",
@@ -1358,8 +1360,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 49. **Batrachianoids* x 6:** _",
-      "original": "### 49. **Batrachianoids* x 6:** _\n\n*HP 5, AC 14, disposition chaos/evil. Saves: P.*",
-      "converted": "**### 49. Batrachianoids* x 6: _** *HP 5, AC 14, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "original": "### 49. **Batrachianoids* x 6:** _\n\n*Level 1(d8), HP 5, AC 14, disposition chaos/evil. Its primary attributes are physical.*",
+      "converted": "**### 49. Batrachianoids* x 6: _** *Level 1(d8), HP 5, AC 14, disposition chaos/evil. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1369,12 +1371,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "5",
         "ac": "14",
-        "disposition": "chaotic evil",
-        "raceClass": "humanoid"
+        "disposition": "chaos/evil",
+        "raceClass": "humanoid",
+        "attributes": "physical"
       },
       "entryNumber": 49,
       "creatureType": "Batrachianoids* x 6:",
-      "rawMarkdown": "### 49. **Batrachianoids* x 6:** _\n\n*HP 5, AC 14, disposition chaos/evil. Saves: P.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 49. **Batrachianoids* x 6:** _\n\n*Level 1(d8), HP 5, AC 14, disposition chaos/evil. Its primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1384,8 +1387,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 50. Blook-glook (Batrachianoid Chieftain)",
-      "original": "### 50. Blook-glook (Batrachianoid Chieftain)\n\n*HP 20, AC 14, disposition chaos/evil. Saves: P. It has a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry.*",
-      "converted": "**### 50. Blook-glook (Batrachianoid Chieftain)** *HP 20, AC 14, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry.*",
+      "original": "### 50. Blook-glook (Batrachianoid Chieftain)\n\n*Level 3(d10+4), HP 20, AC 14, disposition chaos/evil. Its primary attributes are physical. It has a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry.*",
+      "converted": "**### 50. Blook-glook (Batrachianoid Chieftain)** *Level 3(d10+4), HP 20, AC 14, disposition chaos/evil. Its primary attributes are physical. It has a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1395,16 +1398,16 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d10+4",
         "hp": "20",
         "ac": "14",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
-        "attributes": "strength",
+        "attributes": "physical",
         "equipment": "a diamond-studded gold necklace worth 1, 000 gp",
         "jewelry": "1000 gold worth of jewelry",
         "coins": "000 gp"
       },
       "entryNumber": 50,
       "creatureType": "Blook-glook",
-      "rawMarkdown": "### 50. Blook-glook (Batrachianoid Chieftain)\n\n*HP 20, AC 14, disposition chaos/evil. Saves: P. It has a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry.*\n\n**Core Stats:** HP 20, AC 14, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 50. Blook-glook (Batrachianoid Chieftain)\n\n*Level 3(d10+4), HP 20, AC 14, disposition chaos/evil. Its primary attributes are physical. It has a diamond-studded gold necklace worth 1, 000 gold in coin, and one thousand in jewelry.*\n\n**Core Stats:** HP 20, AC 14, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-leader",
@@ -1417,8 +1420,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 51. Spider, Giant (medium-sized) x 2",
-      "original": "### 51. Spider, Giant (medium-sized) x 2\n\n*HP 13, AC 15, disposition neutral. Saves: P.*",
-      "converted": "**### 51. Spider, Giant (medium-sized) x 2** *Level 3(d8), HP 13, AC 15, disposition neutrality.*",
+      "original": "### 51. Spider, Giant (medium-sized) x 2\n\n*Level 3(d8), HP 13, AC 15, disposition neutral.*",
+      "converted": "**### 51. Spider, Giant (medium-sized) x 2** *Level 3(d8), HP 13, AC 15, disposition neutral.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1428,13 +1431,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d8",
         "hp": "13",
         "ac": "15",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "ralyzation for 1d6 hours"
       },
       "entryNumber": 51,
       "creatureType": "Spider",
-      "rawMarkdown": "### 51. Spider, Giant (medium-sized) x 2\n\n*HP 13, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 13, AC 15, Disposition neutral\n\n---",
+      "rawMarkdown": "### 51. Spider, Giant (medium-sized) x 2\n\n*Level 3(d8), HP 13, AC 15, disposition neutral.*\n\n**Core Stats:** HP 13, AC 15, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1444,8 +1447,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 52. **Harpy*:** _",
-      "original": "### 52. **Harpy*:** _\n\n*HP 13, AC 13, disposition chaos/evil. Saves: P.*",
-      "converted": "**### 52. Harpy*: _** *HP 13, AC 13, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "original": "### 52. **Harpy*:** _\n\n*Level 3(d8), HP 13, AC 13, disposition chaos/evil. Its primary attributes are physical.*",
+      "converted": "**### 52. Harpy*: _** *Level 3(d8), HP 13, AC 13, disposition chaos/evil. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1455,13 +1458,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d8",
         "hp": "13",
         "ac": "13",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
         "attributes": "charisma"
       },
       "entryNumber": 52,
       "creatureType": "Harpy",
-      "rawMarkdown": "### 52. **Harpy*:** _\n\n*HP 13, AC 13, disposition chaos/evil. Saves: P.*\n\n**Core Stats:** HP 13, AC 13, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 52. **Harpy*:** _\n\n*Level 3(d8), HP 13, AC 13, disposition chaos/evil. Its primary attributes are physical.*\n\n**Core Stats:** HP 13, AC 13, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1473,8 +1476,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 53. Tick, Giant x 3",
-      "original": "### 53. Tick, Giant x 3\n\n*HP 11, AC 15, disposition neutral. Saves: P.*",
-      "converted": "**### 53. Tick, Giant x 3** *Level 2(d8), HP 11, AC 15, disposition neutrality. Saves: P.*",
+      "original": "### 53. Tick, Giant x 3\n\n*Level 2(d8), HP 11, AC 15, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 53. Tick, Giant x 3** *Level 2(d8), HP 11, AC 15, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1484,13 +1487,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d8",
         "hp": "11",
         "ac": "15",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 53,
       "creatureType": "Tick",
-      "rawMarkdown": "### 53. Tick, Giant x 3\n\n*HP 11, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 11, AC 15, Disposition neutral\n\n---",
+      "rawMarkdown": "### 53. Tick, Giant x 3\n\n*Level 2(d8), HP 11, AC 15, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 11, AC 15, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1500,8 +1503,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 54. Wood Elf Scouts x 11",
-      "original": "### 54. Wood Elf Scouts x 11\n\n*HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin.*",
-      "converted": "**### 54. Wood Elf Scouts x 11** *HP 8, AC 12, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 18 silver in coin.*",
+      "original": "### 54. Wood Elf Scouts x 11\n\n*Level 1(d10), HP 8, AC 12, disposition chaos/neutral. Its primary attributes are physical. It has 18 silver in coin.*",
+      "converted": "**### 54. Wood Elf Scouts x 11** *Level 1(d10), HP 8, AC 12, disposition chaos/neutral. Its primary attributes are physical. It has 18 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1511,14 +1514,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d10",
         "hp": "8",
         "ac": "12",
-        "disposition": "chaotic neutral",
+        "disposition": "chaos/neutral",
         "attributes": "physical",
         "coins": "18 sp",
         "raceClass": "1st level, chaotic neutral fighters"
       },
       "entryNumber": 54,
       "creatureType": "Wood Elf Scouts x 11",
-      "rawMarkdown": "### 54. Wood Elf Scouts x 11\n\n*HP 8, AC 12, disposition chaos/neutral. Saves: P. It has 18 silver in coin.*\n\n**Core Stats:** HP 8, AC 12, Disposition chaos/neutral\n\n---",
+      "rawMarkdown": "### 54. Wood Elf Scouts x 11\n\n*Level 1(d10), HP 8, AC 12, disposition chaos/neutral. Its primary attributes are physical. It has 18 silver in coin.*\n\n**Core Stats:** HP 8, AC 12, Disposition chaos/neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -1531,8 +1534,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 55. Ember Raventree (wood Elf leader)",
-      "original": "### 55. Ember Raventree (wood Elf leader)\n\n*HP 22, AC 16, disposition chaos/neutral. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has 35 sp, 100 gp.*",
-      "converted": "**### 55. Ember Raventree (wood Elf leader)** *HP 22, AC 16, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 35 sp, 100 gp.*",
+      "original": "### 55. Ember Raventree (wood Elf leader)\n\n*Level 4(d10), HP 22, AC 16, disposition chaos/neutral. Its primary attributes are physical. Its significant attributes are strength 17 and dexterity 17. It has 35 silver, 100 gold.*",
+      "converted": "**### 55. Ember Raventree (wood Elf leader)** *Level 4(d10), HP 22, AC 16, disposition chaos/neutral. Its primary attributes are physical. Its significant attributes are strength 17 and dexterity 17. It has 35 silver, 100 gold.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1542,7 +1545,7 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d10",
         "hp": "22",
         "ac": "16",
-        "disposition": "chaotic neutral",
+        "disposition": "chaos/neutral",
         "attributes": "physical",
         "significantAttributes": "strength 17 and dexterity 17",
         "coins": "35 sp, 100 gp",
@@ -1550,7 +1553,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 55,
       "creatureType": "Ember Raventree",
-      "rawMarkdown": "### 55. Ember Raventree (wood elf leader)\n\n*HP 22, AC 16, disposition chaos/neutral. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has 35 sp, 100 gp.*\n\n**Core Stats:** HP 22, AC 16, Disposition chaos/neutral\n\n---",
+      "rawMarkdown": "### 55. Ember Raventree (wood elf leader)\n\n*Level 4(d10), HP 22, AC 16, disposition chaos/neutral. Its primary attributes are physical. Its significant attributes are strength 17 and dexterity 17. It has 35 silver, 100 gold.*\n\n**Core Stats:** HP 22, AC 16, Disposition chaos/neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "rank-inferred",
@@ -1563,7 +1566,7 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 56. 86-90",
-      "original": "### 56. 86-90\n\n*HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*",
+      "original": "### 56. 86-90\n\n*HP 23, AC 15, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He wears a splint mail and great helms and carries a magical heavy flails, and 2–12 gold in coin. His secondary skill is Nautical Ability. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*. He carries twenty-five in jewelry.*",
       "converted": "**### 56. 86-90** *HP 23, AC 15, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He wears a splint mail and great helms and carries a magical heavy flails, and 2–12 gold in coin. His secondary skill is Nautical Ability. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*. He carries twenty-five in jewelry.*",
       "validation": {
         "warnings": [],
@@ -1586,7 +1589,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 56,
       "creatureType": "86-90",
-      "rawMarkdown": "### 56. 86-90\n\n*HP 23, AC 15, disposition variable. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. It has a splint mail, great helms, a magical heavy flails, 2–12 gold in coin, and twenty-five in jewelry. Its secondary skill is Nautical Ability. It can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*.*\n\n**Core Stats:** HP 23, AC 15, Disposition variable\n\n---",
+      "rawMarkdown": "### 56. 86-90\n\n*HP 23, AC 15, disposition variable. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He wears a splint mail and great helms and carries a magical heavy flails, and 2–12 gold in coin. His secondary skill is Nautical Ability. He can cast the following number of spells per day: *Water Breathing at will and cast a powerful Charm Humanoid spell that lasts for one year*. He carries twenty-five in jewelry.*\n\n**Core Stats:** HP 23, AC 15, Disposition variable\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "low",
@@ -1598,8 +1601,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 57. Raven \"One-Eye\"",
-      "original": "### 57. Raven \"One-Eye\"\n\n*HP 2, AC 14, disposition neutral. Saves: P.*",
-      "converted": "**### 57. Raven \"One-Eye\"** *Level 1(d2), HP 2, AC 14, disposition neutrality.*",
+      "original": "### 57. Raven \"One-Eye\"\n\n*Level 1(d2), HP 2, AC 14, disposition neutral.*",
+      "converted": "**### 57. Raven \"One-Eye\"** *Level 1(d2), HP 2, AC 14, disposition neutral.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1609,13 +1612,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d2",
         "hp": "2",
         "ac": "14",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "ble of combat, fleeing from danger"
       },
       "entryNumber": 57,
       "creatureType": "Raven \"One-Eye\"",
-      "rawMarkdown": "### 57. Raven \"One-Eye\"\n\n*HP 2, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 14, Disposition neutral\n\n---",
+      "rawMarkdown": "### 57. Raven \"One-Eye\"\n\n*Level 1(d2), HP 2, AC 14, disposition neutral.*\n\n**Core Stats:** HP 2, AC 14, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "low",
@@ -1627,8 +1630,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 58. Bandit sentries x 8",
-      "original": "### 58. Bandit sentries x 8\n\n*HP 4, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*",
-      "converted": "**### 58. Bandit sentries x 8** *Level 1(d6), HP 4, AC 12, disposition neutral evil. Saves: P. They have 6 silver in coin.*",
+      "original": "### 58. Bandit sentries x 8\n\n*Level 1(d6), HP 4, AC 12, disposition neutral/evil. Their primary attributes are physical. They have 6 silver in coin.*",
+      "converted": "**### 58. Bandit sentries x 8** *Level 1(d6), HP 4, AC 12, disposition neutral/evil. Their primary attributes are physical. They have 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1637,7 +1640,7 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "They are 1st level, neutral evil, human fighters. Their vital statistics are HP 4, AC 12. Their primary attributes are physical. They have leather armor, longbow [+1 \"to hit\"; 1d6 damage], arrows x20, silver-tipped arrows x5, shortsword [+1 \"to hit\"; 1d6 damage], dagger, and 2d6 sp. XP: 5+1",
         "hp": "4",
         "ac": "12",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "attributes": "physical",
         "coins": "6 sp",
         "raceClass": "1st level, neutral evil, human fighters",
@@ -1645,7 +1648,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 58,
       "creatureType": "Bandit sentries x 8",
-      "rawMarkdown": "### 58. Bandit sentries x 8\n\n*HP 4, AC 12, disposition neutral/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 12, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 58. Bandit sentries x 8\n\n*Level 1(d6), HP 4, AC 12, disposition neutral/evil. Their primary attributes are physical. They have 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 12, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -1656,8 +1659,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 59. Bat, Cave",
-      "original": "### 59. Bat, Cave\n\n*HP 1, AC 12, disposition neutral. Saves: P.*",
-      "converted": "**### 59. Bat, Cave** *Level 1(d2), HP 1, AC 12, disposition neutrality. Saves: P.*",
+      "original": "### 59. Bat, Cave\n\n*Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 59. Bat, Cave** *Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1667,13 +1670,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d2",
         "hp": "1",
         "ac": "12",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 59,
       "creatureType": "Bat",
-      "rawMarkdown": "### 59. Bat, Cave\n\n*HP 1, AC 12, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n\n---",
+      "rawMarkdown": "### 59. Bat, Cave\n\n*Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1683,8 +1686,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 60. Centipedes, Black, Giant",
-      "original": "### 60. Centipedes, Black, Giant\n\n*HP 3, AC 18, disposition neutral. Saves: P.*",
-      "converted": "**### 60. Centipedes, Black, Giant** *Level 2(d3), HP 3, AC 18, disposition neutrality. Saves: P.*",
+      "original": "### 60. Centipedes, Black, Giant\n\n*Level 2(d3), HP 3, AC 18, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 60. Centipedes, Black, Giant** *Level 2(d3), HP 3, AC 18, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1694,13 +1697,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d3",
         "hp": "3",
         "ac": "18",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 60,
       "creatureType": "Centipedes",
-      "rawMarkdown": "### 60. Centipedes, Black, Giant\n\n*HP 3, AC 18, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 3, AC 18, Disposition neutral\n\n---",
+      "rawMarkdown": "### 60. Centipedes, Black, Giant\n\n*Level 2(d3), HP 3, AC 18, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 18, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1710,8 +1713,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 61. **Fire Beetles*, Giant:** _",
-      "original": "### 61. **Fire Beetles*, Giant:** _\n\n*HP 6, AC 16, disposition neutral. Saves: P.*",
-      "converted": "**### 61. Fire Beetles*, Giant: _** *Level 1(d10), HP 6, AC 16, disposition neutrality. Saves: P.*",
+      "original": "### 61. **Fire Beetles*, Giant:** _\n\n*Level 1(d10), HP 6, AC 16, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 61. Fire Beetles*, Giant: _** *Level 1(d10), HP 6, AC 16, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1721,13 +1724,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d10",
         "hp": "6",
         "ac": "16",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "These neutral insects'",
         "attributes": "physical"
       },
       "entryNumber": 61,
       "creatureType": "Fire Beetles*",
-      "rawMarkdown": "### 61. **Fire Beetles*, Giant:** _\n\n*HP 6, AC 16, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 6, AC 16, Disposition neutral\n\n---",
+      "rawMarkdown": "### 61. **Fire Beetles*, Giant:** _\n\n*Level 1(d10), HP 6, AC 16, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 6, AC 16, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1737,8 +1740,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 62. Rats, Giant",
-      "original": "### 62. Rats, Giant\n\n*HP 2, AC 13, disposition neutral. Saves: P.*",
-      "converted": "**### 62. Rats, Giant** *Level 1(d4), HP 2, AC 13, disposition neutrality. Saves: P.*",
+      "original": "### 62. Rats, Giant\n\n*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 62. Rats, Giant** *Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1748,13 +1751,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d4",
         "hp": "2",
         "ac": "13",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 62,
       "creatureType": "Rats",
-      "rawMarkdown": "### 62. Rats, Giant\n\n*HP 2, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---",
+      "rawMarkdown": "### 62. Rats, Giant\n\n*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1764,8 +1767,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 63. Snake, Poisonous",
-      "original": "### 63. Snake, Poisonous\n\n*HP 4, AC 14, disposition neutral. Saves: P.*",
-      "converted": "**### 63. Snake, Poisonous** *Level 1(d6), HP 4, AC 14, disposition neutrality. Saves: P.*",
+      "original": "### 63. Snake, Poisonous\n\n*Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 63. Snake, Poisonous** *Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1775,13 +1778,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "4",
         "ac": "14",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 63,
       "creatureType": "Snake",
-      "rawMarkdown": "### 63. Snake, Poisonous\n\n*HP 4, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---",
+      "rawMarkdown": "### 63. Snake, Poisonous\n\n*Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1791,8 +1794,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 64. Spider, Giant (medium-sized)",
-      "original": "### 64. Spider, Giant (medium-sized)\n\n*HP 13, AC 15, disposition neutral. Saves: P.*",
-      "converted": "**### 64. Spider, Giant (medium-sized)** *Level 3(d8), HP 13, AC 15, disposition neutrality.*",
+      "original": "### 64. Spider, Giant (medium-sized)\n\n*Level 3(d8), HP 13, AC 15, disposition neutral.*",
+      "converted": "**### 64. Spider, Giant (medium-sized)** *Level 3(d8), HP 13, AC 15, disposition neutral.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1802,13 +1805,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d8",
         "hp": "13",
         "ac": "15",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "ralyzation for 1d6 hours"
       },
       "entryNumber": 64,
       "creatureType": "Spider",
-      "rawMarkdown": "### 64. Spider, Giant (medium-sized)\n\n*HP 13, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 13, AC 15, Disposition neutral\n\n---",
+      "rawMarkdown": "### 64. Spider, Giant (medium-sized)\n\n*Level 3(d8), HP 13, AC 15, disposition neutral.*\n\n**Core Stats:** HP 13, AC 15, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1818,8 +1821,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 65. Tick, Giant",
-      "original": "### 65. Tick, Giant\n\n*HP 11, AC 15, disposition neutral. Saves: P.*",
-      "converted": "**### 65. Tick, Giant** *Level 2(d8), HP 11, AC 15, disposition neutrality. Saves: P.*",
+      "original": "### 65. Tick, Giant\n\n*Level 2(d8), HP 11, AC 15, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 65. Tick, Giant** *Level 2(d8), HP 11, AC 15, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1829,13 +1832,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d8",
         "hp": "11",
         "ac": "15",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 65,
       "creatureType": "Tick",
-      "rawMarkdown": "### 65. Tick, Giant\n\n*HP 11, AC 15, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 11, AC 15, Disposition neutral\n\n---",
+      "rawMarkdown": "### 65. Tick, Giant\n\n*Level 2(d8), HP 11, AC 15, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 11, AC 15, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1845,8 +1848,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 66. Wolves x 5",
-      "original": "### 66. Wolves x 5\n\n*HP 9, AC 13, disposition neutral. Saves: P.*",
-      "converted": "**### 66. Wolves x 5** *Level 2(d8), HP 9, AC 13, disposition neutrality. Saves: P.*",
+      "original": "### 66. Wolves x 5\n\n*Level 2(d8), HP 9, AC 13, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 66. Wolves x 5** *Level 2(d8), HP 9, AC 13, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1856,13 +1859,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d8",
         "hp": "9",
         "ac": "13",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 66,
       "creatureType": "Wolves x 5",
-      "rawMarkdown": "### 66. Wolves x 5\n\n*HP 9, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 9, AC 13, Disposition neutral\n\n---",
+      "rawMarkdown": "### 66. Wolves x 5\n\n*Level 2(d8), HP 9, AC 13, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 9, AC 13, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "low",
@@ -1874,8 +1877,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 67. **The Little Hillwood Werewolf*:** _",
-      "original": "### 67. **The Little Hillwood Werewolf*:** _\n\n*HP 25, AC 15, disposition chaos/evil. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
-      "converted": "**### 67. The Little Hillwood Werewolf*: _** *HP 25, AC 15, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "original": "### 67. **The Little Hillwood Werewolf*:** _\n\n*Level 4(d8), HP 25, AC 15, disposition chaos/evil.*",
+      "converted": "**### 67. The Little Hillwood Werewolf*: _** *Level 4(d8), HP 25, AC 15, disposition chaos/evil.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1885,14 +1888,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d8",
         "hp": "25",
         "ac": "15",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "cleric, 12ᵗʰ level or",
         "level": "12",
         "attributes": "citate the person for 1d4 days"
       },
       "entryNumber": 67,
       "creatureType": "The Little Hillwood Werewolf",
-      "rawMarkdown": "### 67. **The Little Hillwood Werewolf*:** _\n\n*HP 25, AC 15, disposition chaos/evil. Its primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*\n\n**Core Stats:** HP 25, AC 15, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 67. **The Little Hillwood Werewolf*:** _\n\n*Level 4(d8), HP 25, AC 15, disposition chaos/evil.*\n\n**Core Stats:** HP 25, AC 15, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -1905,8 +1908,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 68. Kobold Guards x 2",
-      "original": "### 68. Kobold Guards x 2\n\n*HP 3, AC 15, disposition law/evil. Saves: P. They have 6 silver in coin.*",
-      "converted": "**### 68. Kobold Guards x 2** *Level 1(d4), HP 3, AC 15, disposition lawful evil. Saves: P. They have 6 silver in coin.*",
+      "original": "### 68. Kobold Guards x 2\n\n*Level 1(d4), HP 3, AC 15, disposition law/evil. Their primary attributes are physical. They have 6 silver in coin.*",
+      "converted": "**### 68. Kobold Guards x 2** *Level 1(d4), HP 3, AC 15, disposition law/evil. Their primary attributes are physical. They have 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1916,14 +1919,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d4",
         "hp": "3",
         "ac": "15",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "coins": "6 sp",
         "attributes": "physical"
       },
       "entryNumber": 68,
       "creatureType": "Kobold Guards x 2",
-      "rawMarkdown": "### 68. Kobold Guards x 2\n\n*HP 3, AC 15, disposition law/evil. Saves: P. They have 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 68. Kobold Guards x 2\n\n*Level 1(d4), HP 3, AC 15, disposition law/evil. Their primary attributes are physical. They have 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -1934,8 +1937,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 69. Mastiff",
-      "original": "### 69. Mastiff\n\n*HP 15, AC 14, disposition neutral. Saves: P.*",
-      "converted": "**### 69. Mastiff** *Level 3(d8), HP 15, AC 14, disposition neutrality. Saves: P.*",
+      "original": "### 69. Mastiff\n\n*Level 3(d8), HP 15, AC 14, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 69. Mastiff** *Level 3(d8), HP 15, AC 14, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1945,13 +1948,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d8",
         "hp": "15",
         "ac": "14",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 69,
       "creatureType": "Mastiff",
-      "rawMarkdown": "### 69. Mastiff\n\n*HP 15, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 15, AC 14, Disposition neutral\n\n---",
+      "rawMarkdown": "### 69. Mastiff\n\n*Level 3(d8), HP 15, AC 14, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 15, AC 14, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -1963,8 +1966,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 70. Fekk",
-      "original": "### 70. Fekk\n\n*HP 2, AC 10, disposition law/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries has a key to the door of this room, and 5 gp, 3 cp.*",
-      "converted": "**### 70. Fekk** *HP 2, AC 10, disposition lawful evil. Saves: P. It has a has a key to the door of this room and 5 gp, 3 cp.*",
+      "original": "### 70. Fekk\n\n*HP 2, AC 10, disposition law/evil. Its primary attributes are physical. It has a has a key to the door of this room and 5 gold, 3 copper.*",
+      "converted": "**### 70. Fekk** *HP 2, AC 10, disposition law/evil. Its primary attributes are physical. It has a has a key to the door of this room and 5 gold, 3 copper.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -1973,7 +1976,7 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "This lawful evil kobold is non-combatant, HP 2, AC 10, saves physical. It wears a silver armlet worth 5 gp, has a key to the door of this room, and 3 cp. XP: 3",
         "hp": "2",
         "ac": "10",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "equipment": "a silver armlet worth 5 gp, carry key to the door of this room, and 3 cp",
         "coins": "5 gp, 3 cp",
         "raceClass": "kobold",
@@ -1981,7 +1984,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 70,
       "creatureType": "Fekk",
-      "rawMarkdown": "### 70. Fekk\n\n*HP 2, AC 10, disposition law/evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries has a key to the door of this room, and 5 gp, 3 cp.*\n\n**Core Stats:** HP 2, AC 10, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 70. Fekk\n\n*HP 2, AC 10, disposition law/evil. Its primary attributes are physical. It has a has a key to the door of this room and 5 gold, 3 copper.*\n\n**Core Stats:** HP 2, AC 10, Disposition law/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -1994,8 +1997,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 71. Kobold warrior x 6",
-      "original": "### 71. Kobold warrior x 6\n\n*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*",
-      "converted": "**### 71. Kobold warrior x 6** *Level 1(d4), HP 3, AC 15, disposition lawful evil. Saves: P. They have 6 silver in coin.*",
+      "original": "### 71. Kobold warrior x 6\n\n*Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
+      "converted": "**### 71. Kobold warrior x 6** *Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2005,14 +2008,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d4",
         "hp": "3",
         "ac": "15",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "coins": "6 sp",
         "attributes": "physical"
       },
       "entryNumber": 71,
       "creatureType": "Kobold warrior x 6",
-      "rawMarkdown": "### 71. Kobold warrior x 6\n\n*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 71. Kobold warrior x 6\n\n*Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2022,8 +2025,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 72. Kobold serjeant x 1",
-      "original": "### 72. Kobold serjeant x 1\n\n*HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*",
-      "converted": "**### 72. Kobold serjeant x 1** *HP 6, AC 15, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*",
+      "original": "### 72. Kobold serjeant x 1\n\n*Level 2(d4), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
+      "converted": "**### 72. Kobold serjeant x 1** *Level 2(d4), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2033,13 +2036,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d4",
         "hp": "6",
         "ac": "15",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
-        "coins": "6 sp"
+        "coins": "6 sp",
+        "attributes": "physical"
       },
       "entryNumber": 72,
       "creatureType": "Kobold serjeant x 1",
-      "rawMarkdown": "### 72. Kobold serjeant x 1\n\n*HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 72. Kobold serjeant x 1\n\n*Level 2(d4), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-leader",
@@ -2052,8 +2056,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 73. Kobold warrior x",
-      "original": "### 73. Kobold warrior x\n\n*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*",
-      "converted": "**### 73. Kobold warrior x** *Level 1(d4), HP 3, AC 15, disposition lawful evil. Saves: P. It has 6 silver in coin.*",
+      "original": "### 73. Kobold warrior x\n\n*Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
+      "converted": "**### 73. Kobold warrior x** *Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2063,14 +2067,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d4",
         "hp": "3",
         "ac": "15",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "coins": "6 sp",
         "attributes": "physical"
       },
       "entryNumber": 73,
       "creatureType": "Kobold warrior x",
-      "rawMarkdown": "### 73. Kobold warrior x\n\n*HP 3, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 73. Kobold warrior x\n\n*Level 1(d4), HP 3, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*\n\n**Core Stats:** HP 3, AC 15, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2080,8 +2084,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 74. Kobold serjeant x 1",
-      "original": "### 74. Kobold serjeant x 1\n\n*HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*",
-      "converted": "**### 74. Kobold serjeant x 1** *HP 6, AC 15, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*",
+      "original": "### 74. Kobold serjeant x 1\n\n*Level 2(d4), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
+      "converted": "**### 74. Kobold serjeant x 1** *Level 2(d4), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2091,13 +2095,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d4",
         "hp": "6",
         "ac": "15",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
-        "coins": "6 sp"
+        "coins": "6 sp",
+        "attributes": "physical"
       },
       "entryNumber": 74,
       "creatureType": "Kobold serjeant x 1",
-      "rawMarkdown": "### 74. Kobold serjeant x 1\n\n*HP 6, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 74. Kobold serjeant x 1\n\n*Level 2(d4), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-leader",
@@ -2110,8 +2115,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 75. King Griggle",
-      "original": "### 75. King Griggle-gruk (Kobold Chieftain)\n\n*HP 14, AC 17, disposition law/evil. Saves: P. It has plate mail armor, a has javelins x 3, *+1 shortsword*, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin.*",
-      "converted": "**### 75. King Griggle** *HP 14, AC 17. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries plate mail armor, a has javelins x 3, *+1 shortsword*HP 14, AC 17, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries plate mail armor, a has javelins x 3, a +1 shortsword, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin.*",
+      "original": "### 75. King Griggle-gruk (Kobold Chieftain)\n\n*Level 4(d4), HP 14, AC 17, disposition law/evil. Its primary attributes are physical. It has plate mail armor, a has javelins x 3, *+1 shortsword*, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin.*",
+      "converted": "**### 75. King Griggle** *HP 14, AC 17. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He wears plate mail armor and carries has javelins x 3, *+1 shortsword*Level 4(d4), HP 14, AC 17, disposition law/evil. Its primary attributes are physical. It has plate mail armor, a has javelins x 3, *+1 shortsword*, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2121,15 +2126,15 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d4",
         "hp": "14",
         "ac": "17",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
-        "attributes": "strength",
+        "attributes": "physical",
         "equipment": "plate mail armor and has javelins x 3, +1 shortsword, keys to rooms #5, #6, #9, and to the jail cell in this chamber",
         "coins": "18 gp"
       },
       "entryNumber": 75,
       "creatureType": "King Griggle-gruk",
-      "rawMarkdown": "### 75. King Griggle-gruk (Kobold Chieftain)\n\n*HP 14, AC 17, disposition law/evil. Saves: P. It has plate mail armor, a has javelins x 3, *+1 shortsword*, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin.*\n\n**Core Stats:** HP 14, AC 17, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 75. King Griggle-gruk (Kobold Chieftain)\n\n*Level 4(d4), HP 14, AC 17, disposition law/evil. Its primary attributes are physical. It has plate mail armor, a has javelins x 3, *+1 shortsword*, a keys to rooms #5, a #6, a #9, a to the jail cell in this chamber, and 18 gold in coin.*\n\n**Core Stats:** HP 14, AC 17, Disposition law/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "rank-inferred",
@@ -2142,8 +2147,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 76. Kobold Bodyguards x 2",
-      "original": "### 76. Kobold Bodyguards x 2\n\n*HP 7, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*",
-      "converted": "**### 76. Kobold Bodyguards x 2** *HP 7, AC 15, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 6 silver in coin.*",
+      "original": "### 76. Kobold Bodyguards x 2\n\n*Level 2(d4), HP 7, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
+      "converted": "**### 76. Kobold Bodyguards x 2** *Level 2(d4), HP 7, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2153,13 +2158,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d4",
         "hp": "7",
         "ac": "15",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
-        "coins": "6 sp"
+        "coins": "6 sp",
+        "attributes": "physical"
       },
       "entryNumber": 76,
       "creatureType": "Kobold Bodyguards x 2",
-      "rawMarkdown": "### 76. Kobold Bodyguards x 2\n\n*HP 7, AC 15, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 7, AC 15, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 76. Kobold Bodyguards x 2\n\n*Level 2(d4), HP 7, AC 15, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*\n\n**Core Stats:** HP 7, AC 15, Disposition law/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -2170,8 +2176,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 77. Goblin prisoner",
-      "original": "### 77. Goblin prisoner\n\n*HP 4, AC 14, disposition law/evil. Saves: P. It has a loin cloth.*",
-      "converted": "**### 77. Goblin prisoner** *Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. It has a loin cloth.*",
+      "original": "### 77. Goblin prisoner\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has a loin cloth.*",
+      "converted": "**### 77. Goblin prisoner** *Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has a loin cloth.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2181,14 +2187,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "4",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "equipment": "a loin cloth",
         "attributes": "physical"
       },
       "entryNumber": 77,
       "creatureType": "Goblin prisoner",
-      "rawMarkdown": "### 77. Goblin prisoner\n\n*HP 4, AC 14, disposition law/evil. Saves: P. It has a loin cloth.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 77. Goblin prisoner\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has a loin cloth.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2198,8 +2204,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 78. \"Charlie\" the Ogre",
-      "original": "### 78. \"Charlie\" the Ogre\n\n*HP 20, AC 16, disposition chaos/neutral. Saves: P.*",
-      "converted": "**### 78. \"Charlie\" the Ogre** *HP 20, AC 16, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "original": "### 78. \"Charlie\" the Ogre\n\n*Level 4(d12), HP 20, AC 16, disposition chaos/neutral. Its primary attributes are physical.*",
+      "converted": "**### 78. \"Charlie\" the Ogre** *Level 4(d12), HP 20, AC 16, disposition chaos/neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2209,13 +2215,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d12",
         "hp": "20",
         "ac": "16",
-        "disposition": "chaotic neutral",
+        "disposition": "chaos/neutral",
         "raceClass": "humanoid",
-        "attributes": "strength"
+        "attributes": "physical"
       },
       "entryNumber": 78,
       "creatureType": "\"Charlie\" the Ogre",
-      "rawMarkdown": "### 78. \"Charlie\" the Ogre\n\n*HP 20, AC 16, disposition chaos/neutral. Saves: P.*\n\n**Core Stats:** HP 20, AC 16, Disposition chaos/neutral\n\n---",
+      "rawMarkdown": "### 78. \"Charlie\" the Ogre\n\n*Level 4(d12), HP 20, AC 16, disposition chaos/neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 20, AC 16, Disposition chaos/neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -2228,8 +2234,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 79. Goblin patrol warriors x 5",
-      "original": "### 79. Goblin patrol warriors x 5\n\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*",
-      "converted": "**### 79. Goblin patrol warriors x 5** *Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. They have 6 copper in coin.*",
+      "original": "### 79. Goblin patrol warriors x 5\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper in coin.*",
+      "converted": "**### 79. Goblin patrol warriors x 5** *Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2239,14 +2245,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "4",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "coins": "6 cp",
         "attributes": "physical"
       },
       "entryNumber": 79,
       "creatureType": "Goblin patrol warriors x 5",
-      "rawMarkdown": "### 79. Goblin patrol warriors x 5\n\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 79. Goblin patrol warriors x 5\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2256,8 +2262,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 80. Goblin guards x 4",
-      "original": "### 80. Goblin guards x 4\n\n*HP 4, AC 14, disposition law/evil. Saves: P. They have 6 copper in coin.*",
-      "converted": "**### 80. Goblin guards x 4** *Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. They have 6 copper in coin.*",
+      "original": "### 80. Goblin guards x 4\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They have 6 copper in coin.*",
+      "converted": "**### 80. Goblin guards x 4** *Level 1(d6), HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They have 6 copper in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2267,14 +2273,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "4",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "coins": "6 cp",
         "attributes": "physical"
       },
       "entryNumber": 80,
       "creatureType": "Goblin guards x 4",
-      "rawMarkdown": "### 80. Goblin guards x 4\n\n*HP 4, AC 14, disposition law/evil. Saves: P. They have 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 80. Goblin guards x 4\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Their primary attributes are physical. They have 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-unit",
@@ -2285,8 +2291,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 81. Goblin patrol warriors x 6",
-      "original": "### 81. Goblin patrol warriors x 6\n\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*",
-      "converted": "**### 81. Goblin patrol warriors x 6** *Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. They have 6 copper in coin.*",
+      "original": "### 81. Goblin patrol warriors x 6\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper in coin.*",
+      "converted": "**### 81. Goblin patrol warriors x 6** *Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2296,14 +2302,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "4",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "coins": "6 cp",
         "attributes": "physical"
       },
       "entryNumber": 81,
       "creatureType": "Goblin patrol warriors x 6",
-      "rawMarkdown": "### 81. Goblin patrol warriors x 6\n\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 81. Goblin patrol warriors x 6\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2313,8 +2319,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 82. Goblin males x 8",
-      "original": "### 82. Goblin males x 8\n\n*HP 3, AC 14, disposition law/evil. Saves: P. It has 6 cp, 50 gp.*",
-      "converted": "**### 82. Goblin males x 8** *Level 1(d6), HP 3, AC 14, disposition lawful evil. Saves: P. They have 6 cp, 50 gp.*",
+      "original": "### 82. Goblin males x 8\n\n*Level 1(d6), HP 3, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper, 50 gold.*",
+      "converted": "**### 82. Goblin males x 8** *Level 1(d6), HP 3, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper, 50 gold.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2324,7 +2330,7 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "3",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "equipment": "a gold chain worth 50 gp",
         "coins": "6 cp, 50 gp",
@@ -2332,7 +2338,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 82,
       "creatureType": "Goblin males x 8",
-      "rawMarkdown": "### 82. Goblin males x 8\n\n*HP 3, AC 14, disposition law/evil. Saves: P. It has 6 cp, 50 gp.*\n\n**Core Stats:** HP 3, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 82. Goblin males x 8\n\n*Level 1(d6), HP 3, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 copper, 50 gold.*\n\n**Core Stats:** HP 3, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2342,8 +2348,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 83. Goblin females x 13",
-      "original": "### 83. Goblin females x 13\n\n*HP 2, AC 12, disposition law/evil. Saves: P.*",
-      "converted": "**### 83. Goblin females x 13** *Level 1(d6), HP 2, AC 12, disposition lawful evil. Saves: P.*",
+      "original": "### 83. Goblin females x 13\n\n*Level 1(d6), HP 2, AC 12, disposition law/evil. Its primary attributes are physical.*",
+      "converted": "**### 83. Goblin females x 13** *Level 1(d6), HP 2, AC 12, disposition law/evil. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2353,13 +2359,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "2",
         "ac": "12",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical"
       },
       "entryNumber": 83,
       "creatureType": "Goblin females x 13",
-      "rawMarkdown": "### 83. Goblin females x 13\n\n*HP 2, AC 12, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 2, AC 12, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 83. Goblin females x 13\n\n*Level 1(d6), HP 2, AC 12, disposition law/evil. Its primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 12, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2369,8 +2375,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 84. Goblin warriors x 3",
-      "original": "### 84. Goblin warriors x 3\n\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*",
-      "converted": "**### 84. Goblin warriors x 3** *Level 1(d6), HP 4, AC 14, disposition lawful evil. Saves: P. They have 6 silver in coin.*",
+      "original": "### 84. Goblin warriors x 3\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
+      "converted": "**### 84. Goblin warriors x 3** *Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2380,14 +2386,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "4",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "coins": "6 sp",
         "attributes": "physical"
       },
       "entryNumber": 84,
       "creatureType": "Goblin warriors x 3",
-      "rawMarkdown": "### 84. Goblin warriors x 3\n\n*HP 4, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 84. Goblin warriors x 3\n\n*Level 1(d6), HP 4, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*\n\n**Core Stats:** HP 4, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2397,8 +2403,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 85. Goblin serjeant",
-      "original": "### 85. Goblin serjeant\n\n*HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp.*",
-      "converted": "**### 85. Goblin serjeant** *HP 11, AC 16, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp.*",
+      "original": "### 85. Goblin serjeant\n\n*Level 2(d6), HP 11, AC 16, disposition law/evil. Its primary attributes are physical. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gold, 6 silver.*",
+      "converted": "**### 85. Goblin serjeant** *Level 2(d6), HP 11, AC 16, disposition law/evil. Its primary attributes are physical. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gold, 6 silver.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2408,15 +2414,15 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d6",
         "hp": "11",
         "ac": "16",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
-        "attributes": "strength",
+        "attributes": "physical",
         "equipment": "a breastplate and carry medium steel shield, morning star, shortsword, whip, a brass belt ring with keys to #18 and #20",
         "coins": "5 gp, 6 sp"
       },
       "entryNumber": 85,
       "creatureType": "Goblin serjeant",
-      "rawMarkdown": "### 85. Goblin serjeant\n\n*HP 11, AC 16, disposition law/evil. Saves: P. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gp, 6 sp.*\n\n**Core Stats:** HP 11, AC 16, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 85. Goblin serjeant\n\n*Level 2(d6), HP 11, AC 16, disposition law/evil. Its primary attributes are physical. It has a breastplate, a medium steel shield, a morning star, a shortsword, a whip, a brass belt ring with keys to #18, a #20, and 5 gold, 6 silver.*\n\n**Core Stats:** HP 11, AC 16, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-leader",
@@ -2429,8 +2435,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 86. Prisoner #2",
-      "original": "### 86. Prisoner #2: An elderly Orc\n\n*HP 2, AC 10. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*",
-      "converted": "**### 86. Prisoner #2** *HP 2, AC 10. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "original": "### 86. Prisoner #2: An elderly Orc\n\n*Level 1(d8), HP 2, AC 10. Its primary attributes are physical.*",
+      "converted": "**### 86. Prisoner #2** *Level 1(d8), HP 2, AC 10. Its primary attributes are physical.*",
       "validation": {
         "warnings": [
           {
@@ -2446,11 +2452,12 @@ export const mouthsOfMadnessAnalysis = {
         "hp": "2",
         "ac": "10",
         "raceClass": "bat",
-        "hd": "1d8"
+        "hd": "1d8",
+        "attributes": "physical"
       },
       "entryNumber": 86,
       "creatureType": "Prisoner #2: An elderly orc",
-      "rawMarkdown": "### 86. Prisoner #2: An elderly orc\n\n*HP 2, AC 10. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*\n\n**Core Stats:** HP 2, AC 10, Disposition —\n\n---",
+      "rawMarkdown": "### 86. Prisoner #2: An elderly orc\n\n*Level 1(d8), HP 2, AC 10. Its primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 10, Disposition —\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "rank-inferred",
@@ -2463,8 +2470,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 87. Robert Cooper",
-      "original": "### 87. Robert Cooper\n\n*HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*",
-      "converted": "**### 87. Robert Cooper** *HP 2, AC 11, disposition lawful good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "original": "### 87. Robert Cooper\n\n*HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "converted": "**### 87. Robert Cooper** *HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
       "validation": {
         "warnings": [
           {
@@ -2479,13 +2486,13 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "This lawful good, 0th level, human knight's vital stats are HP 2, AC 11. His prime attributes are_ _as yet_ _undeveloped.",
         "hp": "2",
         "ac": "11",
-        "disposition": "lawful good",
+        "disposition": "law/good",
         "attributes": "_ _as yet_ _undeveloped",
         "raceClass": "This lawful good, 0th level, human knight"
       },
       "entryNumber": 87,
       "creatureType": "Robert Cooper",
-      "rawMarkdown": "### 87. Robert Cooper\n\n*HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*\n\n**Core Stats:** HP 2, AC 11, Disposition law/good\n\n---",
+      "rawMarkdown": "### 87. Robert Cooper\n\n*HP 2, AC 11, disposition law/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*\n\n**Core Stats:** HP 2, AC 11, Disposition law/good\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -2498,8 +2505,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 88. Oni Blackbeard (Dwarf Crossbowman)",
-      "original": "### 88. Oni Blackbeard (Dwarf Crossbowman)\n\n*HP 18, AC 10, disposition chaos/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries a loin cloth.*",
-      "converted": "**### 88. Oni Blackbeard (Dwarf Crossbowman)** *HP 18, AC 10, disposition chaotic good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries a loin cloth.*",
+      "original": "### 88. Oni Blackbeard (Dwarf Crossbowman)\n\n*Level 3(d8), HP 18, AC 10, disposition chaos/good. Its primary attributes are physical. It has a loin cloth.*",
+      "converted": "**### 88. Oni Blackbeard (Dwarf Crossbowman)** *Level 3(d8), HP 18, AC 10, disposition chaos/good. Its primary attributes are physical. It has a loin cloth.*",
       "validation": {
         "warnings": [
           {
@@ -2514,15 +2521,15 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "This chaotic good, 2nd_ _level, dwarf fighter's vital stats are HP 18, AC 10, MV 20 ft. His prime attributes are strength and dexterity. His significant attribute is dexterity 16. He is specialized in the crossbow [+5 \"to hit]. He wears a loin cloth.",
         "hp": "18",
         "ac": "10",
-        "disposition": "chaotic good",
-        "attributes": "strength and dexterity",
+        "disposition": "chaos/good",
+        "attributes": "physical",
         "equipment": "a loin cloth",
         "raceClass": "This chaotic good, 2nd_ _level, dwarf fighter",
         "hd": "3d8"
       },
       "entryNumber": 88,
       "creatureType": "Oni Blackbeard",
-      "rawMarkdown": "### 88. Oni Blackbeard (Dwarf Crossbowman)\n\n*HP 18, AC 10, disposition chaos/good. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma. He carries a loin cloth.*\n\n**Core Stats:** HP 18, AC 10, Disposition chaos/good\n\n---",
+      "rawMarkdown": "### 88. Oni Blackbeard (Dwarf Crossbowman)\n\n*Level 3(d8), HP 18, AC 10, disposition chaos/good. Its primary attributes are physical. It has a loin cloth.*\n\n**Core Stats:** HP 18, AC 10, Disposition chaos/good\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -2535,8 +2542,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 89. Wilbur Hornblower",
-      "original": "### 89. Wilbur Hornblower\n\n*HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*",
-      "converted": "**### 89. Wilbur Hornblower** *HP 2, AC 8, disposition neutrality. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "original": "### 89. Wilbur Hornblower\n\n*HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
+      "converted": "**### 89. Wilbur Hornblower** *HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*",
       "validation": {
         "warnings": [
           {
@@ -2551,13 +2558,13 @@ export const mouthsOfMadnessAnalysis = {
         "raw": "This neutral, 0th level, human commoner's vital stats are HP 2, AC 8. His prime attributes are mental. He has Business Ability at Level 3.",
         "hp": "2",
         "ac": "8",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "attributes": "mental",
         "raceClass": "This neutral, 0th level, human commoner"
       },
       "entryNumber": 89,
       "creatureType": "Wilbur Hornblower",
-      "rawMarkdown": "### 89. Wilbur Hornblower\n\n*HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, charisma.*\n\n**Core Stats:** HP 2, AC 8, Disposition neutral\n\n---",
+      "rawMarkdown": "### 89. Wilbur Hornblower\n\n*HP 2, AC 8, disposition neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma.*\n\n**Core Stats:** HP 2, AC 8, Disposition neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -2570,8 +2577,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "###",
-      "original": "### 90. Goblin shaman\n\n*HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry.*",
-      "converted": "**###** *HP 15, AC 10. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries *bronze-hilted +1 poniard* and a *HP 15, AC 10, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, and a key to door #21, and 30 gp, 250 gp. He carries two hundred fifty in jewelry.*",
+      "original": "### 90. Goblin shaman\n\n*Level 4(d6), HP 15, AC 10, disposition law/evil. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gold, 250 gold, and two hundred fifty in jewelry.*",
+      "converted": "**###** *HP 15, AC 10. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries *bronze-hilted +1 poniard* and *Level 4(d6), HP 15, AC 10, disposition law/evil. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gold, 250 gold, and two hundred fifty in jewelry.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2581,7 +2588,7 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d6",
         "hp": "15",
         "ac": "10",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "ralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21",
         "equipment": "a bronze-hilted +1 poniard, potion of extra healing [3d8+3], a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a pouch with 30 gp, a gold ring with ruby worth 250 gp, and a key to door #21",
@@ -2590,7 +2597,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 90,
       "creatureType": "Goblin shaman",
-      "rawMarkdown": "### 90. Goblin shaman\n\n*HP 15, AC 10, disposition law/evil. Saves: P. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gp, 250 gp, and two hundred fifty in jewelry.*\n\n**Core Stats:** HP 15, AC 10, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 90. Goblin shaman\n\n*Level 4(d6), HP 15, AC 10, disposition law/evil. It has *a bronze-hilted +1 poniard*, *potion of extra healing [3d8+3]*, a dragonhide spell book with each of the below spells contained therein, a scroll of cause paralysis, a key to door #21, 30 gold, 250 gold, and two hundred fifty in jewelry.*\n\n**Core Stats:** HP 15, AC 10, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-leader",
@@ -2603,8 +2610,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 91. Goblin Skeletons x 4",
-      "original": "### 91. Goblin Skeletons x 4\n\n*HP 8, AC 13, disposition neutral. Saves: P.*",
-      "converted": "**### 91. Goblin Skeletons x 4** *Level 1(d12), HP 8, AC 13, disposition neutrality. Saves: P.*",
+      "original": "### 91. Goblin Skeletons x 4\n\n*Level 1(d12), HP 8, AC 13, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 91. Goblin Skeletons x 4** *Level 1(d12), HP 8, AC 13, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2614,13 +2621,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d12",
         "hp": "8",
         "ac": "13",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "undead",
         "attributes": "physical"
       },
       "entryNumber": 91,
       "creatureType": "Goblin Skeletons x 4",
-      "rawMarkdown": "### 91. Goblin Skeletons x 4\n\n*HP 8, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 8, AC 13, Disposition neutral\n\n---",
+      "rawMarkdown": "### 91. Goblin Skeletons x 4\n\n*Level 1(d12), HP 8, AC 13, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 8, AC 13, Disposition neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -2633,8 +2640,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 92. Goblin warriors x 2",
-      "original": "### 92. Goblin warriors x 2\n\n*HP 6, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*",
-      "converted": "**### 92. Goblin warriors x 2** *Level 1(d6), HP 6, AC 14, disposition lawful evil. Saves: P. They have 6 silver in coin.*",
+      "original": "### 92. Goblin warriors x 2\n\n*Level 1(d6), HP 6, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
+      "converted": "**### 92. Goblin warriors x 2** *Level 1(d6), HP 6, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2644,14 +2651,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "6",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "coins": "6 sp",
         "attributes": "physical"
       },
       "entryNumber": 92,
       "creatureType": "Goblin warriors x 2",
-      "rawMarkdown": "### 92. Goblin warriors x 2\n\n*HP 6, AC 14, disposition law/evil. Saves: P. It has 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 92. Goblin warriors x 2\n\n*Level 1(d6), HP 6, AC 14, disposition law/evil. Its primary attributes are physical. It has 6 silver in coin.*\n\n**Core Stats:** HP 6, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2661,8 +2668,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 93. Gruzz Kree (Goblin Chieftain)",
-      "original": "### 93. Gruzz Kree (Goblin Chieftain)\n\n*HP 18, AC 18, disposition law/evil. Saves: P. It has 12 gp, 50 gp and fifty in jewelry.*",
-      "converted": "**### 93. Gruzz Kree (Goblin Chieftain)** *HP 18, AC 18, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 12 gp, 50 gp and fifty in jewelry.*",
+      "original": "### 93. Gruzz Kree (Goblin Chieftain)\n\n*Level 4(d6), HP 18, AC 18, disposition law/evil. Its primary attributes are physical. It has 12 gold, 50 gold and fifty in jewelry.*",
+      "converted": "**### 93. Gruzz Kree (Goblin Chieftain)** *Level 4(d6), HP 18, AC 18, disposition law/evil. Its primary attributes are physical. It has 12 gold, 50 gold and fifty in jewelry.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2672,15 +2679,15 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d6",
         "hp": "18",
         "ac": "18",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
-        "attributes": "strength",
+        "attributes": "physical",
         "jewelry": "50 gold worth of jewelry",
         "coins": "12 gp, 50 gp"
       },
       "entryNumber": 93,
       "creatureType": "Gruzz Kree",
-      "rawMarkdown": "### 93. Gruzz Kree (Goblin Chieftain)\n\n*HP 18, AC 18, disposition law/evil. Saves: P. It has 12 gp, 50 gp and fifty in jewelry.*\n\n**Core Stats:** HP 18, AC 18, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 93. Gruzz Kree (Goblin Chieftain)\n\n*Level 4(d6), HP 18, AC 18, disposition law/evil. Its primary attributes are physical. It has 12 gold, 50 gold and fifty in jewelry.*\n\n**Core Stats:** HP 18, AC 18, Disposition law/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "rank-inferred",
@@ -2693,8 +2700,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 94. Goblin females x 6",
-      "original": "### 94. Goblin females x 6\n\n*HP 2, AC 12, disposition law/evil. Saves: P.*",
-      "converted": "**### 94. Goblin females x 6** *Level 1(d6), HP 2, AC 12, disposition lawful evil. Saves: P.*",
+      "original": "### 94. Goblin females x 6\n\n*Level 1(d6), HP 2, AC 12, disposition law/evil. Its primary attributes are physical.*",
+      "converted": "**### 94. Goblin females x 6** *Level 1(d6), HP 2, AC 12, disposition law/evil. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2704,13 +2711,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "2",
         "ac": "12",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical"
       },
       "entryNumber": 94,
       "creatureType": "Goblin females x 6",
-      "rawMarkdown": "### 94. Goblin females x 6\n\n*HP 2, AC 12, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 2, AC 12, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 94. Goblin females x 6\n\n*Level 1(d6), HP 2, AC 12, disposition law/evil. Its primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 12, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2720,8 +2727,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 95. Cave bats x 80",
-      "original": "### 95. Cave bats x 80\n\n*HP 1, AC 12, disposition neutral. Saves: P.*",
-      "converted": "**### 95. Cave bats x 80** *Level 1(d2), HP 1, AC 12, disposition neutrality. Saves: P.*",
+      "original": "### 95. Cave bats x 80\n\n*Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 95. Cave bats x 80** *Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2731,13 +2738,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d2",
         "hp": "1",
         "ac": "12",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 95,
       "creatureType": "Cave bats x 80",
-      "rawMarkdown": "### 95. Cave bats x 80\n\n*HP 1, AC 12, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n\n---",
+      "rawMarkdown": "### 95. Cave bats x 80\n\n*Level 1(d2), HP 1, AC 12, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 1, AC 12, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2747,8 +2754,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 96. )** _",
-      "original": "### 96. )** _\n\n*HP 1, AC 11, disposition neutral. Saves: P.*",
-      "converted": "**### 96. ) _** *Level 1(d2), HP 1, AC 11, disposition neutrality. Saves: P.*",
+      "original": "### 96. )** _\n\n*Level 1(d2), HP 1, AC 11, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 96. ) _** *Level 1(d2), HP 1, AC 11, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2758,13 +2765,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d2",
         "hp": "1",
         "ac": "11",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "These neutral insects'",
         "attributes": "physical"
       },
       "entryNumber": 96,
       "creatureType": ")",
-      "rawMarkdown": "### 96. )** _\n\n*HP 1, AC 11, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 1, AC 11, Disposition neutral\n\n---",
+      "rawMarkdown": "### 96. )** _\n\n*Level 1(d2), HP 1, AC 11, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 1, AC 11, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "low",
@@ -2776,8 +2783,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 97. Snakes, poisonous",
-      "original": "### 97. Snakes, poisonous\n\n*HP 4, AC 14, disposition neutral. Saves: P.*",
-      "converted": "**### 97. Snakes, poisonous** *Level 1(d6), HP 4, AC 14, disposition neutrality. Saves: P.*",
+      "original": "### 97. Snakes, poisonous\n\n*Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 97. Snakes, poisonous** *Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2787,13 +2794,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "4",
         "ac": "14",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 97,
       "creatureType": "Snakes",
-      "rawMarkdown": "### 97. Snakes, poisonous\n\n*HP 4, AC 14, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---",
+      "rawMarkdown": "### 97. Snakes, poisonous\n\n*Level 1(d6), HP 4, AC 14, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 4, AC 14, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2803,8 +2810,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 98. Green Slime",
-      "original": "### 98. Green Slime\n\n*HP 16, AC 10, disposition neutral. Saves: P.*",
-      "converted": "**### 98. Green Slime** *Level 4(d8), HP 16, AC 10, disposition neutrality. Saves: P.*",
+      "original": "### 98. Green Slime\n\n*Level 4(d8), HP 16, AC 10, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 98. Green Slime** *Level 4(d8), HP 16, AC 10, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2814,13 +2821,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d8",
         "hp": "16",
         "ac": "10",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 98,
       "creatureType": "Green slime",
-      "rawMarkdown": "### 98. Green slime\n\n*HP 16, AC 10, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 16, AC 10, Disposition neutral\n\n---",
+      "rawMarkdown": "### 98. Green slime\n\n*Level 4(d8), HP 16, AC 10, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 16, AC 10, Disposition neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -2833,8 +2840,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 99. Rats, giant x 3-12",
-      "original": "### 99. Rats, giant x 3-12\n\n*HP 2, AC 13, disposition neutral. Saves: P.*",
-      "converted": "**### 99. Rats, giant x 3-12** *Level 1(d4), HP 2, AC 13, disposition neutrality. Saves: P.*",
+      "original": "### 99. Rats, giant x 3-12\n\n*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 99. Rats, giant x 3-12** *Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2844,13 +2851,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d4",
         "hp": "2",
         "ac": "13",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 99,
       "creatureType": "Rats",
-      "rawMarkdown": "### 99. Rats, giant x 3-12\n\n*HP 2, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---",
+      "rawMarkdown": "### 99. Rats, giant x 3-12\n\n*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -2860,8 +2867,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 100. Gray Ooze (small)",
-      "original": "### 100. Gray Ooze (small)\n\n*HP 15, AC 12, disposition neutral. Saves: P.*",
-      "converted": "**### 100. Gray Ooze (small)** *Level 2(d10), HP 15, AC 12, disposition neutrality. Saves: P.*",
+      "original": "### 100. Gray Ooze (small)\n\n*Level 2(d10), HP 15, AC 12, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 100. Gray Ooze (small)** *Level 2(d10), HP 15, AC 12, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2871,13 +2878,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d10",
         "hp": "15",
         "ac": "12",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 100,
       "creatureType": "Gray Ooze",
-      "rawMarkdown": "### 100. Gray Ooze (small)\n\n*HP 15, AC 12, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 15, AC 12, Disposition neutral\n\n---",
+      "rawMarkdown": "### 100. Gray Ooze (small)\n\n*Level 2(d10), HP 15, AC 12, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 15, AC 12, Disposition neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -2890,8 +2897,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 101. Black Centipedes, giant x 5",
-      "original": "### 101. Black Centipedes, giant x 5\n\n*HP 2, AC 18, disposition neutral. Saves: P.*",
-      "converted": "**### 101. Black Centipedes, giant x 5** *Level 1(d4), HP 2, AC 18, disposition neutrality. Saves: P.*",
+      "original": "### 101. Black Centipedes, giant x 5\n\n*Level 1(d4), HP 2, AC 18, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 101. Black Centipedes, giant x 5** *Level 1(d4), HP 2, AC 18, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2901,13 +2908,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d4",
         "hp": "2",
         "ac": "18",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 101,
       "creatureType": "Black Centipedes",
-      "rawMarkdown": "### 101. Black Centipedes, giant x 5\n\n*HP 2, AC 18, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 18, Disposition neutral\n\n---",
+      "rawMarkdown": "### 101. Black Centipedes, giant x 5\n\n*Level 1(d4), HP 2, AC 18, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 18, Disposition neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -2920,8 +2927,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 102. Orcs x 3",
-      "original": "### 102. Orcs x 3\n\n*HP 5, AC 14, disposition law/evil. Saves: P.*",
-      "converted": "**### 102. Orcs x 3** *Level 1(d8), HP 5, AC 14, disposition lawful evil. Saves: P.*",
+      "original": "### 102. Orcs x 3\n\n*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*",
+      "converted": "**### 102. Orcs x 3** *Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2931,13 +2938,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "5",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical"
       },
       "entryNumber": 102,
       "creatureType": "Orcs x 3",
-      "rawMarkdown": "### 102. Orcs x 3\n\n*HP 5, AC 14, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 102. Orcs x 3\n\n*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-unit",
@@ -2948,8 +2955,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 103. Orcs x 4",
-      "original": "### 103. Orcs x 4\n\n*HP 5, AC 14, disposition law/evil. Saves: P.*",
-      "converted": "**### 103. Orcs x 4** *Level 1(d8), HP 5, AC 14, disposition lawful evil. Saves: P.*",
+      "original": "### 103. Orcs x 4\n\n*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*",
+      "converted": "**### 103. Orcs x 4** *Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2959,13 +2966,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "5",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical"
       },
       "entryNumber": 103,
       "creatureType": "Orcs x 4",
-      "rawMarkdown": "### 103. Orcs x 4\n\n*HP 5, AC 14, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 103. Orcs x 4\n\n*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-unit",
@@ -2976,8 +2983,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 104. Orcs x 6",
-      "original": "### 104. Orcs x 6\n\n*HP 5, AC 14, disposition law/evil. Saves: P.*",
-      "converted": "**### 104. Orcs x 6** *Level 1(d8), HP 5, AC 14, disposition lawful evil. Saves: P.*",
+      "original": "### 104. Orcs x 6\n\n*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*",
+      "converted": "**### 104. Orcs x 6** *Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -2987,13 +2994,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "5",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical"
       },
       "entryNumber": 104,
       "creatureType": "Orcs x 6",
-      "rawMarkdown": "### 104. Orcs x 6\n\n*HP 5, AC 14, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 104. Orcs x 6\n\n*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-unit",
@@ -3004,8 +3011,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 105. Orc Guards x 2",
-      "original": "### 105. Orc Guards x 2\n\n*HP 7, AC 14, disposition law/evil. Saves: P.*",
-      "converted": "**### 105. Orc Guards x 2** *Level 1(d8), HP 7, AC 14, disposition lawful evil. Saves: P.*",
+      "original": "### 105. Orc Guards x 2\n\n*Level 1(d8), HP 7, AC 14, disposition law/evil. Their primary attributes are physical.*",
+      "converted": "**### 105. Orc Guards x 2** *Level 1(d8), HP 7, AC 14, disposition law/evil. Their primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3015,13 +3022,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "7",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical"
       },
       "entryNumber": 105,
       "creatureType": "Orc Guards x 2",
-      "rawMarkdown": "### 105. Orc Guards x 2\n\n*HP 7, AC 14, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 7, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 105. Orc Guards x 2\n\n*Level 1(d8), HP 7, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 7, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -3032,8 +3039,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 106. King Krusher (Orc Leader)",
-      "original": "### 106. King Krusher (Orc Leader)\n\n*HP 20, AC 18, disposition law/evil. Saves: P. It has 30 gold in coin.*",
-      "converted": "**### 106. King Krusher (Orc Leader)** *HP 20, AC 18, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 30 gold in coin.*",
+      "original": "### 106. King Krusher (Orc Leader)\n\n*Level 3(d8), HP 20, AC 18, disposition law/evil. Its primary attributes are physical. It has 30 gold in coin.*",
+      "converted": "**### 106. King Krusher (Orc Leader)** *Level 3(d8), HP 20, AC 18, disposition law/evil. Its primary attributes are physical. It has 30 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3043,14 +3050,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d8",
         "hp": "20",
         "ac": "18",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
-        "attributes": "strength",
+        "attributes": "physical",
         "coins": "30 gp"
       },
       "entryNumber": 106,
       "creatureType": "King Krusher",
-      "rawMarkdown": "### 106. King Krusher (Orc Leader)\n\n*HP 20, AC 18, disposition law/evil. Saves: P. It has 30 gold in coin.*\n\n**Core Stats:** HP 20, AC 18, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 106. King Krusher (Orc Leader)\n\n*Level 3(d8), HP 20, AC 18, disposition law/evil. Its primary attributes are physical. It has 30 gold in coin.*\n\n**Core Stats:** HP 20, AC 18, Disposition law/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "rank-inferred",
@@ -3063,8 +3070,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 107. Orc chieftain's mate",
-      "original": "### 107. Orc chieftain's mate\n\n*HP 4, AC 12, disposition law/evil. Saves: P. It has a 4-inch knife and 100 gold in coin.*",
-      "converted": "**### 107. Orc chieftain's mate** *HP 4, AC 12, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries a 4-inch knife and 100 gold in coin.*",
+      "original": "### 107. Orc chieftain's mate\n\n*Level 1(d8), HP 4, AC 12, disposition law/evil. Its primary attributes are physical. It has a 4-inch knife and 100 gold in coin.*",
+      "converted": "**### 107. Orc chieftain's mate** *Level 1(d8), HP 4, AC 12, disposition law/evil. Its primary attributes are physical. It has a 4-inch knife and 100 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3074,14 +3081,15 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "4",
         "ac": "12",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "equipment": "a 4-inch knife, and 100 gp worth of gold jewelry",
-        "coins": "100 gp"
+        "coins": "100 gp",
+        "attributes": "physical"
       },
       "entryNumber": 107,
       "creatureType": "Orc chieftain's mate",
-      "rawMarkdown": "### 107. Orc chieftain's mate\n\n*HP 4, AC 12, disposition law/evil. Saves: P. It has a 4-inch knife and 100 gold in coin.*\n\n**Core Stats:** HP 4, AC 12, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 107. Orc chieftain's mate\n\n*Level 1(d8), HP 4, AC 12, disposition law/evil. Its primary attributes are physical. It has a 4-inch knife and 100 gold in coin.*\n\n**Core Stats:** HP 4, AC 12, Disposition law/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "rank-inferred",
@@ -3094,8 +3102,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 108. Orcs x 4",
-      "original": "### 108. Orcs x 4\n\n*HP 5, AC 14, disposition law/evil. Saves: P.*",
-      "converted": "**### 108. Orcs x 4** *Level 1(d8), HP 5, AC 14, disposition lawful evil. Saves: P.*",
+      "original": "### 108. Orcs x 4\n\n*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*",
+      "converted": "**### 108. Orcs x 4** *Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3105,13 +3113,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "5",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical"
       },
       "entryNumber": 108,
       "creatureType": "Orcs x 4",
-      "rawMarkdown": "### 108. Orcs x 4\n\n*HP 5, AC 14, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 108. Orcs x 4\n\n*Level 1(d8), HP 5, AC 14, disposition law/evil. Their primary attributes are physical.*\n\n**Core Stats:** HP 5, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-unit",
@@ -3122,8 +3130,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 109. Orc lieutenant",
-      "original": "### 109. Orc lieutenant\n\n*HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin.*",
-      "converted": "**### 109. Orc lieutenant** *HP 12, AC 14, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries 30 gold in coin.*",
+      "original": "### 109. Orc lieutenant\n\n*Level 2(d8), HP 12, AC 14, disposition law/evil. Its primary attributes are physical. It has 30 gold in coin.*",
+      "converted": "**### 109. Orc lieutenant** *Level 2(d8), HP 12, AC 14, disposition law/evil. Its primary attributes are physical. It has 30 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3133,14 +3141,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d8",
         "hp": "12",
         "ac": "14",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
-        "attributes": "strength",
+        "attributes": "physical",
         "coins": "30 gp"
       },
       "entryNumber": 109,
       "creatureType": "Orc lieutenant",
-      "rawMarkdown": "### 109. Orc lieutenant\n\n*HP 12, AC 14, disposition law/evil. Saves: P. It has 30 gold in coin.*\n\n**Core Stats:** HP 12, AC 14, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 109. Orc lieutenant\n\n*Level 2(d8), HP 12, AC 14, disposition law/evil. Its primary attributes are physical. It has 30 gold in coin.*\n\n**Core Stats:** HP 12, AC 14, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-leader",
@@ -3153,8 +3161,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 110. Zombies x 6",
-      "original": "### 110. Zombies x 6\n\n*HP 12, AC 12, disposition neutral/evil. Saves: P.*",
-      "converted": "**### 110. Zombies x 6** *Level 2(d12), HP 12, AC 12, disposition neutral evil. Saves: P.*",
+      "original": "### 110. Zombies x 6\n\n*Level 2(d12), HP 12, AC 12, disposition neutral/evil. Its primary attributes are physical.*",
+      "converted": "**### 110. Zombies x 6** *Level 2(d12), HP 12, AC 12, disposition neutral/evil. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3164,13 +3172,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d12",
         "hp": "12",
         "ac": "12",
-        "disposition": "neutral evil",
+        "disposition": "neutral/evil",
         "raceClass": "undead",
         "attributes": "physical"
       },
       "entryNumber": 110,
       "creatureType": "Zombies x 6",
-      "rawMarkdown": "### 110. Zombies x 6\n\n*HP 12, AC 12, disposition neutral/evil. Saves: P.*\n\n**Core Stats:** HP 12, AC 12, Disposition neutral/evil\n\n---",
+      "rawMarkdown": "### 110. Zombies x 6\n\n*Level 2(d12), HP 12, AC 12, disposition neutral/evil. Its primary attributes are physical.*\n\n**Core Stats:** HP 12, AC 12, Disposition neutral/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3180,8 +3188,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 111. Skeletons x 8",
-      "original": "### 111. Skeletons x 8\n\n*HP 8, AC 13, disposition neutral. Saves: P.*",
-      "converted": "**### 111. Skeletons x 8** *Level 1(d12), HP 8, AC 13, disposition neutrality. Saves: P.*",
+      "original": "### 111. Skeletons x 8\n\n*Level 1(d12), HP 8, AC 13, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 111. Skeletons x 8** *Level 1(d12), HP 8, AC 13, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3191,13 +3199,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d12",
         "hp": "8",
         "ac": "13",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "undead",
         "attributes": "physical"
       },
       "entryNumber": 111,
       "creatureType": "Skeletons x 8",
-      "rawMarkdown": "### 111. Skeletons x 8\n\n*HP 8, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 8, AC 13, Disposition neutral\n\n---",
+      "rawMarkdown": "### 111. Skeletons x 8\n\n*Level 1(d12), HP 8, AC 13, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 8, AC 13, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3207,8 +3215,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 112. Wily Wil, Giant of the Hill",
-      "original": "### 112. Wily Wil, Giant of the Hill\n\n*HP 63, AC 17, disposition chaos/neutral. Saves: P. It has hide armor, a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and an other assorted trash.*",
-      "converted": "**### 112. Wily Wil, Giant of the Hill** *HP 63, AC 17, disposition chaotic neutral. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He wears hide armor and a large leather sack that contains two boulders and carries a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash.*",
+      "original": "### 112. Wily Wil, Giant of the Hill\n\n*Level 9(d12), HP 63, AC 17, disposition chaos/neutral. It has hide armor, a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and an other assorted trash.*",
+      "converted": "**### 112. Wily Wil, Giant of the Hill** *Level 9(d12), HP 63, AC 17, disposition chaos/neutral. It has hide armor, a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and an other assorted trash.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3218,14 +3226,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "9d12",
         "hp": "63",
         "ac": "17",
-        "disposition": "chaotic neutral",
+        "disposition": "chaos/neutral",
         "raceClass": "humanoid",
         "attributes": "ir of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash",
         "equipment": "hide armor and carry a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and other assorted trash"
       },
       "entryNumber": 112,
       "creatureType": "Wily Wil",
-      "rawMarkdown": "### 112. Wily Wil, Giant of the Hill\n\n*HP 63, AC 17, disposition chaos/neutral. Saves: P. It has hide armor, a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and an other assorted trash.*\n\n**Core Stats:** HP 63, AC 17, Disposition chaos/neutral\n\n---",
+      "rawMarkdown": "### 112. Wily Wil, Giant of the Hill\n\n*Level 9(d12), HP 63, AC 17, disposition chaos/neutral. It has hide armor, a large leather sack that contains two boulders, a soiled pair of underdrawers, a huge old ham, a comic scroll, 3 lumps of rock candy, and an other assorted trash.*\n\n**Core Stats:** HP 63, AC 17, Disposition chaos/neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -3238,8 +3246,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 113. \"Pinky\" the Owlbear",
-      "original": "### 113. \"Pinky\" the Owlbear\n\n*HP 27, AC 13, disposition neutral. Saves: P.*",
-      "converted": "**### 113. \"Pinky\" the Owlbear** *Level 4(d10), HP 27, AC 13, disposition neutrality. Saves: P.*",
+      "original": "### 113. \"Pinky\" the Owlbear\n\n*Level 4(d10), HP 27, AC 13, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 113. \"Pinky\" the Owlbear** *Level 4(d10), HP 27, AC 13, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3249,13 +3257,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "4d10",
         "hp": "27",
         "ac": "13",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "monster",
         "attributes": "physical"
       },
       "entryNumber": 113,
       "creatureType": "\"Pinky\" the Owlbear",
-      "rawMarkdown": "### 113. \"Pinky\" the Owlbear\n\n*HP 27, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 27, AC 13, Disposition neutral\n\n---",
+      "rawMarkdown": "### 113. \"Pinky\" the Owlbear\n\n*Level 4(d10), HP 27, AC 13, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 27, AC 13, Disposition neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -3268,8 +3276,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 114. Black Bear",
-      "original": "### 114. Black Bear\n\n*HP 15, AC 13, disposition neutral. Saves: P.*",
-      "converted": "**### 114. Black Bear** *Level 3(d8), HP 15, AC 13, disposition neutrality.*",
+      "original": "### 114. Black Bear\n\n*Level 3(d8), HP 15, AC 13, disposition neutral.*",
+      "converted": "**### 114. Black Bear** *Level 3(d8), HP 15, AC 13, disposition neutral.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3279,13 +3287,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d8",
         "hp": "15",
         "ac": "13",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "ws for 1d4+1 damage and a bite for 1d6+1 damage"
       },
       "entryNumber": 114,
       "creatureType": "Black Bear",
-      "rawMarkdown": "### 114. Black Bear\n\n*HP 15, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 15, AC 13, Disposition neutral\n\n---",
+      "rawMarkdown": "### 114. Black Bear\n\n*Level 3(d8), HP 15, AC 13, disposition neutral.*\n\n**Core Stats:** HP 15, AC 13, Disposition neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -3298,8 +3306,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 115. Black Bear cubs x 2",
-      "original": "### 115. Black Bear cubs x 2\n\n*HP 6, AC 12, disposition neutral. Saves: P.*",
-      "converted": "**### 115. Black Bear cubs x 2** *Level 1(d8), HP 6, AC 12, disposition neutrality. Saves: P.*",
+      "original": "### 115. Black Bear cubs x 2\n\n*Level 1(d8), HP 6, AC 12, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 115. Black Bear cubs x 2** *Level 1(d8), HP 6, AC 12, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3309,13 +3317,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d8",
         "hp": "6",
         "ac": "12",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 115,
       "creatureType": "Black Bear cubs x 2",
-      "rawMarkdown": "### 115. Black Bear cubs x 2\n\n*HP 6, AC 12, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 6, AC 12, Disposition neutral\n\n---",
+      "rawMarkdown": "### 115. Black Bear cubs x 2\n\n*Level 1(d8), HP 6, AC 12, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 6, AC 12, Disposition neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -3328,8 +3336,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 116. River Rats, giant x 40",
-      "original": "### 116. River Rats, giant x 40\n\n*HP 2, AC 13, disposition neutral. Saves: P.*",
-      "converted": "**### 116. River Rats, giant x 40** *Level 1(d4), HP 2, AC 13, disposition neutrality. Saves: P.*",
+      "original": "### 116. River Rats, giant x 40\n\n*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 116. River Rats, giant x 40** *Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3339,13 +3347,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d4",
         "hp": "2",
         "ac": "13",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "animal",
         "attributes": "physical"
       },
       "entryNumber": 116,
       "creatureType": "River Rats",
-      "rawMarkdown": "### 116. River Rats, giant x 40\n\n*HP 2, AC 13, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---",
+      "rawMarkdown": "### 116. River Rats, giant x 40\n\n*Level 1(d4), HP 2, AC 13, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 2, AC 13, Disposition neutral\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "implicit-fighter",
@@ -3358,8 +3366,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 117. Stirges x 8",
-      "original": "### 117. Stirges x 8\n\n*HP 3, AC 16, disposition neutral. Saves: P.*",
-      "converted": "**### 117. Stirges x 8** *Level 1(d6), HP 3, AC 16, disposition neutrality. Saves: P.*",
+      "original": "### 117. Stirges x 8\n\n*Level 1(d6), HP 3, AC 16, disposition neutral. Its primary attributes are physical.*",
+      "converted": "**### 117. Stirges x 8** *Level 1(d6), HP 3, AC 16, disposition neutral. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3369,13 +3377,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "3",
         "ac": "16",
-        "disposition": "neutrality",
+        "disposition": "neutral",
         "raceClass": "creature",
         "attributes": "physical"
       },
       "entryNumber": 117,
       "creatureType": "Stirges x 8",
-      "rawMarkdown": "### 117. Stirges x 8\n\n*HP 3, AC 16, disposition neutral. Saves: P.*\n\n**Core Stats:** HP 3, AC 16, Disposition neutral\n\n---",
+      "rawMarkdown": "### 117. Stirges x 8\n\n*Level 1(d6), HP 3, AC 16, disposition neutral. Its primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 16, Disposition neutral\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3385,8 +3393,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 118. Bugbears x 3",
-      "original": "### 118. Bugbears x 3\n\n*HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin.*",
-      "converted": "**### 118. Bugbears x 3** *Level 3(d10), HP 17, AC 16, disposition chaotic evil. They have 6 gold in coin.*",
+      "original": "### 118. Bugbears x 3\n\n*Level 3(d10), HP 17, AC 16, disposition chaos/evil. It has 6 gold in coin.*",
+      "converted": "**### 118. Bugbears x 3** *Level 3(d10), HP 17, AC 16, disposition chaos/evil. It has 6 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3396,14 +3404,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d10",
         "hp": "17",
         "ac": "16",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
         "attributes": "tchwork ring mail, buckler, bastard sword, light throwing hammers x 2",
         "coins": "6 gp"
       },
       "entryNumber": 118,
       "creatureType": "Bugbears x 3",
-      "rawMarkdown": "### 118. Bugbears x 3\n\n*HP 17, AC 16, disposition chaos/evil. Saves: P. It has 6 gold in coin.*\n\n**Core Stats:** HP 17, AC 16, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 118. Bugbears x 3\n\n*Level 3(d10), HP 17, AC 16, disposition chaos/evil. It has 6 gold in coin.*\n\n**Core Stats:** HP 17, AC 16, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3413,8 +3421,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 119. Hobgoblin sentries x 2",
-      "original": "### 119. Hobgoblin sentries x 2\n\n*HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*",
-      "converted": "**### 119. Hobgoblin sentries x 2** *Level 1(d10), HP 8, AC 15, disposition lawful evil. Saves: P. They have chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*",
+      "original": "### 119. Hobgoblin sentries x 2\n\n*Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*",
+      "converted": "**### 119. Hobgoblin sentries x 2** *Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*",
       "validation": {
         "warnings": [
           {
@@ -3430,7 +3438,7 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d10",
         "hp": "8",
         "ac": "15",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical",
         "equipment": "chain mail armor and carry composite short bows, x12 arrows, battle-axes, and 2d4 gp each",
@@ -3438,7 +3446,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 119,
       "creatureType": "Hobgoblin sentries x 2",
-      "rawMarkdown": "### 119. Hobgoblin sentries x 2\n\n*HP 8, AC 15, disposition law/evil. Saves: P. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 119. Hobgoblin sentries x 2\n\n*Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has chain mail armor, composite short bows, x12 arrows, battle-axes, 2d4 gp each, and 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3448,8 +3456,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 120. Hobgoblin males x 2 or 4",
-      "original": "### 120. Hobgoblin males x 2 or 4\n\n*HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*",
-      "converted": "**### 120. Hobgoblin males x 2 or 4** *Level 1(d10), HP 6, AC 15, disposition lawful evil. Saves: P. They have crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*",
+      "original": "### 120. Hobgoblin males x 2 or 4\n\n*Level 1(d10), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*",
+      "converted": "**### 120. Hobgoblin males x 2 or 4** *Level 1(d10), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3459,7 +3467,7 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d10",
         "hp": "6",
         "ac": "15",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical",
         "equipment": "crude chain mail armor, carry halberds, and carry 2d4 gp each",
@@ -3467,7 +3475,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 120,
       "creatureType": "Hobgoblin males x 2 or 4",
-      "rawMarkdown": "### 120. Hobgoblin males x 2 or 4\n\n*HP 6, AC 15, disposition law/evil. Saves: P. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 120. Hobgoblin males x 2 or 4\n\n*Level 1(d10), HP 6, AC 15, disposition law/evil. Its primary attributes are physical. It has crude chain mail armor, halberds, 2d4 gp each, and 4 gold in coin.*\n\n**Core Stats:** HP 6, AC 15, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3477,8 +3485,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 121. Hobgoblin females x 9",
-      "original": "### 121. Hobgoblin females x 9\n\n*HP 3, AC 12, disposition law/evil. Saves: P.*",
-      "converted": "**### 121. Hobgoblin females x 9** *Level 1(d6), HP 3, AC 12, disposition lawful evil. Saves: P.*",
+      "original": "### 121. Hobgoblin females x 9\n\n*Level 1(d6), HP 3, AC 12, disposition law/evil. Its primary attributes are physical.*",
+      "converted": "**### 121. Hobgoblin females x 9** *Level 1(d6), HP 3, AC 12, disposition law/evil. Its primary attributes are physical.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3488,13 +3496,13 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "3",
         "ac": "12",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical"
       },
       "entryNumber": 121,
       "creatureType": "Hobgoblin females x 9",
-      "rawMarkdown": "### 121. Hobgoblin females x 9\n\n*HP 3, AC 12, disposition law/evil. Saves: P.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 121. Hobgoblin females x 9\n\n*Level 1(d6), HP 3, AC 12, disposition law/evil. Its primary attributes are physical.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3504,8 +3512,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 122. Hobgoblin warriors x 2",
-      "original": "### 122. Hobgoblin warriors x 2\n\n*HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin.*",
-      "converted": "**### 122. Hobgoblin warriors x 2** *Level 1(d10), HP 8, AC 15, disposition lawful evil. Saves: P. They have 4 gold in coin.*",
+      "original": "### 122. Hobgoblin warriors x 2\n\n*Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has 4 gold in coin.*",
+      "converted": "**### 122. Hobgoblin warriors x 2** *Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has 4 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3515,14 +3523,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d10",
         "hp": "8",
         "ac": "15",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "attributes": "physical",
         "coins": "4 gp"
       },
       "entryNumber": 122,
       "creatureType": "Hobgoblin warriors x 2",
-      "rawMarkdown": "### 122. Hobgoblin warriors x 2\n\n*HP 8, AC 15, disposition law/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 122. Hobgoblin warriors x 2\n\n*Level 1(d10), HP 8, AC 15, disposition law/evil. Its primary attributes are physical. It has 4 gold in coin.*\n\n**Core Stats:** HP 8, AC 15, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3532,8 +3540,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 123. Hub",
-      "original": "### 123. Hub-Gub the Bloody (Hobgoblin Chieftain)\n\n*HP 18, AC 16, disposition law/evil. Saves: P. It has full chain mail armor, *a +1 halberd [+4 \"to hit\"; 1d10+3 damage]*, *broadsword [+3 \"to hit\"; 2d4+2 damage]*, a composite short bow, 12 arrows, and 12 gold in coin.*",
-      "converted": "**### 123. Hub** *HP 18, AC 16. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries full chain mail armor, *+1 halberd [+4 \"to hit\"; 1d10+3 damage]*, *broadsword [+3 \"to hit\"; 2d4+2 damage]*HP 18, AC 16, disposition lawful evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries full chain mail armor, a +1 halberd [+4 \"to hit\"; 1d10+3 damage], a broadsword [+3 \"to hit\"; 2d4+2 damage], a composite short bow, 12 arrows, and 12 gold in coin.*",
+      "original": "### 123. Hub-Gub the Bloody (Hobgoblin Chieftain)\n\n*Level 3(d10), HP 18, AC 16, disposition law/evil. Its primary attributes are physical. It has full chain mail armor, *a +1 halberd [+4 \"to hit\"; 1d10+3 damage]*, *broadsword [+3 \"to hit\"; 2d4+2 damage]*, a composite short bow, 12 arrows, and 12 gold in coin.*",
+      "converted": "**### 123. Hub** *HP 18, AC 16. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He wears full chain mail armor and carries *+1 halberd [+4 \"to hit\"; 1d10+3 damage]*, *broadsword [+3 \"to hit\"; 2d4+2 damage]*Level 3(d10), HP 18, AC 16, disposition law/evil. Its primary attributes are physical. It has full chain mail armor, *a +1 halberd [+4 \"to hit\"; 1d10+3 damage]*, *broadsword [+3 \"to hit\"; 2d4+2 damage]*, a composite short bow, 12 arrows, and 12 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3543,15 +3551,15 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d10",
         "hp": "18",
         "ac": "16",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
-        "attributes": "strength",
+        "attributes": "physical",
         "equipment": "full chain mail armor and carry a +1 halberd [+4 \"to hit\"; 1d10+3 damage], broadsword [+3 \"to hit\"; 2d4+2 damage], composite short bow, and 12 arrows",
         "coins": "12 gp"
       },
       "entryNumber": 123,
       "creatureType": "Hub-Gub the Bloody",
-      "rawMarkdown": "### 123. Hub-Gub the Bloody (Hobgoblin Chieftain)\n\n*HP 18, AC 16, disposition law/evil. Saves: P. It has full chain mail armor, *a +1 halberd [+4 \"to hit\"; 1d10+3 damage]*, *broadsword [+3 \"to hit\"; 2d4+2 damage]*, a composite short bow, 12 arrows, and 12 gold in coin.*\n\n**Core Stats:** HP 18, AC 16, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 123. Hub-Gub the Bloody (Hobgoblin Chieftain)\n\n*Level 3(d10), HP 18, AC 16, disposition law/evil. Its primary attributes are physical. It has full chain mail armor, *a +1 halberd [+4 \"to hit\"; 1d10+3 damage]*, *broadsword [+3 \"to hit\"; 2d4+2 damage]*, a composite short bow, 12 arrows, and 12 gold in coin.*\n\n**Core Stats:** HP 18, AC 16, Disposition law/evil\n\n---",
       "classification": {
         "type": "classed",
         "subtype": "rank-inferred",
@@ -3564,8 +3572,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 124. Hobgoblin females x 3",
-      "original": "### 124. Hobgoblin females x 3\n\n*HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin.*",
-      "converted": "**### 124. Hobgoblin females x 3** *Level 1(d6), HP 3, AC 12, disposition lawful evil. Saves: P. They have 2 gold in coin.*",
+      "original": "### 124. Hobgoblin females x 3\n\n*Level 1(d6), HP 3, AC 12, disposition law/evil. Its primary attributes are physical. It has 2 gold in coin.*",
+      "converted": "**### 124. Hobgoblin females x 3** *Level 1(d6), HP 3, AC 12, disposition law/evil. Its primary attributes are physical. It has 2 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3575,7 +3583,7 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d6",
         "hp": "3",
         "ac": "12",
-        "disposition": "lawful evil",
+        "disposition": "law/evil",
         "raceClass": "humanoid",
         "equipment": "an engraved silver armband worth 2 gp",
         "coins": "2 gp",
@@ -3583,7 +3591,7 @@ export const mouthsOfMadnessAnalysis = {
       },
       "entryNumber": 124,
       "creatureType": "Hobgoblin females x 3",
-      "rawMarkdown": "### 124. Hobgoblin females x 3\n\n*HP 3, AC 12, disposition law/evil. Saves: P. It has 2 gold in coin.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n\n---",
+      "rawMarkdown": "### 124. Hobgoblin females x 3\n\n*Level 1(d6), HP 3, AC 12, disposition law/evil. Its primary attributes are physical. It has 2 gold in coin.*\n\n**Core Stats:** HP 3, AC 12, Disposition law/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3593,8 +3601,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 125. Gnoll sentries x 2",
-      "original": "### 125. Gnoll sentries x 2\n\n*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*",
-      "converted": "**### 125. Gnoll sentries x 2** *Level 2(d10), HP 12, AC 15, disposition chaotic evil. They have 4 gold in coin.*",
+      "original": "### 125. Gnoll sentries x 2\n\n*Level 2(d10), HP 12, AC 15, disposition chaos/evil. It has 4 gold in coin.*",
+      "converted": "**### 125. Gnoll sentries x 2** *Level 2(d10), HP 12, AC 15, disposition chaos/evil. It has 4 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3604,14 +3612,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d10",
         "hp": "12",
         "ac": "15",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
         "attributes": "tchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp",
         "coins": "4 gp"
       },
       "entryNumber": 125,
       "creatureType": "Gnoll sentries x 2",
-      "rawMarkdown": "### 125. Gnoll sentries x 2\n\n*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 125. Gnoll sentries x 2\n\n*Level 2(d10), HP 12, AC 15, disposition chaos/evil. It has 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3621,8 +3629,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 126. Gnoll males x 4",
-      "original": "### 126. Gnoll males x 4\n\n*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*",
-      "converted": "**### 126. Gnoll males x 4** *Level 2(d10), HP 12, AC 15, disposition chaotic evil. They have 4 gold in coin.*",
+      "original": "### 126. Gnoll males x 4\n\n*Level 2(d10), HP 12, AC 15, disposition chaos/evil. It has 4 gold in coin.*",
+      "converted": "**### 126. Gnoll males x 4** *Level 2(d10), HP 12, AC 15, disposition chaos/evil. It has 4 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3632,14 +3640,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d10",
         "hp": "12",
         "ac": "15",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
         "attributes": "tchwork leather armor, shield, throwing club x 2, morning star, and 2d4 gp",
         "coins": "4 gp"
       },
       "entryNumber": 126,
       "creatureType": "Gnoll males x 4",
-      "rawMarkdown": "### 126. Gnoll males x 4\n\n*HP 12, AC 15, disposition chaos/evil. Saves: P. It has 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 126. Gnoll males x 4\n\n*Level 2(d10), HP 12, AC 15, disposition chaos/evil. It has 4 gold in coin.*\n\n**Core Stats:** HP 12, AC 15, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3649,8 +3657,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 127. Gnoll females x 5",
-      "original": "### 127. Gnoll females x 5\n\n*HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin.*",
-      "converted": "**### 127. Gnoll females x 5** *Level 1(d10), HP 5, AC 12, disposition chaotic evil. Saves: P. They have 4 silver in coin.*",
+      "original": "### 127. Gnoll females x 5\n\n*Level 1(d10), HP 5, AC 12, disposition chaos/evil. Its primary attributes are physical. It has 4 silver in coin.*",
+      "converted": "**### 127. Gnoll females x 5** *Level 1(d10), HP 5, AC 12, disposition chaos/evil. Its primary attributes are physical. It has 4 silver in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3660,14 +3668,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "1d10",
         "hp": "5",
         "ac": "12",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
         "coins": "4 sp",
         "attributes": "physical"
       },
       "entryNumber": 127,
       "creatureType": "Gnoll females x 5",
-      "rawMarkdown": "### 127. Gnoll females x 5\n\n*HP 5, AC 12, disposition chaos/evil. Saves: P. It has 4 silver in coin.*\n\n**Core Stats:** HP 5, AC 12, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 127. Gnoll females x 5\n\n*Level 1(d10), HP 5, AC 12, disposition chaos/evil. Its primary attributes are physical. It has 4 silver in coin.*\n\n**Core Stats:** HP 5, AC 12, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "confidence": "high",
@@ -3677,8 +3685,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 128. Gnoll guards x 2",
-      "original": "### 128. Gnoll guards x 2\n\n*HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin.*",
-      "converted": "**### 128. Gnoll guards x 2** *Level 2(d10), HP 14, AC 15, disposition chaotic evil. Saves: P. They have 4 gold in coin.*",
+      "original": "### 128. Gnoll guards x 2\n\n*Level 2(d10), HP 14, AC 15, disposition chaos/evil. Their primary attributes are physical. They have 4 gold in coin.*",
+      "converted": "**### 128. Gnoll guards x 2** *Level 2(d10), HP 14, AC 15, disposition chaos/evil. Their primary attributes are physical. They have 4 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3688,14 +3696,14 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "2d10",
         "hp": "14",
         "ac": "15",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
         "attributes": "physical",
         "coins": "4 gp"
       },
       "entryNumber": 128,
       "creatureType": "Gnoll guards x 2",
-      "rawMarkdown": "### 128. Gnoll guards x 2\n\n*HP 14, AC 15, disposition chaos/evil. Saves: P. They have 4 gold in coin.*\n\n**Core Stats:** HP 14, AC 15, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 128. Gnoll guards x 2\n\n*Level 2(d10), HP 14, AC 15, disposition chaos/evil. Their primary attributes are physical. They have 4 gold in coin.*\n\n**Core Stats:** HP 14, AC 15, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-unit",
@@ -3706,8 +3714,8 @@ export const mouthsOfMadnessAnalysis = {
     },
     {
       "name": "### 129. Yeexuul (Gnoll Chieftain)",
-      "original": "### 129. Yeexuul (Gnoll Chieftain)\n\n*HP 20, AC 17, disposition chaos/evil. Saves: P. It has plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin.*",
-      "converted": "**### 129. Yeexuul (Gnoll Chieftain)** *HP 20, AC 17, disposition chaotic evil. His primary attributes are strength, dexterity, constitution, intelligence, wisdom, and charisma. He carries plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin.*",
+      "original": "### 129. Yeexuul (Gnoll Chieftain)\n\n*Level 3(d10), HP 20, AC 17, disposition chaos/evil. Its primary attributes are physical. It has plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin.*",
+      "converted": "**### 129. Yeexuul (Gnoll Chieftain)** *Level 3(d10), HP 20, AC 17, disposition chaos/evil. Its primary attributes are physical. It has plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin.*",
       "validation": {
         "warnings": [],
         "complianceScore": 95
@@ -3717,15 +3725,15 @@ export const mouthsOfMadnessAnalysis = {
         "hd": "3d10",
         "hp": "20",
         "ac": "17",
-        "disposition": "chaotic evil",
+        "disposition": "chaos/evil",
         "raceClass": "humanoid",
-        "attributes": "strength",
+        "attributes": "physical",
         "equipment": "plate mail armor, and carry a throwing club, morning star, and 10-inch knife",
         "coins": "24 gp"
       },
       "entryNumber": 129,
       "creatureType": "Yeexuul",
-      "rawMarkdown": "### 129. Yeexuul (Gnoll Chieftain)\n\n*HP 20, AC 17, disposition chaos/evil. Saves: P. It has plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin.*\n\n**Core Stats:** HP 20, AC 17, Disposition chaos/evil\n\n---",
+      "rawMarkdown": "### 129. Yeexuul (Gnoll Chieftain)\n\n*Level 3(d10), HP 20, AC 17, disposition chaos/evil. Its primary attributes are physical. It has plate mail armor, a throwing club, a morning star, 10-inch knife, and 24 gold in coin.*\n\n**Core Stats:** HP 20, AC 17, Disposition chaos/evil\n\n---",
       "classification": {
         "type": "monster",
         "subtype": "monster-leader",
@@ -3904,7 +3912,7 @@ export const mouthsOfMadnessAnalysis = {
   "metadata": {
     "documentName": "Mouths of Madness",
     "totalEntries": 129,
-    "processingDate": "2025-11-18T03:36:52.408Z",
+    "processingDate": "2026-09-23T22:57:01.927Z",
     "successRate": 100
   }
 } as const;

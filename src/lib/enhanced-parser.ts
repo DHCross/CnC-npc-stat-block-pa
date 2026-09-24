@@ -35,6 +35,71 @@ export function sanitizeCanonicalText(text: string): string {
   result = result.replace(/\beachs\b/gi, 'each');
   // Normalize odd pluralization with trailing 's' artifacts
   result = result.replace(/\beachs\b/gi, 'each');
+  return applyLightEdits(result);
+}
+
+/**
+ * Definite-error corrections only — the "light edit" tier of the Reforge
+ * doctrine. Fixes structural errors (doubled words, number agreement,
+ * compound modifiers, missing articles, known typos) without touching
+ * sentence structure, voice, or style. Anything ambiguous must NOT be
+ * fixed here — it belongs in validation flags.
+ */
+export function applyLightEdits(text: string): string {
+  if (!text) return text;
+  let result = text;
+
+  // Doubled closed-class words: "the the", "and and", etc.
+  // Restricted to function words so legitimate repetition ("had had") is untouched.
+  result = result.replace(
+    /\b(the|a|an|of|and|to|in|on|at|is|it|he|she|they|that|with|for|as|by|or|be)\s+\1\b/gi,
+    '$1'
+  );
+
+  // Known definite typos observed in source text
+  result = result.replace(/\bcan not\b/g, 'cannot');
+  result = result.replace(/\ba few hundreds\b/gi, 'a few hundred');
+  result = result.replace(/\bwit wax\b/gi, 'with wax');
+  result = result.replace(/\bIf they CK\b/g, 'If the CK');
+  result = result.replace(
+    /\b(gives?|takes?|does?|deals?|inflicts?|causes?|receives?|suffers?|adds?|grants?)\s+and\s+additional\b/gi,
+    '$1 an additional'
+  );
+
+  // Compound modifiers: "cold based damage" -> "cold-based damage"
+  result = result.replace(/\b(\w+) based\b(?=\s+(?:damage|attack|weapon|spell|effect|resistance|immunity|armor|armour))/gi, '$1-based');
+
+  // "high level cleric" -> "high-level cleric" (compound before class/creature nouns)
+  result = result.replace(
+    /\bhigh level\b(?=\s+(?:cleric|wizard|fighter|magic[- ]user|thief|rogue|assassin|monk|ranger|paladin|druid|bard|illusionist|barbarian|knight|priest|mage|sorcerer|warlock|necromancer|enchanter|spellcaster|character|adventurer|warrior|guard|priestess|shaman|witch|monster|creature|undead|demon|devil|dragon|golem|giant|orc|elf|dwarf|halfling|gnome|troll|ogre|vampire|lich|wight|wraith|ghoul|ghast|skeleton|zombie)\b)/gi,
+    'high-level'
+  );
+
+  // Number agreement on attack body parts: "2 claw" -> "2 claws"
+  result = result.replace(
+    /\b(\d+)\s+(claw|bite|wing|tentacle|slam|hoof|horn|sting|fist|gore|arm|leg|head|tail|pincer|mandible)\b(?!s)/gi,
+    (match, count: string, part: string) => (parseInt(count, 10) > 1 ? `${count} ${part}s` : match)
+  );
+
+  // Attack-routine "or" -> "and": when a full attack routine lists multiple
+  // natural attacks each with damage ("2 claws for 1d3, a bite for 1d6, or a
+  // gore for 1d4"), the "or" reads as mutually exclusive — a real mechanical
+  // ambiguity (the gargoyle fix). Restricted to "attack" sentences where the
+  // or-clause itself carries damage, so legitimate alternatives like
+  // "or by weapon" are untouched.
+  result = result.replace(
+    /(attack[^.]*?for\s+\d[^.]*?),\s*or\s+((?:a|an)\s+[^,.]+?\s+for\s+\d)/gi,
+    '$1, and $2'
+  );
+
+  // Missing articles before singular countable items after possessive verbs:
+  // "has necklace and ring set" -> "has a necklace and ring set",
+  // "has pouch" -> "has a pouch"
+  result = result.replace(
+    /\b(has|have|had|wears?|carries?|wields?|holds?)\s+(necklace|pouch|sack|purse|amulet|brooch|bracelet|circlet|medallion|arm\s?band|chalice|goblet|vial|phial|coffer|quiver|banner|idol|statuette|figurine|orb|talisman|tome|lantern|horn|harp|lute|flute|drum|mirror|razor|keyring|key ring|locket|pendant|scarf|sash|satchel)\b/gi,
+    (match, verb: string, item: string) => `${verb} ${/^[aeiou]/i.test(item) ? 'an' : 'a'} ${item}`
+  );
+
   return result;
 }
 
@@ -53,17 +118,21 @@ export function normalizeUnicodeSuperscripts(text: string): string {
   return result;
 }
 
-// Per Canonicalizer mandate: replace verbose "primary attributes are physical" with canonical Saves notation
-// For non-classed monsters, use Saves abbreviations: P (Physical), M (Mental), M,P (Both), N (None)
+// For non-classed monsters, Jeremy's abbreviated template uses "primary attributes are
+// physical" — never the full-M&T "Saves: P" shorthand. Normalize any legacy saves
+// phrasing carried over from source text to the primary-attributes wording; leave
+// existing primary-attributes phrasing untouched.
 export function normalizePrimaryAttributesForMonsters(text: string, hasClassLevels: boolean): string {
   if (!text || hasClassLevels) return text; // Only apply to non-classed creatures
-  
-  // For monsters without class levels, replace "primary attributes are physical" with "Saves: P"
+
+  const possessive = /\b(their|they|these)\b/i.test(text) ? 'Their' : 'Its';
   let result = text;
-  result = result.replace(/\bTheir\s+primary\s+attributes\s+are\s+physical\b/gi, 'Saves: P');
-  result = result.replace(/\bHis\s+primary\s+attributes\s+are\s+physical\b/gi, 'Saves: P');
-  result = result.replace(/\bHer\s+primary\s+attributes\s+are\s+physical\b/gi, 'Saves: P');
-  result = result.replace(/\bIts\s+primary\s+attributes\s+are\s+physical\b/gi, 'Saves: P');
+  result = result.replace(/\bSaves:\s*[MP]\s*[,/]\s*[MP]\b/gi, `${possessive} primary attributes are mental and physical`);
+  result = result.replace(/\bSaves:\s*P\b/gi, `${possessive} primary attributes are physical`);
+  result = result.replace(/\bSaves:\s*M\b/gi, `${possessive} primary attributes are mental`);
+  result = result.replace(/\b(?:its|his|her|their)\s+saves\s+are\s+mental\s+and\s+physical\b/gi, `${possessive} primary attributes are mental and physical`);
+  result = result.replace(/\b(?:its|his|her|their)\s+saves\s+are\s+physical\b/gi, `${possessive} primary attributes are physical`);
+  result = result.replace(/\b(?:its|his|her|their)\s+saves\s+are\s+mental\b/gi, `${possessive} primary attributes are mental`);
   return result;
 }
 
@@ -138,7 +207,8 @@ export interface ParsedTitleAndBody {
 }
 
 import { addMagicItemMechanics, applyNameMappings, MAGIC_ITEM_MAPPINGS, canonicalizeMagicItemName } from './name-mappings';
-import { estimateHpFromHd, isRankedNamedEntity, formatHdAsLevel } from './stat-block-helpers';
+import { estimateHpFromHd, isRankedNamedEntity, formatHdAsLevel, normalizeDisposition } from './stat-block-helpers';
+export { normalizeDisposition };
 import type { FormattingRules } from './classification-rules';
 import { classifyEntityV3, type SignalExtractionContext } from './classification-rules';
 
@@ -299,6 +369,14 @@ function numberToWords(num: number): string {
   return num.toString();
 }
 
+const COIN_DENOMINATIONS: Record<string, string> = {
+  pp: 'platinum',
+  gp: 'gold',
+  sp: 'silver',
+  cp: 'copper',
+  ep: 'electrum',
+};
+
 function canonicalizeCoinsText(coins: string): string {
   if (!coins) {
     return coins;
@@ -307,7 +385,10 @@ function canonicalizeCoinsText(coins: string): string {
   let normalized = coins.trim();
 
   normalized = normalized.replace(/\s*[-–]\s*/g, '–');
-  normalized = normalized.replace(/(\d)(pp|gp|sp|cp)\b/gi, '$1 $2');
+  // Coin abbreviations become written denominations: 300gp -> 300 gold, 2d6gp -> 2d6 gold
+  normalized = normalized.replace(/(\d+(?:d\d+)?(?:–\d+(?:d\d+)?)?)\s*(pp|gp|sp|cp|ep)\b/gi, (_match, amount: string, unit: string) => {
+    return `${amount} ${COIN_DENOMINATIONS[unit.toLowerCase()]}`;
+  });
   normalized = normalized.replace(/\s+/g, ' ');
 
   return normalized;
@@ -437,10 +518,10 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
     data.disposition = normalizeDisposition(dispositionMatch[2]);
   }
 
-  // Extract Level with dice notation for non-classed creatures (e.g., "Level 1(d6)")
-  const levelDiceMatch = /\bLevel\s+(\d+\([^)]+\))/i.exec(parenthetical);
+  // Extract Level with dice notation for non-classed creatures (e.g., "Level 1(d6)", "Level 5 (d8)")
+  const levelDiceMatch = /\bLevel\s+(\d+)\s*\(([^)]+)\)/i.exec(parenthetical);
   if (levelDiceMatch) {
-    data.level = levelDiceMatch[1];
+    data.level = `${levelDiceMatch[1]}(${levelDiceMatch[2]})`;
   }
 
   // Extract race/class/level
@@ -517,7 +598,7 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
       const level = commaSeparatedMatch[3];
 
       // For units, make class plural
-      const isUnitContext = /\bx\d+\b/i.test(parenthetical) || isUnit || (title && /\bx\d+\b/i.test(title));
+      const isUnitContext = /\bx\s*\d+\b/i.test(parenthetical) || isUnit || (title && /\bx\s*\d+\b/i.test(title));
       if (isUnitContext && !charClass.endsWith('s')) {
         charClass = pluralizeClassNameLocal(charClass);
       }
@@ -648,9 +729,10 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
     }
 
     if (fullEquipment && !fullEquipment.match(/^\s*(and|carries?|a|,)*\s*$/i)) {
-      // Clean up equipment by removing coin references
-      fullEquipment = fullEquipment.replace(/,?\s*and\s+carry\s+\d+[–-]\d+\s*(?:gp|gold|silver|copper|platinum)(?:\s+in\s+coin)?/gi, '');
-      fullEquipment = fullEquipment.replace(/,?\s*\d+[–-]\d+\s*(?:gp|gold|silver|copper|platinum)(?:\s+in\s+coin)?/gi, '');
+      // Clean up equipment by removing coin references (they live in the coins field)
+      fullEquipment = fullEquipment.replace(/,?\s*and\s+carry\s+\d+(?:d\d+)?(?:[–-]\d+(?:d\d+)?)?\s*(?:gp|sp|cp|pp|ep|gold|silver|copper|platinum|electrum)(?:\s+in\s+coin)?/gi, '');
+      fullEquipment = fullEquipment.replace(/,?\s*(?:and\s+)?\b\d+(?:d\d+)?(?:[–-]\d+(?:d\d+)?)?\s*(?:gp|sp|cp|pp|ep|gold|silver|copper|platinum|electrum)(?:\s+in\s+coin)?/gi,
+        (m: string, offset: number, str: string) => /worth\s*$/i.test(str.slice(0, offset)) ? m : '');
       fullEquipment = fullEquipment.trim().replace(/,\s*$/, '');
       if (fullEquipment) {
         data.equipment = fullEquipment;
@@ -735,7 +817,7 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
   // Now extract coins, but exclude jewelry values
   if (!coinMatch) {
     // Extract all currency mentions from parenthetical, but exclude jewelry
-    const currencyPattern = /(\d+)\s*(gp|sp|cp|pp|gold|silver|copper|platinum)(?!\s+worth\s+of\s+jewelry)\b/gi;
+    const currencyPattern = /(\d+(?:d\d+)?)\s*(gp|sp|cp|pp|ep|gold|silver|copper|platinum|electrum)(?!\s+worth\s+of\s+jewelry)\b/gi;
     const currencies: string[] = [];
     let match;
     while ((match = currencyPattern.exec(parenthetical)) !== null) {
@@ -759,6 +841,10 @@ export function extractParentheticalData(parenthetical: string, isUnit: boolean 
         case 'platinum':
           currencies.push(`${amount} pp`);
           break;
+        case 'ep':
+        case 'electrum':
+          currencies.push(`${amount} ep`);
+          break;
       }
     }
 
@@ -774,25 +860,8 @@ export function isUnitHeading(title: string): boolean {
   return UNIT_PATTERNS.some(pattern => pattern.test(title));
 }
 
-export function normalizeDisposition(disposition: string): string {
-  const trimmed = disposition.trim().toLowerCase();
-  const mapping: Record<string, string> = {
-    'lawful good': 'lawful good',
-    'lawful neutral': 'lawful neutral',
-    'lawful evil': 'lawful evil',
-    'neutral good': 'neutral good',
-    'true neutral': 'neutrality',
-    'neutral': 'neutrality',
-    'neutral/neutral': 'neutrality',
-    'neutral evil': 'neutral evil',
-    'chaotic good': 'chaotic good',
-    'chaotic neutral': 'chaotic neutral',
-    'chaotic evil': 'chaotic evil',
-    'lawful': 'lawful neutral',
-    'chaotic': 'chaotic neutral'
-  };
-  return mapping[trimmed] ?? disposition.trim();
-}
+// normalizeDisposition is re-exported from stat-block-helpers (canonical noun-form
+// implementation: 'lawful good' -> 'law/good', 'neutral' -> 'neutral').
 
 const ATTRIBUTE_ABBREVIATIONS: Record<string, string> = {
   'str': 'strength',
@@ -1366,15 +1435,15 @@ function formatCoinsForTreasure(coins: string): string {
     return normalized;
   }
 
-  // Check if multiple currency types (gp, sp, cp, pp)
-  const currencyMatches = normalized.match(/\d+(?:[–-]\d+)?\s*(?:gp|sp|cp|pp)/gi);
+  // Check if multiple currency types (abbreviated or written denominations)
+  const currencyMatches = normalized.match(/\d+(?:d\d+)?(?:[–-]\d+(?:d\d+)?)?\s*(?:gp|sp|cp|pp|ep|gold|silver|copper|platinum|electrum)/gi);
   if (currencyMatches && currencyMatches.length > 1) {
     // Multiple currencies: just normalize spacing
     return normalized;
   }
 
   // Single currency: convert to "# [denomination] in coin" format
-  const singleMatch = normalized.match(/(\d+(?:[–-]\d+)?)\s*(gp|sp|cp|pp|gold|silver|copper|platinum)/i);
+  const singleMatch = normalized.match(/(\d+(?:d\d+)?(?:[–-]\d+(?:d\d+)?)?)\s*(gp|sp|cp|pp|ep|gold|silver|copper|platinum|electrum)/i);
   if (singleMatch) {
     const amount = singleMatch[1];
     const unit = singleMatch[2].toLowerCase();
@@ -1386,7 +1455,9 @@ function formatCoinsForTreasure(coins: string): string {
       cp: 'copper',
       copper: 'copper',
       pp: 'platinum',
-      platinum: 'platinum'
+      platinum: 'platinum',
+      ep: 'electrum',
+      electrum: 'electrum'
     };
     const unitWord = unitWordMap[unit] || unit;
     return `${amount} ${unitWord} in coin`;
@@ -1511,8 +1582,8 @@ export function buildCanonicalParenthetical(
         vitalParts.push(`HP ${data.hp}`);
       }
     } else if (data.level && /\d/.test(data.level)) {
-      // Fallback: use level field if no HD
-      vitalParts.push(`Level ${data.level}`);
+      // Fallback: use level field if no HD (die expressions still format as Level X(dY))
+      vitalParts.push(`Level ${formatHdAsLevel(data.level)}`);
       if (data.hp) {
         vitalParts.push(`HP ${data.hp}`);
       }
@@ -1635,7 +1706,7 @@ export function buildCanonicalParenthetical(
 
     equipmentParts.forEach(part => {
       // Skip coin references - they'll be handled separately in the coins section
-      if (/\b\d+[–-]\d+\s*(?:gp|sp|cp|pp|gold|silver|copper|platinum)|\b\d+\s*(?:gp|sp|cp|pp|gold|silver|copper|platinum)\b/i.test(part)) {
+      if (/\b\d+(?:d\d+)?(?:[–-]\d+(?:d\d+)?)?\s*(?:gp|sp|cp|pp|ep|gold|silver|copper|platinum|electrum)\b/i.test(part)) {
         return;
       }
 
@@ -1998,7 +2069,7 @@ export function formatMountBlock(mountBlock: MountBlock): string {
   const apostrophe = '’';
   const canonicalMount = canonicalizeMountBlock(mountBlock);
   const vitalParts: string[] = [];
-  if (canonicalMount.level) vitalParts.push(`Level ${canonicalMount.level}`);
+  if (canonicalMount.level) vitalParts.push(`Level ${formatHdAsLevel(canonicalMount.level)}`);
   if (canonicalMount.hd) {
     const levelFormat = formatHdAsLevel(canonicalMount.hd);
     vitalParts.push(`Level ${levelFormat}`);

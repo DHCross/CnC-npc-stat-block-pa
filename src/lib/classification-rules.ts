@@ -637,7 +637,7 @@ export function extractPreCheckData(
   }
   
   // Check if name suggests a group/unit (plural indicators)
-  const isGroupUnit = /\b(x\d+|\d+x|\(\d+\))\b/i.test(creatureName) ||
+  const isGroupUnit = /\b(x\s*\d+|\d+\s*x|\(\d+\))\b/i.test(creatureName) ||
                       /\b(bandits|goblins|orcs|guards|soldiers|kobolds)\b/i.test(nameLower);
   
   return {

@@ -7,6 +7,7 @@ import {
   toSuperscript,
   determinePossessivePronoun,
   isRankedNamedEntity,
+  formatHdAsLevel,
 } from './stat-block-helpers';
 
 export type { ParsedNPC, ValidationResult, ValidationWarning, WarningType } from './stat-block-types';
@@ -828,7 +829,7 @@ function parseBlock(block: string): ParsedNPC {
       const attackMatch = mountData.match(/(with\s+[^.]+attack[^.]*)/i);
 
       const mountStats: string[] = [];
-      if (hdMatch) mountStats.push(`HD ${hdMatch[1]}`);
+      if (hdMatch) mountStats.push(`Level ${formatHdAsLevel(hdMatch[1])}`);
       if (hpMatch) mountStats.push(`HP ${hpMatch[1]}`);
       if (acMatch) mountStats.push(`AC ${acMatch[1]}`);
       mountStats.push('disposition neutral');
@@ -1077,6 +1078,7 @@ function parseBlock(block: string): ParsedNPC {
     const merged: ParentheticalData = {
       raw: existing?.raw ?? '',
       hp: existing?.hp,
+      hd: existing?.hd,
       ac: existing?.ac,
       disposition: existing?.disposition,
       raceClass: existing?.raceClass,
@@ -1105,6 +1107,7 @@ function parseBlock(block: string): ParsedNPC {
 
     const fields = parsed.fields;
     assign('hp', fields['Hit Points (HP)']);
+    assign('hd', fields['HD']);
     assign('ac', fields['Armor Class (AC)']);
     const sanitizeDisposition = (value?: string): string | undefined => {
       if (!value) {
@@ -1139,6 +1142,7 @@ function parseBlock(block: string): ParsedNPC {
 
     const hasContent = Boolean(
       merged.hp ||
+        merged.hd ||
         merged.ac ||
         merged.disposition ||
         merged.raceClass ||
