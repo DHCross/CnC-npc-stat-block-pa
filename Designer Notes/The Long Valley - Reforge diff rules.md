@@ -84,6 +84,8 @@ The abbreviated adventure block calls for: Level, HP, AC, disposition, primary a
 - Internal discrepancies inside the source (e.g., encounter shorthand vs. appendix stat block) go to QUERY/FLAG — never resolve them by silently rebalancing the encounter.
 - Separate every page review into **REFORGE**, **LIGHT EDIT**, and **QUERY/FLAG** so the reason for each change is visible.
 
+**Software tiers:** `applyLightEdits` (in `enhanced-parser.ts`, runs via `sanitizeCanonicalText` on converted output) automates the definite-error tier: doubled closed-class words, `can not`→`cannot`, `wit wax`→`with wax`, `a few hundreds`→`a few hundred`, `X based damage`→`X-based`, `high level <class>`→`high-level`, `N claw`→`N claws` (N>1), missing articles (`has pouch`→`has a pouch`, with a/an), `take and additional`→`an additional`, and attack-routine `, or a <attack> for <dice>`→`, and` (the gargoyle fix — restricted to "attack" sentences where the or-clause carries damage, so `or by weapon` is untouched). `buildMonsterValidation` (in `monster-formatter.ts`) emits the QUERY/FLAG tier: stripped HD modifiers (`5d8+5`→`5(d8)` + flag for the +N), bare HD with no die, `or`-joined attack routines, singular blocks mixing it/they pronouns, and possible comma splices (flagged, never auto-fixed — subordinate clauses share the surface pattern).
+
 ## Worked example — Bag O' Bones (gold-standard diff)
 
 Source:

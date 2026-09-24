@@ -35,6 +35,71 @@ export function sanitizeCanonicalText(text: string): string {
   result = result.replace(/\beachs\b/gi, 'each');
   // Normalize odd pluralization with trailing 's' artifacts
   result = result.replace(/\beachs\b/gi, 'each');
+  return applyLightEdits(result);
+}
+
+/**
+ * Definite-error corrections only — the "light edit" tier of the Reforge
+ * doctrine. Fixes structural errors (doubled words, number agreement,
+ * compound modifiers, missing articles, known typos) without touching
+ * sentence structure, voice, or style. Anything ambiguous must NOT be
+ * fixed here — it belongs in validation flags.
+ */
+export function applyLightEdits(text: string): string {
+  if (!text) return text;
+  let result = text;
+
+  // Doubled closed-class words: "the the", "and and", etc.
+  // Restricted to function words so legitimate repetition ("had had") is untouched.
+  result = result.replace(
+    /\b(the|a|an|of|and|to|in|on|at|is|it|he|she|they|that|with|for|as|by|or|be)\s+\1\b/gi,
+    '$1'
+  );
+
+  // Known definite typos observed in source text
+  result = result.replace(/\bcan not\b/g, 'cannot');
+  result = result.replace(/\ba few hundreds\b/gi, 'a few hundred');
+  result = result.replace(/\bwit wax\b/gi, 'with wax');
+  result = result.replace(/\bIf they CK\b/g, 'If the CK');
+  result = result.replace(
+    /\b(gives?|takes?|does?|deals?|inflicts?|causes?|receives?|suffers?|adds?|grants?)\s+and\s+additional\b/gi,
+    '$1 an additional'
+  );
+
+  // Compound modifiers: "cold based damage" -> "cold-based damage"
+  result = result.replace(/\b(\w+) based\b(?=\s+(?:damage|attack|weapon|spell|effect|resistance|immunity|armor|armour))/gi, '$1-based');
+
+  // "high level cleric" -> "high-level cleric" (compound before class/creature nouns)
+  result = result.replace(
+    /\bhigh level\b(?=\s+(?:cleric|wizard|fighter|magic[- ]user|thief|rogue|assassin|monk|ranger|paladin|druid|bard|illusionist|barbarian|knight|priest|mage|sorcerer|warlock|necromancer|enchanter|spellcaster|character|adventurer|warrior|guard|priestess|shaman|witch|monster|creature|undead|demon|devil|dragon|golem|giant|orc|elf|dwarf|halfling|gnome|troll|ogre|vampire|lich|wight|wraith|ghoul|ghast|skeleton|zombie)\b)/gi,
+    'high-level'
+  );
+
+  // Number agreement on attack body parts: "2 claw" -> "2 claws"
+  result = result.replace(
+    /\b(\d+)\s+(claw|bite|wing|tentacle|slam|hoof|horn|sting|fist|gore|arm|leg|head|tail|pincer|mandible)\b(?!s)/gi,
+    (match, count: string, part: string) => (parseInt(count, 10) > 1 ? `${count} ${part}s` : match)
+  );
+
+  // Attack-routine "or" -> "and": when a full attack routine lists multiple
+  // natural attacks each with damage ("2 claws for 1d3, a bite for 1d6, or a
+  // gore for 1d4"), the "or" reads as mutually exclusive — a real mechanical
+  // ambiguity (the gargoyle fix). Restricted to "attack" sentences where the
+  // or-clause itself carries damage, so legitimate alternatives like
+  // "or by weapon" are untouched.
+  result = result.replace(
+    /(attack[^.]*?for\s+\d[^.]*?),\s*or\s+((?:a|an)\s+[^,.]+?\s+for\s+\d)/gi,
+    '$1, and $2'
+  );
+
+  // Missing articles before singular countable items after possessive verbs:
+  // "has necklace and ring set" -> "has a necklace and ring set",
+  // "has pouch" -> "has a pouch"
+  result = result.replace(
+    /\b(has|have|had|wears?|carries?|wields?|holds?)\s+(necklace|pouch|sack|purse|amulet|brooch|bracelet|circlet|medallion|arm\s?band|chalice|goblet|vial|phial|coffer|quiver|banner|idol|statuette|figurine|orb|talisman|tome|lantern|horn|harp|lute|flute|drum|mirror|razor|keyring|key ring|locket|pendant|scarf|sash|satchel)\b/gi,
+    (match, verb: string, item: string) => `${verb} ${/^[aeiou]/i.test(item) ? 'an' : 'a'} ${item}`
+  );
+
   return result;
 }
 

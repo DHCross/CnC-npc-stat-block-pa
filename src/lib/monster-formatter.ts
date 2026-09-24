@@ -9,7 +9,7 @@
 // - Follow different formatting rules than classed NPCs
 
 import type { ParsedNPC, ValidationResult, ValidationWarning, WarningType } from './stat-block-types';
-import { buildSubjectDescriptor, normalizeDisposition, toPossessiveSubject, formatHdAsLevel } from './stat-block-helpers';
+import { buildSubjectDescriptor, normalizeDisposition, toPossessiveSubject, formatHdAsLevel, extractHdHpModifier } from './stat-block-helpers';
 
 export type { ParsedNPC, ValidationResult, ValidationWarning, WarningType } from './stat-block-types';
 
@@ -212,6 +212,71 @@ export function buildMonsterValidation(parsed: ParsedNPC): ValidationResult {
       suggestion: 'Add HD: XdY or Level: X(dY) and Armor Class (AC): <value>',
     });
     score = Math.max(0, score - 25);
+  }
+
+  // --- Reforge doctrine flags (QUERY/FLAG tier — surfaced, not silently decided) ---
+
+  // Legacy HD modifier: "5d8+5" -> the +5 is a hit-point bonus, not part of
+  // Level. It is stripped by formatHdAsLevel; flag it so the HP contribution
+  // is resolved editorially rather than silently dropped.
+  const hdField = parsed.fields['HD'] || parsed.fields['Level'];
+  if (hdField) {
+    const hpModifier = extractHdHpModifier(hdField);
+    if (hpModifier) {
+      warnings.push({
+        type: 'warning',
+        category: 'Level/HD',
+        message: `HD "${hdField}" contains a legacy hit-point modifier (${hpModifier}). It is stripped from Level, leaving Level ${formatHdAsLevel(hdField)} — resolve it as an HP adjustment; do not fold it into Level.`,
+        suggestion: 'Confirm the fixed HP value with the author; the modifier is not part of Level.',
+      });
+      score -= 3;
+    } else if (/^\d+$/.test(hdField.trim())) {
+      warnings.push({
+        type: 'warning',
+        category: 'Level/HD',
+        message: `HD "${hdField}" has no die type — kept as Level ${hdField}. A missing die is a source deficiency, not an error to repair.`,
+        suggestion: 'Locate an authoritative creature entry or ask the author for the die type; do not invent one.',
+      });
+      score -= 5;
+    }
+  }
+
+  // Attack-routine "or" ambiguity: multiple natural attacks each with damage
+  // joined by "or" reads as mutually exclusive — mechanical ambiguity (the
+  // gargoyle fix). Flag even though applyLightEdits repairs the clear case.
+  const original = parsed.original || '';
+  if (/attack[^.]*?for\s+\d[^.]*?,\s*or\s+(?:a|an)\s+[^,.]+?\s+for\s+\d/i.test(original)) {
+    warnings.push({
+      type: 'info',
+      category: 'Attacks',
+      message: 'Attack routine lists multiple damage-bearing attacks joined by "or" — reads as mutually exclusive. Converted to "and" where unambiguous; verify the full routine is intended per round.',
+      suggestion: 'If the creature genuinely alternates attacks, restore "or" for that clause.',
+    });
+  }
+
+  // Pronoun consistency: a singular block that switches between It/Its and
+  // They/Their mid-block is a definite error (e.g., the shadow block).
+  const firstLine = original.split(/\r?\n/)[0] ?? '';
+  const isUnitBlock = /\b(these|their)\b/i.test(firstLine) || /\bx\s*\d+\b/i.test(firstLine);
+  if (!isUnitBlock && /\b(it|its)\b/i.test(original) && /\b(they|their|them)\b/i.test(original)) {
+    warnings.push({
+      type: 'warning',
+      category: 'Pronouns',
+      message: 'Singular creature block mixes singular (it/its) and plural (they/their) pronouns — likely an agreement error. A generic singular in a plural block is fine; the reverse is not.',
+      suggestion: 'Unify pronouns to match the creature count (or the gendered pronoun for named creatures).',
+    });
+    score -= 3;
+  }
+
+  // Possible comma splice: ", it believes" between two independent clauses.
+  // Flagged rather than auto-fixed — subordinate clauses legitimately share
+  // this surface pattern ("if hit, it dies").
+  if (/,\s+(?:it|he|she|they|this|these)\s+(?:is|are|was|were|has|have|had|can|could|will|would|does|do|did|believes|seems|appears|remains|knows|thinks)\b/i.test(original)) {
+    warnings.push({
+      type: 'info',
+      category: 'Grammar',
+      message: 'Possible comma splice (independent clauses joined by a comma). Repair with a semicolon if both clauses are independent.',
+    });
   }
 
   return {
